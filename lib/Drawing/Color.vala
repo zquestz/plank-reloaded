@@ -39,7 +39,7 @@ namespace Plank
 			result.set_hsv (h, s, v);
 			return result;
 		}
-		
+
 		/**
 		 * Create new color for the given HSL values while
 		 * h in [0,360), s in [0,1] and l in [0,1]
@@ -55,7 +55,7 @@ namespace Plank
 			result.set_hsl (h, s, l);
 			return result;
 		}
-		
+
 		/**
 		 * Set HSV color values of this color.
 		 */
@@ -63,7 +63,7 @@ namespace Plank
 		{
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Sets the hue for the color.
 		 *
@@ -77,7 +77,7 @@ namespace Plank
 			h = hue;
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Sets the saturation for the color.
 		 *
@@ -91,7 +91,7 @@ namespace Plank
 			s = sat;
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Sets the value for the color.
 		 *
@@ -105,7 +105,7 @@ namespace Plank
 			v = val;
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Get HSV color values of this color.
 		 */
@@ -113,7 +113,7 @@ namespace Plank
 		{
 			rgb_to_hsv (red, green, blue, out h, out s, out v);
 		}
-		
+
 		/**
 		 * Returns the hue for the color.
 		 *
@@ -125,7 +125,7 @@ namespace Plank
 			rgb_to_hsv (red, green, blue, out h, out s, out v);
 			return h;
 		}
-		
+
 		/**
 		 * Returns the saturation for the color.
 		 *
@@ -137,7 +137,7 @@ namespace Plank
 			rgb_to_hsv (red, green, blue, out h, out s, out v);
 			return s;
 		}
-		
+
 		/**
 		 * Returns the value for the color.
 		 *
@@ -149,7 +149,7 @@ namespace Plank
 			rgb_to_hsv (red, green, blue, out h, out s, out v);
 			return v;
 		}
-		
+
 		/**
 		 * Increases the color's hue.
 		 *
@@ -162,7 +162,7 @@ namespace Plank
 			h = (((h + val) % 360) + 360) % 360;
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Assures the color's saturation is greater than or equal to the given one.
 		 *
@@ -176,7 +176,7 @@ namespace Plank
 			s = double.max (s, sat);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Assures the color's value is greater than or equal to the given one.
 		 *
@@ -190,7 +190,7 @@ namespace Plank
 			v = double.max (v, val);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Assures the color's saturation is less than or equal to the given one.
 		 *
@@ -218,7 +218,7 @@ namespace Plank
 			v = double.min (v, val);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Multiplies the color's saturation using the amount.
 		 *
@@ -232,7 +232,7 @@ namespace Plank
 			s = double.min (1, s * amount);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Brighten the color's value using the value.
 		 *
@@ -246,7 +246,7 @@ namespace Plank
 			v = double.min (1, v + (1 - v) * amount);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Darkens the color's value using the value.
 		 *
@@ -260,7 +260,7 @@ namespace Plank
 			v = double.max (0, v - (1 - v) * amount);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Darkens the color's value using the saturtion.
 		 *
@@ -274,7 +274,7 @@ namespace Plank
 			v = double.max (0, v - amount * s);
 			hsv_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		/**
 		 * Get HSL color values of this color.
 		 */
@@ -282,7 +282,7 @@ namespace Plank
 		{
 			rgb_to_hsl (red, green, blue, out h, out s, out l);
 		}
-		
+
 		/**
 		 * Set HSL color values of this color.
 		 */
@@ -290,7 +290,7 @@ namespace Plank
 		{
 			hsl_to_rgb (h, s, v, out red, out green, out blue);
 		}
-		
+
 		static void rgb_to_hsv (double r, double g, double b, out double h, out double s, out double v)
 			requires (r >= 0 && r <= 1)
 			requires (g >= 0 && g <= 1)
@@ -302,27 +302,27 @@ namespace Plank
 				s = 0;
 				return;
 			}
-			
+
 			// normalize value to 1
 			r /= v;
 			g /= v;
 			b /= v;
-			
+
 			var min = double.min (r, double.min (g, b));
 			var max = double.max (r, double.max (g, b));
-			
+
 			var delta = max - min;
 			s = delta;
 			if (s == 0) {
 				h = 0;
 				return;
 			}
-			
+
 			// normalize saturation to 1
 			r = (r - min) / delta;
 			g = (g - min) / delta;
 			b = (b - min) / delta;
-			
+
 			if (max == r) {
 				h = 0 + 60 * (g - b);
 				if (h < 0)
@@ -333,7 +333,7 @@ namespace Plank
 				h = 240 + 60 * (r - g);
 			}
 		}
-		
+
 		static void hsv_to_rgb (double h, double s, double v, out double r, out double g, out double b)
 			requires (h >= 0 && h < 360)
 			requires (s >= 0 && s <= 1)
@@ -350,7 +350,7 @@ namespace Plank
 				var p = v * (1 - s);
 				var q = v * (1 - s * fracSec);
 				var t = v * (1 - s * (1 - fracSec));
-				
+
 				switch (secNum) {
 				case 0:
 					r = v;
@@ -387,7 +387,7 @@ namespace Plank
 				}
 			}
 		}
-		
+
 		static void rgb_to_hsl (double r, double g, double b, out double h, out double s, out double l)
 			requires (r >= 0 && r <= 1)
 			requires (g >= 0 && g <= 1)
@@ -400,7 +400,7 @@ namespace Plank
 				l = 0.0;
 				return;
 			}
-			
+
 			var min = double.min (r, double.min (g, b));
 			l = (min + max) / 2.0;
 			if (l <= 0.0) {
@@ -408,20 +408,20 @@ namespace Plank
 				s = 0.0;
 				return;
 			}
-			
+
 			var delta = max - min;
 			if (delta <= 0.0) {
 				h = 0.0;
 				s = 0.0;
 				return;
 			}
-			
+
 			s = delta / (l <= 0.5 ? min + max : 2.0 - min - max);
-			
+
 			var r2 = 60 * (max - r) / delta;
 			var g2 = 60 * (max - g) / delta;
 			var b2 = 60 * (max - b) / delta;
-			
+
 			if (max == r) {
 				h = (b2 - g2);
 				if (h < 0)
@@ -432,7 +432,7 @@ namespace Plank
 				h = 240 + (g2 - r2);
 			}
 		}
-		
+
 		static void hsl_to_rgb (double h, double s, double l, out double r, out double g, out double b)
 			requires (h >= 0 && h < 360)
 			requires (s >= 0 && s <= 1)
@@ -445,14 +445,14 @@ namespace Plank
 				b = l;
 				return;
 			}
-			
+
 			var secNum = (int) (h / 60);
 			var fracSec = h / 30.0 - 2 * secNum;
-			
+
 			var p = l - (v - l);
 			var q = v - (v - l) * fracSec;
 			var t = l + (v - l) * (fracSec - 1);
-			
+
 			switch (secNum) {
 			case 0:
 				r = v;
@@ -488,7 +488,7 @@ namespace Plank
 				assert_not_reached ();
 			}
 		}
-		
+
 		/**
 		 * Convert color to string formatted like "%d;;%d;;%d;;%d"
 		 * with numeric entries ranged in 0..255
@@ -502,7 +502,7 @@ namespace Plank
 				(int) (blue * uint8.MAX),
 				(int) (alpha * uint8.MAX));
 		}
-		
+
 		/**
 		 * Create new color converted from string formatted like
 		 * "%d;;%d;;%d;;%d" with numeric entries ranged in 0..255
@@ -512,12 +512,12 @@ namespace Plank
 		public static Color from_prefs_string (string s)
 		{
 			var parts = s.split (";;");
-			
+
 			if (parts.length != 4) {
 				critical ("Malformed color string '%s'", s);
 				return {};
 			}
-			
+
 			return { fclamp (int.parse (parts [0]), 0.0, uint8.MAX) / uint8.MAX,
 				fclamp (int.parse (parts [1]), 0.0, uint8.MAX) / uint8.MAX,
 				fclamp (int.parse (parts [2]), 0.0, uint8.MAX) / uint8.MAX,

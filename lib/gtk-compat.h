@@ -25,8 +25,11 @@
 G_BEGIN_DECLS
 
 /* Conditional compat-layer for Gtk+ 3.19.1+ */
-void plank_compat_gtk_widget_class_set_css_name (GtkWidgetClass *widget_class, const char *name);
-void plank_compat_gtk_widget_path_iter_set_object_name (GtkWidgetPath *path, gint pos, const char *name);
+void plank_compat_gtk_widget_class_set_css_name(GtkWidgetClass *widget_class,
+                                                const char *name);
+void plank_compat_gtk_widget_path_iter_set_object_name(GtkWidgetPath *path,
+                                                       gint pos,
+                                                       const char *name);
 
 G_END_DECLS
 

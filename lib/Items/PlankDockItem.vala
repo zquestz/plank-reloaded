@@ -25,26 +25,26 @@ namespace Plank
 	public class PlankDockItem : DockItem
 	{
 		static PlankDockItem? instance;
-		
+
 		public static unowned PlankDockItem get_instance ()
 		{
 			if (instance == null)
 				instance = new PlankDockItem ();
-			
+
 			return instance;
 		}
-		
+
 		PlankDockItem ()
 		{
 			GLib.Object (Prefs: new DockItemPreferences (), Text: "Plank", Icon: "plank");
 		}
-		
+
 		construct
 		{
 			// if plank is pinned indicate that it is running while it isnt user-visible
 			Indicator = IndicatorState.SINGLE;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -52,51 +52,51 @@ namespace Plank
 		{
 			return false;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time)
 		{
 			Application.get_default ().activate_action ("preferences", null);
-			
+
 			return AnimationType.DARKEN;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		public override Gee.ArrayList<Gtk.MenuItem> get_menu_items ()
 		{
 			var items = new Gee.ArrayList<Gtk.MenuItem> ();
-			
+
 			var item = create_menu_item (_("Get _Help Online..."), "help");
 			item.activate.connect (() => Application.get_default ().activate_action ("help", null));
 			items.add (item);
-			
+
 			item = create_menu_item (_("_Translate This Application..."), "locale");
 			item.activate.connect (() => Application.get_default ().activate_action ("translate", null));
 			items.add (item);
-			
+
 			items.add (new Gtk.SeparatorMenuItem ());
-			
+
 			item = new Gtk.ImageMenuItem.from_stock (Gtk.Stock.PREFERENCES, null);
 			item.activate.connect (() => Application.get_default ().activate_action ("preferences", null));
 			items.add (item);
-			
+
 			item = new Gtk.ImageMenuItem.from_stock (Gtk.Stock.ABOUT, null);
 			item.activate.connect (() => Application.get_default ().activate_action ("about", null));
 			items.add (item);
-			
+
 			// No explicit quit-item on elementary OS
 			if (!environment_is_session_desktop (XdgSessionDesktop.PANTHEON)) {
 				items.add (new Gtk.SeparatorMenuItem ());
-			
+
 				item = new Gtk.ImageMenuItem.from_stock (Gtk.Stock.QUIT, null);
 				item.activate.connect (() => Application.get_default ().activate_action ("quit", null));
 				items.add (item);
 			}
-			
+
 			return items;
 		}
 	}

@@ -25,15 +25,15 @@ namespace Plank
 	public interface Docklet : Object
 	{
 		public abstract unowned string get_id ();
-		
+
 		public abstract unowned string get_name ();
-		
+
 		public abstract unowned string get_description ();
-		
+
 		public abstract unowned string get_icon ();
-		
+
 		public abstract bool is_supported ();
-		
+
 		public abstract Plank.DockElement make_element (string launcher, GLib.File file);
 	}
 }

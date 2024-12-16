@@ -28,12 +28,12 @@ namespace Plank
 		 * The main class.
 		 */
 		public static AbstractMain main;
-		
+
 		/**
 		 * The item factory.
 		 */
 		public static ItemFactory item_factory;
-		
+
 		/**
 		 * Initializes the factory class.
 		 *

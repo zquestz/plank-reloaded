@@ -26,10 +26,10 @@ namespace Plank
 	{
 		[CCode (notify = false)]
 		public GLib.Settings settings { get; construct; }
-		
+
 		[CCode (notify = false)]
 		public GLib.SettingsBindFlags bind_flags { get; construct; default = SettingsBindFlags.DEFAULT; }
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -37,7 +37,7 @@ namespace Plank
 		{
 			Object (settings: new GLib.Settings (schema));
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -45,15 +45,15 @@ namespace Plank
 		{
 			Object (settings: new GLib.Settings.with_path (schema, path));
 		}
-		
+
 		construct
 		{
 			unowned string class_type_name = get_type ().name ();
-			
+
 			debug ("Bind '%s' to '%s'", class_type_name, settings.path);
-			
+
 			(unowned ParamSpec)[] properties = get_class ().list_properties ();
-			
+
 			// Bind available gsettings-keys to their class-properties
 			foreach (unowned string key in settings.list_keys ()) {
 				//Not taking a references of matched ParamSpec results in undefined behaviour
@@ -65,22 +65,22 @@ namespace Plank
 					}
 				if (property == null)
 					continue;
-				
+
 				unowned string name = property.get_name ();
 				unowned string nick = property.get_nick ();
 				var type = property.value_type;
-				
+
 				Logger.verbose ("Bind '%s%s' to '%s.%s'", settings.path, nick, class_type_name, name);
 				if (type.is_fundamental () || type.is_enum () || type.is_flags () || type == typeof(string[])) {
 					settings.bind (nick, this, name, bind_flags);
 				} else {
 					warning ("Binding of '%s' from type '%s' not supported yet!", name, type.name ());
 				}
-				
+
 				verify (name);
 			}
 		}
-		
+
 		/**
 		 * Verify the property given by its name and change the property if necessary.
 		 *
@@ -91,7 +91,7 @@ namespace Plank
 			// do nothing, this isnt abstract because we dont
 			// want to force subclasses to implement this
 		}
-		
+
 		/**
 		 * Resets all properties to their default values.
 		 */
@@ -100,7 +100,7 @@ namespace Plank
 			foreach (unowned string key in settings.list_keys ())
 				settings.reset (key);
 		}
-		
+
 		/**
 		 * Delays saving changes until apply() is called.
 		 */
@@ -108,12 +108,12 @@ namespace Plank
 		{
 			if (settings.delay_apply)
 				return;
-			
+
 			Logger.verbose ("Settings.delay()");
-			
+
 			settings.delay ();
 		}
-		
+
 		/**
 		 * If any settings were changed, apply them now.
 		 */
@@ -121,9 +121,9 @@ namespace Plank
 		{
 			if (!settings.delay_apply)
 				return;
-			
+
 			Logger.verbose ("Settings.apply()");
-			
+
 			settings.apply ();
 		}
 	}

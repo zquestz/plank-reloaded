@@ -30,40 +30,40 @@ namespace PlankTests
 			Timeout.add (5000, (SourceFunc) application.quit);
 			return application.run (args);
 		}
-		
+
 		public Dock ()
 		{
 			var authors = new string[] {
 					"Rico Tzschichholz <ricotz@ubuntu.com>",
 				};
-			
+
 			var documenters = new string[] {
 					"Rico Tzschichholz <ricotz@ubuntu.com>",
 				};
-			
+
 			var artists = new string[] {
 					"Daniel Foré <bunny@go-docky.com>"
 				};
-			
+
 			Object (
 				build_data_dir : Config.DATA_DIR,
 				build_pkg_data_dir : Config.DATA_DIR + "/test",
 				build_release_name : "testname",
 				build_version : "0.0.0",
 				build_version_info : "testing",
-				
+
 				program_name : "Test",
 				exec_name : "test",
-				
+
 				app_copyright : "2015",
 				app_dbus : "net.launchpad.planktest",
 				app_icon : "test",
 				app_launcher : "test.desktop",
-				
+
 				main_url : "https://launchpad.net/plank",
 				help_url : "https://answers.launchpad.net/plank",
 				translate_url : "https://translations.launchpad.net/plank",
-				
+
 				about_authors : authors,
 				about_documenters : documenters,
 				about_artists : artists,

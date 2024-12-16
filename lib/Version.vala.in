@@ -51,7 +51,7 @@ namespace Plank
 	public uint get_major_version () {
 		return Build.VERSION_MAJOR;
 	}
-	
+
 	/**
 	 * Returns the minor version number of the plank library.
 	 *
@@ -63,7 +63,7 @@ namespace Plank
 	public uint get_minor_version () {
 		return Build.VERSION_MINOR;
 	}
-	
+
 	/**
 	 * Returns the micro version number of the plank library.
 	 *
@@ -75,7 +75,7 @@ namespace Plank
 	public uint get_micro_version () {
 		return Build.VERSION_MICRO;
 	}
-	
+
 	/**
 	 * Returns the nano version number of the plank library.
 	 *
@@ -87,7 +87,7 @@ namespace Plank
 	public uint get_nano_version () {
 		return Build.VERSION_NANO;
 	}
-	
+
 	/**
 	 * Checks that the plank library in use is compatible with the given version.
 	 *
@@ -107,11 +107,10 @@ namespace Plank
 
 		if (required_major > Build.VERSION_MAJOR)
 			return "plank version too old (major mismatch)";
-		
+
 		if (required_effective_micro > effective_micro)
 			return "plank version too old (micro mismatch)";
-		
+
 		return null;
 	}
 }
-

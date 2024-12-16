@@ -64,5 +64,4 @@ namespace X
 	public static bool get_event_data (X.Display display, X.GenericEventCookie* event_cookie);
 	[CCode (cname = "XFreeEventData")]
 	public static bool free_event_data (X.Display display, X.GenericEventCookie* event_cookie);
-}	
-
+}

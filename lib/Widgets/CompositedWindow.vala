@@ -29,30 +29,30 @@ namespace Plank
 		{
 			GLib.Object (type: Gtk.WindowType.TOPLEVEL);
 		}
-		
+
 		public CompositedWindow.with_type (Gtk.WindowType window_type)
 		{
 			GLib.Object (type: window_type);
 		}
-		
+
 		construct
-		{			
+		{
 			app_paintable = true;
 			decorated = false;
 			resizable = false;
 			double_buffered = false;
-			
+
 			unowned Gdk.Screen screen = get_screen ();
 			set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
 		}
-		
+
 		public override bool draw (Cairo.Context cr)
 		{
 			cr.save ();
 			cr.set_operator (Cairo.Operator.CLEAR);
 			cr.paint ();
 			cr.restore ();
-			
+
 			return Gdk.EVENT_STOP;
 		}
 	}

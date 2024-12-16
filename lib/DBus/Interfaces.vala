@@ -20,7 +20,7 @@
 namespace Plank
 {
 	const string DBUS_PING_NAME = "Ping";
-	
+
 	const string DBUS_DOCK_INTERFACE_NAME = "net.launchpad.plank";
 	const string DBUS_CLIENT_INTERFACE_NAME = "net.launchpad.plank.Client";
 
@@ -34,7 +34,7 @@ namespace Plank
 		 * Emmited when items are changed
 		 */
 		public signal void changed ();
-		
+
 		/**
 		 * Add a new item for the given uri to the dock
 		 *
@@ -42,7 +42,7 @@ namespace Plank
 		 * @return whether it was successfully added
 		 */
 		public abstract bool add (string uri) throws GLib.DBusError, GLib.IOError;
-		
+
 		/**
 		 * Remove an existing item for the given uri from the dock
 		 *
@@ -50,21 +50,21 @@ namespace Plank
 		 * @return whether it was successfully removed
 		 */
 		public abstract bool remove (string uri) throws GLib.DBusError, GLib.IOError;
-		
+
 		/**
 		 * Returns the number of currently visible items on the dock
 		 *
 		 * @return the item-count
 		 */
 		public abstract int get_count () throws GLib.DBusError, GLib.IOError;
-		
+
 		/**
 		 * Returns an array of uris of the persistent applications on the dock
 		 *
 		 * @return the array of uris
 		 */
 		public abstract string[] get_persistent_applications () throws GLib.DBusError, GLib.IOError;
-		
+
 		/**
 		 * Returns an array of uris of the transient applications on the dock
 		 *

@@ -26,26 +26,26 @@ namespace Plank
 	public class PoofWindow : CompositedWindow
 	{
 		const int RUN_LENGTH = 300 * 1000;
-		
+
 		static PoofWindow? instance = null;
-		
+
 		public static unowned PoofWindow get_default ()
 		{
 			if (instance == null)
 				instance = new PoofWindow ();
-			
+
 			return instance;
 		}
-		
+
 		Gdk.Pixbuf poof_image;
 		int poof_size;
 		int poof_frames;
-		
+
 		int64 start_time = 0LL;
 		int64 frame_time = 0LL;
-		
+
 		uint animation_timer_id = 0U;
-		
+
 		/**
 		 * Creates a new poof window at the screen-relative coordinates specified.
 		 */
@@ -53,13 +53,13 @@ namespace Plank
 		{
 			GLib.Object (type: Gtk.WindowType.TOPLEVEL, type_hint: Gdk.WindowTypeHint.DOCK);
 		}
-		
+
 		construct
 		{
 			accept_focus = false;
 			can_focus = false;
 			set_keep_above (true);
-			
+
 			try {
 				poof_image = new Gdk.Pixbuf.from_resource ("%s/img/poof.svg".printf (Plank.G_RESOURCE_PATH));
 				poof_size = poof_image.width;
@@ -69,10 +69,10 @@ namespace Plank
 				poof_image = null;
 				critical ("Unable to load poof animation image: %s", e.message);
 			}
-			
+
 			set_size_request (poof_size, poof_size);
 		}
-		
+
 		~PoofWindow ()
 		{
 			if (animation_timer_id > 0U) {
@@ -80,7 +80,7 @@ namespace Plank
 				animation_timer_id = 0U;
 			}
 		}
-		
+
 		/**
 		 * Show the animated poof-window at the given coordinates
 		 *
@@ -91,38 +91,38 @@ namespace Plank
 		{
 			if (animation_timer_id > 0U)
 				GLib.Source.remove (animation_timer_id);
-			
+
 			if (poof_image == null && poof_frames > 0)
 				return;
-			
+
 			Logger.verbose ("Show animation: size = %ipx, frame-count = %i, duration = %ims", poof_size, poof_frames, RUN_LENGTH / 1000);
-			
+
 			start_time = GLib.get_monotonic_time ();
 			frame_time = start_time;
-						
+
 			show ();
 			move (x - (poof_size / 2), y - (poof_size / 2));
 
 			animation_timer_id = Gdk.threads_add_timeout (30, () => {
 				frame_time = GLib.get_monotonic_time ();
-				
+
 				if (frame_time - start_time <= RUN_LENGTH) {
 					queue_draw ();
 					return true;
 				}
-				
+
 				animation_timer_id = 0U;
 				hide ();
 				return false;
 			});
 		}
-		
+
 		public override bool draw (Cairo.Context cr)
 		{
 			cr.set_operator (Cairo.Operator.SOURCE);
 			Gdk.cairo_set_source_pixbuf (cr, poof_image, 0, -poof_size * (int) (poof_frames * (frame_time - start_time) / (double) RUN_LENGTH));
 			cr.paint ();
-			
+
 			return Gdk.EVENT_STOP;
 		}
 	}

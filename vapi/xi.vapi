@@ -93,7 +93,7 @@ namespace XInput {
 		BARRIER_HIT,
 		[CCode (cname = "XI_BarrierLeave")]
 		BARRIER_LEAVE,
-		
+
 		[CCode (cname = "XI_LASTEVENT")]
 		LASTEVENT;
 	}
@@ -135,7 +135,7 @@ namespace XInput {
 		RAW_BUTTON_RELEASE_MASK,
 		[CCode (cname = "XI_RawMotionMask")]
 		RAW_MOTION_MASK,
-		
+
 		/* XI 2.2 */
 		[CCode (cname = "XI_TouchBeginMask")]
 		TOUCH_BEGIN_MASK,
@@ -151,7 +151,7 @@ namespace XInput {
 		RAW_TOUCH_UPDATE_MASK,
 		[CCode (cname = "XI_RawTouchEndMask")]
 		RAW_TOUCH_END_MASK,
-		
+
 		/* XI 2.3 */
 		[CCode (cname = "XI_BarrierHitMask")]
 		BARRIER_HIT_MASK,
@@ -198,7 +198,7 @@ namespace XInput {
 		XInput.AttachSlaveInfo attach;
 		XInput.DetachSlaveInfo detach;
 	}
-	
+
 	[CCode (cname = "XIModifierState", has_type_id = false)]
 	public struct ModifierState {
 		int @base;
@@ -206,7 +206,7 @@ namespace XInput {
 		int locked;
 		int effective;
 	}
-	
+
 	[CCode (cname = "XIGroupState", has_type_id = false)]
 	public struct GroupState : ModifierState {
 	}
@@ -234,7 +234,7 @@ namespace XInput {
 		[CCode (array_length_cname = "mask_len")]
 		uchar[] mask;
 	}
-	
+
 	[CCode (cname = "XIAnyClassInfo", has_type_id = false)]
 	public struct AnyClassInfo {
 		int type;
@@ -446,7 +446,7 @@ namespace XInput {
 	[CCode (cname = "XILeaveEvent", has_type_id = false)]
 	public struct LeaveEvent : EnterEvent {
 	}
-	
+
 	[CCode (cname = "XIFocusInEvent", has_type_id = false)]
 	public struct FocusInEvent : EnterEvent {
 	}
@@ -577,4 +577,3 @@ namespace XInput {
 	public static void barrier_release_pointer (X.Display display, int deviceid, XFixes.PointerBarrier barrier, XInput.BarrierEventID eventid);
 
 }
-

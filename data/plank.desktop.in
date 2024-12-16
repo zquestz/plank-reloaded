@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Plank
+Name=Plank Reloaded
 GenericName=Dock
-Comment=Stupidly simple.
+Comment=Still stupidly simple.
 Categories=Utility;
 Type=Application
 Exec=plank

@@ -9,4 +9,3 @@ VAPIS = \
 	$(NULL)
 
 EXTRA_DIST = $(VAPIS)
-

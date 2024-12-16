@@ -23,4 +23,3 @@ namespace PlankTests.Config
 	public const string DATA_DIR;
 	public const string HOME_DIR;
 }
-

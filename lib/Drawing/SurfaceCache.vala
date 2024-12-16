@@ -29,7 +29,7 @@ namespace Plank
 	 * @return the newly created surface or NULL
 	 */
 	public delegate Surface? DrawFunc<G> (int width, int height, Surface model, DrawDataFunc<G>? draw_data_func);
-	
+
 	/**
 	 * Creates a new surface using the given element and information
 	 *
@@ -40,7 +40,7 @@ namespace Plank
 	 * @return the newly created surface or NULL
 	 */
 	public delegate Surface? DrawDataFunc<G> (int width, int height, Surface model, G? data);
-	
+
 	/**
 	 * Controls some internal behaviors of a {@link Plank.SurfaceCache}
 	 */
@@ -66,7 +66,7 @@ namespace Plank
 		 */
 		ADAPTIVE_SCALE = 1 << 2,
 	}
-	
+
 	/**
 	 * Cache multiple sizes of the assumed same image
 	 */
@@ -76,7 +76,7 @@ namespace Plank
 		const int64 MIN_DRAWING_TIME = 10 * 1000;
 		const int64 INSANE_DRAWING_TIME = 30 * 1000;
 		const int64 ACCESS_REWARD = 500 * 1000;
-		
+
 		class SurfaceInfo
 		{
 			public uint16 width;
@@ -85,7 +85,7 @@ namespace Plank
 			public int64 last_access_time;
 			public int64 drawing_time;
 			public double scale;
-			
+
 			public SurfaceInfo (uint16 width, uint16 height, int64 last_access_time, int64 drawing_time)
 			{
 				this.width = width;
@@ -95,100 +95,100 @@ namespace Plank
 				this.access_count = 0;
 				this.scale = 1.0;
 			}
-			
+
 			public static uint hash (SurfaceInfo s)
 			{
 				uint n1 = s.width, n2 = s.height;
 				return (n1 >= n2 ? n1 * n1 + n1 + n2 : n1 + n2 * n2);
 			}
-			
+
 			public static int compare (SurfaceInfo s1, SurfaceInfo s2)
 			{
 				if (s1 == s2)
 					return 0;
-				
+
 				return (2 * (s1.width - s2.width) + s2.height - s2.height);
 			}
-			
+
 			public int compare_with (uint16 width, uint16 height)
 			{
 				return (2 * (this.width - width) + this.height - height);
 			}
 		}
-		
+
 		public SurfaceCacheFlags flags { get; construct set; }
-		
+
 		Gee.TreeSet<unowned SurfaceInfo> infos;
 		Gee.HashMap<SurfaceInfo, Surface> cache_map;
 		unowned SurfaceInfo? last_info;
 		Mutex cache_mutex;
-		
+
 		uint clean_up_timer_id = 0U;
-		
+
 		public SurfaceCache (SurfaceCacheFlags flags = SurfaceCacheFlags.NONE)
 		{
 			Object (flags: flags);
 		}
-		
+
 		construct
 		{
 			infos = new Gee.TreeSet<unowned SurfaceInfo> ((CompareDataFunc) SurfaceInfo.compare);
 			cache_map = new Gee.HashMap<SurfaceInfo, Surface> ((Gee.HashDataFunc<SurfaceInfo>) SurfaceInfo.hash);
 			last_info = null;
-			
+
 			//TODO Adaptive delay depending on the access rate
 			clean_up_timer_id = Gdk.threads_add_timeout (5 * 60 * 1000, () => {
 				clean_up ();
 				return true;
 			});
 		}
-		
+
 		~SurfaceCache ()
 		{
 			if (clean_up_timer_id > 0U) {
 				GLib.Source.remove (clean_up_timer_id);
 				clean_up_timer_id = 0U;
 			}
-			
+
 			cache_map.clear ();
 			infos.clear ();
 			last_info = null;
 		}
-		
+
 		public Surface? get_surface<G> (int width, int height, Surface model, DrawFunc<G> draw_func, DrawDataFunc<G>? draw_data_func)
 			requires (width >= 0 && height >= 0)
 		{
 			cache_mutex.lock ();
-			
+
 			unowned SurfaceInfo? info;
 			SurfaceInfo? current_info = null;
 			Surface? surface = null;
 			bool needs_scaling = false;
-			
+
 			info = find_match ((uint16) width, (uint16) height, out needs_scaling);
 			last_info = info;
 			current_info = info;
-			
+
 			var access_time = GLib.get_monotonic_time ();
-			
+
 			if (current_info != null) {
 				current_info.last_access_time = access_time;
 				current_info.access_count++;
 				surface = cache_map.get (current_info);
-				
+
 				cache_mutex.unlock ();
-				
+
 				if (needs_scaling)
 					return surface.scaled_copy (width, height);
 				else
 					return surface;
 			}
-			
+
 			surface = draw_func (width, height, model, draw_data_func);
-			
+
 			var finish_time = GLib.get_monotonic_time ();
 			var time_elapsed = finish_time - access_time;
-			
+
 			// FIXME There is probably a nicer way to accomplish this
 			// Mark the created surface if drawing-time exceeded our limit and have
 			// an upper drawing-layer (e.g. DockRenderer) handle it
@@ -197,64 +197,64 @@ namespace Plank
 				flags = SurfaceCacheFlags.ALLOW_DOWNSCALE;
 				surface.set_qdata<string> (quark_surface_stats, SURFACE_STATS_DRAWING_TIME_EXCEEDED);
 			}
-			
+
 			current_info = new SurfaceInfo ((uint16) width, (uint16) height, finish_time, time_elapsed);
 			current_info.access_count++;
-			
+
 			cache_map.set (current_info, surface);
 			infos.add (current_info);
-			
+
 			cache_mutex.unlock ();
-			
+
 			return surface;
 		}
-		
+
 		unowned SurfaceInfo? find_match (uint16 width, uint16 height, out bool needs_scaling)
 		{
 			needs_scaling = false;
-			
+
 			if (infos.is_empty)
 				return null;
-			
+
 			unowned SurfaceInfo? info;
 			// Check if the last requested entry matches already
 			if (last_info != null) {
 				info = last_info;
 				if (info.width == width && info.height == height)
 					return info;
-				
+
 				if ((flags & SurfaceCacheFlags.ALLOW_DOWNSCALE) != 0
 					&& info.width > width && info.height > height) {
 					needs_scaling = true;
 					return info;
 				}
-				
+
 				if ((flags & SurfaceCacheFlags.ALLOW_UPSCALE) != 0
 					&& info.width < width && info.height < height) {
 					needs_scaling = true;
 					return info;
 				}
 			}
-			
+
 			Gee.BidirIterator<unowned SurfaceInfo> infos_it;
 			if (last_info != null)
 				infos_it = (Gee.BidirIterator<unowned SurfaceInfo>) infos.iterator_at (last_info);
 			else
 				infos_it = infos.bidir_iterator ();
-			
+
 			if (last_info != null && last_info.compare_with (width, height) > 0) {
 				while (infos_it.previous ()) {
 					info = infos_it.get ();
-					
+
 					if (info.width == width && info.height == height)
 						return info;
-					
+
 					if ((flags & SurfaceCacheFlags.ALLOW_DOWNSCALE) != 0
 						&& info.width > width && info.height > height) {
 						needs_scaling = true;
 						return info;
 					}
-					
+
 					if ((flags & SurfaceCacheFlags.ALLOW_UPSCALE) != 0
 						&& info.width < width && info.height < height) {
 						needs_scaling = true;
@@ -264,16 +264,16 @@ namespace Plank
 			} else {
 				while (infos_it.next ()) {
 					info = infos_it.get ();
-					
+
 					if (info.width == width && info.height == height)
 						return info;
-					
+
 					if ((flags & SurfaceCacheFlags.ALLOW_DOWNSCALE) != 0
 						&& info.width > width && info.height > height) {
 						needs_scaling = true;
 						return info;
 					}
-					
+
 					if ((flags & SurfaceCacheFlags.ALLOW_UPSCALE) != 0
 						&& info.width < width && info.height < height) {
 						needs_scaling = true;
@@ -281,56 +281,56 @@ namespace Plank
 					}
 				}
 			}
-			
+
 			return null;
 		}
-		
+
 		public void clear ()
 		{
 			cache_mutex.lock ();
-			
+
 			infos.clear ();
 			cache_map.clear ();
 			last_info = null;
-			
+
 			cache_mutex.unlock ();
 		}
-		
+
 		void clean_up ()
 		{
 			cache_mutex.lock ();
-			
+
 			if (cache_map.size <= 1) {
 				cache_mutex.unlock ();
 				return;
 			}
-			
+
 			var now = GLib.get_monotonic_time ();
 			var size_before = cache_map.size;
 			var size_current = size_before;
-			
+
 			var cache_it = cache_map.map_iterator ();
 			while (cache_it.next ()) {
 				var info = cache_it.get_key ();
-				
+
 				if (now - info.last_access_time < ACCESS_REWARD * info.access_count)
 					continue;
-				
+
 				if (info.drawing_time > MIN_DRAWING_TIME)
 					continue;
-				
+
 				if (size_current <= 1)
 					break;
-				
+
 				infos.remove (info);
 				cache_it.unset ();
 				size_current--;
 			}
-			
+
 			last_info = null;
-			
+
 			Logger.verbose ("SurfaceCache.clean_up (%i -> %i) ", size_before, cache_map.size);
-			
+
 			cache_mutex.unlock ();
 		}
 	}

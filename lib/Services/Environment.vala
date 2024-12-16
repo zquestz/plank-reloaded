@@ -25,11 +25,11 @@ namespace Plank
 		GREETER,
 		LOCK_SCREEN,
 		BACKGROUND;
-		
+
 		public static XdgSessionClass from_string (string s)
 		{
 			XdgSessionClass result;
-			
+
 			switch (s.down ()) {
 			default:
 			case "user": result = XdgSessionClass.USER; break;
@@ -37,11 +37,11 @@ namespace Plank
 			case "lock-screen": result = XdgSessionClass.LOCK_SCREEN; break;
 			case "background": result = XdgSessionClass.BACKGROUND; break;
 			}
-			
+
 			return result;
 		}
 	}
-	
+
 	[Flags]
 	public enum XdgSessionDesktop
 	{
@@ -62,11 +62,11 @@ namespace Plank
 		ENDLESS = 1 << 13,
 		OLD = 1 << 24,
 		UBUNTU = 1 << 25;
-		
+
 		static XdgSessionDesktop from_single_string (string s)
 		{
 			XdgSessionDesktop result;
-			
+
 			switch (s.down ()) {
 			case "gnome": result = XdgSessionDesktop.GNOME; break;
 			case "gnome-xorg": result = XdgSessionDesktop.GNOME; break;
@@ -91,14 +91,14 @@ namespace Plank
 			case "old": result = XdgSessionDesktop.OLD; break;
 			default: result = XdgSessionDesktop.UNKNOWN; break;
 			}
-			
+
 			return result;
 		}
-		
+
 		public static XdgSessionDesktop from_string (string s)
 		{
 			XdgSessionDesktop result = 0;
-			
+
 			if (s.contains (";")) {
 				foreach (unowned string e in s.split (";"))
 					if (e != null)
@@ -106,11 +106,11 @@ namespace Plank
 			} else {
 				result = from_single_string (s);
 			}
-			
+
 			return result;
 		}
 	}
-	
+
 	public enum XdgSessionType
 	{
 		UNSPECIFIED,
@@ -118,11 +118,11 @@ namespace Plank
 		X11,
 		WAYLAND,
 		MIR;
-		
+
 		public static XdgSessionType from_string (string s)
 		{
 			XdgSessionType result;
-			
+
 			switch (s.down ()) {
 			default:
 			case "unspecified": result = XdgSessionType.UNSPECIFIED; break;
@@ -131,81 +131,81 @@ namespace Plank
 			case "wayland": result = XdgSessionType.WAYLAND; break;
 			case "mir": result = XdgSessionType.MIR; break;
 			}
-			
+
 			return result;
 		}
 	}
-	
+
 	static XdgSessionClass session_class;
 	static XdgSessionDesktop session_desktop;
 	static XdgSessionType session_type;
-	
+
 	public static void environment_initialize ()
 	{
 		session_class = get_xdg_session_class ();
 		session_desktop = get_xdg_session_desktop ();
 		session_type = get_xdg_session_type ();
 	}
-	
+
 	public static bool environment_is_session_class (XdgSessionClass type)
 	{
 		return (type == session_class);
 	}
-	
+
 	public static bool environment_is_session_desktop (XdgSessionDesktop type)
 	{
 		return (type in session_desktop);
 	}
-	
+
 	public static bool environment_is_session_type (XdgSessionType type)
 	{
 		return (type == session_type);
 	}
-	
+
 	static XdgSessionClass get_xdg_session_class ()
 	{
 		unowned string? result;
-		
+
 		result = Environment.get_variable ("XDG_SESSION_CLASS");
 		if (result != null)
 			return XdgSessionClass.from_string (result);
-		
+
 		warning ("XDG_SESSION_CLASS not set in this environment!");
-		
+
 		return XdgSessionClass.USER;
 	}
-	
+
 	static XdgSessionDesktop get_xdg_session_desktop ()
 	{
 		unowned string? result;
-		
+
 		result = Environment.get_variable ("XDG_SESSION_DESKTOP");
 		if (result == null)
 			result = Environment.get_variable ("XDG_CURRENT_DESKTOP");
 		if (result == null)
 			result = Environment.get_variable ("DESKTOP_SESSION");
-		
+
 		if (result != null)
 			return XdgSessionDesktop.from_string (result);
-		
+
 		warning ("Neither of XDG_SESSION_DESKTOP, XDG_CURRENT_DESKTOP or DESKTOP_SESSION is set in this environment!");
-		
+
 		return XdgSessionDesktop.GNOME;
 	}
-	
+
 	static XdgSessionType get_xdg_session_type ()
 	{
 		unowned string? result;
-		
+
 		result = Environment.get_variable ("XDG_SESSION_TYPE");
 		if (result != null)
 			return XdgSessionType.from_string (result);
-		
+
 		warning ("XDG_SESSION_TYPE not set in this environment!");
-		
+
 		if (Gdk.Screen.get_default () is Gdk.X11.Screen)
 			return XdgSessionType.X11;
-		
+
 		error ("XdgSessionType could not be determined!");
 	}
 }

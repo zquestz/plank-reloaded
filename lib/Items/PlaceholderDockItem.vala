@@ -30,14 +30,14 @@ namespace Plank
 		public PlaceholderDockItem ()
 		{
 		}
-		
+
 		construct
 		{
 			Indicator = IndicatorState.NONE;
 			Text = _("Drop applications or files here");
 			Icon = "add";
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -45,12 +45,12 @@ namespace Plank
 		{
 			return AnimationType.NONE;
 		}
-		
+
 		public override string get_drop_text ()
 		{
 			return _("Drop to add to dock");
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -58,7 +58,7 @@ namespace Plank
 		{
 			return false;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */

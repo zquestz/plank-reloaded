@@ -57,4 +57,3 @@ CLEANFILES = \
 EXTRA_DIST = \
 	$(libdocklet_clippy_la_VALASOURCES) \
 	$(NULL)
-

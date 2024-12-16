@@ -26,20 +26,20 @@ namespace Plank
 	 * @param draw_value the dock-item's drawvalue
 	 */
 	public delegate void DrawValueFunc (DockItem item, DockItemDrawValue draw_value);
-	
+
 	/**
 	 * Modify all given DrawItemValues
 	 *
 	 * @param draw_values the map of dock-items with their draw-values
 	 */
 	public delegate void DrawValuesFunc (Gee.HashMap<DockElement, DockItemDrawValue> draw_values);
-	
+
 	public struct PointD
 	{
 		public double x;
 		public double y;
 	}
-	
+
 	/**
 	 * Contains all positions and modifications to draw a dock-item on the dock
 	 */
@@ -48,23 +48,23 @@ namespace Plank
 		public PointD center;
 		public PointD static_center;
 		public double icon_size;
-		
+
 		public Gdk.Rectangle hover_region;
 		public Gdk.Rectangle draw_region;
 		public Gdk.Rectangle background_region;
-		
+
 		public double zoom;
 		public double opacity;
-		
+
 		public double darken;
 		public double lighten;
-		
+
 		public bool show_indicator;
-		
+
 		public void move_in (Gtk.PositionType position, double damount)
 		{
 			var amount = (int) damount;
-			
+
 			switch (position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -93,11 +93,11 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		public void move_right (Gtk.PositionType position, double damount)
 		{
 			var amount = (int) damount;
-			
+
 			switch (position) {
 			default:
 			case Gtk.PositionType.BOTTOM:

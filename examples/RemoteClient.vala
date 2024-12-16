@@ -27,40 +27,40 @@ namespace PlankExamples
 		{
 			application_id = "net.launchpad.plank.remote-client";
 			flags = ApplicationFlags.FLAGS_NONE;
-			
+
 			Logger.initialize ("remote-client");
 			Logger.DisplayLevel = LogLevel.DEBUG;
 		}
-		
+
 		public override void activate ()
 		{
 			hold ();
-			
+
 			var client = Plank.DBusClient.get_instance ();
 			client.proxy_changed.connect (handle_proxy_changed);
 		}
-		
+
 		void handle_proxy_changed (DBusClient client)
 		{
 			if (!client.is_connected)
 				return;
-			
+
 			print ("List all persistent applications:\n");
 			foreach (unowned string s in client.get_persistent_applications ())
 				print (" + %s\n", s);
-			
+
 			print ("List all transient applications:\n");
 			foreach (unowned string s in client.get_transient_applications ())
 				print (" + %s\n", s);
-			
+
 			print ("\n");
 		}
-		
+
 		public static int main (string[] args)
 		{
 			var application = new RemoteClient ();
 			return application.run (args);
 		}
-		
+
 	}
 }

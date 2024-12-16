@@ -26,7 +26,7 @@ namespace Plank
 	{
 		[Description(nick = "launcher", blurb = "The uri for this item.")]
 		public string Launcher { get; set; }
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -35,7 +35,7 @@ namespace Plank
 			base ();
 			Launcher = launcher;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -43,7 +43,7 @@ namespace Plank
 		{
 			base.with_file (file);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -51,7 +51,7 @@ namespace Plank
 		{
 			base.with_filename (filename);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -59,7 +59,7 @@ namespace Plank
 		{
 			Launcher = "";
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */

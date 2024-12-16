@@ -22,25 +22,25 @@
 /* Conditional compat-layer for Gtk+ 3.19.1+ */
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-void
-__attribute__((weak)) gtk_widget_class_set_css_name (GtkWidgetClass *widget_class, const char *name);
-void
-plank_compat_gtk_widget_class_set_css_name (GtkWidgetClass *widget_class, const char *name)
-{
-	if (gtk_widget_class_set_css_name) {
-		gtk_widget_class_set_css_name (widget_class, name);
-	}
+void __attribute__((weak))
+gtk_widget_class_set_css_name(GtkWidgetClass *widget_class, const char *name);
+void plank_compat_gtk_widget_class_set_css_name(GtkWidgetClass *widget_class,
+                                                const char *name) {
+  if (gtk_widget_class_set_css_name) {
+    gtk_widget_class_set_css_name(widget_class, name);
+  }
 }
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-void
-__attribute__((weak)) gtk_widget_path_iter_set_object_name (GtkWidgetPath *path, gint pos, const char *name);
-void
-plank_compat_gtk_widget_path_iter_set_object_name (GtkWidgetPath *path, gint pos, const char *name)
-{
-	if (gtk_widget_path_iter_set_object_name) {
-		gtk_widget_path_iter_set_object_name (path, pos, name);
-	}
+void __attribute__((weak))
+gtk_widget_path_iter_set_object_name(GtkWidgetPath *path, gint pos,
+                                     const char *name);
+void plank_compat_gtk_widget_path_iter_set_object_name(GtkWidgetPath *path,
+                                                       gint pos,
+                                                       const char *name) {
+  if (gtk_widget_path_iter_set_object_name) {
+    gtk_widget_path_iter_set_object_name(path, pos, name);
+  }
 }
 G_GNUC_END_IGNORE_DEPRECATIONS

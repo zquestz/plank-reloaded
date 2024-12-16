@@ -69,4 +69,3 @@ EXTRA_DIST = \
 	icons/window-cascade.svg \
 	icons/window-tile.svg \
 	$(NULL)
-

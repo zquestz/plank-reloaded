@@ -41,7 +41,7 @@ namespace Plank
 		 */
 		LIGHTEN
 	}
-	
+
 	/**
 	 * What item indicator to show.
 	 */
@@ -60,7 +60,7 @@ namespace Plank
 		 */
 		SINGLE_PLUS
 	}
-	
+
 	/**
 	 * The current activity state of an item.  The item has several
 	 * states to track and can be in any combination of them.
@@ -89,7 +89,7 @@ namespace Plank
 		 */
 		INVALID = 1 << 4
 	}
-	
+
 	/**
 	 * What mouse button pops up the context menu on an item.
 	 * Can be multiple buttons.
@@ -113,7 +113,7 @@ namespace Plank
 		 * Right button pops up the context.
 		 */
 		RIGHT = 1 << 3;
-		
+
 		/**
 		 * Convenience method to map {@link Gdk.EventButton} to this enum.
 		 *
@@ -126,10 +126,10 @@ namespace Plank
 			default:
 			case Gdk.BUTTON_PRIMARY:
 				return PopupButton.LEFT;
-			
+
 			case Gdk.BUTTON_MIDDLE:
 				return PopupButton.MIDDLE;
-			
+
 			case Gdk.BUTTON_SECONDARY:
 				return PopupButton.RIGHT;
 			}

@@ -28,19 +28,19 @@ namespace Plank
 	public class TransientDockItem : ApplicationDockItem
 	{
 		const uint ICON_UPDATE_DELAY = 200U;
-		
+
 		uint delayed_update_timer_id = 0U;
-		
+
 		internal TransientDockItem.with_application (Bamf.Application app)
 		{
 			GLib.Object (Prefs: new DockItemPreferences (), App: app);
 		}
-		
+
 		public TransientDockItem.with_launcher (string launcher_uri)
 		{
 			GLib.Object (Prefs: new DockItemPreferences.with_launcher (launcher_uri), App: null);
 		}
-		
+
 		construct
 		{
 			if (App != null) {
@@ -58,7 +58,7 @@ namespace Plank
 				critical ("No source of information for this item available");
 			}
 		}
-		
+
 		~TransientDockItem ()
 		{
 			if (delayed_update_timer_id > 0U) {
@@ -66,27 +66,27 @@ namespace Plank
 				delayed_update_timer_id = 0U;
 			}
 		}
-		
+
 		void update_forced_pixbuf ()
 		{
 			if (delayed_update_timer_id > 0U)
 				return;
-			
+
 			ForcePixbuf = WindowControl.get_app_icon (App);
 			if (ForcePixbuf != null)
 				return;
-			
+
 			// if there is no window-icon available yet then schedule a 2nd try
 			delayed_update_timer_id = Gdk.threads_add_timeout (ICON_UPDATE_DELAY, () => {
 				delayed_update_timer_id = 0U;
-				
+
 				if (App != null)
 					ForcePixbuf = WindowControl.get_app_icon (App);
-				
+
 				return false;
 			});
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -94,7 +94,7 @@ namespace Plank
 		{
 			return false;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */

@@ -26,15 +26,15 @@ namespace Plank
 	public abstract class Renderer : GLib.Object
 	{
 		public Gtk.Widget widget { get; construct; }
-		
+
 		[CCode (notify = false)]
 		public int64 frame_time { get; private set; }
-		
+
 		uint timer_id = 0U;
 		ulong widget_realize_handler_id = 0UL;
 		ulong widget_draw_handler_id = 0UL;
 		bool is_updating = false;
-		
+
 		/**
 		 * Creates a new animation renderer.
 		 */
@@ -42,32 +42,32 @@ namespace Plank
 		{
 			Object (widget : widget);
 		}
-		
+
 		construct
 		{
 			timer_id = widget.add_tick_callback ((Gtk.TickCallback) draw_timeout);
 			widget_realize_handler_id = widget.realize.connect (on_widget_realize);
 			widget_draw_handler_id = widget.draw.connect (on_widget_draw);
 		}
-		
+
 		~Renderer ()
 		{
 			if (timer_id > 0U) {
 				widget.remove_tick_callback (timer_id);
 				timer_id = 0U;
 			}
-			
+
 			if (widget_realize_handler_id > 0UL) {
 				widget.disconnect (widget_realize_handler_id);
 				widget_realize_handler_id = 0UL;
 			}
-			
+
 			if (widget_draw_handler_id > 0UL) {
 				widget.disconnect (widget_draw_handler_id);
 				widget_draw_handler_id = 0UL;
 			}
 		}
-		
+
 		/**
 		 * Determines if animation should continue.
 		 *
@@ -75,21 +75,21 @@ namespace Plank
 		 * @return if another animation frame is needed
 		 */
 		protected abstract bool animation_needed (int64 frame_time);
-		
+
 		/**
 		 * Preparations which are not requiring a drawing context yet.
 		 *
 		 * @param frame_time the current time for this frame's render
 		 */
 		protected abstract void initialize_frame (int64 frame_time);
-		
+
 		/**
 		 * Draws onto a context.
 		 *
 		 * @param cr the context to use for drawing
 		 */
 		public abstract void draw (Cairo.Context cr, int64 frame_time);
-		
+
 		/**
 		 * Force an immediate update of the frame_time property.
 		 */
@@ -97,7 +97,7 @@ namespace Plank
 		{
 			frame_time = GLib.get_monotonic_time ();
 		}
-		
+
 		/**
 		 * Request re-drawing.
 		 */
@@ -105,53 +105,53 @@ namespace Plank
 		{
 			if (is_updating || !widget.get_realized ())
 				return;
-			
+
 			force_frame_time_update ();
 			initialize_frame (frame_time);
-			
+
 			widget.queue_draw ();
-			
+
 			if (animation_needed (frame_time)) {
 				unowned Gdk.FrameClock? frame_clock = widget.get_frame_clock ();
 				frame_clock.begin_updating ();
 				is_updating = true;
 			}
 		}
-		
+
 		[CCode (instance_pos = -1)]
 		bool draw_timeout (Gtk.Widget widget, Gdk.FrameClock frame_clock)
 		{
 			frame_time = GLib.get_monotonic_time ();
 			initialize_frame (frame_time);
 			widget.queue_draw ();
-			
+
 			if (animation_needed (frame_time))
 				return true;
-			
+
 			frame_clock.end_updating ();
 			is_updating = false;
 			return true;
 		}
-		
+
 		[CCode (instance_pos = -1)]
 		bool on_widget_draw (Gtk.Widget widget, Cairo.Context cr)
 		{
 			draw (cr, frame_time);
-		
+
 			return Gdk.EVENT_PROPAGATE;
 		}
-		
+
 		[CCode (instance_pos = -1)]
 		void on_widget_realize (Gtk.Widget widget)
 		{
 			force_frame_time_update ();
 			initialize_frame (frame_time);
-			
+
 			if (widget_realize_handler_id > 0UL) {
 				widget.disconnect (widget_realize_handler_id);
 				widget_realize_handler_id = 0UL;
 			}
 		}
-		
+
 	}
 }

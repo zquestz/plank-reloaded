@@ -1,14 +1,12 @@
 //
-//  Copyright (C) 2018 Faissal Bensefia
+//  Copyright (C) 2024 Plank Reloaded Developers
 //
-//  This file is part of Plank.
-//
-//  Plank is free software: you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
-//  Plank is distributed in the hope that it will be useful,
+//  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
@@ -21,112 +19,117 @@ using Plank;
 
 namespace Docky
 {
-	public class BatteryDockItem : DockletItem
-	{
-		const string BAT_BASE_PATH = "/sys/class/power_supply";
-		const string BAT_CAPACITY = BAT_BASE_PATH + "/%s/capacity";
-		const string BAT_CAPACITY_LEVEL = BAT_BASE_PATH + "/%s/capacity_level";
-		const string BAT_STATUS = BAT_BASE_PATH + "/%s/status";
-		const string BAT_CHARGE_NOW = BAT_BASE_PATH + "/%s/charge_now";
-		const string BAT_ALARM = BAT_BASE_PATH + "/%s/alarm";
+    public class BatteryDockItem : DockletItem
+    {
+        private const string BAT_BASE_PATH = "/sys/class/power_supply";
+        private const string BAT_CAPACITY = BAT_BASE_PATH + "/%s/capacity";
+        private const string BAT_CAPACITY_LEVEL = BAT_BASE_PATH + "/%s/capacity_level";
+        private const string BAT_STATUS = BAT_BASE_PATH + "/%s/status";
 
-		string current_battery = "BAT0";
-		uint timer_id = 0U;
+        private const string ICON_MISSING = "battery-missing";
+        private const string NO_BATTERY_TEXT = N_("No battery");
+        private const uint UPDATE_INTERVAL = 60 * 1000; // 60 seconds
 
-		/**
-		 * {@inheritDoc}
-		 */
-		public BatteryDockItem.with_dockitem_file (GLib.File file)
-		{
-			GLib.Object (Prefs: new DockItemPreferences.with_file (file));
-		}
+        private string current_battery = "BAT0";
+        private uint timer_id = 0U;
 
-		construct
-		{
-			Icon = "battery-missing";
-			Text = _("No battery");
-			update ();
+        public BatteryDockItem.with_dockitem_file (GLib.File file)
+        {
+            GLib.Object (Prefs: new DockItemPreferences.with_file (file));
+        }
 
-			timer_id = Gdk.threads_add_timeout (60 * 1000, (SourceFunc) update);
-		}
+        construct
+        {
+            Icon = ICON_MISSING;
+            Text = _(NO_BATTERY_TEXT);
 
-		~BatteryDockItem ()
-		{
-			if (timer_id > 0U) {
-				GLib.Source.remove (timer_id);
-			}
-		}
+            update ();
+            timer_id = Gdk.threads_add_timeout (UPDATE_INTERVAL, update);
+        }
 
-		int get_capacity () throws GLib.FileError
-		{
-			string s;
-			FileUtils.get_contents (BAT_CAPACITY.printf (current_battery), out s);
-			return int.parse (s);
-		}
+        ~BatteryDockItem ()
+        {
+            if (timer_id > 0U) {
+                GLib.Source.remove (timer_id);
+                timer_id = 0U;
+            }
+        }
 
-		string get_capacity_level () throws GLib.FileError
-		{
-			string s;
-			FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (current_battery), out s);
-			return s.strip ();
-		}
+        private int get_capacity () throws GLib.FileError
+        {
+            string contents;
+            FileUtils.get_contents (BAT_CAPACITY.printf (current_battery), out contents);
+            return int.parse (contents);
+        }
 
-		string get_status () throws GLib.FileError
-		{
-			string s;
-			FileUtils.get_contents (BAT_STATUS.printf (current_battery), out s);
-			return s.strip ();
-		}
+        private string get_capacity_level () throws GLib.FileError
+        {
+            string contents;
+            FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (current_battery), out contents);
+            return contents.strip ();
+        }
 
-		bool update ()
-		{
-			try {
-				string new_icon;
-				var status = get_status ().down ();
-				var capacity = get_capacity ();
-				var capacity_level = get_capacity_level ().down ();
-				switch (capacity_level) {
-					case "full":
-						new_icon = "battery-full";
-						break;
-					case "high":
-					case "normal":
-						new_icon = "battery-good";
-						break;
-					case "low":
-						new_icon = "battery-low";
-						break;
-					case "critical":
-						new_icon = "battery-caution";
-						break;
-					case "unknown":
-						new_icon = "battery-empty";
-						break;
-					default:
-						new_icon = "battery-missing";
-						break;
-				}
+        private string get_status () throws GLib.FileError
+        {
+            string contents;
+            FileUtils.get_contents (BAT_STATUS.printf (current_battery), out contents);
+            return contents.strip ();
+        }
 
-				switch (status) {
-					case "charging":
-					case "full":
-						new_icon += "-charging";
-						break;
-					case "discharging":
-					case "notcharging":
-					case "unknown":
-					default:
-						break;
-				}
+        private string get_battery_icon (string capacity_level, string status)
+        {
+            string icon = "";
 
-				Icon = new_icon;
-				Text = "%i%%".printf (capacity);
-			} catch {
-				Icon = "battery-missing";
-				Text = _("No battery");
-			}
+            switch (capacity_level.down ()) {
+                case "full":
+                    icon = "battery-full";
+                    break;
+                case "high":
+                case "normal":
+                    icon = "battery-good";
+                    break;
+                case "low":
+                    icon = "battery-low";
+                    break;
+                case "critical":
+                    icon = "battery-caution";
+                    break;
+                case "unknown":
+                    icon = "battery-empty";
+                    break;
+                default:
+                    icon = ICON_MISSING;
+                    break;
+            }
 
-			return true;
-		}
-	}
+            switch (status.down ()) {
+                case "charging":
+                case "full":
+                    icon += "-charging";
+                    break;
+                default:
+                    break;
+            }
+
+            return icon;
+        }
+
+        private bool update ()
+        {
+            try {
+                var status = get_status ();
+                var capacity = get_capacity ();
+                var capacity_level = get_capacity_level ();
+
+                Icon = get_battery_icon (capacity_level, status);
+                Text = "%i%%".printf (capacity);
+            } catch (Error e) {
+                warning ("Failed to update battery status: %s", e.message);
+                Icon = ICON_MISSING;
+                Text = _(NO_BATTERY_TEXT);
+            }
+
+            return true;
+        }
+    }
 }

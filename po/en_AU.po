@@ -16,6 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
 "X-Generator: Launchpad (build 18335)\n"
+"Language: en\n"
 
 #: ../data/plank.appdata.xml.in.h:1 ../data/plank.desktop.in.h:1
 msgid "Stupidly simple."

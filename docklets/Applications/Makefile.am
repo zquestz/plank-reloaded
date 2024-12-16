@@ -61,4 +61,3 @@ CLEANFILES = \
 EXTRA_DIST = \
 	$(libdocklet_applications_la_VALASOURCES) \
 	$(NULL)
-

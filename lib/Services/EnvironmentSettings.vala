@@ -26,29 +26,29 @@ namespace Plank
 	internal class EnvironmentSettings : Object
 	{
 		static EnvironmentSettings? instance = null;
-		
+
 		public static unowned EnvironmentSettings? get_instance ()
 		{
 			if (instance == null)
 				instance = new EnvironmentSettings ();
-			
+
 			return instance;
 		}
-		
+
 		/**
 		 * Whether the environment allows an application to draw the user's attention
 		 * e.g. "Do not disturb"-mode is disabled or not
 		 */
 		[Description(nick = "show-notifications")]
 		public bool ShowNotifications { get; private set; default = true; }
-		
+
 		DesktopNofications? notifications;
-		
+
 		EnvironmentSettings ()
 		{
 			Object ();
 		}
-		
+
 		construct
 		{
 			switch (get_xdg_session_desktop ()) {
@@ -62,34 +62,34 @@ namespace Plank
 				notifications = null;
 				break;
 			}
-			
+
 			if (notifications != null) {
 				notifications_changed ();
 				notifications.notify.connect (notifications_changed);
 			}
 		}
-		
+
 		~EnvironmentSettings ()
 		{
 			if (notifications != null)
 				notifications.notify.disconnect (notifications_changed);
 		}
-		
+
 		void notifications_changed ()
 		{
 			ShowNotifications = notifications.ShowNotifications;
 		}
 	}
-	
+
 	interface DesktopNofications : Object
 	{
 		public abstract bool ShowNotifications { get; set; }
 	}
-	
+
 	class PantheonDesktopNotifications : Plank.Settings, DesktopNofications
 	{
 		static PantheonDesktopNotifications? instance = null;
-		
+
 		public static unowned PantheonDesktopNotifications? try_get_instance ()
 		{
 			if (instance == null) {
@@ -98,23 +98,23 @@ namespace Plank
 					instance = (PantheonDesktopNotifications) Object.new (typeof (PantheonDesktopNotifications),
 						"settings", settings, "bind-flags", SettingsBindFlags.GET | SettingsBindFlags.INVERT_BOOLEAN, null);
 			}
-			
+
 			return instance;
 		}
-		
+
 		[Description(nick = "do-not-disturb")]
 		public bool ShowNotifications { get; set; }
-		
+
 		public PantheonDesktopNotifications ()
 		{
 			Object ();
 		}
 	}
-	
+
 	class GnomeDesktopNotifications : Plank.Settings, DesktopNofications
 	{
 		static GnomeDesktopNotifications? instance = null;
-		
+
 		public static unowned GnomeDesktopNotifications? try_get_instance ()
 		{
 			if (instance == null) {
@@ -123,13 +123,13 @@ namespace Plank
 					instance = (GnomeDesktopNotifications) Object.new (typeof (GnomeDesktopNotifications),
 						"settings", settings, "bind-flags", SettingsBindFlags.GET, null);
 			}
-			
+
 			return instance;
 		}
-		
+
 		[Description(nick = "show-banners")]
 		public bool ShowNotifications { get; set; }
-		
+
 		public GnomeDesktopNotifications ()
 		{
 			Object ();

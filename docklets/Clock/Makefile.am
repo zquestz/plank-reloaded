@@ -78,4 +78,3 @@ EXTRA_DIST = \
 	themes/Default24/clock-glass.svg \
 	themes/Default24/clock-marks.svg \
 	$(NULL)
-

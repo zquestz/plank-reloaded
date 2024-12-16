@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Plank Developers
+# Copyright (C) YEAR The Plank Reloaded Developers
 # This file is distributed under the same license as the plank package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #

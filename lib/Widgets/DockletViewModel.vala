@@ -26,7 +26,7 @@ namespace Plank
 		public string description;
 		public string icon;
 		public Gdk.Pixbuf pixbuf;
-		
+
 		public DockletNode (string id, string name, string description, string icon, Gdk.Pixbuf pixbuf) {
 			this.id = id;
 			this.name = name;
@@ -35,7 +35,7 @@ namespace Plank
 			this.pixbuf = pixbuf;
 		}
 	}
-	
+
 	public class DockletViewModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragSource
 	{
 		public enum Column
@@ -47,21 +47,21 @@ namespace Plank
 			PIXBUF,
 			N_COLUMNS,
 		}
-		
+
 		GenericArray<DockletNode> data;
 		int stamp = 0;
-		
+
 		public DockletViewModel ()
 		{
 			data = new GenericArray<DockletNode> ();
 		}
-		
+
 		public void add (string id, string name, string descpription, string icon, Gdk.Pixbuf pixbuf)
 		{
 			data.add (new DockletNode (id, name, descpription, icon, pixbuf));
 			stamp++;
 		}
-		
+
 		public Type get_column_type (int index)
 		{
 			switch (index) {
@@ -76,16 +76,16 @@ namespace Plank
 				return Type.INVALID;
 			}
 		}
-		
+
 		public Gtk.TreeModelFlags get_flags ()
 		{
 			return 0;
 		}
-		
+
 		public void get_value (Gtk.TreeIter iter, int column, out Value val)
 		{
 			assert (iter.stamp == stamp);
-			
+
 			unowned DockletNode node = data.get ((int) pointer_to_uint (iter.user_data));
 			switch (column) {
 			case Column.ID:
@@ -113,135 +113,135 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		public bool get_iter (out Gtk.TreeIter iter, Gtk.TreePath path)
 		{
 			if (path.get_depth () != 1 || data.length == 0) {
 				return invalid_iter (out iter);
 			}
-			
+
 			iter = Gtk.TreeIter ();
 			iter.user_data = ((uint) path.get_indices ()[0]).to_pointer ();
 			iter.stamp = stamp;
-			
+
 			return true;
 		}
-		
+
 		public int get_n_columns ()
 		{
 			return Column.N_COLUMNS;
 		}
-		
+
 		public Gtk.TreePath? get_path (Gtk.TreeIter iter)
 		{
 			assert (iter.stamp == stamp);
-			
+
 			Gtk.TreePath path = new Gtk.TreePath ();
 			path.append_index ((int) pointer_to_uint (iter.user_data));
-			
+
 			return path;
 		}
-		
+
 		public int iter_n_children (Gtk.TreeIter? iter)
 		{
 			assert (iter == null || iter.stamp == stamp);
-			
+
 			return (iter == null ? data.length : 0);
 		}
-		
+
 		public bool iter_next (ref Gtk.TreeIter iter)
 		{
 			assert (iter.stamp == stamp);
-			
+
 			uint pos = pointer_to_uint (iter.user_data) + 1U;
 			if (pos >= data.length)
 				return false;
-			
+
 			iter.user_data = pos.to_pointer ();
-			
+
 			return true;
 		}
-		
+
 		public bool iter_previous (ref Gtk.TreeIter iter)
 		{
 			assert (iter.stamp == stamp);
-			
+
 			uint pos = pointer_to_uint (iter.user_data);
 			if (pos >= 0)
 				return false;
-			
+
 			iter.user_data = (--pos).to_pointer ();
-			
+
 			return true;
 		}
-		
+
 		public bool iter_nth_child (out Gtk.TreeIter iter, Gtk.TreeIter? parent, int n)
 		{
 			assert (parent == null || parent.stamp == stamp);
-			
+
 			if (parent == null && n < data.length) {
 				iter = Gtk.TreeIter ();
 				iter.stamp = stamp;
 				iter.user_data = ((uint) n).to_pointer ();
 				return true;
 			}
-			
+
 			// Only used for trees
 			return invalid_iter (out iter);
 		}
-		
+
 		public bool iter_children (out Gtk.TreeIter iter, Gtk.TreeIter? parent)
 		{
 			assert (parent == null || parent.stamp == stamp);
-			
+
 			// Only used for trees
 			return invalid_iter (out iter);
 		}
-		
+
 		public bool iter_has_child (Gtk.TreeIter iter)
 		{
 			assert (iter.stamp == stamp);
-			
+
 			// Only used for trees
 			return false;
 		}
-		
+
 		public bool iter_parent (out Gtk.TreeIter iter, Gtk.TreeIter child)
 		{
 			assert (child.stamp == stamp);
-			
+
 			// Only used for trees
 			return invalid_iter (out iter);
 		}
-		
+
 		bool invalid_iter (out Gtk.TreeIter iter)
 		{
 			iter = Gtk.TreeIter ();
 			iter.stamp = -1;
-			
+
 			return false;
 		}
-		
-		
+
+
 		public bool drag_data_delete (Gtk.TreePath path)
 		{
 			return false;
 		}
-		
+
 		public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data)
 		{
 			Gtk.TreeIter iter;
 			string docklet_id;
-			
+
 			get_iter (out iter, path);
 			get (iter, Column.ID, out docklet_id, -1);
-			
+
 			string uri = "%s%s\r\n".printf (DOCKLET_URI_PREFIX, docklet_id);
 			selection_data.set (selection_data.get_target (), 8, (uchar[]) uri.to_utf8 ());
-			
+
 			return true;
 		}
-		
+
 		public bool row_draggable (Gtk.TreePath path)
 		{
 			return true;

@@ -217,4 +217,3 @@ EXTRA_DIST = \
 	plank.pc.in \
 	Version.vala.in \
 	$(NULL)
-

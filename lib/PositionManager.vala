@@ -25,16 +25,16 @@ namespace Plank
 	public class PositionManager : GLib.Object
 	{
 		public DockController controller { private get; construct; }
-		
+
 		public bool screen_is_composited { get; private set; }
-		
+
 		Gdk.Rectangle static_dock_region;
 		Gee.HashMap<DockElement, DockItemDrawValue> draw_values;
-		
+
 		Gdk.Rectangle monitor_geo;
-		
+
 		int window_scale_factor = 1;
-		
+
 		/**
 		 * Creates a new position manager.
 		 *
@@ -44,13 +44,13 @@ namespace Plank
 		{
 			GLib.Object (controller : controller);
 		}
-		
+
 		construct
 		{
 			static_dock_region = {};
 			draw_values = new Gee.HashMap<DockElement, DockItemDrawValue> ();
 		}
-		
+
 		/**
 		 * Initializes the position manager.
 		 */
@@ -58,34 +58,34 @@ namespace Plank
 			requires (controller.window != null)
 		{
 			unowned Gdk.Screen screen = controller.window.get_screen ();
-			
+
 			controller.prefs.notify.connect (prefs_changed);
 			screen.monitors_changed.connect (screen_changed);
 			screen.size_changed.connect (screen_changed);
 			screen.composited_changed.connect (screen_composited_changed);
-			
+
 			// NOTE don't call update_monitor_geo to avoid a double-call of dockwindow.set_size on startup
 			if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU)) {
 				screen.get_monitor_geometry (find_monitor_number (screen, controller.prefs.Monitor), out monitor_geo);
 			} else {
 				monitor_geo = screen.get_monitor_workarea (find_monitor_number (screen, controller.prefs.Monitor));
 			}
-			
+
 			screen_is_composited = screen.is_composited ();
 		}
-		
+
 		~PositionManager ()
 		{
 			unowned Gdk.Screen screen = controller.window.get_screen ();
-			
+
 			screen.monitors_changed.disconnect (screen_changed);
 			screen.size_changed.disconnect (screen_changed);
 			screen.composited_changed.disconnect (screen_composited_changed);
 			controller.prefs.notify.disconnect (prefs_changed);
-			
+
 			draw_values.clear ();
 		}
-		
+
 		void prefs_changed (Object prefs, ParamSpec prop)
 		{
 			switch (prop.name) {
@@ -101,34 +101,34 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		public static string[] get_monitor_plug_names (Gdk.Screen screen)
 		{
 			int n_monitors = screen.get_n_monitors ();
 			var result = new string[n_monitors];
-			
+
 			for (int i = 0; i < n_monitors; i++)
 				result[i] = screen.get_monitor_plug_name (i) ?? "PLUG_MONITOR_%i".printf (i);
-			
+
 			return result;
 		}
-		
+
 		static int find_monitor_number (Gdk.Screen screen, string plug_name)
 		{
 			if (plug_name == "")
 				return screen.get_primary_monitor ();
-			
+
 			int n_monitors = screen.get_n_monitors ();
-			
+
 			for (int i = 0; i < n_monitors; i++) {
 				var name = screen.get_monitor_plug_name (i) ?? "PLUG_MONITOR_%i".printf (i);
 				if (plug_name == name)
 					return i;
 			}
-			
+
 			return screen.get_primary_monitor ();
 		}
-		
+
 		void prefs_monitor_changed ()
 		{
 			screen_changed (controller.window.get_screen ());
@@ -137,81 +137,81 @@ namespace Plank
 		void screen_changed (Gdk.Screen screen)
 		{
 			var old_monitor_geo = monitor_geo;
-			
+
 			if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU)) {
 				screen.get_monitor_geometry (find_monitor_number (screen, controller.prefs.Monitor), out monitor_geo);
 			} else {
 				monitor_geo = screen.get_monitor_workarea (find_monitor_number (screen, controller.prefs.Monitor));
 			}
-			
+
 			// No need to do anything if nothing has actually changed
 			if (old_monitor_geo.x == monitor_geo.x
 				&& old_monitor_geo.y == monitor_geo.y
 				&& old_monitor_geo.width == monitor_geo.width
 				&& old_monitor_geo.height == monitor_geo.height)
 				return;
-			
+
 			Logger.verbose ("PositionManager.monitor_geo_changed (%i,%i-%ix%i)",
 				monitor_geo.x, monitor_geo.y, monitor_geo.width, monitor_geo.height);
-			
+
 			freeze_notify ();
-			
+
 			update_dimensions ();
 			update_regions ();
-			
+
 			thaw_notify ();
 		}
-		
+
 		void screen_composited_changed (Gdk.Screen screen)
 		{
 			freeze_notify ();
-			
+
 			screen_is_composited = screen.is_composited ();
-			
+
 			update (controller.renderer.theme);
- 			
+
 			thaw_notify ();
 		}
- 		
+
 		//
 		// used to cache various sizes calculated from the theme and preferences
 		//
-		
+
 		/**
 		 * Theme-based line-width.
 		 */
 		public int LineWidth { get; private set; }
-		
+
 		/**
 		 * Cached current icon size for the dock.
 		 */
 		public int IconSize { get; private set; }
-		
+
 		/**
 		 * Cached current icon size for the dock.
 		 */
 		public int ZoomIconSize { get; private set; }
-		
+
 		/**
 		 * Cached position of the dock.
 		 */
 		public Gtk.PositionType Position { get; private set; }
-		
+
 		/**
 		 * Cached alignment of the dock.
 		 */
 		public Gtk.Align Alignment { get; private set; }
-		
+
 		/**
 		 * Cached alignment of the items.
 		 */
 		public Gtk.Align ItemsAlignment { get; private set; }
-		
+
 		/**
 		 * Cached offset of the dock.
 		 */
 		public int Offset { get; private set; }
-		
+
 		/**
 		 * Theme-based indicator size, scaled by icon size.
 		 */
@@ -248,13 +248,13 @@ namespace Plank
 		 * Theme-based launch-bounce height, scaled by icon size.
 		 */
 		public int LaunchBounceHeight { get; private set; }
-		
+
 		int items_width;
 		int items_offset;
 		int top_offset;
 		int bottom_offset;
 		int extra_hide_offset;
-		
+
 		/**
 		 * x position of the dock window.
 		 */
@@ -276,7 +276,7 @@ namespace Plank
 		 * The height of the dock's background image.
 		 */
 		int DockBackgroundHeight;
-		
+
 		/**
 		 * The currently visible width of the dock.
 		 */
@@ -289,23 +289,23 @@ namespace Plank
 		 * The width of the dock's background image.
 		 */
 		int DockBackgroundWidth;
-		
+
 		double ZoomPercent;
-		
+
 		Gdk.Rectangle background_rect;
-		
+
 		/**
 		 * The maximum item count which fit the dock in its maximum
 		 * size with the current theme and icon-size.
 		 */
 		public int MaxItemCount { get; private set; }
-		
+
 		/**
 		 * The maximum icon-size which results in a dock which fits on
 		 * the target screen edge.
 		 */
 		int MaxIconSize { get; private set; default = DockPreferences.MAX_ICON_SIZE; }
-		
+
 		/**
 		 * Updates all internal caches.
 		 *
@@ -314,28 +314,28 @@ namespace Plank
 		public void update (DockTheme theme)
 		{
 			Logger.verbose ("PositionManager.update ()");
-			
+
 			screen_is_composited = controller.window.get_screen ().is_composited ();
-			
+
 			freeze_notify ();
-			
+
 			update_caches (theme);
 			update_max_icon_size (theme);
 			update_dimensions ();
 			update_regions ();
-			
+
 			thaw_notify ();
 		}
-		
+
 		void update_caches (DockTheme theme)
 		{
 			unowned DockPreferences prefs = controller.prefs;
-			
+
 			Position = prefs.Position;
 			Alignment = prefs.Alignment;
 			ItemsAlignment = prefs.ItemsAlignment;
 			Offset = prefs.Offset;
-			
+
 			// Mirror position/alignments/offset for RTL environments if needed
 			if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL) {
 				if (is_horizontal_dock ()) {
@@ -343,12 +343,12 @@ namespace Plank
 						Alignment = Gtk.Align.END;
 					else if (Alignment == Gtk.Align.END)
 						Alignment = Gtk.Align.START;
-					
+
 					if (ItemsAlignment == Gtk.Align.START)
 						ItemsAlignment = Gtk.Align.END;
 					else if (ItemsAlignment == Gtk.Align.END)
 						ItemsAlignment = Gtk.Align.START;
-					
+
 					Offset = -Offset;
 				} else {
 					if (Position == Gtk.PositionType.RIGHT)
@@ -357,13 +357,13 @@ namespace Plank
 						Position = Gtk.PositionType.RIGHT;
 				}
 			}
-			
+
 			IconSize = int.min (MaxIconSize, prefs.IconSize);
 			ZoomPercent = (screen_is_composited ? prefs.ZoomPercent / 100.0 : 1.0);
 			ZoomIconSize = (screen_is_composited && prefs.ZoomEnabled ? (int) Math.round (IconSize * ZoomPercent) : IconSize);
-			
+
 			var scaled_icon_size = IconSize / 10.0;
-			
+
 			IconShadowSize = (int) Math.ceil (theme.IconShadowSize * scaled_icon_size);
 			IndicatorSize = (int) (theme.IndicatorSize * scaled_icon_size);
 			GlowSize      = (int) (theme.GlowSize      * scaled_icon_size);
@@ -374,19 +374,19 @@ namespace Plank
 			UrgentBounceHeight = (int) (theme.UrgentBounceHeight * IconSize);
 			LaunchBounceHeight = (int) (theme.LaunchBounceHeight * IconSize);
 			LineWidth     = theme.LineWidth;
-			
+
 			if (!screen_is_composited) {
 				if (HorizPadding < 0)
 					HorizPadding = (int) scaled_icon_size;
 				if (TopPadding < 0)
 					TopPadding = (int) scaled_icon_size;
 			}
-			
+
 			items_offset  = (int) (2 * LineWidth + (HorizPadding > 0 ? HorizPadding : 0));
-			
+
 			top_offset = theme.get_top_offset () + TopPadding;
 			bottom_offset = theme.get_bottom_offset () + BottomPadding;
-			
+
 			if (top_offset < 0)
 				extra_hide_offset = IconShadowSize;
 			else if (top_offset < IconShadowSize)
@@ -394,28 +394,28 @@ namespace Plank
 			else
 				extra_hide_offset = 0;
 		}
-		
+
 		void prefs_zoom_changed ()
 		{
 			unowned DockPreferences prefs = controller.prefs;
-			
+
 			ZoomPercent = (screen_is_composited ? prefs.ZoomPercent / 100.0 : 1.0);
 			ZoomIconSize = (screen_is_composited && prefs.ZoomEnabled ? (int) Math.round (IconSize * ZoomPercent) : IconSize);
 		}
-		
+
 		/**
 		 * Find an appropriate MaxIconSize
 		 */
 		void update_max_icon_size (DockTheme theme)
 		{
 			unowned DockPreferences prefs = controller.prefs;
-			
+
 			// Check if the dock is oversized and doesn't fit the targeted screen-edge
 			var item_count = controller.VisibleItems.size;
 			var width = item_count * (ItemPadding + IconSize) + 2 * HorizPadding + 4 * LineWidth;
 			var max_width = (is_horizontal_dock () ? monitor_geo.width : monitor_geo.height);
 			var step_size = int.max (1, (int) (Math.fabs (width - max_width) / item_count));
-			
+
 			if (width > max_width && MaxIconSize > DockPreferences.MIN_ICON_SIZE) {
 				MaxIconSize -= step_size;
 			} else if (width < max_width && MaxIconSize < prefs.IconSize && step_size > 1) {
@@ -428,27 +428,27 @@ namespace Plank
 				update_caches (theme);
 				return;
 			}
-			
+
 			update_caches (theme);
 			update_max_icon_size (theme);
 		}
-		
+
 		void update_dimensions ()
 		{
 			Logger.verbose ("PositionManager.update_dimensions ()");
-			
+
 			// height of the visible (cursor) rect of the dock
 			var height = IconSize + top_offset + bottom_offset;
-			
+
 			// height of the dock background image, as drawn
 			var background_height = int.max (0, height);
-			
+
 			if (top_offset < 0)
 				height -= top_offset;
-			
+
 			// height of the dock window
 			var dock_height = height + (screen_is_composited ? UrgentBounceHeight : 0);
-			
+
 			var width = 0;
 			switch (Alignment) {
 			default:
@@ -464,14 +464,14 @@ namespace Plank
 					width = monitor_geo.height;
 				break;
 			}
-			
+
 			// width of the dock background image, as drawn
 			var background_width = int.max (0, width);
-			
+
 			// width of the visible (cursor) rect of the dock
 			if (HorizPadding < 0)
 				width -= 2 * HorizPadding;
-			
+
 			if (is_horizontal_dock ()) {
 				width = int.min (monitor_geo.width, width);
 				VisibleDockHeight = height;
@@ -492,7 +492,7 @@ namespace Plank
 				MaxItemCount = (int) Math.floor ((double) (monitor_geo.height - 2 * HorizPadding + 4 * LineWidth) / (ItemPadding + IconSize));
 			}
 		}
-		
+
 		/**
 		 * Return whether or not a dock is a horizontal dock.
 		 *
@@ -502,7 +502,7 @@ namespace Plank
 		{
 			return (Position == Gtk.PositionType.TOP || Position == Gtk.PositionType.BOTTOM);
 		}
-		
+
 		/**
 		 * Returns the cursor region for the dock.
 		 * This is the region that the cursor can interact with the dock.
@@ -514,7 +514,7 @@ namespace Plank
 			var cursor_region = static_dock_region;
 			var progress = 1.0 - controller.renderer.hide_progress;
 			window_scale_factor = controller.window.get_window ().get_scale_factor ();
-			
+
 			// If zoom is enabled extend cursor-region based on current hovered-item
 			if (controller.prefs.ZoomEnabled) {
 				unowned DockItem? hovered_item = controller.window.HoveredItem;
@@ -523,7 +523,7 @@ namespace Plank
 					cursor_region.union (hover_region, out cursor_region);
 				}
 			}
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -543,10 +543,10 @@ namespace Plank
 				cursor_region.x = DockWidth - cursor_region.width + (window_scale_factor - 1);
 				break;
 			}
-			
+
 			return cursor_region;
 		}
-		
+
 		/**
 		 * Returns the static dock region for the dock.
 		 * This is the region that the dock occupies when not hidden.
@@ -558,7 +558,7 @@ namespace Plank
 			var dock_region = static_dock_region;
 			dock_region.x += win_x;
 			dock_region.y += win_y;
-			
+
 			// Revert adjustments made by update_dock_position () for non-compositing mode
 			if (!screen_is_composited && controller.hide_manager.Hidden) {
 				switch (Position) {
@@ -577,33 +577,33 @@ namespace Plank
 					break;
 				}
 			}
-			
+
 			return dock_region;
 		}
-		
+
 		/**
 		 * Call when any cached region needs updating.
 		 */
 		public void update_regions ()
 		{
 			Logger.verbose ("PositionManager.update_regions ()");
-			
+
 			var old_region = static_dock_region;
-			
+
 			// width of the items-area of the dock
 			items_width = controller.VisibleItems.size * (ItemPadding + IconSize);
-			
+
 			static_dock_region.width = VisibleDockWidth;
 			static_dock_region.height = VisibleDockHeight;
-			
+
 			var xoffset = (DockWidth - static_dock_region.width) / 2;
 			var yoffset = (DockHeight - static_dock_region.height) / 2;
-			
+
 			if (screen_is_composited) {
 				var offset = Offset;
 				xoffset = (int) ((1 + offset / 100.0) * xoffset);
 				yoffset = (int) ((1 + offset / 100.0) * yoffset);
-				
+
 				switch (Alignment) {
 				default:
 				case Gtk.Align.CENTER:
@@ -629,7 +629,7 @@ namespace Plank
 					break;
 				}
 			}
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -649,9 +649,9 @@ namespace Plank
 				static_dock_region.x = DockWidth - static_dock_region.width;
 				break;
 			}
-			
+
 			update_dock_position ();
-			
+
 			if (!screen_is_composited
 				|| old_region.x != static_dock_region.x
 				|| old_region.y != static_dock_region.y
@@ -661,7 +661,7 @@ namespace Plank
 #if HAVE_BARRIERS
 				controller.hide_manager.update_barrier ();
 #endif
-				
+
 				// With active compositing support update_size_and_position () won't trigger a redraw
 				// (a changed static_dock_region doesn't implicate the window-size changed)
 				if (screen_is_composited)
@@ -670,7 +670,7 @@ namespace Plank
 				controller.renderer.animated_draw ();
 			}
 		}
-		
+
 		/**
 		 * The draw-value for a dock item.
 		 *
@@ -683,16 +683,16 @@ namespace Plank
 				debug ("Without draw_values there is trouble ahead");
 				update_draw_values (controller.VisibleItems);
 			}
-			
+
 			var draw_value = draw_values[item];
 			if (draw_value == null) {
 				warning ("Without a draw_value there is trouble ahead for '%s'", item.Text);
 				draw_value = new DockItemDrawValue ();
 			}
-			
+
 			return draw_value;
 		}
-		
+
 		/**
 		 * Update and recalculated all internal draw-values using the given methodes for custom manipulations.
 		 *
@@ -705,18 +705,18 @@ namespace Plank
 		{
 			unowned DockPreferences prefs = controller.prefs;
 			unowned DockRenderer renderer = controller.renderer;
-			
+
 			draw_values.clear ();
-			
+
 			// first we do the math as if this is a top dock, to do this we need to set
 			// up some "pretend" variables. we pretend we are a top dock because 0,0 is
 			// at the top.
 			int width = DockWidth;
 			int height = DockHeight;
 			int icon_size = IconSize;
-			
+
 			Gdk.Point cursor = renderer.local_cursor;
-			
+
 			// "relocate" our cursor to be on the top
 			switch (Position) {
 			case Gtk.PositionType.RIGHT:
@@ -728,22 +728,22 @@ namespace Plank
 			default:
 				break;
 			}
-			
+
 			// our width and height switch around if we have a vertical dock
 			if (!is_horizontal_dock ()) {
 				int tmp = cursor.y;
 				cursor.y = cursor.x;
 				cursor.x = tmp;
-				
+
 				tmp = width;
 				width = height;
 				height = tmp;
 			}
-			
+
 			//FIXME
 			// the line along the dock width about which the center of unzoomed icons sit
 			double center_y = (is_horizontal_dock () ? static_dock_region.height / 2.0 : static_dock_region.width / 2.0);
-			
+
 			double center_x = (icon_size + ItemPadding) / 2.0 + items_offset;
 			if (Alignment == Gtk.Align.FILL) {
 				switch (ItemsAlignment) {
@@ -770,11 +770,11 @@ namespace Plank
 				else
 					center_x += static_dock_region.y;
 			}
-			
+
 			PointD center = { Math.floor (center_x), Math.floor (center_y) };
-			
+
 			// ZoomPercent is a number greater than 1.  It should never be less than one.
-			
+
 			// zoom_in_percent is a range of 1 to ZoomPercent.
 			// We need a number that is 1 when ZoomIn is 0, and ZoomPercent when ZoomIn is 1.
 			// Then we treat this as if it were the ZoomPercent for the rest of the calculation.
@@ -783,7 +783,7 @@ namespace Plank
 			double zoom_in_progress = (zoom_enabled || expand_for_drop ? renderer.zoom_in_progress : 0.0);
 			double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
 			double zoom_icon_size = ZoomIconSize;
-			
+
 			foreach (unowned DockItem item in items) {
 				DockItemDrawValue val = new DockItemDrawValue ();
 				val.opacity = 1.0;
@@ -791,16 +791,16 @@ namespace Plank
 				val.lighten = 0.0;
 				val.show_indicator = true;
 				val.zoom = 1.0;
-				
+
 				val.static_center = center;
-				
+
 				// get us some handy doubles with fancy names
 				double cursor_position = cursor.x;
 				double center_position = center.x;
-				
+
 				// offset from the center of the true position, ranged between 0 and the zoom size
 				double offset = double.min (Math.fabs (cursor_position - center_position), zoom_icon_size);
-				
+
 				double offset_percent;
 				if (expand_for_drop) {
 					// Provide space for dropping between items
@@ -809,10 +809,10 @@ namespace Plank
 				} else {
 					offset_percent = offset / zoom_icon_size;
 				}
-				
+
 				if (offset_percent > 0.99)
 					offset_percent = 1.0;
-				
+
 				// pull in our offset to make things less spaced out
 				// explaination since this is a bit tricky...
 				// we have three terms, basically offset = f(x) * h(x) * g(x)
@@ -822,48 +822,48 @@ namespace Plank
 				// g(x) == a term used to move the ends of the zoom inward.  Precalculated that the edges should be 66% of the current
 				//         value. The center is 100%. (1 - offset_percent) == 0,1 distance from center
 				// The .66 value comes from the area under the curve.  Dont ask me to explain it too much because it's too clever for me.
-				
+
 				if (expand_for_drop)
 					offset *= zoom_in_progress / 2.0;
 				else
 					offset *= zoom_in_percent - 1.0;
 				offset *= 1.0 - offset_percent / 3.0;
-				
+
 				if (cursor_position > center_position)
 					center_position -= offset;
 				else
 					center_position += offset;
-				
+
 				// zoom is calculated as 1 through target_zoom (default 2).
 				// The larger your offset, the smaller your zoom
-				
+
 				// First we get the point on our curve that defines our current zoom
 				// offset is always going to fall on a point on the curve >= 0
 				var zoom = 1.0 - Math.pow (offset_percent, 2);
-				
+
 				// scale this to match our zoom_in_percent
 				zoom = 1.0 + zoom * (zoom_in_percent - 1.0);
-				
+
 				double zoomed_center_height = (icon_size * zoom / 2.0);
-				
+
 				if (zoom == 1.0)
 					center_position = Math.round (center_position);
-				
+
 				val.center = { center_position, zoomed_center_height };
 				val.zoom = zoom;
 				val.icon_size = Math.round (zoom * icon_size);
-				
+
 				// now we undo our transforms to the point
 				if (!is_horizontal_dock ()) {
 					double tmp = val.center.y;
 					val.center.y = val.center.x;
 					val.center.x = tmp;
-					
+
 					tmp = val.static_center.y;
 					val.static_center.y = val.static_center.x;
 					val.static_center.x = tmp;
 				}
-				
+
 				switch (Position) {
 				case Gtk.PositionType.RIGHT:
 					val.center.x = height - val.center.x;
@@ -876,27 +876,27 @@ namespace Plank
 				default:
 					break;
 				}
-				
+
 				//FIXME
 				val.move_in (Position, bottom_offset);
-				
+
 				// let the draw-value be modified by the given function
 				if (func != null)
 					func (item, val);
-				
+
 				draw_values[item] = val;
-				
+
 				//FIXME
 				// Don't reserve space for removed items
 				if (item.RemoveTime == 0)
 					center.x += icon_size + ItemPadding;
 			}
-			
+
 			if (post_func != null)
 				post_func (draw_values);
-			
+
 			update_background_region (draw_values[items.first ()], draw_values[items.last ()]);
-			
+
 			// precalculate and cache regions (for the current frame)
 			draw_values.map_iterator ().foreach ((i, val) => {
 				val.draw_region = get_item_draw_region (val);
@@ -914,13 +914,13 @@ namespace Plank
 		Gdk.Rectangle get_item_draw_region (DockItemDrawValue val)
 		{
 			var width = val.icon_size, height = val.icon_size;
-			
+
 			return { (int) Math.round (val.center.x - width / 2.0),
 				(int) Math.round (val.center.y - height / 2.0),
 				(int) width,
 				(int) height };
 		}
-		
+
 		/**
 		 * The intersecting region of a dock item's hover region and the background.
 		 *
@@ -931,7 +931,7 @@ namespace Plank
 		{
 			Gdk.Rectangle rect;
 			var hover_region = val.hover_region;
-			
+
 			// FIXME Do this a better way
 			switch (Position) {
 			default:
@@ -950,13 +950,13 @@ namespace Plank
 				hover_region.width = (background_rect.x + background_rect.width - hover_region.x).abs ();
 				break;
 			}
-			
+
 			if (!hover_region.intersect (background_rect, out rect))
 				return {};
-			
+
 			return rect;
 		}
-		
+
 		/**
 		 * The cursor region for interacting with a dock element.
 		 *
@@ -966,12 +966,12 @@ namespace Plank
 		Gdk.Rectangle get_item_hover_region (DockItemDrawValue val)
 		{
 			Gdk.Rectangle rect;
-			
+
 			var item_padding = ItemPadding;
 			var top_padding = (top_offset < 0 ? 0 : top_offset);
 			var bottom_padding = bottom_offset;
 			var width = val.icon_size, height = val.icon_size;
-			
+
 			// Apply scalable padding
 			switch (Position) {
 			default:
@@ -988,12 +988,12 @@ namespace Plank
 				height += item_padding;
 				break;
 			}
-			
+
 			rect = { (int) Math.round (val.center.x - width / 2.0),
 				(int) Math.round (val.center.y - height / 2.0),
 				(int) width,
 				(int) height };
-			
+
 			// Apply static padding
 			switch (Position) {
 			default:
@@ -1014,15 +1014,15 @@ namespace Plank
 				rect.width += bottom_padding + top_padding;
 				break;
 			}
-			
+
 			Gdk.Rectangle background_region;
-			
+
 			if (rect.intersect (get_background_region (), out background_region))
 				background_region.union (get_item_draw_region (val), out rect);
-			
+
 			return rect;
 		}
-		
+
 		/**
 		 * The cursor region for interacting with a dock element.
 		 *
@@ -1034,40 +1034,40 @@ namespace Plank
 			unowned DockItem? item = (element as DockItem);
 			if (item != null)
 				return get_draw_value_for_item (item).hover_region;
-			
+
 			unowned DockContainer? container = (element as DockContainer);
 			if (container == null)
 				return {};
-			
+
 			unowned Gee.ArrayList<DockElement> items = container.VisibleElements;
-			
+
 			if (items.size == 0)
 				return {};
-			
+
 			var first_rect = get_hover_region_for_element (items.first ());
 			if (items.size == 1)
 				return first_rect;
-			
+
 			var last_rect = get_hover_region_for_element (items.last ());
-			
+
 			Gdk.Rectangle result;
 			first_rect.union (last_rect, out result);
 			return result;
 		}
-		
+
 		/**
 		 * Get the item which is the nearest at the given coordinates. If a container is given
 		 * the result will be restricted to its children.
 		 *
 		 * @param x the x position
 		 * @param y the y position
-		 * @param container a container or NULL 
+		 * @param container a container or NULL
 		 */
 		public unowned DockItem? get_nearest_item_at (int x, int y, DockContainer? container = null)
 		{
 			unowned DockItem? result = null;
 			var square_distance = double.MAX;
-			
+
 			var draw_values_it = draw_values.map_iterator ();
 			while (draw_values_it.next ()) {
 				var val = draw_values_it.get_value ();
@@ -1080,30 +1080,30 @@ namespace Plank
 					if (container == null || item.Container == container) {
 						square_distance = new_square_distance;
 						result = item;
-					}				
-				}				
+					}
+				}
 			}
-			
+
 			return result;
 		}
-		
+
 		/**
 		 * Get the item which is the appropriate target for a drag'n'drop action.
 		 * The returned item may not hovered and is meant to be used as target
 		 * for e.g. DockContainer.add/move_to functions.
 		 * If a container is given the result will be restricted to its children.
 		 *
-		 * @param container a container or NULL 
+		 * @param container a container or NULL
 		 */
 		public unowned DockItem? get_current_target_item (DockContainer? container = null)
 		{
 			unowned DockRenderer renderer = controller.renderer;
 			var cursor = renderer.local_cursor;
 			var offset = (int) ((renderer.zoom_in_progress * ZoomIconSize + ItemPadding) / 2.0);
-			
+
 			return get_nearest_item_at (cursor.x + offset, cursor.y + offset, container);
 		}
-		
+
 		/**
 		 * Get's the x and y position to display a menu for a dock item.
 		 *
@@ -1115,7 +1115,7 @@ namespace Plank
 		public void get_menu_position (DockItem hovered, Gtk.Requisition requisition, out int x, out int y)
 		{
 			var rect = get_hover_region_for_element (hovered);
-			
+
 			var offset = 10;
 			switch (Position) {
 			default:
@@ -1137,7 +1137,7 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		/**
 		 * Get's the x and y position to display a hover window for a dock item.
 		 *
@@ -1149,7 +1149,7 @@ namespace Plank
 		{
 			var center = get_draw_value_for_item (hovered).static_center;
 			var offset = (ZoomIconSize - IconSize / 2.0);
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1170,7 +1170,7 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		/**
 		 * Get's the x and y position to display a hover window for the given coordinates.
 		 *
@@ -1182,7 +1182,7 @@ namespace Plank
 			// Any element will suffice since only the constant coordinate of center is used
 			var center = get_draw_value_for_item (controller.VisibleItems.first ()).static_center;
 			var offset = (ZoomIconSize - IconSize / 2.0);
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1199,7 +1199,7 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		/**
 		 * Get's the x and y position to display the urgent-glow for a dock item.
 		 *
@@ -1211,7 +1211,7 @@ namespace Plank
 		{
 			var rect = get_hover_region_for_element (item);
 			var glow_size = GlowSize;
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1240,12 +1240,12 @@ namespace Plank
 		{
 			var xoffset = 0;
 			var yoffset = 0;
-			
+
 			if (!screen_is_composited) {
 				var offset = Offset;
 				xoffset = (int) ((1 + offset / 100.0) * (monitor_geo.width - DockWidth) / 2);
 				yoffset = (int) ((1 + offset / 100.0) * (monitor_geo.height - DockHeight) / 2);
-				
+
 				switch (Alignment) {
 				default:
 				case Gtk.Align.CENTER:
@@ -1271,7 +1271,7 @@ namespace Plank
 					break;
 				}
 			}
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1291,7 +1291,7 @@ namespace Plank
 				win_x = monitor_geo.x + monitor_geo.width - DockWidth;
 				break;
 			}
-			
+
 			// Actually change the window position while hidden for non-compositing mode
 			if (!screen_is_composited && controller.hide_manager.Hidden) {
 				switch (Position) {
@@ -1311,7 +1311,7 @@ namespace Plank
 				}
 			}
 		}
-		
+
 		/**
 		 * Get's the x and y position to display the main dock buffer.
 		 *
@@ -1325,9 +1325,9 @@ namespace Plank
 				y = 0;
 				return;
 			}
-			
+
 			var progress = controller.renderer.hide_progress;
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1348,7 +1348,7 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		/**
 		 * Get's the region to display the dock window at.
 		 *
@@ -1358,7 +1358,7 @@ namespace Plank
 		{
 			return { win_x, win_y, DockWidth, DockHeight };
 		}
-		
+
 		/**
 		 * Get's the padding between background and icons of the dock.
 		 *
@@ -1387,7 +1387,7 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		/**
 		 * Get's the region for background of the dock.
 		 *
@@ -1397,11 +1397,11 @@ namespace Plank
 		{
 			return background_rect;
 		}
-		
+
 		void update_background_region (DockItemDrawValue val_first, DockItemDrawValue val_last)
 		{
 			var x = 0, y = 0, width = 0, height = 0;
-			
+
 			if (screen_is_composited) {
 				x = static_dock_region.x;
 				y = static_dock_region.y;
@@ -1411,7 +1411,7 @@ namespace Plank
 				width = DockWidth;
 				height = DockHeight;
 			}
-			
+
 			if (Alignment == Gtk.Align.FILL) {
 				switch (Position) {
 				default:
@@ -1432,17 +1432,17 @@ namespace Plank
 					y += (height - DockBackgroundHeight) / 2;
 					break;
 				}
-				
+
 				background_rect = { x, y, DockBackgroundWidth, DockBackgroundHeight };
 				return;
 			}
-			
+
 			var center_first = val_first.center;
 			var center_last = val_last.center;
 			var padding = ItemPadding + 2 * HorizPadding + 4 * LineWidth;
 			var padding_first = (val_first.icon_size + padding) / 2.0;
 			var padding_last = (val_last.icon_size + padding) / 2.0;
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1470,10 +1470,10 @@ namespace Plank
 				height = (int) Math.round (center_last.y - center_first.y + padding_first + padding_last);
 				break;
 			}
-			
+
 			background_rect = { x, y, width, height };
 		}
-		
+
 		/**
 		 * Get the item's icon geometry for the dock.
 		 *
@@ -1484,16 +1484,16 @@ namespace Plank
 		public Gdk.Rectangle get_icon_geometry (ApplicationDockItem item, bool for_hidden)
 		{
 			var region = get_hover_region_for_element (item);
-			
+
 			if (!for_hidden) {
 				region.x += win_x;
 				region.y += win_y;
-				
+
 				return region;
 			}
-			
+
 			var x = win_x, y = win_y;
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1513,10 +1513,10 @@ namespace Plank
 				y += region.y + region.height / 2;
 				break;
 			}
-			
+
 			return { x, y, 0, 0 };
 		}
-		
+
 		/**
 		 * Computes the struts for the dock.
 		 *
@@ -1549,12 +1549,12 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 #if HAVE_BARRIERS
 		public Gdk.Rectangle get_barrier ()
 		{
 			Gdk.Rectangle barrier = {};
-			
+
 			switch (Position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -1582,9 +1582,9 @@ namespace Plank
 				barrier.height = VisibleDockHeight;
 				break;
 			}
-			
+
 			warn_if_fail (barrier.width > 0 || barrier.height > 0);
-			
+
 			return barrier;
 		}
 #endif

@@ -24,71 +24,71 @@ namespace Plank
 		DEFAULT,
 		HIGH,
 	}
-	
+
 	public delegate G TaskFunc<G> () throws Error;
-	
+
 	[Compact]
 	class Task
 	{
 		public ThreadFunc<void*> func;
 		public TaskPriority priority;
-		
+
 		public Task (owned ThreadFunc<void*> _func, TaskPriority _priority)
 		{
 			func = _func;
 			priority = _priority;
 		}
-		
+
 		public void* run ()
 		{
 			return func ();
 		}
 	}
-	
+
 	public class Worker : Object
 	{
 		static Worker? worker = null;
-		
+
 		public static unowned Worker get_default ()
 		{
 			if (worker == null)
 				worker = new Worker ();
 			return worker;
 		}
-		
+
 		ThreadPool<Task> pool;
-		
+
 		private Worker ()
 		{
 		}
-		
+
 		construct
 		{
 			try {
 				ThreadPool.set_max_unused_threads (0);
-				
+
 				var thread_count = (int) GLib.get_num_processors ();
 				message ("Using up to %i threads.", thread_count);
-				
+
 				pool = new ThreadPool<Task>.with_owned_data ((task) => {
 					task.run ();
 				}, thread_count, false);
-				
+
 				pool.set_sort_function ((CompareDataFunc) compare_task_priority);
 			} catch (ThreadError e) {
 				error ("Creating ThreadPool failed! (%s)", e.message);
 			}
 		}
-		
+
 		static int compare_task_priority (Task t1, Task t2)
 		{
 			int p1 = t1.priority, p2 = t2.priority;
 			return (p1 < p2 ? -1 : (int) (p1 > p2));
 		}
-		
+
 		/**
 		 * Schedule given function to be run in our ThreadPool
-		 * The given priority influences execution-time of the task 
+		 * The given priority influences execution-time of the task
 		 * depending on the currently scheduled amount of tasks.
 		 *
 		 * @param func function to be executed
@@ -102,10 +102,10 @@ namespace Plank
 				warning (e.message);
 			}
 		}
-		
+
 		/**
 		 * Schedule given function to be run in our ThreadPool
-		 * The given priority influences execution-time of the task 
+		 * The given priority influences execution-time of the task
 		 * depending on the currently scheduled amount of tasks.
 		 *
 		 * AsyncReadyCallback will be executed on the main-thread through an idle
@@ -120,7 +120,7 @@ namespace Plank
 			SourceFunc resume = add_task_with_result.callback;
 			Error err = null;
 			G result = null;
-			
+
 			try {
 				ThreadFunc tfunc = () => {
 					try {
@@ -128,7 +128,7 @@ namespace Plank
 					} catch (Error e) {
 						err = e;
 					}
-					
+
 					Idle.add ((owned) resume, GLib.Priority.HIGH_IDLE);
 					return null;
 				};
@@ -136,11 +136,11 @@ namespace Plank
 			} catch (ThreadError e) {
 				warning (e.message);
 			}
-			
+
 			yield;
 			if (err != null)
 				throw err;
-			
+
 			return result;
 		}
 	}

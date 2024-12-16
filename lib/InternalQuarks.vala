@@ -20,9 +20,9 @@
 namespace Plank
 {
 	const string SURFACE_STATS = "plank-quark-surface-stats";
-	
+
 	public static Quark quark_surface_stats;
-	
+
 	public static void internal_quarks_initialize ()
 	{
 		quark_surface_stats = quark_from_static_string (SURFACE_STATS);

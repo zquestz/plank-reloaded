@@ -36,14 +36,14 @@ namespace Plank
 	{
 		//FIXME Only to make it run/work uninstalled from top_builddir
 		Environment.set_variable ("GSETTINGS_SCHEMA_DIR", Environment.get_current_dir () + "/data", false);
-		
+
 		var schema = GLib.SettingsSchemaSource.get_default ().lookup (schema_id, true);
 		if (schema == null)
 			error ("GSettingsSchema '%s' not found", schema_id);
-		
+
 		return new GLib.Settings.full (schema, null, path);
 	}
-	
+
 	/**
 	 * Tries to create a new {@link GLib.Settings} object with a given schema and path.
 	 *
@@ -62,10 +62,10 @@ namespace Plank
 			warning ("GSettingsSchema '%s' not found", schema_id);
 			return null;
 		}
-		
+
 		return new GLib.Settings.full (schema, null, path);
 	}
-	
+
 	/**
 	 * Generates an array containing all combinations of a splitted strings parts
 	 * while preserving the given order of them.
@@ -79,60 +79,64 @@ namespace Plank
 		var parts = s.split (delimiter);
 		var count = parts.length;
 		var result = new string[count * (count + 1) / 2];
-		
+
 		// Initialize array with the elementary parts
 		int pos = 0;
 		for (int i = 0; i < count; i++) {
 			result[pos] = parts[i];
 			pos += (count - i);
 		}
-		
+
 		// Recursively filling up the result array
 		combine_strings (ref result, delimiter, 0, count);
-		
+
 		return result;
 	}
-	
+
 	static void combine_strings (ref string[] result, string delimiter, int n, int i)
 	{
 		if (i <= 1)
 			return;
-		
+
 		int pos = n;
 		for (int j = 0; j < i - 1; j++) {
 			pos += (i - j);
 			result[n + j + 1] = "%s%s%s".printf (result[n + j], delimiter, result[pos]);
 		}
-		
+
 		combine_strings (ref result, delimiter, n + i, i - 1);
 	}
-	
+
 	/**
 	 * Whether the given file looks like a valid .dockitem file
 	 */
 	public inline bool file_is_dockitem (File file)
 	{
+		if (file.get_basename ().has_prefix (".goutputstream")) {
+			return false;
+		}
+
 		try {
 			var info = file.query_info (FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_IS_HIDDEN, 0);
 			return !info.get_is_hidden () && info.get_name ().has_suffix (".dockitem");
 		} catch (Error e) {
 			warning (e.message);
 		}
-		
+
 		return false;
 	}
-	
+
 	public inline double nround (double d, uint n)
 	{
 		double result;
-		
+
 		if (n > 0U) {
 			var fac = Math.pow (10.0, n);
 			result = Math.round (d * fac) / fac;
 		} else {
 			result = Math.round (d);
 		}
-		
+
 		return result;
 	}
 }

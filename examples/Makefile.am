@@ -75,4 +75,3 @@ EXTRA_DIST = \
 	$(remote_client_VALASOURCES) \
 	$(unity_client_VALASOURCES) \
 	$(NULL)
-

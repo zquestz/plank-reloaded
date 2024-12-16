@@ -68,7 +68,7 @@ other bugs is incorrectly fixed or needs corrections, the branch won't be
 accepted until everything looks ok for all bugs. This causes an unnecessary
 delay for the bugs that where fixed correctly.
 
-Suppose your branch was accepted for merging in the main one. Later, it is 
+Suppose your branch was accepted for merging in the main one. Later, it is
 discovered that your branch introduces faulty behavior. The standard course of
 action for these situations is to revert the merge that introduced that faulty
 behavior. This will cause that all of your fixes are reverted (even the ones
@@ -98,7 +98,7 @@ Consider the following snippet as an example:
             message ("Non-negative");
             nonnegative (x);
         }
-        
+
         return 0;
     }
 

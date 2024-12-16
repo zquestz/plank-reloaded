@@ -54,4 +54,3 @@ CLEANFILES = \
 EXTRA_DIST = \
 	$(plank_VALASOURCES) \
 	$(NULL)
-

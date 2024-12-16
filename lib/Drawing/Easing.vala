@@ -179,7 +179,7 @@ namespace Plank
 	 */
 	[CCode (has_target = false)]
 	delegate double EasingFunc (double t, double d);
-	
+
 	struct AnimationModeMapping
 	{
 		AnimationMode mode;
@@ -228,20 +228,20 @@ namespace Plank
 	EasingFunc easing_func_for_mode (AnimationMode mode)
 	{
 		AnimationModeMapping* animation = &(ANIMATION_MODES[mode]);
-		
+
 		assert (animation.mode == mode);
 		assert (animation.func != null);
-		
+
 		return animation.func;
 	}
 
 	unowned string easing_name_for_mode (AnimationMode mode)
 	{
 		AnimationModeMapping* animation = &(ANIMATION_MODES[mode]);
-		
+
 		assert (animation.mode == mode);
 		assert (animation.func != null);
-		
+
 		return animation.name;
 	}
 
@@ -260,13 +260,13 @@ namespace Plank
 		ensures (result >= -1.0 && result <= 2.0)
 	{
 		AnimationModeMapping* animation = &(ANIMATION_MODES[mode]);
-		
+
 		assert (animation.mode == mode);
 		assert (animation.func != null);
-		
+
 		return animation.func (t, d);
 	}
-	
+
 	double linear (double t, double d)
 	{
 		return t / d;

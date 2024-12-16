@@ -27,73 +27,73 @@ namespace Plank
 		const double MIN_INDICATOR_SIZE = 0.0;
 		const double MAX_INDICATOR_SIZE = 10.0;
 		const double MAX_ICON_SHADOW_SIZE = 5.0;
-		
+
 		[Description(nick = "horizontal-padding", blurb = "The padding on the left/right dock edges, in tenths of a percent of IconSize.")]
 		public double HorizPadding { get; set; }
-		
+
 		[Description(nick = "top-padding", blurb = "The padding on the top dock edge, in tenths of a percent of IconSize.")]
 		public double TopPadding { get; set; }
-		
+
 		[Description(nick = "bottom-padding", blurb = "The padding on the bottom dock edge, in tenths of a percent of IconSize.")]
 		public double BottomPadding { get; set; }
-		
+
 		[Description(nick = "item-padding", blurb = "The padding between items on the dock, in tenths of a percent of IconSize.")]
 		public double ItemPadding { get; set; }
-		
+
 		[Description(nick = "indicator-size", blurb = "The size of item indicators, in tenths of a percent of IconSize.")]
 		public double IndicatorSize { get; set; }
-		
+
 		[Description(nick = "icon-shadow-size", blurb = "The size of the icon-shadow behind every item, in tenths of a percent of IconSize.")]
 		public double IconShadowSize { get; set; }
-		
+
 		[Description(nick = "urgent-bounce", blurb = "The height (in percent of IconSize) to bounce an icon when the application sets urgent.")]
 		public double UrgentBounceHeight { get; set; }
-		
+
 		[Description(nick = "launch-bounce", blurb = "The height (in percent of IconSize) to bounce an icon when launching an application.")]
 		public double LaunchBounceHeight { get; set; }
-		
+
 		[Description(nick = "fade-opacity", blurb = "The opacity value (0 to 1) to fade the dock to when hiding it.")]
 		public double FadeOpacity { get; set; }
-		
+
 		[Description(nick = "click-time", blurb = "The amount of time (in ms) for click animations.")]
 		public int ClickTime { get; set; }
-		
+
 		[Description(nick = "urgent-bounce-time", blurb = "The amount of time (in ms) to bounce an urgent icon.")]
 		public int UrgentBounceTime { get; set; }
-		
+
 		[Description(nick = "launch-bounce-time", blurb = "The amount of time (in ms) to bounce an icon when launching an application.")]
 		public int LaunchBounceTime { get; set; }
-		
+
 		[Description(nick = "active-time", blurb = "The amount of time (in ms) for active window indicator animations.")]
 		public int ActiveTime { get; set; }
-		
+
 		[Description(nick = "slide-time", blurb = "The amount of time (in ms) to slide icons into/out of the dock.")]
 		public int SlideTime { get; set; }
-		
+
 		[Description(nick = "fade-time", blurb = "The time (in ms) to fade the dock in/out on a hide (if FadeOpacity is < 1).")]
 		public int FadeTime { get; set; }
-		
+
 		[Description(nick = "hide-time", blurb = "The time (in ms) to slide the dock in/out on a hide (if FadeOpacity is 1).")]
 		public int HideTime { get; set; }
-		
+
 		[Description(nick = "glow-size", blurb = "The size of the urgent glow (shown when dock is hidden), in tenths of a percent of IconSize.")]
 		public int GlowSize { get; set; }
-		
+
 		[Description(nick = "glow-time", blurb = "The total time (in ms) to show the hidden-dock urgent glow.")]
 		public int GlowTime { get; set; }
-		
+
 		[Description(nick = "glow-pulse-time", blurb = "The time (in ms) of each pulse of the hidden-dock urgent glow.")]
 		public int GlowPulseTime { get; set; }
-		
+
 		[Description(nick = "urgent-hue-shift", blurb = "The hue-shift (-180 to 180) of the urgent indicator color.")]
 		public int UrgentHueShift { get; set; }
-		
+
 		[Description(nick = "item-move-time", blurb = "The time (in ms) to move an item to its new position or its addition/removal to/from the dock.")]
 		public int ItemMoveTime { get; set; }
-		
+
 		[Description(nick = "cascade-hide", blurb = "Whether background and icons will unhide/hide with different speeds. The top-border of both will leave/hit the screen-edge at the same time.")]
 		public bool CascadeHide { get; set; }
-		
+
 		[Description(nick = "badge-color", blurb = "The color (RGBA) of the badge displaying urgent count")]
 		public Color BadgeColor { get; set; }
 
@@ -101,7 +101,7 @@ namespace Plank
 		{
 			base.with_name (name);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -134,7 +134,7 @@ namespace Plank
 			CascadeHide = true;
 			BadgeColor = { 0.0, 0.0, 0.0, 0.0 };
 		}
-		
+
 		/**
 		 * Creates a surface for the dock background.
 		 *
@@ -147,31 +147,31 @@ namespace Plank
 		public Surface create_background (int width, int height, Gtk.PositionType position, Surface model)
 		{
 			Logger.verbose ("DockTheme.create_background (width = %i, height = %i)", width, height);
-			
+
 			var surface = new Surface.with_surface (width, height, model);
 			surface.clear ();
-			
+
 			if (width <= 0 || height <= 0)
 				return surface;
-			
+
 			if (position == Gtk.PositionType.BOTTOM) {
 				draw_background (surface);
 				return surface;
 			}
-			
+
 			Surface temp;
 			if (position == Gtk.PositionType.TOP)
 				temp = new Surface.with_surface (width, height, surface);
 			else
 				temp = new Surface.with_surface (height, width, surface);
-			
+
 			draw_background (temp);
-			
+
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			var rotate = 0.0;
 			var x_offset = 0.0, y_offset = 0.0;
-			
+
 			switch (position) {
 			default:
 			case Gtk.PositionType.BOTTOM:
@@ -190,16 +190,16 @@ namespace Plank
 				x_offset = -height;
 				break;
 			}
-			
+
 			cr.save ();
 			cr.rotate (rotate);
 			cr.set_source_surface (temp.Internal, x_offset, y_offset);
 			cr.paint ();
 			cr.restore ();
-			
+
 			return surface;
 		}
-		
+
 		/**
 		 * Creates a surface for an indicator.
 		 *
@@ -211,22 +211,22 @@ namespace Plank
 		public Surface create_indicator (int size, Color color, Surface model)
 		{
 			Logger.verbose ("DockTheme.create_indicator (size = %i)", size);
-			
+
 			var surface = new Surface.with_surface (size, size, model);
 			surface.clear ();
-			
+
 			if (size <= 0)
 				return surface;
-			
+
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			var x = size / 2;
 			var y = x;
-			
+
 			cr.move_to (x, y);
 			cr.arc (x, y, size / 2, 0, Math.PI * 2);
 			cr.close_path ();
-			
+
 			var rg = new Cairo.Pattern.radial (x, y, 0, x, y, size / 2);
 			rg.add_color_stop_rgba (0, 1, 1, 1, 1);
 			rg.add_color_stop_rgba (0.1, color.red, color.green, color.blue, 1);
@@ -234,13 +234,13 @@ namespace Plank
 			rg.add_color_stop_rgba (0.25, color.red, color.green, color.blue, 0.25);
 			rg.add_color_stop_rgba (0.5, color.red, color.green, color.blue, 0.15);
 			rg.add_color_stop_rgba (1.0, color.red, color.green, color.blue, 0.0);
-			
+
 			cr.set_source (rg);
 			cr.fill ();
-			
+
 			return surface;
 		}
-		
+
 		/**
 		 * Creates a surface for an urgent glow.
 		 *
@@ -252,30 +252,30 @@ namespace Plank
 		public Surface create_urgent_glow (int size, Color color, Surface model)
 		{
 			Logger.verbose ("DockTheme.create_urgent_glow (size = %i)", size);
-			
+
 			var surface = new Surface.with_surface (size, size, model);
 			surface.clear ();
-			
+
 			if (size <= 0)
 				return surface;
-			
+
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			var x = size / 2.0;
-			
+
 			cr.move_to (x, x);
 			cr.arc (x, x, size / 2, 0, Math.PI * 2);
 			cr.close_path ();
-			
+
 			var rg = new Cairo.Pattern.radial (x, x, 0, x, x, size / 2);
 			rg.add_color_stop_rgba (0, 1, 1, 1, 1);
 			rg.add_color_stop_rgba (0.33, color.red, color.green, color.blue, 0.66);
 			rg.add_color_stop_rgba (0.66, color.red, color.green, color.blue, 0.33);
 			rg.add_color_stop_rgba (1.0, color.red, color.green, color.blue, 0.0);
-			
+
 			cr.set_source (rg);
 			cr.fill ();
-			
+
 			return surface;
 		}
 
@@ -293,45 +293,45 @@ namespace Plank
 		{
 			if (opacity <= 0.0 || rect.width <= 0 || rect.height <= 0)
 				return;
-			
+
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			var rotate = 0.0;
 			var xoffset = 0.0, yoffset = 0.0;
-			
+
 			Cairo.Pattern gradient = null;
-			
+
 			switch (pos) {
 			default:
 			case Gtk.PositionType.BOTTOM:
 				xoffset = clip_rect.x;
 				yoffset = clip_rect.y;
-				
+
 				gradient = new Cairo.Pattern.linear (0, rect.y, 0, rect.y + rect.height);
 				break;
 			case Gtk.PositionType.TOP:
 				rotate = Math.PI;
 				xoffset = -clip_rect.x - clip_rect.width;
 				yoffset = -clip_rect.height;
-				
+
 				gradient = new Cairo.Pattern.linear (0, rect.y + rect.height, 0, rect.y);
 				break;
 			case Gtk.PositionType.LEFT:
 				rotate = Math.PI_2;
 				xoffset = clip_rect.y;
 				yoffset = -clip_rect.width;
-				
+
 				gradient = new Cairo.Pattern.linear (rect.x + rect.width, 0, rect.x, 0);
 				break;
 			case Gtk.PositionType.RIGHT:
 				rotate = -Math.PI_2;
 				xoffset = -clip_rect.y - clip_rect.height;
 				yoffset = clip_rect.x;
-				
+
 				gradient = new Cairo.Pattern.linear (rect.x, 0, rect.x + rect.width, 0);
 				break;
 			}
-			
+
 			cr.save ();
 			cr.rotate (rotate);
 			cr.translate (xoffset, yoffset);
@@ -340,20 +340,20 @@ namespace Plank
 			else
 				draw_inner_rect (cr, clip_rect.height, clip_rect.width);
 			cr.restore ();
-			
+
 			cr.set_line_width (LineWidth);
 			cr.clip ();
 
 			gradient.add_color_stop_rgba (0, color.red, color.green, color.blue, 0);
 			gradient.add_color_stop_rgba (1, color.red, color.green, color.blue, 0.6 * opacity);
-			
+
 			cr.rectangle (rect.x, rect.y, rect.width, rect.height);
 			cr.set_source (gradient);
 			cr.fill ();
-			
+
 			cr.reset_clip ();
 		}
-		
+
 		/**
 		 * Draws a badge for an item.
 		 *
@@ -365,12 +365,12 @@ namespace Plank
 		public void draw_item_count (Surface surface, int icon_size, Color color, int64 count)
 		{
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			// Expect the icon to be in the center of the given surface
 			// and adjust the offset accordingly
 			var x = Math.floor ((surface.Width - icon_size) / 2);
 			var y = Math.floor ((surface.Height - icon_size) / 2);
-			
+
 			var badge_color_start = color;
 			badge_color_start.brighten_val (1.0);
 			var badge_color_middle = color;
@@ -383,7 +383,7 @@ namespace Plank
 			var stroke_color_end = color;
 			stroke_color_end.set_sat (0.9);
 			stroke_color_end.darken_val (0.9);
-			
+
 			// FIXME enhance scalability and adjustments depending on icon-size
 			var is_small = icon_size < 32;
 			var is_large = icon_size > 54;
@@ -402,16 +402,16 @@ namespace Plank
 			else
 				x += icon_size - width - 1.5 * line_width;
 			y += line_width + line_width / 2.0;
-			
+
 			cr.set_line_width (line_width);
-			
+
 			Cairo.Pattern stroke, fill;
-			
+
 			if (!is_small) {
 				// draw outline shadow
 				stroke = new Cairo.Pattern.rgba (0.2, 0.2, 0.2, 0.3);
 				draw_rounded_line (cr, x, y, width + line_width, height, true, true, stroke, null);
-				
+
 				// draw filled gradient with outline
 				stroke = new Cairo.Pattern.linear (0, y, 0, y + height);
 				stroke.add_color_stop_rgba (0.2, stroke_color_start.red, stroke_color_start.green, stroke_color_start.blue, 0.8);
@@ -421,40 +421,40 @@ namespace Plank
 				fill.add_color_stop_rgba (0.5, badge_color_middle.red, badge_color_middle.green, badge_color_middle.blue, 1.0);
 				fill.add_color_stop_rgba (0.9, badge_color_end.red, badge_color_end.green, badge_color_end.blue, 1.0);
 				draw_rounded_line (cr, x, y, width, height, true, true, stroke, fill);
-				
+
 				// draw inline highlight
 				stroke = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 0.1);
 				draw_rounded_line (cr, x + line_width, y + line_width, width - 2 * line_width, height - 2 * line_width, true, true, stroke, null);
 			}
-			
+
 			var layout = new Pango.Layout (Gdk.pango_context_get ());
 			layout.set_width ((int) (width * Pango.SCALE));
 			layout.set_ellipsize (Pango.EllipsizeMode.NONE);
-			
+
 			unowned Gtk.StyleContext style_context = get_style_context ();
 			unowned Pango.FontDescription font_description = style_context.get_font (style_context.get_state ());
 			font_description.set_absolute_size ((int) (height * Pango.SCALE));
 			font_description.set_weight (Pango.Weight.BOLD);
 			layout.set_font_description (font_description);
-			
+
 			layout.set_text (count.to_string (), -1);
 			Pango.Rectangle logical_rect;
 			layout.get_pixel_extents (null, out logical_rect);
-			
+
 			var scale = double.min (1.0, double.min ((width - 2.0 * padding - 2.0 * line_width) / (double) logical_rect.width, (height - 2.0 * padding) / (double) logical_rect.height));
-			
+
 			if (!is_small)
 				cr.set_source_rgba (0.0, 0.0, 0.0, 0.2);
 			else
 				cr.set_source_rgba (0.0, 0.0, 0.0, 0.6);
-			
+
 			cr.move_to (x + Math.floor (width / 2.0 - scale * logical_rect.width / 2.0), y + Math.floor (height / 2.0 - scale * logical_rect.height / 2.0));
-			
+
 			// draw text
 			cr.save ();
 			if (scale < 1)
 				cr.scale (scale, scale);
-			
+
 			cr.set_line_width (line_width);
 			Pango.cairo_layout_path (cr, layout);
 			cr.stroke_preserve ();
@@ -476,17 +476,17 @@ namespace Plank
 		{
 			if (progress < 0)
 				return;
-			
+
 			if (progress > 1.0)
 				progress = 1.0;
-			
+
 			unowned Cairo.Context cr = surface.Context;
-			
+
 			// Expect the icon to be in the center of the given surface
 			// and adjust the offset accordingly
 			var x = Math.floor ((surface.Width - icon_size) / 2);
 			var y = Math.floor ((surface.Height - icon_size) / 2);
-			
+
 			// FIXME enhance scalability and adjustments depending on icon-size
 			var line_width = 1.0;
 			var padding = 4.0;
@@ -494,151 +494,151 @@ namespace Plank
 			var height = Math.floor (double.min (18.0, (int) (0.15 * icon_size)));
 			x += padding;
 			y += icon_size - height - padding;
-			
+
 			cr.set_line_width (line_width);
-			
+
 			Cairo.Pattern stroke, fill;
-			
+
 			// draw the outer stroke
 			stroke = new Cairo.Pattern.linear (0, y, 0, y + height);
 			stroke.add_color_stop_rgba (0.5, 0.5, 0.5, 0.5, 0.1);
 			stroke.add_color_stop_rgba (0.9, 0.8, 0.8, 0.8, 0.4);
 			draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, width, height, true, true, stroke, null);
-			
+
 			// draw the background
 			x += line_width;
 			y += line_width;
 			width -= 2.0 * line_width;
 			height -= 2.0 * line_width;
-			
+
 			stroke = new Cairo.Pattern.rgba (0.20, 0.20, 0.20, 0.9);
 			fill = new Cairo.Pattern.linear (0, y, 0, y + height);
 			fill.add_color_stop_rgba (0.4, 0.25, 0.25, 0.25, 1.0);
 			fill.add_color_stop_rgba (0.9, 0.35, 0.35, 0.35, 1.0);
 			draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, width, height, true, true, stroke, fill);
-			
+
 			// draw the finished bar
 			x += line_width;
 			y += line_width;
 			width -= 2.0 * line_width;
 			height -= 2.0 * line_width;
-			
+
 			var finished_width = Math.ceil (progress * width);
 			stroke = new Cairo.Pattern.rgba (0.8, 0.8, 0.8, 1.0);
 			fill = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 1.0);
-			
+
 			// Mirror progress-bar for RTL environments
 			if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
 				draw_rounded_line (cr, x + line_width / 2.0 + width - finished_width, y + line_width / 2.0, finished_width, height, true, true, stroke, fill);
 			else
 				draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, finished_width, height, true, true, stroke, fill);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		protected override void verify (string prop)
 		{
 			base.verify (prop);
-			
+
 			switch (prop) {
 			case "HorizPadding":
 				break;
-			
+
 			case "TopPadding":
 				break;
-			
+
 			case "BottomPadding":
 				if (BottomPadding < 0)
 					BottomPadding = 0;
 				break;
-			
+
 			case "ItemPadding":
 				if (ItemPadding < 0)
 					ItemPadding = 0;
 				break;
-			
+
 			case "IndicatorSize":
 				if (IndicatorSize < MIN_INDICATOR_SIZE)
 					IndicatorSize = MIN_INDICATOR_SIZE;
 				else if (IndicatorSize > MAX_INDICATOR_SIZE)
 					IndicatorSize = MAX_INDICATOR_SIZE;
 				break;
-			
+
 			case "IconShadowSize":
 				if (IconShadowSize < 0)
 					IconShadowSize = 0;
 				else if (IconShadowSize > MAX_ICON_SHADOW_SIZE)
 					IconShadowSize = MAX_ICON_SHADOW_SIZE;
 				break;
-			
+
 			case "UrgentBounceHeight":
 				if (UrgentBounceHeight < 0)
 					UrgentBounceHeight = 0;
 				break;
-			
+
 			case "LaunchBounceHeight":
 				if (LaunchBounceHeight < 0)
 					LaunchBounceHeight = 0;
 				break;
-			
+
 			case "FadeOpacity":
 				if (FadeOpacity < 0)
 					FadeOpacity = 0;
 				else if (FadeOpacity > 1)
 					FadeOpacity = 1;
 				break;
-			
+
 			case "ClickTime":
 				if (ClickTime < 0)
 					ClickTime = 0;
 				break;
-			
+
 			case "UrgentBounceTime":
 				if (UrgentBounceTime < 0)
 					UrgentBounceTime = 0;
 				break;
-			
+
 			case "LaunchBounceTime":
 				if (LaunchBounceTime < 0)
 					LaunchBounceTime = 0;
 				break;
-			
+
 			case "ActiveTime":
 				if (ActiveTime < 0)
 					ActiveTime = 0;
 				break;
-			
+
 			case "SlideTime":
 				if (SlideTime < 0)
 					SlideTime = 0;
 				break;
-			
+
 			case "FadeTime":
 				if (FadeTime < 0)
 					FadeTime = 0;
 				break;
-			
+
 			case "HideTime":
 				if (HideTime < 0)
 					HideTime = 0;
 				break;
-			
+
 			case "GlowSize":
 				if (GlowSize < 0)
 					GlowSize = 0;
 				break;
-			
+
 			case "GlowTime":
 				if (GlowTime < 0)
 					GlowTime = 0;
 				break;
-			
+
 			case "GlowPulseTime":
 				if (GlowPulseTime < 0)
 					GlowPulseTime = 0;
 				break;
-			
+
 			case "UrgentHueShift":
 				if (UrgentHueShift < -180)
 					UrgentHueShift = -180;

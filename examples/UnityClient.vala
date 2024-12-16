@@ -43,10 +43,10 @@ namespace PlankExamples
 		static string decode_payload (VariantIter prop_iter)
 		{
 			var result = new StringBuilder ();
-			
+
 			string prop_key;
 			Variant prop_value;
-			
+
 			while (prop_iter.next ("{sv}", out prop_key, out prop_value)) {
 				if (prop_key == "count") {
 					var val = prop_value.get_int64 ();

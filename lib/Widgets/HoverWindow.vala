@@ -26,31 +26,31 @@ namespace Plank
 	public class HoverWindow : Gtk.Window
 	{
 		const int PADDING = 10;
-		
+
 		static construct
 		{
 			set_accessible_role (Atk.Role.TOOL_TIP);
 			PlankCompat.gtk_widget_class_set_css_name ((GLib.ObjectClass) typeof (HoverWindow).class_ref (), "tooltip");
 		}
-		
+
 		Gtk.Box box;
 		Gtk.Label label;
-		
+
 		public HoverWindow ()
 		{
 			GLib.Object (type: Gtk.WindowType.POPUP, type_hint: Gdk.WindowTypeHint.TOOLTIP);
 		}
-		
+
 		construct
 		{
 			app_paintable = true;
 			resizable = false;
-			
+
 			unowned Gdk.Screen screen = get_screen ();
 			set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
-			
+
 			get_style_context ().add_class (Gtk.STYLE_CLASS_TOOLTIP);
-			
+
 			box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
 			box.set_margin_left (6);
 			box.set_margin_right (6);
@@ -58,12 +58,12 @@ namespace Plank
 			box.set_margin_bottom (6);
 			add (box);
 			box.show ();
-			
+
 			label = new Gtk.Label (null);
 			label.set_line_wrap (true);
 			box.pack_start (label, false, false, 0);
 		}
-		
+
 		/**
 		 * Shows and centers the window according to the x/y location specified
 		 * while accounting the dock's position.
@@ -81,15 +81,15 @@ namespace Plank
 			} else {
 				monitor = screen.get_monitor_workarea (screen.get_monitor_at_point (x, y));
 			}
-			
+
 			// realize and show the window early to have current allocation-dimensions
 			// this is also needed for being able to move override-redirect windows
 			// on mutter-derived window-managers
 			show ();
-			
+
 			var width = get_allocated_width ();
 			var height = get_allocated_height ();
-			
+
 			switch (position) {
 			case Gtk.PositionType.BOTTOM:
 				x = x - width / 2;
@@ -108,13 +108,13 @@ namespace Plank
 				y = y - height / 2;
 				break;
 			}
-			
+
 			x = x.clamp (monitor.x, monitor.x + monitor.width - width);
 			y = y.clamp (monitor.y, monitor.y + monitor.height - height);
-			
+
 			move (x, y);
 		}
-		
+
 		/**
 		 * Set the tooltip-text to show
 		 *
@@ -128,7 +128,7 @@ namespace Plank
 			else
 				label.hide ();
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -137,28 +137,28 @@ namespace Plank
 			var width = get_allocated_width ();
 			var height = get_allocated_height ();
 			unowned Gtk.StyleContext context = get_style_context ();
-			
+
 			if (is_composited ()) {
 				cr.save ();
 				cr.set_operator (Cairo.Operator.CLEAR);
 				cr.paint ();
 				cr.restore ();
-				
+
 				shape_combine_region (null);
-				
+
 				context.render_background (cr, 0, 0, width, height);
-				context.render_frame (cr, 0, 0, width, height);  
+				context.render_frame (cr, 0, 0, width, height);
 			} else {
 				var surface = get_window ().create_similar_surface (Cairo.Content.COLOR_ALPHA, width, height);
 				var compat_cr = new Cairo.Context (surface);
-				
+
 				context.render_background (compat_cr, 0, 0, width, height);
-				context.render_frame (compat_cr, 0, 0, width, height);  
-				
+				context.render_frame (compat_cr, 0, 0, width, height);
+
 				var region = Gdk.cairo_region_create_from_surface (surface);
 				shape_combine_region (region);
 			}
-			
+
 			return base.draw (cr);
 		}
 	}
