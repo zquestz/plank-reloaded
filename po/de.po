@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
-"Report-Msgid-Bugs-To: https://bugs.launchpad.net/plank\n"
-"POT-Creation-Date: 2023-12-14 16:17+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
+"POT-Creation-Date: 2024-12-22 17:17-1000\n"
 "PO-Revision-Date: 2022-12-13 10:34+0000\n"
 "Last-Translator: Mike Gabriel <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -18,38 +18,48 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:3
-msgid "Plank"
-msgstr "Plank"
+msgid "Plank Reloaded"
+msgstr ""
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:5
-msgid "Stupidly simple."
+#, fuzzy
+#| msgid "Stupidly simple."
+msgid "Still stupidly simple."
 msgstr "Lächerlich einfach."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
-"Plank is meant to be the simplest dock on the planet. The goal is to provide "
-"just what a dock needs and absolutely nothing more."
+"Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon "
+"desktop compatibility and modernized features. Like its predecessor, it aims "
+"to be the simplest dock on the planet, providing just what a dock needs and "
+"absolutely nothing more."
 msgstr ""
-"Plank soll das schlichteste Dock auf dem Planeten sein. Sein Ziel ist, genau "
-"die Funktionen bereitzustellen, die ein Dock haben muss, und sonst nichts."
 
-#: data/plank.appdata.xml.in:13
+#: data/plank.appdata.xml.in:14
 msgid ""
-"It is, however, a library which can be extended to create other dock "
-"programs with more advanced features. Thus, Plank is the underlying "
-"technology for Docky (starting in version 3.0.0) and aims to provide all the "
-"core features while Docky extends it to add fancier things like Docklets, "
-"painters, settings dialogs, etc."
+"It remains a library which can be extended to create other dock programs "
+"with more advanced features."
 msgstr ""
-"Es ist jedoch eine Bibliothek, die erweitert werden kann, um andere "
-"Dockprogramme mit erweiterten Funktionen zu erstellen. So ist Plank die "
-"zugrunde liegende Technik für Docky (ab Version 3.0.0) und zielt darauf ab, "
-"die nötigen Kernfunktionen zur Verfügung zu stellen, während Docky diese um "
-"schicke Dinge wie Docklets, Painters, Einstellungsdialoge usw. erweitert,"
+
+#: data/plank.appdata.xml.in:19
+msgid "dock"
+msgstr ""
+
+#: data/plank.appdata.xml.in:20
+msgid "launch"
+msgstr ""
+
+#: data/plank.appdata.xml.in:21
+msgid "panel"
+msgstr ""
+
+#: data/plank.appdata.xml.in:22
+msgid "start"
+msgstr "start"
 
 #: data/plank.appdata.xml.in:66
-msgid "The Plank Developers"
-msgstr "Die Plank Entwickler"
+msgid "The Plank Reloaded Developers"
+msgstr ""
 
 #: data/plank.desktop.in:4
 msgid "Dock"
@@ -191,128 +201,124 @@ msgstr "Verhalten"
 msgid "Docklets"
 msgstr "Docklets"
 
-#: docklets/Applications/ApplicationsDockItem.vala:39
+#: docklets/Applications/ApplicationsDockItem.vala:41
 #: docklets/Applications/ApplicationsDocklet.vala:34
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:83
-msgid "No applications available"
-msgstr "Keine Anwendungen verfügbar"
-
-#: docklets/Battery/BatteryDockItem.vala:47
-#: docklets/Battery/BatteryDockItem.vala:126
+#: docklets/Battery/BatteryDockItem.vala:30
+#: docklets/Battery/BatteryUPowerDockItem.vala:45
 msgid "No battery"
 msgstr "Kein Akku"
 
-#: docklets/Battery/BatteryDocklet.vala:36
+#: docklets/Battery/BatteryDocklet.vala:32
 msgid "Battery"
 msgstr "Akku"
 
-#: docklets/Battery/BatteryDocklet.vala:41
+#: docklets/Battery/BatteryDocklet.vala:34
 msgid "Displays battery information"
 msgstr "Zeigt Informationen zum Akku"
 
-#: docklets/Clippy/ClippyDockItem.vala:89
+#: docklets/Clippy/ClippyDockItem.vala:25
 msgid "Clipboard is currently empty."
 msgstr "Zwischenablage is momentan leer."
 
-#: docklets/Clippy/ClippyDockItem.vala:174
+#: docklets/Clippy/ClippyDockItem.vala:26
 msgid "_Clear"
 msgstr "_Leeren"
 
-#: docklets/Clippy/ClippyDocklet.vala:36
+#: docklets/Clippy/ClippyDocklet.vala:32
 msgid "Clippy"
 msgstr "Clippy"
 
-#: docklets/Clippy/ClippyDocklet.vala:41
+#: docklets/Clippy/ClippyDocklet.vala:34
 msgid "Keep recent clipboard entries."
 msgstr "Die letzten Inhalte der Zwischenablage behalten."
 
-#: docklets/Clock/ClockDockItem.vala:254
+#: docklets/Clock/ClockDockItem.vala:340
 msgid "Di_gital Clock"
 msgstr "Di_gitale Uhr"
 
-#: docklets/Clock/ClockDockItem.vala:261
+#: docklets/Clock/ClockDockItem.vala:345
 msgid "24-Hour _Clock"
 msgstr "24-Stunden _Uhr"
 
-#: docklets/Clock/ClockDockItem.vala:268
+#: docklets/Clock/ClockDockItem.vala:350
 msgid "Show _Date"
 msgstr "Zeige _Datum"
 
-#: docklets/Clock/ClockDocklet.vala:38
+#: docklets/Clock/ClockDocklet.vala:34
 msgid "Clock"
 msgstr "Uhr"
 
-#: docklets/Clock/ClockDocklet.vala:43
+#: docklets/Clock/ClockDocklet.vala:36
 msgid "What time is it?"
 msgstr "Wie spät ist es?"
 
-#: docklets/CPUMonitor/CPUMonitorDocklet.vala:36
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "CPU Monitor"
 msgstr "CPU Überwachung"
 
-#: docklets/CPUMonitor/CPUMonitorDocklet.vala:41
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:36
 msgid "Keep an eye on that CPU. And when it gets out of line..."
 msgstr "Behalten Sie die CPU im Auge. Und wenn sie aus der Reihe tanzt…"
 
-#: docklets/Desktop/DesktopDockItem.vala:37
+#: docklets/Desktop/DesktopDockItem.vala:49
 msgid "Show Desktop"
 msgstr "Zeige Desktop"
 
-#: docklets/Desktop/DesktopDocklet.vala:38
+#: docklets/Desktop/DesktopDocklet.vala:36
 msgid "Desktop"
 msgstr "Desktop"
 
-#: docklets/Desktop/DesktopDocklet.vala:43
+#: docklets/Desktop/DesktopDocklet.vala:38
 msgid "Show your Desktop."
 msgstr "Zeige Ihren Desktop an."
 
-#: docklets/Trash/TrashDockItem.vala:92
+#: docklets/Trash/TrashDockItem.vala:134
 msgid "No items in Trash"
 msgstr "Keine Dateien im Papierkorb"
 
-#: docklets/Trash/TrashDockItem.vala:94
+#: docklets/Trash/TrashDockItem.vala:135
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u Datei im Papierkorb"
 msgstr[1] "%u Dateien im Papierkorb"
 
-#: docklets/Trash/TrashDockItem.vala:122
+#: docklets/Trash/TrashDockItem.vala:170
 msgid "Drop to move to Trash"
 msgstr "Loslassen, um in den Papierkorb zu verschieben"
 
-#: docklets/Trash/TrashDockItem.vala:181
+#: docklets/Trash/TrashDockItem.vala:223
 msgid "Restore Files"
 msgstr "Dateien wiederherstellen"
 
-#: docklets/Trash/TrashDockItem.vala:202
+#: docklets/Trash/TrashDockItem.vala:280
 msgid "_Open Trash"
 msgstr "Papierkorb ö_ffnen"
 
-#: docklets/Trash/TrashDockItem.vala:206 docklets/Trash/TrashDockItem.vala:272
+#: docklets/Trash/TrashDockItem.vala:284 docklets/Trash/TrashDockItem.vala:389
 msgid "Empty _Trash"
 msgstr "Papierkorb leeren"
 
-#: docklets/Trash/TrashDockItem.vala:269
+#: docklets/Trash/TrashDockItem.vala:384
 msgid "Empty all items from Trash?"
 msgstr "Alle Dateien aus dem Papierkorb entfernen?"
 
-#: docklets/Trash/TrashDockItem.vala:270
+#: docklets/Trash/TrashDockItem.vala:387
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle Dateien im Papierkorb werden permanent gelöscht."
 
-#: docklets/Trash/TrashDockItem.vala:271
+#: docklets/Trash/TrashDockItem.vala:388
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: docklets/Trash/TrashDocklet.vala:36
+#: docklets/Trash/TrashDocklet.vala:32
 msgid "Trash"
 msgstr "Papierkorb"
 
-#: docklets/Trash/TrashDocklet.vala:41
+#: docklets/Trash/TrashDocklet.vala:34
 msgid "Have a look at your trash!"
 msgstr "Werfen Sie einen Blick auf Ihren Papierkorb!"
 
@@ -320,7 +326,7 @@ msgstr "Werfen Sie einen Blick auf Ihren Papierkorb!"
 msgid "Drop to add to dock"
 msgstr "Loslassen, um es zum Dock hinzuzufügen"
 
-#: lib/Factories/AbstractMain.vala:420 src/Main.vala:75
+#: lib/Factories/AbstractMain.vala:420 src/Main.vala:76
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -381,3 +387,31 @@ msgstr "_Diese Anwendung übersetzen …"
 #: lib/Widgets/PreferencesWindow.vala:90
 msgid "Preferences"
 msgstr "Einstellungen"
+
+#~ msgid "Plank"
+#~ msgstr "Plank"
+
+#~ msgid ""
+#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
+#~ "provide just what a dock needs and absolutely nothing more."
+#~ msgstr ""
+#~ "Plank soll das schlichteste Dock auf dem Planeten sein. Sein Ziel ist, "
+#~ "genau die Funktionen bereitzustellen, die ein Dock haben muss, und sonst "
+#~ "nichts."
+
+#~ msgid ""
+#~ "It is, however, a library which can be extended to create other dock "
+#~ "programs with more advanced features. Thus, Plank is the underlying "
+#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
+#~ "the core features while Docky extends it to add fancier things like "
+#~ "Docklets, painters, settings dialogs, etc."
+#~ msgstr ""
+#~ "Es ist jedoch eine Bibliothek, die erweitert werden kann, um andere "
+#~ "Dockprogramme mit erweiterten Funktionen zu erstellen. So ist Plank die "
+#~ "zugrunde liegende Technik für Docky (ab Version 3.0.0) und zielt darauf "
+#~ "ab, die nötigen Kernfunktionen zur Verfügung zu stellen, während Docky "
+#~ "diese um schicke Dinge wie Docklets, Painters, Einstellungsdialoge usw. "
+#~ "erweitert,"
+
+#~ msgid "No applications available"
+#~ msgstr "Keine Anwendungen verfügbar"
