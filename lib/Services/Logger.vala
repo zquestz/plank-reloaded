@@ -1,7 +1,6 @@
 //
 //  Copyright (C) 2011 Robert Dyer
 //                2015 Rico Tzschichholz
-//                2024 The Plank Reloaded Developers
 //
 //  This file is part of Plank.
 //
@@ -19,158 +18,242 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-namespace Plank {
-    private const string[] LOG_LEVEL_TO_STRING = {
-        "VERBOSE", "DEBUG", "INFO", "NOTIFY",
-        "WARN", "CRITICAL", "ERROR"
-    };
+namespace Plank
+{
+	const string[] LOG_LEVEL_TO_STRING = {
+		"VERBOSE",
+		"DEBUG",
+		"INFO",
+		"NOTIFY",
+		"WARN",
+		"CRITICAL",
+		"ERROR",
+	};
 
-    public enum LogLevel {
-        VERBOSE,    // Extra debugging info - very verbose
-        DEBUG,      // Debugging messages
-        INFO,       // General information messages
-        NOTIFY,     // Messages that show in libnotify
-        WARN,       // Warning messages
-        CRITICAL,   // Critical messages (recoverable)
-        ERROR       // Error messages (unrecoverable)
-    }
+	/**
+	 * Controls what messages show in the console log.
+	 */
+	public enum LogLevel
+	{
+		/**
+		 * Extra debugging info. A *LOT* of messages.
+		 */
+		VERBOSE,
+		/**
+		 * Debugging messages that help track what the application is doing.
+		 */
+		DEBUG,
+		/**
+		 * General information messages. Similar to debug but perhaps useful to non-debug users.
+		 */
+		INFO,
+		/**
+		 * Messages that also show a libnotify message.
+		 */
+		NOTIFY,
+		/**
+		 * Any messsage that is a warning.
+		 */
+		WARN,
+		/**
+		 * Any message considered critical. These can be recovered from but might make the application function abnormally.
+		 */
+		CRITICAL,
+		/**
+		 * Any message considered an error. These generally break the application.
+		 */
+		ERROR,
+	}
 
-    private enum ConsoleColor {
-        BLACK, RED, GREEN, YELLOW,
-        BLUE, MAGENTA, CYAN, WHITE
-    }
+	enum ConsoleColor
+	{
+		BLACK,
+		RED,
+		GREEN,
+		YELLOW,
+		BLUE,
+		MAGENTA,
+		CYAN,
+		WHITE,
+	}
 
-    public class Logger : GLib.Object {
-        public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
+	/**
+	 * A logging class to display all console messages in a nice colored format.
+	 */
+	public class Logger : GLib.Object
+	{
+		/**
+		 * The current log level.  Controls what log messages actually appear on the console.
+		 */
+		public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
 
-        private static string app_domain;
-        private static Mutex write_mutex;
-        private static Regex message_regex;
+		static string app_domain;
+		static Mutex write_mutex;
+		static Regex message_regex;
 
-        private Logger() {} // Private constructor to prevent instantiation
+		Logger ()
+		{
+		}
 
-        public static void initialize(string app_name) {
-            app_domain = app_name;
-            message_regex = /[(]?.*?([^\/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)/;
-            Log.set_default_handler((GLib.LogFunc) glib_log_func);
-        }
+		/**
+		 * Initializes the logger for the application.
+		 *
+		 * @param app_name the name of the application
+		 */
+		public static void initialize (string app_name)
+		{
+			app_domain = app_name;
 
-        public static void notification(string msg, string icon = "") {
-            write(LogLevel.NOTIFY, format_message(msg));
-        }
+			message_regex = /[(]?.*?([^\/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)/;
 
-        public static void verbose(string msg, ...) {
-            write(LogLevel.VERBOSE, format_message(msg.vprintf(va_list())));
-        }
+			Log.set_default_handler ((GLib.LogFunc) glib_log_func);
+		}
 
-        private static string get_time() {
-            var now = new DateTime.now_local();
-            return "%.2d:%.2d:%.2d.%.6d".printf(
-                now.get_hour(),
-                now.get_minute(),
-                now.get_second(),
-                now.get_microsecond()
-            );
-        }
+		static string format_message (string msg)
+		{
+			if (message_regex != null && message_regex.match (msg)) {
+				var parts = message_regex.split (msg);
+				return "[%s%s] %s".printf (parts[1], parts[3], parts[4]);
+			}
+			return msg;
+		}
 
-        private static void write(LogLevel level, owned string msg) {
-            if (level < DisplayLevel) return;
+		/**
+		 * Displays a log message using libnotify.  Also displays on the console.
+		 *
+		 * @param msg the log message to display
+		 * @param icon the icon to display in the notification
+		 */
+		public static void notification (string msg, string icon = "")
+		{
+			// TODO display the message using libnotify
+			write (LogLevel.NOTIFY, format_message (msg));
+		}
 
-            write_mutex.lock();
-            set_color_for_level(level);
-            stdout.printf("[%s %s]", LOG_LEVEL_TO_STRING[level], get_time());
-            reset_color();
-            stdout.printf(" %s\n", msg);
-            write_mutex.unlock();
-        }
+		/**
+		 * Displays a verbose log message to the console.
+		 *
+		 * @param msg the log message to display
+		 */
+		public static void verbose (string msg, ...)
+		{
+			write (LogLevel.VERBOSE, format_message (msg.vprintf (va_list ())));
+		}
 
-        private static string format_message(string msg) {
-            if (message_regex != null && message_regex.match(msg)) {
-                var parts = message_regex.split(msg);
-                return "[%s%s] %s".printf(parts[1], parts[3], parts[4]);
-            }
-            return msg;
-        }
+		static string get_time ()
+		{
+			var now = new DateTime.now_local ();
+			return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
+		}
 
-        private static void set_color_for_level(LogLevel level) {
-            switch (level) {
-                case LogLevel.VERBOSE:
-                    set_foreground(ConsoleColor.CYAN);
-                    break;
-                case LogLevel.DEBUG:
-                    set_foreground(ConsoleColor.GREEN);
-                    break;
-                case LogLevel.INFO:
-                    set_foreground(ConsoleColor.BLUE);
-                    break;
-                case LogLevel.NOTIFY:
-                    set_foreground(ConsoleColor.MAGENTA);
-                    break;
-                case LogLevel.WARN:
-                    set_foreground(ConsoleColor.YELLOW);
-                    break;
-                case LogLevel.CRITICAL:
-                    set_foreground(ConsoleColor.RED);
-                    break;
-                case LogLevel.ERROR:
-                    set_background(ConsoleColor.RED);
-                    set_foreground(ConsoleColor.WHITE);
-                    break;
-            }
-        }
+		static void write (LogLevel level, owned string msg)
+		{
+			if (level < DisplayLevel)
+				return;
 
-        private static void set_foreground(ConsoleColor color) {
-            set_color(color, true);
-        }
+			write_mutex.lock ();
 
-        private static void set_background(ConsoleColor color) {
-            set_color(color, false);
-        }
+			set_color_for_level (level);
+			stdout.printf ("[%s %s]", LOG_LEVEL_TO_STRING[level], get_time ());
 
-        private static void set_color(ConsoleColor color, bool isForeground) {
-            var color_code = color + 30 + 60;
-            if (!isForeground) {
-              color_code = color_code + 10;
-            }
-            stdout.printf("\x001b[%dm", color_code);
-        }
+			reset_color ();
+			stdout.printf (" %s\n", msg);
 
-        private static void reset_color() {
-            stdout.printf("\x001b[0m");
-        }
+			write_mutex.unlock ();
+		}
 
-        private static void glib_log_func(string? d, LogLevelFlags flags, string msg) {
-            string domain = (d != null) ? "[%s] ".printf(d) : "";
-            string message = "%s%s".printf(
-                domain,
-                msg.contains("\n") || msg.contains("\r") ?
-                    msg.replace("\n", "").replace("\r", "") :
-                    msg
-            );
+		static void set_color_for_level (LogLevel level)
+		{
+			switch (level) {
+			case LogLevel.VERBOSE:
+				set_foreground (ConsoleColor.CYAN);
+				break;
+			case LogLevel.DEBUG:
+				set_foreground (ConsoleColor.GREEN);
+				break;
+			case LogLevel.INFO:
+				set_foreground (ConsoleColor.BLUE);
+				break;
+			case LogLevel.NOTIFY:
+				set_foreground (ConsoleColor.MAGENTA);
+				break;
+			case LogLevel.WARN:
+			default:
+				set_foreground (ConsoleColor.YELLOW);
+				break;
+			case LogLevel.CRITICAL:
+				set_foreground (ConsoleColor.RED);
+				break;
+			case LogLevel.ERROR:
+				set_background (ConsoleColor.RED);
+				set_foreground (ConsoleColor.WHITE);
+				break;
+			}
+		}
 
-            LogLevel level;
-            flags = (flags & LogLevelFlags.LEVEL_MASK);
+		static void reset_color ()
+		{
+			stdout.printf ("\x001b[0m");
+		}
 
-            switch (flags) {
-                case LogLevelFlags.LEVEL_ERROR:
-                    level = LogLevel.ERROR;
-                    break;
-                case LogLevelFlags.LEVEL_CRITICAL:
-                    level = LogLevel.CRITICAL;
-                    break;
-                case LogLevelFlags.LEVEL_INFO:
-                case LogLevelFlags.LEVEL_MESSAGE:
-                    level = LogLevel.INFO;
-                    break;
-                case LogLevelFlags.LEVEL_DEBUG:
-                    level = LogLevel.DEBUG;
-                    break;
-                default:
-                    level = LogLevel.WARN;
-                    break;
-            }
+		static void set_foreground (ConsoleColor color)
+		{
+			set_color (color, true);
+		}
 
-            write(level, format_message(message));
-        }
-    }
+		static void set_background (ConsoleColor color)
+		{
+			set_color (color, false);
+		}
+
+		static void set_color (ConsoleColor color, bool isForeground)
+		{
+			var color_code = color + 30 + 60;
+			if (!isForeground)
+				color_code += 10;
+			stdout.printf ("\x001b[%dm", color_code);
+		}
+
+		static void glib_log_func (string? d, LogLevelFlags flags, string msg)
+		{
+			string domain;
+			if (d != null)
+				domain = "[%s] ".printf (d);
+			else
+				domain = "";
+
+			string message;
+			if (msg.contains ("\n") || msg.contains ("\r"))
+				message = "%s%s".printf (domain, msg.replace ("\n", "").replace ("\r", ""));
+			else
+				message = "%s%s".printf (domain, msg);
+
+			LogLevel level;
+
+			// Strip internal flags to make it possible to use a switch-statement
+			flags = (flags & LogLevelFlags.LEVEL_MASK);
+
+			switch (flags) {
+			case LogLevelFlags.LEVEL_ERROR:
+				level = LogLevel.ERROR;
+				break;
+			case LogLevelFlags.LEVEL_CRITICAL:
+				level = LogLevel.CRITICAL;
+				break;
+			case LogLevelFlags.LEVEL_INFO:
+			case LogLevelFlags.LEVEL_MESSAGE:
+				level = LogLevel.INFO;
+				break;
+			case LogLevelFlags.LEVEL_DEBUG:
+				level = LogLevel.DEBUG;
+				break;
+			case LogLevelFlags.LEVEL_WARNING:
+			default:
+				level = LogLevel.WARN;
+				break;
+			}
+
+			write (level, format_message (message));
+		}
+	}
 }

@@ -49,7 +49,7 @@ namespace Bamf {
 		public GLib.List<weak Bamf.Window> get_window_stack_for_monitor (int monitor);
 		public GLib.List<weak Bamf.Window> get_windows ();
 		public GLib.Array<uint32> get_xids_for_application (string desktop_file);
-		public void register_favorites ([CCode (array_length = false, type = "const gchar**")] string[] favorites);
+		public void register_favorites ([CCode (array_length = false)] string[] favorites);
 		public signal void active_application_changed (Bamf.Application object, Bamf.Application p0);
 		public signal void active_window_changed (Bamf.Window object, Bamf.Window p0);
 		public signal void stacking_order_changed ();
