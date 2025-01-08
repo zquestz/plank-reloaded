@@ -6,183 +6,328 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-03-29 08:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
+"POT-Creation-Date: 2024-12-22 17:17-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
 "X-Generator: Launchpad (build 18335)\n"
 
-#: ../data/plank.appdata.xml.in.h:1 ../data/plank.desktop.in.h:1
-msgid "Stupidly simple."
+#: data/plank.appdata.xml.in:6 data/plank.desktop.in:3
+msgid "Plank Reloaded"
+msgstr ""
+
+#: data/plank.appdata.xml.in:7 data/plank.desktop.in:5
+#, fuzzy
+#| msgid "Stupidly simple."
+msgid "Still stupidly simple."
 msgstr "Primitívne jednoduchý."
 
-#: ../data/plank.appdata.xml.in.h:2
+#: data/plank.appdata.xml.in:9
 msgid ""
-"Plank is meant to be the simplest dock on the planet. The goal is to provide "
-"just what a dock needs and absolutely nothing more."
+"Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon "
+"desktop compatibility and modernized features. Like its predecessor, it aims "
+"to be the simplest dock on the planet, providing just what a dock needs and "
+"absolutely nothing more."
 msgstr ""
-"Plank má byť najjednoduchším dokom na planéte. Jeho cieľom je poskytnúť iba "
-"to, čo jeden dok potrebuje a absolútne nič viac."
 
-#: ../data/plank.appdata.xml.in.h:3
+#: data/plank.appdata.xml.in:14
 msgid ""
-"It is, however, a library which can be extended to create other dock "
-"programs with more advanced features. Thus, Plank is the underlying "
-"technology for Docky (starting in version 3.0.0) and aims to provide all the "
-"core features while Docky extends it to add fancier things like Docklets, "
-"painters, settings dialogs, etc."
+"It remains a library which can be extended to create other dock programs "
+"with more advanced features."
 msgstr ""
-"Je to avšak knižnica, ktorá môže byť rozšírená na vytváranie iných dokov s "
-"pokročilejšími funkciami. Plank je základom Docky (začínajúc verziou 3.0.0) "
-"a jeho cieľom je poskytnúť všetky základné funkcie, kým Docky ho rozšíri a "
-"pridá ozdobné veci ako Doklety, paintery, dialógy pre nastavenia a i."
 
-#: ../data/ui/preferences.ui.h:1
+#: data/plank.appdata.xml.in:19
+msgid "dock"
+msgstr ""
+
+#: data/plank.appdata.xml.in:20
+msgid "launch"
+msgstr ""
+
+#: data/plank.appdata.xml.in:21
+msgid "panel"
+msgstr ""
+
+#: data/plank.appdata.xml.in:22
+msgid "start"
+msgstr "začiatok"
+
+#: data/plank.appdata.xml.in:66
+msgid "The Plank Reloaded Developers"
+msgstr ""
+
+#: data/plank.desktop.in:4
+msgid "Dock"
+msgstr ""
+
+#: data/ui/preferences.ui:82
 msgid "Theme:"
 msgstr "Téma:"
 
-#: ../data/ui/preferences.ui.h:2
+#: data/ui/preferences.ui:95
 msgid "Position:"
 msgstr "Poloha:"
 
-#: ../data/ui/preferences.ui.h:3
+#: data/ui/preferences.ui:122
 msgid "Left"
 msgstr "Vľavo"
 
-#: ../data/ui/preferences.ui.h:4
+#: data/ui/preferences.ui:123
 msgid "Right"
 msgstr "Vpravo"
 
-#: ../data/ui/preferences.ui.h:5
+#: data/ui/preferences.ui:124
 msgid "Top"
 msgstr "Hore"
 
-#: ../data/ui/preferences.ui.h:6
+#: data/ui/preferences.ui:125
 msgid "Bottom"
 msgstr "Dolu"
 
-#: ../data/ui/preferences.ui.h:7
+#: data/ui/preferences.ui:139
 msgid "Alignment:"
 msgstr "Zarovnanie:"
 
-#: ../data/ui/preferences.ui.h:8
+#: data/ui/preferences.ui:152
 msgid "Fill"
 msgstr "Vyplňiť"
 
-#: ../data/ui/preferences.ui.h:9
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
 msgid "Start"
 msgstr "Začiatok"
 
-#: ../data/ui/preferences.ui.h:10
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
 msgid "End"
 msgstr "Koniec"
 
-#: ../data/ui/preferences.ui.h:11
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
 msgid "Center"
 msgstr "Stred"
 
-#: ../data/ui/preferences.ui.h:12
+#: data/ui/preferences.ui:168
 msgid "On Primary Display:"
 msgstr "Na hlavnej obrazovky:"
 
-#: ../data/ui/preferences.ui.h:13
+#: data/ui/preferences.ui:191
 msgid "Offset in percent from the center of the screen-edge"
 msgstr ""
 
-#: ../data/ui/preferences.ui.h:14
+#: data/ui/preferences.ui:208
 msgid "Icon Alignment:"
 msgstr "Zarovnanie ikôn:"
 
-#: ../data/ui/preferences.ui.h:15
+#: data/ui/preferences.ui:238
 msgid "Icon Size:"
 msgstr "Veľkosť ikôn:"
 
-#: ../data/ui/preferences.ui.h:16
+#: data/ui/preferences.ui:304
 msgid "Icon Zoom:"
 msgstr ""
 
-#: ../data/ui/preferences.ui.h:17
+#: data/ui/preferences.ui:328
 msgid "Appearance"
 msgstr "Vzhľad"
 
-#: ../data/ui/preferences.ui.h:18
+#: data/ui/preferences.ui:348
 msgid "Intellihide"
 msgstr "Inteligentné skrývanie"
 
-#: ../data/ui/preferences.ui.h:19
+#: data/ui/preferences.ui:349
 msgid "Autohide"
 msgstr "Automatické skrývanie"
 
-#: ../data/ui/preferences.ui.h:20
+#: data/ui/preferences.ui:350
 msgid "Dodge maximized window"
 msgstr ""
 
-#: ../data/ui/preferences.ui.h:21
+#: data/ui/preferences.ui:351
 msgid "Window Dodge"
 msgstr "Vyhýbanie"
 
-#: ../data/ui/preferences.ui.h:22
+#: data/ui/preferences.ui:352
 msgid "Dodge active window"
 msgstr ""
 
-#: ../data/ui/preferences.ui.h:23
+#: data/ui/preferences.ui:378
 msgid "Hide Dock"
 msgstr "Skryť Dok"
 
-#: ../data/ui/preferences.ui.h:24
+#: data/ui/preferences.ui:394
 msgid "Hide Delay:"
 msgstr "Oneskorenie skrytia:"
 
-#: ../data/ui/preferences.ui.h:25
+#: data/ui/preferences.ui:405
 msgid "Delay in ms before hiding the dock"
 msgstr "Oneskorenie v milisekundách pre skrytím doku"
 
-#: ../data/ui/preferences.ui.h:26
+#: data/ui/preferences.ui:421
 msgid "Unhide Delay:"
 msgstr "Oneskorenie odkrytia:"
 
-#: ../data/ui/preferences.ui.h:27
+#: data/ui/preferences.ui:432
 msgid "Delay in ms before showing the dock"
 msgstr "Oneskorenie v milisekundách pred odkrytím doku"
 
-#: ../data/ui/preferences.ui.h:28
+#: data/ui/preferences.ui:448
 msgid "Pressure Reveal:"
 msgstr ""
 
-#: ../data/ui/preferences.ui.h:29
+#: data/ui/preferences.ui:472
 msgid "Item Management"
 msgstr "Správa položiek"
 
-#: ../data/ui/preferences.ui.h:30
+#: data/ui/preferences.ui:488
 msgid "Show Unpinned:"
 msgstr "Zobraziť odopnuté:"
 
-#: ../data/ui/preferences.ui.h:31
+#: data/ui/preferences.ui:512
 msgid "Restrict to Workspace:"
 msgstr "Obmedziť na danú pracovnú plochu:"
 
-#: ../data/ui/preferences.ui.h:32
+#: data/ui/preferences.ui:537
 msgid "Lock Icons:"
 msgstr "Uzamknúť ikony:"
 
-#: ../data/ui/preferences.ui.h:33
+#: data/ui/preferences.ui:586
 msgid "Behaviour"
 msgstr "Správanie"
 
-#: ../data/ui/preferences.ui.h:34
+#: data/ui/preferences.ui:606
 msgid "Docklets"
 msgstr "Docklety"
 
-#: ../lib/DragManager.vala:477 ../lib/Items/PlaceholderDockItem.vala:51
+#: docklets/Applications/ApplicationsDockItem.vala:41
+#: docklets/Applications/ApplicationsDocklet.vala:34
+msgid "Applications"
+msgstr ""
+
+#: docklets/Battery/BatteryDockItem.vala:30
+#: docklets/Battery/BatteryUPowerDockItem.vala:45
+msgid "No battery"
+msgstr ""
+
+#: docklets/Battery/BatteryDocklet.vala:32
+msgid "Battery"
+msgstr ""
+
+#: docklets/Battery/BatteryDocklet.vala:34
+msgid "Displays battery information"
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:25
+msgid "Clipboard is currently empty."
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "_Clear"
+msgstr ""
+
+#: docklets/Clippy/ClippyDocklet.vala:32
+msgid "Clippy"
+msgstr ""
+
+#: docklets/Clippy/ClippyDocklet.vala:34
+msgid "Keep recent clipboard entries."
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:340
+msgid "Di_gital Clock"
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:345
+msgid "24-Hour _Clock"
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:350
+msgid "Show _Date"
+msgstr ""
+
+#: docklets/Clock/ClockDocklet.vala:34
+msgid "Clock"
+msgstr ""
+
+#: docklets/Clock/ClockDocklet.vala:36
+msgid "What time is it?"
+msgstr ""
+
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
+msgid "CPU Monitor"
+msgstr ""
+
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:36
+msgid "Keep an eye on that CPU. And when it gets out of line..."
+msgstr ""
+
+#: docklets/Desktop/DesktopDockItem.vala:49
+msgid "Show Desktop"
+msgstr ""
+
+#: docklets/Desktop/DesktopDocklet.vala:36
+msgid "Desktop"
+msgstr ""
+
+#: docklets/Desktop/DesktopDocklet.vala:38
+msgid "Show your Desktop."
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:134
+msgid "No items in Trash"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:135
+#, c-format
+msgid "%u item in Trash"
+msgid_plural "%u items in Trash"
+msgstr[0] ""
+msgstr[1] ""
+
+#: docklets/Trash/TrashDockItem.vala:170
+msgid "Drop to move to Trash"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:223
+msgid "Restore Files"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:280
+msgid "_Open Trash"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:284 docklets/Trash/TrashDockItem.vala:389
+msgid "Empty _Trash"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:384
+msgid "Empty all items from Trash?"
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:387
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+
+#: docklets/Trash/TrashDockItem.vala:388
+msgid "_Cancel"
+msgstr ""
+
+#: docklets/Trash/TrashDocklet.vala:32
+msgid "Trash"
+msgstr ""
+
+#: docklets/Trash/TrashDocklet.vala:34
+msgid "Have a look at your trash!"
+msgstr ""
+
+#: lib/DragManager.vala:465 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Pusti pre pridanie do docku"
 
-#: ../lib/Factories/AbstractMain.vala:422 ../src/Main.vala:75
+#: lib/Factories/AbstractMain.vala:420 src/Main.vala:76
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -191,48 +336,68 @@ msgstr ""
 "  Martin Maričák https://launchpad.net/~matko-maricak\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: ../lib/Items/ApplicationDockItem.vala:412 ../lib/Items/FileDockItem.vala:317
-#: ../lib/Items/FileDockItem.vala:339
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:315
+#: lib/Items/FileDockItem.vala:337
 msgid "_Keep in Dock"
 msgstr "_Nechať v doku"
 
-#: ../lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:420
 msgid "_Close All"
 msgstr "_Zavrieť všetko"
 
-#: ../lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:420
 msgid "_Close"
 msgstr "Za_vrieť"
 
-#: ../lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:492
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Pusti na otvorenie s %s"
 
-#: ../lib/Items/FileDockItem.vala:323
+#: lib/Items/FileDockItem.vala:321
 msgid "_Open in File Browser"
 msgstr "_Otvoriť v prehliadači súborov"
 
-#: ../lib/Items/FileDockItem.vala:345
+#: lib/Items/FileDockItem.vala:343
 msgid "_Open"
 msgstr "_Otvoriť"
 
-#: ../lib/Items/FileDockItem.vala:349
+#: lib/Items/FileDockItem.vala:347
 msgid "Open Containing _Folder"
 msgstr "Otvoriť _priečinok so súborom"
 
-#: ../lib/Items/PlaceholderDockItem.vala:37
+#: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
 msgstr "Pustiť aplikáciu alebo súbor sem"
 
-#: ../lib/Items/PlankDockItem.vala:73
+#: lib/Items/PlankDockItem.vala:73
 msgid "Get _Help Online..."
 msgstr "Získať_pomoc online..."
 
-#: ../lib/Items/PlankDockItem.vala:77
+#: lib/Items/PlankDockItem.vala:77
 msgid "_Translate This Application..."
 msgstr "_Preložiť túto aplikáciu..."
 
-#: ../lib/Widgets/PreferencesWindow.vala:90
+#: lib/Widgets/PreferencesWindow.vala:90
 msgid "Preferences"
 msgstr "Nastavenia"
+
+#~ msgid ""
+#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
+#~ "provide just what a dock needs and absolutely nothing more."
+#~ msgstr ""
+#~ "Plank má byť najjednoduchším dokom na planéte. Jeho cieľom je poskytnúť "
+#~ "iba to, čo jeden dok potrebuje a absolútne nič viac."
+
+#~ msgid ""
+#~ "It is, however, a library which can be extended to create other dock "
+#~ "programs with more advanced features. Thus, Plank is the underlying "
+#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
+#~ "the core features while Docky extends it to add fancier things like "
+#~ "Docklets, painters, settings dialogs, etc."
+#~ msgstr ""
+#~ "Je to avšak knižnica, ktorá môže byť rozšírená na vytváranie iných dokov "
+#~ "s pokročilejšími funkciami. Plank je základom Docky (začínajúc verziou "
+#~ "3.0.0) a jeho cieľom je poskytnúť všetky základné funkcie, kým Docky ho "
+#~ "rozšíri a pridá ozdobné veci ako Doklety, paintery, dialógy pre "
+#~ "nastavenia a i."
