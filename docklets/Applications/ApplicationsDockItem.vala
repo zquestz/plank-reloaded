@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2017 Rico Tzschichholz
+//  Copyright (C) 2024 Plank Reloaded Developers
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,129 +19,154 @@ using Plank;
 
 namespace Docky
 {
-	public class ApplicationsDockItem : DockletItem
-	{
-		GMenu.Tree apps_menu;
-		Mutex apps_menu_mutex;
-		bool apps_loaded;
+    public class ApplicationsDockItem : DockletItem
+    {
+        private GMenu.Tree apps_menu;
+        private Mutex apps_menu_mutex;
+        private bool apps_loaded;
 
-		/**
-		 * {@inheritDoc}
-		 */
-		public ApplicationsDockItem.with_dockitem_file (GLib.File file)
-		{
-			GLib.Object (Prefs: new DockItemPreferences.with_file (file));
-		}
+        // Cache commonly used strings
+        private const string APPLICATIONS_MENU = "applications.menu";
+        private const string CINNAMON_APPLICATIONS_MENU = "cinnamon-applications.menu";
+        private const string NO_APPS_MESSAGE = "No applications available";
 
-		construct
-		{
-			Icon = "gnome-applications;;gnome-main-menu";
-			Text = _("Applications");
+        public ApplicationsDockItem.with_dockitem_file (GLib.File file)
+        {
+            GLib.Object (Prefs: new DockItemPreferences.with_file (file));
+        }
 
-			apps_menu = new GMenu.Tree ("applications.menu", GMenu.TreeFlags.SORT_DISPLAY_NAME);
-			apps_menu.changed.connect (update_menu);
-			update_menu ();
-		}
+        construct
+        {
+            Icon = "gnome-applications;;gnome-main-menu";
+            Text = _("Applications");
 
-		~ApplicationsDockItem ()
-		{
-			if (apps_menu != null)
-				apps_menu.changed.disconnect (update_menu);
-		}
+            string menu_name = environment_is_session_desktop (XdgSessionDesktop.CINNAMON)
+                ? _(CINNAMON_APPLICATIONS_MENU)
+                : _(APPLICATIONS_MENU);
 
-		void update_menu ()
-		{
-			Worker.get_default ().add_task_with_result.begin<void*> (() => {
-				apps_menu_mutex.lock ();
-				try {
-					apps_menu.load_sync ();
-					apps_loaded = true;
-				} catch (Error e) {
-					warning ("Failed to load applications (%s)", e.message);
-					apps_loaded = false;
-				}
-				apps_menu_mutex.unlock ();
-				return null;
-			}, TaskPriority.HIGH);
-		}
+            apps_menu = new GMenu.Tree (menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
+            apps_menu.changed.connect (update_menu);
+            update_menu.begin();
+        }
 
-		protected override AnimationType on_scrolled (Gdk.ScrollDirection direction, Gdk.ModifierType mod, uint32 event_time)
-		{
-			return AnimationType.NONE;
-		}
+        ~ApplicationsDockItem ()
+        {
+            if (apps_menu != null) {
+                apps_menu.changed.disconnect (update_menu);
+                apps_menu = null;
+            }
+        }
 
-		protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time)
-		{
-			return AnimationType.NONE;
-		}
+        private async void update_menu ()
+        {
+            try {
+                yield Worker.get_default ().add_task_with_result<void*> (() => {
+                    apps_menu_mutex.lock ();
+                    try {
+                        apps_menu.load_sync ();
+                        apps_loaded = true;
+                    } catch (Error e) {
+                        warning ("Failed to load applications (%s)", e.message);
+                        apps_loaded = false;
+                    } finally {
+                        apps_menu_mutex.unlock ();
+                    }
+                    return null;
+                }, TaskPriority.HIGH);
+            } catch (Error e) {
+                warning ("Error updating menu: %s", e.message);
+            }
+        }
 
-		public override Gee.ArrayList<Gtk.MenuItem> get_menu_items ()
-		{
-			var items = new Gee.ArrayList<Gtk.MenuItem> ();
+        protected override AnimationType on_scrolled (Gdk.ScrollDirection direction,
+            Gdk.ModifierType mod, uint32 event_time)
+        {
+            return AnimationType.NONE;
+        }
 
-			if (!apps_loaded) {
-				var item = create_menu_item (_("No applications available"), null, false);
-				items.add (item);
-				return items;
-			}
+        protected override AnimationType on_clicked (PopupButton button,
+            Gdk.ModifierType mod, uint32 event_time)
+        {
+            return AnimationType.NONE;
+        }
 
-			var iter = apps_menu.get_root_directory ().iter ();
-			GMenu.TreeItemType type;
-			while ((type = iter.next ()) != GMenu.TreeItemType.INVALID) {
-				if (type != GMenu.TreeItemType.DIRECTORY)
-					continue;
-				items.add (get_submenu_item (iter.get_directory ()));
-			}
+        public override Gee.ArrayList<Gtk.MenuItem> get_menu_items ()
+        {
+            var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-			return items;
-		}
+            if (!apps_loaded) {
+                items.add (create_menu_item (_(NO_APPS_MESSAGE), null, false));
+                return items;
+            }
 
-		Gtk.MenuItem get_submenu_item (GMenu.TreeDirectory category)
-		{
-			var item = create_menu_item (category.get_name (), DrawingService.get_icon_from_gicon (category.get_icon ()) ?? "", true);
-			var submenu = new Gtk.Menu ();
-			item.submenu = submenu;
-			submenu.show ();
-			item.show ();
+            var root_dir = apps_menu.get_root_directory ();
+            if (root_dir == null) return items;
 
-			ulong? item_activate_id = item.activate.connect (submenu_item_activate);
-			item.set_data<ulong?> ("plank-applications-item-activate-id", item_activate_id);
-			item.set_data<GMenu.TreeDirectory> ("plank-applications-category", category);
+            var iter = root_dir.iter ();
+            GMenu.TreeItemType type;
+            while ((type = iter.next ()) != GMenu.TreeItemType.INVALID) {
+                if (type == GMenu.TreeItemType.DIRECTORY) {
+                    var submenu_item = get_submenu_item (iter.get_directory ());
+                    if (submenu_item != null) {
+                        items.add (submenu_item);
+                    }
+                }
+            }
 
-			return item;
-		}
+            return items;
+        }
 
-		void submenu_item_activate (Gtk.MenuItem item)
-		{
-			var item_activate_id = item.steal_data<ulong?> ("plank-applications-item-activate-id");
-			SignalHandler.disconnect (item, item_activate_id);
+        private Gtk.MenuItem? get_submenu_item (GMenu.TreeDirectory category)
+        {
+            if (category == null) return null;
 
-			var category = item.steal_data<GMenu.TreeDirectory> ("plank-applications-category");
-			add_menu_items (item.submenu, category);
-		}
+            var icon = DrawingService.get_icon_from_gicon (category.get_icon ()) ?? "";
+            var item = create_menu_item (category.get_name (), icon, true);
+            var submenu = new Gtk.Menu ();
 
-		void add_menu_items (Gtk.Menu menu, GMenu.TreeDirectory category)
-		{
-			var iter = category.iter ();
-			GMenu.TreeItemType type;
-			while ((type = iter.next ()) != GMenu.TreeItemType.INVALID) {
-				switch (type) {
-				case GMenu.TreeItemType.DIRECTORY:
-					menu.add (get_submenu_item (iter.get_directory ()));
-					break;
-				case GMenu.TreeItemType.ENTRY:
-					GMenu.TreeEntry entry = iter.get_entry ();
-					unowned GLib.DesktopAppInfo info = entry.get_app_info ();
-					unowned string desktop_path = entry.get_desktop_file_path ();
-					var item = create_menu_item (info.get_display_name (), DrawingService.get_icon_from_gicon (info.get_icon ()) ?? "", true);
-					item.activate.connect (() => {
-						System.get_default ().launch (File.new_for_path (desktop_path));;
-					});
-					item.show ();
-					menu.add (item);
-					break;
-				}
-			}
-		}
-	}
+            item.submenu = submenu;
+            submenu.show ();
+            item.show ();
+
+            item.activate.connect (() => {
+                add_menu_items (submenu, category);
+            });
+
+            return item;
+        }
+
+        private void add_menu_items (Gtk.Menu menu, GMenu.TreeDirectory category)
+        {
+            if (category == null) return;
+
+            var iter = category.iter ();
+            GMenu.TreeItemType type;
+
+            while ((type = iter.next ()) != GMenu.TreeItemType.INVALID) {
+                if (type == GMenu.TreeItemType.DIRECTORY) {
+                    var submenu_item = get_submenu_item (iter.get_directory ());
+                    if (submenu_item != null) {
+                        menu.add (submenu_item);
+                    }
+                } else if (type == GMenu.TreeItemType.ENTRY) {
+                    var entry = iter.get_entry ();
+                    if (entry == null) continue;
+
+                    var info = entry.get_app_info ();
+                    if (info == null) continue;
+
+                    var desktop_path = entry.get_desktop_file_path ();
+                    var icon = DrawingService.get_icon_from_gicon (info.get_icon ()) ?? "";
+                    var item = create_menu_item (info.get_display_name (), icon, true);
+
+                    item.activate.connect (() => {
+                        System.get_default ().launch (File.new_for_path (desktop_path));
+                    });
+
+                    item.show ();
+                    menu.add (item);
+                }
+            }
+        }
+    }
 }

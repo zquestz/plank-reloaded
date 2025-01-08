@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2017 Rico Tzschichholz
+//  Copyright (C) 2024 Plank Reloaded Developers
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -17,41 +17,31 @@
 
 public static void docklet_init (Plank.DockletManager manager)
 {
-	manager.register_docklet (typeof (Docky.ApplicationsDocklet));
+    manager.register_docklet (typeof (Docky.ApplicationsDocklet));
 }
 
 namespace Docky
 {
-	public class ApplicationsDocklet : Object, Plank.Docklet
-	{
-		public unowned string get_id ()
-		{
-			return "applications";
-		}
+    public class ApplicationsDocklet : Object, Plank.Docklet
+    {
+        // Cache strings to avoid repeated allocations
+        private const string ID = "applications";
+        private const string ICON = "gnome-applications;;gnome-main-menu";
+        private const string DESCRIPTION = "Simply start any of your applications.";
 
-		public unowned string get_name ()
-		{
-			return _("Applications");
-		}
+        public unowned string get_id () { return ID; }
 
-		public unowned string get_description ()
-		{
-			return "Simply start any of your applications.";
-		}
+        public unowned string get_name () { return _("Applications"); }
 
-		public unowned string get_icon ()
-		{
-			return "gnome-applications;;gnome-main-menu";
-		}
+        public unowned string get_description () { return DESCRIPTION; }
 
-		public bool is_supported ()
-		{
-			return true;
-		}
+        public unowned string get_icon () { return ICON; }
 
-		public Plank.DockElement make_element (string launcher, GLib.File file)
-		{
-			return new ApplicationsDockItem.with_dockitem_file (file);
-		}
-	}
+        public bool is_supported () { return true; }
+
+        public Plank.DockElement make_element (string launcher, GLib.File file)
+        {
+            return new ApplicationsDockItem.with_dockitem_file (file);
+        }
+    }
 }
