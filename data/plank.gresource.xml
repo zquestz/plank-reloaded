@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     Copyright (C) 2013 Rico Tzschichholz
 
@@ -19,8 +19,16 @@
 -->
 <gresources>
 	<gresource prefix="/net/launchpad/plank">
-		<file alias="img/application-default-icon.svg" compressed="true" preprocess="xml-stripblanks">application-default-icon.svg</file>
-		<file alias="img/poof.svg" compressed="true" preprocess="xml-stripblanks">poof.svg</file>
+		<file
+      alias="img/application-default-icon.svg"
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >application-default-icon.svg</file>
+		<file
+      alias="img/poof.svg"
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >poof.svg</file>
 		<file compressed="true" preprocess="xml-stripblanks">ui/preferences.ui</file>
 	</gresource>
 </gresources>

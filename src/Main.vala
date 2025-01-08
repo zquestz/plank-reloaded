@@ -25,50 +25,51 @@ namespace Plank
 		Intl.bindtextdomain (Build.GETTEXT_PACKAGE, Build.DATADIR + "/locale");
 		Intl.bind_textdomain_codeset (Build.GETTEXT_PACKAGE, "UTF-8");
 		Intl.textdomain (Build.GETTEXT_PACKAGE);
-		
+
 		var application = new Plank.Main ();
 		Factory.init (application, new ItemFactory ());
 		return application.run (argv);
 	}
-	
+
 	public class Main : AbstractMain
 	{
 		public Main ()
 		{
 			var authors = new string[] {
+					"Josh Ellithorpe <quest@mac.com>",
 					"Robert Dyer <psybers@gmail.com>",
 					"Rico Tzschichholz <ricotz@ubuntu.com>",
 					"Michal Hruby <michal.mhr@gmail.com>"
 				};
-			
+
 			var documenters = new string[] {
 					"Robert Dyer <psybers@gmail.com>",
 					"Rico Tzschichholz <ricotz@ubuntu.com>"
 				};
-			
+
 			var artists = new string[] {
 					"Daniel Foré <daniel@elementaryos.org>"
 				};
-			
+
 			Object (
 				build_data_dir : Build.DATADIR,
 				build_pkg_data_dir : Build.PKGDATADIR,
 				build_release_name : Build.RELEASE_NAME,
 				build_version : Build.VERSION,
 				build_version_info : Build.VERSION_INFO,
-			
-				program_name : "Plank",
+
+				program_name : "Plank Reloaded",
 				exec_name : "plank",
-			
-				app_copyright : "2011-2023",
+
+				app_copyright : "2011-2024",
 				app_dbus : "net.launchpad.plank",
 				app_icon : "plank",
 				app_launcher : "plank.desktop",
-			
-				main_url : "https://launchpad.net/plank",
-				help_url : "https://answers.launchpad.net/plank",
+
+				main_url : "https://github.com/zquestz/plank-reloaded",
+				help_url : "https://github.com/zquestz/plank-reloaded/issues",
 				translate_url : "https://translations.launchpad.net/plank",
-			
+
 				about_authors : authors,
 				about_documenters : documenters,
 				about_artists : artists,
