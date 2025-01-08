@@ -20,7 +20,7 @@ fi
 
 set -x
 aclocal --install || exit 1
-autoreconf --verbose --force --install -Wno-portability || exit 1
+autoreconf --verbose --install -Wno-portability || exit 1
 set +x
 
 if [ "$NOCONFIGURE" = "" ]; then
@@ -34,4 +34,3 @@ if [ "$NOCONFIGURE" = "" ]; then
 else
 	echo "Skipping configure process."
 fi
-

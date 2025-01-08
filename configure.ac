@@ -3,7 +3,7 @@ m4_define([plank_released], [0])
 
 m4_define([plank_major_version], [0])
 m4_define([plank_minor_version], [11])
-m4_define([plank_micro_version], [89])
+m4_define([plank_micro_version], [100])
 m4_define([plank_nano_version], [0])
 
 # If library source has changed since last release, increment revision
@@ -31,7 +31,7 @@ m4_define([plank_module_version], plank_lt_current)
 AC_INIT([plank], plank_version,
         [https://bugs.launchpad.net/plank], [plank],
         [https://launchpad.net/plank])
-AC_DEFINE(RELEASE_NAME, "Stupidly simple.", Codename of this release)
+AC_DEFINE(RELEASE_NAME, "Still stupidly simple.", Codename of this release)
 AC_DEFINE(VERSION_INFO, m4_if(plank_released, [1], "Release", "Development"), Version info for package)
 AC_DEFINE(VERSION_MAJOR, [plank_major_version], Major version of this package)
 AC_DEFINE(VERSION_MINOR, [plank_minor_version], Minor version of this package)
@@ -178,6 +178,10 @@ if test -z "$XMLLINT"; then
   AC_MSG_ERROR([xmllint not found])
 fi
 
+# -----------------------------------------------------------
+# Remove Discarded Qualifiers warnings
+# -----------------------------------------------------------
+CFLAGS="$CFLAGS -Wno-discarded-qualifiers -Wno-deprecated-declarations"
 
 # -----------------------------------------------------------
 # Dermine avaiable GLib version and adjust vala's

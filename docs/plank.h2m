@@ -1,19 +1,18 @@
 [NAME]
-Plank - Stupidly simple.
+Plank Reloaded - Still stupidly simple.
 
 [DESCRIPTION]
-Plank is meant to be the simplest dock on the planet. The goal is to provide
-just what a dock needs and absolutely nothing more. It is, however, a library
-which can be extended to create other dock programs with more advanced features.
-Thus, Plank is the underlying technology for Docky (starting in version 3.0.0)
-and aims to provide all the core features while Docky extends it to add fancier
-things like Docklets, painters, settings dialogs, etc.
+Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon
+desktop compatibility and modernized features. Like its predecessor, it aims
+to be the simplest dock on the planet, providing just what a dock needs and
+absolutely nothing more. It remains a library which can be extended to create
+other dock programs with more advanced features.
 
 [BUGS]
-Report bugs at http://bugs.launchpad.net/plank
+Report bugs at https://github.com/zquestz/plank-reloaded/issues
 
 [HOMEPAGE or CONTACT]
-For more information, please visit http://launchpad.net/plank/
+For more information, please visit https://github.com/zquestz/plank-reloaded
 
 [AUTHORS]
-Rico Tzschichholz, Robert Dyer, Daniel Fore
+Josh Ellithorpe, Rico Tzschichholz, Robert Dyer, and Daniel Fore
