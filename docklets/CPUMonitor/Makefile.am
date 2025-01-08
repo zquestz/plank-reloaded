@@ -56,4 +56,3 @@ CLEANFILES = \
 EXTRA_DIST = \
 	$(libdocklet_cpumonitor_la_VALASOURCES) \
 	$(NULL)
-
