@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     Copyright (C) 2015 Rico Tzschichholz
 
@@ -17,17 +17,53 @@
 -->
 <gresources>
 	<gresource prefix="/net/launchpad/plank/docklets/clock">
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-drop-shadow.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-face.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-face-shadow.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-frame.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-glass.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default/clock-marks.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-drop-shadow.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-face.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-face-shadow.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-frame.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-glass.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">themes/Default24/clock-marks.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-drop-shadow.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-face.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-face-shadow.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-frame.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-glass.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default/clock-marks.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-drop-shadow.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-face.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-face-shadow.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-frame.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-glass.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >themes/Default24/clock-marks.svg</file>
 	</gresource>
 </gresources>
