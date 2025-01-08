@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     Copyright (C) 2013 Rico Tzschichholz
 
@@ -17,8 +17,17 @@
 -->
 <gresources>
 	<gresource prefix="/net/launchpad/plank/docklets/desktop">
-		<file compressed="true" preprocess="xml-stripblanks">icons/show-desktop.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">icons/window-cascade.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">icons/window-tile.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >icons/show-desktop.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >icons/window-cascade.svg</file>
+		<file
+      compressed="true"
+      preprocess="xml-stripblanks"
+    >icons/window-tile.svg</file>
 	</gresource>
 </gresources>
