@@ -27,7 +27,7 @@ namespace Docky
     public class ClockDocklet : Object, Plank.Docklet
     {
         private const string ID = "clock";
-        private const string ICON = "application-x-addon";
+        private const string ICON = "clock";
 
         public unowned string get_id () { return ID; }
 

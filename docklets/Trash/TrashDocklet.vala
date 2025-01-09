@@ -25,7 +25,7 @@ namespace Docky
     public class TrashDocklet : Object, Plank.Docklet
     {
         private const string ID = "trash";
-        private const string ICON = "user-trash-full";
+        private const string ICON = "user-trash";
 
         public unowned string get_id () { return ID; }
 

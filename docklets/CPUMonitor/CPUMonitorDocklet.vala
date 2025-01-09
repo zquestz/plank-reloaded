@@ -25,7 +25,7 @@ namespace Docky
     public class CPUMonitorDocklet : Object, Plank.Docklet
     {
         private const string ID = "cpumonitor";
-        private const string ICON = "application-x-addon";
+        private const string ICON = "utilities-system-monitor";
 
         public unowned string get_id () { return ID; }
 
