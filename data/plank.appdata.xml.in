@@ -23,8 +23,8 @@
   </keywords>
   <url type="homepage">https://github.com/zquestz/plank-reloaded</url>
   <url type="bugtracker">https://github.com/zquestz/plank-reloaded/issues</url>
-  <url type="faq">https://answers.launchpad.net/plank</url>
-  <url type="translate">https://translations.launchpad.net/plank</url>
+  <url type="faq">https://github.com/zquestz/plank-reloaded</url>
+  <url type="translate">https://github.com/zquestz/plank-reloaded</url>
   <provides>
     <library>libplank.so.1</library>
     <binary>plank</binary>

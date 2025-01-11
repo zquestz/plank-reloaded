@@ -5,6 +5,6 @@ Comment=Still stupidly simple.
 Categories=Utility;
 Type=Application
 Exec=plank
-Icon=plank
+Icon=plank-reloaded
 Terminal=false
 NoDisplay=false
