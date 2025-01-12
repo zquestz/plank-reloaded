@@ -22,7 +22,12 @@ namespace Docky {
     private const string THEME_BASE_URI = "resource://" + Docky.G_RESOURCE_PATH + "/themes/";
     private const string DEFAULT_THEME = "Default";
     private const string DEFAULT_24H_THEME = "Default24";
-    private const int UPDATE_INTERVAL = 1000; // 1 second
+    private const int UPDATE_INTERVAL = 1000;
+
+    private const double DATE_SIZE_RATIO = 0.75;
+    private const double FONT_SIZE_RATIO = 1.0 / 3.0;
+    private const double SHADOW_OPACITY = 0.4;
+    private const double SCALE_FACTOR = 0.9;
 
     // SVG resources
     private const string SVG_DROP_SHADOW = "/clock-drop-shadow.svg";
@@ -38,13 +43,11 @@ namespace Docky {
     private string current_theme;
     ClockDockCalendar calendar;
 
-    public ClockDockItem.with_dockitem_file(GLib.File file)
-    {
+    public ClockDockItem.with_dockitem_file(GLib.File file) {
       GLib.Object(Prefs: new ClockPreferences.with_file(file));
     }
 
-    construct
-    {
+    construct {
       setup_layout();
       setup_icon();
       connect_preferences();
@@ -64,6 +67,7 @@ namespace Docky {
       font_description.set_weight(Pango.Weight.BOLD);
       layout.set_font_description(font_description);
       layout.set_ellipsize(Pango.EllipsizeMode.NONE);
+      layout.set_alignment(Pango.Alignment.CENTER);
     }
 
     private void setup_icon() {
@@ -147,8 +151,7 @@ namespace Docky {
           calendar.move(x, y - 150);
         }
 
-        calendar.destroy.connect(
-                                 () => {
+        calendar.destroy.connect(() => {
           calendar = null;
           Gtk.main_quit();
         });
@@ -181,127 +184,110 @@ namespace Docky {
       }
     }
 
+    private Pango.Layout setup_text_layout(Pango.Context context) {
+      var new_layout = new Pango.Layout(context);
+      new_layout.set_font_description(layout.get_font_description());
+      new_layout.set_alignment(layout.get_alignment());
+      return new_layout;
+    }
+
+    private string format_time_text(DateTime now, bool military) {
+      if (military) {
+        return now.format("%H:%M");
+      }
+
+      int hour = now.get_hour() % 12;
+      if (hour == 0)hour = 12;
+      return "%d:%s %s".printf(
+                               hour,
+                               now.format("%M"),
+                               now.get_hour() >= 12 ? "ᴘᴍ" : "ᴀᴍ"
+      );
+    }
+
     private void render_digital_clock(Surface surface, DateTime now, int size) {
       unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       unowned Cairo.Context cr = surface.Context;
 
-      // Calculate dimensions
-      int time_size = surface.Height / 4;
-      int date_size = surface.Height / 5;
-      int ampm_size = surface.Height / 5;
-      int spacing = time_size / 2;
-      int center = surface.Height / 2;
+      int text_size = (int) (surface.Width * FONT_SIZE_RATIO);
 
-      layout.set_width((int) (surface.Width * Pango.SCALE));
+      // Setup layouts
+      var time_layout = setup_text_layout(layout.get_context());
+      var date_layout = setup_text_layout(layout.get_context());
 
-      // Draw time
-      render_time(cr, now, prefs, time_size, spacing, center, surface);
+      // Format time text
+      string time_text = format_time_text(now, prefs.ShowMilitary);
 
-      // Draw date if enabled
-      if (prefs.ShowDate) {
-        render_date(cr, now, date_size, spacing, surface);
+      // Find the right size that fits
+      int current_size = text_size;
+      bool fits = false;
+
+      while (!fits && current_size > 0) {
+        var font_description = layout.get_font_description();
+        font_description.set_absolute_size((int) (current_size * Pango.SCALE));
+
+        time_layout.set_font_description(font_description);
+        time_layout.set_text(time_text, -1);
+
+        if (prefs.ShowDate) {
+          var date_font = font_description.copy();
+          date_font.set_absolute_size((int) (current_size * DATE_SIZE_RATIO * Pango.SCALE));
+          date_layout.set_font_description(date_font);
+          date_layout.set_text(now.format("%b %d"), -1);
+        }
+
+        Pango.Rectangle time_ink, time_logical;
+        Pango.Rectangle date_ink, date_logical;
+
+        time_layout.get_pixel_extents(out time_ink, out time_logical);
+        date_layout.get_pixel_extents(out date_ink, out date_logical);
+
+        int max_width = time_logical.width;
+        if (prefs.ShowDate) {
+          max_width = int.max(max_width, date_logical.width);
+        }
+
+        if (max_width <= surface.Width) {
+          fits = true;
+
+          time_layout.set_width(surface.Width * Pango.SCALE);
+          date_layout.set_width(surface.Width * Pango.SCALE);
+
+          time_layout.get_pixel_extents(out time_ink, out time_logical);
+          date_layout.get_pixel_extents(out date_ink, out date_logical);
+
+          int total_height = time_logical.height;
+          if (prefs.ShowDate) {
+            total_height += date_logical.height;
+          }
+
+          int start_y = (surface.Height - total_height) / 2;
+
+          // Draw time
+          cr.move_to(0, start_y);
+          draw_outlined_text(cr, time_layout, 1.0);
+
+          // Draw date if enabled
+          if (prefs.ShowDate) {
+            cr.move_to(0, start_y + time_logical.height);
+            draw_outlined_text(cr, date_layout, 1.0);
+          }
+        } else {
+          current_size = (int) (current_size * SCALE_FACTOR);
+        }
       }
-
-      // Draw AM/PM indicators for 12-hour clock
-      if (!prefs.ShowMilitary) {
-        render_ampm_indicators(cr, now, ampm_size, spacing, center, surface, prefs.ShowDate);
-      }
     }
 
-    private void render_time(Cairo.Context cr, DateTime now, ClockPreferences prefs,
-                             int time_size, int spacing, int center, Surface surface) {
-      var font_description = layout.get_font_description();
-      font_description.set_absolute_size((int) (time_size * Pango.SCALE));
+    private void draw_outlined_text(Cairo.Context cr, Pango.Layout layout, double offset = 1.0) {
+      // Draw drop shadow
+      cr.set_source_rgba(0, 0, 0, SHADOW_OPACITY);
+      Pango.cairo_show_layout(cr, layout);
 
-      string time_text = prefs.ShowMilitary ?
-        now.format("%H:%M") :
-        now.format("%l:%M").chug();
-
-      layout.set_text(time_text, -1);
-
-      Pango.Rectangle ink_rect, logical_rect;
-      layout.get_pixel_extents(out ink_rect, out logical_rect);
-
-      int time_y_offset = prefs.ShowMilitary ? time_size : time_size / 2;
-      int time_x_offset = (surface.Width - ink_rect.width) / 2;
-
-      cr.move_to(time_x_offset,
-                 prefs.ShowDate ? time_y_offset : time_y_offset + time_size / 2);
-
-      draw_outlined_text(cr, 3.0);
-    }
-
-    private void render_date(Cairo.Context cr, DateTime now,
-                             int date_size, int spacing, Surface surface) {
-      var font_description = layout.get_font_description();
-      font_description.set_absolute_size((int) (date_size * Pango.SCALE));
-
-      layout.set_text(now.format("%b %d"), -1);
-
-      Pango.Rectangle ink_rect, logical_rect;
-      layout.get_pixel_extents(out ink_rect, out logical_rect);
-
-      cr.move_to((surface.Width - ink_rect.width) / 2,
-                 surface.Height - spacing - date_size);
-
-      draw_outlined_text(cr, 2.5);
-    }
-
-    private void draw_outlined_text(Cairo.Context cr, double line_width) {
-      Pango.cairo_layout_path(cr, layout);
-      cr.set_line_width(line_width);
-      cr.set_source_rgba(0, 0, 0, 0.5);
-      cr.stroke_preserve();
-      cr.set_source_rgba(1, 1, 1, 0.8);
-      cr.fill();
-    }
-
-    private void render_ampm_indicators(Cairo.Context cr, DateTime now,
-                                        int ampm_size, int spacing, int center,
-                                        Surface surface, bool show_date) {
-      var font_description = layout.get_font_description();
-      font_description.set_absolute_size((int) (ampm_size * Pango.SCALE));
-
-      int y_offset = show_date ?
-        center - spacing :
-        surface.Height - spacing - ampm_size;
-
-      // Draw AM indicator
-      render_ampm_indicator(cr, "am", now.get_hour() < 12,
-                            y_offset, center, true);
-
-      // Draw PM indicator
-      render_ampm_indicator(cr, "pm", now.get_hour() >= 12,
-                            y_offset, center, false);
-    }
-
-    private void render_ampm_indicator(Cairo.Context cr, string text, bool active,
-                                       int y_offset, int center, bool is_am) {
-      layout.set_text(text, -1);
-
-      Pango.Rectangle ink_rect, logical_rect;
-      layout.get_pixel_extents(out ink_rect, out logical_rect);
-
-      int x_offset = is_am ?
-        (center - ink_rect.width) / 2 :
-        center + (center - ink_rect.width) / 2;
-
-      cr.move_to(x_offset, y_offset);
-
-      Pango.cairo_layout_path(cr, layout);
-      cr.set_line_width(2);
-
-      if (active) {
-        cr.set_source_rgba(0, 0, 0, 0.5);
-        cr.stroke_preserve();
-        cr.set_source_rgba(1, 1, 1, 0.8);
-      } else {
-        cr.set_source_rgba(1, 1, 1, 0.4);
-        cr.stroke_preserve();
-        cr.set_source_rgba(0, 0, 0, 0.5);
-      }
-
-      cr.fill();
+      // Draw main text
+      cr.translate(-offset, -offset);
+      cr.set_source_rgba(1, 1, 1, 1);
+      Pango.cairo_show_layout(cr, layout);
+      cr.translate(offset, offset);
     }
 
     private void render_analog_clock(Cairo.Context cr, DateTime now, int size) {
