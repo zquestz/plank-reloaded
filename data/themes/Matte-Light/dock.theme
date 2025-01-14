@@ -1,4 +1,4 @@
-# Based off Arian Theme
+# Based off Arian Theme Light
 # Author: Arian H
 # Github: https://github.com/arianXdev/arian-plank-theme
 
@@ -6,18 +6,18 @@
 TopRoundness=15
 BottomRoundness=15
 LineWidth=1
-OuterStrokeColor=25;;25;;25;;100
-FillStartColor=46;;50;;50;;150
-FillEndColor=46;;50;;50;;150
-InnerStrokeColor=50;;50;;50;;100
+OuterStrokeColor=230;;230;;230;;10
+FillStartColor=230;;230;;230;;160
+FillEndColor=230;;230;;230;;160
+InnerStrokeColor=180;;180;;180;;15
 
 [PlankDockTheme]
 HorizPadding=3.0
 TopPadding=2.0
 BottomPadding=2.0
 ItemPadding=2
-IndicatorSize=5
-IconShadowSize=0.5
+IndicatorSize=8
+IconShadowSize=0.7
 UrgentBounceHeight=1
 LaunchBounceHeight=0.90000000000000002
 FadeOpacity=0

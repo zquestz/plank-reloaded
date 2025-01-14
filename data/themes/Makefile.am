@@ -10,6 +10,11 @@ dist_mattetheme_DATA = \
 	Matte/dock.theme \
 	$(NULL)
 
+mattelightthemedir = $(pkgdatadir)/themes/Matte-Light
+dist_mattelighttheme_DATA = \
+	Matte-Light/dock.theme \
+	$(NULL)
+
 transparentthemedir = $(pkgdatadir)/themes/Transparent
 dist_transparenttheme_DATA = \
 	Transparent/dock.theme \
