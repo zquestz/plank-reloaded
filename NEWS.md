@@ -2,12 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
-## 0.11.100 "Reloaded" (2024-12-18)
+## 0.11.100 "Reloaded" (2025-01-18)
 
-- Updates for Cinnamon compatibility
-- Battery Docklet updated to use UPower
-- Fixed settings crash for Clock Docklet
-- Code cleanup
+- Enhanced Cinnamon desktop environment compatibility. Now all Docklets are fully functional.
+- Updated Battery Docklet with modern UPower integration.
+- Updated the Matte theme, and added MatteLight based on the Arian theme.
+- Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
+- General code cleanup and bug fixes.
 
 ## 0.11.89 "Nazz" (2019-08-19)
 

@@ -8,10 +8,11 @@ providing just what a dock needs and absolutely nothing more. It remains a libra
 extended to create other dock programs with more advanced features.
 
 ### Key Improvements in Plank Reloaded:
-* Enhanced Cinnamon desktop environment compatibility
-* Updated Battery Docklet with modern UPower integration
-* Fixed Clock Docklet settings crash
-* General code cleanup and modernization
+* Enhanced Cinnamon desktop environment compatibility. Now all Docklets are fully functional.
+* Updated Battery Docklet with modern UPower integration.
+* Updated the Matte theme, and added MatteLight based on the Arian theme.
+* Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
+* General code cleanup and bug fixes.
 
 ## Reporting Bugs
 
