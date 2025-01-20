@@ -14,6 +14,20 @@ extended to create other dock programs with more advanced features.
 * Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
 * General code cleanup and bug fixes.
 
+## Themes
+
+### Default
+![Default Theme](screenshots/default.webp)
+
+### Matte
+![Matte Theme](screenshots/matte.webp)
+
+### Matte Light
+![Matte Light Theme](screenshots/matte-light.webp)
+
+### Transparent
+![Transparent Theme](screenshots/transparent.webp)
+
 ## Installation
 
 ### Arch Linux
