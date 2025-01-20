@@ -14,6 +14,15 @@ extended to create other dock programs with more advanced features.
 * Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
 * General code cleanup and bug fixes.
 
+## Installation
+
+### Arch Linux
+```bash
+yay -S plank-reloaded-git
+```
+
+Note: For other distributions, you'll need to build from source. Support for additional package managers coming soon.
+
 ## Reporting Bugs
 
 For Plank Reloaded specific issues, please report them here:

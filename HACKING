@@ -38,7 +38,7 @@ Browse it online and look for other branches at http://code.launchpad.net/plank
 ====== Build the code ======
 
 Prepare the source and compile:
-    ./autogen.sh --prefix=/usr
+    ./autogen.sh --prefix=/usr --sysconfdir=/etc
     make -j2
 
 Run Plank:
