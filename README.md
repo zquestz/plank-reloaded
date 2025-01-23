@@ -51,6 +51,7 @@ cd plank-reloaded
 make -j2
 sudo make install
 sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
+sudo xdg-desktop-menu forceupdate
 ```
 
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
