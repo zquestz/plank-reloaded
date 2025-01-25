@@ -78,22 +78,13 @@ namespace Docky {
     private void initialize_settings() {
       if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
         load_settings(NEMO_SCHEMA, NEMO_PATH);
-      } else {
-        load_settings(NAUTILUS_SCHEMA, NAUTILUS_PATH);
       }
     }
 
     private void load_settings(string schema, string path) {
       var settings = create_settings(schema, path);
       if (settings != null) {
-        try {
-          // Try to get the value, catch any errors if the key doesn't exist
-          confirm_trash_delete = settings.get_boolean("confirm-trash");
-        } catch (Error e) {
-          // Use a default value if we couldn't get the setting
-          confirm_trash_delete = true;
-          debug("Using default value for confirm-trash: %s", e.message);
-        }
+        confirm_trash_delete = settings.get_boolean("confirm-trash");
       } else {
         confirm_trash_delete = true;
       }
