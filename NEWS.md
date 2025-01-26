@@ -1,4 +1,4 @@
-# Plank Reloaded: Still stupidly simple.
+# Plank Reloaded: Still stupidly simple
 
 **Note:** There is no stability of ABI/API until further notice!
 
@@ -118,8 +118,7 @@
 
 ## 0.9.1 "Kanker" (2015-05-02)
 
-- Initialize i18n as suggested here,
-  https://developer.gnome.org/glib/stable/glib-I18N.html#glib-I18N.description
+- Initialize i18n as suggested [here](https://developer.gnome.org/glib/stable/)glib-I18N.html#glib-I18N.description
 - Draw/unhide the dock on login when there are no windows (LP: #1256626)
 - Explictly request/specify the FileMonitor-type which is needed
 - Don't apply addition-animation to all items on startup
