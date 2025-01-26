@@ -7,7 +7,8 @@ and modernized features. Like its predecessor, it aims to be the simplest dock o
 providing just what a dock needs and absolutely nothing more. It remains a library which can be
 extended to create other dock programs with more advanced features.
 
-### Key Improvements in Plank Reloaded:
+### Key Improvements in Plank Reloaded
+
 * Enhanced Cinnamon desktop environment compatibility. Now all Docklets are fully functional.
 * Updated Battery Docklet with modern UPower integration.
 * Updated the Matte theme, and added MatteLight based on the Arian theme.
@@ -17,25 +18,31 @@ extended to create other dock programs with more advanced features.
 ## Themes
 
 ### Default
+
 ![Default Theme](screenshots/default.webp)
 
 ### Matte
+
 ![Matte Theme](screenshots/matte.webp)
 
 ### Matte Light
+
 ![Matte Light Theme](screenshots/matte-light.webp)
 
 ### Transparent
+
 ![Transparent Theme](screenshots/transparent.webp)
 
 ## Installation
 
 ### Arch Linux
+
 ```bash
 yay -S plank-reloaded-git
 ```
 
 ### Linux Mint
+
 ```bash
 # Completely uninstall plank
 sudo apt-get remove plank libplank-common libplank1
@@ -70,22 +77,26 @@ Please search for existing bugs before reporting new ones.
 
 ## Where Can I Get Help?
 
-### For Plank Reloaded:
+### For Plank Reloaded
+
 * GitHub Issues: [https://github.com/zquestz/plank-reloaded/issues](https://github.com/zquestz/plank-reloaded/issues)
 
-### Original Plank Resources:
+### Original Plank Resources
+
 * IRC: `#plank` on FreeNode - `irc://irc.freenode.net/#plank`
 * Common problems and solutions: [Plank Answers](https://answers.launchpad.net/plank)
 
 ## How Can I Get Involved?
 
-### Plank Reloaded:
+### Plank Reloaded info
+
 * Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
 * Submit pull requests
 * Report issues
 * Contribute to development
 
-### Original Plank Resources:
+### Original Plank Info
+
 * Launchpad page: [https://launchpad.net/plank](https://launchpad.net/plank)
 * Translations: [https://translations.launchpad.net/plank](https://translations.launchpad.net/plank)
 
