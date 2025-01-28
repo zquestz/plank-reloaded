@@ -13,6 +13,7 @@ extended to create other dock programs with more advanced features.
 * Updated Battery Docklet with modern UPower integration.
 * Updated the Matte theme, and added MatteLight based on the Arian theme.
 * Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
+* Updated to use meson build system.
 * General code cleanup and bug fixes.
 
 ## Themes
@@ -48,7 +49,7 @@ yay -S plank-reloaded-git
 sudo apt-get remove plank libplank-common libplank1
 
 # Install required dependencies
-sudo apt-get install git autogen autoconf autopoint libtool make valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
+sudo apt-get install git meson valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git
@@ -57,11 +58,9 @@ git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 
 # Build and install
-./bootstrap
-make -j2
-sudo make install
-sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
-sudo xdg-desktop-menu forceupdate
+meson setup --prefix=/usr build
+ninja -C build
+sudo meson install -C build
 ```
 
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.

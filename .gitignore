@@ -2,6 +2,8 @@ ABOUT-NLS
 aclocal.m4
 autom4te.cache
 /build-aux/*
+!build-aux/git-version-gen
+!build-aux/gitlog-to-changelog
 ChangeLog
 config.h
 config.h.in
@@ -22,6 +24,8 @@ test-suite.log
 .deps
 .dirstamp
 .libs
+.cache
+.vscode
 *.o
 *.lo
 *.la
@@ -51,9 +55,13 @@ examples/*.c
 examples/*.stamp
 lib/abi*
 lib/*-abi
+!lib/abicheck.sh
 lib/*.c
 lib/*.h
+!lib/gtk-compat.c
+!lib/gtk-compat.h
 lib/*.deps
+!lib/plank.deps
 lib/*.vapi
 lib/*.pc
 lib/*.stamp
@@ -78,5 +86,4 @@ data/plank.appdata.xml
 data/gschemas.compiled
 data/net.launchpad.plank.gschema.valid
 data/net.launchpad.plank.gschema.xml
-data/net.launchpad.plank.gschema.xml.in
 data/plank.desktop

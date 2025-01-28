@@ -43,9 +43,9 @@
 namespace Plank
 {
 	public const string DOCKLET_ENTRY_POINT = "docklet_init";
-	
+
 	public delegate void DockletInitFunc (DockletManager manager);
-	
+
 	/**
 	 * A controller class for managing all available docklets.
 	 */
@@ -53,42 +53,42 @@ namespace Plank
 	{
 		static Regex docklet_filename_regex = /^libdocklet-.+.so$/;
 		static DockletManager? instance;
-		
+
 		public static unowned DockletManager get_default ()
 		{
 			if (instance == null)
 				instance = new DockletManager ();
-			
+
 			return instance;
 		}
-		
+
 		public signal void docklet_added (Docklet docklet);
-		
+
 		Gee.HashMap<string, Docklet> docklets;
-		
+
 		DockletManager ()
 		{
 			Object ();
 		}
-		
+
 		construct
 		{
 			docklets = new Gee.HashMap<string, Docklet> ();
 		}
-		
+
 		/**
 		 * Load docklet modules from known directories
 		 */
 		public void load_docklets ()
 		{
 			load_modules_from_dir (File.new_for_path (Build.DOCKLETSDIR));
-			
+
 			unowned string? docklet_dirs = Environment.get_variable ("PLANK_DOCKLET_DIRS");
 			if (docklet_dirs != null)
 				foreach (unowned string dir in docklet_dirs.split (":"))
 					load_modules_from_dir (File.new_for_path (dir));
 		}
-		
+
 		/**
 		 * Register docklet with given name and type
 		 *
@@ -100,16 +100,16 @@ namespace Plank
 				warning ("'%s' is not a Docklet", type.name ());
 				return;
 			}
-			
+
 			var docklet = (Docklet) Object.new (type);
-			
+
 			unowned string id = docklet.get_id ();
 			message ("Docklet '%s' registered", id);
 			docklets.set (id, docklet);
-			
+
 			docklet_added (docklet);
 		}
-		
+
 		/**
 		 * Find docklet for given id
 		 *
@@ -120,7 +120,7 @@ namespace Plank
 		{
 			return docklets.get (id);
 		}
-		
+
 		/**
 		 * Find docklet wich supports given uri
 		 *
@@ -130,7 +130,7 @@ namespace Plank
 		public Docklet? get_docklet_by_uri (string uri)
 		{
 			Docklet? docklet = null;
-			
+
 			var it = docklets.map_iterator ();
 			it.foreach ((k, v) => {
 				if (uri == "%s%s".printf (DOCKLET_URI_PREFIX, k)) {
@@ -139,10 +139,10 @@ namespace Plank
 				}
 				return true;
 			});
-			
+
 			return docklet;
 		}
-		
+
 		/**
 		 * Get list of all registered docklets
 		 *
@@ -152,20 +152,20 @@ namespace Plank
 		{
 			return docklets.values;
 		}
-		
+
 		void load_modules_from_dir (File dir)
 		{
 			if (!dir.query_exists ())
 				return;
-			
+
 			Logger.verbose ("Searching for modules in folder '%s'", dir.get_path ());
-			
+
 			unowned string attributes = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_CONTENT_TYPE;
-			
+
 			try {
 				var enumerator = dir.enumerate_children (attributes, 0);
 				FileInfo info;
-				
+
 				while ((info = enumerator.next_file ()) != null) {
 					unowned string name = info.get_name ();
 					var file = dir.get_child (name);
@@ -179,33 +179,33 @@ namespace Plank
 				critical ("Error listing contents of folder '%s': %s", dir.get_path (), error.message);
 				return;
 			}
-			
+
 			Logger.verbose ("Finished searching for modules in folder '%s'", dir.get_path ());
 		}
-		
+
 		void load_module_from_file (string file_path)
 		{
-			var module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
+			var module = Module.open (file_path, ModuleFlags.LOCAL);
 			if (module == null) {
 				warning ("Failed to load module '%s': %s", file_path, Module.error ());
 				return;
 			}
-			
+
 			void* function;
-			
+
 			if (!module.symbol (DOCKLET_ENTRY_POINT, out function)) {
 				warning ("Failed to find entry point function '%s' in '%s': %s", DOCKLET_ENTRY_POINT, file_path, Module.error ());
 				return;
 			}
-			
+
 			unowned DockletInitFunc module_init = (DockletInitFunc) function;
 			assert (module_init != null);
-			
+
 			debug ("Loading module '%s'", module.name ());
-			
+
 			// We don't want our modules to ever unload
 			module.make_resident ();
-			
+
 			module_init (this);
 		}
 	}
