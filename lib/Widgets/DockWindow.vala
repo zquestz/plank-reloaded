@@ -580,7 +580,7 @@ namespace Plank {
       }
 
       menu_items = null;
-      Gtk.MenuPositionFunc? position_func = null;
+      var position_menu = false;
       var button = PopupButton.from_event_button (event);
 
       if ((button & PopupButton.RIGHT) != 0
@@ -596,7 +596,7 @@ namespace Plank {
         if ((event.state & Gdk.ModifierType.MOD1_MASK) != 0
             && (event.state & Gdk.ModifierType.SHIFT_MASK) != 0)
           menu_items.add_all (get_item_debug_menu_items (item));
-        position_func = (Gtk.MenuPositionFunc) position_menu;
+        position_menu = true;
       }
 
       if (menu_items == null || menu_items.size == 0)
@@ -624,7 +624,48 @@ namespace Plank {
         } while (iterator.next ());
       }
 
-      menu.popup (null, null, position_func, event.button, event.time);
+      if (position_menu) {
+        Gtk.Requisition requisition;
+        menu.get_preferred_size (null, out requisition);
+
+        int x, y;
+        controller.position_manager.get_menu_position (HoveredItem, requisition, out x, out y);
+
+        Gdk.Gravity gravity;
+
+        switch (controller.position_manager.Position) {
+        case Gtk.PositionType.BOTTOM :
+          gravity = Gdk.Gravity.NORTH;
+          break;
+        case Gtk.PositionType.TOP :
+          gravity = Gdk.Gravity.SOUTH;
+          break;
+        case Gtk.PositionType.LEFT :
+          gravity = Gdk.Gravity.EAST;
+          break;
+        case Gtk.PositionType.RIGHT :
+          gravity = Gdk.Gravity.WEST;
+          break;
+        default :
+          gravity = Gdk.Gravity.NORTH;
+          break;
+        }
+
+        menu.popup_at_rect (
+                            get_screen ().get_root_window (),
+                            Gdk.Rectangle () {
+          x = x,
+          y = y,
+          width = 1,
+          height = 1,
+        },
+                            gravity,
+                            gravity,
+                            event
+        );
+      } else {
+        menu.popup_at_pointer (event);
+      }
 
       return true;
     }
@@ -708,22 +749,6 @@ namespace Plank {
       update_icon_regions ();
       controller.hover.hide ();
       controller.renderer.animated_draw ();
-    }
-
-    /**
-     * Positions the popup menu.
-     *
-     * @param menu the popup menu to show
-     * @param x the x location to show the menu
-     * @param y the y location to show the menu
-     * @param push_in if the menu should push into the screen
-     */
-    [CCode (instance_pos = -1)]
-    void position_menu (Gtk.Menu menu, ref int x, ref int y, out bool push_in) {
-      Gtk.Requisition requisition;
-      menu.get_preferred_size (null, out requisition);
-      controller.position_manager.get_menu_position (HoveredItem, requisition, out x, out y);
-      push_in = false;
     }
 
     void set_input_mask () {
