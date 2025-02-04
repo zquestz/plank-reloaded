@@ -17,15 +17,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "gtest/gtest.h"
 #include "plank.h"
+#include "gtest/gtest.h"
 
-int main (int argc, char** argv)
-{
-	::testing::GTEST_FLAG (throw_on_failure) = true;
+int main(int argc, char **argv) {
+  ::testing::GTEST_FLAG(throw_on_failure) = true;
 
-	// Important: Google Test must be initialized.
-	::testing::InitGoogleTest (&argc, argv);
+  // Important: Google Test must be initialized.
+  ::testing::InitGoogleTest(&argc, argv);
 
-	return RUN_ALL_TESTS ();
+  return RUN_ALL_TESTS();
 }

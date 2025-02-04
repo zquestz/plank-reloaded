@@ -27,16 +27,16 @@ namespace PlankTests
 		Test.add_func ("/Items/FileDockItem/basics", items_filedockitem);
 		Test.add_func ("/Items/ApplicationDockItem/basics", items_applicationdockitem);
 		Test.add_func ("/Items/TransientDockItem/basics", items_transientdockitem);
-		
+
 		Test.add_func ("/Items/DockItemProvider/basics", items_dockitemprovider);
 		Test.add_func ("/Items/DockItemProvider/signals", items_dockitemprovider_signals);
 	}
-	
+
 	void items_dockitem ()
 	{
 		DockItem item, item2;
 		File file = File.new_for_path (Config.DATA_DIR + "/test.desktop");
-		
+
 		item = new TestDockItem ();
 		item.Prefs.Launcher = file.get_uri ();
 		item.Text = "Plank";
@@ -46,7 +46,7 @@ namespace PlankTests
 		item.Progress = 0.42;
 		item.ProgressVisible = true;
 		item.Position = 1;
-		
+
 		assert (item.is_valid () == true);
 		assert (item.Text == "Plank");
 		assert (item.Icon == TEST_ICON);
@@ -55,7 +55,7 @@ namespace PlankTests
 		assert (item.Progress == 0.42);
 		assert (item.ProgressVisible == true);
 		assert (item.Position == 1);
-		
+
 		item2 = new TestDockItem ();
 		item.copy_values_to (item2);
 		assert (item.Count == item2.Count);
@@ -65,16 +65,16 @@ namespace PlankTests
 		assert (item.Progress == item2.Progress);
 		assert (item.ProgressVisible == item2.ProgressVisible);
 		assert (item.Text == item2.Text);
-		
+
 		assert (item.unique_id () != null);
 		assert (item.unique_id () != "");
 		assert (item.unique_id () != item2.unique_id ());
-		
+
 		var icon = item.get_surface_copy (111, 111, new Surface (1, 1));
 		assert (icon != null);
 		assert (icon.Width == 111);
 		assert (icon.Height == 111);
-		
+
 		var icon2 = item.get_surface_copy (111, 111, new Surface (1, 1));
 		assert (icon != null);
 		assert (icon2 != null);
@@ -82,30 +82,30 @@ namespace PlankTests
 		assert (icon.Width == icon2.Width);
 		assert (icon.Height == icon2.Height);
 	}
-	
+
 	void items_filedockitem ()
 	{
 		FileDockItem item;
-		
+
 		item = new FileDockItem.with_file (File.new_for_path (Config.DATA_DIR + "/test.desktop"));
-		
+
 		var icon = item.get_surface_copy (64, 64, new Surface (1, 1));
 		assert (icon != null);
 		assert (icon.Width == 64);
 		assert (icon.Height == 64);
 	}
-	
+
 	void items_applicationdockitem ()
 	{
 		ApplicationDockItem item;
 		File file = File.new_for_path (Config.DATA_DIR + "/test.desktop");
-		
+
 		item = new ApplicationDockItem ();
 		item.Prefs.Launcher = file.get_uri ();
-		
+
 		string icon, text;
 		ApplicationDockItem.parse_launcher (file.get_uri (), out icon, out text, null, null);
-		
+
 		assert (item.is_valid () == true);
 		assert (item.Icon != null && item.Icon != "");
 		assert (item.Text != null && item.Text != "");
@@ -113,17 +113,17 @@ namespace PlankTests
 		assert (item.Text == text);
 		assert (item.get_unity_application_uri () == "application://test.desktop");
 	}
-	
+
 	void items_transientdockitem ()
 	{
 		TransientDockItem item;
 		File file = File.new_for_path (Config.DATA_DIR + "/test.desktop");
-		
+
 		item = new TransientDockItem.with_launcher (file.get_uri ());
-		
+
 		string icon, text;
 		ApplicationDockItem.parse_launcher (file.get_uri (), out icon, out text, null, null);
-		
+
 		assert (item.is_valid () == true);
 		assert (item.Icon != null && item.Icon != "");
 		assert (item.Text != null && item.Text != "");
@@ -131,7 +131,7 @@ namespace PlankTests
 		assert (item.Text == text);
 		assert (item.get_unity_application_uri () == "application://test.desktop");
 	}
-	
+
 	DockItem create_testitem ()
 	{
 		var file = File.new_for_path (Config.DATA_DIR + "/test.desktop");
@@ -144,82 +144,82 @@ namespace PlankTests
 		item.Progress = 0.42;
 		item.ProgressVisible = true;
 		item.Position = 1;
-		
+
 		return item;
 	}
-	
+
 	void items_dockitemprovider ()
 	{
 		DockItemProvider provider;
-		
+
 		provider = new DockItemProvider ();
 		var item = create_testitem ();
-		
+
 		provider.add (item);
 		assert (item.ref_count > 1);
-		
+
 		provider.remove (item);
 		assert (item.ref_count == 1);
 	}
-	
+
 	DockItem? added_item;
 	DockItem? removed_item;
 	bool items_triggered;
-	
+
 	void items_dockitemprovider_signals ()
 	{
 		DockItemProvider provider;
 		int64 now;
-		
+
 		provider = new DockItemProvider ();
 		var item = create_testitem ();
-		
+
 		// add item
 		provider.elements_changed.connect (itemprovider_added_cb);
 		provider.add (item);
 		wait (EVENT_WAIT_MS);
 		now = GLib.get_monotonic_time ();
 		provider.elements_changed.disconnect (itemprovider_added_cb);
-		
+
 		assert (item == added_item);
 		added_item = null;
 		assert (item.ref_count > 1);
 		assert (item.AddTime - now < 100);
-		
+
 		// change item state
 		items_triggered = false;
 		provider.states_changed.connect (itemprovider_state_cb);
 		item.clicked (0, 0, 0);
 		wait (EVENT_WAIT_MS);
 		provider.states_changed.disconnect (itemprovider_state_cb);
-		
+
 		assert (items_triggered = true);
-		
+
 		// remove item
 		provider.elements_changed.connect (itemprovider_removed_cb);
 		provider.remove (item);
 		wait (EVENT_WAIT_MS);
 		now = GLib.get_monotonic_time ();
 		provider.elements_changed.disconnect (itemprovider_removed_cb);
-		
+
 		assert (item == removed_item);
 		removed_item = null;
 		assert (item.ref_count == 1);
 		assert (item.RemoveTime - now < 100);
 	}
-	
+
 	void itemprovider_added_cb (Gee.List<DockItem> added, Gee.List<DockItem> removed)
 	{
 		assert (added.size > 0);
 		added_item = added.first ();
 	}
-	
+
 	void itemprovider_removed_cb (Gee.List<DockItem> added, Gee.List<DockItem> removed)
 	{
 		assert (removed.size > 0);
 		removed_item = removed.first ();
 	}
-	
+
 	void itemprovider_state_cb ()
 	{
 		items_triggered = true;

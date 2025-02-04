@@ -26,17 +26,17 @@ namespace PlankTests
 	public const uint IO_WAIT_MS = 1500;
 	public const uint EVENT_WAIT_MS = 100;
 	public const uint X_WAIT_MS = 200;
-	
+
 	public static int main (string[] args)
 	{
 		Test.init (ref args);
-		
+
 		Gtk.init (ref args);
-		
+
 		Log.set_always_fatal (LogLevelFlags.LEVEL_ERROR | LogLevelFlags.LEVEL_CRITICAL);
-		
+
 		Paths.initialize ("test", Config.DATA_DIR);
-		
+
 		// static tests
 		register_drawing_tests ();
 		register_items_tests ();
@@ -48,22 +48,22 @@ namespace PlankTests
 		//Logger.initialize ("test");
 		//Paths.ensure_directory_exists (Paths.AppConfigFolder.get_child (TEST_DOCK_NAME));
 		//WindowControl.initialize ();
-		
+
 		// runtime tests
 		//register_controller_tests ();
-		
+
 		return Test.run ();
 	}
-	
+
 	void wait (uint milliseconds)
 	{
 		var main_loop = new MainLoop ();
-		
+
 		Gdk.threads_add_timeout (milliseconds, () => {
 			main_loop.quit ();
 			return false;
 		});
-		
+
 		main_loop.run ();
 	}
 }
