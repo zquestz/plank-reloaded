@@ -186,7 +186,6 @@ namespace Plank {
 
   const AnimationModeMapping[] ANIMATION_MODES = {
     { AnimationMode.CUSTOM, null, "custom" },
-
     { AnimationMode.LINEAR, linear, "linear" },
     { AnimationMode.EASE_IN_QUAD, ease_in_quad, "easeInQuad" },
     { AnimationMode.EASE_OUT_QUAD, ease_out_quad, "easeOutQuad" },
@@ -218,7 +217,6 @@ namespace Plank {
     { AnimationMode.EASE_IN_BOUNCE, ease_in_bounce, "easeInBounce" },
     { AnimationMode.EASE_OUT_BOUNCE, ease_out_bounce, "easeOutBounce" },
     { AnimationMode.EASE_IN_OUT_BOUNCE, ease_in_out_bounce, "easeInOutBounce" },
-
     { AnimationMode.LAST, null, "sentinel" }
   };
 
@@ -237,6 +235,7 @@ namespace Plank {
   ensures (result >= -1.0 && result <= 2.0)
   {
     AnimationModeMapping* animation = &(ANIMATION_MODES[mode]);
+    Logger.verbose ("Easing for mode %s", animation.name);
 
     assert (animation.mode == mode);
     assert (animation.func != null);

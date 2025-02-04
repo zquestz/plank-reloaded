@@ -432,7 +432,7 @@ namespace Plank
 			layout.set_ellipsize (Pango.EllipsizeMode.NONE);
 			
 			unowned Gtk.StyleContext style_context = get_style_context ();
-			unowned Pango.FontDescription font_description = style_context.get_font (style_context.get_state ());
+			var font_description = style_context.get_property("font", style_context.get_state()) as Pango.FontDescription;
 			font_description.set_absolute_size ((int) (height * Pango.SCALE));
 			font_description.set_weight (Pango.Weight.BOLD);
 			layout.set_font_description (font_description);

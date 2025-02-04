@@ -29,7 +29,7 @@ namespace Plank
 		"CRITICAL",
 		"ERROR",
 	};
-	
+
 	/**
 	 * Controls what messages show in the console log.
 	 */
@@ -64,7 +64,7 @@ namespace Plank
 		 */
 		ERROR,
 	}
-	
+
 	enum ConsoleColor
 	{
 		BLACK,
@@ -76,7 +76,7 @@ namespace Plank
 		CYAN,
 		WHITE,
 	}
-	
+
 	/**
 	 * A logging class to display all console messages in a nice colored format.
 	 */
@@ -86,15 +86,15 @@ namespace Plank
 		 * The current log level.  Controls what log messages actually appear on the console.
 		 */
 		public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
-		
+
 		static string app_domain;
 		static Mutex write_mutex;
 		static Regex message_regex;
-		
+
 		Logger ()
 		{
 		}
-		
+
 		/**
 		 * Initializes the logger for the application.
 		 *
@@ -103,12 +103,12 @@ namespace Plank
 		public static void initialize (string app_name)
 		{
 			app_domain = app_name;
-			
+
 			message_regex = /[(]?.*?([^\/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)/;
-			
+
 			Log.set_default_handler ((GLib.LogFunc) glib_log_func);
 		}
-		
+
 		static string format_message (string msg)
 		{
 			if (message_regex != null && message_regex.match (msg)) {
@@ -117,7 +117,7 @@ namespace Plank
 			}
 			return msg;
 		}
-		
+
 		/**
 		 * Displays a log message using libnotify.  Also displays on the console.
 		 *
@@ -129,7 +129,7 @@ namespace Plank
 			// TODO display the message using libnotify
 			write (LogLevel.NOTIFY, format_message (msg));
 		}
-		
+
 		/**
 		 * Displays a verbose log message to the console.
 		 *
@@ -139,29 +139,29 @@ namespace Plank
 		{
 			write (LogLevel.VERBOSE, format_message (msg.vprintf (va_list ())));
 		}
-		
+
 		static string get_time ()
 		{
 			var now = new DateTime.now_local ();
 			return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
 		}
-		
+
 		static void write (LogLevel level, owned string msg)
 		{
 			if (level < DisplayLevel)
 				return;
 
 			write_mutex.lock ();
-			
+
 			set_color_for_level (level);
 			stdout.printf ("[%s %s]", LOG_LEVEL_TO_STRING[level], get_time ());
-			
+
 			reset_color ();
 			stdout.printf (" %s\n", msg);
-			
+
 			write_mutex.unlock ();
 		}
-		
+
 		static void set_color_for_level (LogLevel level)
 		{
 			switch (level) {
@@ -190,30 +190,30 @@ namespace Plank
 				break;
 			}
 		}
-		
+
 		static void reset_color ()
 		{
 			stdout.printf ("\x001b[0m");
 		}
-		
+
 		static void set_foreground (ConsoleColor color)
 		{
 			set_color (color, true);
 		}
-		
+
 		static void set_background (ConsoleColor color)
 		{
 			set_color (color, false);
 		}
-		
+
 		static void set_color (ConsoleColor color, bool isForeground)
 		{
-			var color_code = color + 30 + 60;
+			var color_code = (int)color + 30 + 60;
 			if (!isForeground)
 				color_code += 10;
 			stdout.printf ("\x001b[%dm", color_code);
 		}
-		
+
 		static void glib_log_func (string? d, LogLevelFlags flags, string msg)
 		{
 			string domain;
@@ -221,18 +221,18 @@ namespace Plank
 				domain = "[%s] ".printf (d);
 			else
 				domain = "";
-			
+
 			string message;
 			if (msg.contains ("\n") || msg.contains ("\r"))
 				message = "%s%s".printf (domain, msg.replace ("\n", "").replace ("\r", ""));
 			else
 				message = "%s%s".printf (domain, msg);
-			
+
 			LogLevel level;
-			
+
 			// Strip internal flags to make it possible to use a switch-statement
 			flags = (flags & LogLevelFlags.LEVEL_MASK);
-			
+
 			switch (flags) {
 			case LogLevelFlags.LEVEL_ERROR:
 				level = LogLevel.ERROR;
@@ -252,7 +252,7 @@ namespace Plank
 				level = LogLevel.WARN;
 				break;
 			}
-			
+
 			write (level, format_message (message));
 		}
 	}

@@ -42,8 +42,8 @@ namespace Plank {
 
     static construct
     {
-      Posix.signal (Posix.SIGINT, sig_handler);
-      Posix.signal (Posix.SIGTERM, sig_handler);
+      Posix.signal (Posix.Signal.INT, sig_handler);
+      Posix.signal (Posix.Signal.TERM, sig_handler);
     }
 
     /**
