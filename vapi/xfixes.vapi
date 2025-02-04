@@ -37,4 +37,3 @@ namespace XFixes {
 	[CCode (cname = "XFixesDestroyPointerBarrier")]
 	public static void destroy_pointer_barrier (X.Display display, XFixes.PointerBarrier barrier);
 }
-
