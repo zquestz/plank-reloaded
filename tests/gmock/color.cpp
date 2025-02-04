@@ -19,7 +19,6 @@
 
 #include "plank.h"
 #include <gtest/gtest.h>
-#include <stdio.h>
 
 TEST(color, set_hsv_zero_1) {
   PlankColor *c = new PlankColor();
