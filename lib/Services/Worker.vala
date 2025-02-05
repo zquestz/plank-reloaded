@@ -26,11 +26,11 @@ namespace Plank {
 
   public delegate G TaskFunc<G> () throws Error;
 
-  [Compact]
-  class Task {
-    // Pretty sure this is a valac bug, as delegates are all owned.
-    public ThreadFunc<void*> func;
-    public TaskPriority priority;
+  class Task : Object {
+    // Note: The following delegate warning can be safely ignored
+    // as this implementation is known to work correctly
+    private ThreadFunc<void*> func;
+    public TaskPriority priority { get; private set; }
 
     public Task (owned ThreadFunc<void*> _func, TaskPriority _priority) {
       func = (owned) _func;
