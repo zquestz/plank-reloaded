@@ -134,6 +134,7 @@ namespace Docky {
           switch (position) {
           default:
           case Gtk.PositionType.BOTTOM:
+            adjustment += calendar.get_natural_height();
             calendar.move(x, y - adjustment);
             break;
           case Gtk.PositionType.TOP:
