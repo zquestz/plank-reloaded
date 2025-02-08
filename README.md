@@ -63,6 +63,30 @@ ninja -C build
 sudo meson install -C build
 ```
 
+### Fedora
+
+Testing is still ongoing for Wayland based operating systems like Fedora. Bugs will be encountered. Please report them, and help us fix them.
+
+```bash
+# To start Plank you will need to set the following environment variables:
+GDK_BACKEND=x11
+XDG_SESSION_TYPE=x11
+
+# Install required dependencies
+sudo dnf install git meson valac clang cmake libgnome-devel libxml2-devel gnome-menus-devel libgee libgee-devel libdbusmenu-gtk3-devel libdbusmenu-gtk3 libwnck3 libwnck3-devel bamf bamf-devel bamf-daemon
+
+# Clone the repository
+git clone https://github.com/zquestz/plank-reloaded.git
+
+# Enter the directory
+cd plank-reloaded
+
+# Build and install
+meson setup --prefix=/usr build
+ninja -C build
+sudo meson install -C build
+```
+
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
 
 ## Reporting Bugs
