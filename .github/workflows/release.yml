@@ -41,6 +41,7 @@ jobs:
         cp -r usr dist/plank-reloaded/
         cd dist
         tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
+        cd ..
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
