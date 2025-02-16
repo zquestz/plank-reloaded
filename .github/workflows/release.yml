@@ -41,7 +41,6 @@ jobs:
         cp -r usr dist/plank-reloaded/
         cd dist
         tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
-        cd ..
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
@@ -59,10 +58,9 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
 
-    - name: Upload Release Assets
+    - name: Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        files: plank-reloaded-ubuntu.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        for artifact in plank-reloaded-*/plank-reloaded-*.tar.gz; do
-          gh release upload ${{ github.event.release.tag_name }} "$artifact" --clobber
-        done
