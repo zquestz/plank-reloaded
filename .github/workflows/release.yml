@@ -1,0 +1,67 @@
+name: Build and Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-latest
+    container: ubuntu:latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies (Ubuntu)
+      run: |
+        apt-get update
+        DEBIAN_FRONTEND=noninteractive apt-get install -y \
+          git cmake gettext desktop-file-utils libdbusmenu-glib-dev libdbusmenu-gtk3-dev libgtk-4-dev \
+          meson \
+          ninja-build \
+          valac \
+          libgnome-menu-3-dev \
+          libxml2-utils \
+          libgtk-3-dev \
+          libgee-0.8-dev \
+          libbamf3-dev \
+          libwnck-3-dev \
+          bamfdaemon
+
+    - name: Build
+      run: |
+        meson setup --prefix="$(pwd)/usr" build
+        ninja -C build
+        meson install -C build
+
+    - name: Package binary and files
+      run: |
+        mkdir -p dist/plank-reloaded
+        cp usr dist/plank-reloaded/
+        cd dist
+        tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: plank-reloaded-ubuntu
+        path: dist/plank-reloaded-ubuntu.tar.gz
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+
+    - name: Display structure of downloaded files
+      run: ls -R
+
+    - name: Upload Release Assets
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        for artifact in plank-reloaded-*/plank-reloaded-*.tar.gz; do
+          gh release upload ${{ github.event.release.tag_name }} "$artifact" --clobber
+        done
