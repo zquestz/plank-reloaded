@@ -42,7 +42,7 @@ jobs:
         cd dist
         tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
         # Move the tar file to a known location
-        mv ../plank-reloaded-ubuntu.tar.gz ${{ github.workspace }}/
+        mv plank-reloaded-ubuntu.tar.gz ${{ github.workspace }}/
 
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
