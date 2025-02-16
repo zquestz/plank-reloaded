@@ -38,7 +38,7 @@ jobs:
     - name: Package binary and files
       run: |
         mkdir -p dist/plank-reloaded
-        cp usr dist/plank-reloaded/
+        cp -r usr dist/plank-reloaded/
         cd dist
         tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
 
