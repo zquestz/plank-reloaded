@@ -1,0 +1,17 @@
+Package: plank
+Version: 0.11.100
+Priority: optional
+Section: utils
+Maintainer: zquestz (https://github.com/zquestz)
+Architecture: amd64
+Depends: bamfdaemon, libbamf3-2t64, libgee-0.8-2, libgnome-menu-3-0
+Homepage: https://github.com/zquestz/plank-reloaded
+Tag: uitoolkit::gtk
+APT-Manual-Installed: yes
+Description: Elegant, simple, clean dock
+ Plank is a dock enabling you to start applications and manage your windows.
+ .
+ Plank is meant to be the simplest dock on the planet. The goal is to
+ provide just what a dock needs and absolutely nothing more. It is,
+ however, a library which can be extended to create other dock programs
+ with more advanced features.
