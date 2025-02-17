@@ -40,6 +40,7 @@ jobs:
         mkdir -p dist/plank-reloaded
         cp -r usr dist/plank-reloaded/
         cp -r DEBIAN dist/plank-reloaded/
+        cd dist
         dpkg -b plank-reloaded
 
     - name: Upload Release Asset
