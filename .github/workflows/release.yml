@@ -13,11 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies (Ubuntu)
+    - name: Install dependencies
       run: |
         apt-get update
         DEBIAN_FRONTEND=noninteractive apt-get install -y \
-          git cmake gettext desktop-file-utils libdbusmenu-glib-dev libdbusmenu-gtk3-dev libgtk-4-dev \
+          git dpkg cmake gettext desktop-file-utils libdbusmenu-glib-dev libdbusmenu-gtk3-dev libgtk-4-dev \
           meson \
           ninja-build \
           valac \
@@ -39,13 +39,13 @@ jobs:
       run: |
         mkdir -p dist/plank-reloaded
         cp -r usr dist/plank-reloaded/
-        cd dist
-        tar czf plank-reloaded-ubuntu.tar.gz plank-reloaded/
+        cp -r DEBIAN dist/plank-reloaded/
+        dpkg -b plank-reloaded
 
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: dist/plank-reloaded-ubuntu.tar.gz
+        files: dist/plank-reloaded.deb
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
