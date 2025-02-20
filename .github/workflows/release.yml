@@ -31,9 +31,10 @@ jobs:
 
     - name: Build
       run: |
-        meson setup --prefix="$(pwd)/usr" build
+        meson setup --prefix=/usr build
+        meson configure build -D enable-apport=false
         ninja -C build
-        meson install -C build
+        meson install --destdir="$(pwd)/usr" -C build
 
     - name: Package binary and files
       run: |
