@@ -291,18 +291,12 @@ install_data(
 )
 
 # Dist script to include additional files
-# Dist script to include additional files
 meson.add_dist_script(
   'sh',
   '-c', '''
   cp @0@/COPYING.LGPL2.1 @1@/
   cp @0@/COPYRIGHT @1@/
   cp @0@/HACKING.md @1@/
-  cp -r @0@/build-aux @1@/
-  mkdir -p @1@/data/ui
-  cp @0@/data/application-default-icon.svg @1@/data/
-  cp @0@/data/poof.svg @1@/data/
-  cp @0@/data/ui/preferences.ui @1@/data/ui/
   cp @0@/README.md @1@/
 '''.format(meson.project_source_root(), meson.project_build_root() / 'meson-dist'),
 )
