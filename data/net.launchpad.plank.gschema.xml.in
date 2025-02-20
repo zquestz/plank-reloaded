@@ -81,6 +81,11 @@
 			<summary>Lock dock items</summary>
 			<description>If true, prevent drag'n'drop actions and lock dock items in place.</description>
 		</key>
+		<key name="anchor-docklets" type="b">
+			<default>true</default>
+			<summary>Anchor docklets to edge of the dock</summary>
+			<description>If true, anchor docklets to the edge of the dock.</description>
+		</key>
 		<key name="monitor" type="s">
 			<default>''</default>
 			<summary>The name of the monitor for the dock to show on</summary>

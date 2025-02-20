@@ -73,6 +73,8 @@ namespace Plank
 		[GtkChild]
 		unowned Gtk.Switch sw_lock_items;
 		[GtkChild]
+		unowned Gtk.Switch sw_anchor_docklets;
+		[GtkChild]
 		unowned Gtk.Switch sw_pressure_reveal;
 		[GtkChild]
 		unowned Gtk.Switch sw_zoom_enabled;
@@ -139,6 +141,9 @@ namespace Plank
 				break;
 			case "LockItems":
 				sw_lock_items.set_active (prefs.LockItems);
+				break;
+			case "AnchorDocklets":
+				sw_anchor_docklets.set_active (prefs.AnchorDocklets);
 				break;
 			case "Monitor":
 				var pos = 0;
@@ -259,6 +264,11 @@ namespace Plank
 		{
 			prefs.LockItems = ((Gtk.Switch) widget).get_active ();
 		}
+
+		void anchor_docklets_toggled (GLib.Object widget, ParamSpec param)
+		{
+			prefs.AnchorDocklets = ((Gtk.Switch) widget).get_active ();
+		}
 		
 		void pressure_reveal_toggled (GLib.Object widget, ParamSpec param)
 		{
@@ -324,6 +334,7 @@ namespace Plank
 			sw_workspace_only.notify["active"].connect (workspace_only_toggled);
 			sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
 			sw_lock_items.notify["active"].connect (lock_items_toggled);
+			sw_anchor_docklets.notify["active"].connect (anchor_docklets_toggled);
 			sw_pressure_reveal.notify["active"].connect (pressure_reveal_toggled);
 			sw_zoom_enabled.notify["active"].connect (zoom_enabled_toggled);
 			cb_alignment.changed.connect (alignment_changed);
@@ -396,6 +407,7 @@ namespace Plank
 			sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
 			sw_show_unpinned.set_active (!prefs.PinnedOnly);
 			sw_lock_items.set_active (prefs.LockItems);
+			sw_anchor_docklets.set_active (prefs.AnchorDocklets);
 			sw_pressure_reveal.set_active (prefs.PressureReveal);
 			sw_zoom_enabled.set_active (prefs.ZoomEnabled);
 			cb_alignment.active_id = ((int) prefs.Alignment).to_string ();

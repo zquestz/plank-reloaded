@@ -36,6 +36,7 @@ namespace Plank
 		public DefaultApplicationDockItemProvider (DockPreferences prefs, File launchers_dir)
 		{
 			Object (Prefs : prefs, LaunchersDir : launchers_dir);
+			Text = "DefaultApplicationDockItemProvider";
 		}
 		
 		construct

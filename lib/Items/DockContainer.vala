@@ -347,8 +347,7 @@ namespace Plank
 				item.reset_buffers ();
 		}
 		
-		void add_without_signaling (DockElement element)
-		{
+		void add_without_signaling (DockElement element) {
 			var add_time = GLib.get_monotonic_time ();
 
 			unowned DockContainer? container = (element as DockContainer);
@@ -357,9 +356,34 @@ namespace Plank
 				foreach (var e in container.Elements)
 					e.AddTime = add_time;
 			}
-			
-			internal_elements.add (element);
-			
+
+			unowned DockItem? item = (element as DockItem);
+			unowned DefaultApplicationDockItemProvider? provider = (this as DefaultApplicationDockItemProvider);
+
+			// If this is a regular item (not a docklet) and we have AnchorDocklets enabled
+			if (item != null && !(item is DockletItem) && provider != null && provider.Prefs.AnchorDocklets) {
+				// Only move non-pinned items before docklets
+				if (item is TransientDockItem) {
+					// Find the last non-docklet position from the end
+					int insert_pos = internal_elements.size;
+					for (int i = internal_elements.size - 1; i >= 0; i--) {
+						if (internal_elements[i] is DockletItem) {
+							insert_pos = i;
+						} else {
+							break;
+						}
+					}
+					debug ("Inserting unpinned item %s at position %d (before docklets)", element.Text, insert_pos);
+					internal_elements.insert (insert_pos, element);
+				} else {
+					debug ("Adding pinned item %s at end of dock", element.Text);
+					internal_elements.add (element);
+				}
+			} else {
+				debug ("Adding %s at end of dock", element.Text);
+				internal_elements.add (element);
+			}
+
 			element.Container = this;
 			element.AddTime = add_time;
 			element.RemoveTime = 0;

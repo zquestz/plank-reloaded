@@ -68,6 +68,9 @@ namespace Plank
 		
 		[Description(nick = "lock-items", blurb = "Whether to prevent drag'n'drop actions and lock items on the dock.")]
 		public bool LockItems { get; set; }
+
+		[Description(nick = "anchor-docklets", blurb = "Whether to anchor docklets to the edge of the dock.")]
+		public bool AnchorDocklets { get; set; }
 		
 		[Description(nick = "pressure-reveal", blurb = "Whether to use pressure-based revealing of the dock if the support is available.")]
 		public bool PressureReveal { get; set; }
