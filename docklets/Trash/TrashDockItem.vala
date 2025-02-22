@@ -27,8 +27,6 @@ namespace Docky {
     private const string TRASH_URI = "trash://";
     private const string NEMO_SCHEMA = "org.nemo.preferences";
     private const string NEMO_PATH = "/org/nemo/preferences/";
-    private const string NAUTILUS_SCHEMA = "org.gnome.nautilus.preferences";
-    private const string NAUTILUS_PATH = "/org/gnome/nautilus/preferences/";
 
     private const string STANDARD_ATTRIBUTES =
       FileAttribute.STANDARD_TYPE + ","
@@ -41,7 +39,6 @@ namespace Docky {
 
     private FileMonitor? trash_monitor;
     private File owned_file;
-    private bool confirm_trash_delete = true;
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
     {
@@ -51,7 +48,6 @@ namespace Docky {
     construct
     {
       initialize_trash();
-      initialize_settings();
     }
 
     ~TrashDockItem() {
@@ -69,25 +65,20 @@ namespace Docky {
       return new GLib.Settings.full(schema, null, path);
     }
 
+    private bool confirm_trash_delete() {
+      if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
+        var settings = create_settings(NEMO_SCHEMA, NEMO_PATH);
+        if (settings != null) {
+          return settings.get_boolean("confirm-trash");
+        }
+      }
+      return true;
+    }
+
     private void initialize_trash() {
       owned_file = File.new_for_uri(TRASH_URI);
       setup_monitor();
       update();
-    }
-
-    private void initialize_settings() {
-      if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
-        load_settings(NEMO_SCHEMA, NEMO_PATH);
-      }
-    }
-
-    private void load_settings(string schema, string path) {
-      var settings = create_settings(schema, path);
-      if (settings != null) {
-        confirm_trash_delete = settings.get_boolean("confirm-trash");
-      } else {
-        confirm_trash_delete = true;
-      }
     }
 
     private void setup_monitor() {
@@ -336,7 +327,7 @@ namespace Docky {
     }
 
     private void empty_trash_internal() {
-      if (!confirm_trash_delete) {
+      if (!confirm_trash_delete()) {
         perform_empty_trash();
         return;
       }
