@@ -1,0 +1,16 @@
+Package: plank-reloaded
+Version: 0.11.100
+Priority: optional
+Section: utils
+Maintainer: zquestz (https://github.com/zquestz)
+Architecture: amd64
+Depends: bamfdaemon, libbamf3-2t64, libgee-0.8-2, libgnome-menu-3-0
+Homepage: https://github.com/zquestz/plank-reloaded
+Tag: uitoolkit::gtk
+APT-Manual-Installed: yes
+Description: Elegant, simple, clean dock
+ Plank Reloaded is a fork of the original Plank project.
+ .
+ focusing on Cinnamon desktop compatibility and modernized features. 
+ Like its predecessor, it aims to be the simplest dock on the planet, 
+ providing just what a dock needs and absolutely nothing more.
