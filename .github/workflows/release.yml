@@ -44,7 +44,7 @@ jobs:
 
       - name: Build
         run: |
-          meson setup --prefix=/usr build
+          meson setup --prefix=/usr -Dproduction_release=true build
           meson configure build -D enable-apport=false
           ninja -C build
           meson install --destdir="$(pwd)/usr" -C build

@@ -34,8 +34,8 @@ lt_age = '0'
 lib_version = '@0@.@1@.@2@'.format(lt_current, lt_revision, lt_age)
 lib_soversion = lt_current
 
-is_release = false
-if not is_release
+production_release = get_option('production_release')
+if not production_release
   git_version = run_command('git', 'describe', '--tags', check: false).stdout().strip()
   if git_version != ''
     version_parts = git_version.split('-')
@@ -102,7 +102,7 @@ conf.set_quoted('PKGLIBDIR', pkglib_dir)
 conf.set_quoted('DOCKLETSDIR', docklets_dir)
 conf.set_quoted('RELEASE_NAME', 'Still stupidly simple.')
 conf.set_quoted('VERSION', plank_version)
-conf.set_quoted('VERSION_INFO', (is_release ? 'Release' : 'Development'))
+conf.set_quoted('VERSION_INFO', (production_release ? 'Release' : 'Development'))
 conf.set_quoted('BUILD_VERSION', plank_version)
 conf.set('VERSION_MAJOR', version_array[0])
 conf.set('VERSION_MINOR', version_array[1])

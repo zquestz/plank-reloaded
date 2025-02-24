@@ -48,3 +48,10 @@ option(
   value: false,
   description: 'Enable Google Mock testing framework',
 )
+
+option(
+  'production_release',
+  type: 'boolean',
+  value: false,
+  description: 'Build in production release mode'
+)
