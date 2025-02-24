@@ -127,6 +127,7 @@ plank_lib = shared_library(
   install_dir: [true, join_paths(get_option('includedir'), 'plank'), true],
   link_args: ['-Wl,--version-script=' + meson.current_build_dir() / 'libplank.symbols'],
   link_depends: [symbols_file],
+  install_mode: ['rw-r--r--', 'root', 'root'],
   soversion: lib_soversion,
   version: lib_version,
   vala_vapi: 'plank.vapi',

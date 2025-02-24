@@ -1,17 +1,14 @@
 Package: plank-reloaded
-Version: 0.11.101
+Version: 0.11.101-1
 Priority: optional
 Section: x11
 Maintainer: Josh Ellithorpe <quest@mac.com>
 Architecture: amd64
-Depends: bamfdaemon, libbamf3-2t64, libgee-0.8-2, libgnome-menu-3-0
+Depends: bamfdaemon, libbamf3-2t64, libgee-0.8-2, libgnome-menu-3-0, libwnck-3-0, libc6
 Homepage: https://github.com/zquestz/plank-reloaded
-Vcs-Git: https://github.com/zquestz/plank-reloaded.git
-Vcs-Browser: https://github.com/zquestz/plank-reloaded
-Standards-Version: 4.6.2
-Rules-Requires-Root: no
-Description: Elegant and simple dock
- Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon desktop compatibility
- and modernized features. Like its predecessor, it aims to be the simplest dock on the planet,
- providing just what a dock needs and absolutely nothing more. It remains a library which can be
- extended to create other dock programs with more advanced features.
+Description: Elegant and simple dock.
+ Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon
+ desktop compatibility and modernized features. Like its predecessor, it aims to
+ be the simplest dock on the planet, providing just what a dock needs and
+ absolutely nothing more. It remains a library which can be extended to create
+ other dock programs with more advanced features.

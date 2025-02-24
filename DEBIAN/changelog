@@ -1,0 +1,13 @@
+plank-reloaded (0.11.101-1) unstable; urgency=medium
+
+  * Initial release of Plank Reloaded
+  * Enhanced Cinnamon desktop environment compatibility
+  * Updated Battery Docklet with modern UPower integration
+  * Fixed Clock Docklet settings and added Calendar
+  * Updated build system to meson
+  * Show directories instead of custom grouped graphic
+  * AnchorDocklets allows Docklets to be anchored to the end of the dock
+  * Fixed Restrict to Workspace so applications reliably show up
+  * General code cleanup and bug fixes
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 23 Feb 2025 16:54:00 -1000

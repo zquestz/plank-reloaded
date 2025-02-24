@@ -30,7 +30,6 @@ jobs:
             desktop-file-utils \
             libdbusmenu-glib-dev \
             libdbusmenu-gtk3-dev \
-            libgtk-4-dev \
             meson \
             ninja-build \
             valac \
@@ -55,6 +54,13 @@ jobs:
           cp -r release_build/* dist/plank-reloaded/
           cp -r DEBIAN dist/plank-reloaded/
           cd dist
+          mv plank-reloaded/DEBIAN/changelog plank-reloaded/usr/share/doc/plank-reloaded/changelog.Debian
+          mv plank-reloaded/DEBIAN/copyright plank-reloaded/usr/share/doc/plank-reloaded/
+          gzip -9n plank-reloaded/usr/share/doc/plank-reloaded/changelog.Debian
+          gzip -9n plank-reloaded/usr/share/man/man1/plank.1
+          strip --strip-unneeded plank-reloaded/usr/bin/plank
+          strip --strip-unneeded plank-reloaded/usr/lib/x86_64-linux-gnu/libplank.so.1.0.0
+          find plank-reloaded/usr/lib/x86_64-linux-gnu/plank/docklets/ -type f -name "*.so" -exec strip --strip-unneeded {} \;
           dpkg-deb --build plank-reloaded
 
       - name: Run Lintian
