@@ -44,6 +44,8 @@ yay -S plank-reloaded-git
 
 ### Linux Mint
 
+You can download the latest release .deb package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
+
 ```bash
 # Completely uninstall plank
 sudo apt-get remove plank libplank-common libplank1
