@@ -4,10 +4,7 @@ Priority: optional
 Section: x11
 Maintainer: Josh Ellithorpe <quest@mac.com>
 Architecture: amd64
-Depends: bamfdaemon,
-         libbamf3-2t64,
-         libgee-0.8-2,
-         libgnome-menu-3-0
+Depends: bamfdaemon, libbamf3-2t64, libgee-0.8-2, libgnome-menu-3-0
 Homepage: https://github.com/zquestz/plank-reloaded
 Vcs-Git: https://github.com/zquestz/plank-reloaded.git
 Vcs-Browser: https://github.com/zquestz/plank-reloaded

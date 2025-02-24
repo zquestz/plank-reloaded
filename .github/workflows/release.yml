@@ -47,12 +47,12 @@ jobs:
           meson setup --prefix=/usr -Dproduction_release=true build
           meson configure build -D enable-apport=false
           ninja -C build
-          meson install --destdir="$(pwd)/usr" -C build
+          meson install --destdir="$(pwd)/release_build" -C build
 
       - name: Package
         run: |
           mkdir -p dist/plank-reloaded
-          cp -r usr dist/plank-reloaded/
+          cp -r release_build/* dist/plank-reloaded/
           cp -r DEBIAN dist/plank-reloaded/
           cd dist
           dpkg-deb --build plank-reloaded
