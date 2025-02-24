@@ -42,7 +42,7 @@ extended to create other dock programs with more advanced features.
 yay -S plank-reloaded-git
 ```
 
-### Linux Mint
+### Linux Mint / Ubuntu (Noble Numbat)
 
 You can download the latest release .deb package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
 
