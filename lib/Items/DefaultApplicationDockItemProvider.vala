@@ -100,6 +100,14 @@ namespace Plank {
 
       if (Prefs.PinnedOnly)
         return;
+      
+      // Make sure plank never shows up if we don't want the dock item.
+      if (!Prefs.ShowDockItem) {
+        string? desktop_file = app.get_desktop_file();
+        if (desktop_file != null && desktop_file.contains("plank.desktop")) {
+            return;
+        }
+      }
 
       var new_item = new TransientDockItem.with_application (app);
 
