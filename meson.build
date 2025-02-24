@@ -3,7 +3,7 @@ project(
   'c',
   'cpp',
   'vala',
-  version: '0.11.100',
+  version: '0.11.101',
   meson_version: '>= 0.59.0',
   license: 'GPL3',
 )

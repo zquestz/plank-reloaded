@@ -2,6 +2,18 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.101 "Reloaded" (2025-02-23)
+
+- Updated Confirm Trash dialog handling.
+- Improve reliability of Applications Docklet.
+- Update directory handling to just show directory instead of custom grouped graphic.
+- Moved to Meson build system.
+- Fix all deprecation warnings.
+- Slight fix to Calendar positioning in Clock Docklet.
+- Added more icon possibilities for Docklets in the preferences UI.
+- Added AnchorDocklets setting to allow Docklets to be anchored to the end of the dock.
+- Fixed Restrict to Workspace so applications reliably show up.
+
 ## 0.11.100 "Reloaded" (2025-01-18)
 
 - Enhanced Cinnamon desktop environment compatibility. Now all Docklets are fully functional.
