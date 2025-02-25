@@ -130,6 +130,9 @@ namespace Docky {
       item.show ();
 
       item.activate.connect (() => {
+        foreach (var child in submenu.get_children ()) {
+          submenu.remove (child);
+        }
         add_menu_items (submenu, category);
       });
 
