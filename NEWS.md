@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.102 "Reloaded" (2025-02-25)
+
+- Fix duplicate applications in the Applications Docklet.
+- Remove explicit libbamf3-2t64 dependency in deb package.
+
 ## 0.11.101 "Reloaded" (2025-02-23)
 
 - Updated Confirm Trash dialog handling.

@@ -1,3 +1,10 @@
+plank-reloaded (0.11.102-1) unstable; urgency=medium
+
+  * Fix duplicate applications in the Applications Docklet.
+  * Remove explicit libbamf3-2t64 dependency in deb package.
+
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 25 Feb 2025 10:10:01 -1000
+
 plank-reloaded (0.11.101-1) unstable; urgency=medium
 
   * Initial release of Plank Reloaded
