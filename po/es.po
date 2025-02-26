@@ -8,25 +8,24 @@ msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2024-12-22 17:17-1000\n"
-"PO-Revision-Date: 2017-03-20 04:07+0000\n"
+"PO-Revision-Date: 2025-02-26 11:29-0300\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:3
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Recargado"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:5
-#, fuzzy
-#| msgid "Stupidly simple."
 msgid "Still stupidly simple."
-msgstr "Estúpidamente simple."
+msgstr "Todavía estúpidamente simple."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -35,36 +34,43 @@ msgid ""
 "to be the simplest dock on the planet, providing just what a dock needs and "
 "absolutely nothing more."
 msgstr ""
+"Plank Reloaded es una bifurcación del proyecto Plank original, centrándose "
+"en la compatibilidad con el escritorio Cinnamon y características "
+"modernizadas. Al igual que su predecesor, pretende ser el dock más sencillo "
+"del planeta, proporcionando justo lo que un dock necesita y absolutamente "
+"nada más."
 
 #: data/plank.appdata.xml.in:14
 msgid ""
 "It remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Sigue siendo una biblioteca que puede ampliarse para crear otros programas "
+"dock con funciones más avanzadas."
 
 #: data/plank.appdata.xml.in:19
 msgid "dock"
-msgstr ""
+msgstr "dock"
 
 #: data/plank.appdata.xml.in:20
 msgid "launch"
-msgstr ""
+msgstr "lanzar"
 
 #: data/plank.appdata.xml.in:21
 msgid "panel"
-msgstr ""
+msgstr "panel"
 
 #: data/plank.appdata.xml.in:22
 msgid "start"
-msgstr "inicio"
+msgstr "iniciar"
 
 #: data/plank.appdata.xml.in:66
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Los desarrolladores de Plank Recargado"
 
 #: data/plank.desktop.in:4
 msgid "Dock"
-msgstr ""
+msgstr "Dock"
 
 #: data/ui/preferences.ui:82
 msgid "Theme:"
@@ -205,123 +211,123 @@ msgstr "Agregados"
 #: docklets/Applications/ApplicationsDockItem.vala:41
 #: docklets/Applications/ApplicationsDocklet.vala:34
 msgid "Applications"
-msgstr ""
+msgstr "Aplicaciones"
 
 #: docklets/Battery/BatteryDockItem.vala:30
 #: docklets/Battery/BatteryUPowerDockItem.vala:45
 msgid "No battery"
-msgstr ""
+msgstr "Sin batería"
 
 #: docklets/Battery/BatteryDocklet.vala:32
 msgid "Battery"
-msgstr ""
+msgstr "Batería"
 
 #: docklets/Battery/BatteryDocklet.vala:34
 msgid "Displays battery information"
-msgstr ""
+msgstr "Muestra información sobre la batería"
 
 #: docklets/Clippy/ClippyDockItem.vala:25
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "El portapapeles está vacío."
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "_Clear"
-msgstr ""
+msgstr "_Limpiar"
 
 #: docklets/Clippy/ClippyDocklet.vala:32
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:34
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Guarda las entradas recientes del portapapeles."
 
 #: docklets/Clock/ClockDockItem.vala:340
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Reloj Di_gital"
 
 #: docklets/Clock/ClockDockItem.vala:345
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "Reloj _de 24 horas"
 
 #: docklets/Clock/ClockDockItem.vala:350
 msgid "Show _Date"
-msgstr ""
+msgstr "Mostrar _Fecha"
 
 #: docklets/Clock/ClockDocklet.vala:34
 msgid "Clock"
-msgstr ""
+msgstr "Reloj"
 
 #: docklets/Clock/ClockDocklet.vala:36
 msgid "What time is it?"
-msgstr ""
+msgstr "¿Qué hora es?"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "CPU Monitor"
-msgstr ""
+msgstr "Monitor de CPU"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:36
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Vigila la CPU. Y cuando se salga de control..."
 
 #: docklets/Desktop/DesktopDockItem.vala:49
 msgid "Show Desktop"
-msgstr ""
+msgstr "Mostrar escritorio"
 
 #: docklets/Desktop/DesktopDocklet.vala:36
 msgid "Desktop"
-msgstr ""
+msgstr "Escritorio"
 
 #: docklets/Desktop/DesktopDocklet.vala:38
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Muestra tu escritorio."
 
 #: docklets/Trash/TrashDockItem.vala:134
 msgid "No items in Trash"
-msgstr ""
+msgstr "No hay elementos en la papelera"
 
 #: docklets/Trash/TrashDockItem.vala:135
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elemento en la papelera"
+msgstr[1] "%u elementos en la papelera"
 
 #: docklets/Trash/TrashDockItem.vala:170
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "Soltar para mover a la papelera"
 
 #: docklets/Trash/TrashDockItem.vala:223
 msgid "Restore Files"
-msgstr ""
+msgstr "Restaurar archivos"
 
 #: docklets/Trash/TrashDockItem.vala:280
 msgid "_Open Trash"
-msgstr ""
+msgstr "_Abrir Papelera"
 
 #: docklets/Trash/TrashDockItem.vala:284 docklets/Trash/TrashDockItem.vala:389
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Vaciar _Papelera"
 
 #: docklets/Trash/TrashDockItem.vala:384
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "¿Vaciar todos los elementos de la papelera?"
 
 #: docklets/Trash/TrashDockItem.vala:387
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Todos los elementos de la papelera se eliminarán de forma permanente."
 
 #: docklets/Trash/TrashDockItem.vala:388
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: docklets/Trash/TrashDocklet.vala:32
 msgid "Trash"
-msgstr ""
+msgstr "Papelera"
 
 #: docklets/Trash/TrashDocklet.vala:34
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "¡Echa un vistazo a tu basura!"
 
 #: lib/DragManager.vala:465 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
