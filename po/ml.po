@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2024-12-22 17:17-1000\n"
+"POT-Creation-Date: 2025-02-26 18:11-1000\n"
 "PO-Revision-Date: 2015-12-23 00:40+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Malayalam <ml@li.org>\n"
@@ -18,13 +18,12 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
 "X-Generator: Launchpad (build 18335)\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:3
+#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr ""
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:5
+#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
 #, fuzzy
-#| msgid "Stupidly simple."
 msgid "Still stupidly simple."
 msgstr "അനായാസം."
 
@@ -58,11 +57,11 @@ msgstr ""
 msgid "start"
 msgstr ""
 
-#: data/plank.appdata.xml.in:66
+#: data/plank.appdata.xml.in:68
 msgid "The Plank Reloaded Developers"
 msgstr ""
 
-#: data/plank.desktop.in:4
+#: data/plank.desktop.in:3
 msgid "Dock"
 msgstr ""
 
@@ -194,140 +193,144 @@ msgstr ""
 msgid "Lock Icons:"
 msgstr ""
 
-#: data/ui/preferences.ui:586
+#: data/ui/preferences.ui:561
+msgid "Anchor Docklets:"
+msgstr ""
+
+#: data/ui/preferences.ui:604
 msgid "Behaviour"
 msgstr ""
 
-#: data/ui/preferences.ui:606
+#: data/ui/preferences.ui:624
 msgid "Docklets"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:41
-#: docklets/Applications/ApplicationsDocklet.vala:34
+#: docklets/Applications/ApplicationsDockItem.vala:39
+#: docklets/Applications/ApplicationsDocklet.vala:31
 msgid "Applications"
 msgstr ""
 
-#: docklets/Battery/BatteryDockItem.vala:30
-#: docklets/Battery/BatteryUPowerDockItem.vala:45
+#: docklets/Battery/BatteryDockItem.vala:28
+#: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
 msgstr ""
 
-#: docklets/Battery/BatteryDocklet.vala:32
+#: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
 msgstr ""
 
-#: docklets/Battery/BatteryDocklet.vala:34
+#: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
 msgstr ""
 
-#: docklets/Clippy/ClippyDockItem.vala:25
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "Clipboard is currently empty."
 msgstr ""
 
-#: docklets/Clippy/ClippyDockItem.vala:26
+#: docklets/Clippy/ClippyDockItem.vala:24
 msgid "_Clear"
 msgstr ""
 
-#: docklets/Clippy/ClippyDocklet.vala:32
+#: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
 msgstr ""
 
-#: docklets/Clippy/ClippyDocklet.vala:34
+#: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
 msgstr ""
 
-#: docklets/Clock/ClockDockItem.vala:340
+#: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
 msgstr ""
 
-#: docklets/Clock/ClockDockItem.vala:345
+#: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
 msgstr ""
 
-#: docklets/Clock/ClockDockItem.vala:350
+#: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
 msgstr ""
 
-#: docklets/Clock/ClockDocklet.vala:34
+#: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
 msgstr ""
 
-#: docklets/Clock/ClockDocklet.vala:36
+#: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
 msgstr ""
 
-#: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
 msgstr ""
 
-#: docklets/CPUMonitor/CPUMonitorDocklet.vala:36
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
 msgstr ""
 
-#: docklets/Desktop/DesktopDockItem.vala:49
+#: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
 msgstr ""
 
-#: docklets/Desktop/DesktopDocklet.vala:36
+#: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
 msgstr ""
 
-#: docklets/Desktop/DesktopDocklet.vala:38
+#: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:134
+#: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:135
+#: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: docklets/Trash/TrashDockItem.vala:170
+#: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:223
+#: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:280
+#: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:284 docklets/Trash/TrashDockItem.vala:389
+#: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:384
+#: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:387
+#: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
 msgstr ""
 
-#: docklets/Trash/TrashDockItem.vala:388
+#: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
 msgstr ""
 
-#: docklets/Trash/TrashDocklet.vala:32
+#: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
 msgstr ""
 
-#: docklets/Trash/TrashDocklet.vala:34
+#: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
 msgstr ""
 
-#: lib/DragManager.vala:465 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr ""
 
-#: lib/Factories/AbstractMain.vala:420 src/Main.vala:76
+#: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -336,8 +339,8 @@ msgstr ""
 "  ST Alfas https://launchpad.net/~alfasst\n"
 "  muhammed shameem https://launchpad.net/~shameempk"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:315
-#: lib/Items/FileDockItem.vala:337
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
+#: lib/Items/FileDockItem.vala:215
 msgid "_Keep in Dock"
 msgstr "ഡോക്കില്‍ _സൂക്ഷിക്കുക"
 
@@ -354,15 +357,15 @@ msgstr "_അടയ്ക്കുക"
 msgid "Drop to open with %s"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:321
+#: lib/Items/FileDockItem.vala:200
 msgid "_Open in File Browser"
 msgstr "ഫയല്‍ ബ്രൗസറില്‍ _തുറക്കുക"
 
-#: lib/Items/FileDockItem.vala:343
+#: lib/Items/FileDockItem.vala:221
 msgid "_Open"
 msgstr "_തുറക്കുക"
 
-#: lib/Items/FileDockItem.vala:347
+#: lib/Items/FileDockItem.vala:225
 msgid "Open Containing _Folder"
 msgstr "ഉള്‍പ്പെടുന്ന _അറ തുറക്കുക"
 
@@ -370,15 +373,27 @@ msgstr "ഉള്‍പ്പെടുന്ന _അറ തുറക്കുക
 msgid "Drop applications or files here"
 msgstr ""
 
-#: lib/Items/PlankDockItem.vala:73
+#: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
 msgstr "ഓണ്‍ലൈനില്‍ നിന്നും സഹായം _ലഭ്യമാക്കുക..."
 
-#: lib/Items/PlankDockItem.vala:77
+#: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
 msgstr "‌_ഈ പ്രയോഗം പരിഭാഷപ്പെടുത്തുക"
 
-#: lib/Widgets/PreferencesWindow.vala:90
+#: lib/Items/PlankDockItem.vala:76
+msgid "_Preferences"
+msgstr ""
+
+#: lib/Items/PlankDockItem.vala:80
+msgid "_About"
+msgstr ""
+
+#: lib/Items/PlankDockItem.vala:88
+msgid "_Quit"
+msgstr ""
+
+#: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr ""
 
@@ -398,5 +413,5 @@ msgstr ""
 #~ msgstr ""
 #~ "എന്നിരിക്കിലും  ഇത് മികവാർന്ന പുതിയ ഡോക്കുകൾ ഉണ്ടാക്കുവാൻ വേണ്ടി വിപുലീകരിക്കാവുന്ന "
 #~ "ആലേഖനങ്ങൾ തന്നെയാണ് .അടിസ്ഥാന പ്രയോഗങ്ങളിൽ മാത്രം ലക്ഷ്യം വെക്കുന്ന പ്ലാങ്ക്, ഡോക്കിയുടെ "
-#~ "അടിസ്ഥാന സാങ്കേതികതയാണ് (വെർഷൻ 3.0.0 മുതൽ) എന്നാൽ ഡോക്കി ഭാവനാപരമായ ഡോക്ക്ലെട്സ്,"
-#~ "പെയിന്റേർസ്,സെറ്റിംഗ്സ് ലേഖനം തുടങ്ങിയവ ഉള്പെടുതുവാൻ ഇതിനെ വിപുലീകരിച്ചു."
+#~ "അടിസ്ഥാന സാങ്കേതികതയാണ് (വെർഷൻ 3.0.0 മുതൽ) എന്നാൽ ഡോക്കി ഭാവനാപരമായ "
+#~ "ഡോക്ക്ലെട്സ്,പെയിന്റേർസ്,സെറ്റിംഗ്സ് ലേഖനം തുടങ്ങിയവ ഉള്പെടുതുവാൻ ഇതിനെ വിപുലീകരിച്ചു."

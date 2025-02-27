@@ -258,6 +258,38 @@ subdir('examples')
 subdir('tests')
 subdir('docs')
 
+# Add after importing i18n
+pot_target = custom_target('pot',
+  command: [
+    find_program('xgettext'),
+    '--directory=@SOURCE_ROOT@',
+    '--files-from=@SOURCE_ROOT@/po/POTFILES.in',
+    '--output=po/plank.pot',
+    '--package-name=' + meson.project_name(),
+    '--package-version=' + meson.project_version(),
+    '--copyright-holder=The Plank Reloaded Developers',
+    '--msgid-bugs-address=https://github.com/zquestz/plank-reloaded/issues'
+  ],
+  output: meson.project_name() + '.pot',
+  install: false,
+  install_dir: join_paths(get_option('datadir'), 'locale')
+)
+
+update_po_target = custom_target('update-po',
+  command: [
+    find_program('sh'),
+    '-c',
+    '''
+    cd @0@/po &&
+    for pofile in *.po; do
+      msgmerge --update --backup=none "$pofile" plank.pot
+    done
+    '''.format(meson.project_source_root())
+  ],
+  output: 'update-po-stamp',
+  build_by_default: false,
+)
+
 run_env = environment()
 run_env.set('GSETTINGS_SCHEMA_DIR', meson.current_build_dir() / 'data')
 run_env.set('PLANK_DOCKLET_DIRS', meson.current_build_dir() / 'docklets')
