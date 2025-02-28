@@ -259,7 +259,7 @@ subdir('tests')
 subdir('docs')
 
 # Add after importing i18n
-pot_target = custom_target(
+custom_target(
   'pot',
   command: [
     find_program('xgettext'),
@@ -276,7 +276,7 @@ pot_target = custom_target(
   install_dir: join_paths(get_option('datadir'), 'locale'),
 )
 
-update_po_target = custom_target(
+custom_target(
   'update-po',
   command: [
     find_program('sh'),
