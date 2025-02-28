@@ -22,7 +22,7 @@ public static void docklet_init (Plank.DockletManager manager) {
 namespace Docky {
   public class ClippyDocklet : Object, Plank.Docklet {
     private const string ID = "clippy";
-    private const string ICON = "edit-cut";
+    public const string ICON = "xclipboard;;clipboard;;edit-cut";
 
     public unowned string get_id () { return ID; }
 

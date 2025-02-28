@@ -35,7 +35,7 @@ namespace Docky {
 
     construct
     {
-      Icon = "gnome-applications;;gnome-main-menu";
+      Icon = ApplicationsDocklet.ICON;
       Text = _("Applications");
 
       string menu_name = environment_is_session_desktop (XdgSessionDesktop.CINNAMON)

@@ -203,7 +203,7 @@ msgstr "Bloquear iconos:"
 #: data/ui/preferences.ui:561
 #, fuzzy
 msgid "Anchor Docklets:"
-msgstr "Agregados"
+msgstr "Anclar Agregados:"
 
 #: data/ui/preferences.ui:604
 msgid "Behaviour"
@@ -411,15 +411,15 @@ msgstr "_Traducir esta aplicación…"
 #: lib/Items/PlankDockItem.vala:76
 #, fuzzy
 msgid "_Preferences"
-msgstr "Preferencias"
+msgstr "_Preferencias"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_Acerca de"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_Salir"
 
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
