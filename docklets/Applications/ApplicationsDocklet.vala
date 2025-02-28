@@ -23,7 +23,7 @@ namespace Docky {
   public class ApplicationsDocklet : Object, Plank.Docklet {
     // Cache strings to avoid repeated allocations
     private const string ID = "applications";
-    private const string ICON = "gnome-applications;;gnome-main-menu;;applications-all";
+    public const string ICON = "applications-all;;gnome-applications;;gnome-main-menu";
     private const string DESCRIPTION = "Simply start any of your applications.";
 
     public unowned string get_id () { return ID; }

@@ -35,7 +35,7 @@ namespace Docky {
 
     construct
     {
-      Icon = ICON_NAME;
+      Icon = ClippyDocklet.ICON;
       clips = new Gee.ArrayList<string> ();
       initialize_clipboard();
       update_display();
@@ -156,16 +156,22 @@ namespace Docky {
       // Add clipboard entries
       for (var i = clips.size; i > 0; i--) {
         var pos = i;
-        var item = create_literal_menu_item(clips.get(pos - 1), ICON_NAME);
-        item.activate.connect(() => {
-          copy_entry_at(pos);
-        });
-        items.add(item);
+        var text = clips.get(pos - 1).strip();
+        if (text != "") {
+          var item = create_literal_menu_item(text, "", false);
+          item.activate.connect(() => {
+            copy_entry_at(pos);
+          });
+          items.add(item);
+        }
       }
 
       // Add clear button if there are entries
       if (clips.size > 0) {
-        var clear_item = create_menu_item(_(CLEAR_MENU_LABEL), "edit-clear-all", true);
+        var separator = new Gtk.SeparatorMenuItem();
+        items.add(separator);
+
+        var clear_item = create_menu_item(_(CLEAR_MENU_LABEL));
         clear_item.activate.connect(clear_clipboard);
         items.add(clear_item);
       }
