@@ -1,7 +1,15 @@
+plank-reloaded (0.11.103-1) unstable; urgency=medium
+
+  * Updated spanish translation
+  * Updated all .po files to prepare for new translations
+  * Misc improvements to Clippy and Applications Docklets
+
+ -- Josh Ellithorpe <quest@mac.com>  Thu, 27 Feb 2025 17:04:00 +0000
+
 plank-reloaded (0.11.102-1) unstable; urgency=medium
 
-  * Fix duplicate applications in the Applications Docklet.
-  * Remove explicit libbamf3-2t64 dependency in deb package.
+  * Fix duplicate applications in the Applications Docklet
+  * Remove explicit libbamf3-2t64 dependency in deb package
 
  -- Josh Ellithorpe <quest@mac.com>  Tue, 25 Feb 2025 10:10:01 -1000
 

@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.103 "Reloaded" (2025-02-27)
+
+- Updated spanish translation.
+- Updated all .po files to prepare for new translations.
+- Misc improvements to Clippy and Applications Docklets.
+
 ## 0.11.102 "Reloaded" (2025-02-25)
 
 - Fix duplicate applications in the Applications Docklet.
