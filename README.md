@@ -1,5 +1,7 @@
 # Plank Reloaded
 
+[![Crowdin](https://badges.crowdin.net/plank-reloaded/localized.svg)](https://crowdin.com/project/plank-reloaded)
+
 ## What Is Plank Reloaded?
 
 Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments.
@@ -128,6 +130,7 @@ Please search for existing bugs before reporting new ones.
 - Submit pull requests
 - Report issues
 - Contribute to development
+- Translations: [https://crowdin.com/project/plank-reloaded](https://crowdin.com/project/plank-reloaded)
 
 ### Original Plank Info
 

@@ -66,7 +66,7 @@ namespace Plank {
 
               main_url: "https://github.com/zquestz/plank-reloaded",
               help_url: "https://github.com/zquestz/plank-reloaded/issues",
-              translate_url: "https://github.com/zquestz/plank-reloaded",
+              translate_url: "https://crowdin.com/project/plank-reloaded",
 
               about_authors: authors,
               about_documenters: documenters,

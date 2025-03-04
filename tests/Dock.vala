@@ -56,9 +56,9 @@ namespace PlankTests {
               app_icon: "test",
               app_launcher: "test.desktop",
 
-              main_url: "https://launchpad.net/plank",
-              help_url: "https://answers.launchpad.net/plank",
-              translate_url: "https://translations.launchpad.net/plank",
+              main_url: "https://github.com/zquestz/plank-reloaded",
+              help_url: "https://github.com/zquestz/plank-reloaded/issues",
+              translate_url: "https://crowdin.com/project/plank-reloaded",
 
               about_authors: authors,
               about_documenters: documenters,

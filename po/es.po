@@ -1,23 +1,21 @@
-# Spanish translation for plank
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-03 17:04-1000\n"
-"PO-Revision-Date: 2025-02-26 11:29-0300\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2025-03-04 03:58\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: es-ES\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
@@ -28,20 +26,12 @@ msgid "Still stupidly simple."
 msgstr "Todavía estúpidamente simple."
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Recargado es una bifurcación del proyecto original de Plank que proporciona un simple acoplamiento para entornos de escritorio X11. Mientras que el desarrollo comenzó con un enfoque en Cinnamon, ahora soportamos activamente múltiples entornos de escritorio, incluyendo MATE y Xfce. Wayland no está soportado en este momento."
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Al igual que su predecesor, Plank Recargado pretende ser el muelle más simple del planeta, proporcionando justo lo que un muelle necesita y absolutamente nada más. También sigue siendo una biblioteca que se puede extender para crear otros programas de acoplamiento con características más avanzadas."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -196,7 +186,6 @@ msgid "Lock Icons:"
 msgstr "Bloquear iconos:"
 
 #: data/ui/preferences.ui:561
-#, fuzzy
 msgid "Anchor Docklets:"
 msgstr "Anclar Agregados:"
 
@@ -335,8 +324,7 @@ msgstr "Soltar para añadir al dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Alonso Vargas https://launchpad.net/~jovar06\n"
@@ -404,7 +392,6 @@ msgid "_Translate This Application..."
 msgstr "_Traducir esta aplicación…"
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
 msgstr "_Preferencias"
 
@@ -419,41 +406,3 @@ msgstr "_Salir"
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr "Preferencias"
-
-#~ msgid ""
-#~ "Plank Reloaded is a fork of the original Plank project, focusing on "
-#~ "Cinnamon desktop compatibility and modernized features. Like its "
-#~ "predecessor, it aims to be the simplest dock on the planet, providing "
-#~ "just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank Reloaded es una bifurcación del proyecto Plank original, "
-#~ "centrándose en la compatibilidad con el escritorio Cinnamon y "
-#~ "características modernizadas. Al igual que su predecesor, pretende ser el "
-#~ "dock más sencillo del planeta, proporcionando justo lo que un dock "
-#~ "necesita y absolutamente nada más."
-
-#~ msgid ""
-#~ "It remains a library which can be extended to create other dock programs "
-#~ "with more advanced features."
-#~ msgstr ""
-#~ "Sigue siendo una biblioteca que puede ampliarse para crear otros "
-#~ "programas dock con funciones más avanzadas."
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank está concebido como el «dock» más simple del planeta. El objetivo "
-#~ "es proporcionar únicamente las funcionalidades básicas."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "Además es una biblioteca que puede ampliarse para crear otros «docks» con "
-#~ "mayores prestaciones. Así, Plank es la tecnología subyacente de Docky (a "
-#~ "partir de la versión 3.0.0), proveyendo la funcionalidad básica que Docky "
-#~ "extiende con «docklets» y otras funciones."
