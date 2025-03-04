@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with plank.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-<interface domain="plank">
+<interface domain="plank-reloaded">
   <requires lib="gtk+" version="3.10"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name plank -->

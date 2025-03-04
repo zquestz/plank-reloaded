@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-03 17:04-1000\n"
 "PO-Revision-Date: 2025-03-04 03:58\n"
@@ -187,7 +187,7 @@ msgstr "Bloquear iconos:"
 
 #: data/ui/preferences.ui:561
 msgid "Anchor Docklets:"
-msgstr "Anclar Agregados:"
+msgstr "Anclar agregados:"
 
 #: data/ui/preferences.ui:604
 msgid "Behaviour"
