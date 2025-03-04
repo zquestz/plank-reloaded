@@ -33,6 +33,7 @@
     <binary>plank</binary>
   </provides>
   <releases>
+    <release version="0.11.104" timestamp="1741057448" />
     <release version="0.11.103" timestamp="1740712050" />
     <release version="0.11.102" timestamp="1740513962" />
     <release version="0.11.101" timestamp="1740363222" />

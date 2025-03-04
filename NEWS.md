@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.104 "Reloaded" (2025-03-03)
+
+- Improved Clippy menu and support for multi line clipboard items.
+- Updated project description and translation files.
+
 ## 0.11.103 "Reloaded" (2025-02-27)
 
 - Updated spanish translation.

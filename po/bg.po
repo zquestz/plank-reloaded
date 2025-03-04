@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-02-27 17:09-1000\n"
+"POT-Creation-Date: 2025-03-03 17:04-1000\n"
 "PO-Revision-Date: 2016-04-24 08:56+0000\n"
 "Last-Translator: ITPROJECTS <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -29,35 +29,37 @@ msgstr "Пределно прост."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
-"Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon "
-"desktop compatibility and modernized features. Like its predecessor, it aims "
-"to be the simplest dock on the planet, providing just what a dock needs and "
-"absolutely nothing more."
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
 
-#: data/plank.appdata.xml.in:14
+#: data/plank.appdata.xml.in:15
 msgid ""
-"It remains a library which can be extended to create other dock programs "
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:19
+#: data/plank.appdata.xml.in:22
 msgid "dock"
 msgstr ""
 
-#: data/plank.appdata.xml.in:20
+#: data/plank.appdata.xml.in:23
 msgid "launch"
 msgstr ""
 
-#: data/plank.appdata.xml.in:21
+#: data/plank.appdata.xml.in:24
 msgid "panel"
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
+#: data/plank.appdata.xml.in:25
 msgid "start"
 msgstr "Начало"
 
-#: data/plank.appdata.xml.in:69
+#: data/plank.appdata.xml.in:76
 msgid "The Plank Reloaded Developers"
 msgstr ""
 
