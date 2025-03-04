@@ -22,6 +22,7 @@ namespace Docky {
     private const string ICON_NAME = "edit-cut";
     private const string EMPTY_CLIPBOARD_TEXT = N_("Clipboard is currently empty.");
     private const string CLEAR_MENU_LABEL = N_("_Clear");
+    private const int MAX_CLIP_MENU_ITEM_LENGTH = 80;
 
     private Gtk.Clipboard clipboard;
     private Gee.ArrayList<string> clips;
@@ -96,7 +97,7 @@ namespace Docky {
     }
 
     private string get_entry_text(int pos) {
-      return clips.get(pos - 1).replace("\n", "").replace("\t", "");
+      return clips.get(pos - 1);
     }
 
     private void copy_entry_at(int pos) {
@@ -157,6 +158,14 @@ namespace Docky {
       for (var i = clips.size; i > 0; i--) {
         var pos = i;
         var text = clips.get(pos - 1).strip();
+        var lines = text.split("\n");
+
+        if (lines.length > 1) {
+          text = lines[0] + "... [" + lines.length.to_string() + "]";
+        }
+
+        text = text.truncate_middle(MAX_CLIP_MENU_ITEM_LENGTH);
+
         if (text != "") {
           var item = create_literal_menu_item(text, "", false);
           item.activate.connect(() => {
