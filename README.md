@@ -2,19 +2,28 @@
 
 ## What Is Plank Reloaded?
 
-Plank Reloaded is a fork of the original Plank project, focusing on Cinnamon desktop compatibility
-and modernized features. Like its predecessor, it aims to be the simplest dock on the planet,
-providing just what a dock needs and absolutely nothing more. It remains a library which can be
-extended to create other dock programs with more advanced features.
+Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments.
+While development began with a focus on Cinnamon, we now actively support multiple desktop environments
+including MATE and Xfce. Wayland is not supported at this time.
+
+Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a
+dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock
+programs with more advanced features.
 
 ### Key Improvements in Plank Reloaded
 
-* Enhanced Cinnamon desktop environment compatibility. Now all Docklets are fully functional.
-* Updated Battery Docklet with modern UPower integration.
-* Updated the Matte theme, and added MatteLight based on the Arian theme.
-* Fixed Clock Docklet settings crash, updated the look of the Digital Clock and added a Calendar when clicked.
-* Updated to use meson build system.
-* General code cleanup and bug fixes.
+- Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, and Xfce)
+- Migrated to modern meson build system for easier compilation and installation
+- Added AnchorDocklets setting to anchor docklets to the end of the dock
+- Fixed Restrict to Workspace so applications only show up on their active workspace
+- Comprehensive docklet improvements:
+  - Applications: Better reliability and fixed duplicate items issue
+  - Battery: Modern UPower integration
+  - Clock: Enhanced digital display with new pop-up calendar
+  - Clippy: Better text handling and menu organization
+  - Refreshed icons across all docklets
+- Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
+- General code cleanup and stability improvements
 
 ## Themes
 
@@ -104,26 +113,26 @@ Please search for existing bugs before reporting new ones.
 
 ### For Plank Reloaded
 
-* GitHub Issues: [https://github.com/zquestz/plank-reloaded/issues](https://github.com/zquestz/plank-reloaded/issues)
+- GitHub Issues: [https://github.com/zquestz/plank-reloaded/issues](https://github.com/zquestz/plank-reloaded/issues)
 
 ### Original Plank Resources
 
-* IRC: `#plank` on FreeNode - `irc://irc.freenode.net/#plank`
-* Common problems and solutions: [Plank Answers](https://answers.launchpad.net/plank)
+- IRC: `#plank` on FreeNode - `irc://irc.freenode.net/#plank`
+- Common problems and solutions: [Plank Answers](https://answers.launchpad.net/plank)
 
 ## How Can I Get Involved?
 
 ### Plank Reloaded info
 
-* Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
-* Submit pull requests
-* Report issues
-* Contribute to development
+- Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
+- Submit pull requests
+- Report issues
+- Contribute to development
 
 ### Original Plank Info
 
-* Launchpad page: [https://launchpad.net/plank](https://launchpad.net/plank)
-* Translations: [https://translations.launchpad.net/plank](https://translations.launchpad.net/plank)
+- Launchpad page: [https://launchpad.net/plank](https://launchpad.net/plank)
+- Translations: [https://translations.launchpad.net/plank](https://translations.launchpad.net/plank)
 
 ## API Documentation
 
@@ -135,7 +144,7 @@ Original Plank documentation: [API Docs](http://people.ubuntu.com/~ricotz/docs/v
 
 Need more information about Vala?
 
-* [Vala Project](https://wiki.gnome.org/Projects/Vala)
-* [Vala Manual](https://wiki.gnome.org/Projects/Vala/Manual)
+- [Vala Project](https://wiki.gnome.org/Projects/Vala)
+- [Vala Manual](https://wiki.gnome.org/Projects/Vala/Manual)
 
 Refer to the HACKING file for further instructions.
