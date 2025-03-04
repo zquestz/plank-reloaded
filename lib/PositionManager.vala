@@ -66,7 +66,7 @@ namespace Plank {
       var monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON)) {
+      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
         monitor_geo = monitor.get_geometry ();
       } else {
         monitor_geo = monitor.get_workarea ();
@@ -154,7 +154,7 @@ namespace Plank {
       var display = screen.get_display ();
       var monitor = display.get_monitor (find_monitor_number (screen, controller.prefs.Monitor));
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON)) {
+      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
         monitor_geo = monitor.get_geometry ();
       } else {
         monitor_geo = monitor.get_workarea ();
