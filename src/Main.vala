@@ -59,7 +59,7 @@ namespace Plank {
               program_name: "Plank Reloaded",
               exec_name: "plank",
 
-              app_copyright: "2011-2024",
+              app_copyright: "2011-2025",
               app_dbus: "net.launchpad.plank",
               app_icon: "plank-reloaded",
               app_launcher: "plank.desktop",
