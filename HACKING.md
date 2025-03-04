@@ -37,14 +37,14 @@ cd plank-reloaded
 
 ```bash
 meson setup --prefix=/usr build
-ninja -C build
+meson compile -C build
 sudo meson install -C build
 ```
 
 3. **Run Plank:**
 
 ```bash
-ninja -C build run
+meson compile -C build run
 ```
 
 ## Debugging Issues
@@ -52,7 +52,7 @@ ninja -C build run
 For investigating crashes or memory issues, use GDB:
 
 ```bash
-ninja -C build run-debug
+meson compile -C build run-debug
 ```
 
 ## Development Guidelines

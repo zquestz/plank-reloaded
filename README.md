@@ -61,7 +61,7 @@ cd plank-reloaded
 
 # Build and install
 meson setup --prefix=/usr build
-ninja -C build
+meson compile -C build
 sudo meson install -C build
 ```
 
@@ -85,7 +85,7 @@ cd plank-reloaded
 
 # Build and install
 meson setup --prefix=/usr build
-ninja -C build
+meson compile -C build
 sudo meson install -C build
 ```
 

@@ -45,7 +45,7 @@ jobs:
         run: |
           meson setup --prefix=/usr -Dproduction_release=true build
           meson configure build -D enable-apport=false
-          ninja -C build
+          meson compile -C build
           meson install --destdir="$(pwd)/release_build" -C build
 
       - name: Package

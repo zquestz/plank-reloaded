@@ -265,7 +265,7 @@ custom_target(
     find_program('xgettext'),
     '--directory=@SOURCE_ROOT@',
     '--files-from=@SOURCE_ROOT@/po/POTFILES.in',
-    '--output=po/plank.pot',
+    '--output=@SOURCE_ROOT@/po/plank.pot',
     '--package-name=' + meson.project_name(),
     '--package-version=' + meson.project_version(),
     '--copyright-holder=The Plank Reloaded Developers',
