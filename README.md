@@ -4,7 +4,7 @@
 
 ## What Is Plank Reloaded?
 
-Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments.
+Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments.
 While development began with a focus on Cinnamon, we now actively support multiple desktop environments
 including MATE and Xfce. Wayland is not supported at this time.
 
@@ -124,18 +124,11 @@ Please search for existing bugs before reporting new ones.
 
 ## How Can I Get Involved?
 
-### Plank Reloaded info
-
 - Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
 - Submit pull requests
 - Report issues
 - Contribute to development
 - Translations: [https://crowdin.com/project/plank-reloaded](https://crowdin.com/project/plank-reloaded)
-
-### Original Plank Info
-
-- Launchpad page: [https://launchpad.net/plank](https://launchpad.net/plank)
-- Translations: [https://translations.launchpad.net/plank](https://translations.launchpad.net/plank)
 
 ## API Documentation
 
@@ -150,4 +143,4 @@ Need more information about Vala?
 - [Vala Project](https://wiki.gnome.org/Projects/Vala)
 - [Vala Manual](https://wiki.gnome.org/Projects/Vala/Manual)
 
-Refer to the HACKING file for further instructions.
+Refer to the HACKING.md file for further instructions.
