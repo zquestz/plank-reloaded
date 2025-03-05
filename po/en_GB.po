@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-03 17:04-1000\n"
+"POT-Creation-Date: 2025-03-04 14:45-1000\n"
 "PO-Revision-Date: 2017-03-20 04:23+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "start"
 msgstr "start"
 
-#: data/plank.appdata.xml.in:76
+#: data/plank.appdata.xml.in:77
 msgid "The Plank Reloaded Developers"
 msgstr ""
 
