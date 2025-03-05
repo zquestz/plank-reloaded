@@ -1,7 +1,7 @@
 help2man = find_program('help2man', required: false)
 if help2man.found()
   custom_target(
-    'plank manpage',
+    'plank-man',
     depends: plank_bin,
     input: 'plank.h2m',
     output: 'plank.1',
