@@ -1,71 +1,61 @@
-# Korean translation for plank
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-03 17:04-1000\n"
-"PO-Revision-Date: 2016-05-04 04:38+0000\n"
-"Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"PO-Revision-Date: 2025-03-05 00:27\n"
+"Last-Translator: \n"
+"Language-Team: Korean\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: ko\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "플랭크 리로디드"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
 msgid "Still stupidly simple."
-msgstr "어처구니없으리 만치 단순한."
+msgstr "여전히 엄청 단순합니다."
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "플랭크 리로디드는 원래 Plank 프로젝트에서 파생된 것으로, X11 데스크톱 환경을 위한 간단한 독을 제공합니다. 처음에는 Cinnamon에 초점을 맞추고 개발을 시작했지만, 현재 MATE 및 Xfce를 포함한 여러 데스크톱 환경을 적극적으로 지원하고 있습니다. 현재 Wayland는 지원되지 않습니다."
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "원래 버전과 마찬가지로 Plank Reloaded는 지구상에서 가장 단순한 독이 되는 것을 목표로 하며, 독에 필요한 것만 제공하고 그 이상은 절대 제공하지 않습니다. 또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브러리로 남아 있습니다."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "독"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "실행"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "패널"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
-msgstr "왼쪽"
+msgstr "시작"
 
 #: data/plank.appdata.xml.in:76
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "플랭크 리로디드 개발자"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "독"
 
 #: data/ui/preferences.ui:82
 msgid "Theme:"
@@ -101,11 +91,11 @@ msgstr "채우기"
 
 #: data/ui/preferences.ui:153 data/ui/preferences.ui:222
 msgid "Start"
-msgstr "왼쪽"
+msgstr "시작"
 
 #: data/ui/preferences.ui:154 data/ui/preferences.ui:223
 msgid "End"
-msgstr "오른쪽"
+msgstr "끝"
 
 #: data/ui/preferences.ui:155 data/ui/preferences.ui:224
 msgid "Center"
@@ -129,7 +119,7 @@ msgstr "아이콘 크기:"
 
 #: data/ui/preferences.ui:304
 msgid "Icon Zoom:"
-msgstr "아이콘 줌 효과:"
+msgstr "아이콘 줌:"
 
 #: data/ui/preferences.ui:328
 msgid "Appearance"
@@ -161,7 +151,7 @@ msgstr "플랭크 숨기기"
 
 #: data/ui/preferences.ui:394
 msgid "Hide Delay:"
-msgstr "숨김 지연 시간"
+msgstr "숨김 지연 시간:"
 
 #: data/ui/preferences.ui:405
 msgid "Delay in ms before hiding the dock"
@@ -169,7 +159,7 @@ msgstr "플랭크를 숨기기 전 지연 시간 (ms)"
 
 #: data/ui/preferences.ui:421
 msgid "Unhide Delay:"
-msgstr "숨김 해제 지연 시간"
+msgstr "숨김 해제 지연 시간:"
 
 #: data/ui/preferences.ui:432
 msgid "Delay in ms before showing the dock"
@@ -196,9 +186,8 @@ msgid "Lock Icons:"
 msgstr "아이콘 고정:"
 
 #: data/ui/preferences.ui:561
-#, fuzzy
 msgid "Anchor Docklets:"
-msgstr "도크릿"
+msgstr "독크릿 고정:"
 
 #: data/ui/preferences.ui:604
 msgid "Behaviour"
@@ -206,128 +195,127 @@ msgstr "동작"
 
 #: data/ui/preferences.ui:624
 msgid "Docklets"
-msgstr "도크릿"
+msgstr "독크릿"
 
 #: docklets/Applications/ApplicationsDockItem.vala:39
 #: docklets/Applications/ApplicationsDocklet.vala:31
 msgid "Applications"
-msgstr ""
+msgstr "애플리케이션"
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "배터리 없음"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "배터리"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "배터리 정보 표시"
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "클립보드가 현재 비어 있습니다."
 
 #: docklets/Clippy/ClippyDockItem.vala:24
 msgid "_Clear"
-msgstr ""
+msgstr "지우기 (_C)"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "클리피"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "최근 클립보드 항목을 유지합니다."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "디지털 시계 (_g)"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24시간 시계 (_C)"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "날짜 표시 (_D)"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "시계"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "지금 몇 시인가요?"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU 모니터"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "CPU를 지켜봅니다. 그리고 범위를 벗어나면..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "바탕화면 표시"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "바탕화면"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "바탕화면을 표시합니다."
 
 #: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
-msgstr ""
+msgstr "휴지통에 항목 없음"
 
 #: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "휴지통에 %u개 항목"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "휴지통으로 이동하려면 드래그하세요"
 
 #: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
-msgstr ""
+msgstr "파일 복원"
 
 #: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
-msgstr ""
+msgstr "휴지통 열기 (_O)"
 
 #: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
-msgstr ""
+msgstr "휴지통 비우기 (_T)"
 
 #: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "휴지통의 모든 항목을 비울까요?"
 
 #: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "휴지통의 모든 항목이 영구적으로 삭제됩니다."
 
 #: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
-msgstr ""
+msgstr "취소 (_C)"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "휴지통"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "휴지통을 확인해보세요!"
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -335,8 +323,7 @@ msgstr "플랭크에 올리기"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  B. W. Knight https://launchpad.net/~kbd0651\n"
 "  Hur, Seok https://launchpad.net/~ludishur\n"
 "  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"
@@ -349,7 +336,7 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
 #: lib/Items/FileDockItem.vala:215
 msgid "_Keep in Dock"
-msgstr "플랭크에 두기(_K)"
+msgstr "플랭크에 두기 (_K)"
 
 #: lib/Items/ApplicationDockItem.vala:420
 msgid "_Close All"
@@ -357,7 +344,7 @@ msgstr "모두 닫기 (_C)"
 
 #: lib/Items/ApplicationDockItem.vala:420
 msgid "_Close"
-msgstr "닫기(_C)"
+msgstr "닫기 (_C)"
 
 #: lib/Items/ApplicationDockItem.vala:492
 #, c-format
@@ -386,40 +373,20 @@ msgstr "온라인으로 도움받기... (_H)"
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "이 애플리케이션을 번역하기..(_T)"
+msgstr "이 애플리케이션을 번역하기... (_T)"
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "기본 설정"
+msgstr "환경설정 (_P)"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "정보 (_A)"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "나가기 (_Q)"
 
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr "기본 설정"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "플랭크는 세상에서 가장 단순한 독(dock) 프로그램입니다. 이 프로그램의 목적"
-#~ "은 독(dock)의 가장 기본적인 기능을 제공하는 것 이상도 이하도 아닙니다."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "다만, 라이브러리를 사용해서 다른 독(dock) 프로그램을 만들고 더 상세한 기능"
-#~ "을 개발할 수 있습니다. 플랭크는 도키(Docky 버전 3.0.0 부터)의 기반으로 사"
-#~ "용되고 있으며, 저희는 기초적인 기능을 제공하고 도키(Docky)가 더 상세한 기"
-#~ "능들을 제공할 것입니다."
