@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.106 "Reloaded" (2025-03-08)
+
+- Updated GlowSize in Matte themes to prevent screen artifacts
+- Updated Portuguese translations
+
 ## 0.11.105 "Reloaded" (2025-03-04)
 
 - Fix dock positioning issue in XFCE/Xubuntu

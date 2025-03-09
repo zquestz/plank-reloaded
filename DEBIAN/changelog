@@ -1,3 +1,10 @@
+plank-reloaded (0.11.106-1) unstable; urgency=medium
+
+  * Updated GlowSize in Matte themes to prevent screen artifacts
+  * Updated Portuguese translations
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 08 Mar 2025 14:37:12 -1000
+
 plank-reloaded (0.11.105-1) unstable; urgency=medium
 
   * Fix dock positioning issue in XFCE/Xubuntu

@@ -32,7 +32,11 @@
     <library>libplank.so.1</library>
     <binary>plank</binary>
   </provides>
+  <project_license>GPL-3.0</project_license>
+  <developer_name>The Plank Reloaded Developers</developer_name>
+  <update_contact>quest_at_mac_dot_com</update_contact>
   <releases>
+    <release version="0.11.106" timestamp="1741480858" />
     <release version="0.11.105" timestamp="1741135534" />
     <release version="0.11.104" timestamp="1741057448" />
     <release version="0.11.103" timestamp="1740712050" />
@@ -73,7 +77,4 @@
       <image>https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-docklets.webp</image>
     </screenshot>
   </screenshots>
-  <project_license>GPL-3.0</project_license>
-  <developer_name>The Plank Reloaded Developers</developer_name>
-  <update_contact>quest_at_mac_dot_com</update_contact>
 </component>
