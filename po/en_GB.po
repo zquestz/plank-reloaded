@@ -1,26 +1,25 @@
-# English (United Kingdom) translation for plank
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-08 14:41-1000\n"
-"PO-Revision-Date: 2017-03-20 04:23+0000\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
-"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"POT-Creation-Date: 2025-03-08 14:44-1000\n"
+"PO-Revision-Date: 2025-03-10 01:38\n"
+"Last-Translator: \n"
+"Language-Team: English, United Kingdom\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: en-GB\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
 msgid "Still stupidly simple."
@@ -33,6 +32,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. Whilst development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -41,18 +44,22 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programmes "
+"with more advanced features."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "dock"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "launch"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "panel"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
@@ -60,7 +67,7 @@ msgstr "start"
 
 #: data/plank.appdata.xml.in:36
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "The Plank Reloaded Developers"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
@@ -136,7 +143,7 @@ msgstr "Appearance"
 
 #: data/ui/preferences.ui:348
 msgid "Intellihide"
-msgstr "Intellihide"
+msgstr "IntelliHide"
 
 #: data/ui/preferences.ui:349
 msgid "Autohide"
@@ -164,7 +171,7 @@ msgstr "Hide Delay:"
 
 #: data/ui/preferences.ui:405
 msgid "Delay in ms before hiding the dock"
-msgstr "Delay in ms before hiding the dock"
+msgstr "Delay in milliseconds before hiding the dock"
 
 #: data/ui/preferences.ui:421
 msgid "Unhide Delay:"
@@ -172,7 +179,7 @@ msgstr "Unhide Delay:"
 
 #: data/ui/preferences.ui:432
 msgid "Delay in ms before showing the dock"
-msgstr "Delay in ms before showing the dock"
+msgstr "Delay in milliseconds before displaying the dock"
 
 #: data/ui/preferences.ui:448
 msgid "Pressure Reveal:"
@@ -195,9 +202,8 @@ msgid "Lock Icons:"
 msgstr "Lock Icons:"
 
 #: data/ui/preferences.ui:561
-#, fuzzy
 msgid "Anchor Docklets:"
-msgstr "Docklets"
+msgstr "Anchor Docklets:"
 
 #: data/ui/preferences.ui:604
 msgid "Behaviour"
@@ -210,123 +216,123 @@ msgstr "Docklets"
 #: docklets/Applications/ApplicationsDockItem.vala:39
 #: docklets/Applications/ApplicationsDocklet.vala:31
 msgid "Applications"
-msgstr ""
+msgstr "Applications"
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "No battery"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "Battery"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "Displays battery information"
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "Clipboard is currently empty."
 
 #: docklets/Clippy/ClippyDockItem.vala:24
 msgid "_Clear"
-msgstr ""
+msgstr "_Clear"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Keep recent clipboard entries."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Di_gital Clock"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24-Hour _Clock"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "Show _Date"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Clock"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "What is the time?"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU Monitor"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Keep an eye on that CPU. And when it gets out of line..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "Show Desktop"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "Desktop"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Show your Desktop."
 
 #: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
-msgstr ""
+msgstr "No items in Rubbish Bin"
 
 #: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u item in Bin"
+msgstr[1] "%u items in Bin"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
-msgstr "Drop to move to Trash"
+msgstr "Drop to move to Rubbish Bin"
 
 #: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
-msgstr ""
+msgstr "Restore Files"
 
 #: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
-msgstr "_Open Trash"
+msgstr "_Open Bin"
 
 #: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Empty _Bin"
 
 #: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Empty all items from the Rubbish Bin?"
 
 #: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "All items in the Rubbish Bin will be permanently deleted."
 
 #: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancel"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "Rubbish"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Have a look at your rubbish bin!"
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -362,7 +368,7 @@ msgstr "Drop to open with %s"
 
 #: lib/Items/FileDockItem.vala:200
 msgid "_Open in File Browser"
-msgstr "_Open in File Browser"
+msgstr "_Open in File Explorer"
 
 #: lib/Items/FileDockItem.vala:221
 msgid "_Open"
@@ -385,38 +391,17 @@ msgid "_Translate This Application..."
 msgstr "_Translate This Application..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Preferences"
+msgstr "_Preferences"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_About"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_Quit"
 
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr "Preferences"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogues, etc."
