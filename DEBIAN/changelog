@@ -1,3 +1,10 @@
+plank-reloaded (0.11.107-1) unstable; urgency=medium
+
+  * Reduced GlowSize to 30 in Matte/Matte-Light themes
+  * Updated English UK translations
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 09 Mar 2025 16:09:55 -1000
+
 plank-reloaded (0.11.106-1) unstable; urgency=medium
 
   * Updated GlowSize in Matte themes to prevent screen artifacts
