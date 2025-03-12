@@ -1,3 +1,9 @@
+plank-reloaded (0.11.108-1) unstable; urgency=medium
+
+  * Fixed stuck magnification state
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 11 Mar 2025 16:40:32 -1000
+
 plank-reloaded (0.11.107-1) unstable; urgency=medium
 
   * Reduced GlowSize to 30 in Matte/Matte-Light themes

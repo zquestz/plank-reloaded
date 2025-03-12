@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.108 "Reloaded" (2025-03-11)
+
+- Fixed stuck magnification state
+
 ## 0.11.107 "Reloaded" (2025-03-09)
 
 - Reduced GlowSize to 30 in Matte/Matte-Light themes
