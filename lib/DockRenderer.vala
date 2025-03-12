@@ -692,7 +692,7 @@ namespace Plank {
 
       switch (position_manager.Alignment) {
       default :
-      case Gtk.Align.CENTER :
+      case Gtk.Align.CENTER:
         x_offset -= Math.round (dynamic_animation_offset / 2.0);
         break;
       case Gtk.Align.START:
