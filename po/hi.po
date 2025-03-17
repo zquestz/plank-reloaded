@@ -1,0 +1,403 @@
+```gettext catalog
+msgid ""
+msgstr ""
+"Project-Id-Version: plank-reloaded\n"
+"Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
+"POT-Creation-Date: 2025-03-08 14:44-1000\n"
+"PO-Revision-Date: 2025-03-10 01:38\n"
+"Last-Translator: \n"
+"Language-Team: Hindi, India\n"
+"Language: hi_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: hi-IN\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
+
+#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+msgid "Plank Reloaded"
+msgstr "प्लैंक रिलोडेड"
+
+#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
+msgid "Still stupidly simple."
+msgstr "अब भी बेवकूफी से सरल।"
+
+#: data/plank.appdata.xml.in:9
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"प्लैंक रिलोडेड मूल प्लैंक प्रोजेक्ट का एक फोर्क है, जो X11 डेस्कटॉप वातावरण के लिए एक सरल डॉक प्रदान करता है। जबकि विकास सिन्नामोन पर ध्यान केंद्रित करके शुरू हुआ था, अब हम सक्रिय रूप से कई डेस्कटॉप वातावरणों का समर्थन करते हैं जिनमें मेट और एक्सएफसीई शामिल हैं। इस समय वेयलैंड समर्थित नहीं है।"
+
+#: data/plank.appdata.xml.in:15
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"अपने पूर्ववर्ती की तरह, प्लैंक रिलोडेड का लक्ष्य ग्रह पर सबसे सरल डॉक होना है, जो केवल एक डॉक की जरूरतों को पूरा करता है और बिल्कुल भी ज्यादा नहीं। यह एक पुस्तकालय भी बनी रहती है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा सकता है।"
+
+#: data/plank.appdata.xml.in:22
+msgid "dock"
+msgstr "डॉक"
+
+#: data/plank.appdata.xml.in:23
+msgid "launch"
+msgstr "लॉन्च"
+
+#: data/plank.appdata.xml.in:24
+msgid "panel"
+msgstr "पैनल"
+
+#: data/plank.appdata.xml.in:25
+msgid "start"
+msgstr "स्टार्ट"
+
+#: data/plank.appdata.xml.in:36
+msgid "The Plank Reloaded Developers"
+msgstr "प्लैंक रिलोडेड डेवलपर्स"
+
+#: data/plank.desktop.in:3
+msgid "Dock"
+msgstr "डॉक"
+
+#: data/ui/preferences.ui:82
+msgid "Theme:"
+msgstr "थीम:"
+
+#: data/ui/preferences.ui:95
+msgid "Position:"
+msgstr "स्थिति:"
+
+#: data/ui/preferences.ui:122
+msgid "Left"
+msgstr "बाएं"
+
+#: data/ui/preferences.ui:123
+msgid "Right"
+msgstr "दाएं"
+
+#: data/ui/preferences.ui:124
+msgid "Top"
+msgstr "ऊपर"
+
+#: data/ui/preferences.ui:125
+msgid "Bottom"
+msgstr "नीचे"
+
+#: data/ui/preferences.ui:139
+msgid "Alignment:"
+msgstr "संरेखण:"
+
+#: data/ui/preferences.ui:152
+msgid "Fill"
+msgstr "भरें"
+
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+msgid "Start"
+msgstr "प्रारंभ"
+
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+msgid "End"
+msgstr "अंत"
+
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+msgid "Center"
+msgstr "केंद्र"
+
+#: data/ui/preferences.ui:168
+msgid "On Primary Display:"
+msgstr "प्राथमिक डिस्प्ले पर:"
+
+#: data/ui/preferences.ui:191
+msgid "Offset in percent from the center of the screen-edge"
+msgstr "स्क्रीन-किनारे के केंद्र से प्रतिशत में ऑफसेट"
+
+#: data/ui/preferences.ui:208
+msgid "Icon Alignment:"
+msgstr "आइकन संरेखण:"
+
+#: data/ui/preferences.ui:238
+msgid "Icon Size:"
+msgstr "आइकन आकार:"
+
+#: data/ui/preferences.ui:304
+msgid "Icon Zoom:"
+msgstr "आइकन जूम:"
+
+#: data/ui/preferences.ui:328
+msgid "Appearance"
+msgstr "दिखावट"
+
+#: data/ui/preferences.ui:348
+msgid "Intellihide"
+msgstr "इंटेलिहाइड"
+
+#: data/ui/preferences.ui:349
+msgid "Autohide"
+msgstr "ऑटो हाइड"
+
+#: data/ui/preferences.ui:350
+msgid "Dodge maximized window"
+msgstr "मैक्सिमाइज्ड विंडो को डॉज करें"
+
+#: data/ui/preferences.ui:351
+msgid "Window Dodge"
+msgstr "विंडो डॉज"
+
+#: data/ui/preferences.ui:352
+msgid "Dodge active window"
+msgstr "सक्रिय विंडो को डॉज करें"
+
+#: data/ui/preferences.ui:378
+msgid "Hide Dock"
+msgstr "डॉक छिपाएं"
+
+#: data/ui/preferences.ui:394
+msgid "Hide Delay:"
+msgstr "विलंब छिपाएं:"
+
+#: data/ui/preferences.ui:405
+msgid "Delay in ms before hiding the dock"
+msgstr "डॉक को छिपाने से पहले मिलीसेकंड में विलंब"
+
+#: data/ui/preferences.ui:421
+msgid "Unhide Delay:"
+msgstr "विलंब दिखाएं:"
+
+#: data/ui/preferences.ui:432
+msgid "Delay in ms before showing the dock"
+msgstr "डॉक को दिखाने से पहले मिलीसेकंड में विलंब"
+
+#: data/ui/preferences.ui:448
+msgid "Pressure Reveal:"
+msgstr "दबाव प्रकट करें:"
+
+#: data/ui/preferences.ui:472
+msgid "Item Management"
+msgstr "आइटम प्रबंधन"
+
+#: data/ui/preferences.ui:488
+msgid "Show Unpinned:"
+msgstr "अनपिन दिखाएं:"
+
+#: data/ui/preferences.ui:512
+msgid "Restrict to Workspace:"
+msgstr "वर्कस्पेस तक सीमित करें:"
+
+#: data/ui/preferences.ui:537
+msgid "Lock Icons:"
+msgstr "आइकन लॉक करें:"
+
+#: data/ui/preferences.ui:561
+msgid "Anchor Docklets:"
+msgstr "एंकर डॉकलेट्स:"
+
+#: data/ui/preferences.ui:604
+msgid "Behaviour"
+msgstr "व्यवहार"
+
+#: data/ui/preferences.ui:624
+msgid "Docklets"
+msgstr "डॉकलेट्स"
+
+#: docklets/Applications/ApplicationsDockItem.vala:39
+#: docklets/Applications/ApplicationsDocklet.vala:31
+msgid "Applications"
+msgstr "एप्लिकेशन"
+
+#: docklets/Battery/BatteryDockItem.vala:28
+#: docklets/Battery/BatteryUPowerDockItem.vala:42
+msgid "No battery"
+msgstr "कोई बैटरी नहीं"
+
+#: docklets/Battery/BatteryDocklet.vala:29
+msgid "Battery"
+msgstr "बैटरी"
+
+#: docklets/Battery/BatteryDocklet.vala:31
+msgid "Displays battery information"
+msgstr "बैटरी जानकारी प्रदर्शित करता है"
+
+#: docklets/Clippy/ClippyDockItem.vala:23
+msgid "Clipboard is currently empty."
+msgstr "क्लिपबोर्ड वर्तमान में खाली है।"
+
+#: docklets/Clippy/ClippyDockItem.vala:24
+msgid "_Clear"
+msgstr "_साफ करें"
+
+#: docklets/Clippy/ClippyDocklet.vala:29
+msgid "Clippy"
+msgstr "क्लिप्पी"
+
+#: docklets/Clippy/ClippyDocklet.vala:31
+msgid "Keep recent clipboard entries."
+msgstr "हाल के क्लिपबोर्ड प्रविष्टियों को रखें।"
+
+#: docklets/Clock/ClockDockItem.vala:348
+msgid "Di_gital Clock"
+msgstr "डिजिटल घड़ी"
+
+#: docklets/Clock/ClockDockItem.vala:353
+msgid "24-Hour _Clock"
+msgstr "24-घंटे की घड़ी"
+
+#: docklets/Clock/ClockDockItem.vala:358
+msgid "Show _Date"
+msgstr "तारीख दिखाएं"
+
+#: docklets/Clock/ClockDocklet.vala:31
+msgid "Clock"
+msgstr "घड़ी"
+
+#: docklets/Clock/ClockDocklet.vala:33
+msgid "What time is it?"
+msgstr "समय क्या हुआ है?"
+
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
+msgid "CPU Monitor"
+msgstr "सीपीयू मॉनिटर"
+
+#: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
+msgid "Keep an eye on that CPU. And when it gets out of line..."
+msgstr "उस सीपीयू पर नजर रखें। और जब यह लाइन से बाहर हो जाए..."
+
+#: docklets/Desktop/DesktopDockItem.vala:45
+msgid "Show Desktop"
+msgstr "डेस्कटॉप दिखाएं"
+
+#: docklets/Desktop/DesktopDocklet.vala:33
+msgid "Desktop"
+msgstr "डेस्कटॉप"
+
+#: docklets/Desktop/DesktopDocklet.vala:35
+msgid "Show your Desktop."
+msgstr "अपना डेस्कटॉप दिखाएं।"
+
+#: docklets/Trash/TrashDockItem.vala:113
+msgid "No items in Trash"
+msgstr "कचरा में कोई आइटम नहीं"
+
+#: docklets/Trash/TrashDockItem.vala:114
+#, c-format
+msgid "%u item in Trash"
+msgid_plural "%u items in Trash"
+msgstr[0] "%u आइटम कचरे में"
+msgstr[1] "%u आइटम कचरे में"
+
+#: docklets/Trash/TrashDockItem.vala:145
+msgid "Drop to move to Trash"
+msgstr "कचरे में ले जाने के लिए छोड़ें"
+
+#: docklets/Trash/TrashDockItem.vala:193
+msgid "Restore Files"
+msgstr "फाइलें पुनर्स्थापित करें"
+
+#: docklets/Trash/TrashDockItem.vala:247
+msgid "_Open Trash"
+msgstr "_कचरा खोलें"
+
+#: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
+msgid "Empty _Trash"
+msgstr "_कचरा खाली करें"
+
+#: docklets/Trash/TrashDockItem.vala:345
+msgid "Empty all items from Trash?"
+msgstr "क्या सभी आइटम कचरे से हटाए जाएं?"
+
+#: docklets/Trash/TrashDockItem.vala:348
+msgid "All items in the Trash will be permanently deleted."
+msgstr "कचरे में सभी आइटम स्थायी रूप से हटा दिए जाएंगे।"
+
+#: docklets/Trash/TrashDockItem.vala:349
+msgid "_Cancel"
+msgstr "_रद्द करें"
+
+#: docklets/Trash/TrashDocklet.vala:29
+msgid "Trash"
+msgstr "कचरा"
+
+#: docklets/Trash/TrashDocklet.vala:31
+msgid "Have a look at your trash!"
+msgstr "अपने कचरे पर एक नजर डालें!"
+
+#: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
+msgid "Drop to add to dock"
+msgstr "डॉक में जोड़ने के लिए छोड़ें"
+
+#: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
+msgid "translator-credits"
+msgstr ""
+"लॉन्चपैड योगदान:\n"
+"  अल्फ्रेडो हर्नान्डेज़ https://launchpad.net/~aldomann\n"
+"  एंथनी हैरिंगटन 😁 https://launchpad.net/~untaintableangel\n"
+"  हटाया गया https://launchpad.net/~old.name\n"
+"  दिन्चर काव्राल https://launchpad.net/~dkavraal\n"
+"  रिको ज़्चिचोल्ज़ https://launchpad.net/~ricotz"
+
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
+#: lib/Items/FileDockItem.vala:215
+msgid "_Keep in Dock"
+msgstr "_डॉक में रखें"
+
+#: lib/Items/ApplicationDockItem.vala:420
+msgid "_Close All"
+msgstr "_सभी बंद करें"
+
+#: lib/Items/ApplicationDockItem.vala:420
+msgid "_Close"
+msgstr "_बंद करें"
+
+#: lib/Items/ApplicationDockItem.vala:492
+#, c-format
+msgid "Drop to open with %s"
+msgstr "%s के साथ खोलने के लिए छोड़ें"
+
+#: lib/Items/FileDockItem.vala:200
+msgid "_Open in File Browser"
+msgstr "फाइल ब्राउज़र में खोलें"
+
+#: lib/Items/FileDockItem.vala:221
+msgid "_Open"
+msgstr "_खोलें"
+
+#: lib/Items/FileDockItem.vala:225
+msgid "Open Containing _Folder"
+msgstr "संग्रहित _फ़ोल्डर खोलें"
+
+#: lib/Items/PlaceholderDockItem.vala:37
+msgid "Drop applications or files here"
+msgstr "यहां पर एप्लिकेशन या फाइलें छोड़ें"
+
+#: lib/Items/PlankDockItem.vala:66
+msgid "Get _Help Online..."
+msgstr "_ऑनलाइन मदद प्राप्त करें..."
+
+#: lib/Items/PlankDockItem.vala:70
+msgid "_Translate This Application..."
+msgstr "_इस एप्लिकेशन का अनुवाद करें..."
+
+#: lib/Items/PlankDockItem.vala:76
+msgid "_Preferences"
+msgstr "_वरीयताएँ"
+
+#: lib/Items/PlankDockItem.vala:80
+msgid "_About"
+msgstr "_के बारे में"
+
+#: lib/Items/PlankDockItem.vala:88
+msgid "_Quit"
+msgstr "_बाहर जाएं"
+
+#: lib/Widgets/PreferencesWindow.vala:92
+msgid "Preferences"
+msgstr "वरीयताएँ"
+```
