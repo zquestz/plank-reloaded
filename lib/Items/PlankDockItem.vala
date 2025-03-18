@@ -63,11 +63,11 @@ namespace Plank {
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      var item = create_menu_item (_("Get _Help Online..."), "help");
+      var item = create_menu_item (_("Get _Help Online..."), "help-browser");
       item.activate.connect (() => Application.get_default ().activate_action ("help", null));
       items.add (item);
 
-      item = create_menu_item (_("_Translate This Application..."), "locale");
+      item = create_menu_item (_("_Translate This Application..."), "preferences-desktop-locale");
       item.activate.connect (() => Application.get_default ().activate_action ("translate", null));
       items.add (item);
 
