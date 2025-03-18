@@ -76,6 +76,10 @@ meson compile -C build
 sudo meson install -C build
 ```
 
+### Nix
+
+There is a Nix flake available for Plank Reloaded. Just follow the directions in `nix/README.md`.
+
 ### Fedora
 
 Testing is still ongoing for Wayland based operating systems like Fedora. Bugs will be encountered. Please report them, and help us fix them.
