@@ -6,6 +6,7 @@ docklets/Applications/ApplicationsDocklet.vala
 docklets/Battery/BatteryDockItem.vala
 docklets/Battery/BatteryDocklet.vala
 docklets/Battery/BatteryUPowerDockItem.vala
+docklets/Battery/BatteryPreferences.vala
 docklets/Clippy/ClippyDockItem.vala
 docklets/Clippy/ClippyDocklet.vala
 docklets/Clippy/ClippyPreferences.vala

@@ -26,14 +26,13 @@ namespace Docky {
 
     private const string ICON_MISSING = "battery-missing";
     private const string NO_BATTERY_TEXT = N_ ("No battery");
-    private const uint UPDATE_INTERVAL = 60 * 1000;     // 60 seconds
+    private const uint UPDATE_INTERVAL = 60 * 1000; // 60 seconds
 
-    private string current_battery = "BAT0";
     private uint timer_id = 0U;
 
     public BatteryDockItem.with_dockitem_file (GLib.File file)
     {
-      GLib.Object (Prefs: new DockItemPreferences.with_file (file));
+      GLib.Object (Prefs: new BatteryPreferences.with_file (file));
     }
 
     construct
@@ -54,19 +53,22 @@ namespace Docky {
 
     private int get_capacity () throws GLib.FileError {
       string contents;
-      FileUtils.get_contents (BAT_CAPACITY.printf (current_battery), out contents);
+      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
+      FileUtils.get_contents (BAT_CAPACITY.printf (prefs.BatteryDeviceName), out contents);
       return int.parse (contents);
     }
 
     private string get_capacity_level () throws GLib.FileError {
       string contents;
-      FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (current_battery), out contents);
+      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
+      FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (prefs.BatteryDeviceName), out contents);
       return contents.strip ();
     }
 
     private string get_status () throws GLib.FileError {
       string contents;
-      FileUtils.get_contents (BAT_STATUS.printf (current_battery), out contents);
+      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
+      FileUtils.get_contents (BAT_STATUS.printf (prefs.BatteryDeviceName), out contents);
       return contents.strip ();
     }
 

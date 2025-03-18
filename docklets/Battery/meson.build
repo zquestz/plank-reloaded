@@ -2,6 +2,7 @@ docklet_battery_sources = [
   'BatteryDockItem.vala',
   'BatteryDocklet.vala',
   'BatteryUPowerDockItem.vala',
+  'BatteryPreferences.vala',
 ]
 
 shared_module(
