@@ -16,13 +16,14 @@ programs with more advanced features.
 
 - Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, and Xfce)
 - Migrated to modern meson build system for easier compilation and installation
-- Added AnchorDocklets setting to anchor docklets to the end of the dock
+- Added AnchorDocklets/AnchorFiles settings to anchor docklets/files to the end of the dock
 - Fixed Restrict to Workspace so applications only show up on their active workspace
 - Comprehensive docklet improvements:
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
   - Clock: Enhanced digital display with new pop-up calendar
   - Clippy: Better text handling and menu organization
+  - Separator: A simple separator so you can setup a Mac OS X like dock experience
   - Refreshed icons across all docklets
 - Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
 - General code cleanup and stability improvements
