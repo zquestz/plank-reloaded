@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-18 18:41-1000\n"
-"PO-Revision-Date: 2025-03-10 01:38\n"
+"PO-Revision-Date: 2025-03-19 04:55\n"
 "Last-Translator: \n"
 "Language-Team: English, United Kingdom\n"
 "Language: en_GB\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple."
 msgstr "Still stupidly simple."
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. Whilst development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. Whilst development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programmes "
-"with more advanced features."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programmes with more advanced features."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -220,7 +204,7 @@ msgstr "Applications"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Simply start any of your applications."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
@@ -340,15 +324,15 @@ msgstr "Have a look at your rubbish bin!"
 
 #: docklets/Separator/SeparatorDockItem.vala:199
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Invert Colour"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Separator"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Just a separator."
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -356,8 +340,7 @@ msgstr "Drop to add to dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Anthony Harrington 😁 https://launchpad.net/~untaintableangel\n"
 "  Deleted https://launchpad.net/~old.name\n"
@@ -421,3 +404,4 @@ msgstr "_Quit"
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr "Preferences"
+

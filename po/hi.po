@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-18 18:41-1000\n"
-"PO-Revision-Date: 2025-03-17 22:51\n"
+"PO-Revision-Date: 2025-03-19 04:55\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple."
 msgstr "अब भी बेवकूफी से सरल।"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"प्लैंक रिलोडेड मूल प्लैंक प्रोजेक्ट का एक फोर्क है, जो X11 डेस्कटॉप वातावरण के लिए एक सरल "
-"डॉक प्रदान करता है। जबकि विकास सिन्नामोन पर ध्यान केंद्रित करके शुरू हुआ था, अब हम "
-"सक्रिय रूप से कई डेस्कटॉप वातावरणों का समर्थन करते हैं जिनमें मेट और एक्सएफसीई शामिल हैं। इस "
-"समय वेयलैंड समर्थित नहीं है।"
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "प्लैंक रिलोडेड मूल प्लैंक प्रोजेक्ट का एक फोर्क है, जो X11 डेस्कटॉप वातावरण के लिए एक सरल डॉक प्रदान करता है। जबकि विकास सिन्नामोन पर ध्यान केंद्रित करके शुरू हुआ था, अब हम सक्रिय रूप से कई डेस्कटॉप वातावरणों का समर्थन करते हैं जिनमें मेट और एक्सएफसीई शामिल हैं। इस समय वेयलैंड समर्थित नहीं है।"
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"अपने पूर्ववर्ती की तरह, प्लैंक रिलोडेड का लक्ष्य ग्रह पर सबसे सरल डॉक होना है, जो केवल एक "
-"डॉक की जरूरतों को पूरा करता है और बिल्कुल भी ज्यादा नहीं। यह एक पुस्तकालय भी बनी रहती "
-"है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा "
-"सकता है।"
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "अपने पूर्ववर्ती की तरह, प्लैंक रिलोडेड का लक्ष्य ग्रह पर सबसे सरल डॉक होना है, जो केवल एक डॉक की जरूरतों को पूरा करता है और बिल्कुल भी ज्यादा नहीं। यह एक पुस्तकालय भी बनी रहती है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा सकता है।"
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -220,7 +204,7 @@ msgstr "एप्लिकेशन"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "बस अपने किसी भी एप्लिकेशन को शुरू करें।"
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
@@ -340,15 +324,15 @@ msgstr "अपने कचरे पर एक नजर डालें!"
 
 #: docklets/Separator/SeparatorDockItem.vala:199
 msgid "_Invert Color"
-msgstr ""
+msgstr "_रंग पलटें"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "विभाजक"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "बस एक विभाजक।"
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -356,8 +340,7 @@ msgstr "डॉक में जोड़ने के लिए छोड़े�
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"लॉन्चपैड योगदान:\n"
+msgstr "लॉन्चपैड योगदान:\n"
 "  अल्फ्रेडो हर्नान्डेज़ https://launchpad.net/~aldomann\n"
 "  एंथनी हैरिंगटन 😁 https://launchpad.net/~untaintableangel\n"
 "  हटाया गया https://launchpad.net/~old.name\n"
@@ -421,3 +404,4 @@ msgstr "_बाहर जाएं"
 #: lib/Widgets/PreferencesWindow.vala:92
 msgid "Preferences"
 msgstr "वरीयताएँ"
+

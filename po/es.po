@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-18 18:41-1000\n"
-"PO-Revision-Date: 2025-03-04 03:58\n"
+"PO-Revision-Date: 2025-03-19 04:55\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -26,30 +26,12 @@ msgid "Still stupidly simple."
 msgstr "Todavía estúpidamente simple."
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Recargado es una bifurcación del proyecto original de Plank que "
-"proporciona un simple acoplamiento para entornos de escritorio X11. Mientras "
-"que el desarrollo comenzó con un enfoque en Cinnamon, ahora soportamos "
-"activamente múltiples entornos de escritorio, incluyendo MATE y Xfce. "
-"Wayland no está soportado en este momento."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Recargado es una bifurcación del proyecto original de Plank que proporciona un simple acoplamiento para entornos de escritorio X11. Mientras que el desarrollo comenzó con un enfoque en Cinnamon, ahora soportamos activamente múltiples entornos de escritorio, incluyendo MATE y Xfce. Wayland no está soportado en este momento."
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Al igual que su predecesor, Plank Recargado pretende ser el muelle más "
-"simple del planeta, proporcionando justo lo que un muelle necesita y "
-"absolutamente nada más. También sigue siendo una biblioteca que se puede "
-"extender para crear otros programas de acoplamiento con características más "
-"avanzadas."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Al igual que su predecesor, Plank Recargado pretende ser el muelle más simple del planeta, proporcionando justo lo que un muelle necesita y absolutamente nada más. También sigue siendo una biblioteca que se puede extender para crear otros programas de acoplamiento con características más avanzadas."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -222,7 +204,7 @@ msgstr "Aplicaciones"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Simplemente inicie cualquiera de sus aplicaciones."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
@@ -342,15 +324,15 @@ msgstr "¡Echa un vistazo a tu basura!"
 
 #: docklets/Separator/SeparatorDockItem.vala:199
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Invertir color"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Separador"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Solo un separador."
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -358,8 +340,7 @@ msgstr "Soltar para añadir al dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Contribuciones al Launchpad:\n"
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Alonso Vargas https://launchpad.net/~jovar06\n"
@@ -420,11 +401,11 @@ msgstr "Suelte aplicaciones o archivos aquí"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Obtener _ayuda en línea…"
+msgstr "Obtener _ayuda en línea..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "_Traducir esta aplicación…"
+msgstr "_Traducir esta aplicación..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
