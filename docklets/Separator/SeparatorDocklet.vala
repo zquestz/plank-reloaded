@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2024 Plank Reloaded Developers
+// Copyright (C) 2025 Plank Reloaded Developers
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,23 +16,23 @@
 //
 
 public static void docklet_init (Plank.DockletManager manager) {
-  manager.register_docklet (typeof (Docky.ApplicationsDocklet));
+  manager.register_docklet (typeof (Docky.SeparatorDocklet));
 }
 
 namespace Docky {
-  public class ApplicationsDocklet : Object, Plank.Docklet {
-    private const string ID = "applications";
-    public const string ICON = "applications-all;;gnome-applications;;gnome-main-menu";
+  public class SeparatorDocklet : Object, Plank.Docklet {
+    private const string ID = "separator";
+    private const string ICON = "org.kde.latte.separator;;org.xfce.panel.separator;;mate-panel-separator;;separator";
 
     public unowned string get_id () { return ID; }
-    public unowned string get_name () { return _("Applications"); }
-    public unowned string get_description () { return _("Simply start any of your applications."); }
+    public unowned string get_name () { return _("Separator"); }
+    public unowned string get_description () { return _("Just a separator."); }
     public unowned string get_icon () { return ICON; }
 
     public bool is_supported () { return true; }
 
     public Plank.DockElement make_element (string launcher, GLib.File file) {
-      return new ApplicationsDockItem.with_dockitem_file (file);
+      return new SeparatorDockItem.with_dockitem_file (file);
     }
   }
 }

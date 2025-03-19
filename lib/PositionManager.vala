@@ -534,7 +534,7 @@ namespace Plank {
 
       switch (Position) {
       default :
-      case Gtk.PositionType.BOTTOM :
+      case Gtk.PositionType.BOTTOM:
         cursor_region.height = int.max (1 * window_scale_factor, (int) (progress * cursor_region.height));
         cursor_region.y = DockHeight - cursor_region.height + (window_scale_factor - 1);
         break;

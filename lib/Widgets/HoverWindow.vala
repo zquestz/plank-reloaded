@@ -120,7 +120,7 @@ namespace Plank {
      */
     public void set_text (string text) {
       label.set_text (text);
-      if (text != null)
+      if (text != null && text.length > 0)
         label.show ();
       else
         label.hide ();

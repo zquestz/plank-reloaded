@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-08 14:41-1000\n"
+"POT-Creation-Date: 2025-03-18 18:41-1000\n"
 "PO-Revision-Date: 2016-10-05 21:29+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -208,8 +208,12 @@ msgid "Docklets"
 msgstr ""
 
 #: docklets/Applications/ApplicationsDockItem.vala:39
-#: docklets/Applications/ApplicationsDocklet.vala:31
+#: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
+msgstr ""
+
+#: docklets/Applications/ApplicationsDocklet.vala:29
+msgid "Simply start any of your applications."
 msgstr ""
 
 #: docklets/Battery/BatteryDockItem.vala:28
@@ -326,6 +330,18 @@ msgstr ""
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
+msgstr ""
+
+#: docklets/Separator/SeparatorDockItem.vala:199
+msgid "_Invert Color"
+msgstr ""
+
+#: docklets/Separator/SeparatorDocklet.vala:28
+msgid "Separator"
+msgstr ""
+
+#: docklets/Separator/SeparatorDocklet.vala:29
+msgid "Just a separator."
 msgstr ""
 
 #: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51

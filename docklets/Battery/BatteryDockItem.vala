@@ -25,7 +25,7 @@ namespace Docky {
     private const string BAT_STATUS = BAT_BASE_PATH + "/%s/status";
 
     private const string ICON_MISSING = "battery-missing";
-    private const string NO_BATTERY_TEXT = N_ ("No battery");
+    private const string NO_BATTERY_TEXT = _("No battery");
     private const uint UPDATE_INTERVAL = 60 * 1000; // 60 seconds
 
     private uint timer_id = 0U;

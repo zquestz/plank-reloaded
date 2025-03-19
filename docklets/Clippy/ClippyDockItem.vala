@@ -20,8 +20,8 @@ using Plank;
 namespace Docky {
   public class ClippyDockItem : DockletItem {
     private const string ICON_NAME = "edit-cut";
-    private const string EMPTY_CLIPBOARD_TEXT = N_("Clipboard is currently empty.");
-    private const string CLEAR_MENU_LABEL = N_("_Clear");
+    private const string EMPTY_CLIPBOARD_TEXT = _("Clipboard is currently empty.");
+    private const string CLEAR_MENU_LABEL = _("_Clear");
     private const int MAX_CLIP_MENU_ITEM_LENGTH = 80;
 
     private Gtk.Clipboard clipboard;
