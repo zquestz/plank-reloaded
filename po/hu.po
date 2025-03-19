@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-18 18:41-1000\n"
+"POT-Creation-Date: 2025-03-19 09:05-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -99,113 +99,116 @@ msgstr "Elrendezés:"
 msgid "Fill"
 msgstr "Kitöltés"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
 msgstr "Eleje"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
 msgstr "Vége"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
 msgstr "Közép"
 
-#: data/ui/preferences.ui:168
+#: data/ui/preferences.ui:171
 msgid "On Primary Display:"
 msgstr "Elsődleges képernyőn:"
 
-#: data/ui/preferences.ui:191
+#: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Eltolás százalékban a képernyőszél közepétől"
 
-#: data/ui/preferences.ui:208
+#: data/ui/preferences.ui:217
 msgid "Icon Alignment:"
 msgstr "Ikon elrendezés:"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:247
 msgid "Icon Size:"
 msgstr "Ikon méret:"
 
-#: data/ui/preferences.ui:304
+#: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
 msgstr "Ikon nagyítása:"
 
-#: data/ui/preferences.ui:328
+#: data/ui/preferences.ui:337
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: data/ui/preferences.ui:348
+#: data/ui/preferences.ui:357
 msgid "Intellihide"
 msgstr "Inteligens elrejtés"
 
-#: data/ui/preferences.ui:349
+#: data/ui/preferences.ui:358
 msgid "Autohide"
 msgstr "Automatikus elrejtés"
 
-#: data/ui/preferences.ui:350
+#: data/ui/preferences.ui:359
 msgid "Dodge maximized window"
 msgstr "Eltüntetés maximalizált ablak elől"
 
-#: data/ui/preferences.ui:351
+#: data/ui/preferences.ui:360
 msgid "Window Dodge"
 msgstr "Ablak dokkolása"
 
-#: data/ui/preferences.ui:352
+#: data/ui/preferences.ui:361
 msgid "Dodge active window"
 msgstr "Aktív ablak félreugrása"
 
-#: data/ui/preferences.ui:378
+#: data/ui/preferences.ui:387
 msgid "Hide Dock"
 msgstr "Dokk elrejtése"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:403
 msgid "Hide Delay:"
 msgstr "Elrejtés késleltetése:"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:417
 msgid "Delay in ms before hiding the dock"
 msgstr ""
 "A késleltetés mértéke ezredmásodpercben megadva, mielőtt eltűnne a dokk"
 
-#: data/ui/preferences.ui:421
+#: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
 msgstr "Felfedés késleltetése:"
 
-#: data/ui/preferences.ui:432
+#: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
 msgstr "Megjelenítés előtti várakozás ms-ban"
 
-#: data/ui/preferences.ui:448
+#: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
 msgstr "Felfedés nyomásra:"
 
-#: data/ui/preferences.ui:472
+#: data/ui/preferences.ui:496
 msgid "Item Management"
 msgstr "Elemek kezelése"
 
-#: data/ui/preferences.ui:488
+#: data/ui/preferences.ui:515
 msgid "Show Unpinned:"
 msgstr "Rögzítetlenek mutatása:"
 
-#: data/ui/preferences.ui:512
+#: data/ui/preferences.ui:542
 msgid "Restrict to Workspace:"
 msgstr "Korlátozás munkaterületre:"
 
-#: data/ui/preferences.ui:537
+#: data/ui/preferences.ui:567
 msgid "Lock Icons:"
 msgstr "Ikonok zárolása:"
 
-#: data/ui/preferences.ui:561
-#, fuzzy
+#: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr "Dockletek"
+msgstr ""
 
-#: data/ui/preferences.ui:604
+#: data/ui/preferences.ui:621
+msgid "Anchor Files:"
+msgstr ""
+
+#: data/ui/preferences.ui:643
 msgid "Behaviour"
 msgstr "Viselkedés"
 
-#: data/ui/preferences.ui:624
+#: data/ui/preferences.ui:663
 msgid "Docklets"
 msgstr "Dockletek"
 
@@ -415,7 +418,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:92
+#: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Beállítások"
 

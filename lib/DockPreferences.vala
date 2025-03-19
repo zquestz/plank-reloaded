@@ -26,73 +26,76 @@ namespace Plank
 	{
 		public const int MIN_ICON_SIZE = 24;
 		public const int MAX_ICON_SIZE = 128;
-		
+
 		public const int MIN_ICON_ZOOM = 100;
 		public const int MAX_ICON_ZOOM = 200;
-		
+
 		[Description(nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
 		public bool CurrentWorkspaceOnly { get; set; }
-		
+
 		[Description(nick = "icon-size", blurb = "The size of dock icons (in pixels).")]
 		public int IconSize { get; set; }
-		
+
 		[Description(nick = "hide-mode", blurb = "If 0, the dock won't hide.  If 1, the dock intelligently hides.  If 2, the dock auto-hides. If 3, the dock dodges active maximized windows. If 4, the dock dodges every window.")]
 		public HideType HideMode { get; set; }
-		
+
 		[Description(nick = "unhide-delay", blurb = "Time (in ms) to wait before unhiding the dock.")]
 		public uint UnhideDelay { get; set; }
-		
+
 		[Description(nick = "hide-delay", blurb = "Time (in ms) to wait before hiding the dock.")]
 		public uint HideDelay { get; set; }
-		
+
 		[Description(nick = "monitor", blurb = "The plug-name of the monitor for the dock to show on (e.g. DVI-I-1, HDMI1, LVDS1). Leave this empty to keep on the primary monitor.")]
 		public string Monitor { get; set; }
-		
+
 		[Description(nick = "dock-items", blurb = "Array of the dockitem-files on this dock. DO NOT MODIFY")]
 		public string[] DockItems { get; set; }
-		
+
 		[Description(nick = "position", blurb = "The position for the dock on the monitor.  If 0, left.  If 1, right.  If 2, top.  If 3, bottom.")]
 		public Gtk.PositionType Position { get; set; }
-		
+
 		[Description(nick = "offset", blurb = "The dock's position offset from center (in percent).")]
 		public int Offset { get; set; }
-		
+
 		[Description(nick = "theme", blurb = "The name of the dock's theme to use.")]
 		public string Theme { get; set; }
-		
+
 		[Description(nick = "alignment", blurb = "The alignment for the dock on the monitor's edge.  If 0, panel-mode.  If 1, left-aligned.  If 2, right-aligned.  If 3, centered.")]
 		public Gtk.Align Alignment { get; set; }
-		
+
 		[Description(nick = "items-alignment", blurb = "The alignment of the items in this dock if panel-mode is used.  If 1, left-aligned.  If 2, right-aligned.  If 3, centered.")]
 		public Gtk.Align ItemsAlignment { get; set; }
-		
+
 		[Description(nick = "lock-items", blurb = "Whether to prevent drag'n'drop actions and lock items on the dock.")]
 		public bool LockItems { get; set; }
 
 		[Description(nick = "anchor-docklets", blurb = "Whether to anchor docklets to the edge of the dock.")]
 		public bool AnchorDocklets { get; set; }
-		
+
+		[Description(nick = "anchor-files", blurb = "Whether to anchor files to the edge of the dock.")]
+		public bool AnchorFiles { get; set; }
+
 		[Description(nick = "pressure-reveal", blurb = "Whether to use pressure-based revealing of the dock if the support is available.")]
 		public bool PressureReveal { get; set; }
-		
+
 		[Description(nick = "pinned-only", blurb = "Whether to show only pinned applications. Useful for running more then one dock.")]
 		public bool PinnedOnly { get; set; }
-		
+
 		[Description(nick = "auto-pinning", blurb = "Whether to automatically pin an application if it seems useful to do.")]
 		public bool AutoPinning { get; set; }
-		
+
 		[Description(nick = "show-dock-item", blurb = "Whether to show the item for the dock itself.")]
 		public bool ShowDockItem { get; set; }
-		
+
 		[Description(nick = "zoom-enabled", blurb = "Whether the dock will zoom when hovered.")]
 		public bool ZoomEnabled { get; set; }
-		
+
 		[Description(nick = "zoom-percent", blurb = "The dock's icon-zoom (in percent).")]
 		public uint ZoomPercent { get; set; }
-		
+
 		[Description(nick = "tooltips-enabled", blurb = "Whether to show tooltips when items are hovered.")]
 		public bool TooltipsEnabled { get; set; }
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -100,11 +103,11 @@ namespace Plank
 		{
 			Object (settings: create_settings ("net.launchpad.plank.dock.settings", "/net/launchpad/plank/docks/%s/".printf (name)));
 		}
-		
+
 		~DockPreferences ()
 		{
 		}
-		
+
 		/**
 		 * Increases the IconSize, if it is not already at its max.
 		 */
@@ -113,7 +116,7 @@ namespace Plank
 			if (IconSize < MAX_ICON_SIZE - 1)
 				IconSize += 2;
 		}
-		
+
 		/**
 		 * Decreases the IconSize, if it is not already at its min.
 		 */
@@ -122,7 +125,7 @@ namespace Plank
 			if (IconSize > MIN_ICON_SIZE + 1)
 				IconSize -= 2;
 		}
-		
+
 		/**
 		 * Return whether or not a dock is a horizontal dock.
 		 *
@@ -132,7 +135,7 @@ namespace Plank
 		{
 			return (Position == Gtk.PositionType.TOP || Position == Gtk.PositionType.BOTTOM);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -147,7 +150,7 @@ namespace Plank
 				else if (IconSize % 2 == 1)
 					IconSize -= 1;
 				break;
-			
+
 			case "Theme":
 				if (Theme == "")
 					Theme = Plank.Theme.DEFAULT_NAME;

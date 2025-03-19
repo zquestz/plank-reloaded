@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-18 18:41-1000\n"
-"PO-Revision-Date: 2025-03-19 04:55\n"
+"POT-Creation-Date: 2025-03-19 09:05-1000\n"
+"PO-Revision-Date: 2025-03-19 19:41\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -89,111 +89,115 @@ msgstr "정렬:"
 msgid "Fill"
 msgstr "채우기"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
 msgstr "시작"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
 msgstr "끝"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
 msgstr "가운데"
 
-#: data/ui/preferences.ui:168
+#: data/ui/preferences.ui:171
 msgid "On Primary Display:"
 msgstr "첫 번째 디스플레이:"
 
-#: data/ui/preferences.ui:191
+#: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "화면 끝에서의 여백"
 
-#: data/ui/preferences.ui:208
+#: data/ui/preferences.ui:217
 msgid "Icon Alignment:"
 msgstr "아이콘 정렬:"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:247
 msgid "Icon Size:"
 msgstr "아이콘 크기:"
 
-#: data/ui/preferences.ui:304
+#: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
 msgstr "아이콘 줌:"
 
-#: data/ui/preferences.ui:328
+#: data/ui/preferences.ui:337
 msgid "Appearance"
 msgstr "모양"
 
-#: data/ui/preferences.ui:348
+#: data/ui/preferences.ui:357
 msgid "Intellihide"
 msgstr "똑똑하게 숨기기"
 
-#: data/ui/preferences.ui:349
+#: data/ui/preferences.ui:358
 msgid "Autohide"
 msgstr "자동으로 숨기기"
 
-#: data/ui/preferences.ui:350
+#: data/ui/preferences.ui:359
 msgid "Dodge maximized window"
 msgstr "최대화된 창은 피하기"
 
-#: data/ui/preferences.ui:351
+#: data/ui/preferences.ui:360
 msgid "Window Dodge"
 msgstr "창은 무조건 피하기"
 
-#: data/ui/preferences.ui:352
+#: data/ui/preferences.ui:361
 msgid "Dodge active window"
 msgstr "사용 중인 창은 피하기"
 
-#: data/ui/preferences.ui:378
+#: data/ui/preferences.ui:387
 msgid "Hide Dock"
 msgstr "플랭크 숨기기"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:403
 msgid "Hide Delay:"
 msgstr "숨김 지연 시간:"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:417
 msgid "Delay in ms before hiding the dock"
 msgstr "플랭크를 숨기기 전 지연 시간 (ms)"
 
-#: data/ui/preferences.ui:421
+#: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
 msgstr "숨김 해제 지연 시간:"
 
-#: data/ui/preferences.ui:432
+#: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
 msgstr "플랭크를 보이기 전 지연 시간 (ms)"
 
-#: data/ui/preferences.ui:448
+#: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
 msgstr "압력 표시:"
 
-#: data/ui/preferences.ui:472
+#: data/ui/preferences.ui:496
 msgid "Item Management"
 msgstr "아이콘 관리"
 
-#: data/ui/preferences.ui:488
+#: data/ui/preferences.ui:515
 msgid "Show Unpinned:"
 msgstr "고정되지 않은 아이콘 보이기:"
 
-#: data/ui/preferences.ui:512
+#: data/ui/preferences.ui:542
 msgid "Restrict to Workspace:"
 msgstr "작업공간으로 제한하기:"
 
-#: data/ui/preferences.ui:537
+#: data/ui/preferences.ui:567
 msgid "Lock Icons:"
 msgstr "아이콘 고정:"
 
-#: data/ui/preferences.ui:561
+#: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
 msgstr "독크릿 고정:"
 
-#: data/ui/preferences.ui:604
+#: data/ui/preferences.ui:621
+msgid "Anchor Files:"
+msgstr "고정 파일:"
+
+#: data/ui/preferences.ui:643
 msgid "Behaviour"
 msgstr "동작"
 
-#: data/ui/preferences.ui:624
+#: data/ui/preferences.ui:663
 msgid "Docklets"
 msgstr "독크릿"
 
@@ -403,6 +407,6 @@ msgstr "정보 (_A)"
 msgid "_Quit"
 msgstr "나가기 (_Q)"
 
-#: lib/Widgets/PreferencesWindow.vala:92
+#: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "기본 설정"

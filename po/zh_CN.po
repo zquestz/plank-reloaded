@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-18 18:41-1000\n"
+"POT-Creation-Date: 2025-03-19 09:05-1000\n"
 "PO-Revision-Date: 2017-03-20 04:15+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -99,112 +99,115 @@ msgstr "对齐方式："
 msgid "Fill"
 msgstr "填充"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
 msgstr "首部"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
 msgstr "尾部"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
 msgstr "中部"
 
-#: data/ui/preferences.ui:168
+#: data/ui/preferences.ui:171
 msgid "On Primary Display:"
 msgstr "在主显示器上："
 
-#: data/ui/preferences.ui:191
+#: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "从屏幕边缘的中心按比例微调"
 
-#: data/ui/preferences.ui:208
+#: data/ui/preferences.ui:217
 msgid "Icon Alignment:"
 msgstr "图标排列："
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:247
 msgid "Icon Size:"
 msgstr "图标尺寸："
 
-#: data/ui/preferences.ui:304
+#: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
 msgstr "图标缩放："
 
-#: data/ui/preferences.ui:328
+#: data/ui/preferences.ui:337
 msgid "Appearance"
 msgstr "外观"
 
-#: data/ui/preferences.ui:348
+#: data/ui/preferences.ui:357
 msgid "Intellihide"
 msgstr "智能隐藏"
 
-#: data/ui/preferences.ui:349
+#: data/ui/preferences.ui:358
 msgid "Autohide"
 msgstr "自动隐藏"
 
-#: data/ui/preferences.ui:350
+#: data/ui/preferences.ui:359
 msgid "Dodge maximized window"
 msgstr "避开最大化窗口"
 
-#: data/ui/preferences.ui:351
+#: data/ui/preferences.ui:360
 msgid "Window Dodge"
 msgstr "避开任何窗口"
 
-#: data/ui/preferences.ui:352
+#: data/ui/preferences.ui:361
 msgid "Dodge active window"
 msgstr "避开活动窗口"
 
-#: data/ui/preferences.ui:378
+#: data/ui/preferences.ui:387
 msgid "Hide Dock"
 msgstr "影藏Dock"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:403
 msgid "Hide Delay:"
 msgstr "隐藏延迟："
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:417
 msgid "Delay in ms before hiding the dock"
 msgstr "以上毫秒后隐藏dock"
 
-#: data/ui/preferences.ui:421
+#: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
 msgstr "显示延迟："
 
-#: data/ui/preferences.ui:432
+#: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
 msgstr "以上毫秒后显示dock"
 
-#: data/ui/preferences.ui:448
+#: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
 msgstr "压力显示："
 
-#: data/ui/preferences.ui:472
+#: data/ui/preferences.ui:496
 msgid "Item Management"
 msgstr "项目管理"
 
-#: data/ui/preferences.ui:488
+#: data/ui/preferences.ui:515
 msgid "Show Unpinned:"
 msgstr "显示未收藏项："
 
-#: data/ui/preferences.ui:512
+#: data/ui/preferences.ui:542
 msgid "Restrict to Workspace:"
 msgstr "限制到工作区："
 
-#: data/ui/preferences.ui:537
+#: data/ui/preferences.ui:567
 msgid "Lock Icons:"
 msgstr "锁定图标："
 
-#: data/ui/preferences.ui:561
-#, fuzzy
+#: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr "小部件"
+msgstr ""
 
-#: data/ui/preferences.ui:604
+#: data/ui/preferences.ui:621
+msgid "Anchor Files:"
+msgstr ""
+
+#: data/ui/preferences.ui:643
 msgid "Behaviour"
 msgstr "行为"
 
-#: data/ui/preferences.ui:624
+#: data/ui/preferences.ui:663
 msgid "Docklets"
 msgstr "小部件"
 
@@ -416,7 +419,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:92
+#: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "首选项"
 

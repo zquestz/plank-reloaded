@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-18 18:41-1000\n"
+"POT-Creation-Date: 2025-03-19 09:05-1000\n"
 "PO-Revision-Date: 2017-03-20 05:01+0000\n"
 "Last-Translator: José Alfredo Múrcia Andrés <joamuran@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -99,112 +99,115 @@ msgstr "Alineament:"
 msgid "Fill"
 msgstr "Omple"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
 msgstr "Inici"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
 msgstr "Fi"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
 msgstr "Al centre"
 
-#: data/ui/preferences.ui:168
+#: data/ui/preferences.ui:171
 msgid "On Primary Display:"
 msgstr "A la pantalla principal:"
 
-#: data/ui/preferences.ui:191
+#: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Desplaçament en percentatge des del centre de la vora de la pantalla"
 
-#: data/ui/preferences.ui:208
+#: data/ui/preferences.ui:217
 msgid "Icon Alignment:"
 msgstr "Alineació de les icones:"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:247
 msgid "Icon Size:"
 msgstr "Mida de les icones:"
 
-#: data/ui/preferences.ui:304
+#: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
 msgstr "Escala de les icones:"
 
-#: data/ui/preferences.ui:328
+#: data/ui/preferences.ui:337
 msgid "Appearance"
 msgstr "Aparença"
 
-#: data/ui/preferences.ui:348
+#: data/ui/preferences.ui:357
 msgid "Intellihide"
 msgstr "Ocultació intel·ligent"
 
-#: data/ui/preferences.ui:349
+#: data/ui/preferences.ui:358
 msgid "Autohide"
 msgstr "Ocultació automàtica"
 
-#: data/ui/preferences.ui:350
+#: data/ui/preferences.ui:359
 msgid "Dodge maximized window"
 msgstr "Evita les finestres maximitzades"
 
-#: data/ui/preferences.ui:351
+#: data/ui/preferences.ui:360
 msgid "Window Dodge"
 msgstr "Esquiva les finestres"
 
-#: data/ui/preferences.ui:352
+#: data/ui/preferences.ui:361
 msgid "Dodge active window"
 msgstr "Evadeix la finestra activa"
 
-#: data/ui/preferences.ui:378
+#: data/ui/preferences.ui:387
 msgid "Hide Dock"
 msgstr "Oculta el dock"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:403
 msgid "Hide Delay:"
 msgstr "Retard en l'ocultació:"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:417
 msgid "Delay in ms before hiding the dock"
 msgstr "Retard en milisegons abans d'amagar el dock"
 
-#: data/ui/preferences.ui:421
+#: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
 msgstr "Retard en mostrar:"
 
-#: data/ui/preferences.ui:432
+#: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
 msgstr "Retard en milisegons abans de mostrar el dock"
 
-#: data/ui/preferences.ui:448
+#: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
 msgstr "Pressió per mostrar:"
 
-#: data/ui/preferences.ui:472
+#: data/ui/preferences.ui:496
 msgid "Item Management"
 msgstr "Gestió d'elements"
 
-#: data/ui/preferences.ui:488
+#: data/ui/preferences.ui:515
 msgid "Show Unpinned:"
 msgstr "Mostra elements desancorats:"
 
-#: data/ui/preferences.ui:512
+#: data/ui/preferences.ui:542
 msgid "Restrict to Workspace:"
 msgstr "Restingeix a l'àrea de treball:"
 
-#: data/ui/preferences.ui:537
+#: data/ui/preferences.ui:567
 msgid "Lock Icons:"
 msgstr "Bloca les icones:"
 
-#: data/ui/preferences.ui:561
-#, fuzzy
+#: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr "Miniaplicacions"
+msgstr ""
 
-#: data/ui/preferences.ui:604
+#: data/ui/preferences.ui:621
+msgid "Anchor Files:"
+msgstr ""
+
+#: data/ui/preferences.ui:643
 msgid "Behaviour"
 msgstr "Comportament"
 
-#: data/ui/preferences.ui:624
+#: data/ui/preferences.ui:663
 msgid "Docklets"
 msgstr "Miniaplicacions"
 
@@ -414,7 +417,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:92
+#: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Preferències"
 

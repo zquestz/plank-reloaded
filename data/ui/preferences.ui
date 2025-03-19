@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Generated with glade 3.19.0
 
 Copyright (C) 2016 Rico Tzschichholz
 
@@ -20,7 +20,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
 <interface domain="plank-reloaded">
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.10" />
   <!-- interface-license-type gplv3 -->
   <!-- interface-name plank -->
   <!-- interface-copyright 2016 Rico Tzschichholz -->
@@ -165,7 +165,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">On Primary Display:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >On Primary Display:</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -188,7 +191,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkScale" id="s_offset">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">Offset in percent from the center of the screen-edge</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Offset in percent from the center of the screen-edge</property>
                 <property name="adjustment">adj_offset</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -205,7 +211,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Icon Alignment:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Icon Alignment:</property>
                 <property name="justify">right</property>
               </object>
               <packing>
@@ -377,7 +386,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="halign">start</property>
                 <property name="label" translatable="yes">Hide Dock</property>
                 <attributes>
-                  <attribute name="weight" value="bold"/>
+                  <attribute name="weight" value="bold" />
                 </attributes>
               </object>
               <packing>
@@ -402,7 +411,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkSpinButton" id="sp_hide_delay">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">Delay in ms before hiding the dock</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Delay in ms before hiding the dock</property>
                 <property name="halign">start</property>
                 <property name="invisible_char">•</property>
                 <property name="adjustment">adj_hide_delay</property>
@@ -418,7 +430,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Unhide Delay:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Unhide Delay:</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -429,7 +444,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkSpinButton" id="sp_unhide_delay">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">Delay in ms before showing the dock</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Delay in ms before showing the dock</property>
                 <property name="halign">start</property>
                 <property name="invisible_char">•</property>
                 <property name="adjustment">adj_unhide_delay</property>
@@ -445,7 +463,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Pressure Reveal:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Pressure Reveal:</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -469,9 +490,12 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="label" translatable="yes">Item Management</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Item Management</property>
                 <attributes>
-                  <attribute name="weight" value="bold"/>
+                  <attribute name="weight" value="bold" />
                 </attributes>
               </object>
               <packing>
@@ -485,7 +509,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Show Unpinned:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Show Unpinned:</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -509,7 +536,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Restrict to Workspace:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Restrict to Workspace:</property>
                 <property name="justify">right</property>
               </object>
               <packing>
@@ -558,7 +588,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Anchor Docklets:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Anchor Docklets:</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -578,25 +611,31 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkLabel" id="l_anchor_files">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Anchor Files:</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">7</property>
+              </packing>
             </child>
             <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
+              <object class="GtkSwitch" id="sw_anchor_files">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">7</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -633,7 +672,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
         <property name="can_focus">False</property>
         <property name="show_close_button">True</property>
         <child>
-          <placeholder/>
+          <placeholder />
         </child>
         <child type="title">
           <object class="GtkStackSwitcher" id="dock_preferences_switcher">

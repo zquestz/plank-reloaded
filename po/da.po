@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-18 18:41-1000\n"
+"POT-Creation-Date: 2025-03-19 09:05-1000\n"
 "PO-Revision-Date: 2019-01-17 02:37+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -101,112 +101,115 @@ msgstr "Justering:"
 msgid "Fill"
 msgstr "Udfyld"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:222
+#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
 msgstr "Begyndelsen"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:223
+#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
 msgstr "Slutningen"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:224
+#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
 msgstr "Midten"
 
-#: data/ui/preferences.ui:168
+#: data/ui/preferences.ui:171
 msgid "On Primary Display:"
 msgstr "På primær skærm:"
 
-#: data/ui/preferences.ui:191
+#: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Forskydning i procent fra midten af skærmens kant"
 
-#: data/ui/preferences.ui:208
+#: data/ui/preferences.ui:217
 msgid "Icon Alignment:"
 msgstr "Justering af ikoner:"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:247
 msgid "Icon Size:"
 msgstr "Ikonstørrelse:"
 
-#: data/ui/preferences.ui:304
+#: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
 msgstr "Ikonzoom:"
 
-#: data/ui/preferences.ui:328
+#: data/ui/preferences.ui:337
 msgid "Appearance"
 msgstr "Udseende"
 
-#: data/ui/preferences.ui:348
+#: data/ui/preferences.ui:357
 msgid "Intellihide"
 msgstr "Intelligent skjul"
 
-#: data/ui/preferences.ui:349
+#: data/ui/preferences.ui:358
 msgid "Autohide"
 msgstr "Automatisk skjul"
 
-#: data/ui/preferences.ui:350
+#: data/ui/preferences.ui:359
 msgid "Dodge maximized window"
 msgstr "Undvig maksimeret vindue"
 
-#: data/ui/preferences.ui:351
+#: data/ui/preferences.ui:360
 msgid "Window Dodge"
 msgstr "Undvigelse af vindue"
 
-#: data/ui/preferences.ui:352
+#: data/ui/preferences.ui:361
 msgid "Dodge active window"
 msgstr "Undvig aktivt vindue"
 
-#: data/ui/preferences.ui:378
+#: data/ui/preferences.ui:387
 msgid "Hide Dock"
 msgstr "Skjul dok"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:403
 msgid "Hide Delay:"
 msgstr "Ventetid før skjul:"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:417
 msgid "Delay in ms before hiding the dock"
 msgstr "Ventetid i ms inden dokken skjules"
 
-#: data/ui/preferences.ui:421
+#: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
 msgstr "Ventetid for visning:"
 
-#: data/ui/preferences.ui:432
+#: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
 msgstr "Ventetid i ms inden dokken vises"
 
-#: data/ui/preferences.ui:448
+#: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
 msgstr "Fremvis ved tryk:"
 
-#: data/ui/preferences.ui:472
+#: data/ui/preferences.ui:496
 msgid "Item Management"
 msgstr "Elementhåndtering"
 
-#: data/ui/preferences.ui:488
+#: data/ui/preferences.ui:515
 msgid "Show Unpinned:"
 msgstr "Vis ikke-fastgjorte:"
 
-#: data/ui/preferences.ui:512
+#: data/ui/preferences.ui:542
 msgid "Restrict to Workspace:"
 msgstr "Begræns til arbejdsområde:"
 
-#: data/ui/preferences.ui:537
+#: data/ui/preferences.ui:567
 msgid "Lock Icons:"
 msgstr "Lås ikoner:"
 
-#: data/ui/preferences.ui:561
-#, fuzzy
+#: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr "Dokletter"
+msgstr ""
 
-#: data/ui/preferences.ui:604
+#: data/ui/preferences.ui:621
+msgid "Anchor Files:"
+msgstr ""
+
+#: data/ui/preferences.ui:643
 msgid "Behaviour"
 msgstr "Adfærd"
 
-#: data/ui/preferences.ui:624
+#: data/ui/preferences.ui:663
 msgid "Docklets"
 msgstr "Dokletter"
 
@@ -412,7 +415,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:92
+#: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Præferencer"
 
