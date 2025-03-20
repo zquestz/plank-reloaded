@@ -256,10 +256,11 @@ namespace Plank {
         var zoom_time = int64.max (0LL, frame_time - last_hovered_changed);
         double zoom_progress;
         if (zoom_time < zoom_duration) {
-          if (controller.hide_manager.Hovered)
+          if (controller.hide_manager.Hovered) {
             zoom_progress = easing_for_mode (AnimationMode.EASE_OUT_CUBIC, zoom_time, zoom_duration);
-          else
+          } else {
             zoom_progress = 1.0 - easing_for_mode (AnimationMode.EASE_IN_CUBIC, zoom_time, zoom_duration);
+          }
         } else {
           zoom_progress = (controller.hide_manager.Hovered ? 1.0 : 0.0);
         }
@@ -482,8 +483,7 @@ namespace Plank {
 
           // FIXME there must be a sane way
           // https://bugs.launchpad.net/plank/+bug/1256626
-          force_frame_time_update ();
-          last_hide = frame_time;
+          last_hide = force_frame_time_update ();
 
           hidden_changed ();
           return false;
@@ -995,8 +995,7 @@ namespace Plank {
     }
 
     void hidden_changed () {
-      force_frame_time_update ();
-      var now = frame_time;
+      var now = force_frame_time_update ();
       var diff = now - last_hide;
       var time = (theme.FadeOpacity == 1.0 ? theme.HideTime : theme.FadeTime) * 1000;
 
@@ -1017,8 +1016,7 @@ namespace Plank {
     }
 
     void hovered_changed () {
-      force_frame_time_update ();
-      var now = frame_time;
+      var now = force_frame_time_update ();
       var diff = now - last_hovered_changed;
       var time = DOCK_ZOOM_DURATION * 1000;
 

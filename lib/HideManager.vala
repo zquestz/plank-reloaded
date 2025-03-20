@@ -206,7 +206,7 @@ namespace Plank {
      * @param x the x coordinate of the pointer relative to the dock window
      * @param y the y coordinate of the pointer relative to the dock window
      */
-    public void update_hovered_with_coords (int x, int y) {
+    public void update_hovered_with_coords (int x, int y, bool force_unhovered = false) {
       unowned PositionManager position_manager = controller.position_manager;
       unowned DockWindow window = controller.window;
       unowned DragManager drag_manager = controller.drag_manager;
@@ -219,8 +219,12 @@ namespace Plank {
       var dock_rect = position_manager.get_cursor_region ();
 
       // use the dock rect and cursor location to determine if dock is hovered
-      var hovered = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
-                     && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
+      var hovered = false;
+
+      if (!force_unhovered) {
+        hovered = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
+                   && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
+      }
 
       if (Hovered != hovered) {
         Hovered = hovered;
@@ -399,8 +403,9 @@ namespace Plank {
       if ((bool) event.send_event)
         return Gdk.EVENT_PROPAGATE;
 
-      if (Hovered)
-        update_hovered_with_coords ((int) event.x, (int) event.y);
+      if (Hovered) {
+        update_hovered_with_coords ((int) event.x, (int) event.y, true);
+      }
 
       return Gdk.EVENT_PROPAGATE;
     }

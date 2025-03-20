@@ -134,9 +134,7 @@ namespace Plank {
 
     [CCode (instance_pos = -1)]
     void on_widget_realize (Gtk.Widget widget) {
-
-      int64 local_frame_time = force_frame_time_update ();
-      initialize_frame (local_frame_time);
+      initialize_frame (force_frame_time_update ());
 
       if (widget_realize_handler_id > 0UL) {
         widget.disconnect (widget_realize_handler_id);
