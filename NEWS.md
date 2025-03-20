@@ -2,6 +2,15 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.109 "Reloaded" (2025-03-19)
+
+- Updated Hindi translations
+- Added Separator Docklet
+- Added AnchorFiles to mimic OS X dock behavior
+- Allow changing battery device for non-upower users
+- Fixed Elementary OS settings lookup
+- Actually fixed magnification state
+
 ## 0.11.108 "Reloaded" (2025-03-11)
 
 - Fixed stuck magnification state
