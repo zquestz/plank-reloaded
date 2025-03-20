@@ -333,7 +333,7 @@ namespace Plank {
         item.reset_buffers ();
     }
 
-    bool enable_anchor_logic (DockItem item, DefaultApplicationDockItemProvider provider) {
+    bool enable_anchor_logic (DockItem? item, DefaultApplicationDockItemProvider? provider) {
       if (item == null) {
         return false;
       }
