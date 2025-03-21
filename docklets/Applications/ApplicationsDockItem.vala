@@ -41,7 +41,7 @@ namespace Docky {
 
       string menu_name = APPLICATIONS_MENU;
 
-      switch (session_desktop) {
+      switch (environment_session_desktop ()) {
       case XdgSessionDesktop.CINNAMON:
         menu_name = CINNAMON_APPLICATIONS_MENU;
         break;

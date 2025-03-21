@@ -130,7 +130,7 @@ namespace Plank {
   }
 
   static XdgSessionClass session_class;
-  public static XdgSessionDesktop session_desktop;
+  static XdgSessionDesktop session_desktop;
   static XdgSessionType session_type;
 
   public static void environment_initialize () {
@@ -149,6 +149,18 @@ namespace Plank {
 
   public static bool environment_is_session_type (XdgSessionType type) {
     return (type == session_type);
+  }
+
+  public static XdgSessionClass environment_session_class () {
+    return session_class;
+  }
+
+  public static XdgSessionDesktop environment_session_desktop () {
+    return session_desktop;
+  }
+
+  public static XdgSessionType environment_session_type () {
+    return session_type;
   }
 
   static XdgSessionClass get_xdg_session_class () {
