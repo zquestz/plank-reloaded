@@ -130,7 +130,7 @@ namespace Plank {
   }
 
   static XdgSessionClass session_class;
-  static XdgSessionDesktop session_desktop;
+  public static XdgSessionDesktop session_desktop;
   static XdgSessionType session_type;
 
   public static void environment_initialize () {

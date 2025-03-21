@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-19 09:05-1000\n"
+"POT-Creation-Date: 2025-03-20 23:41-1000\n"
 "PO-Revision-Date: 2018-08-27 23:14+0000\n"
 "Last-Translator: gorkaazk <gorkaazkarate@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -211,7 +211,7 @@ msgstr "Portaera"
 msgid "Docklets"
 msgstr "Docklet-ak"
 
-#: docklets/Applications/ApplicationsDockItem.vala:39
+#: docklets/Applications/ApplicationsDockItem.vala:40
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""

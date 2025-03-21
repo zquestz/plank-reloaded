@@ -26,6 +26,7 @@ namespace Docky {
     // Cache commonly used strings
     private const string APPLICATIONS_MENU = "applications.menu";
     private const string CINNAMON_APPLICATIONS_MENU = "cinnamon-applications.menu";
+    private const string MATE_APPLICATIONS_MENU = "mate-applications.menu";
     private const string NO_APPS_MESSAGE = "No applications available";
 
     public ApplicationsDockItem.with_dockitem_file (GLib.File file)
@@ -38,9 +39,16 @@ namespace Docky {
       Icon = ApplicationsDocklet.ICON;
       Text = _("Applications");
 
-      string menu_name = environment_is_session_desktop (XdgSessionDesktop.CINNAMON)
-                ? _(CINNAMON_APPLICATIONS_MENU)
-                : _(APPLICATIONS_MENU);
+      string menu_name = APPLICATIONS_MENU;
+
+      switch (session_desktop) {
+      case XdgSessionDesktop.CINNAMON:
+        menu_name = CINNAMON_APPLICATIONS_MENU;
+        break;
+      case XdgSessionDesktop.MATE:
+        menu_name = MATE_APPLICATIONS_MENU;
+        break;
+      }
 
       apps_menu = new GMenu.Tree (menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
       apps_menu.changed.connect (update_menu);
