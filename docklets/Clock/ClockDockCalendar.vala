@@ -6,7 +6,7 @@ namespace Docky {
     private int natural_height = 0;
 
     public ClockDockCalendar() {
-      this.title = _("Plank Clock Calendar");
+      this.title = _("Calendar");
       this.border_width = 5;
       this.set_default_size(300, 200);
       this.set_position(Gtk.WindowPosition.MOUSE);

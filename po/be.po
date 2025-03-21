@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-21 12:05-1000\n"
+"POT-Creation-Date: 2025-03-21 12:15-1000\n"
 "PO-Revision-Date: 2020-04-17 09:22+0000\n"
 "Last-Translator: Zmicer Turok <Unknown>\n"
 "Language-Team: Belarusian <be@li.org>\n"
@@ -274,7 +274,7 @@ msgid "What time is it?"
 msgstr ""
 
 #: docklets/Clock/ClockDockCalendar.vala:9
-msgid "Plank Clock Calendar"
+msgid "Calendar"
 msgstr ""
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
