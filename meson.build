@@ -286,7 +286,7 @@ custom_target(
     '-c', '''
     cd @0@/po &&
     for pofile in *.po; do
-      msgmerge --update --backup=none "$pofile" plank.pot
+      msgmerge -N --update --backup=none "$pofile" plank.pot
     done
     '''.format(meson.project_source_root()),
   ],

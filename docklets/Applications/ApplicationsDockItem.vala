@@ -27,7 +27,7 @@ namespace Docky {
     private const string APPLICATIONS_MENU = "applications.menu";
     private const string CINNAMON_APPLICATIONS_MENU = "cinnamon-applications.menu";
     private const string MATE_APPLICATIONS_MENU = "mate-applications.menu";
-    private const string NO_APPS_MESSAGE = "No applications available";
+    private const string NO_APPS_MESSAGE = _("No applications available");
 
     public ApplicationsDockItem.with_dockitem_file (GLib.File file)
     {
@@ -98,13 +98,13 @@ namespace Docky {
       apps_menu_mutex.lock ();
       try {
         if (!apps_loaded) {
-          items.add (create_menu_item (_(NO_APPS_MESSAGE), null, false));
+          items.add (create_menu_item (NO_APPS_MESSAGE, null, false));
           return items;
         }
 
         var root_dir = apps_menu.get_root_directory ();
         if (root_dir == null) {
-          items.add (create_menu_item (_(NO_APPS_MESSAGE), null, false));
+          items.add (create_menu_item (NO_APPS_MESSAGE, null, false));
           return items;
         }
 
