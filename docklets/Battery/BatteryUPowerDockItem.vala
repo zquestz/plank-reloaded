@@ -39,8 +39,8 @@ namespace Docky {
     private const string UPOWER_NAME = "org.freedesktop.UPower";
     private const string UPOWER_PATH = "/org/freedesktop/UPower";
     private const string ICON_MISSING = "battery-missing";
-    private const string NO_BATTERY_TEXT = N_("No battery");
-    private const uint UPDATE_INTERVAL = 20 * 1000;     // 20 seconds
+    private const string NO_BATTERY_TEXT = _("No battery");
+    private const uint UPDATE_INTERVAL = 20 * 1000; // 20 seconds
 
     private IUPower? upower;
     private IUPowerDevice? power_device;
@@ -60,7 +60,7 @@ namespace Docky {
     construct
     {
       Icon = ICON_MISSING;
-      Text = _(NO_BATTERY_TEXT);
+      Text = NO_BATTERY_TEXT;
 
       initialize_upower();
     }
@@ -122,7 +122,7 @@ namespace Docky {
       if (power_device == null) {
         warning("Battery docklet not initialized");
         Icon = ICON_MISSING;
-        Text = _(NO_BATTERY_TEXT);
+        Text = NO_BATTERY_TEXT;
         return false;
       }
 

@@ -90,7 +90,7 @@ namespace Docky {
 
     private void update_display() {
       if (clips.size == 0) {
-        Text = _(EMPTY_CLIPBOARD_TEXT);
+        Text = EMPTY_CLIPBOARD_TEXT;
       } else {
         Text = get_entry_text(cur_position == 0 ? clips.size : cur_position);
       }
@@ -180,7 +180,7 @@ namespace Docky {
         var separator = new Gtk.SeparatorMenuItem();
         items.add(separator);
 
-        var clear_item = create_menu_item(_(CLEAR_MENU_LABEL));
+        var clear_item = create_menu_item(CLEAR_MENU_LABEL);
         clear_item.activate.connect(clear_clipboard);
         items.add(clear_item);
       }

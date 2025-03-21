@@ -12,6 +12,7 @@ docklets/Clippy/ClippyDocklet.vala
 docklets/Clippy/ClippyPreferences.vala
 docklets/Clock/ClockDockItem.vala
 docklets/Clock/ClockDocklet.vala
+docklets/Clock/ClockDockCalendar.vala
 docklets/Clock/ClockPreferences.vala
 docklets/CPUMonitor/CPUMonitorDockItem.vala
 docklets/CPUMonitor/CPUMonitorDocklet.vala

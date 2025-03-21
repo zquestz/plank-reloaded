@@ -38,7 +38,7 @@ namespace Docky {
     construct
     {
       Icon = ICON_MISSING;
-      Text = _(NO_BATTERY_TEXT);
+      Text = NO_BATTERY_TEXT;
 
       update ();
       timer_id = Gdk.threads_add_timeout (UPDATE_INTERVAL, update);
@@ -120,7 +120,7 @@ namespace Docky {
       } catch (Error e) {
         warning ("Failed to update battery status: %s", e.message);
         Icon = ICON_MISSING;
-        Text = _(NO_BATTERY_TEXT);
+        Text = NO_BATTERY_TEXT;
       }
 
       return true;
