@@ -25,6 +25,7 @@ programs with more advanced features.
   - Clippy: Better text handling and menu organization
   - Separator: A simple separator so you can setup a Mac OS X like dock experience
   - Refreshed icons across all docklets
+  - Support for third party docklets
 - Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
 - General code cleanup and stability improvements
 
@@ -134,6 +135,13 @@ Please search for existing bugs before reporting new ones.
 - Report issues
 - Contribute to development
 - Translations: [https://crowdin.com/project/plank-reloaded](https://crowdin.com/project/plank-reloaded)
+- Third party docklets
+
+## Third Party Docklets
+
+Plank Reloaded encourages developers to write custom docklets! Right now we only have one custom docklet available, but we hope that changes in the future! Feel free to use Picky as an example for writing your own!
+
+- [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
 
 ## API Documentation
 
