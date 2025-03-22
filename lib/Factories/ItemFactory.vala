@@ -40,14 +40,6 @@ namespace Plank {
       "file:///usr/share/applications/kde4/KMail2.desktop"
     };
 
-    const string[] DEFAULT_APP_CALENDAR = {
-      "file:///usr/share/applications/org.mozilla.Thunderbird.desktop",
-      "file:///usr/share/applications/thunderbird.desktop",
-      "file:///usr/share/applications/evolution.desktop",
-      "file:///usr/share/applications/maya-calendar.desktop",
-      "file:///usr/share/applications/kde4/korganizer.desktop"
-    };
-
     const string[] DEFAULT_APP_TERMINAL = {
       "file:///usr/share/applications/com.mitchellh.ghostty.desktop",
       "file:///usr/share/applications/kitty.desktop",
@@ -278,12 +270,11 @@ namespace Plank {
       var mail = AppInfo.get_default_for_type ("x-scheme-handler/mailto", false);
       // FIXME dont know how to get terminal...
       var terminal = AppInfo.get_default_for_uri_scheme ("ssh");
-      var calendar = AppInfo.get_default_for_type ("text/calendar", false);
       var audio = AppInfo.get_default_for_type ("audio/x-vorbis+ogg", false);
       var video = AppInfo.get_default_for_type ("video/x-ogm+ogg", false);
       var photo = AppInfo.get_default_for_type ("image/jpeg", false);
 
-      if (browser == null && mail == null && calendar == null && terminal == null
+      if (browser == null && mail == null && terminal == null
           && audio == null && video == null && photo == null)
         return false;
 
@@ -293,8 +284,6 @@ namespace Plank {
         make_dock_item_for_desktop_id (mail.get_id ());
       if (terminal != null)
         make_dock_item_for_desktop_id (terminal.get_id ());
-      if (calendar != null)
-        make_dock_item_for_desktop_id (calendar.get_id ());
       if (audio != null)
         make_dock_item_for_desktop_id (audio.get_id ());
       if (video != null)
@@ -319,11 +308,6 @@ namespace Plank {
 
       // add mail-client
       foreach (unowned string uri in DEFAULT_APP_MAIL)
-        if (make_dock_item (uri) != null)
-          break;
-
-      // add calendar
-      foreach (unowned string uri in DEFAULT_APP_CALENDAR)
         if (make_dock_item (uri) != null)
           break;
 
@@ -387,10 +371,11 @@ namespace Plank {
           var launcher_base = (index_of_last_dot >= 0 ? basename.slice (0, index_of_last_dot) : basename);
           var dockitem = "%s.dockitem".printf (launcher_base);
           var dockitem_file = target_dir.get_child (dockitem);
+          var counter = 1;
 
-          if (dockitem_file.query_exists ()) {
-            debug ("Already created dock item '%s', skipping", launcher_base);
-            return null;
+          while (dockitem_file.query_exists ()) {
+            dockitem = "%s-%d.dockitem".printf (launcher_base, counter++);
+            dockitem_file = target_dir.get_child (dockitem);
           }
 
           // save the key file
