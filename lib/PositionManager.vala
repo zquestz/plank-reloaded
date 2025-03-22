@@ -1066,21 +1066,23 @@ namespace Plank {
      */
     public unowned DockItem ? get_nearest_item_at (int x, int y, DockContainer? container = null) {
       unowned DockItem? result = null;
-      var square_distance = double.MAX;
+      double min_squared_distance = double.MAX;
 
       var draw_values_it = draw_values.map_iterator ();
       while (draw_values_it.next ()) {
         var val = draw_values_it.get_value ();
+        DockItem? item = (draw_values_it.get_key () as DockItem);
+
+        if (item == null || (container != null && item.Container != container)) {
+          continue;
+        }
+
         var center = val.static_center;
-        var new_square_distance = (x - center.x) * (x - center.x) + (y - center.y) * (y - center.y);
-        if (square_distance > new_square_distance) {
-          DockItem? item = (draw_values_it.get_key () as DockItem);
-          if (item == null)
-            continue;
-          if (container == null || item.Container == container) {
-            square_distance = new_square_distance;
-            result = item;
-          }
+        double squared_distance = (x - center.x) * (x - center.x) + (y - center.y) * (y - center.y);
+
+        if (squared_distance < min_squared_distance) {
+          min_squared_distance = squared_distance;
+          result = item;
         }
       }
 
@@ -1098,9 +1100,47 @@ namespace Plank {
     public unowned DockItem ? get_current_target_item (DockContainer? container = null) {
       unowned DockRenderer renderer = controller.renderer;
       var cursor = renderer.local_cursor;
-      var offset = (int) ((renderer.zoom_in_progress * ZoomIconSize + ItemPadding) / 2.0);
 
-      return get_nearest_item_at (cursor.x + offset, cursor.y + offset, container);
+      unowned var nearest = get_nearest_item_at (cursor.x, cursor.y, container);
+
+      if (nearest == null) {
+        return null;
+      }
+
+      var val = get_draw_value_for_item (nearest);
+      var center = val.static_center;
+
+      bool on_second_half;
+      if (is_horizontal_dock ()) {
+        on_second_half = cursor.x > center.x;
+      } else {
+        on_second_half = cursor.y > center.y;
+      }
+
+      if (!on_second_half) {
+        return nearest;
+      }
+
+      Gee.ArrayList<DockElement> items;
+      if (container != null) {
+        items = container.VisibleElements;
+      } else {
+        return null;
+      }
+
+      int item_index = -1;
+      for (int i = 0; i < items.size; i++) {
+        if (items[i] == nearest) {
+          item_index = i;
+          break;
+        }
+      }
+
+      if (item_index == -1 || item_index >= items.size - 1)
+        return null;
+
+      DockElement next_element = items[item_index + 1];
+      return next_element as DockItem;
     }
 
     /**
