@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.111 "Reloaded" (2025-03-22)
+
+- Allow multiple separators
+
 ## 0.11.110 "Reloaded" (2025-03-21)
 
 - Fix Applications Docklet loading for MATE desktops

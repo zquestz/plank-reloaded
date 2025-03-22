@@ -1,3 +1,9 @@
+plank-reloaded (0.11.111-1) unstable; urgency=medium
+
+  * Allow multiple separators
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 22 Mar 2025 13:47:07 -1000
+
 plank-reloaded (0.11.110-1) unstable; urgency=medium
 
   * Fix Applications Docklet loading for MATE desktops
