@@ -322,6 +322,11 @@ namespace Plank {
         if (make_dock_item (uri) != null)
           break;
 
+      // add calendar
+      foreach (unowned string uri in DEFAULT_APP_CALENDAR)
+        if (make_dock_item (uri) != null)
+          break;
+
       // add terminal
       foreach (unowned string uri in DEFAULT_APP_TERMINAL)
         if (make_dock_item (uri) != null)
@@ -382,11 +387,10 @@ namespace Plank {
           var launcher_base = (index_of_last_dot >= 0 ? basename.slice (0, index_of_last_dot) : basename);
           var dockitem = "%s.dockitem".printf (launcher_base);
           var dockitem_file = target_dir.get_child (dockitem);
-          var counter = 1;
 
-          while (dockitem_file.query_exists ()) {
-            dockitem = "%s-%d.dockitem".printf (launcher_base, counter++);
-            dockitem_file = target_dir.get_child (dockitem);
+          if (dockitem_file.query_exists ()) {
+            debug ("Already created dock item '%s', skipping", launcher_base);
+            return null;
           }
 
           // save the key file
