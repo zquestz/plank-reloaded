@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-21 12:15-1000\n"
+"POT-Creation-Date: 2025-03-21 14:43-1000\n"
 "PO-Revision-Date: 2025-03-21 22:17\n"
 "Last-Translator: \n"
 "Language-Team: English, United Kingdom\n"
@@ -26,12 +26,28 @@ msgid "Still stupidly simple."
 msgstr "Still stupidly simple."
 
 #: data/plank.appdata.xml.in:9
-msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
-msgstr "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. Whilst development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. Whilst development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
 
 #: data/plank.appdata.xml.in:15
-msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
-msgstr "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programmes with more advanced features."
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programmes "
+"with more advanced features."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -346,13 +362,14 @@ msgstr "Separator"
 msgid "Just a separator."
 msgstr "Just a separator."
 
-#: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Drop to add to dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr "Launchpad Contributions:\n"
+msgstr ""
+"Launchpad Contributions:\n"
 "  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Anthony Harrington 😁 https://launchpad.net/~untaintableangel\n"
 "  Deleted https://launchpad.net/~old.name\n"
@@ -416,4 +433,3 @@ msgstr "_Quit"
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Preferences"
-

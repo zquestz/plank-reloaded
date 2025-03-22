@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-21 12:15-1000\n"
+"POT-Creation-Date: 2025-03-21 14:43-1000\n"
 "PO-Revision-Date: 2017-03-20 05:01+0000\n"
 "Last-Translator: José Alfredo Múrcia Andrés <joamuran@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Just a separator."
 msgstr ""
 
-#: lib/DragManager.vala:456 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Deixa anar per afegir al dock"
 

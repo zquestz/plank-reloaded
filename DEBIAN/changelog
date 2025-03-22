@@ -1,3 +1,11 @@
+plank-reloaded (0.11.110-1) unstable; urgency=medium
+
+  * Fix Applications Docklet loading for MATE desktops
+  * Fix misc Docklet translation issues
+  * Improve external drag and drop operations
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 21 Mar 2025 14:39:48 -1000
+
 plank-reloaded (0.11.109-1) unstable; urgency=medium
 
   * Updated Hindi translations
@@ -7,20 +15,20 @@ plank-reloaded (0.11.109-1) unstable; urgency=medium
   * Fixed Elementary OS settings lookup
   * Actually fixed magnification state
 
- -- Josh Ellithorpe <quest@mac.com>  Sat, 19 Mar 2025 19:04:11 -1000
+ -- Josh Ellithorpe <quest@mac.com>  Wed, 19 Mar 2025 19:04:11 -1000
 
 plank-reloaded (0.11.108-1) unstable; urgency=medium
 
   * Fixed stuck magnification state
 
- -- Josh Ellithorpe <quest@mac.com>  Sat, 11 Mar 2025 16:40:32 -1000
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 11 Mar 2025 16:40:32 -1000
 
 plank-reloaded (0.11.107-1) unstable; urgency=medium
 
   * Reduced GlowSize to 30 in Matte/Matte-Light themes
   * Updated English UK translations
 
- -- Josh Ellithorpe <quest@mac.com>  Sat, 09 Mar 2025 16:09:55 -1000
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 09 Mar 2025 16:09:55 -1000
 
 plank-reloaded (0.11.106-1) unstable; urgency=medium
 
