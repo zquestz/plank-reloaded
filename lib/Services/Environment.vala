@@ -137,6 +137,25 @@ namespace Plank {
     session_class = get_xdg_session_class ();
     session_desktop = get_xdg_session_desktop ();
     session_type = get_xdg_session_type ();
+
+    if (session_desktop == XdgSessionDesktop.XFCE) {
+      disable_xfce_dock_shadow ();
+    }
+  }
+
+  private static void disable_xfce_dock_shadow () {
+    string? xfconf_path = Environment.find_program_in_path ("xfconf-query");
+    if (xfconf_path == null) {
+      warning ("xfconf-query not found in PATH. Cannot disable dock shadow.");
+      return;
+    }
+
+    try {
+      Process.spawn_command_line_sync ("xfconf-query -c xfwm4 -p /general/show_dock_shadow -s false");
+      message ("Dock shadow disabled via xfconf-query.");
+    } catch (SpawnError e) {
+      warning ("Failed to run xfconf-query: %s", e.message);
+    }
   }
 
   public static bool environment_is_session_class (XdgSessionClass type) {
