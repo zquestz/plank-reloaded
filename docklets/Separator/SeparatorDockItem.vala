@@ -42,6 +42,7 @@ namespace Docky {
     {
       Icon = "";
       Text = null;
+      AllowZoom = false;
 
       // Initialize defaults for cached values
       // Default color is white with 40% opacity

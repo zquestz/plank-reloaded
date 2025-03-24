@@ -784,6 +784,7 @@ namespace Plank {
       // Then we treat this as if it were the ZoomPercent for the rest of the calculation.
       bool expand_for_drop = (controller.drag_manager.ExternalDragActive && !prefs.LockItems);
       bool zoom_enabled = prefs.ZoomEnabled;
+
       double zoom_in_progress = (zoom_enabled || expand_for_drop ? renderer.zoom_in_progress : 0.0);
       double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
       double zoom_icon_size = ZoomIconSize;
@@ -827,10 +828,11 @@ namespace Plank {
         // value. The center is 100%. (1 - offset_percent) == 0,1 distance from center
         // The .66 value comes from the area under the curve.  Dont ask me to explain it too much because it's too clever for me.
 
-        if (expand_for_drop)
+        if (expand_for_drop) {
           offset *= zoom_in_progress / 2.0;
-        else
+        } else {
           offset *= zoom_in_percent - 1.0;
+        }
         offset *= 1.0 - offset_percent / 3.0;
 
         if (cursor_position > center_position)
@@ -846,8 +848,11 @@ namespace Plank {
         var zoom = 1.0 - Math.pow (offset_percent, 2);
 
         // scale this to match our zoom_in_percent
-        zoom = 1.0 + zoom * (zoom_in_percent - 1.0);
-
+        if (item.AllowZoom) {
+          zoom = 1.0 + zoom * (zoom_in_percent - 1.0);
+        } else {
+          zoom = 1.0;
+        }
         double zoomed_center_height = (icon_size * zoom / 2.0);
 
         if (zoom == 1.0)
