@@ -10,5 +10,5 @@ Description: Elegant and simple dock.
  Plank Reloaded is a fork of the original Plank project, providing a simple dock
  for X11 desktop environments. While development began with a focus on Cinnamon,
  we now actively support multiple desktop environments including MATE and Xfce.
- Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
- providing just what a dock needs and absolutely nothing more.
+ Like its predecessor, Plank Reloaded aims to be the simplest dock on the
+ planet, providing just what a dock needs and absolutely nothing more.
