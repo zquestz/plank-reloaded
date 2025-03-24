@@ -1,3 +1,10 @@
+plank-reloaded (0.11.112-1) unstable; urgency=medium
+
+  * Fix Xfce dock shadow issue
+  * Don't zoom separators
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 24 Mar 2025 10:39:09 -1000
+
 plank-reloaded (0.11.111-1) unstable; urgency=medium
 
   * Allow multiple separators

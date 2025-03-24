@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.112 "Reloaded" (2025-03-24)
+
+- Fix Xfce dock shadow issue
+- Don't zoom separators
+
 ## 0.11.111 "Reloaded" (2025-03-22)
 
 - Allow multiple separators
