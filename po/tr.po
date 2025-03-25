@@ -1,31 +1,29 @@
-# Turkish translation for plank
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-24 10:41-1000\n"
-"PO-Revision-Date: 2019-04-12 20:19+0000\n"
-"Last-Translator: Özgür BASKIN <Unknown>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"POT-Creation-Date: 2025-03-24 10:42-1000\n"
+"PO-Revision-Date: 2025-03-25 19:25\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-04-13 05:45+0000\n"
-"X-Generator: Launchpad (build 18920)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
 msgid "Still stupidly simple."
-msgstr "Son derece basit."
+msgstr "Hala aptalca basit."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -34,6 +32,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloaded, orijinal Plank projesinin bir çatalıdır ve X11 masaüstü "
+"ortamları için basit bir dock sağlar. Geliştirme Cinnamon'a odaklanarak "
+"başlamış olsa da, artık MATE ve Xfce dahil olmak üzere birden fazla masaüstü "
+"ortamını aktif olarak destekliyoruz. Wayland şu anda desteklenmemektedir."
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -42,30 +44,35 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Önceki sürümü gibi Plank Reloaded da gezegendeki en basit dock olmayı, bir "
+"dock'un ihtiyaç duyduğu şeyleri sağlamayı ve kesinlikle daha fazlasını "
+"sağlamayı hedefliyor. Ayrıca, daha gelişmiş özelliklere sahip diğer dock "
+"programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam "
+"ediyor."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "dock"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "başlat"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "panel"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
-msgstr "başında"
+msgstr "başlangıç"
 
 #: data/plank.appdata.xml.in:36
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Plank Reloaded Geliştiricileri"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "Dock"
 
 #: data/ui/preferences.ui:82
 msgid "Theme:"
@@ -113,7 +120,7 @@ msgstr "Ortala"
 
 #: data/ui/preferences.ui:171
 msgid "On Primary Display:"
-msgstr "Ana Ekranda"
+msgstr "Ana Ekranda:"
 
 #: data/ui/preferences.ui:197
 msgid "Offset in percent from the center of the screen-edge"
@@ -169,7 +176,7 @@ msgstr "Dock'u gizlemeden önce geçecek süre (ms)"
 
 #: data/ui/preferences.ui:436
 msgid "Unhide Delay:"
-msgstr "Gösterme Gecikmesi"
+msgstr "Gösterme Gecikmesi:"
 
 #: data/ui/preferences.ui:450
 msgid "Delay in ms before showing the dock"
@@ -177,7 +184,7 @@ msgstr "Dock'u göstermeden önce geçecek süre (ms)"
 
 #: data/ui/preferences.ui:469
 msgid "Pressure Reveal:"
-msgstr "Hassasiyeti Azalt"
+msgstr "Hassasiyeti Azalt:"
 
 #: data/ui/preferences.ui:496
 msgid "Item Management"
@@ -197,11 +204,11 @@ msgstr "Simgeleri Kilitle:"
 
 #: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "Dock Araçları:"
 
 #: data/ui/preferences.ui:621
 msgid "Anchor Files:"
-msgstr ""
+msgstr "Sabitlenebilen Dosyalar:"
 
 #: data/ui/preferences.ui:643
 msgid "Behaviour"
@@ -213,148 +220,148 @@ msgstr "Uygulamacıklar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:30
 msgid "No applications available"
-msgstr ""
+msgstr "Hiçbir uygulama mevcut değil"
 
 #: docklets/Applications/ApplicationsDockItem.vala:40
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "Uygulamalar"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Dock üzerinden uygulamalarınızı tek tıkla başlatın."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "Pil bulunamadı"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "Pil"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "Pil bilgilerini görüntüler"
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "Pano şu anda boş."
 
 #: docklets/Clippy/ClippyDockItem.vala:24
 msgid "_Clear"
-msgstr ""
+msgstr "_Temizle"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Son pano girişlerini sakla."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Di_gital Saat"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24 Saat _Gösterimi"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "_Tarihi Göster"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Saat"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "Saat kaç?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "Takvim"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU Monitörü"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "CPU'yu gözünüzün önünde tutun. Ve aşırı yüklendiğinde..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "Masaüstünü Göster"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "Masaüstü"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Masaüstünüzü Gösterin."
 
 #: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
-msgstr ""
+msgstr "Çöp Kutusunda öğe yok"
 
 #: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Çöp Kutusunda %u öğe mevcut"
+msgstr[1] "Çöp Kutusunda %u öğe mevcut"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "Çöp Kutusuna taşımak için sürükle bırak"
 
 #: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
-msgstr ""
+msgstr "Dosyaları Geri Yükle"
 
 #: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
-msgstr ""
+msgstr "_Çöp Kutusunu Aç"
 
 #: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_Çöp Kutusu Boşalt"
 
 #: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Çöp Kutusu'ndaki tüm öğeler boşaltılsın mı?"
 
 #: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Çöp Kutusu'ndaki tüm öğeler kalıcı olarak silinecek."
 
 #: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
-msgstr ""
+msgstr "_Vazgeç"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "Çöp Kutusu"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Çöp kutunuza bir göz atın!"
 
 #: docklets/Separator/SeparatorDockItem.vala:200
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Rengi Tersine Çevir"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Ayırıcı"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Sadece bir ayırıcı."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -420,38 +427,17 @@ msgid "_Translate This Application..."
 msgstr "Bu _Uygulamayı Çevir..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Tercihler"
+msgstr "_Tercihler"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_Hakkında"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_Çık"
 
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Tercihler"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank, gezegendeki en basit dock demektir. Hedefi, bir docktan "
-#~ "beklediğiniz tüm ihtiyaçları karşılamaktır, fazlası değil."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "Ancak, daha gelişmiş özelliklerle başka dock programları oluşturabilecek "
-#~ "genişletilebilir bir kütüphanedir de. Bu yüzden Plank, Docky'nin (sürüm "
-#~ "3.0.0'dan itibaren) altında yatan teknolojidir ve Docky'nin Docklets, "
-#~ "resimler, ayarlar, iletişim kutuları gibi süslü tüm temel özelliklerini "
-#~ "karşılamayı amaçlar."

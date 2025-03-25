@@ -1,31 +1,29 @@
-# Chinese (Traditional) translation for plank
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-24 10:41-1000\n"
-"PO-Revision-Date: 2016-02-17 00:36+0000\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
-"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"POT-Creation-Date: 2025-03-24 10:42-1000\n"
+"PO-Revision-Date: 2025-03-25 19:16\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
 msgid "Still stupidly simple."
-msgstr "極簡。"
+msgstr "仍然極度簡單。"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -34,6 +32,9 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloaded 是原始 Plank 專案的分支，為 X11 桌面環境提供簡單的 Dock。儘管"
+"開發最初專注於 Cinnamon，我們現在積極支援包括 MATE 和 Xfce 在內的多種桌面環"
+"境。目前不支援 Wayland。"
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -42,26 +43,29 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"與其前身一樣，Plank Reloaded 的目標是成為地球上最簡單的 Dock，僅提供一個 "
+"Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
+"充來建立具有更多進階功能的其他 Dock 程式。"
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "dock"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "啟動"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "面板"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
-msgstr ""
+msgstr "開始"
 
 #: data/plank.appdata.xml.in:36
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Plank Reloaded 開發者團隊"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
@@ -101,11 +105,11 @@ msgstr "填充"
 
 #: data/ui/preferences.ui:153 data/ui/preferences.ui:231
 msgid "Start"
-msgstr ""
+msgstr "開始"
 
 #: data/ui/preferences.ui:154 data/ui/preferences.ui:232
 msgid "End"
-msgstr ""
+msgstr "結束"
 
 #: data/ui/preferences.ui:155 data/ui/preferences.ui:233
 msgid "Center"
@@ -129,7 +133,7 @@ msgstr "圖示大小："
 
 #: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
-msgstr ""
+msgstr "圖示縮放："
 
 #: data/ui/preferences.ui:337
 msgid "Appearance"
@@ -153,7 +157,7 @@ msgstr "視窗切換"
 
 #: data/ui/preferences.ui:361
 msgid "Dodge active window"
-msgstr ""
+msgstr "閃避使用中視窗"
 
 #: data/ui/preferences.ui:387
 msgid "Hide Dock"
@@ -197,11 +201,11 @@ msgstr "鎖定圖示："
 
 #: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "錨定小程式："
 
 #: data/ui/preferences.ui:621
 msgid "Anchor Files:"
-msgstr ""
+msgstr "錨定檔案："
 
 #: data/ui/preferences.ui:643
 msgid "Behaviour"
@@ -209,152 +213,151 @@ msgstr "行為"
 
 #: data/ui/preferences.ui:663
 msgid "Docklets"
-msgstr ""
+msgstr "小程式"
 
 #: docklets/Applications/ApplicationsDockItem.vala:30
 msgid "No applications available"
-msgstr ""
+msgstr "沒有可用的應用程式"
 
 #: docklets/Applications/ApplicationsDockItem.vala:40
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "應用程式"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "只需啟動任何應用程式。"
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "未安裝電池"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "電池"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "顯示電池資訊"
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "剪貼簿目前為空。"
 
 #: docklets/Clippy/ClippyDockItem.vala:24
 msgid "_Clear"
-msgstr ""
+msgstr "_清除"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "剪貼"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "保留最近的剪貼簿內容。"
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "數位時鐘"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24小時制_時鐘"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "顯示_日期"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "時鐘"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "現在時間？"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "日曆"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU 監視器"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "監視那個CPU。一旦它超出正常範圍……"
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "顯示桌面"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "桌面"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "顯示您的桌面。"
 
 #: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
-msgstr ""
+msgstr "垃圾桶中沒有東西"
 
 #: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u 個在垃圾桶中"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "拖曳至垃圾桶"
 
 #: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
-msgstr ""
+msgstr "還原檔案"
 
 #: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
-msgstr ""
+msgstr "_Open 垃圾桶"
 
 #: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
-msgstr ""
+msgstr "清空 _Trash"
 
 #: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "清空垃圾桶中的所有項目？"
 
 #: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "垃圾桶中的所有項目將被永久刪除。"
 
 #: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
-msgstr ""
+msgstr "_取消"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "垃圾桶"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "看看您的垃圾桶！"
 
 #: docklets/Separator/SeparatorDockItem.vala:200
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Invert 顏色"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "分隔線"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "只是一個分隔線。"
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -412,37 +415,17 @@ msgid "_Translate This Application..."
 msgstr "翻譯本應用程式(_T)..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "偏好設定"
+msgstr "_偏好設定"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_關於"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_離開"
 
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "偏好設定"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank 決心要成為地球上最簡易的 Dock。目的是要做出 Dcok 的所有需求，但沒有"
-#~ "任何多餘的東西。"
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "它，雖然也是個可以擴展開來建立其他具備更多進階功能的 Dock 程式函式庫。因"
-#~ "此，Plank 是 Docky (3.0.0 版起) 的基底技術，以提供所有基本核心功能為目標；"
-#~ "而 Docky 將之擴展，增添更多新穎的功能，例如 Dock 元件、繪製器、設定對話盒…"
-#~ "等等。"
