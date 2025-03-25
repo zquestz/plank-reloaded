@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.113 "Reloaded" (2025-03-25)
+
+- Add Romanian, Turkish and Traditional Chinese translations
+
 ## 0.11.112 "Reloaded" (2025-03-24)
 
 - Fix Xfce dock shadow issue
