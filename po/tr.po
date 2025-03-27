@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-24 10:42-1000\n"
-"PO-Revision-Date: 2025-03-25 19:25\n"
+"POT-Creation-Date: 2025-03-27 14:25-1000\n"
+"PO-Revision-Date: 2025-03-28 00:42\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -26,29 +26,12 @@ msgid "Still stupidly simple."
 msgstr "Hala aptalca basit."
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded, orijinal Plank projesinin bir çatalıdır ve X11 masaüstü "
-"ortamları için basit bir dock sağlar. Geliştirme Cinnamon'a odaklanarak "
-"başlamış olsa da, artık MATE ve Xfce dahil olmak üzere birden fazla masaüstü "
-"ortamını aktif olarak destekliyoruz. Wayland şu anda desteklenmemektedir."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded, orijinal Plank projesinin bir çatalıdır ve X11 masaüstü ortamları için basit bir dock sağlar. Geliştirme Cinnamon'a odaklanarak başlamış olsa da, artık MATE ve Xfce dahil olmak üzere birden fazla masaüstü ortamını aktif olarak destekliyoruz. Wayland şu anda desteklenmemektedir."
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Önceki sürümü gibi Plank Reloaded da gezegendeki en basit dock olmayı, bir "
-"dock'un ihtiyaç duyduğu şeyleri sağlamayı ve kesinlikle daha fazlasını "
-"sağlamayı hedefliyor. Ayrıca, daha gelişmiş özelliklere sahip diğer dock "
-"programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam "
-"ediyor."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Önceki sürümü gibi Plank Reloaded da gezegendeki en basit dock olmayı, bir dock'un ihtiyaç duyduğu şeyleri sağlamayı ve kesinlikle daha fazlasını sağlamayı hedefliyor. Ayrıca, daha gelişmiş özelliklere sahip diğer dock programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam ediyor."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -351,7 +334,8 @@ msgstr "Çöp Kutusu"
 msgid "Have a look at your trash!"
 msgstr "Çöp kutunuza bir göz atın!"
 
-#: docklets/Separator/SeparatorDockItem.vala:200
+#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Workspaces/WorkspacesDockItem.vala:556
 msgid "_Invert Color"
 msgstr "_Rengi Tersine Çevir"
 
@@ -363,14 +347,33 @@ msgstr "Ayırıcı"
 msgid "Just a separator."
 msgstr "Sadece bir ayırıcı."
 
+#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDocklet.vala:47
+msgid "Workspaces"
+msgstr "Çalışma Alanları"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:177
+#: docklets/Workspaces/WorkspacesDockItem.vala:203
+#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#, c-format
+msgid "Workspace %d of %d"
+msgstr "Çalışma Alanı %d / %d"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:563
+msgid "_Live Previews"
+msgstr "_Canlı Önizlemeler"
+
+#: docklets/Workspaces/WorkspacesDocklet.vala:54
+msgid "A graphical workspace switcher."
+msgstr "Grafiksel çalışma alanı değiştirici."
+
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Rıhtıma eklemek için bırakın"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Ahmet Onur YILDIRIM https://launchpad.net/~aonury\n"
 "  Can Umay https://launchpad.net/~canumaydestek\n"
 "  Dinçer Kavraal https://launchpad.net/~dkavraal\n"

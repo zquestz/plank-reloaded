@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded 0.11.113\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-25 09:33-1000\n"
+"POT-Creation-Date: 2025-03-27 14:25-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -343,7 +343,8 @@ msgstr ""
 msgid "Have a look at your trash!"
 msgstr ""
 
-#: docklets/Separator/SeparatorDockItem.vala:200
+#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Workspaces/WorkspacesDockItem.vala:556
 msgid "_Invert Color"
 msgstr ""
 
@@ -353,6 +354,26 @@ msgstr ""
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
+msgstr ""
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDocklet.vala:47
+msgid "Workspaces"
+msgstr ""
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:177
+#: docklets/Workspaces/WorkspacesDockItem.vala:203
+#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#, c-format
+msgid "Workspace %d of %d"
+msgstr ""
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:563
+msgid "_Live Previews"
+msgstr ""
+
+#: docklets/Workspaces/WorkspacesDocklet.vala:54
+msgid "A graphical workspace switcher."
 msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51

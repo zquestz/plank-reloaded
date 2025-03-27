@@ -44,8 +44,6 @@ namespace Docky {
       Text = null;
       AllowZoom = false;
 
-      // Initialize defaults for cached values
-      // Default color is white with 40% opacity
       cached_position = Gtk.PositionType.BOTTOM;
       is_light_theme = false;
       cached_color = { 1.0, 1.0, 1.0, 0.4 };
@@ -54,6 +52,7 @@ namespace Docky {
         update_cache (false, true);
       });
 
+      // Setup theme detection with a slight delay to ensure dock is ready
       setup_timer_id = Timeout.add (2000, () => {
         setup_signals ();
         setup_timer_id = 0;
@@ -109,7 +108,6 @@ namespace Docky {
       }
     }
 
-    // Update cached values - can selectively update position or theme
     private bool update_cache (bool update_position, bool update_theme) {
       var dock = get_dock ();
       if (dock == null)
@@ -193,7 +191,6 @@ namespace Docky {
       cr.stroke ();
     }
 
-    // Override to provide menu items
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 

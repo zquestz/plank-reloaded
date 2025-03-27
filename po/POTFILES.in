@@ -23,6 +23,9 @@ docklets/Trash/TrashDocklet.vala
 docklets/Separator/SeparatorDockItem.vala
 docklets/Separator/SeparatorDocklet.vala
 docklets/Separator/SeparatorPreferences.vala
+docklets/Workspaces/WorkspacesDockItem.vala
+docklets/Workspaces/WorkspacesDocklet.vala
+docklets/Workspaces/WorkspacesPreferences.vala
 lib/DragManager.vala
 lib/Factories/AbstractMain.vala
 lib/Items/ApplicationDockItem.vala

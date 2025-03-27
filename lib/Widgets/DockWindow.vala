@@ -282,9 +282,12 @@ namespace Plank {
                           || win_rect.x != event.x || win_rect.y != event.y);
 
       if (needs_update) {
+        // When adjusting the position of the dock, sometimes it needs to
+        // position twice.
         if (++window_position_retry < 3) {
-          critical ("Retry #%i update_size_and_position() to force requested values!", window_position_retry);
           update_size_and_position ();
+        } else {
+          critical ("Retry #%i update_size_and_position() to force requested values!", window_position_retry);
         }
       } else {
         window_position_retry = 0;

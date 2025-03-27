@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-24 10:42-1000\n"
-"PO-Revision-Date: 2025-03-25 19:16\n"
+"POT-Creation-Date: 2025-03-27 14:25-1000\n"
+"PO-Revision-Date: 2025-03-28 00:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -26,26 +26,12 @@ msgid "Still stupidly simple."
 msgstr "仍然極度簡單。"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded 是原始 Plank 專案的分支，為 X11 桌面環境提供簡單的 Dock。儘管"
-"開發最初專注於 Cinnamon，我們現在積極支援包括 MATE 和 Xfce 在內的多種桌面環"
-"境。目前不支援 Wayland。"
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded 是原始 Plank 專案的分支，為 X11 桌面環境提供簡單的 Dock。儘管開發最初專注於 Cinnamon，我們現在積極支援包括 MATE 和 Xfce 在內的多種桌面環境。目前不支援 Wayland。"
 
 #: data/plank.appdata.xml.in:15
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"與其前身一樣，Plank Reloaded 的目標是成為地球上最簡單的 Dock，僅提供一個 "
-"Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
-"充來建立具有更多進階功能的其他 Dock 程式。"
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "與其前身一樣，Plank Reloaded 的目標是成為地球上最簡單的 Dock，僅提供一個 Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴充來建立具有更多進階功能的其他 Dock 程式。"
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -347,7 +333,8 @@ msgstr "垃圾桶"
 msgid "Have a look at your trash!"
 msgstr "看看您的垃圾桶！"
 
-#: docklets/Separator/SeparatorDockItem.vala:200
+#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Workspaces/WorkspacesDockItem.vala:556
 msgid "_Invert Color"
 msgstr "_Invert 顏色"
 
@@ -359,14 +346,33 @@ msgstr "分隔線"
 msgid "Just a separator."
 msgstr "只是一個分隔線。"
 
+#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDocklet.vala:47
+msgid "Workspaces"
+msgstr "工作區"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:177
+#: docklets/Workspaces/WorkspacesDockItem.vala:203
+#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#, c-format
+msgid "Workspace %d of %d"
+msgstr "工作區 %d/%d"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:563
+msgid "_Live Previews"
+msgstr "_即時預覽"
+
+#: docklets/Workspaces/WorkspacesDocklet.vala:54
+msgid "A graphical workspace switcher."
+msgstr "圖形化工作區切換器。"
+
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "拖曳以加入至 dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Cheng-Chia Tseng https://launchpad.net/~zerng07\n"
 "  Jui-Yang Chang https://launchpad.net/~juiyang-chang\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
@@ -429,3 +435,4 @@ msgstr "_離開"
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "偏好設定"
+
