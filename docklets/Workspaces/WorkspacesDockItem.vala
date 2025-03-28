@@ -533,7 +533,7 @@ namespace Docky {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       for (int i = 0; i < workspace_count; i++) {
-        var item = new Gtk.MenuItem.with_label (@"Workspace $(i+1)");
+        var item = new Gtk.MenuItem.with_label (_("Workspace %d").printf (i + 1));
 
         if (i == current_workspace) {
           var label = item.get_child () as Gtk.Label;

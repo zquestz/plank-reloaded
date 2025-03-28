@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-27 14:25-1000\n"
-"PO-Revision-Date: 2025-03-28 00:39\n"
+"POT-Creation-Date: 2025-03-27 14:56-1000\n"
+"PO-Revision-Date: 2025-03-28 01:00\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -357,6 +357,11 @@ msgstr "작업 공간"
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "총 %d개 중 %d번째 작업 공간"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#, c-format
+msgid "Workspace %d"
+msgstr "작업 공간 %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:563
 msgid "_Live Previews"

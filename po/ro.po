@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-27 14:25-1000\n"
-"PO-Revision-Date: 2025-03-28 00:40\n"
+"POT-Creation-Date: 2025-03-27 14:56-1000\n"
+"PO-Revision-Date: 2025-03-28 01:00\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -359,6 +359,11 @@ msgstr "Spații de lucru"
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "Spațiul de lucru %d din %d"
+
+#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#, c-format
+msgid "Workspace %d"
+msgstr "Spațiu de lucru %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:563
 msgid "_Live Previews"
