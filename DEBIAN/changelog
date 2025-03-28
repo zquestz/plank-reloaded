@@ -1,3 +1,9 @@
+plank-reloaded (0.11.114-1) unstable; urgency=medium
+
+  * Added Workspaces Docklet
+
+ -- Josh Ellithorpe <quest@mac.com>  Thu, 27 Mar 2025 14:48:23 -1000
+
 plank-reloaded (0.11.113-1) unstable; urgency=medium
 
   * Add Romanian, Turkish and Traditional Chinese translations
