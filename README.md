@@ -24,6 +24,7 @@ programs with more advanced features.
   - Clock: Enhanced digital display with new pop-up calendar
   - Clippy: Better text handling and menu organization
   - Separator: A simple separator so you can setup a Mac OS X like dock experience
+  - Workspaces: A graphical workspace switcher
   - Refreshed icons across all docklets
   - Support for third party docklets
 - Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
