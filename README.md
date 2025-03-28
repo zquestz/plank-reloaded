@@ -109,6 +109,42 @@ sudo meson install -C build
 
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
 
+## FAQ
+
+### Can I use Plank Reloaded on Wayland?
+
+No, Plank Reloaded is designed for X11 desktop environments only. Wayland is not supported at this time.
+
+### How do I access Plank Reloaded preferences?
+
+Hold Ctrl while right-clicking on any area of the dock to open the Preferences menu.
+
+### Can I run Plank Reloaded alongside the original Plank?
+
+No, you should completely uninstall the original Plank before installing Plank Reloaded to avoid conflicts. See the installation instructions for details.
+
+### Does Plank Reloaded work with multiple monitors?
+
+Yes, Plank Reloaded works with multiple monitors. To have a dock on each monitor, you need to launch multiple instances with different names:
+
+```bash
+# Launch first dock
+plank
+
+# Launch second dock
+plank -n dock2
+```
+
+Each instance can be configured independently.
+
+### How do I auto-start Plank Reloaded when I log in?
+
+Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
+
+### Why can't I see certain applications in the dock?
+
+Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
+
 ## Reporting Bugs
 
 For Plank Reloaded specific issues, please report them here:
