@@ -154,7 +154,6 @@ namespace Docky {
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      // Add clipboard entries
       for (var i = clips.size; i > 0; i--) {
         var pos = i;
         var text = clips.get(pos - 1).strip();
@@ -168,6 +167,14 @@ namespace Docky {
 
         if (text != "") {
           var item = create_literal_menu_item(text, "", false);
+
+          if (i == cur_position) {
+            var label = item.get_child () as Gtk.Label;
+            if (label != null) {
+              label.set_markup ("<b>" + label.get_text () + "</b>");
+            }
+          }
+
           item.activate.connect(() => {
             copy_entry_at(pos);
           });
@@ -175,7 +182,6 @@ namespace Docky {
         }
       }
 
-      // Add clear button if there are entries
       if (clips.size > 0) {
         var separator = new Gtk.SeparatorMenuItem();
         items.add(separator);
