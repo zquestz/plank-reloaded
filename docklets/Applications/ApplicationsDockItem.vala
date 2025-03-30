@@ -461,16 +461,11 @@ namespace Docky {
       var item = create_applications_menu_item(category.get_name(), icon, true);
       var submenu = new Gtk.Menu();
 
+      add_menu_items(submenu, category);
+
       item.submenu = submenu;
       submenu.show();
       item.show();
-
-      item.activate.connect(() => {
-        foreach (var child in submenu.get_children()) {
-          submenu.remove(child);
-        }
-        add_menu_items(submenu, category);
-      });
 
       return item;
     }
