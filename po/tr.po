@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-27 14:56-1000\n"
-"PO-Revision-Date: 2025-03-28 01:00\n"
+"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"PO-Revision-Date: 2025-03-30 04:37\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -201,14 +201,46 @@ msgstr "Davranış"
 msgid "Docklets"
 msgstr "Uygulamacıklar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:30
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "Hiçbir uygulama mevcut değil"
 
-#: docklets/Applications/ApplicationsDockItem.vala:40
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "Uygulamalar"
+
+#: docklets/Applications/ApplicationsDockItem.vala:278
+msgid "Edit Menu"
+msgstr "Menüyü Düzenle"
+
+#: docklets/Applications/ApplicationsDockItem.vala:297
+msgid "Choose Custom Icon"
+msgstr "Özel Simge Seç"
+
+#: docklets/Applications/ApplicationsDockItem.vala:305
+msgid "Reset to Default Icon"
+msgstr "Varsayılan Simgeye Sıfırla"
+
+#: docklets/Applications/ApplicationsDockItem.vala:315
+msgid "Large Icons"
+msgstr "Büyük Simgeler"
+
+#: docklets/Applications/ApplicationsDockItem.vala:328
+msgid "Select Custom Icon"
+msgstr "Özel Simge Seç"
+
+#: docklets/Applications/ApplicationsDockItem.vala:331
+msgid "Cancel"
+msgstr "İptal"
+
+#: docklets/Applications/ApplicationsDockItem.vala:332
+msgid "Select"
+msgstr "Seç"
+
+#: docklets/Applications/ApplicationsDockItem.vala:350
+msgid "Image Files"
+msgstr "Görüntü Dosyaları"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."

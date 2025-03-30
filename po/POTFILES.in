@@ -3,6 +3,7 @@ data/plank.desktop.in
 data/ui/preferences.ui
 docklets/Applications/ApplicationsDockItem.vala
 docklets/Applications/ApplicationsDocklet.vala
+docklets/Applications/ApplicationsPreferences.vala
 docklets/Battery/BatteryDockItem.vala
 docklets/Battery/BatteryDocklet.vala
 docklets/Battery/BatteryUPowerDockItem.vala

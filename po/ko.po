@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-27 14:56-1000\n"
-"PO-Revision-Date: 2025-03-28 01:00\n"
+"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"PO-Revision-Date: 2025-03-30 04:36\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -201,14 +201,46 @@ msgstr "동작"
 msgid "Docklets"
 msgstr "독크릿"
 
-#: docklets/Applications/ApplicationsDockItem.vala:30
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "사용 가능한 애플리케이션 없음"
 
-#: docklets/Applications/ApplicationsDockItem.vala:40
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "애플리케이션"
+
+#: docklets/Applications/ApplicationsDockItem.vala:278
+msgid "Edit Menu"
+msgstr "메뉴 편집"
+
+#: docklets/Applications/ApplicationsDockItem.vala:297
+msgid "Choose Custom Icon"
+msgstr "사용자 정의 아이콘 선택"
+
+#: docklets/Applications/ApplicationsDockItem.vala:305
+msgid "Reset to Default Icon"
+msgstr "기본 아이콘으로 재설정"
+
+#: docklets/Applications/ApplicationsDockItem.vala:315
+msgid "Large Icons"
+msgstr "큰 아이콘"
+
+#: docklets/Applications/ApplicationsDockItem.vala:328
+msgid "Select Custom Icon"
+msgstr "사용자 정의 아이콘 선택"
+
+#: docklets/Applications/ApplicationsDockItem.vala:331
+msgid "Cancel"
+msgstr "취소"
+
+#: docklets/Applications/ApplicationsDockItem.vala:332
+msgid "Select"
+msgstr "선택"
+
+#: docklets/Applications/ApplicationsDockItem.vala:350
+msgid "Image Files"
+msgstr "이미지 파일"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."

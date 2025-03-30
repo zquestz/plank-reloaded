@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-27 14:56-1000\n"
-"PO-Revision-Date: 2025-03-28 01:00\n"
+"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"PO-Revision-Date: 2025-03-30 04:37\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -201,14 +201,46 @@ msgstr "Comportament"
 msgid "Docklets"
 msgstr "Dockleturi"
 
-#: docklets/Applications/ApplicationsDockItem.vala:30
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "Nicio aplicație disponibilă"
 
-#: docklets/Applications/ApplicationsDockItem.vala:40
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "Aplicații"
+
+#: docklets/Applications/ApplicationsDockItem.vala:278
+msgid "Edit Menu"
+msgstr "Editare meniu"
+
+#: docklets/Applications/ApplicationsDockItem.vala:297
+msgid "Choose Custom Icon"
+msgstr "Alege Pictogramă Personalizată"
+
+#: docklets/Applications/ApplicationsDockItem.vala:305
+msgid "Reset to Default Icon"
+msgstr "Resetare la pictograma implicită"
+
+#: docklets/Applications/ApplicationsDockItem.vala:315
+msgid "Large Icons"
+msgstr "Pictograme Mari"
+
+#: docklets/Applications/ApplicationsDockItem.vala:328
+msgid "Select Custom Icon"
+msgstr "Selectează Pictogramă Personalizată"
+
+#: docklets/Applications/ApplicationsDockItem.vala:331
+msgid "Cancel"
+msgstr "Anulare"
+
+#: docklets/Applications/ApplicationsDockItem.vala:332
+msgid "Select"
+msgstr "Selectează"
+
+#: docklets/Applications/ApplicationsDockItem.vala:350
+msgid "Image Files"
+msgstr "Fișiere imagine"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."

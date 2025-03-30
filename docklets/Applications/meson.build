@@ -1,4 +1,5 @@
 docklet_applications_sources = [
+  'ApplicationsPreferences.vala',
   'ApplicationsDockItem.vala',
   'ApplicationsDocklet.vala',
 ]
