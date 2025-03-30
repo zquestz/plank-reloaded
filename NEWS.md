@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.115 "Reloaded" (2025-03-29)
+
+- Improved Applications Docklet: Large Icons, Custom Icon, and Edit Menu.
+- Currently selected clipboard entry is highlighted in Clippy Docklet
+
 ## 0.11.114 "Reloaded" (2025-03-27)
 
 - Added Workspaces Docklet
