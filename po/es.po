@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-30 04:37\n"
+"PO-Revision-Date: 2025-03-31 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Crowdin-Project: plank-reloaded\n"
 "X-Crowdin-Project-ID: 768623\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: plank.pot\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
@@ -269,6 +269,18 @@ msgstr "Simplemente inicie cualquiera de sus aplicaciones."
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
 msgstr "Sin batería"
+
+#: docklets/Battery/BatteryDockItem.vala:132
+msgid "Batteries"
+msgstr "Baterías"
+
+#: docklets/Battery/BatteryDockItem.vala:175
+msgid "No batteries found"
+msgstr "No se encontraron baterías"
+
+#: docklets/Battery/BatteryDockItem.vala:182
+msgid "Error finding batteries"
+msgstr "Error al buscar baterías"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"

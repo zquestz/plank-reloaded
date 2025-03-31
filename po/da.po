@@ -264,6 +264,18 @@ msgstr ""
 msgid "No battery"
 msgstr ""
 
+#: docklets/Battery/BatteryDockItem.vala:132
+msgid "Batteries"
+msgstr ""
+
+#: docklets/Battery/BatteryDockItem.vala:175
+msgid "No batteries found"
+msgstr ""
+
+#: docklets/Battery/BatteryDockItem.vala:182
+msgid "Error finding batteries"
+msgstr ""
+
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
 msgstr ""

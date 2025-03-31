@@ -125,5 +125,69 @@ namespace Docky {
 
       return true;
     }
+
+    public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
+      var items = new Gee.ArrayList<Gtk.MenuItem> ();
+
+      var batteries_menu_item = new Gtk.MenuItem.with_label (_("Batteries"));
+      var batteries_submenu = new Gtk.Menu ();
+      batteries_menu_item.set_submenu (batteries_submenu);
+
+      try {
+        var dir = File.new_for_path (BAT_BASE_PATH);
+        var enumerator = dir.enumerate_children ("standard::*", FileQueryInfoFlags.NONE);
+
+        FileInfo info;
+        bool batteries_found = false;
+
+        while ((info = enumerator.next_file ()) != null) {
+          string battery_name = info.get_name ();
+
+          if (info.get_file_type () != FileType.DIRECTORY) {
+            continue;
+          }
+
+          if (FileUtils.test (BAT_CAPACITY.printf (battery_name), FileTest.EXISTS) &&
+              FileUtils.test (BAT_CAPACITY_LEVEL.printf (battery_name), FileTest.EXISTS) &&
+              FileUtils.test (BAT_STATUS.printf (battery_name), FileTest.EXISTS)) {
+
+            batteries_found = true;
+
+            var battery_item = new Gtk.MenuItem.with_label (battery_name);
+
+            battery_item.activate.connect (() => {
+              ((BatteryPreferences) Prefs).BatteryDeviceName = battery_name;
+              update ();
+            });
+
+            if (((BatteryPreferences) Prefs).BatteryDeviceName == battery_name) {
+              var label = battery_item.get_child () as Gtk.Label;
+              if (label != null) {
+                label.set_markup ("<b>" + label.get_text () + "</b>");
+              }
+            }
+
+            batteries_submenu.append (battery_item);
+          }
+        }
+
+        if (!batteries_found) {
+          var no_batteries_item = new Gtk.MenuItem.with_label (_("No batteries found"));
+          no_batteries_item.sensitive = false;
+          batteries_submenu.append (no_batteries_item);
+        }
+      } catch (Error e) {
+        warning ("Failed to enumerate batteries: %s", e.message);
+
+        var error_item = new Gtk.MenuItem.with_label (_("Error finding batteries"));
+        error_item.sensitive = false;
+        batteries_submenu.append (error_item);
+      }
+
+      batteries_submenu.show_all ();
+      items.add (batteries_menu_item);
+
+      return items;
+    }
   }
 }
