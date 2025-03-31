@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-31 21:49\n"
+"POT-Creation-Date: 2025-03-31 14:29-1000\n"
+"PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -289,13 +289,35 @@ msgstr "Pil"
 msgid "Displays battery information"
 msgstr "Pil bilgilerini görüntüler"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "Pano şu anda boş."
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "_Temizle"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr "Fare Seçimlerini İzle"
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr "Görüntüleri İzle"
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr "Pano İzlemeyi Etkinleştir"
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr "Maksimum Girişler"
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr "Görsel"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"

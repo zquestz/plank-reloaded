@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-31 21:48\n"
+"POT-Creation-Date: 2025-03-31 14:29-1000\n"
+"PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -288,13 +288,35 @@ msgstr "배터리"
 msgid "Displays battery information"
 msgstr "배터리 정보 표시"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "클립보드가 현재 비어 있습니다."
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "지우기 (_C)"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr "마우스 선택 내역 추적"
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr "이미지 추적"
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr "클립보드 추적 활성화"
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr "최대 항목 수"
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr "이미지"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"

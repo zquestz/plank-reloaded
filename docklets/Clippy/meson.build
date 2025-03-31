@@ -2,6 +2,7 @@ docklet_clippy_sources = [
   'ClippyDockItem.vala',
   'ClippyDocklet.vala',
   'ClippyPreferences.vala',
+  'ClippyClipboardItem.vala',
 ]
 
 shared_module(

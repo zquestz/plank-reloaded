@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-31 21:49\n"
+"POT-Creation-Date: 2025-03-31 14:29-1000\n"
+"PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -290,13 +290,35 @@ msgstr "Batería"
 msgid "Displays battery information"
 msgstr "Muestra información sobre la batería"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "El portapapeles está vacío."
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "_Limpiar"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr "Rastrear Selecciones del Ratón"
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr "Rastrear imágenes"
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr "Habilitar seguimiento del portapapeles"
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr "Entradas Máximas"
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr "Imagen"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"

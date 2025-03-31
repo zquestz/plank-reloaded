@@ -26,6 +26,14 @@ namespace Docky {
                   blurb = "If it should track the primary (mouse selection) clipboard.")]
     public bool TrackMouseSelections { get; set; default = false; }
 
+    [Description (nick = "track-images",
+                  blurb = "Track images in the clipboard.")]
+    public bool TrackImages { get; set; default = true; }
+
+    [Description (nick = "disable-tracking",
+                  blurb = "Disable clipboard tracking.")]
+    public bool DisableTracking { get; set; default = false; }
+
     public ClippyPreferences.with_file (GLib.File file)
     {
       base.with_file (file);
@@ -34,6 +42,8 @@ namespace Docky {
     protected override void reset_properties () {
       MaxEntries = 15;
       TrackMouseSelections = false;
+      TrackImages = true;
+      DisableTracking = false;
     }
   }
 }

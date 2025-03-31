@@ -220,8 +220,6 @@ namespace Docky {
         break;
       }
 
-      controller.hover.hide();
-
       app_menu.popup_at_rect(
                              controller.window.get_screen().get_root_window(),
                              Gdk.Rectangle() {
@@ -234,6 +232,8 @@ namespace Docky {
                              gravity,
                              null
       );
+
+      controller.hover.hide();
     }
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {

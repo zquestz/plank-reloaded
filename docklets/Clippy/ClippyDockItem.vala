@@ -19,15 +19,24 @@ using Plank;
 
 namespace Docky {
   public class ClippyDockItem : DockletItem {
-    private const string ICON_NAME = "edit-cut";
     private const string EMPTY_CLIPBOARD_TEXT = _("Clipboard is currently empty.");
     private const string CLEAR_MENU_LABEL = _("_Clear");
     private const int MAX_CLIP_MENU_ITEM_LENGTH = 80;
 
+    private const string TRACK_SELECTION_LABEL = _("Track Mouse Selections");
+    private const string TRACK_IMAGES_LABEL = _("Track Images");
+    private const string TRACK_CLIPBOARD_LABEL = _("Enable Clipboard Tracking");
+    private const string MAX_ENTRIES_LABEL = _("Maximum Entries");
+
     private Gtk.Clipboard clipboard;
-    private Gee.ArrayList<string> clips;
-    private int cur_position = 0;
+    private Gee.ArrayList<ClippyClipboardItem> clips;
     private ulong handler_id = 0U;
+    private uint debounce_timeout_id = 0;
+    private const uint DEBOUNCE_DELAY = 500;
+
+    private ClippyPreferences prefs {
+      get { return (ClippyPreferences) Prefs; }
+    }
 
     public ClippyDockItem.with_dockitem_file(GLib.File file)
     {
@@ -37,26 +46,32 @@ namespace Docky {
     construct
     {
       Icon = ClippyDocklet.ICON;
-      clips = new Gee.ArrayList<string> ();
+      clips = new Gee.ArrayList<ClippyClipboardItem> ();
       initialize_clipboard();
       update_display();
     }
 
     ~ClippyDockItem() {
       disconnect_clipboard();
+
+      if (debounce_timeout_id > 0) {
+        GLib.Source.remove(debounce_timeout_id);
+        debounce_timeout_id = 0;
+      }
     }
 
     private void initialize_clipboard() {
-      unowned ClippyPreferences prefs = (ClippyPreferences) Prefs;
       var atom_name = prefs.TrackMouseSelections ? "PRIMARY" : "CLIPBOARD";
       clipboard = Gtk.Clipboard.get(Gdk.Atom.intern(atom_name, true));
       connect_clipboard();
     }
 
     private void connect_clipboard() {
-      handler_id = clipboard.owner_change.connect((clipboard, ev) => {
-        request_clipboard_text();
-      });
+      if (!prefs.DisableTracking) {
+        handler_id = clipboard.owner_change.connect((clipboard, ev) => {
+          request_clipboard_content();
+        });
+      }
     }
 
     private void disconnect_clipboard() {
@@ -66,25 +81,92 @@ namespace Docky {
       }
     }
 
-    private void request_clipboard_text() {
-      clipboard.request_text((cb, text) => {
-        if (text != null && text != "") {
-          process_clipboard_text(text);
-        }
-      });
+    private void toggle_clipboard_tracking() {
+      prefs.DisableTracking = !prefs.DisableTracking;
+
+      disconnect_clipboard();
+      connect_clipboard();
     }
 
-    private void process_clipboard_text(string text) {
-      unowned ClippyPreferences prefs = (ClippyPreferences) Prefs;
+    private void toggle_selection_tracking() {
+      prefs.TrackMouseSelections = !prefs.TrackMouseSelections;
 
-      clips.remove(text);
-      clips.add(text);
+      disconnect_clipboard();
+      initialize_clipboard();
+    }
+
+    private void toggle_image_tracking() {
+      prefs.TrackImages = !prefs.TrackImages;
+    }
+
+    private void set_max_entries(int count) {
+      prefs.MaxEntries = count;
 
       while (clips.size > prefs.MaxEntries) {
         clips.remove_at(0);
       }
 
-      cur_position = clips.size;
+      update_display();
+    }
+
+    private void request_clipboard_content() {
+      if (debounce_timeout_id > 0) {
+        GLib.Source.remove(debounce_timeout_id);
+        debounce_timeout_id = 0;
+      }
+
+      debounce_timeout_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
+        debounce_timeout_id = 0;
+
+        if (prefs.TrackImages) {
+          clipboard.request_image(handle_image_result);
+        } else {
+          request_clipboard_text();
+        }
+
+        return false;
+      });
+    }
+
+    private void handle_image_result(Gtk.Clipboard cb, Gdk.Pixbuf? pixbuf) {
+      if (pixbuf != null && pixbuf.get_width() > 0 && pixbuf.get_height() > 0) {
+        var item = new ClippyClipboardItem.with_image(pixbuf);
+        process_clipboard_item(item);
+      } else {
+        request_clipboard_text();
+      }
+    }
+
+    private void request_clipboard_text() {
+      clipboard.request_text((cb, text) => {
+        if (text != null && text != "") {
+          var item = new ClippyClipboardItem.with_text(text);
+          process_clipboard_item(item);
+        }
+      });
+    }
+
+    private void process_clipboard_item(ClippyClipboardItem new_item) {
+      string new_hash = new_item.get_hash();
+      ClippyClipboardItem? duplicate_item = null;
+
+      foreach (var item in clips) {
+        if (item.get_hash() == new_hash) {
+          duplicate_item = item;
+          break;
+        }
+      }
+
+      if (duplicate_item != null) {
+        clips.remove(duplicate_item);
+      }
+
+      clips.add(new_item);
+
+      while (clips.size > prefs.MaxEntries) {
+        clips.remove_at(0);
+      }
+
       update_display();
     }
 
@@ -92,100 +174,133 @@ namespace Docky {
       if (clips.size == 0) {
         Text = EMPTY_CLIPBOARD_TEXT;
       } else {
-        Text = format_text(get_entry_text(cur_position == 0 ? clips.size : cur_position));
+        var latest = clips.get(clips.size - 1);
+
+        if (latest.item_type == ClippyClipboardItem.Type.IMAGE) {
+          Text = _("Image");
+        } else {
+          Text = latest.get_display_text(MAX_CLIP_MENU_ITEM_LENGTH);
+        }
       }
     }
 
-    private string get_entry_text(int pos) {
-      return clips.get(pos - 1);
-    }
-
-    private void copy_entry_at(int pos) {
-      if (pos < 1 || pos > clips.size)
+    private void copy_item_at(int index) {
+      if (index < 0 || index >= clips.size) {
         return;
+      }
 
-      var text = clips.get(pos - 1);
-      clipboard.set_text(text, text.length);
+      var item = clips.get(index);
+      item.copy_to_clipboard(clipboard);
+
+      clips.remove_at(index);
+      clips.add(item);
+
       update_display();
-    }
-
-    private void copy_current_entry() {
-      copy_entry_at(cur_position == 0 ? clips.size : cur_position);
     }
 
     private void clear_clipboard() {
       clipboard.set_text("", 0);
       clipboard.clear();
       clips.clear();
-      cur_position = 0;
       update_display();
     }
 
-    protected override AnimationType on_scrolled(Gdk.ScrollDirection direction,
-                                                 Gdk.ModifierType mod,
-                                                 uint32 event_time) {
-      if (clips.size == 0)
-        return AnimationType.NONE;
+    private void on_menu_hide() {
+      DockController? controller = get_dock();
+      if (controller == null) {
+        return;
+      }
 
-      if (direction == Gdk.ScrollDirection.UP)
-        cur_position++;
-      else
-        cur_position--;
+      controller.window.update_icon_regions();
+      controller.renderer.animated_draw();
 
-      if (cur_position < 1)
-        cur_position = clips.size;
-      else if (cur_position > clips.size)
-        cur_position = 1;
-
-      update_display();
-      return AnimationType.NONE;
+      controller.hide_manager.update_hovered();
+      if (!controller.hide_manager.Hovered) {
+        controller.window.update_hovered(0, 0);
+      }
     }
 
     protected override AnimationType on_clicked(PopupButton button,
                                                 Gdk.ModifierType mod,
                                                 uint32 event_time) {
-      if (button == PopupButton.LEFT && clips.size > 0) {
-        copy_current_entry();
-        return AnimationType.BOUNCE;
+      if (button == PopupButton.LEFT) {
+        if (clips.size == 0) {
+          return AnimationType.BOUNCE;
+        }
+
+        DockController? controller = get_dock();
+        if (controller == null) {
+          return AnimationType.NONE;
+        }
+
+        var menu = new Gtk.Menu();
+        menu.hide.connect(on_menu_hide);
+
+        foreach (var item in get_clipboard_menu_items()) {
+          menu.append(item);
+        }
+
+        menu.show_all();
+
+        Gtk.Requisition requisition;
+        menu.get_preferred_size(null, out requisition);
+
+        int x, y;
+        controller.position_manager.get_menu_position(this, requisition, out x, out y);
+
+        Gdk.Gravity gravity;
+        switch (controller.position_manager.Position) {
+        case Gtk.PositionType.BOTTOM :
+          gravity = Gdk.Gravity.NORTH;
+          break;
+        case Gtk.PositionType.TOP :
+          gravity = Gdk.Gravity.SOUTH;
+          break;
+        case Gtk.PositionType.LEFT :
+          gravity = Gdk.Gravity.EAST;
+          break;
+        case Gtk.PositionType.RIGHT :
+          gravity = Gdk.Gravity.WEST;
+          break;
+        default:
+          gravity = Gdk.Gravity.NORTH;
+          break;
+        }
+
+        menu.popup_at_rect(
+                           controller.window.get_screen().get_root_window(),
+                           Gdk.Rectangle() {
+          x = x,
+          y = y,
+          width = 1,
+          height = 1,
+        },
+                           gravity,
+                           gravity,
+                           null
+        );
+
+        controller.hover.hide();
+
+        return AnimationType.NONE;
       }
+
       return AnimationType.NONE;
     }
 
-    private string format_text(string text) {
-      var stripped_text = text.strip();
-      var lines = stripped_text.split("\n");
-
-      if (lines.length > 1) {
-        stripped_text = lines[0] + "... [" + lines.length.to_string() + "]";
-      }
-
-      stripped_text = stripped_text.truncate_middle(MAX_CLIP_MENU_ITEM_LENGTH);
-
-      return stripped_text;
-    }
-
-    public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
+    private Gee.ArrayList<Gtk.MenuItem> get_clipboard_menu_items() {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      for (var i = clips.size; i > 0; i--) {
-        var pos = i;
-        var text = format_text(clips.get(pos - 1));
+      for (int i = clips.size - 1; i >= 0; i--) {
+        var index = i;
+        var clip = clips.get(index);
 
-        if (text != "") {
-          var item = create_literal_menu_item(text, "", false);
+        var item = clip.create_menu_item();
 
-          if (i == cur_position) {
-            var label = item.get_child() as Gtk.Label;
-            if (label != null) {
-              label.set_markup("<b>" + label.get_text() + "</b>");
-            }
-          }
-
-          item.activate.connect(() => {
-            copy_entry_at(pos);
-          });
-          items.add(item);
-        }
+        item.activate.connect(() => {
+          copy_item_at(index);
+        });
+        items.add(item);
       }
 
       if (clips.size > 0) {
@@ -196,6 +311,66 @@ namespace Docky {
         clear_item.activate.connect(clear_clipboard);
         items.add(clear_item);
       }
+
+      return items;
+    }
+
+    public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
+      var items = new Gee.ArrayList<Gtk.MenuItem> ();
+
+      var track_clipboard = new Gtk.CheckMenuItem.with_label(TRACK_CLIPBOARD_LABEL);
+      track_clipboard.active = !prefs.DisableTracking;
+      track_clipboard.toggled.connect(() => {
+        toggle_clipboard_tracking();
+      });
+      items.add(track_clipboard);
+
+      var track_selections = new Gtk.CheckMenuItem.with_label(TRACK_SELECTION_LABEL);
+      track_selections.active = prefs.TrackMouseSelections;
+      track_selections.sensitive = !prefs.DisableTracking;
+      track_selections.toggled.connect(() => {
+        toggle_selection_tracking();
+      });
+      items.add(track_selections);
+
+      var track_images = new Gtk.CheckMenuItem.with_label(TRACK_IMAGES_LABEL);
+      track_images.active = prefs.TrackImages;
+      track_images.sensitive = !prefs.DisableTracking;
+      track_images.toggled.connect(() => {
+        toggle_image_tracking();
+      });
+      items.add(track_images);
+
+      items.add(new Gtk.SeparatorMenuItem());
+
+      var max_entries_item = new Gtk.MenuItem.with_label(MAX_ENTRIES_LABEL);
+      var max_entries_menu = new Gtk.Menu();
+
+      int[] entry_counts = { 5, 10, 15, 20, 25 };
+      unowned GLib.SList<Gtk.RadioMenuItem> group = null;
+
+      foreach (var count in entry_counts) {
+        var item = new Gtk.RadioMenuItem.with_label(group, count.to_string());
+
+        if (group == null)
+          group = item.get_group();
+
+        if (prefs.MaxEntries == count) {
+          item.active = true;
+        }
+
+        item.toggled.connect(() => {
+          if (item.active) {
+            set_max_entries(count);
+          }
+        });
+
+        max_entries_menu.append(item);
+      }
+
+      max_entries_menu.show_all();
+      max_entries_item.set_submenu(max_entries_menu);
+      items.add(max_entries_item);
 
       return items;
     }
