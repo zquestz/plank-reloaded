@@ -79,6 +79,25 @@ meson compile -C build
 sudo meson install -C build
 ```
 
+### FreeBSD
+
+Plank Reloaded is available in the FreeBSD Ports Collection. You can install it using one of the following methods:
+
+#### Using pkg (Binary Package)
+
+```bash
+pkg install x11/plank
+```
+
+#### Using the Ports Collection
+
+```bash
+cd /usr/ports/x11/plank
+make install clean
+```
+
+For more information about the port, visit [FreshPorts](https://www.freshports.org/x11/plank/).
+
 ### Nix
 
 There is a Nix flake available for Plank Reloaded. Just follow the directions in `nix/README.md`.
