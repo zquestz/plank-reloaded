@@ -324,77 +324,77 @@ namespace Docky {
     }
 
     private void show_icon_picker() {
-        var file_chooser = new Gtk.FileChooserDialog(
-            _("Select Custom Icon"),
-            null,
-            Gtk.FileChooserAction.OPEN,
-            _("Cancel"), Gtk.ResponseType.CANCEL,
-            _("Select"), Gtk.ResponseType.ACCEPT
-        );
+      var file_chooser = new Gtk.FileChooserDialog(
+                                                   _("Select Custom Icon"),
+                                                   null,
+                                                   Gtk.FileChooserAction.OPEN,
+                                                   _("Cancel"), Gtk.ResponseType.CANCEL,
+                                                   _("Select"), Gtk.ResponseType.ACCEPT
+      );
 
-        string[] icon_paths = {
-            "/usr/share/icons",
-            "/usr/share/pixmaps",
-            GLib.Environment.get_home_dir() + "/.local/share/icons"
-        };
+      string[] icon_paths = {
+        "/usr/share/icons",
+        "/usr/share/pixmaps",
+        GLib.Environment.get_home_dir() + "/.local/share/icons"
+      };
 
-        foreach (var path in icon_paths) {
-            var dir = File.new_for_path(path);
-            if (dir.query_exists()) {
-                file_chooser.set_current_folder(path);
-                break;
-            }
+      foreach (var path in icon_paths) {
+        var dir = File.new_for_path(path);
+        if (dir.query_exists()) {
+          file_chooser.set_current_folder(path);
+          break;
+        }
+      }
+
+      var filter = new Gtk.FileFilter();
+      filter.set_name(_("Image Files"));
+      filter.add_mime_type("image/png");
+      filter.add_mime_type("image/jpeg");
+      filter.add_mime_type("image/svg+xml");
+      filter.add_mime_type("image/webp");
+      filter.add_pattern("*.png");
+      filter.add_pattern("*.jpg");
+      filter.add_pattern("*.jpeg");
+      filter.add_pattern("*.svg");
+      filter.add_pattern("*.xpm");
+      filter.add_pattern("*.webp");
+      file_chooser.add_filter(filter);
+
+      var preview = new Gtk.Image();
+      preview.set_size_request(128, 128);
+      file_chooser.set_preview_widget(preview);
+      file_chooser.set_use_preview_label(false);
+
+      file_chooser.update_preview.connect(() => {
+        string? filename = file_chooser.get_preview_filename();
+        if (filename == null) {
+          file_chooser.set_preview_widget_active(false);
+          return;
         }
 
-        var filter = new Gtk.FileFilter();
-        filter.set_name(_("Image Files"));
-        filter.add_mime_type("image/png");
-        filter.add_mime_type("image/jpeg");
-        filter.add_mime_type("image/svg+xml");
-        filter.add_mime_type("image/webp");
-        filter.add_pattern("*.png");
-        filter.add_pattern("*.jpg");
-        filter.add_pattern("*.jpeg");
-        filter.add_pattern("*.svg");
-        filter.add_pattern("*.xpm");
-        filter.add_pattern("*.webp");
-        file_chooser.add_filter(filter);
-
-        var preview = new Gtk.Image();
-        preview.set_size_request(128, 128);
-        file_chooser.set_preview_widget(preview);
-        file_chooser.set_use_preview_label(false);
-
-        file_chooser.update_preview.connect(() => {
-            string? filename = file_chooser.get_preview_filename();
-            if (filename == null) {
-                file_chooser.set_preview_widget_active(false);
-                return;
-            }
-
-            try {
-                var pixbuf = new Gdk.Pixbuf.from_file_at_scale(filename, 128, 128, true);
-                preview.set_from_pixbuf(pixbuf);
-                file_chooser.set_preview_widget_active(true);
-            } catch (Error e) {
-                file_chooser.set_preview_widget_active(false);
-            }
-        });
-
-        if (file_chooser.run() == Gtk.ResponseType.ACCEPT) {
-            string uri = file_chooser.get_uri();
-            prefs.CustomIcon = uri;
+        try {
+          var pixbuf = new Gdk.Pixbuf.from_file_at_scale(filename, 128, 128, true);
+          preview.set_from_pixbuf(pixbuf);
+          file_chooser.set_preview_widget_active(true);
+        } catch (Error e) {
+          file_chooser.set_preview_widget_active(false);
         }
+      });
 
-        file_chooser.destroy();
+      if (file_chooser.run() == Gtk.ResponseType.ACCEPT) {
+        string uri = file_chooser.get_uri();
+        prefs.CustomIcon = uri;
+      }
+
+      file_chooser.destroy();
     }
 
     private Gtk.MenuItem create_applications_menu_item(string title, string? icon, bool force_show_icon) {
-      if (icon == null || icon == "")
-        return new Gtk.MenuItem.with_mnemonic(title);
+      if (icon == null || icon == "") {
+        icon = "application-x-executable";
+      }
 
       int width, height;
-
       if (prefs.LargeIcons) {
         Gtk.icon_size_lookup(Gtk.IconSize.LARGE_TOOLBAR, out width, out height);
       } else {
