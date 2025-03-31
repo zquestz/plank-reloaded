@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
 "PO-Revision-Date: 2025-03-30 04:36\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -26,12 +26,28 @@ msgid "Still stupidly simple."
 msgstr "여전히 엄청 단순합니다."
 
 #: data/plank.appdata.xml.in:9
-msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
-msgstr "플랭크 리로디드는 원래 Plank 프로젝트에서 파생된 것으로, X11 데스크톱 환경을 위한 간단한 독을 제공합니다. 처음에는 Cinnamon에 초점을 맞추고 개발을 시작했지만, 현재 MATE 및 Xfce를 포함한 여러 데스크톱 환경을 적극적으로 지원하고 있습니다. 현재 Wayland는 지원되지 않습니다."
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"플랭크 리로디드는 원래 Plank 프로젝트에서 파생된 것으로, X11 데스크톱 환경을 "
+"위한 간단한 독을 제공합니다. 처음에는 Cinnamon에 초점을 맞추고 개발을 시작했"
+"지만, 현재 MATE 및 Xfce를 포함한 여러 데스크톱 환경을 적극적으로 지원하고 있"
+"습니다. 현재 Wayland는 지원되지 않습니다."
 
 #: data/plank.appdata.xml.in:15
-msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
-msgstr "원래 버전과 마찬가지로 Plank Reloaded는 지구상에서 가장 단순한 독이 되는 것을 목표로 하며, 독에 필요한 것만 제공하고 그 이상은 절대 제공하지 않습니다. 또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브러리로 남아 있습니다."
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"원래 버전과 마찬가지로 Plank Reloaded는 지구상에서 가장 단순한 독이 되는 것"
+"을 목표로 하며, 독에 필요한 것만 제공하고 그 이상은 절대 제공하지 않습니다. "
+"또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브"
+"러리로 남아 있습니다."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -218,6 +234,7 @@ msgstr "메뉴 편집"
 msgid "Choose Custom Icon"
 msgstr "사용자 정의 아이콘 선택"
 
+#. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
 msgstr "기본 아이콘으로 재설정"
@@ -378,6 +395,11 @@ msgstr "구분선"
 msgid "Just a separator."
 msgstr "단순 구분선입니다."
 
+#. *
+#. * Returns the display name for this docklet.
+#. *
+#. * @return the docklet's name
+#.
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
@@ -399,6 +421,11 @@ msgstr "작업 공간 %d"
 msgid "_Live Previews"
 msgstr "_실시간 미리보기"
 
+#. *
+#. * Returns the description of this docklet.
+#. *
+#. * @return the docklet's description
+#.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
 msgstr "그래픽 작업 공간 전환기."
@@ -409,7 +436,8 @@ msgstr "플랭크에 올리기"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr "Launchpad Contributions:\n"
+msgstr ""
+"Launchpad Contributions:\n"
 "  B. W. Knight https://launchpad.net/~kbd0651\n"
 "  Hur, Seok https://launchpad.net/~ludishur\n"
 "  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"

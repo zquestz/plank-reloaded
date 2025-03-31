@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
 "PO-Revision-Date: 2025-03-30 04:37\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -10,7 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && "
+"n%100<20)) ? 1 : 2);\n"
 "X-Crowdin-Project: plank-reloaded\n"
 "X-Crowdin-Project-ID: 768623\n"
 "X-Crowdin-Language: ro\n"
@@ -26,12 +27,28 @@ msgid "Still stupidly simple."
 msgstr "Tot ridicol de simplu."
 
 #: data/plank.appdata.xml.in:9
-msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
-msgstr "Plank Reloaded este un fork al proiectului original Plank, oferind un dock simplu pentru mediile desktop X11. Deși efortul inițial era axat pe mediul Cinnamon, acum suportăm activ mai multe medii desktop, inclusiv MATE și Xfce. Wayland nu este suportat în acest moment."
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"Plank Reloaded este un fork al proiectului original Plank, oferind un dock "
+"simplu pentru mediile desktop X11. Deși efortul inițial era axat pe mediul "
+"Cinnamon, acum suportăm activ mai multe medii desktop, inclusiv MATE și "
+"Xfce. Wayland nu este suportat în acest moment."
 
 #: data/plank.appdata.xml.in:15
-msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
-msgstr "La fel ca predecesorul său, Plank Reloaded își propune să fie cel mai simplu dock din lume, oferind doar strictul necesar pentru un dock și nimic mai mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe dock cu funcții mai avansate."
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"La fel ca predecesorul său, Plank Reloaded își propune să fie cel mai simplu "
+"dock din lume, oferind doar strictul necesar pentru un dock și nimic mai "
+"mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
+"dock cu funcții mai avansate."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -218,6 +235,7 @@ msgstr "Editare meniu"
 msgid "Choose Custom Icon"
 msgstr "Alege Pictogramă Personalizată"
 
+#. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
 msgstr "Resetare la pictograma implicită"
@@ -380,6 +398,11 @@ msgstr "Separator"
 msgid "Just a separator."
 msgstr "Doar un separator."
 
+#. *
+#. * Returns the display name for this docklet.
+#. *
+#. * @return the docklet's name
+#.
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
@@ -401,6 +424,11 @@ msgstr "Spațiu de lucru %d"
 msgid "_Live Previews"
 msgstr "_Previzualizări în direct"
 
+#. *
+#. * Returns the description of this docklet.
+#. *
+#. * @return the docklet's description
+#.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
 msgstr "Un comutator grafic pentru spații de lucru."
@@ -411,7 +439,8 @@ msgstr "Dă drumul pentru a adăuga la dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr "Launchpad Contributions:\n"
+msgstr ""
+"Launchpad Contributions:\n"
 "  Adi Roiban https://launchpad.net/~adiroiban\n"
 "  Cristian Moldovan https://launchpad.net/~crismblog\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"

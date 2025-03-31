@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-29 22:16-1000\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
 "PO-Revision-Date: 2016-09-09 20:26+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -228,6 +228,7 @@ msgstr ""
 msgid "Choose Custom Icon"
 msgstr ""
 
+#. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
 msgstr ""
@@ -389,6 +390,11 @@ msgstr ""
 msgid "Just a separator."
 msgstr ""
 
+#. *
+#. * Returns the display name for this docklet.
+#. *
+#. * @return the docklet's name
+#.
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
@@ -410,6 +416,11 @@ msgstr ""
 msgid "_Live Previews"
 msgstr ""
 
+#. *
+#. * Returns the description of this docklet.
+#. *
+#. * @return the docklet's description
+#.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
 "PO-Revision-Date: 2025-03-30 04:36\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
@@ -26,12 +26,29 @@ msgid "Still stupidly simple."
 msgstr "Ainda estupidamente simples."
 
 #: data/plank.appdata.xml.in:9
-msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
-msgstr "Plank Reloaded é um fork do projeto Plank original, fornecendo um dock simples para ambientes de desktop X11. Embora o desenvolvimento tenha começado com foco no Cinnamon, agora oferecemos suporte ativo a vários ambientes de desktop, incluindo MATE e Xfce. O Wayland não é suportado no momento."
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"Plank Reloaded é um fork do projeto Plank original, fornecendo um dock "
+"simples para ambientes de desktop X11. Embora o desenvolvimento tenha "
+"começado com foco no Cinnamon, agora oferecemos suporte ativo a vários "
+"ambientes de desktop, incluindo MATE e Xfce. O Wayland não é suportado no "
+"momento."
 
 #: data/plank.appdata.xml.in:15
-msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
-msgstr "Assim como seu antecessor, o Plank Reloaded tem como objetivo ser o dock mais simples do planeta, fornecendo exatamente o que um dock precisa e absolutamente nada mais. Ele também continua sendo uma biblioteca que pode ser estendida para criar outros programas dock com recursos mais avançados."
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"Assim como seu antecessor, o Plank Reloaded tem como objetivo ser o dock "
+"mais simples do planeta, fornecendo exatamente o que um dock precisa e "
+"absolutamente nada mais. Ele também continua sendo uma biblioteca que pode "
+"ser estendida para criar outros programas dock com recursos mais avançados."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -218,6 +235,7 @@ msgstr "Editar Menu"
 msgid "Choose Custom Icon"
 msgstr "Escolher Ícone Personalizado"
 
+#. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
 msgstr "Redefinir para o Ícone Padrão"
@@ -379,6 +397,11 @@ msgstr "Separador"
 msgid "Just a separator."
 msgstr "Apenas um separador."
 
+#. *
+#. * Returns the display name for this docklet.
+#. *
+#. * @return the docklet's name
+#.
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
@@ -400,6 +423,11 @@ msgstr "Área de Trabalho %d"
 msgid "_Live Previews"
 msgstr "_Visualizações ao vivo"
 
+#. *
+#. * Returns the description of this docklet.
+#. *
+#. * @return the docklet's description
+#.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
 msgstr "Um seletor gráfico de áreas de trabalho."
@@ -410,7 +438,8 @@ msgstr "Solte para adicionar ao dock"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr "Launchpad Contributions:\n"
+msgstr ""
+"Launchpad Contributions:\n"
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Average John https://launchpad.net/~averagejohn\n"
 "  Betto Leite da Silva https://launchpad.net/~blsic\n"
@@ -487,4 +516,3 @@ msgstr "_Sair"
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
 msgstr "Preferências"
-

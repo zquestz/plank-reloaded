@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-29 18:28-1000\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
 "PO-Revision-Date: 2025-03-30 04:37\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -26,12 +26,29 @@ msgid "Still stupidly simple."
 msgstr "Hala aptalca basit."
 
 #: data/plank.appdata.xml.in:9
-msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
-msgstr "Plank Reloaded, orijinal Plank projesinin bir çatalıdır ve X11 masaüstü ortamları için basit bir dock sağlar. Geliştirme Cinnamon'a odaklanarak başlamış olsa da, artık MATE ve Xfce dahil olmak üzere birden fazla masaüstü ortamını aktif olarak destekliyoruz. Wayland şu anda desteklenmemektedir."
+msgid ""
+"Plank Reloaded is a fork of the original Plank project, providing a simple "
+"dock for X11 desktop environments. While development began with a focus on "
+"Cinnamon, we now actively support multiple desktop environments including "
+"MATE and Xfce. Wayland is not supported at this time."
+msgstr ""
+"Plank Reloaded, orijinal Plank projesinin bir çatalıdır ve X11 masaüstü "
+"ortamları için basit bir dock sağlar. Geliştirme Cinnamon'a odaklanarak "
+"başlamış olsa da, artık MATE ve Xfce dahil olmak üzere birden fazla masaüstü "
+"ortamını aktif olarak destekliyoruz. Wayland şu anda desteklenmemektedir."
 
 #: data/plank.appdata.xml.in:15
-msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
-msgstr "Önceki sürümü gibi Plank Reloaded da gezegendeki en basit dock olmayı, bir dock'un ihtiyaç duyduğu şeyleri sağlamayı ve kesinlikle daha fazlasını sağlamayı hedefliyor. Ayrıca, daha gelişmiş özelliklere sahip diğer dock programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam ediyor."
+msgid ""
+"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
+"planet, providing just what a dock needs and absolutely nothing more. It "
+"also remains a library which can be extended to create other dock programs "
+"with more advanced features."
+msgstr ""
+"Önceki sürümü gibi Plank Reloaded da gezegendeki en basit dock olmayı, bir "
+"dock'un ihtiyaç duyduğu şeyleri sağlamayı ve kesinlikle daha fazlasını "
+"sağlamayı hedefliyor. Ayrıca, daha gelişmiş özelliklere sahip diğer dock "
+"programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam "
+"ediyor."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
@@ -218,6 +235,7 @@ msgstr "Menüyü Düzenle"
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"
 
+#. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
 msgstr "Varsayılan Simgeye Sıfırla"
@@ -379,6 +397,11 @@ msgstr "Ayırıcı"
 msgid "Just a separator."
 msgstr "Sadece bir ayırıcı."
 
+#. *
+#. * Returns the display name for this docklet.
+#. *
+#. * @return the docklet's name
+#.
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
@@ -400,6 +423,11 @@ msgstr "Çalışma Alanı %d"
 msgid "_Live Previews"
 msgstr "_Canlı Önizlemeler"
 
+#. *
+#. * Returns the description of this docklet.
+#. *
+#. * @return the docklet's description
+#.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
 msgstr "Grafiksel çalışma alanı değiştirici."
@@ -410,7 +438,8 @@ msgstr "Rıhtıma eklemek için bırakın"
 
 #: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
 msgid "translator-credits"
-msgstr "Launchpad Contributions:\n"
+msgstr ""
+"Launchpad Contributions:\n"
 "  Ahmet Onur YILDIRIM https://launchpad.net/~aonury\n"
 "  Can Umay https://launchpad.net/~canumaydestek\n"
 "  Dinçer Kavraal https://launchpad.net/~dkavraal\n"
