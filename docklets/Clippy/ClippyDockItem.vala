@@ -92,7 +92,7 @@ namespace Docky {
       if (clips.size == 0) {
         Text = EMPTY_CLIPBOARD_TEXT;
       } else {
-        Text = get_entry_text(cur_position == 0 ? clips.size : cur_position);
+        Text = format_text(get_entry_text(cur_position == 0 ? clips.size : cur_position));
       }
     }
 
@@ -151,27 +151,33 @@ namespace Docky {
       return AnimationType.NONE;
     }
 
+    private string format_text(string text) {
+      var stripped_text = text.strip();
+      var lines = stripped_text.split("\n");
+
+      if (lines.length > 1) {
+        stripped_text = lines[0] + "... [" + lines.length.to_string() + "]";
+      }
+
+      stripped_text = stripped_text.truncate_middle(MAX_CLIP_MENU_ITEM_LENGTH);
+
+      return stripped_text;
+    }
+
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       for (var i = clips.size; i > 0; i--) {
         var pos = i;
-        var text = clips.get(pos - 1).strip();
-        var lines = text.split("\n");
-
-        if (lines.length > 1) {
-          text = lines[0] + "... [" + lines.length.to_string() + "]";
-        }
-
-        text = text.truncate_middle(MAX_CLIP_MENU_ITEM_LENGTH);
+        var text = format_text(clips.get(pos - 1));
 
         if (text != "") {
           var item = create_literal_menu_item(text, "", false);
 
           if (i == cur_position) {
-            var label = item.get_child () as Gtk.Label;
+            var label = item.get_child() as Gtk.Label;
             if (label != null) {
-              label.set_markup ("<b>" + label.get_text () + "</b>");
+              label.set_markup("<b>" + label.get_text() + "</b>");
             }
           }
 
