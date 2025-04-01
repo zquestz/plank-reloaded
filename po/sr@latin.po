@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-31 14:53-1000\n"
+"POT-Creation-Date: 2025-03-31 15:15-1000\n"
 "PO-Revision-Date: 2016-08-10 10:39+0000\n"
 "Last-Translator: Igor S. <crni2k8@gmail.com>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
@@ -309,8 +309,8 @@ msgid "Maximum Entries"
 msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:125
-#: docklets/Clippy/ClippyClipboardItem.vala:167
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:190
 msgid "Image"
 msgstr ""
 
