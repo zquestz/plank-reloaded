@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-31 21:48\n"
+"POT-Creation-Date: 2025-03-31 14:53-1000\n"
+"PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
@@ -288,13 +288,35 @@ msgstr "बैटरी"
 msgid "Displays battery information"
 msgstr "बैटरी जानकारी प्रदर्शित करता है"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "क्लिपबोर्ड वर्तमान में खाली है।"
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "_साफ करें"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr "माउस चयन का ट्रैक रखें"
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr "ट्रैक इमेज"
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr "क्लिपबोर्ड ट्रैकिंग सक्षम करें"
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr "अधिकतम प्रविष्टियां"
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr "छवि"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"

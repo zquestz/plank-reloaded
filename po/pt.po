@@ -291,13 +291,35 @@ msgstr "Bateria"
 msgid "Displays battery information"
 msgstr "Mostra informações sobre a bateria"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "A área de transferência está atualmente vazia."
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "_Limpar"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr ""
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr ""
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"

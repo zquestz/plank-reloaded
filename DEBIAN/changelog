@@ -1,3 +1,11 @@
+plank-reloaded (0.11.116-1) unstable; urgency=medium
+
+  * Rewrite of Clippy Docklet with image support and settings toggles
+  * Battery Docklet has settings menu for non UPower systems
+  * Added default icon to iconless apps in Applications Docklet
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 31 Mar 2025 14:47:02 -1000
+
 plank-reloaded (0.11.115-1) unstable; urgency=medium
 
   * Improved Applications Docklet: Large Icons, Custom Icon, and Edit Menu.

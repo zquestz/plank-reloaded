@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-30 20:35-1000\n"
-"PO-Revision-Date: 2025-03-31 21:48\n"
+"POT-Creation-Date: 2025-03-31 14:53-1000\n"
+"PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -289,13 +289,35 @@ msgstr "Baterie"
 msgid "Displays battery information"
 msgstr "Afișează informații despre baterie"
 
-#: docklets/Clippy/ClippyDockItem.vala:23
+#: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
 msgstr "Clipboard-ul este momentan gol."
 
-#: docklets/Clippy/ClippyDockItem.vala:24
+#: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
 msgstr "_Șterge"
+
+#: docklets/Clippy/ClippyDockItem.vala:26
+msgid "Track Mouse Selections"
+msgstr "Urmărește Selecțiile Mouse-ului"
+
+#: docklets/Clippy/ClippyDockItem.vala:27
+msgid "Track Images"
+msgstr "Urmărește Imagini"
+
+#: docklets/Clippy/ClippyDockItem.vala:28
+msgid "Enable Clipboard Tracking"
+msgstr "Activați urmărirea clipboard-ului"
+
+#: docklets/Clippy/ClippyDockItem.vala:29
+msgid "Maximum Entries"
+msgstr "Intrări maxime"
+
+#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyClipboardItem.vala:125
+#: docklets/Clippy/ClippyClipboardItem.vala:167
+msgid "Image"
+msgstr "Imagine"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
