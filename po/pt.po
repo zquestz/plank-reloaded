@@ -1,31 +1,31 @@
-# Portuguese translation for plank
+# Portuguese translation for plank reloaded
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# This file is distributed under the same license as the plank-reloaded package.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-31 14:53-1000\n"
-"PO-Revision-Date: 2020-05-11 15:34+0000\n"
-"Last-Translator: Sérgio Marques <Unknown>\n"
+"POT-Creation-Date: 2025-03-30 20:35-1000\n"
+"PO-Revision-Date: 2025-03-31 23:40+0100\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2020-05-12 05:52+0000\n"
-"X-Generator: Launchpad (build fbdff7602bd10fb883bf7e2ddcc7fd5a16f60398)\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
 msgid "Still stupidly simple."
-msgstr "Estupidamente simples."
+msgstr "Continua estupidamente simples."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -34,6 +34,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"O Plank Reloaded é uma derivação do projeto Plank original, fornecendo uma "
+"doca simples para ambientes de trabalho X11. Embora o desenvolvimento tenha "
+"começado com foco no Cinnamon, agora suportamos ativamente vários ambientes "
+"de trabalho, incluindo MATE e Xfce. Wayland não é suportado no momento."
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -42,18 +46,23 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Tal como o seu antecessor, o Plank Reloaded pretende ser a doca mais "
+"simples do planeta, fornecendo apenas o que uma doca precisa e "
+"absolutamente nada mais. Também permanece uma biblioteca que pode ser "
+"estendida para criar outros programas de doca com funcionalidades mais "
+"avançados."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "ancorar"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "iniciar"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "painel"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
@@ -61,11 +70,11 @@ msgstr "início"
 
 #: data/plank.appdata.xml.in:36
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Os programadores da Plank Reloaded"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "Doca"
 
 #: data/ui/preferences.ui:82
 msgid "Theme:"
@@ -85,11 +94,11 @@ msgstr "Direita"
 
 #: data/ui/preferences.ui:124
 msgid "Top"
-msgstr "Cima"
+msgstr "Superior"
 
 #: data/ui/preferences.ui:125
 msgid "Bottom"
-msgstr "Baixo"
+msgstr "Inferior"
 
 #: data/ui/preferences.ui:139
 msgid "Alignment:"
@@ -129,7 +138,7 @@ msgstr "Tamanho dos ícones:"
 
 #: data/ui/preferences.ui:313
 msgid "Icon Zoom:"
-msgstr "Zoom de ícone:"
+msgstr "Zoom de ícones:"
 
 #: data/ui/preferences.ui:337
 msgid "Appearance"
@@ -157,7 +166,7 @@ msgstr "Desviar da janela ativa"
 
 #: data/ui/preferences.ui:387
 msgid "Hide Dock"
-msgstr "Ocultar Doca"
+msgstr "Ocultar a doca"
 
 #: data/ui/preferences.ui:403
 msgid "Hide Delay:"
@@ -197,11 +206,11 @@ msgstr "Bloquear ícones:"
 
 #: data/ui/preferences.ui:594
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "Mini-aplicações de ancoragem:"
 
 #: data/ui/preferences.ui:621
 msgid "Anchor Files:"
-msgstr ""
+msgstr "Ficheiros de ancoragem:"
 
 #: data/ui/preferences.ui:643
 msgid "Behaviour"
@@ -213,82 +222,82 @@ msgstr "Mini-aplicações"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "Nenhuma aplicação disponível"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "Aplicações"
 
 #: docklets/Applications/ApplicationsDockItem.vala:278
 msgid "Edit Menu"
-msgstr ""
+msgstr "Editar menu"
 
 #: docklets/Applications/ApplicationsDockItem.vala:297
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Escolher ícone personalizado"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:305
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "Repor o ícone predefinido"
 
 #: docklets/Applications/ApplicationsDockItem.vala:315
 msgid "Large Icons"
-msgstr ""
+msgstr "Ícones grandes"
 
 #: docklets/Applications/ApplicationsDockItem.vala:328
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "Selecionar ícone personalizado"
 
 #: docklets/Applications/ApplicationsDockItem.vala:331
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:332
 msgid "Select"
-msgstr ""
+msgstr "Selecionar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Image Files"
-msgstr ""
+msgstr "Ficheiros de imagem"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Simplesmente inicie qualquer uma das suas aplicações."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "Sem bateria"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "Baterias"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "Nenhuma bateria encontrada"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "Erro ao encontrar baterias"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "Bateria"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "Mostra informações sobre a bateria"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "A área de transferência está atualmente vazia."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Limpar"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
@@ -314,115 +323,115 @@ msgstr ""
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Guardar as entradas recentes da área de transferência."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Relógio di_gital"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "_Relógio de 24 horas"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "Mostrar _data"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Relógio"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "Que horas são?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "Calendário"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "Monitor da CPU"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Fica de olho nessa CPU. E quando ela sair da linha..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "Mostrar área de trabalho"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "Área de trabalho"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Mostrar a sua área de trabalho."
 
 #: docklets/Trash/TrashDockItem.vala:113
 msgid "No items in Trash"
-msgstr ""
+msgstr "Nenhum item no Lixo"
 
 #: docklets/Trash/TrashDockItem.vala:114
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u item no Lixo"
+msgstr[1] "%u itens no Lixo"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "Largar para mover para o Lixo"
 
 #: docklets/Trash/TrashDockItem.vala:193
 msgid "Restore Files"
-msgstr ""
+msgstr "Restaurar ficheiros"
 
 #: docklets/Trash/TrashDockItem.vala:247
 msgid "_Open Trash"
-msgstr ""
+msgstr "_Abrir o lixo"
 
 #: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_Esvaziar o lixo"
 
 #: docklets/Trash/TrashDockItem.vala:345
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Esvaziar todos os itens do lixo?"
 
 #: docklets/Trash/TrashDockItem.vala:348
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Todos os itens no lixo serão eliminados permanentemente."
 
 #: docklets/Trash/TrashDockItem.vala:349
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "Lixo"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Veja o seu lixo!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
 #: docklets/Workspaces/WorkspacesDockItem.vala:556
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Inverter cor"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Separador"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Apenas um separador."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -432,23 +441,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "Áreas de trabalho"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:177
 #: docklets/Workspaces/WorkspacesDockItem.vala:203
 #: docklets/Workspaces/WorkspacesDockItem.vala:215
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "Área de trabalho %d de %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:536
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Área de trabalho %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:563
 msgid "_Live Previews"
-msgstr ""
+msgstr "Pré-visualizações ao _vivo"
 
 #. *
 #. * Returns the description of this docklet.
@@ -457,7 +466,7 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "Um alternador gráfico da área de trabalho."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -483,7 +492,7 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
 #: lib/Items/FileDockItem.vala:215
 msgid "_Keep in Dock"
-msgstr "_Manter na Doca"
+msgstr "_Manter na doca"
 
 #: lib/Items/ApplicationDockItem.vala:420
 msgid "_Close All"
@@ -516,24 +525,23 @@ msgstr "Largue as aplicações ou ficheiros aqui"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Obter _ajuda na web..."
+msgstr "Obter _ajuda online..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
 msgstr "_Traduzir esta aplicação..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Preferências"
+msgstr "_Preferências"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_Acerca"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_Sair"
 
 #: lib/Widgets/PreferencesWindow.vala:91
 msgid "Preferences"
