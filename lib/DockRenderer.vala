@@ -590,7 +590,7 @@ namespace Plank {
           break;
         }
       } else if (hovered_item == item) {
-        if (item.DockItemFilename != null && /separator(-\d+)?\.dockitem/.match(item.DockItemFilename)) {
+        if (item.is_separator ()) {
           draw_value.lighten = 0.0;
         } else {
           draw_value.lighten = 0.2;

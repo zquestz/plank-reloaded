@@ -217,6 +217,26 @@ namespace Plank {
     }
 
     /**
+     * The item is a separator.
+     */
+    public bool is_separator () {
+      if (DockItemFilename == null) {
+        return false;
+      }
+
+      try {
+        var separator_regexp = new Regex ("separator(-\\d+)?\\.dockitem");
+        if (separator_regexp.match (DockItemFilename)) {
+          return true;
+        }
+      } catch (RegexError e) {
+        return false;
+      }
+
+      return false;
+    }
+
+    /**
      * Resets the buffer for this item's icon and requests a redraw.
      */
     protected void reset_icon_buffer () {
@@ -315,7 +335,7 @@ namespace Plank {
 
         schedule_removal_if_needed ();
         break;
-      case FileMonitorEvent.CREATED :
+      case FileMonitorEvent.CREATED:
       case FileMonitorEvent.MOVED_IN:
         debug ("Launcher file '%s' created, item is valid again", f.get_uri ());
 
