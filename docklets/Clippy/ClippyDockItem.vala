@@ -235,6 +235,7 @@ namespace Docky {
 
         var menu = new Gtk.Menu();
         menu.hide.connect(on_menu_hide);
+        menu.attach_to_widget(controller.window, null);
 
         foreach (var item in get_clipboard_menu_items()) {
           menu.append(item);
