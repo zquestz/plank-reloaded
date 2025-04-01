@@ -637,22 +637,28 @@ namespace Plank {
         controller.position_manager.get_menu_position (HoveredItem, requisition, out x, out y);
 
         Gdk.Gravity gravity;
+        Gdk.Gravity flipped_gravity;
 
         switch (controller.position_manager.Position) {
         case Gtk.PositionType.BOTTOM :
           gravity = Gdk.Gravity.NORTH;
+          flipped_gravity = Gdk.Gravity.SOUTH;
           break;
         case Gtk.PositionType.TOP :
           gravity = Gdk.Gravity.SOUTH;
+          flipped_gravity = Gdk.Gravity.NORTH;
           break;
         case Gtk.PositionType.LEFT :
           gravity = Gdk.Gravity.EAST;
+          flipped_gravity = Gdk.Gravity.WEST;
           break;
         case Gtk.PositionType.RIGHT :
           gravity = Gdk.Gravity.WEST;
+          flipped_gravity = Gdk.Gravity.EAST;
           break;
-          default :
+        default :
           gravity = Gdk.Gravity.NORTH;
+          flipped_gravity = Gdk.Gravity.SOUTH;
           break;
         }
 
@@ -665,7 +671,7 @@ namespace Plank {
           height = 1,
         },
                             gravity,
-                            gravity,
+                            flipped_gravity,
                             event
         );
       } else {

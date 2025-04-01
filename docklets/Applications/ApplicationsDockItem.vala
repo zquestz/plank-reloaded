@@ -88,6 +88,7 @@ namespace Docky {
       }
 
       if (app_menu != null) {
+        app_menu.show.disconnect(on_menu_show);
         app_menu.hide.disconnect(on_menu_hide);
         app_menu = null;
       }
@@ -123,6 +124,17 @@ namespace Docky {
       } catch (Error e) {
         warning("Error updating menu: %s", e.message);
       }
+    }
+
+    private void on_menu_show() {
+      DockController? controller = get_dock();
+      if (controller == null) {
+        return;
+      }
+
+      controller.window.update_icon_regions();
+      controller.hover.hide();
+      controller.renderer.animated_draw();
     }
 
     private void on_menu_hide() {
@@ -169,6 +181,7 @@ namespace Docky {
 
       if (app_menu == null) {
         app_menu = new Gtk.Menu();
+        app_menu.show.connect(on_menu_show);
         app_menu.hide.connect(on_menu_hide);
         app_menu.attach_to_widget(controller.window, null);
       } else {
@@ -202,21 +215,28 @@ namespace Docky {
       controller.position_manager.get_menu_position(this, requisition, out x, out y);
 
       Gdk.Gravity gravity;
+      Gdk.Gravity flipped_gravity;
+
       switch (controller.position_manager.Position) {
       case Gtk.PositionType.BOTTOM :
         gravity = Gdk.Gravity.NORTH;
+        flipped_gravity = Gdk.Gravity.SOUTH;
         break;
       case Gtk.PositionType.TOP :
         gravity = Gdk.Gravity.SOUTH;
+        flipped_gravity = Gdk.Gravity.NORTH;
         break;
       case Gtk.PositionType.LEFT :
         gravity = Gdk.Gravity.EAST;
+        flipped_gravity = Gdk.Gravity.WEST;
         break;
-      case Gtk.PositionType.RIGHT:
+      case Gtk.PositionType.RIGHT :
         gravity = Gdk.Gravity.WEST;
+        flipped_gravity = Gdk.Gravity.EAST;
         break;
       default:
         gravity = Gdk.Gravity.NORTH;
+        flipped_gravity = Gdk.Gravity.SOUTH;
         break;
       }
 
@@ -229,11 +249,9 @@ namespace Docky {
         height = 1,
       },
                              gravity,
-                             gravity,
+                             flipped_gravity,
                              null
       );
-
-      controller.hover.hide();
     }
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {

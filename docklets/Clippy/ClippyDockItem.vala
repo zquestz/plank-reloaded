@@ -205,6 +205,17 @@ namespace Docky {
       update_display();
     }
 
+    private void on_menu_show() {
+      DockController? controller = get_dock();
+      if (controller == null) {
+        return;
+      }
+
+      controller.window.update_icon_regions();
+      controller.hover.hide();
+      controller.renderer.animated_draw();
+    }
+
     private void on_menu_hide() {
       DockController? controller = get_dock();
       if (controller == null) {
@@ -234,6 +245,7 @@ namespace Docky {
         }
 
         var menu = new Gtk.Menu();
+        menu.show.connect(on_menu_show);
         menu.hide.connect(on_menu_hide);
         menu.attach_to_widget(controller.window, null);
 
@@ -250,21 +262,28 @@ namespace Docky {
         controller.position_manager.get_menu_position(this, requisition, out x, out y);
 
         Gdk.Gravity gravity;
+        Gdk.Gravity flipped_gravity;
+
         switch (controller.position_manager.Position) {
         case Gtk.PositionType.BOTTOM :
           gravity = Gdk.Gravity.NORTH;
+          flipped_gravity = Gdk.Gravity.SOUTH;
           break;
         case Gtk.PositionType.TOP :
           gravity = Gdk.Gravity.SOUTH;
+          flipped_gravity = Gdk.Gravity.NORTH;
           break;
         case Gtk.PositionType.LEFT :
           gravity = Gdk.Gravity.EAST;
+          flipped_gravity = Gdk.Gravity.WEST;
           break;
         case Gtk.PositionType.RIGHT :
           gravity = Gdk.Gravity.WEST;
+          flipped_gravity = Gdk.Gravity.EAST;
           break;
         default:
           gravity = Gdk.Gravity.NORTH;
+          flipped_gravity = Gdk.Gravity.SOUTH;
           break;
         }
 
@@ -277,11 +296,9 @@ namespace Docky {
           height = 1,
         },
                            gravity,
-                           gravity,
+                           flipped_gravity,
                            null
         );
-
-        controller.hover.hide();
 
         return AnimationType.NONE;
       }
