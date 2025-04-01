@@ -52,6 +52,11 @@ namespace Docky {
     private string _hash;
 
     /**
+     * Cached thumbnail for menus.
+     */
+    private Gdk.Pixbuf? _thumbnail = null;
+
+    /**
      * Create a new clipboard item containing text.
      *
      * @param text The text content to store
@@ -83,6 +88,29 @@ namespace Docky {
      */
     public string get_hash() {
       return _hash;
+    }
+
+    /**
+     * Get the thumbnail for this clipboard item.
+     *
+     * @return A GDK.Pixbuf thumbnail of the image
+     */
+    public Gdk.Pixbuf? get_thumbnail() {
+      if (item_type != Type.IMAGE || image == null)
+        return null;
+
+      if (_thumbnail == null) {
+        int thumb_size = 24;
+        int width = image.get_width();
+        int height = image.get_height();
+        double scale = (double) thumb_size / double.max(width, height);
+        int thumb_width = (int) (width * scale);
+        int thumb_height = (int) (height * scale);
+
+        _thumbnail = image.scale_simple(thumb_width, thumb_height, Gdk.InterpType.BILINEAR);
+      }
+
+      return _thumbnail;
     }
 
     /**
@@ -152,17 +180,12 @@ namespace Docky {
       if (item_type == Type.IMAGE && image != null) {
         var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 
-        int thumb_size = 24;
-        int width = image.get_width();
-        int height = image.get_height();
-        double scale = (double) thumb_size / double.max(width, height);
-        int thumb_width = (int) (width * scale);
-        int thumb_height = (int) (height * scale);
-
-        var pixbuf = image.scale_simple(thumb_width, thumb_height, Gdk.InterpType.BILINEAR);
-        var img = new Gtk.Image.from_pixbuf(pixbuf);
+        var thumbnail = get_thumbnail();
+        var img = new Gtk.Image.from_pixbuf(thumbnail);
         box.pack_start(img, false, false, 0);
 
+        int width = image.get_width();
+        int height = image.get_height();
         var size_str = "%dx%d".printf(width, height);
         var label = new Gtk.Label(_("Image") + " (" + size_str + ")");
         label.halign = Gtk.Align.START;
