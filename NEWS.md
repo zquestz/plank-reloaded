@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.116 "Reloaded" (2025-03-31)
+
+- Rewrite of Clippy Docklet with image support and settings toggles
+- Battery Docklet has settings menu for non UPower systems
+- Added default icon to iconless apps in Applications Docklet
+
 ## 0.11.115 "Reloaded" (2025-03-29)
 
 - Improved Applications Docklet: Large Icons, Custom Icon, and Edit Menu.
