@@ -2,6 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.117 "Reloaded" (2025-04-01)
+
+- Added Portuguese translations
+- Fixed inconsistent menu positioning
+- No longer highlight Separator Docklets
+- Correctly restore hover tooltips on menu close
+
 ## 0.11.116 "Reloaded" (2025-03-31)
 
 - Rewrite of Clippy Docklet with image support and settings toggles

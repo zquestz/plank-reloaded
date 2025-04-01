@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-03-31 15:15-1000\n"
+"POT-Creation-Date: 2025-04-01 09:09-1000\n"
 "PO-Revision-Date: 2025-04-01 00:35\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -228,36 +228,36 @@ msgstr "No hay aplicaciones disponibles"
 msgid "Applications"
 msgstr "Aplicaciones"
 
-#: docklets/Applications/ApplicationsDockItem.vala:278
+#: docklets/Applications/ApplicationsDockItem.vala:296
 msgid "Edit Menu"
 msgstr "Editar Menú"
 
-#: docklets/Applications/ApplicationsDockItem.vala:297
+#: docklets/Applications/ApplicationsDockItem.vala:315
 msgid "Choose Custom Icon"
 msgstr "Elegir icono personalizado"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:305
+#: docklets/Applications/ApplicationsDockItem.vala:323
 msgid "Reset to Default Icon"
 msgstr "Restablecer al Icono Predeterminado"
 
-#: docklets/Applications/ApplicationsDockItem.vala:315
+#: docklets/Applications/ApplicationsDockItem.vala:333
 msgid "Large Icons"
 msgstr "Ícones Grandes"
 
-#: docklets/Applications/ApplicationsDockItem.vala:328
+#: docklets/Applications/ApplicationsDockItem.vala:346
 msgid "Select Custom Icon"
 msgstr "Seleccionar icono personalizado"
 
-#: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Applications/ApplicationsDockItem.vala:349
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:332
+#: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Select"
 msgstr "Seleccionar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:368
 msgid "Image Files"
 msgstr "Archivos de Imagen"
 

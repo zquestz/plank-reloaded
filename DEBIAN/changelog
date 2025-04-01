@@ -1,3 +1,12 @@
+plank-reloaded (0.11.117-1) unstable; urgency=medium
+
+  * Added Portuguese translations
+  * Fixed inconsistent menu positioning
+  * No longer highlight Separator Docklets
+  * Correctly restore hover tooltips on menu close
+
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 01 Apr 2025 09:57:08 -1000
+
 plank-reloaded (0.11.116-1) unstable; urgency=medium
 
   * Rewrite of Clippy Docklet with image support and settings toggles
