@@ -590,7 +590,11 @@ namespace Plank {
           break;
         }
       } else if (hovered_item == item) {
-        draw_value.lighten = 0.2;
+        if (item.DockItemFilename != null && /separator(-\d+)?\.dockitem/.match(item.DockItemFilename)) {
+          draw_value.lighten = 0.0;
+        } else {
+          draw_value.lighten = 0.2;
+        }
       }
 
       if (hovered_item == item && controller.window.menu_is_visible ())
