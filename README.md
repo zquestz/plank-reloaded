@@ -54,6 +54,22 @@ yay -S plank-reloaded-git
 
 ### Linux Mint / Ubuntu (Noble Numbat)
 
+#### Option 1: Using the PPA (Recommended)
+
+Plank Reloaded is available through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
+
+```bash
+# Add the repository
+curl -fsSL https://zquestz.github.io/ppa/ubuntu/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/zquestz-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/zquestz-archive-keyring.gpg] https://zquestz.github.io/ppa/ubuntu ./" | sudo tee /etc/apt/sources.list.d/zquestz.list
+sudo apt update
+
+# Install Plank Reloaded
+sudo apt install plank-reloaded
+```
+
+#### Option 2: Manual Installation
+
 You can download the latest release .deb package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
 
 ```bash
