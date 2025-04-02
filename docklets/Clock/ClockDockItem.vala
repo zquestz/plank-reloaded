@@ -220,19 +220,19 @@ namespace Docky {
       string time_text = format_time_text(now, prefs.ShowMilitary);
 
       // Find the right size that fits
-      int current_size = text_size;
+      double current_size = text_size;
       bool fits = false;
 
       while (!fits && current_size > 0) {
         var font_description = layout.get_font_description();
-        font_description.set_absolute_size((int) (current_size * Pango.SCALE));
+        font_description.set_absolute_size(current_size * Pango.SCALE);
 
         time_layout.set_font_description(font_description);
         time_layout.set_text(time_text, -1);
 
         if (prefs.ShowDate) {
           var date_font = font_description.copy();
-          date_font.set_absolute_size((int) (current_size * DATE_SIZE_RATIO * Pango.SCALE));
+          date_font.set_absolute_size(current_size * DATE_SIZE_RATIO * Pango.SCALE);
           date_layout.set_font_description(date_font);
           date_layout.set_text(now.format("%b %d"), -1);
         }
@@ -274,7 +274,7 @@ namespace Docky {
             draw_outlined_text(cr, date_layout, 1.0);
           }
         } else {
-          current_size = (int) (current_size * SCALE_FACTOR);
+          current_size = current_size * SCALE_FACTOR;
         }
       }
     }
