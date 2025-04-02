@@ -4,13 +4,9 @@
 
 ## What Is Plank Reloaded?
 
-Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments.
-While development began with a focus on Cinnamon, we now actively support multiple desktop environments
-including MATE and Xfce. Wayland is not supported at this time.
+Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time.
 
-Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a
-dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock
-programs with more advanced features.
+Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
 
 ### Key Improvements in Plank Reloaded
 
