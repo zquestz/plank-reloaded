@@ -168,18 +168,77 @@ namespace Docky {
     }
 
     /**
-     * Create a menu item for this clipboard item.
+     * Checks if the text content represents a valid hex color.
      *
-     * Note: This method creates the menu item directly instead of
-     * calling back to the DockItem to avoid access problems with
-     * protected methods.
+     * @return True if the content is a valid hex color.
+     */
+    public bool is_hex_color() {
+      if (item_type != Type.TEXT || text == null) {
+        return false;
+      }
+
+      string trimmed = text.strip();
+
+      try {
+        var regex = new Regex("^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$");
+        return regex.match(trimmed);
+      } catch (RegexError e) {
+        return false;
+      }
+    }
+
+    /**
+     * Parses the text content as a hex color.
+     *
+     * @return A Gdk.RGBA color representation or null if not a valid color.
+     */
+    public Gdk.RGBA? parse_hex_color() {
+      if (is_hex_color()) {
+        var color = Gdk.RGBA();
+        if (color.parse(text.strip())) {
+          return color;
+        }
+      }
+
+      return null;
+    }
+
+    /**
+     * Creates a color swatch widget for hex colors.
+     *
+     * @return A DrawingArea widget showing the color.
+     */
+    private Gtk.DrawingArea? create_color_swatch() {
+      var color = parse_hex_color();
+      if (color == null) {
+        return null;
+      }
+
+      int icon_size;
+      Gtk.icon_size_lookup(Gtk.IconSize.MENU, out icon_size, null);
+
+      var swatch = new Gtk.DrawingArea();
+      swatch.set_size_request(icon_size, icon_size);
+
+      swatch.draw.connect((cr) => {
+        cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
+        cr.rectangle(0, 0, icon_size, icon_size);
+        cr.fill();
+        return false;
+      });
+
+      return swatch;
+    }
+
+    /**
+     * Create a menu item for this clipboard item.
      *
      * @return A menu item for this clipboard item
      */
     public Gtk.MenuItem create_menu_item() {
-      if (item_type == Type.IMAGE && image != null) {
-        var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
+      var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 
+      if (item_type == Type.IMAGE && image != null) {
         var thumbnail = get_thumbnail();
         var img = new Gtk.Image.from_pixbuf(thumbnail);
         box.pack_start(img, false, false, 0);
@@ -190,14 +249,20 @@ namespace Docky {
         var label = new Gtk.Label(_("Image") + " (" + size_str + ")");
         label.halign = Gtk.Align.START;
         box.pack_start(label, true, true, 0);
-
-        var item = new Gtk.MenuItem();
-        item.add(box);
-        return item;
       } else {
-        var item = new Gtk.MenuItem.with_label(get_display_text());
-        return item;
+        var swatch = create_color_swatch();
+        if (swatch != null) {
+          box.pack_start(swatch, false, false, 0);
+        }
+
+        var label = new Gtk.Label(get_display_text());
+        label.halign = Gtk.Align.START;
+        box.pack_start(label, true, true, 0);
       }
+
+      var item = new Gtk.MenuItem();
+      item.add(box);
+      return item;
     }
   }
 }
