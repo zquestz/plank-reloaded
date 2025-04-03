@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.118 "Reloaded" (2025-04-02)
+
+- Fix choppy magnification for digital clock
+- Show preview of hex colors in Clippy
+- Updated translations for Russian, Turkish, and Portuguese
+
 ## 0.11.117 "Reloaded" (2025-04-01)
 
 - Added Portuguese translations

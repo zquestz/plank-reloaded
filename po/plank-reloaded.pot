@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.117\n"
+"Project-Id-Version: plank-reloaded 0.11.118\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-04-02 16:44-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
