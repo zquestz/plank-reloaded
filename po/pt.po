@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-01 09:09-1000\n"
-"PO-Revision-Date: 2025-04-01 01:40\n"
+"POT-Creation-Date: 2025-04-02 16:44-1000\n"
+"PO-Revision-Date: 2025-04-03 02:48\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt\n"
@@ -35,7 +35,7 @@ msgstr ""
 "O Plank Reloaded é uma derivação do projeto Plank original, fornecendo uma "
 "doca simples para ambientes de trabalho X11. Embora o desenvolvimento tenha "
 "começado com foco no Cinnamon, agora suportamos ativamente vários ambientes "
-"de trabalho, incluindo MATE e Xfce. Wayland não é suportado no momento."
+"de trabalho, incluindo MATE e Xfce. O Wayland não é suportado no momento."
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -314,7 +314,7 @@ msgstr "Entradas Máximas"
 
 #: docklets/Clippy/ClippyDockItem.vala:180
 #: docklets/Clippy/ClippyClipboardItem.vala:153
-#: docklets/Clippy/ClippyClipboardItem.vala:190
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr "Imagem"
 

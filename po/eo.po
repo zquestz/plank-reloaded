@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-01 09:09-1000\n"
+"POT-Creation-Date: 2025-04-02 16:44-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
 #: docklets/Clippy/ClippyClipboardItem.vala:153
-#: docklets/Clippy/ClippyClipboardItem.vala:190
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr ""
 
