@@ -219,7 +219,7 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 
 This project intends to be API compatible with the original Plank project.
 
-Original Plank documentation: [API Docs](http://people.ubuntu.com/~ricotz/docs/vala-doc/plank/index.htm)
+Plank Reloaded documentation: [API Docs](https://zquestz.github.io/plank-reloaded/docs/web-doc/plank-reloaded/index.htm)
 
 ## Development Resources
 
