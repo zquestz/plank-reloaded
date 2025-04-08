@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankDockTheme">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankDockTheme.top_of_page">PlankDockTheme</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankDockTheme</refname>
+<refpurpose>A themed renderer for dock windows.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankDockTheme.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-DOCK-THEME:CAPS">PLANK_TYPE_DOCK_THEME</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockTheme">PlankDockTheme</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockThemeClass">PlankDockThemeClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankDockTheme.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockTheme.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockTheme.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-DOCK-THEME:CAPS" role="macro">
+<title>PLANK_TYPE_DOCK_THEME</title>
+<indexterm zone="PLANK-TYPE-DOCK-THEME:CAPS"><primary>PLANK_TYPE_DOCK_THEME</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_DOCK_THEME (plank_dock_theme_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankDockTheme" role="struct">
+<title>struct PlankDockTheme</title>
+<indexterm zone="PlankDockTheme"><primary>PlankDockTheme</primary></indexterm>
+<programlisting language="C">struct PlankDockTheme {
+	PlankTheme parent_instance;
+	PlankDockThemePrivate * priv;
+};
+</programlisting>
+<para>A themed renderer for dock windows.</para>
+</refsect2>
+<refsect2 id="PlankDockThemeClass" role="struct">
+<title>struct PlankDockThemeClass</title>
+<indexterm zone="PlankDockThemeClass"><primary>PlankDockThemeClass</primary></indexterm>
+<programlisting language="C">struct PlankDockThemeClass {
+	PlankThemeClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-DOCK-THEME:CAPS"><literal>PLANK_TYPE_DOCK_THEME</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankDockThemeClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

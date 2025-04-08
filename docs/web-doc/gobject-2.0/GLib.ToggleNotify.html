@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.ToggleNotify &ndash; gobject-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.ToggleNotify &ndash; gobject-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gobject-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.SignalHandler.html">SignalHandler</a></li>
+          <li class="enum"><a href="GLib.BindingFlags.html">BindingFlags</a></li>
+          <li class="enum"><a href="GLib.ConnectFlags.html">ConnectFlags</a></li>
+          <li class="enum"><a href="GLib.ParamFlags.html">ParamFlags</a></li>
+          <li class="enum"><a href="GLib.SignalFlags.html">SignalFlags</a></li>
+          <li class="enum"><a href="GLib.SignalMatchType.html">SignalMatchType</a></li>
+          <li class="enum"><span class="deprecated"><a href="GLib.TypeDebugFlags.html">TypeDebugFlags</a></span></li>
+          <li class="enum"><a href="GLib.TypeFlags.html">TypeFlags</a></li>
+          <li class="enum"><a href="GLib.TypeFundamentalFlags.html">TypeFundamentalFlags</a></li>
+          <li class="interface"><a href="GLib.TypePlugin.html">TypePlugin</a></li>
+          <li class="class"><a href="GLib.Binding.html">Binding</a></li>
+          <li class="class"><a href="GLib.BindingGroup.html">BindingGroup</a></li>
+          <li class="class"><a href="GLib.Closure.html">Closure</a></li>
+          <li class="class"><a href="GLib.EnumClass.html">EnumClass</a></li>
+          <li class="class"><a href="GLib.FlagsClass.html">FlagsClass</a></li>
+          <li class="class"><a href="GLib.InitiallyUnowned.html">InitiallyUnowned</a></li>
+          <li class="class"><a href="GLib.Object.html">Object</a></li>
+          <li class="class"><a href="GLib.ObjectClass.html">ObjectClass</a></li>
+          <li class="class"><a href="GLib.ParamSpec.html">ParamSpec</a></li>
+          <li class="class"><a href="GLib.ParamSpecBoolean.html">ParamSpecBoolean</a></li>
+          <li class="class"><a href="GLib.ParamSpecBoxed.html">ParamSpecBoxed</a></li>
+          <li class="class"><a href="GLib.ParamSpecChar.html">ParamSpecChar</a></li>
+          <li class="class"><a href="GLib.ParamSpecDouble.html">ParamSpecDouble</a></li>
+          <li class="class"><a href="GLib.ParamSpecEnum.html">ParamSpecEnum</a></li>
+          <li class="class"><a href="GLib.ParamSpecFlags.html">ParamSpecFlags</a></li>
+          <li class="class"><a href="GLib.ParamSpecFloat.html">ParamSpecFloat</a></li>
+          <li class="class"><a href="GLib.ParamSpecGType.html">ParamSpecGType</a></li>
+          <li class="class"><a href="GLib.ParamSpecInt.html">ParamSpecInt</a></li>
+          <li class="class"><a href="GLib.ParamSpecInt64.html">ParamSpecInt64</a></li>
+          <li class="class"><a href="GLib.ParamSpecLong.html">ParamSpecLong</a></li>
+          <li class="class"><a href="GLib.ParamSpecObject.html">ParamSpecObject</a></li>
+          <li class="class"><a href="GLib.ParamSpecOverride.html">ParamSpecOverride</a></li>
+          <li class="class"><a href="GLib.ParamSpecParam.html">ParamSpecParam</a></li>
+          <li class="class"><a href="GLib.ParamSpecPointer.html">ParamSpecPointer</a></li>
+          <li class="class"><a href="GLib.ParamSpecPool.html">ParamSpecPool</a></li>
+          <li class="class"><a href="GLib.ParamSpecString.html">ParamSpecString</a></li>
+          <li class="class"><a href="GLib.ParamSpecUChar.html">ParamSpecUChar</a></li>
+          <li class="class"><a href="GLib.ParamSpecUInt.html">ParamSpecUInt</a></li>
+          <li class="class"><a href="GLib.ParamSpecUInt64.html">ParamSpecUInt64</a></li>
+          <li class="class"><a href="GLib.ParamSpecULong.html">ParamSpecULong</a></li>
+          <li class="class"><a href="GLib.ParamSpecUnichar.html">ParamSpecUnichar</a></li>
+          <li class="class"><span class="deprecated"><a href="GLib.ParamSpecValueArray.html">ParamSpecValueArray</a></span></li>
+          <li class="class"><a href="GLib.ParamSpecVariant.html">ParamSpecVariant</a></li>
+          <li class="class"><a href="GLib.SignalGroup.html">SignalGroup</a></li>
+          <li class="class"><a href="GLib.TypeClass.html">TypeClass</a></li>
+          <li class="class"><a href="GLib.TypeInstance.html">TypeInstance</a></li>
+          <li class="class"><a href="GLib.TypeInterface.html">TypeInterface</a></li>
+          <li class="abstract_class"><a href="GLib.TypeModule.html">TypeModule</a></li>
+          <li class="class"><span class="deprecated"><a href="GLib.ValueArray.html">ValueArray</a></span></li>
+          <li class="struct"><a href="GLib.EnumValue.html">EnumValue</a></li>
+          <li class="struct"><a href="GLib.FlagsValue.html">FlagsValue</a></li>
+          <li class="struct"><a href="GLib.InterfaceInfo.html">InterfaceInfo</a></li>
+          <li class="struct"><a href="GLib.ObjectConstructParam.html">ObjectConstructParam</a></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.Parameter.html">Parameter</a></span></li>
+          <li class="struct"><a href="GLib.Signal.html">Signal</a></li>
+          <li class="struct"><a href="GLib.SignalInvocationHint.html">SignalInvocationHint</a></li>
+          <li class="struct"><a href="GLib.SignalQuery.html">SignalQuery</a></li>
+          <li class="struct"><a href="GLib.Type.html">Type</a></li>
+          <li class="struct"><a href="GLib.TypeInfo.html">TypeInfo</a></li>
+          <li class="struct"><a href="GLib.TypeQuery.html">TypeQuery</a></li>
+          <li class="struct"><a href="GLib.TypeValueTable.html">TypeValueTable</a></li>
+          <li class="struct"><a href="GLib.Value.html">Value</a></li>
+          <li class="struct"><a href="GLib.WeakRef.html">WeakRef</a></li>
+          <li class="delegate"><a href="GLib.BaseFinalizeFunc.html">BaseFinalizeFunc</a></li>
+          <li class="delegate"><a href="GLib.BaseInitFunc.html">BaseInitFunc</a></li>
+          <li class="delegate"><a href="GLib.BindingTransformFunc.html">BindingTransformFunc</a></li>
+          <li class="delegate"><a href="GLib.BoxedCopyFunc.html">BoxedCopyFunc</a></li>
+          <li class="delegate"><a href="GLib.BoxedFreeFunc.html">BoxedFreeFunc</a></li>
+          <li class="delegate"><a href="GLib.Callback.html">Callback</a></li>
+          <li class="delegate"><a href="GLib.ClassFinalizeFunc.html">ClassFinalizeFunc</a></li>
+          <li class="delegate"><a href="GLib.ClassInitFunc.html">ClassInitFunc</a></li>
+          <li class="delegate"><a href="GLib.ClosureMarshal.html">ClosureMarshal</a></li>
+          <li class="delegate"><a href="GLib.ClosureNotify.html">ClosureNotify</a></li>
+          <li class="delegate"><a href="GLib.InstanceInitFunc.html">InstanceInitFunc</a></li>
+          <li class="delegate"><a href="GLib.InterfaceFinalizeFunc.html">InterfaceFinalizeFunc</a></li>
+          <li class="delegate"><a href="GLib.InterfaceInitFunc.html">InterfaceInitFunc</a></li>
+          <li class="delegate"><a href="GLib.ObjectConstructorFunc.html">ObjectConstructorFunc</a></li>
+          <li class="delegate"><a href="GLib.ObjectFinalizeFunc.html">ObjectFinalizeFunc</a></li>
+          <li class="delegate"><a href="GLib.ObjectGetPropertyFunc.html">ObjectGetPropertyFunc</a></li>
+          <li class="delegate"><a href="GLib.ObjectSetPropertyFunc.html">ObjectSetPropertyFunc</a></li>
+          <li class="delegate"><a href="GLib.SignalAccumulator.html">SignalAccumulator</a></li>
+          <li class="delegate"><a href="GLib.SignalCMarshaller.html">SignalCMarshaller</a></li>
+          <li class="delegate"><a href="GLib.SignalCVaMarshaller.html">SignalCVaMarshaller</a></li>
+          <li class="delegate"><a href="GLib.SignalEmissionHook.html">SignalEmissionHook</a></li>
+          <li class="delegate">ToggleNotify</li>
+          <li class="delegate"><a href="GLib.TypeClassCacheFunc.html">TypeClassCacheFunc</a></li>
+          <li class="delegate"><a href="GLib.ValueTransform.html">ValueTransform</a></li>
+          <li class="delegate"><a href="GLib.WeakNotify.html">WeakNotify</a></li>
+          <li class="method"><a href="GLib.source_set_closure.html">source_set_closure</a></li>
+          <li class="method"><a href="GLib.source_set_dummy_callback.html">source_set_dummy_callback</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">ToggleNotify</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( instance_pos = <span class="main_literal">0</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">delegate</span> <span class="main_keyword">void</span> <b><span class="delegate">ToggleNotify</span></b> (<span class="main_type"><a href="GLib.Object.html" class="class">Object</a></span> object, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> is_last_ref)
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gobject-2.0</a>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

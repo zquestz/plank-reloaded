@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE glossary PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<glossary id="annotation-glossary">
+  <title>Annotation Glossary</title>
+<glossdiv><title>A</title>
+    <glossentry>
+      <glossterm><anchor id="annotation-glossterm-allow-none"/>allow-none</glossterm>
+      <glossdef>
+        <para>NULL is OK, both for passing and for returning.</para>
+      </glossdef>
+    </glossentry>
+</glossdiv>
+<glossdiv><title>C</title>
+    <glossentry>
+      <glossterm><anchor id="annotation-glossterm-closure"/>closure</glossterm>
+      <glossdef>
+        <para>This parameter is a 'user_data', for callbacks; many bindings can pass NULL here.</para>
+      </glossdef>
+    </glossentry>
+</glossdiv>
+<glossdiv><title>I</title>
+    <glossentry>
+      <glossterm><anchor id="annotation-glossterm-in"/>in</glossterm>
+      <glossdef>
+        <para>Parameter for input. Default is <acronym>transfer none</acronym>.</para>
+      </glossdef>
+    </glossentry>
+</glossdiv>
+<glossdiv><title>T</title>
+    <glossentry>
+      <glossterm><anchor id="annotation-glossterm-transfer none"/>transfer none</glossterm>
+      <glossdef>
+        <para>The data is owned by the callee, which is responsible of freeing it.</para>
+      </glossdef>
+    </glossentry>
+</glossdiv>
+</glossary>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.DBusMessage &ndash; gio-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.DBusMessage &ndash; gio-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gio-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">DBusMessage</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="GLib.DBusMessage.locked.html">locked</a></li>
+          <li class="static_method"><a href="GLib.DBusMessage.bytes_needed.html">bytes_needed</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.html">DBusMessage</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.from_blob.html">DBusMessage.from_blob</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.method_call.html">DBusMessage.method_call</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.method_error.html">DBusMessage.method_error</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.method_error_literal.html">DBusMessage.method_error_literal</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.method_error_valist.html">DBusMessage.method_error_valist</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.method_reply.html">DBusMessage.method_reply</a></li>
+          <li class="creation_method"><a href="GLib.DBusMessage.DBusMessage.signal.html">DBusMessage.signal</a></li>
+          <li class="method"><a href="GLib.DBusMessage.@lock.html">@lock</a></li>
+          <li class="method"><a href="GLib.DBusMessage.copy.html">copy</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_arg0.html">get_arg0</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_arg0_path.html">get_arg0_path</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_body.html">get_body</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_byte_order.html">get_byte_order</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_destination.html">get_destination</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_error_name.html">get_error_name</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_flags.html">get_flags</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_header.html">get_header</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_header_fields.html">get_header_fields</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_interface.html">get_interface</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_locked.html">get_locked</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_member.html">get_member</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_message_type.html">get_message_type</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_num_unix_fds.html">get_num_unix_fds</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_path.html">get_path</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_reply_serial.html">get_reply_serial</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_sender.html">get_sender</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_serial.html">get_serial</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_signature.html">get_signature</a></li>
+          <li class="method"><a href="GLib.DBusMessage.get_unix_fd_list.html">get_unix_fd_list</a></li>
+          <li class="method"><a href="GLib.DBusMessage.print.html">print</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_body.html">set_body</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_byte_order.html">set_byte_order</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_destination.html">set_destination</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_error_name.html">set_error_name</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_flags.html">set_flags</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_header.html">set_header</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_interface.html">set_interface</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_member.html">set_member</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_message_type.html">set_message_type</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_num_unix_fds.html">set_num_unix_fds</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_path.html">set_path</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_reply_serial.html">set_reply_serial</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_sender.html">set_sender</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_serial.html">set_serial</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_signature.html">set_signature</a></li>
+          <li class="method"><a href="GLib.DBusMessage.set_unix_fd_list.html">set_unix_fd_list</a></li>
+          <li class="method"><a href="GLib.DBusMessage.to_blob.html">to_blob</a></li>
+          <li class="method"><a href="GLib.DBusMessage.to_gerror.html">to_gerror</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">DBusMessage</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.DBusMessage" alt="Object hierarchy for DBusMessage" src="img/GLib.DBusMessage.png"/>
+
+      <map id="GLib.DBusMessage" name="GLib.DBusMessage">
+<area shape="rect" id="node1" href="GLib.DBusMessage.html" title="GLib.DBusMessage" alt="" coords="5,101,175,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="34,5,146,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"g_dbus_message_get_type ()"</span> ) ]<br/>[ <span class="main_type">Version</span> ( since = <span class="main_literal">"2.26"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">DBusMessage</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gio-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="GLib.DBusMessage.locked.html" class="property">locked</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/ssize_t.html" class="struct">ssize_t</a></span> <b><a href="GLib.DBusMessage.bytes_needed.html" class="static_method">bytes_needed</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint8.html" class="struct">uint8</a></span>[] blob) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.html" class="creation_method">DBusMessage</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.from_blob.html" class="creation_method">DBusMessage.from_blob</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint8.html" class="struct">uint8</a></span>[] blob, <span class="main_type"><a href="GLib.DBusCapabilityFlags.html" class="enum">DBusCapabilityFlags</a></span> capabilities) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.method_call.html" class="creation_method">DBusMessage.method_call</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? interface_, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> method)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.method_error.html" class="creation_method">DBusMessage.method_error</a></b> (<span class="main_type"><span class="class">DBusMessage</span></span> method_call_message, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_message_format, ...)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.method_error_literal.html" class="creation_method">DBusMessage.method_error_literal</a></b> (<span class="main_type"><span class="class">DBusMessage</span></span> method_call_message, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_message)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.method_error_valist.html" class="creation_method">DBusMessage.method_error_valist</a></b> (<span class="main_type"><span class="class">DBusMessage</span></span> method_call_message, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> error_message_format, <span class="main_type"><a href="../glib-2.0/va_list.html" class="struct">va_list</a></span> var_args)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.method_reply.html" class="creation_method">DBusMessage.method_reply</a></b> (<span class="main_type"><span class="class">DBusMessage</span></span> method_call_message)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.DBusMessage.DBusMessage.signal.html" class="creation_method">DBusMessage.signal</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> interface_, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> @signal)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.@lock.html" class="method">@lock</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">DBusMessage</span></span> <b><a href="GLib.DBusMessage.copy.html" class="method">copy</a></b> () <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_arg0.html" class="method">get_arg0</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_arg0_path.html" class="method">get_arg0_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../glib-2.0/GLib.Variant.html" class="class">Variant</a></span>? <b><a href="GLib.DBusMessage.get_body.html" class="method">get_body</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.DBusMessageByteOrder.html" class="enum">DBusMessageByteOrder</a></span> <b><a href="GLib.DBusMessage.get_byte_order.html" class="method">get_byte_order</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_destination.html" class="method">get_destination</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_error_name.html" class="method">get_error_name</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.DBusMessageFlags.html" class="enum">DBusMessageFlags</a></span> <b><a href="GLib.DBusMessage.get_flags.html" class="method">get_flags</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../glib-2.0/GLib.Variant.html" class="class">Variant</a></span>? <b><a href="GLib.DBusMessage.get_header.html" class="method">get_header</a></b> (<span class="main_type"><a href="GLib.DBusMessageHeaderField.html" class="enum">DBusMessageHeaderField</a></span> header_field)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uchar.html" class="struct">uchar</a></span>[] <b><a href="GLib.DBusMessage.get_header_fields.html" class="method">get_header_fields</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_interface.html" class="method">get_interface</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="GLib.DBusMessage.get_locked.html" class="method">get_locked</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_member.html" class="method">get_member</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.DBusMessageType.html" class="enum">DBusMessageType</a></span> <b><a href="GLib.DBusMessage.get_message_type.html" class="method">get_message_type</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> <b><a href="GLib.DBusMessage.get_num_unix_fds.html" class="method">get_num_unix_fds</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_path.html" class="method">get_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> <b><a href="GLib.DBusMessage.get_reply_serial.html" class="method">get_reply_serial</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="GLib.DBusMessage.get_sender.html" class="method">get_sender</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> <b><a href="GLib.DBusMessage.get_serial.html" class="method">get_serial</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.DBusMessage.get_signature.html" class="method">get_signature</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.UnixFDList.html" class="class">UnixFDList</a></span>? <b><a href="GLib.DBusMessage.get_unix_fd_list.html" class="method">get_unix_fd_list</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.DBusMessage.print.html" class="method">print</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> indent = <span class="main_literal">0</span>)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_body.html" class="method">set_body</a></b> (<span class="main_type"><a href="../glib-2.0/GLib.Variant.html" class="class">Variant</a></span> body)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_byte_order.html" class="method">set_byte_order</a></b> (<span class="main_type"><a href="GLib.DBusMessageByteOrder.html" class="enum">DBusMessageByteOrder</a></span> byte_order)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_destination.html" class="method">set_destination</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_error_name.html" class="method">set_error_name</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_flags.html" class="method">set_flags</a></b> (<span class="main_type"><a href="GLib.DBusMessageFlags.html" class="enum">DBusMessageFlags</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_header.html" class="method">set_header</a></b> (<span class="main_type"><a href="GLib.DBusMessageHeaderField.html" class="enum">DBusMessageHeaderField</a></span> header_field, <span class="main_type"><a href="../glib-2.0/GLib.Variant.html" class="class">Variant</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_interface.html" class="method">set_interface</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_member.html" class="method">set_member</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_message_type.html" class="method">set_message_type</a></b> (<span class="main_type"><a href="GLib.DBusMessageType.html" class="enum">DBusMessageType</a></span> type)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_num_unix_fds.html" class="method">set_num_unix_fds</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_path.html" class="method">set_path</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_reply_serial.html" class="method">set_reply_serial</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_sender.html" class="method">set_sender</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_serial.html" class="method">set_serial</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> serial)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_signature.html" class="method">set_signature</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.DBusMessage.set_unix_fd_list.html" class="method">set_unix_fd_list</a></b> (<span class="main_type"><a href="GLib.UnixFDList.html" class="class">UnixFDList</a></span>? fd_list)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint8.html" class="struct">uint8</a></span>[] <b><a href="GLib.DBusMessage.to_blob.html" class="method">to_blob</a></b> (<span class="main_type"><a href="GLib.DBusCapabilityFlags.html" class="enum">DBusCapabilityFlags</a></span> capabilities) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="GLib.DBusMessage.to_gerror.html" class="method">to_gerror</a></b> () <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-141')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-141">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

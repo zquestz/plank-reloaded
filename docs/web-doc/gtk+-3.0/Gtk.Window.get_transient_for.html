@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.Window.get_transient_for &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.Window.get_transient_for &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="Gtk.Window.html">Window</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.Window.accept_focus.html">accept_focus</a></li>
+          <li class="property"><a href="Gtk.Window.application.html">application</a></li>
+          <li class="property"><a href="Gtk.Window.attached_to.html">attached_to</a></li>
+          <li class="property"><a href="Gtk.Window.decorated.html">decorated</a></li>
+          <li class="property"><a href="Gtk.Window.default_height.html">default_height</a></li>
+          <li class="property"><a href="Gtk.Window.default_width.html">default_width</a></li>
+          <li class="property"><a href="Gtk.Window.deletable.html">deletable</a></li>
+          <li class="property"><a href="Gtk.Window.destroy_with_parent.html">destroy_with_parent</a></li>
+          <li class="property"><a href="Gtk.Window.focus_on_map.html">focus_on_map</a></li>
+          <li class="property"><a href="Gtk.Window.focus_visible.html">focus_visible</a></li>
+          <li class="property"><a href="Gtk.Window.gravity.html">gravity</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Window.has_resize_grip.html">has_resize_grip</a></span></li>
+          <li class="property"><a href="Gtk.Window.has_toplevel_focus.html">has_toplevel_focus</a></li>
+          <li class="property"><a href="Gtk.Window.hide_titlebar_when_maximized.html">hide_titlebar_when_maximized</a></li>
+          <li class="property"><a href="Gtk.Window.icon.html">icon</a></li>
+          <li class="property"><a href="Gtk.Window.icon_name.html">icon_name</a></li>
+          <li class="property"><a href="Gtk.Window.is_active.html">is_active</a></li>
+          <li class="property"><a href="Gtk.Window.is_maximized.html">is_maximized</a></li>
+          <li class="property"><a href="Gtk.Window.mnemonics_visible.html">mnemonics_visible</a></li>
+          <li class="property"><a href="Gtk.Window.modal.html">modal</a></li>
+          <li class="property"><a href="Gtk.Window.resizable.html">resizable</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Window.resize_grip_visible.html">resize_grip_visible</a></span></li>
+          <li class="property"><a href="Gtk.Window.role.html">role</a></li>
+          <li class="property"><a href="Gtk.Window.screen.html">screen</a></li>
+          <li class="property"><a href="Gtk.Window.skip_pager_hint.html">skip_pager_hint</a></li>
+          <li class="property"><a href="Gtk.Window.skip_taskbar_hint.html">skip_taskbar_hint</a></li>
+          <li class="property"><a href="Gtk.Window.startup_id.html">startup_id</a></li>
+          <li class="property"><a href="Gtk.Window.title.html">title</a></li>
+          <li class="property"><a href="Gtk.Window.transient_for.html">transient_for</a></li>
+          <li class="property"><a href="Gtk.Window.type.html">type</a></li>
+          <li class="property"><a href="Gtk.Window.type_hint.html">type_hint</a></li>
+          <li class="property"><a href="Gtk.Window.urgency_hint.html">urgency_hint</a></li>
+          <li class="property"><a href="Gtk.Window.window_position.html">window_position</a></li>
+          <li class="static_method"><a href="Gtk.Window.get_default_icon_list.html">get_default_icon_list</a></li>
+          <li class="static_method"><a href="Gtk.Window.get_default_icon_name.html">get_default_icon_name</a></li>
+          <li class="static_method"><a href="Gtk.Window.list_toplevels.html">list_toplevels</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_auto_startup_notification.html">set_auto_startup_notification</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_default_icon.html">set_default_icon</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_default_icon_from_file.html">set_default_icon_from_file</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_default_icon_list.html">set_default_icon_list</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_default_icon_name.html">set_default_icon_name</a></li>
+          <li class="static_method"><a href="Gtk.Window.set_interactive_debugging.html">set_interactive_debugging</a></li>
+          <li class="creation_method"><a href="Gtk.Window.Window.html">Window</a></li>
+          <li class="method"><a href="Gtk.Window.activate_key.html">activate_key</a></li>
+          <li class="method"><a href="Gtk.Window.add_accel_group.html">add_accel_group</a></li>
+          <li class="method"><a href="Gtk.Window.add_mnemonic.html">add_mnemonic</a></li>
+          <li class="method"><a href="Gtk.Window.begin_move_drag.html">begin_move_drag</a></li>
+          <li class="method"><a href="Gtk.Window.begin_resize_drag.html">begin_resize_drag</a></li>
+          <li class="method"><a href="Gtk.Window.close.html">close</a></li>
+          <li class="method"><a href="Gtk.Window.deiconify.html">deiconify</a></li>
+          <li class="method"><a href="Gtk.Window.fullscreen.html">fullscreen</a></li>
+          <li class="method"><a href="Gtk.Window.fullscreen_on_monitor.html">fullscreen_on_monitor</a></li>
+          <li class="method"><a href="Gtk.Window.get_accept_focus.html">get_accept_focus</a></li>
+          <li class="method"><a href="Gtk.Window.get_application.html">get_application</a></li>
+          <li class="method"><a href="Gtk.Window.get_attached_to.html">get_attached_to</a></li>
+          <li class="method"><a href="Gtk.Window.get_decorated.html">get_decorated</a></li>
+          <li class="method"><a href="Gtk.Window.get_default_size.html">get_default_size</a></li>
+          <li class="method"><a href="Gtk.Window.get_default_widget.html">get_default_widget</a></li>
+          <li class="method"><a href="Gtk.Window.get_deletable.html">get_deletable</a></li>
+          <li class="method"><a href="Gtk.Window.get_destroy_with_parent.html">get_destroy_with_parent</a></li>
+          <li class="method"><a href="Gtk.Window.get_focus.html">get_focus</a></li>
+          <li class="method"><a href="Gtk.Window.get_focus_on_map.html">get_focus_on_map</a></li>
+          <li class="method"><a href="Gtk.Window.get_focus_visible.html">get_focus_visible</a></li>
+          <li class="method"><a href="Gtk.Window.get_gravity.html">get_gravity</a></li>
+          <li class="method"><a href="Gtk.Window.get_group.html">get_group</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.get_has_resize_grip.html">get_has_resize_grip</a></span></li>
+          <li class="method"><a href="Gtk.Window.get_hide_titlebar_when_maximized.html">get_hide_titlebar_when_maximized</a></li>
+          <li class="method"><a href="Gtk.Window.get_icon.html">get_icon</a></li>
+          <li class="method"><a href="Gtk.Window.get_icon_list.html">get_icon_list</a></li>
+          <li class="method"><a href="Gtk.Window.get_icon_name.html">get_icon_name</a></li>
+          <li class="method"><a href="Gtk.Window.get_mnemonic_modifier.html">get_mnemonic_modifier</a></li>
+          <li class="method"><a href="Gtk.Window.get_mnemonics_visible.html">get_mnemonics_visible</a></li>
+          <li class="method"><a href="Gtk.Window.get_modal.html">get_modal</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.get_opacity.html">get_opacity</a></span></li>
+          <li class="method"><a href="Gtk.Window.get_position.html">get_position</a></li>
+          <li class="method"><a href="Gtk.Window.get_resizable.html">get_resizable</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.get_resize_grip_area.html">get_resize_grip_area</a></span></li>
+          <li class="method"><a href="Gtk.Window.get_role.html">get_role</a></li>
+          <li class="method"><a href="Gtk.Window.get_screen.html">get_screen</a></li>
+          <li class="method"><a href="Gtk.Window.get_size.html">get_size</a></li>
+          <li class="method"><a href="Gtk.Window.get_skip_pager_hint.html">get_skip_pager_hint</a></li>
+          <li class="method"><a href="Gtk.Window.get_skip_taskbar_hint.html">get_skip_taskbar_hint</a></li>
+          <li class="method"><a href="Gtk.Window.get_title.html">get_title</a></li>
+          <li class="method"><a href="Gtk.Window.get_titlebar.html">get_titlebar</a></li>
+          <li class="method">get_transient_for</li>
+          <li class="method"><a href="Gtk.Window.get_type_hint.html">get_type_hint</a></li>
+          <li class="method"><a href="Gtk.Window.get_urgency_hint.html">get_urgency_hint</a></li>
+          <li class="method"><a href="Gtk.Window.get_window_type.html">get_window_type</a></li>
+          <li class="method"><a href="Gtk.Window.has_group.html">has_group</a></li>
+          <li class="method"><a href="Gtk.Window.iconify.html">iconify</a></li>
+          <li class="method"><a href="Gtk.Window.maximize.html">maximize</a></li>
+          <li class="method"><a href="Gtk.Window.mnemonic_activate.html">mnemonic_activate</a></li>
+          <li class="method"><a href="Gtk.Window.move.html">move</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.parse_geometry.html">parse_geometry</a></span></li>
+          <li class="method"><a href="Gtk.Window.present.html">present</a></li>
+          <li class="method"><a href="Gtk.Window.present_with_time.html">present_with_time</a></li>
+          <li class="method"><a href="Gtk.Window.propagate_key_event.html">propagate_key_event</a></li>
+          <li class="method"><a href="Gtk.Window.remove_accel_group.html">remove_accel_group</a></li>
+          <li class="method"><a href="Gtk.Window.remove_mnemonic.html">remove_mnemonic</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.reshow_with_initial_size.html">reshow_with_initial_size</a></span></li>
+          <li class="method"><a href="Gtk.Window.resize.html">resize</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.resize_grip_is_visible.html">resize_grip_is_visible</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.resize_to_geometry.html">resize_to_geometry</a></span></li>
+          <li class="method"><a href="Gtk.Window.set_accept_focus.html">set_accept_focus</a></li>
+          <li class="method"><a href="Gtk.Window.set_application.html">set_application</a></li>
+          <li class="method"><a href="Gtk.Window.set_attached_to.html">set_attached_to</a></li>
+          <li class="method"><a href="Gtk.Window.set_decorated.html">set_decorated</a></li>
+          <li class="method"><a href="Gtk.Window.set_default.html">set_default</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.set_default_geometry.html">set_default_geometry</a></span></li>
+          <li class="method"><a href="Gtk.Window.set_default_size.html">set_default_size</a></li>
+          <li class="method"><a href="Gtk.Window.set_deletable.html">set_deletable</a></li>
+          <li class="method"><a href="Gtk.Window.set_destroy_with_parent.html">set_destroy_with_parent</a></li>
+          <li class="method"><a href="Gtk.Window.set_focus_on_map.html">set_focus_on_map</a></li>
+          <li class="method"><a href="Gtk.Window.set_focus_visible.html">set_focus_visible</a></li>
+          <li class="method"><a href="Gtk.Window.set_geometry_hints.html">set_geometry_hints</a></li>
+          <li class="method"><a href="Gtk.Window.set_gravity.html">set_gravity</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.set_has_resize_grip.html">set_has_resize_grip</a></span></li>
+          <li class="method"><a href="Gtk.Window.set_has_user_ref_count.html">set_has_user_ref_count</a></li>
+          <li class="method"><a href="Gtk.Window.set_hide_titlebar_when_maximized.html">set_hide_titlebar_when_maximized</a></li>
+          <li class="method"><a href="Gtk.Window.set_icon.html">set_icon</a></li>
+          <li class="method"><a href="Gtk.Window.set_icon_from_file.html">set_icon_from_file</a></li>
+          <li class="method"><a href="Gtk.Window.set_icon_list.html">set_icon_list</a></li>
+          <li class="method"><a href="Gtk.Window.set_icon_name.html">set_icon_name</a></li>
+          <li class="method"><a href="Gtk.Window.set_keep_above.html">set_keep_above</a></li>
+          <li class="method"><a href="Gtk.Window.set_keep_below.html">set_keep_below</a></li>
+          <li class="method"><a href="Gtk.Window.set_mnemonic_modifier.html">set_mnemonic_modifier</a></li>
+          <li class="method"><a href="Gtk.Window.set_mnemonics_visible.html">set_mnemonics_visible</a></li>
+          <li class="method"><a href="Gtk.Window.set_modal.html">set_modal</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.set_opacity.html">set_opacity</a></span></li>
+          <li class="method"><a href="Gtk.Window.set_position.html">set_position</a></li>
+          <li class="method"><a href="Gtk.Window.set_resizable.html">set_resizable</a></li>
+          <li class="method"><a href="Gtk.Window.set_role.html">set_role</a></li>
+          <li class="method"><a href="Gtk.Window.set_screen.html">set_screen</a></li>
+          <li class="method"><a href="Gtk.Window.set_skip_pager_hint.html">set_skip_pager_hint</a></li>
+          <li class="method"><a href="Gtk.Window.set_skip_taskbar_hint.html">set_skip_taskbar_hint</a></li>
+          <li class="method"><a href="Gtk.Window.set_startup_id.html">set_startup_id</a></li>
+          <li class="method"><a href="Gtk.Window.set_title.html">set_title</a></li>
+          <li class="method"><a href="Gtk.Window.set_titlebar.html">set_titlebar</a></li>
+          <li class="method"><a href="Gtk.Window.set_transient_for.html">set_transient_for</a></li>
+          <li class="method"><a href="Gtk.Window.set_type_hint.html">set_type_hint</a></li>
+          <li class="method"><a href="Gtk.Window.set_urgency_hint.html">set_urgency_hint</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Window.set_wmclass.html">set_wmclass</a></span></li>
+          <li class="method"><a href="Gtk.Window.stick.html">stick</a></li>
+          <li class="method"><a href="Gtk.Window.try_activate_default.html">try_activate_default</a></li>
+          <li class="method"><a href="Gtk.Window.try_activate_focus.html">try_activate_focus</a></li>
+          <li class="method"><a href="Gtk.Window.unfullscreen.html">unfullscreen</a></li>
+          <li class="method"><a href="Gtk.Window.unmaximize.html">unmaximize</a></li>
+          <li class="method"><a href="Gtk.Window.unstick.html">unstick</a></li>
+          <li class="signal"><a href="Gtk.Window.activate_default.html">activate_default</a></li>
+          <li class="signal"><a href="Gtk.Window.activate_focus.html">activate_focus</a></li>
+          <li class="signal"><a href="Gtk.Window.enable_debugging.html">enable_debugging</a></li>
+          <li class="signal"><a href="Gtk.Window.keys_changed.html">keys_changed</a></li>
+          <li class="signal"><a href="Gtk.Window.set_focus.html">set_focus</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">get_transient_for</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.Window.html" class="class">Window</a></span>? <b><span class="method">get_transient_for</span></b> ()
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

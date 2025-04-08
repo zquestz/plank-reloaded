@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.Sequence &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.Sequence &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">glib-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">Sequence</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.@get.html">@get</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.@set.html">@set</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.foreach_range.html">foreach_range</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.insert_before.html">insert_before</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.move.html">move</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.move_range.html">move_range</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.range_get_midpoint.html">range_get_midpoint</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.remove.html">remove</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.remove_range.html">remove_range</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.sort_changed.html">sort_changed</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.sort_changed_iter.html">sort_changed_iter</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="GLib.Sequence.swap.html">swap</a></span></li>
+          <li class="creation_method"><a href="GLib.Sequence.Sequence.html">Sequence</a></li>
+          <li class="method"><a href="GLib.Sequence.@foreach.html">@foreach</a></li>
+          <li class="method"><a href="GLib.Sequence.append.html">append</a></li>
+          <li class="method"><a href="GLib.Sequence.get_begin_iter.html">get_begin_iter</a></li>
+          <li class="method"><a href="GLib.Sequence.get_end_iter.html">get_end_iter</a></li>
+          <li class="method"><a href="GLib.Sequence.get_iter_at_pos.html">get_iter_at_pos</a></li>
+          <li class="method"><a href="GLib.Sequence.get_length.html">get_length</a></li>
+          <li class="method"><a href="GLib.Sequence.insert_sorted.html">insert_sorted</a></li>
+          <li class="method"><a href="GLib.Sequence.insert_sorted_iter.html">insert_sorted_iter</a></li>
+          <li class="method"><a href="GLib.Sequence.is_empty.html">is_empty</a></li>
+          <li class="method"><a href="GLib.Sequence.lookup.html">lookup</a></li>
+          <li class="method"><a href="GLib.Sequence.lookup_iter.html">lookup_iter</a></li>
+          <li class="method"><a href="GLib.Sequence.prepend.html">prepend</a></li>
+          <li class="method"><a href="GLib.Sequence.search.html">search</a></li>
+          <li class="method"><a href="GLib.Sequence.search_iter.html">search_iter</a></li>
+          <li class="method"><a href="GLib.Sequence.sort.html">sort</a></li>
+          <li class="method"><a href="GLib.Sequence.sort_iter.html">sort_iter</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">Sequence</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.Sequence" alt="Object hierarchy for Sequence" src="img/GLib.Sequence.png"/>
+
+      <map id="GLib.Sequence" name="GLib.Sequence">
+<area shape="rect" id="node1" href="GLib.Sequence.html" title="GLib.Sequence" alt="" coords="5,5,139,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">Version</span> ( since = <span class="main_literal">"2.14"</span> ) ]<br/>[ <span class="main_type">CCode</span> ( free_function = <span class="main_literal">"g_sequence_free"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Sequence</span></b>&lt;<b><span>G</span></b>&gt;
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span>G</span></span> <b><a href="GLib.Sequence.@get.html" class="static_method">@get</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.@set.html" class="static_method">@set</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.foreach_range.html" class="static_method">foreach_range</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; begin, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; end, <span class="main_type"><a href="GLib.Func.html" class="delegate">Func</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.insert_before.html" class="static_method">insert_before</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.move.html" class="static_method">move</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; src, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; dest)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.move_range.html" class="static_method">move_range</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; dest, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; begin, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; end)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.range_get_midpoint.html" class="static_method">range_get_midpoint</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; begin, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; end)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.remove.html" class="static_method">remove</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.remove_range.html" class="static_method">remove_range</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; begin, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; end)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.sort_changed.html" class="static_method">sort_changed</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter, <span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; cmp_func)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.sort_changed_iter.html" class="static_method">sort_changed_iter</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter, <span class="main_type"><a href="GLib.SequenceIterCompareFunc.html" class="delegate">SequenceIterCompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter_cmp)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.swap.html" class="static_method">swap</a></b> (<span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; src, <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; dest)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.Sequence.Sequence.html" class="creation_method">Sequence</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.@foreach.html" class="method">@foreach</a></b> (<span class="main_type"><a href="GLib.Func.html" class="delegate">Func</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.append.html" class="method">append</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.get_begin_iter.html" class="method">get_begin_iter</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.get_end_iter.html" class="method">get_end_iter</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.get_iter_at_pos.html" class="method">get_iter_at_pos</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> pos)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.Sequence.get_length.html" class="method">get_length</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.insert_sorted.html" class="method">insert_sorted</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; cmp_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.insert_sorted_iter.html" class="method">insert_sorted_iter</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.SequenceIterCompareFunc.html" class="delegate">SequenceIterCompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter_cmp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.Sequence.is_empty.html" class="method">is_empty</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.lookup.html" class="method">lookup</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; cmp_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.lookup_iter.html" class="method">lookup_iter</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.SequenceIterCompareFunc.html" class="delegate">SequenceIterCompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter_cmp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.prepend.html" class="method">prepend</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.search.html" class="method">search</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; cmp_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SequenceIter.html" class="class">SequenceIter</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Sequence.search_iter.html" class="method">search_iter</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.SequenceIterCompareFunc.html" class="delegate">SequenceIterCompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; iter_cmp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.sort.html" class="method">sort</a></b> (<span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; cmp_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Sequence.sort_iter.html" class="method">sort_iter</a></b> (<span class="main_type"><a href="GLib.SequenceIterCompareFunc.html" class="delegate">SequenceIterCompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

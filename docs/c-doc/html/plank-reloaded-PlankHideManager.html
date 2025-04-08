@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PlankHideManager:  Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Reference Manual">
+<link rel="up" href="ch01.html" title="plank-reloaded API Reference">
+<link rel="prev" href="plank-reloaded-PlankDockContainer.html" title="PlankDockContainer">
+<link rel="next" href="plank-reloaded-PlankDocklet.html" title="PlankDocklet">
+<meta name="generator" content="GTK-Doc V1.34.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#plank-reloaded-PlankHideManager.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="plank-reloaded-PlankDockContainer.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="plank-reloaded-PlankDocklet.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="plank-reloaded-PlankHideManager"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="plank-reloaded-PlankHideManager.top_of_page"></a>PlankHideManager</span></h2>
+<p>PlankHideManager — Handles checking if a dock should hide or not.</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankHideManager.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankHideManager.html#PLANK-TYPE-HIDE-MANAGER:CAPS" title="PLANK_TYPE_HIDE_MANAGER">PLANK_TYPE_HIDE_MANAGER</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankHideManager.html#PlankHideManager" title="struct PlankHideManager">PlankHideManager</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankHideManager.html#PlankHideManagerClass" title="struct PlankHideManagerClass">PlankHideManagerClass</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankHideManager.html#PlankHideType" title="enum PlankHideType">PlankHideType</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankHideManager.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankHideManager.functions_details"></a><h2>Functions</h2>
+<p></p>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankHideManager.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="PLANK-TYPE-HIDE-MANAGER:CAPS"></a><h3>PLANK_TYPE_HIDE_MANAGER</h3>
+<pre class="programlisting">#define PLANK_TYPE_HIDE_MANAGER (plank_hide_manager_get_type ())
+</pre>
+<p>The type for <a class="link" href="plank-reloaded-PlankHideManager.html#PlankHideManager" title="struct PlankHideManager"><span class="type">PlankHideManager</span></a>.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankHideManager"></a><h3>struct PlankHideManager</h3>
+<pre class="programlisting">struct PlankHideManager {
+	GObject parent_instance;
+	PlankHideManagerPrivate * priv;
+};
+</pre>
+<p>Handles checking if a dock should hide or not.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankHideManagerClass"></a><h3>struct PlankHideManagerClass</h3>
+<pre class="programlisting">struct PlankHideManagerClass {
+	GObjectClass parent_class;
+};
+</pre>
+<p>The class structure for <a class="link" href="plank-reloaded-PlankHideManager.html#PLANK-TYPE-HIDE-MANAGER:CAPS" title="PLANK_TYPE_HIDE_MANAGER"><code class="literal">PLANK_TYPE_HIDE_MANAGER</code></a>. All the fields in this structure are private and should never be accessed directly.</p>
+<div class="refsect3">
+<a name="PlankHideManagerClass.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankHideType"></a><h3>enum PlankHideType</h3>
+<p>If/How the dock should hide itself.</p>
+<div class="refsect3">
+<a name="PlankHideType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-NONE:CAPS"></a>PLANK_HIDE_TYPE_NONE</p></td>
+<td class="enum_member_description">
+<p>The dock does not hide. It should set struts to reserve space for it.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-INTELLIGENT:CAPS"></a>PLANK_HIDE_TYPE_INTELLIGENT</p></td>
+<td class="enum_member_description">
+<p>The dock hides if a window in the active window group overlaps it.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-AUTO:CAPS"></a>PLANK_HIDE_TYPE_AUTO</p></td>
+<td class="enum_member_description">
+<p>The dock hides if the mouse is not over it.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-DODGE-MAXIMIZED:CAPS"></a>PLANK_HIDE_TYPE_DODGE_MAXIMIZED</p></td>
+<td class="enum_member_description">
+<p>The dock hides if there is an active maximized window.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-WINDOW-DODGE:CAPS"></a>PLANK_HIDE_TYPE_WINDOW_DODGE</p></td>
+<td class="enum_member_description">
+<p>The dock hides if there is any window overlapping it.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-HIDE-TYPE-DODGE-ACTIVE:CAPS"></a>PLANK_HIDE_TYPE_DODGE_ACTIVE</p></td>
+<td class="enum_member_description">
+<p>The dock hides if there is the active window overlapping it.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.34.0</div>
+</body>
+</html>

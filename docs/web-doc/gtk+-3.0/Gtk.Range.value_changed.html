@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.Range.value_changed &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.Range.value_changed &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="abstract_class"><a href="Gtk.Range.html">Range</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.Range.adjustment.html">adjustment</a></li>
+          <li class="property"><a href="Gtk.Range.fill_level.html">fill_level</a></li>
+          <li class="property"><a href="Gtk.Range.inverted.html">inverted</a></li>
+          <li class="property"><a href="Gtk.Range.lower_stepper_sensitivity.html">lower_stepper_sensitivity</a></li>
+          <li class="property"><a href="Gtk.Range.restrict_to_fill_level.html">restrict_to_fill_level</a></li>
+          <li class="property"><a href="Gtk.Range.round_digits.html">round_digits</a></li>
+          <li class="property"><a href="Gtk.Range.show_fill_level.html">show_fill_level</a></li>
+          <li class="property"><a href="Gtk.Range.upper_stepper_sensitivity.html">upper_stepper_sensitivity</a></li>
+          <li class="creation_method"><a href="Gtk.Range.Range.html">Range</a></li>
+          <li class="method"><a href="Gtk.Range.get_adjustment.html">get_adjustment</a></li>
+          <li class="method"><a href="Gtk.Range.get_fill_level.html">get_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.get_flippable.html">get_flippable</a></li>
+          <li class="method"><a href="Gtk.Range.get_inverted.html">get_inverted</a></li>
+          <li class="method"><a href="Gtk.Range.get_lower_stepper_sensitivity.html">get_lower_stepper_sensitivity</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Range.get_min_slider_size.html">get_min_slider_size</a></span></li>
+          <li class="virtual_method"><a href="Gtk.Range.get_range_border.html">get_range_border</a></li>
+          <li class="method"><a href="Gtk.Range.get_range_rect.html">get_range_rect</a></li>
+          <li class="virtual_method"><a href="Gtk.Range.get_range_size_request.html">get_range_size_request</a></li>
+          <li class="method"><a href="Gtk.Range.get_restrict_to_fill_level.html">get_restrict_to_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.get_round_digits.html">get_round_digits</a></li>
+          <li class="method"><a href="Gtk.Range.get_show_fill_level.html">get_show_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.get_slider_range.html">get_slider_range</a></li>
+          <li class="method"><a href="Gtk.Range.get_slider_size_fixed.html">get_slider_size_fixed</a></li>
+          <li class="method"><a href="Gtk.Range.get_upper_stepper_sensitivity.html">get_upper_stepper_sensitivity</a></li>
+          <li class="method"><a href="Gtk.Range.get_value.html">get_value</a></li>
+          <li class="method"><a href="Gtk.Range.set_adjustment.html">set_adjustment</a></li>
+          <li class="method"><a href="Gtk.Range.set_fill_level.html">set_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.set_flippable.html">set_flippable</a></li>
+          <li class="method"><a href="Gtk.Range.set_increments.html">set_increments</a></li>
+          <li class="method"><a href="Gtk.Range.set_inverted.html">set_inverted</a></li>
+          <li class="method"><a href="Gtk.Range.set_lower_stepper_sensitivity.html">set_lower_stepper_sensitivity</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Range.set_min_slider_size.html">set_min_slider_size</a></span></li>
+          <li class="method"><a href="Gtk.Range.set_range.html">set_range</a></li>
+          <li class="method"><a href="Gtk.Range.set_restrict_to_fill_level.html">set_restrict_to_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.set_round_digits.html">set_round_digits</a></li>
+          <li class="method"><a href="Gtk.Range.set_show_fill_level.html">set_show_fill_level</a></li>
+          <li class="method"><a href="Gtk.Range.set_slider_size_fixed.html">set_slider_size_fixed</a></li>
+          <li class="method"><a href="Gtk.Range.set_upper_stepper_sensitivity.html">set_upper_stepper_sensitivity</a></li>
+          <li class="method"><a href="Gtk.Range.set_value.html">set_value</a></li>
+          <li class="signal"><a href="Gtk.Range.adjust_bounds.html">adjust_bounds</a></li>
+          <li class="signal"><a href="Gtk.Range.change_value.html">change_value</a></li>
+          <li class="signal"><a href="Gtk.Range.move_slider.html">move_slider</a></li>
+          <li class="signal">value_changed</li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">value_changed</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><span class="signal">value_changed</span></b> ()
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

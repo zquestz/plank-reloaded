@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.MainContext &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.MainContext &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">MainContext</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.MainContext" alt="Object hierarchy for MainContext" src="img/GLib.MainContext.png"/>
+
+      <map id="GLib.MainContext" name="GLib.MainContext">
+<area shape="rect" id="node1" href="GLib.MainContext.html" title="GLib.MainContext" alt="" coords="5,5,166,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( ref_function = <span class="main_literal">"g_main_context_ref"</span> ,  type_id = <span class="main_literal">"G_TYPE_MAIN_CONTEXT"</span> ,  unref_function = <span class="main_literal">"g_main_context_unref"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">MainContext</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">MainContext</span></span> <b><a href="GLib.MainContext.@default.html" class="static_method">@default</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.Source.html" class="abstract_class">Source</a></span> <b><a href="GLib.MainContext.current_source.html" class="static_method">current_source</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">MainContext</span></span>? <b><a href="GLib.MainContext.get_thread_default.html" class="static_method">get_thread_default</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_type"><span class="class">MainContext</span></span> <b><a href="GLib.MainContext.ref_thread_default.html" class="static_method">ref_thread_default</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.MainContext.MainContext.html" class="creation_method">MainContext</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.MainContext.MainContext.with_flags.html" class="creation_method">MainContext.with_flags</a></b> (<span class="main_type"><a href="GLib.MainContextFlags.html" class="enum">MainContextFlags</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.acquire.html" class="method">acquire</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.add_poll.html" class="method">add_poll</a></b> (<span class="main_keyword">ref</span> <span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span> fd, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> priority)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.check.html" class="method">check</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> max_priority, <span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span>[] fds)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.MainContext.depth.html" class="method">depth</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.dispatch.html" class="method">dispatch</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.Source.html" class="abstract_class">Source</a></span> <b><a href="GLib.MainContext.find_source_by_funcs_user_data.html" class="method">find_source_by_funcs_user_data</a></b> (<span class="main_type"><a href="GLib.SourceFuncs.html" class="struct">SourceFuncs</a></span> funcs, <span class="main_keyword">void</span>* user_data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.Source.html" class="abstract_class">Source</a></span> <b><a href="GLib.MainContext.find_source_by_id.html" class="method">find_source_by_id</a></b> (<span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> source_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.Source.html" class="abstract_class">Source</a></span> <b><a href="GLib.MainContext.find_source_by_user_data.html" class="method">find_source_by_user_data</a></b> (<span class="main_keyword">void</span>* user_data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.PollFunc.html" class="delegate">PollFunc</a></span> <b><a href="GLib.MainContext.get_poll_func.html" class="method">get_poll_func</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.invoke.html" class="method">invoke</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><a href="GLib.SourceFunc.html" class="delegate">SourceFunc</a></span> function, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> priority = <b><a href="GLib.Priority.DEFAULT.html" class="constant">DEFAULT</a></b>)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.invoke_full.html" class="method">invoke_full</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> priority, <span class="main_keyword">owned</span> <span class="main_type"><a href="GLib.SourceFunc.html" class="delegate">SourceFunc</a></span> function)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.is_owner.html" class="method">is_owner</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.iteration.html" class="method">iteration</a></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> may_block)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.pending.html" class="method">pending</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.pop_thread_default.html" class="method">pop_thread_default</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.prepare.html" class="method">prepare</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> priority)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.push_thread_default.html" class="method">push_thread_default</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.MainContext.query.html" class="method">query</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> max_priority, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> timeout_, <span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span>[] fds)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.release.html" class="method">release</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.remove_poll.html" class="method">remove_poll</a></b> (<span class="main_keyword">ref</span> <span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span> fd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.set_poll_func.html" class="method">set_poll_func</a></b> (<span class="main_type"><a href="GLib.PollFunc.html" class="delegate">PollFunc</a></span> func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.MainContext.wait.html" class="method">wait</a></b> (<span class="main_type"><a href="GLib.Cond.html" class="struct">Cond</a></span> cond, <span class="main_type"><a href="GLib.Mutex.html" class="struct">Mutex</a></span> mutex)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.MainContext.wakeup.html" class="method">wakeup</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

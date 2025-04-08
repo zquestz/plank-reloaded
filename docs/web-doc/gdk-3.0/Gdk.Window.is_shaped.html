@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gdk.Window.is_shaped &ndash; gdk-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gdk.Window.is_shaped &ndash; gdk-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gdk-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gdk.html">Gdk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="Gdk.Window.html">Window</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gdk.Window.cursor.html">cursor</a></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.at_pointer.html">at_pointer</a></span></li>
+          <li class="static_method"><a href="Gdk.Window.constrain_size.html">constrain_size</a></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.process_all_updates.html">process_all_updates</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.set_debug_updates.html">set_debug_updates</a></span></li>
+          <li class="creation_method"><a href="Gdk.Window.Window.html">Window</a></li>
+          <li class="method"><a href="Gdk.Window.add_filter.html">add_filter</a></li>
+          <li class="method"><a href="Gdk.Window.beep.html">beep</a></li>
+          <li class="method"><a href="Gdk.Window.begin_draw_frame.html">begin_draw_frame</a></li>
+          <li class="method"><a href="Gdk.Window.begin_move_drag.html">begin_move_drag</a></li>
+          <li class="method"><a href="Gdk.Window.begin_move_drag_for_device.html">begin_move_drag_for_device</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.begin_paint_rect.html">begin_paint_rect</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.begin_paint_region.html">begin_paint_region</a></span></li>
+          <li class="method"><a href="Gdk.Window.begin_resize_drag.html">begin_resize_drag</a></li>
+          <li class="method"><a href="Gdk.Window.begin_resize_drag_for_device.html">begin_resize_drag_for_device</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.configure_finished.html">configure_finished</a></span></li>
+          <li class="method"><a href="Gdk.Window.coords_from_parent.html">coords_from_parent</a></li>
+          <li class="method"><a href="Gdk.Window.coords_to_parent.html">coords_to_parent</a></li>
+          <li class="method"><a href="Gdk.Window.create_gl_context.html">create_gl_context</a></li>
+          <li class="method"><a href="Gdk.Window.create_similar_image_surface.html">create_similar_image_surface</a></li>
+          <li class="method"><a href="Gdk.Window.create_similar_surface.html">create_similar_surface</a></li>
+          <li class="method"><a href="Gdk.Window.deiconify.html">deiconify</a></li>
+          <li class="method"><a href="Gdk.Window.destroy.html">destroy</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.enable_synchronized_configure.html">enable_synchronized_configure</a></span>
+          </li>
+          <li class="method"><a href="Gdk.Window.end_draw_frame.html">end_draw_frame</a></li>
+          <li class="method"><a href="Gdk.Window.end_paint.html">end_paint</a></li>
+          <li class="method"><a href="Gdk.Window.ensure_native.html">ensure_native</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.flush.html">flush</a></span></li>
+          <li class="method"><a href="Gdk.Window.focus.html">focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.freeze_toplevel_updates_libgtk_only.html">
+                freeze_toplevel_updates_libgtk_only</a></span></li>
+          <li class="method"><a href="Gdk.Window.freeze_updates.html">freeze_updates</a></li>
+          <li class="method"><a href="Gdk.Window.fullscreen.html">fullscreen</a></li>
+          <li class="method"><a href="Gdk.Window.fullscreen_on_monitor.html">fullscreen_on_monitor</a></li>
+          <li class="method"><a href="Gdk.Window.geometry_changed.html">geometry_changed</a></li>
+          <li class="method"><a href="Gdk.Window.get_accept_focus.html">get_accept_focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_background_pattern.html">get_background_pattern</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_children.html">get_children</a></li>
+          <li class="method"><a href="Gdk.Window.get_children_with_user_data.html">get_children_with_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.get_clip_region.html">get_clip_region</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_composited.html">get_composited</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_cursor.html">get_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.get_decorations.html">get_decorations</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_cursor.html">get_device_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_events.html">get_device_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_position.html">get_device_position</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_position_double.html">get_device_position_double</a></li>
+          <li class="method"><a href="Gdk.Window.get_display.html">get_display</a></li>
+          <li class="method"><a href="Gdk.Window.get_drag_protocol.html">get_drag_protocol</a></li>
+          <li class="method"><a href="Gdk.Window.get_effective_parent.html">get_effective_parent</a></li>
+          <li class="method"><a href="Gdk.Window.get_effective_toplevel.html">get_effective_toplevel</a></li>
+          <li class="method"><a href="Gdk.Window.get_event_compression.html">get_event_compression</a></li>
+          <li class="method"><a href="Gdk.Window.get_events.html">get_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_focus_on_map.html">get_focus_on_map</a></li>
+          <li class="method"><a href="Gdk.Window.get_frame_clock.html">get_frame_clock</a></li>
+          <li class="method"><a href="Gdk.Window.get_frame_extents.html">get_frame_extents</a></li>
+          <li class="method"><a href="Gdk.Window.get_fullscreen_mode.html">get_fullscreen_mode</a></li>
+          <li class="method"><a href="Gdk.Window.get_geometry.html">get_geometry</a></li>
+          <li class="method"><a href="Gdk.Window.get_group.html">get_group</a></li>
+          <li class="method"><a href="Gdk.Window.get_height.html">get_height</a></li>
+          <li class="method"><a href="Gdk.Window.get_modal_hint.html">get_modal_hint</a></li>
+          <li class="method"><a href="Gdk.Window.get_origin.html">get_origin</a></li>
+          <li class="method"><a href="Gdk.Window.get_parent.html">get_parent</a></li>
+          <li class="method"><a href="Gdk.Window.get_pass_through.html">get_pass_through</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_pointer.html">get_pointer</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_position.html">get_position</a></li>
+          <li class="method"><a href="Gdk.Window.get_root_coords.html">get_root_coords</a></li>
+          <li class="method"><a href="Gdk.Window.get_root_origin.html">get_root_origin</a></li>
+          <li class="method"><a href="Gdk.Window.get_scale_factor.html">get_scale_factor</a></li>
+          <li class="method"><a href="Gdk.Window.get_screen.html">get_screen</a></li>
+          <li class="method"><a href="Gdk.Window.get_source_events.html">get_source_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_state.html">get_state</a></li>
+          <li class="method"><a href="Gdk.Window.get_support_multidevice.html">get_support_multidevice</a></li>
+          <li class="method"><a href="Gdk.Window.get_toplevel.html">get_toplevel</a></li>
+          <li class="method"><a href="Gdk.Window.get_type_hint.html">get_type_hint</a></li>
+          <li class="method"><a href="Gdk.Window.get_update_area.html">get_update_area</a></li>
+          <li class="method"><a href="Gdk.Window.get_user_data.html">get_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.get_visible_region.html">get_visible_region</a></li>
+          <li class="method"><a href="Gdk.Window.get_visual.html">get_visual</a></li>
+          <li class="method"><a href="Gdk.Window.get_width.html">get_width</a></li>
+          <li class="method"><a href="Gdk.Window.get_window_type.html">get_window_type</a></li>
+          <li class="method"><a href="Gdk.Window.has_native.html">has_native</a></li>
+          <li class="method"><a href="Gdk.Window.hide.html">hide</a></li>
+          <li class="method"><a href="Gdk.Window.iconify.html">iconify</a></li>
+          <li class="method"><a href="Gdk.Window.input_shape_combine_region.html">input_shape_combine_region</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_maybe_recurse.html">invalidate_maybe_recurse</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_rect.html">invalidate_rect</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_region.html">invalidate_region</a></li>
+          <li class="method"><a href="Gdk.Window.is_destroyed.html">is_destroyed</a></li>
+          <li class="method"><a href="Gdk.Window.is_input_only.html">is_input_only</a></li>
+          <li class="method">is_shaped</li>
+          <li class="method"><a href="Gdk.Window.is_viewable.html">is_viewable</a></li>
+          <li class="method"><a href="Gdk.Window.is_visible.html">is_visible</a></li>
+          <li class="method"><a href="Gdk.Window.lower.html">lower</a></li>
+          <li class="method"><a href="Gdk.Window.mark_paint_from_clip.html">mark_paint_from_clip</a></li>
+          <li class="method"><a href="Gdk.Window.maximize.html">maximize</a></li>
+          <li class="method"><a href="Gdk.Window.merge_child_input_shapes.html">merge_child_input_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.merge_child_shapes.html">merge_child_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.move.html">move</a></li>
+          <li class="method"><a href="Gdk.Window.move_region.html">move_region</a></li>
+          <li class="method"><a href="Gdk.Window.move_resize.html">move_resize</a></li>
+          <li class="method"><a href="Gdk.Window.move_to_rect.html">move_to_rect</a></li>
+          <li class="method"><a href="Gdk.Window.peek_children.html">peek_children</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.process_updates.html">process_updates</a></span></li>
+          <li class="method"><a href="Gdk.Window.raise.html">raise</a></li>
+          <li class="method"><a href="Gdk.Window.register_dnd.html">register_dnd</a></li>
+          <li class="method"><a href="Gdk.Window.remove_filter.html">remove_filter</a></li>
+          <li class="method"><a href="Gdk.Window.reparent.html">reparent</a></li>
+          <li class="method"><a href="Gdk.Window.resize.html">resize</a></li>
+          <li class="method"><a href="Gdk.Window.restack.html">restack</a></li>
+          <li class="method"><a href="Gdk.Window.scroll.html">scroll</a></li>
+          <li class="method"><a href="Gdk.Window.set_accept_focus.html">set_accept_focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background.html">set_background</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background_pattern.html">set_background_pattern</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background_rgba.html">set_background_rgba</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_child_input_shapes.html">set_child_input_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.set_child_shapes.html">set_child_shapes</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_composited.html">set_composited</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_cursor.html">set_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.set_decorations.html">set_decorations</a></li>
+          <li class="method"><a href="Gdk.Window.set_device_cursor.html">set_device_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.set_device_events.html">set_device_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_event_compression.html">set_event_compression</a></li>
+          <li class="method"><a href="Gdk.Window.set_events.html">set_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_focus_on_map.html">set_focus_on_map</a></li>
+          <li class="method"><a href="Gdk.Window.set_fullscreen_mode.html">set_fullscreen_mode</a></li>
+          <li class="method"><a href="Gdk.Window.set_functions.html">set_functions</a></li>
+          <li class="method"><a href="Gdk.Window.set_geometry_hints.html">set_geometry_hints</a></li>
+          <li class="method"><a href="Gdk.Window.set_group.html">set_group</a></li>
+          <li class="method"><a href="Gdk.Window.set_icon_list.html">set_icon_list</a></li>
+          <li class="method"><a href="Gdk.Window.set_icon_name.html">set_icon_name</a></li>
+          <li class="method"><a href="Gdk.Window.set_keep_above.html">set_keep_above</a></li>
+          <li class="method"><a href="Gdk.Window.set_keep_below.html">set_keep_below</a></li>
+          <li class="method"><a href="Gdk.Window.set_modal_hint.html">set_modal_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_opacity.html">set_opacity</a></li>
+          <li class="method"><a href="Gdk.Window.set_opaque_region.html">set_opaque_region</a></li>
+          <li class="method"><a href="Gdk.Window.set_override_redirect.html">set_override_redirect</a></li>
+          <li class="method"><a href="Gdk.Window.set_pass_through.html">set_pass_through</a></li>
+          <li class="method"><a href="Gdk.Window.set_role.html">set_role</a></li>
+          <li class="method"><a href="Gdk.Window.set_shadow_width.html">set_shadow_width</a></li>
+          <li class="method"><a href="Gdk.Window.set_skip_pager_hint.html">set_skip_pager_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_skip_taskbar_hint.html">set_skip_taskbar_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_source_events.html">set_source_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_startup_id.html">set_startup_id</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_static_gravities.html">set_static_gravities</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_support_multidevice.html">set_support_multidevice</a></li>
+          <li class="method"><a href="Gdk.Window.set_title.html">set_title</a></li>
+          <li class="method"><a href="Gdk.Window.set_transient_for.html">set_transient_for</a></li>
+          <li class="method"><a href="Gdk.Window.set_type_hint.html">set_type_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_urgency_hint.html">set_urgency_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_user_data.html">set_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.shape_combine_region.html">shape_combine_region</a></li>
+          <li class="method"><a href="Gdk.Window.show.html">show</a></li>
+          <li class="method"><a href="Gdk.Window.show_unraised.html">show_unraised</a></li>
+          <li class="method"><a href="Gdk.Window.show_window_menu.html">show_window_menu</a></li>
+          <li class="method"><a href="Gdk.Window.stick.html">stick</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.thaw_toplevel_updates_libgtk_only.html">thaw_toplevel_updates_libgtk_only
+              </a></span></li>
+          <li class="method"><a href="Gdk.Window.thaw_updates.html">thaw_updates</a></li>
+          <li class="method"><a href="Gdk.Window.unfullscreen.html">unfullscreen</a></li>
+          <li class="method"><a href="Gdk.Window.unmaximize.html">unmaximize</a></li>
+          <li class="method"><a href="Gdk.Window.unstick.html">unstick</a></li>
+          <li class="method"><a href="Gdk.Window.withdraw.html">withdraw</a></li>
+          <li class="signal"><a href="Gdk.Window.create_surface.html">create_surface</a></li>
+          <li class="signal"><a href="Gdk.Window.from_embedder.html">from_embedder</a></li>
+          <li class="signal"><a href="Gdk.Window.moved_to_rect.html">moved_to_rect</a></li>
+          <li class="signal"><a href="Gdk.Window.pick_embedded_child.html">pick_embedded_child</a></li>
+          <li class="signal"><a href="Gdk.Window.to_embedder.html">to_embedder</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">is_shaped</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Version</span> ( since = <span class="main_literal">"2.22"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><span class="method">is_shaped</span></b> ()
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

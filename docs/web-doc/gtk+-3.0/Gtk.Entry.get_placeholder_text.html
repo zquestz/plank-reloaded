@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.Entry.get_placeholder_text &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.Entry.get_placeholder_text &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="Gtk.Entry.html">Entry</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.Entry.activates_default.html">activates_default</a></li>
+          <li class="property"><a href="Gtk.Entry.attributes.html">attributes</a></li>
+          <li class="property"><a href="Gtk.Entry.buffer.html">buffer</a></li>
+          <li class="property"><a href="Gtk.Entry.caps_lock_warning.html">caps_lock_warning</a></li>
+          <li class="property"><a href="Gtk.Entry.completion.html">completion</a></li>
+          <li class="property"><a href="Gtk.Entry.cursor_position.html">cursor_position</a></li>
+          <li class="property"><a href="Gtk.Entry.editable.html">editable</a></li>
+          <li class="property"><a href="Gtk.Entry.enable_emoji_completion.html">enable_emoji_completion</a></li>
+          <li class="property"><a href="Gtk.Entry.has_frame.html">has_frame</a></li>
+          <li class="property"><a href="Gtk.Entry.im_module.html">im_module</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Entry.inner_border.html">inner_border</a></span></li>
+          <li class="property"><a href="Gtk.Entry.input_hints.html">input_hints</a></li>
+          <li class="property"><a href="Gtk.Entry.input_purpose.html">input_purpose</a></li>
+          <li class="property"><a href="Gtk.Entry.invisible_char.html">invisible_char</a></li>
+          <li class="property"><a href="Gtk.Entry.invisible_char_set.html">invisible_char_set</a></li>
+          <li class="property"><a href="Gtk.Entry.max_length.html">max_length</a></li>
+          <li class="property"><a href="Gtk.Entry.max_width_chars.html">max_width_chars</a></li>
+          <li class="property"><a href="Gtk.Entry.overwrite_mode.html">overwrite_mode</a></li>
+          <li class="property"><a href="Gtk.Entry.placeholder_text.html">placeholder_text</a></li>
+          <li class="property"><a href="Gtk.Entry.populate_all.html">populate_all</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_activatable.html">primary_icon_activatable</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_gicon.html">primary_icon_gicon</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_name.html">primary_icon_name</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_pixbuf.html">primary_icon_pixbuf</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_sensitive.html">primary_icon_sensitive</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Entry.primary_icon_stock.html">primary_icon_stock</a></span></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_storage_type.html">primary_icon_storage_type</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_tooltip_markup.html">primary_icon_tooltip_markup</a></li>
+          <li class="property"><a href="Gtk.Entry.primary_icon_tooltip_text.html">primary_icon_tooltip_text</a></li>
+          <li class="property"><a href="Gtk.Entry.progress_fraction.html">progress_fraction</a></li>
+          <li class="property"><a href="Gtk.Entry.progress_pulse_step.html">progress_pulse_step</a></li>
+          <li class="property"><a href="Gtk.Entry.scroll_offset.html">scroll_offset</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_activatable.html">secondary_icon_activatable</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_gicon.html">secondary_icon_gicon</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_name.html">secondary_icon_name</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_pixbuf.html">secondary_icon_pixbuf</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_sensitive.html">secondary_icon_sensitive</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Entry.secondary_icon_stock.html">secondary_icon_stock</a></span></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_storage_type.html">secondary_icon_storage_type</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_tooltip_markup.html">secondary_icon_tooltip_markup</a></li>
+          <li class="property"><a href="Gtk.Entry.secondary_icon_tooltip_text.html">secondary_icon_tooltip_text</a></li>
+          <li class="property"><a href="Gtk.Entry.selection_bound.html">selection_bound</a></li>
+          <li class="property"><span class="deprecated"><a href="Gtk.Entry.shadow_type.html">shadow_type</a></span></li>
+          <li class="property"><a href="Gtk.Entry.show_emoji_icon.html">show_emoji_icon</a></li>
+          <li class="property"><a href="Gtk.Entry.tabs.html">tabs</a></li>
+          <li class="property"><a href="Gtk.Entry.text.html">text</a></li>
+          <li class="property"><a href="Gtk.Entry.text_length.html">text_length</a></li>
+          <li class="property"><a href="Gtk.Entry.truncate_multiline.html">truncate_multiline</a></li>
+          <li class="property"><a href="Gtk.Entry.visibility.html">visibility</a></li>
+          <li class="property"><a href="Gtk.Entry.width_chars.html">width_chars</a></li>
+          <li class="property"><a href="Gtk.Entry.xalign.html">xalign</a></li>
+          <li class="creation_method"><a href="Gtk.Entry.Entry.html">Entry</a></li>
+          <li class="creation_method"><a href="Gtk.Entry.Entry.with_buffer.html">Entry.with_buffer</a></li>
+          <li class="method"><a href="Gtk.Entry.get_activates_default.html">get_activates_default</a></li>
+          <li class="method"><a href="Gtk.Entry.get_alignment.html">get_alignment</a></li>
+          <li class="method"><a href="Gtk.Entry.get_attributes.html">get_attributes</a></li>
+          <li class="method"><a href="Gtk.Entry.get_buffer.html">get_buffer</a></li>
+          <li class="method"><a href="Gtk.Entry.get_completion.html">get_completion</a></li>
+          <li class="method"><a href="Gtk.Entry.get_current_icon_drag_source.html">get_current_icon_drag_source</a></li>
+          <li class="method"><a href="Gtk.Entry.get_cursor_hadjustment.html">get_cursor_hadjustment</a></li>
+          <li class="virtual_method"><a href="Gtk.Entry.get_frame_size.html">get_frame_size</a></li>
+          <li class="method"><a href="Gtk.Entry.get_has_frame.html">get_has_frame</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_activatable.html">get_icon_activatable</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_area.html">get_icon_area</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_at_pos.html">get_icon_at_pos</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_gicon.html">get_icon_gicon</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_name.html">get_icon_name</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_pixbuf.html">get_icon_pixbuf</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_sensitive.html">get_icon_sensitive</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Entry.get_icon_stock.html">get_icon_stock</a></span></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_storage_type.html">get_icon_storage_type</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_tooltip_markup.html">get_icon_tooltip_markup</a></li>
+          <li class="method"><a href="Gtk.Entry.get_icon_tooltip_text.html">get_icon_tooltip_text</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Entry.get_inner_border.html">get_inner_border</a></span></li>
+          <li class="method"><a href="Gtk.Entry.get_input_hints.html">get_input_hints</a></li>
+          <li class="method"><a href="Gtk.Entry.get_input_purpose.html">get_input_purpose</a></li>
+          <li class="method"><a href="Gtk.Entry.get_invisible_char.html">get_invisible_char</a></li>
+          <li class="method"><a href="Gtk.Entry.get_layout.html">get_layout</a></li>
+          <li class="method"><a href="Gtk.Entry.get_layout_offsets.html">get_layout_offsets</a></li>
+          <li class="method"><a href="Gtk.Entry.get_max_length.html">get_max_length</a></li>
+          <li class="method"><a href="Gtk.Entry.get_max_width_chars.html">get_max_width_chars</a></li>
+          <li class="method"><a href="Gtk.Entry.get_overwrite_mode.html">get_overwrite_mode</a></li>
+          <li class="method">get_placeholder_text</li>
+          <li class="method"><a href="Gtk.Entry.get_progress_fraction.html">get_progress_fraction</a></li>
+          <li class="method"><a href="Gtk.Entry.get_progress_pulse_step.html">get_progress_pulse_step</a></li>
+          <li class="method"><a href="Gtk.Entry.get_tabs.html">get_tabs</a></li>
+          <li class="method"><a href="Gtk.Entry.get_text.html">get_text</a></li>
+          <li class="method"><a href="Gtk.Entry.get_text_area.html">get_text_area</a></li>
+          <li class="virtual_method"><a href="Gtk.Entry.get_text_area_size.html">get_text_area_size</a></li>
+          <li class="method"><a href="Gtk.Entry.get_text_length.html">get_text_length</a></li>
+          <li class="method"><a href="Gtk.Entry.get_visibility.html">get_visibility</a></li>
+          <li class="method"><a href="Gtk.Entry.get_width_chars.html">get_width_chars</a></li>
+          <li class="method"><a href="Gtk.Entry.grab_focus_without_selecting.html">grab_focus_without_selecting</a></li>
+          <li class="method"><a href="Gtk.Entry.im_context_filter_keypress.html">im_context_filter_keypress</a></li>
+          <li class="method"><a href="Gtk.Entry.layout_index_to_text_index.html">layout_index_to_text_index</a></li>
+          <li class="method"><a href="Gtk.Entry.progress_pulse.html">progress_pulse</a></li>
+          <li class="method"><a href="Gtk.Entry.reset_im_context.html">reset_im_context</a></li>
+          <li class="method"><a href="Gtk.Entry.set_activates_default.html">set_activates_default</a></li>
+          <li class="method"><a href="Gtk.Entry.set_alignment.html">set_alignment</a></li>
+          <li class="method"><a href="Gtk.Entry.set_attributes.html">set_attributes</a></li>
+          <li class="method"><a href="Gtk.Entry.set_buffer.html">set_buffer</a></li>
+          <li class="method"><a href="Gtk.Entry.set_completion.html">set_completion</a></li>
+          <li class="method"><a href="Gtk.Entry.set_cursor_hadjustment.html">set_cursor_hadjustment</a></li>
+          <li class="method"><a href="Gtk.Entry.set_has_frame.html">set_has_frame</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_activatable.html">set_icon_activatable</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_drag_source.html">set_icon_drag_source</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_from_gicon.html">set_icon_from_gicon</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_from_icon_name.html">set_icon_from_icon_name</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_from_pixbuf.html">set_icon_from_pixbuf</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Entry.set_icon_from_stock.html">set_icon_from_stock</a></span></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_sensitive.html">set_icon_sensitive</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_tooltip_markup.html">set_icon_tooltip_markup</a></li>
+          <li class="method"><a href="Gtk.Entry.set_icon_tooltip_text.html">set_icon_tooltip_text</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.Entry.set_inner_border.html">set_inner_border</a></span></li>
+          <li class="method"><a href="Gtk.Entry.set_input_hints.html">set_input_hints</a></li>
+          <li class="method"><a href="Gtk.Entry.set_input_purpose.html">set_input_purpose</a></li>
+          <li class="method"><a href="Gtk.Entry.set_invisible_char.html">set_invisible_char</a></li>
+          <li class="method"><a href="Gtk.Entry.set_max_length.html">set_max_length</a></li>
+          <li class="method"><a href="Gtk.Entry.set_max_width_chars.html">set_max_width_chars</a></li>
+          <li class="method"><a href="Gtk.Entry.set_overwrite_mode.html">set_overwrite_mode</a></li>
+          <li class="method"><a href="Gtk.Entry.set_placeholder_text.html">set_placeholder_text</a></li>
+          <li class="method"><a href="Gtk.Entry.set_progress_fraction.html">set_progress_fraction</a></li>
+          <li class="method"><a href="Gtk.Entry.set_progress_pulse_step.html">set_progress_pulse_step</a></li>
+          <li class="method"><a href="Gtk.Entry.set_tabs.html">set_tabs</a></li>
+          <li class="method"><a href="Gtk.Entry.set_text.html">set_text</a></li>
+          <li class="method"><a href="Gtk.Entry.set_visibility.html">set_visibility</a></li>
+          <li class="method"><a href="Gtk.Entry.set_width_chars.html">set_width_chars</a></li>
+          <li class="method"><a href="Gtk.Entry.text_index_to_layout_index.html">text_index_to_layout_index</a></li>
+          <li class="method"><a href="Gtk.Entry.unset_invisible_char.html">unset_invisible_char</a></li>
+          <li class="signal"><a href="Gtk.Entry.activate.html">activate</a></li>
+          <li class="signal"><a href="Gtk.Entry.backspace.html">backspace</a></li>
+          <li class="signal"><a href="Gtk.Entry.copy_clipboard.html">copy_clipboard</a></li>
+          <li class="signal"><a href="Gtk.Entry.cut_clipboard.html">cut_clipboard</a></li>
+          <li class="signal"><a href="Gtk.Entry.delete_from_cursor.html">delete_from_cursor</a></li>
+          <li class="signal"><a href="Gtk.Entry.icon_press.html">icon_press</a></li>
+          <li class="signal"><a href="Gtk.Entry.icon_release.html">icon_release</a></li>
+          <li class="signal"><a href="Gtk.Entry.insert_at_cursor.html">insert_at_cursor</a></li>
+          <li class="signal"><a href="Gtk.Entry.insert_emoji.html">insert_emoji</a></li>
+          <li class="signal"><a href="Gtk.Entry.move_cursor.html">move_cursor</a></li>
+          <li class="signal"><a href="Gtk.Entry.paste_clipboard.html">paste_clipboard</a></li>
+          <li class="signal"><a href="Gtk.Entry.populate_popup.html">populate_popup</a></li>
+          <li class="signal"><a href="Gtk.Entry.preedit_changed.html">preedit_changed</a></li>
+          <li class="signal"><a href="Gtk.Entry.toggle_overwrite.html">toggle_overwrite</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">get_placeholder_text</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Version</span> ( since = <span class="main_literal">"3.2"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><span class="method">get_placeholder_text</span></b> ()
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

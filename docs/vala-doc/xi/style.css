@@ -1,0 +1,609 @@
+html {
+    color: #111;
+    font-family: "Open Sans", "Droid Sans", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    min-width: 720px;
+    padding: 48px 0 0;
+}
+
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+ul.external_link {
+}
+
+.main_optional_parameter {
+	font-style: italic;
+}
+
+.main_diagram {
+	border-style: none;
+	display: block;
+	margin: 0px auto;
+}
+
+.site_navi {
+	text-align: right;
+}
+
+.main_notification {
+	padding-right: 10px;
+	padding-left: 60px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-color: #aaaaff;
+	background-color: #eeeeff;
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	min-height: 48px;
+	background-position: 6px 0.5em;
+	background-repeat: no-repeat;
+	background-image: url(warning.svg);
+}
+
+.main_table {
+	border-collapse: collapse;
+	border: 1px solid #aaaaff;
+	background: #eeeeff;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.main_source, .main_sourcesample {
+	padding-right: 10px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin: 10px;
+
+	border-color: #aaaaff;
+	background-color: #eeeeff;
+	border-style: solid;
+	border-width: 1px;
+}
+
+
+input {
+	border-color: #aaaaff;
+	border-style: solid;
+	border-width: 1px;
+}
+
+
+
+
+.site_header {
+	align-items: center;
+	background-color: #403757;
+	color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	display: flex;
+	font-size: 16px;
+	justify-content: space-between;
+	padding: 9px 6px;
+	position: fixed;
+	top: 0;
+	width: calc(100% - 12px);
+	z-index: 1000;
+}
+
+.site_title {
+	text-align: left;
+	font-size: 40px;
+}
+
+div.site_footer {
+	display: inline-block;
+	overflow-y: auto;
+	position: fixed;
+	top: calc(100% - 29px);
+	background-color: #fafafa;
+	color: #666;
+	z-index: 1000;
+	width: 222px;
+	padding: 6px 6px 6px 12px;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.24);
+}
+
+
+div.site_body {
+	display: inline-block;
+	position: fixed;
+	top: 40.5px;
+	height: calc(100% - 40.5px);
+}
+
+
+div.site_navigation {
+	background-color: #f7f6f8;
+	border-right: 1px solid #eceaf0;
+	display: inline-block;
+	overflow-y: auto;
+	position: fixed;
+	top: 40.5px;
+	width: 240px;
+	height: calc(100% - 40.5px - 29px);
+}
+
+
+div.site_content {
+	display: inline-block;
+	overflow-y: auto;
+	position: fixed;
+	top: 40.5px;
+	margin-left: 250px;
+	min-height: calc(100vh - 40.5px);
+	text-align: left;
+	vertical-align: top;
+	width: calc(100% - 250px);
+	height: calc(100% - 40.5px);
+}
+
+.main_type {
+	text-decoration: none;
+	font-style: italic;
+}
+
+.main_basic_type {
+	text-decoration: none;
+	font-weight: bold;
+	color: #2e8b57;
+}
+
+.main_keyword {
+	text-decoration: none;
+	font-weight: bold;
+	color: #dc322f;
+}
+
+.main_escape {
+	text-decoration: none;
+	color: #6a5acd;
+}
+
+.xml_cdata {
+	text-decoration: none;
+	font-weight: normal;
+	color: #a020f0;
+}
+
+.xml_escape {
+	text-decoration: none;
+	font-weight: normal;
+	color: #a020f0;
+}
+
+.xml_element {
+	text-decoration: none;
+	font-weight: normal;
+	color: #008a8c;
+}
+
+.xml_attribute {
+	text-decoration: none;
+	font-weight: bold;
+	color: #6a5acd;
+}
+
+.xml_attribute_value {
+	text-decoration: none;
+	font-weight: normal;
+	color: #ff00ff;
+}
+
+.xml_comment {
+	text-decoration: none;
+	font-weight: normal;
+	color: #0202ff;
+}
+
+.main_source .main_literal {
+	text-decoration: none;
+	color: #ff00ff;
+}
+
+.main_comment {
+	text-decoration: none;
+	color: #888a85;
+}
+
+.main_preprocessor {
+	text-decoration: none;
+	color: #ad7fa8;
+}
+
+div.main_code_definition {
+	background-color: #eee;
+	border-radius: 6px;
+	font-family: "Roboto Mono", monospace;
+	margin: 12px;
+	padding: 12px;
+}
+
+div.main_notification_block {
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+
+	border-color: #d08717;
+	background-color: #fbf2c3;
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+}
+
+span.main_block_headline {
+	background-image:url(tip.svg);
+	background-repeat:no-repeat;
+	background-position:center right;
+	font-weight:bold;
+	display:block;
+}
+
+div.main_block_content {
+	margin-left:15px;
+}
+
+span.leaf_code_definition {
+	font-family: monospace;
+}
+
+
+div.leaf_brief_description {
+	display: block;
+	margin-left: 40px;
+}
+
+h1.main_title {
+	font-size: 2em;
+	font-weight: 700;
+	margin-bottom: 0px;
+}
+
+h2, h3 {
+	font-family: "Droid Serif", serif;
+	font-weight: 300;
+}
+
+.main_hr {
+	border: 0;
+	color: #b4a0c1;
+	background-color: #b4a0c1;
+	height: 1px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.main_parameter_table_unknown_parameter {
+	color: gray;
+}
+
+.main_parameter_table_name, .main_errordomain_table_name, .main_enum_table_name {
+	vertical-align: top;
+	text-align: right;
+	font-weight: bold;
+	width: 120px;
+	padding-right: 10px;
+}
+
+.main_parameter_table, .main_errordomain_table, .main_enum_table {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.navi_main {
+	font-size: 12px;
+	list-style: none;
+	margin: 6px;
+	padding: 0;
+}
+
+.navi_main .li {
+	padding: 6px;
+	list-style: none;
+}
+
+.navi_hr {
+	background-color: #dedede;
+	border: 0;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #dedede;
+	height: 0;
+	margin: 6px 0;
+}
+
+.navi_inline li::before,
+.navi_main li::before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+    padding-left: 0em !important;
+}
+
+.navi_main .abstract_class > a, .navi_inline .abstract_class > a {
+	font-style: italic;
+}
+
+a.navi_link:hover, a.external_link:hover {
+	text-decoration: underline;
+}
+
+ul.no_bullet li {
+	list-style-type: none;
+}
+
+.main_see_list {
+}
+
+.navi_inline {
+	font-size: 12px;
+	line-height: 21px;
+	list-style: none;
+	margin: 6px 3px;
+	padding-left: 12px;
+}
+
+.site_navigation a {
+	color: #666;
+	display: inline-block;
+	text-decoration: none;
+	padding: 3px 0px;
+}
+
+.site_navigation li {
+	overflow: hidden;
+	padding: 3px 0;
+	white-space: nowrap;
+}
+
+.css_content_literal {
+	font-family: "Roboto Mono", monospace;
+	color: #ff01ff;
+}
+
+code {
+	font-family: "Roboto Mono", monospace;
+}
+
+.main_code_definition a, .leaf_code_definition a {
+	text-decoration: none;
+	color: inherit;
+}
+.main_code_definition a:hover, .leaf_code_definition a:hover {
+	text-decoration: underline;
+}
+
+.box .headline {
+    background-image: url("coll_open.svg");
+    background-position: calc(100% - 1px) center;
+    background-repeat: no-repeat;
+    background-color: #eef;
+    border: 1px solid #aaf;
+    margin: 20px auto auto auto;
+    width: 90%;
+    font-weight: bold;
+}
+
+.box .content {
+    border: 1px solid #aaf;
+    border-top: none;
+    overflow: auto;
+    display: none;
+    margin: auto;
+    width: 90%;
+}
+
+.box .column {
+    float: left;
+    width: 33%;
+}
+
+.deprecated {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/*********
+ * Icons *
+ *********/
+
+.abstract_class::before,
+.description a.abstract_class,
+.brief_description a.abstract_class {
+    background-image: url(abstractclass.svg);
+    font-style: italic;
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.abstract_method::before,
+.description a.abstract_method,
+.brief_description a.abstract_method {
+    background-image: url(abstractmethod.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.abstract_property::before,
+.description a.abstract_property,
+.brief_description a.abstract_property {
+    background-image: url(abstractproperty.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.class::before,
+.main_list_cl::before,
+.description a.class,
+.brief_description a.class {
+    background-image: url(class.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.constant::before,
+.description a.constant,
+.brief_description a.constant {
+    background-image: url(constant.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.creation_method::before,
+.main_list_m::before,
+.description a.creation_method,
+.brief_description a.creation_method {
+    background-image: url(constructor.svg);
+}
+
+.delegate::before,
+.main_list_del::before,
+.description a.delegate,
+.brief_description a.delegate {
+    background-image: url(delegate.svg);
+}
+
+.document::before {
+    background-image: url(document.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.enum::before,
+.main_list_en::before,
+.description a.enum,
+.brief_description a.enum {
+    background-image: url(enum.svg);
+}
+
+.enumvalue::before,
+.enum_value::before,
+.description a.enumvalue,
+.brief_description a.enumvalue {
+    background-image: url(enumvalue.svg);
+}
+
+.errorcode::before,
+.description a.errorcode,
+.brief_description a.errorcode {
+    background-image: url(errorcode.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.errordomain::before,
+.main_list_errdom::before,
+.description a.errordomain,
+.brief_description a.errordomain {
+    background-image: url(errordomain.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.field::before,
+.main_list_field::before,
+.description a.field,
+.brief_description a.field {
+    background-image: url(field.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.interface::before,
+.main_list_iface::before,
+.description a.interface,
+.brief_description a.interface {
+    background-image: url(interface.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.method::before,
+.description a.method,
+.brief_description a.method {
+    background-image: url(method.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.namespace::before,
+.main_list_ns::before,
+.description a.namespace,
+.brief_description a.namespace {
+    background-image: url(namespace.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.package::before {
+    background-image: url(package.svg);
+    background-repeat: no-repeat;
+}
+
+.package_index::before {
+    background-image: url(packages.svg);
+    background-repeat: no-repeat;
+}
+
+.property::before,
+.main_list_prop::before,
+.description a.property,
+.brief_description a.property {
+    background-image: url(property.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.signal::before,
+.main_list_sig::before,
+.description a.signal,
+.brief_description a.signal {
+    background-image: url(signal.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.static_method::before,
+.description a.static_method,
+.brief_description a.static_method {
+    background-image: url(staticmethod.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.struct::before,
+.main_list_stru::before,
+.description a.struct,
+.brief_description a.struct {
+    background-image: url(struct.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.virtual_method::before,
+.description a.virtual_method,
+.brief_description a.virtual_method {
+    background-image: url(virtualmethod.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+.virtual_property::before,
+.description a.virtual_property,
+.brief_description a.virtual_property {
+    background-image: url(virtualproperty.svg);
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}

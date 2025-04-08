@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankDockElement">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankDockElement.top_of_page">PlankDockElement</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankDockElement</refname>
+<refpurpose>The base class for all dock elements.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankDockElement.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-DOCK-ELEMENT:CAPS">PLANK_TYPE_DOCK_ELEMENT</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockElement">PlankDockElement</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockElementClass">PlankDockElementClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankDockElement.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockElement.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockElement.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-DOCK-ELEMENT:CAPS" role="macro">
+<title>PLANK_TYPE_DOCK_ELEMENT</title>
+<indexterm zone="PLANK-TYPE-DOCK-ELEMENT:CAPS"><primary>PLANK_TYPE_DOCK_ELEMENT</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_DOCK_ELEMENT (plank_dock_element_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankDockElement"><type>PlankDockElement</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankDockElement" role="struct">
+<title>struct PlankDockElement</title>
+<indexterm zone="PlankDockElement"><primary>PlankDockElement</primary></indexterm>
+<programlisting language="C">struct PlankDockElement {
+	GObject parent_instance;
+	PlankDockElementPrivate * priv;
+};
+</programlisting>
+<para>The base class for all dock elements.</para>
+</refsect2>
+<refsect2 id="PlankDockElementClass" role="struct">
+<title>struct PlankDockElementClass</title>
+<indexterm zone="PlankDockElementClass"><primary>PlankDockElementClass</primary></indexterm>
+<programlisting language="C">struct PlankDockElementClass {
+	GObjectClass parent_class;
+	PlankAnimationType (*on_clicked) (PlankDockElement* self, PlankPopupButton button, GdkModifierType mod, guint32 event_time);
+	PlankAnimationType (*on_hovered) (PlankDockElement* self);
+	PlankAnimationType (*on_scrolled) (PlankDockElement* self, GdkScrollDirection direction, GdkModifierType mod, guint32 event_time);
+	GeeArrayList* (*get_menu_items) (PlankDockElement* self);
+	gchar* (*get_drop_text) (PlankDockElement* self);
+	gboolean (*can_be_removed) (PlankDockElement* self);
+	gboolean (*can_accept_drop) (PlankDockElement* self, GeeArrayList* uris);
+	gboolean (*accept_drop) (PlankDockElement* self, GeeArrayList* uris);
+	gchar* (*unique_id) (PlankDockElement* self);
+	void (*reset_buffers) (PlankDockElement* self);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-DOCK-ELEMENT:CAPS"><literal>PLANK_TYPE_DOCK_ELEMENT</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankDockElementClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.on-clicked">on_clicked</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.on-hovered">on_hovered</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.on-scrolled">on_scrolled</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.get-menu-items">get_menu_items</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-get-menu-items"><function><link linkend="plank-dock-element-get-menu-items"><function>plank_dock_element_get_menu_items()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.get-drop-text">get_drop_text</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-get-drop-text"><function><link linkend="plank-dock-element-get-drop-text"><function>plank_dock_element_get_drop_text()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.can-be-removed">can_be_removed</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-can-be-removed"><function><link linkend="plank-dock-element-can-be-removed"><function>plank_dock_element_can_be_removed()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.can-accept-drop">can_accept_drop</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-can-accept-drop"><function><link linkend="plank-dock-element-can-accept-drop"><function>plank_dock_element_can_accept_drop()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.accept-drop">accept_drop</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-accept-drop"><function><link linkend="plank-dock-element-accept-drop"><function>plank_dock_element_accept_drop()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.unique-id">unique_id</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-unique-id"><function><link linkend="plank-dock-element-unique-id"><function>plank_dock_element_unique_id()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockElementClass.reset-buffers">reset_buffers</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-element-reset-buffers"><function><link linkend="plank-dock-element-reset-buffers"><function>plank_dock_element_reset_buffers()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

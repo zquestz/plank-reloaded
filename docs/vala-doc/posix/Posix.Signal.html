@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Posix.Signal &ndash; posix &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Posix.Signal &ndash; posix Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">Signal</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"int"</span> ,  cprefix = <span class="main_literal">"SIG"</span> ,  has_type_id = <span class="main_literal">false</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">enum</span> <b><span class="enum">Signal</span></b>
+        </div>
+        <div class="description">
+          <p>Signal constants</p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Posix.html">Posix</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">posix</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Enum values:</h3>
+        <ul class="navi_inline">
+          <li class="enumvalue"><a href="Posix.Signal.ABRT.html">ABRT</a> - <span class="brief_description">Abort signal (ANSI)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.ALRM.html">ALRM</a> - <span class="brief_description">Alarm clock signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.BUS.html">BUS</a> - <span class="brief_description">Access to an undefined portion of memory 
+              signal (4.2 BSD)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.CHLD.html">CHLD</a> - <span class="brief_description">Child process terminated, stopped or 
+              continued signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.CLD.html">CLD</a> - <span class="brief_description">Old System V name for CHLD</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.CONT.html">CONT</a> - <span class="brief_description">Continue executing, if stopped, signal 
+              (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.EMT.html">EMT</a> - <span class="brief_description">Emulator trap</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.FPE.html">FPE</a> - <span class="brief_description">Floating-point exception signal (ANSI)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.HUP.html">HUP</a> - <span class="brief_description">Hangup signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.ILL.html">ILL</a> - <span class="brief_description">Illegal instruction signal (ANSI)</span>
+          </li>
+          <li class="enumvalue"><a href="Posix.Signal.INFO.html">INFO</a> - <span class="brief_description">Information request</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.INT.html">INT</a> - <span class="brief_description">Terminal interrupt signal (ANSI)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.IO.html">IO</a> - <span class="brief_description">I/O now possible (4.2 BSD)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.IOT.html">IOT</a> - <span class="brief_description">IOT trap signal (4.2 BSD)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.KILL.html">KILL</a> - <span class="brief_description">Kill signal (cannot be caught or ignored) 
+              (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.LOST.html">LOST</a> - <span class="brief_description">File lock lost</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.PIPE.html">PIPE</a> - <span class="brief_description">Broken pipe signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.POLL.html">POLL</a> - <span class="brief_description">Pollable event occurred signal (System V)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.PROF.html">PROF</a> - <span class="brief_description">Profiling timer expired signal (4.2 BSD)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.PWR.html">PWR</a> - <span class="brief_description">Power failure restart (System V)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.QUIT.html">QUIT</a> - <span class="brief_description">Terminal quit signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.SEGV.html">SEGV</a> - <span class="brief_description">Memory reference segmentation violation 
+              signal (ANSI)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.STKFLT.html">STKFLT</a> - <span class="brief_description">Stack fault signal</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.STOP.html">STOP</a> - <span class="brief_description">Stop executing signal (cannot be caught or
+              ignored) (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.SYS.html">SYS</a> - <span class="brief_description">Bad system call signal</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.TERM.html">TERM</a> - <span class="brief_description">Termination signal (ANSI)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.TRAP.html">TRAP</a> - <span class="brief_description">Trace/breakpoint trap signal (POSIX)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.TSTP.html">TSTP</a> - <span class="brief_description">Terminal stop signal (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.TTIN.html">TTIN</a> - <span class="brief_description">Background read from tty signal (POSIX)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.TTOU.html">TTOU</a> - <span class="brief_description">Background write to tty signal (POSIX)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.URG.html">URG</a> - <span class="brief_description">Urgent condition on socket signal (4.2 BSD)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.USR1.html">USR1</a> - <span class="brief_description">User-defined signal 1 (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.USR2.html">USR2</a> - <span class="brief_description">User-defined signal 2 (POSIX)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.VTALRM.html">VTALRM</a> - <span class="brief_description">Virtual timer expired signal (4.2 BSD)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.WINCH.html">WINCH</a> - <span class="brief_description">Window size changed signal (4.3 BSD, 
+              Sun)</span></li>
+          <li class="enumvalue"><a href="Posix.Signal.XCPU.html">XCPU</a> - <span class="brief_description">CPU time limit exceeded signal (4.2 BSD)
+            </span></li>
+          <li class="enumvalue"><a href="Posix.Signal.XFSZ.html">XFSZ</a> - <span class="brief_description">File size limit exceeded signal (4.2 BSD)
+            </span></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

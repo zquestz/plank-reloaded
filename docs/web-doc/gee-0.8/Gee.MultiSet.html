@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gee.MultiSet &ndash; gee-0.8 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gee.MultiSet &ndash; gee-0.8 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gee-0.8</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gee.html">Gee</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="interface">MultiSet</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="virtual_property"><a href="Gee.MultiSet.read_only_view.html">read_only_view</a></li>
+          <li class="static_method"><a href="Gee.MultiSet.empty.html">empty</a></li>
+          <li class="abstract_method"><a href="Gee.MultiSet.count.html">count</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">MultiSet</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gee.MultiSet" alt="Object hierarchy for MultiSet" src="img/Gee.MultiSet.png"/>
+
+      <map id="Gee.MultiSet" name="Gee.MultiSet">
+<area shape="rect" id="node1" href="Gee.MultiSet.html" title="Gee.MultiSet" alt="" coords="11,101,131,149"/>
+<area shape="rect" id="node2" href="Gee.Collection.html" title="Gee.Collection" alt="" coords="5,5,137,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><br/>[ <span class="main_type">GenericAccessors</span> ]<br/><span class="main_keyword">public</span> <span class="main_keyword">interface</span> <b><span class="interface">MultiSet</span></b>&lt;<b><span>G</span></b>&gt; : <span class="main_type"><a href="Gee.Collection.html" class="interface">Collection</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;
+        </div>
+        <div class="description">
+          <p>A collection with duplicate elements.</p>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2508')">All known implementing classes:</div>
+          <div class="content" id="box-content-2508">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_class"><a href="Gee.AbstractMultiSet.html">AbstractMultiSet</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gee.html">Gee</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gee-0.8</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="virtual_property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><span class="interface">MultiSet</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.MultiSet.read_only_view.html" class="virtual_property">read_only_view</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The read-only view of this set.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_type"><a href="Gee.Set.html" class="interface">Set</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.MultiSet.empty.html" class="static_method">empty</a></b>&lt;<b><span>G</span></b>&gt; ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns an immutable empty set.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gee.MultiSet.count.html" class="abstract_method">count</a></b> (<span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns the number of occurrences of an item in this multiset.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2509')">All known members inherited from interface Gee.Collection</div>
+          <div class="content" id="box-content-2509">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Collection.add.html">add</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all.html">add_all</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all_array.html">add_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all_iterator.html">add_all_iterator</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.clear.html">clear</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.contains.html">contains</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.contains_all.html">contains_all</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Collection.contains_all_array.html">contains_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.contains_all_iterator.html">contains_all_iterator</a></li>
+                <li class="static_method"><a href="Gee.Collection.empty.html">empty</a></li>
+                <li class="virtual_property"><a href="Gee.Collection.is_empty.html">is_empty</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.read_only.html">read_only</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.read_only_view.html">read_only_view</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.remove.html">remove</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Collection.remove_all.html">remove_all</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.remove_all_array.html">remove_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.remove_all_iterator.html">remove_all_iterator</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.retain_all.html">retain_all</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.size.html">size</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.to_array.html">to_array</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

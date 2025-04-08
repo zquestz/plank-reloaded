@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PlankUnity:  Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Reference Manual">
+<link rel="up" href="ch01.html" title="plank-reloaded API Reference">
+<link rel="prev" href="plank-reloaded-PlankDockletItem.html" title="PlankDockletItem">
+<link rel="next" href="plank-reloaded-PlankDBusClient.html" title="PlankDBusClient">
+<meta name="generator" content="GTK-Doc V1.34.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#plank-reloaded-PlankUnity.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="plank-reloaded-PlankDockletItem.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="plank-reloaded-PlankDBusClient.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="plank-reloaded-PlankUnity"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="plank-reloaded-PlankUnity.top_of_page"></a>PlankUnity</span></h2>
+<p>PlankUnity — Handle the LauncherEntry DBus interface implemented by applications.</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankUnity.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankUnity.html#PLANK-TYPE-UNITY:CAPS" title="PLANK_TYPE_UNITY">PLANK_TYPE_UNITY</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankUnity.html#PlankUnity" title="struct PlankUnity">PlankUnity</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankUnity.html#PlankUnityClass" title="struct PlankUnityClass">PlankUnityClass</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankUnity.html#PlankUnityClient" title="PlankUnityClient">PlankUnityClient</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="plank-reloaded-PlankUnity.html#PlankUnityClientIface" title="struct PlankUnityClientIface">PlankUnityClientIface</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankUnity.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankUnity.functions_details"></a><h2>Functions</h2>
+<p></p>
+</div>
+<div class="refsect1">
+<a name="plank-reloaded-PlankUnity.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="PLANK-TYPE-UNITY:CAPS"></a><h3>PLANK_TYPE_UNITY</h3>
+<pre class="programlisting">#define PLANK_TYPE_UNITY (plank_unity_get_type ())
+</pre>
+<p>The type for <a class="link" href="plank-reloaded-PlankUnity.html#PlankUnity" title="struct PlankUnity"><span class="type">PlankUnity</span></a>.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankUnity"></a><h3>struct PlankUnity</h3>
+<pre class="programlisting">struct PlankUnity {
+	GObject parent_instance;
+	PlankUnityPrivate * priv;
+};
+</pre>
+<p>Handle the LauncherEntry DBus interface implemented by applications.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankUnityClass"></a><h3>struct PlankUnityClass</h3>
+<pre class="programlisting">struct PlankUnityClass {
+	GObjectClass parent_class;
+};
+</pre>
+<p>The class structure for <a class="link" href="plank-reloaded-PlankUnity.html#PLANK-TYPE-UNITY:CAPS" title="PLANK_TYPE_UNITY"><code class="literal">PLANK_TYPE_UNITY</code></a>. All the fields in this structure are private and should never be accessed directly.</p>
+<div class="refsect3">
+<a name="PlankUnityClass.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankUnityClient"></a><h3>PlankUnityClient</h3>
+<pre class="programlisting">typedef struct _PlankUnityClient PlankUnityClient;</pre>
+<p>The interface to provide the LauncherEntry handling.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankUnityClientIface"></a><h3>struct PlankUnityClientIface</h3>
+<pre class="programlisting">struct PlankUnityClientIface {
+	GTypeInterface parent_iface;
+	void (*update_launcher_entry) (PlankUnityClient* self, const gchar* sender_name, GVariant* parameters, gboolean is_retry);
+	void (*remove_launcher_entry) (PlankUnityClient* self, const gchar* sender_name);
+};
+</pre>
+<p>Interface for creating <a class="link" href="plank-reloaded-PlankUnity.html#PlankUnityClient" title="PlankUnityClient"><span class="type">PlankUnityClient</span></a> implementations.</p>
+<div class="refsect3">
+<a name="PlankUnityClientIface.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><span class="type">GTypeInterface</span> <em class="structfield"><code><a name="PlankUnityClientIface.parent-iface"></a>parent_iface</code></em>;</p></td>
+<td class="struct_member_description"><p>the parent interface structure</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="PlankUnityClientIface.update-launcher-entry"></a>update_launcher_entry</code></em> ()</p></td>
+<td class="struct_member_description"><p>virtual method called by <code class="function"><GTKDOCLINK HREF="plank-unity-client-update-launcher-entry"><code class="function">plank_unity_client_update_launcher_entry()</code></code></GTKDOCLINK></p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="PlankUnityClientIface.remove-launcher-entry"></a>remove_launcher_entry</code></em> ()</p></td>
+<td class="struct_member_description"><p>virtual method called by <code class="function"><GTKDOCLINK HREF="plank-unity-client-remove-launcher-entry"><code class="function">plank_unity_client_remove_launcher_entry()</code></code></GTKDOCLINK></p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.34.0</div>
+</body>
+</html>

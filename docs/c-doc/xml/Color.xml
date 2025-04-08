@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-Color">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-Color.top_of_page">Color</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>Color</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-Color.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="PlankColor">PlankColor</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-Color.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-Color.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-Color.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PlankColor" role="typedef">
+<title>PlankColor</title>
+<indexterm zone="PlankColor"><primary>PlankColor</primary></indexterm>
+<programlisting language="C">typedef GdkRGBA PlankColor;
+</programlisting>
+<para>Represents a RGBA color and has methods for manipulating the color.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

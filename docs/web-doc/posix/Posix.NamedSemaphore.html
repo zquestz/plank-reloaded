@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Posix.NamedSemaphore &ndash; posix &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Posix.NamedSemaphore &ndash; posix Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">posix</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Posix.html">Posix</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">NamedSemaphore</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="constant"><a href="Posix.NamedSemaphore.FAILED.html">FAILED</a></li>
+          <li class="static_method"><a href="Posix.NamedSemaphore.unlink.html">unlink</a></li>
+          <li class="creation_method"><a href="Posix.NamedSemaphore.NamedSemaphore.html">NamedSemaphore</a></li>
+          <li class="method"><a href="Posix.NamedSemaphore.getvalue.html">getvalue</a></li>
+          <li class="method"><a href="Posix.NamedSemaphore.post.html">post</a></li>
+          <li class="method"><a href="Posix.NamedSemaphore.timedwait.html">timedwait</a></li>
+          <li class="method"><a href="Posix.NamedSemaphore.trywait.html">trywait</a></li>
+          <li class="method"><a href="Posix.NamedSemaphore.wait.html">wait</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">NamedSemaphore</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Posix.NamedSemaphore" alt="Object hierarchy for NamedSemaphore" src="img/Posix.NamedSemaphore.png"/>
+
+      <map id="Posix.NamedSemaphore" name="Posix.NamedSemaphore">
+<area shape="rect" id="node1" href="Posix.NamedSemaphore.html" title="Posix.NamedSemaphore" alt="" coords="5,5,207,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"sem_t"</span> ,  copy_function = <span class="main_literal">""</span> ,  cprefix = <span class="main_literal">"SEM_"</span> ,  free_function = <span class="main_literal">"sem_close"</span> ,  has_type_id = <span class="main_literal">false</span> ,  lower_case_cprefix = <span class="main_literal">"sem_"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">NamedSemaphore</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Posix.html">Posix</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">posix</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Constants:</h3>
+        <ul class="navi_inline">
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.FAILED.html" class="constant">FAILED</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.unlink.html" class="static_method">unlink</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Posix.NamedSemaphore.NamedSemaphore.html" class="creation_method">NamedSemaphore</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> oflag = <span class="main_literal">0</span>, <span class="main_basic_type"><a href="Posix.mode_t.html" class="struct">mode_t</a></span> mode = <span class="main_literal">0</span>, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> val = <span class="main_literal">0</span>)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.getvalue.html" class="method">getvalue</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> sval)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.post.html" class="method">post</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.timedwait.html" class="method">timedwait</a></b> (<span class="main_type"><a href="Posix.timespec.html" class="struct">timespec</a></span> abs_timeout)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.trywait.html" class="method">trywait</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Posix.NamedSemaphore.wait.html" class="method">wait</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

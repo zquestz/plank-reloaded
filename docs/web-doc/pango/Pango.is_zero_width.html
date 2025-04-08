@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Pango.is_zero_width &ndash; pango &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Pango.is_zero_width &ndash; pango Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">pango</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Pango.html">Pango</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Pango.Scale.html">Scale</a></li>
+          <li class="enum"><a href="Pango.Alignment.html">Alignment</a></li>
+          <li class="enum"><a href="Pango.AttrType.html">AttrType</a></li>
+          <li class="enum"><a href="Pango.BaselineShift.html">BaselineShift</a></li>
+          <li class="enum"><span class="deprecated"><a href="Pango.BidiType.html">BidiType</a></span></li>
+          <li class="enum"><a href="Pango.CoverageLevel.html">CoverageLevel</a></li>
+          <li class="enum"><a href="Pango.Direction.html">Direction</a></li>
+          <li class="enum"><a href="Pango.EllipsizeMode.html">EllipsizeMode</a></li>
+          <li class="enum"><a href="Pango.FontMask.html">FontMask</a></li>
+          <li class="enum"><a href="Pango.FontScale.html">FontScale</a></li>
+          <li class="enum"><a href="Pango.Gravity.html">Gravity</a></li>
+          <li class="enum"><a href="Pango.GravityHint.html">GravityHint</a></li>
+          <li class="enum"><a href="Pango.LayoutDeserializeFlags.html">LayoutDeserializeFlags</a></li>
+          <li class="enum"><a href="Pango.LayoutSerializeFlags.html">LayoutSerializeFlags</a></li>
+          <li class="enum"><a href="Pango.Overline.html">Overline</a></li>
+          <li class="enum"><a href="Pango.RenderPart.html">RenderPart</a></li>
+          <li class="enum"><a href="Pango.Script.html">Script</a></li>
+          <li class="enum"><a href="Pango.ShapeFlags.html">ShapeFlags</a></li>
+          <li class="enum"><a href="Pango.ShowFlags.html">ShowFlags</a></li>
+          <li class="enum"><a href="Pango.Stretch.html">Stretch</a></li>
+          <li class="enum"><a href="Pango.Style.html">Style</a></li>
+          <li class="enum"><a href="Pango.TabAlign.html">TabAlign</a></li>
+          <li class="enum"><a href="Pango.TextTransform.html">TextTransform</a></li>
+          <li class="enum"><a href="Pango.Underline.html">Underline</a></li>
+          <li class="enum"><a href="Pango.Variant.html">Variant</a></li>
+          <li class="enum"><a href="Pango.Weight.html">Weight</a></li>
+          <li class="enum"><a href="Pango.WrapMode.html">WrapMode</a></li>
+          <li class="class"><a href="Pango.AttrClass.html">AttrClass</a></li>
+          <li class="class"><a href="Pango.AttrColor.html">AttrColor</a></li>
+          <li class="class"><a href="Pango.AttrFloat.html">AttrFloat</a></li>
+          <li class="class"><a href="Pango.AttrFontDesc.html">AttrFontDesc</a></li>
+          <li class="class"><a href="Pango.AttrFontFeatures.html">AttrFontFeatures</a></li>
+          <li class="class"><a href="Pango.AttrInt.html">AttrInt</a></li>
+          <li class="class"><a href="Pango.AttrIterator.html">AttrIterator</a></li>
+          <li class="class"><a href="Pango.AttrLanguage.html">AttrLanguage</a></li>
+          <li class="class"><a href="Pango.AttrList.html">AttrList</a></li>
+          <li class="class"><a href="Pango.AttrShape.html">AttrShape</a></li>
+          <li class="class"><a href="Pango.AttrSize.html">AttrSize</a></li>
+          <li class="class"><a href="Pango.AttrString.html">AttrString</a></li>
+          <li class="class"><a href="Pango.Attribute.html">Attribute</a></li>
+          <li class="class"><a href="Pango.Context.html">Context</a></li>
+          <li class="class"><a href="Pango.Coverage.html">Coverage</a></li>
+          <li class="abstract_class"><a href="Pango.Font.html">Font</a></li>
+          <li class="class"><a href="Pango.FontDescription.html">FontDescription</a></li>
+          <li class="abstract_class"><a href="Pango.FontFace.html">FontFace</a></li>
+          <li class="abstract_class"><a href="Pango.FontFamily.html">FontFamily</a></li>
+          <li class="abstract_class"><a href="Pango.FontMap.html">FontMap</a></li>
+          <li class="class"><a href="Pango.FontMetrics.html">FontMetrics</a></li>
+          <li class="abstract_class"><a href="Pango.Fontset.html">Fontset</a></li>
+          <li class="class"><a href="Pango.FontsetSimple.html">FontsetSimple</a></li>
+          <li class="class"><a href="Pango.GlyphItem.html">GlyphItem</a></li>
+          <li class="class"><a href="Pango.GlyphString.html">GlyphString</a></li>
+          <li class="class"><a href="Pango.Item.html">Item</a></li>
+          <li class="class"><a href="Pango.Language.html">Language</a></li>
+          <li class="class"><a href="Pango.Layout.html">Layout</a></li>
+          <li class="class"><a href="Pango.LayoutIter.html">LayoutIter</a></li>
+          <li class="class"><a href="Pango.LayoutLine.html">LayoutLine</a></li>
+          <li class="class"><a href="Pango.LayoutRun.html">LayoutRun</a></li>
+          <li class="abstract_class"><a href="Pango.Renderer.html">Renderer</a></li>
+          <li class="class"><a href="Pango.ScriptIter.html">ScriptIter</a></li>
+          <li class="class"><a href="Pango.TabArray.html">TabArray</a></li>
+          <li class="struct"><a href="Pango.Analysis.html">Analysis</a></li>
+          <li class="struct"><a href="Pango.Color.html">Color</a></li>
+          <li class="struct"><a href="Pango.Glyph.html">Glyph</a></li>
+          <li class="struct"><a href="Pango.GlyphGeometry.html">GlyphGeometry</a></li>
+          <li class="struct"><a href="Pango.GlyphInfo.html">GlyphInfo</a></li>
+          <li class="struct"><a href="Pango.GlyphItemIter.html">GlyphItemIter</a></li>
+          <li class="struct"><a href="Pango.GlyphUnit.html">GlyphUnit</a></li>
+          <li class="struct"><a href="Pango.GlyphVisAttr.html">GlyphVisAttr</a></li>
+          <li class="struct"><a href="Pango.LogAttr.html">LogAttr</a></li>
+          <li class="struct"><a href="Pango.Matrix.html">Matrix</a></li>
+          <li class="struct"><a href="Pango.Rectangle.html">Rectangle</a></li>
+          <li class="constant"><a href="Pango.ANALYSIS_FLAG_CENTERED_BASELINE.html">ANALYSIS_FLAG_CENTERED_BASELINE</a></li>
+          <li class="constant"><a href="Pango.ANALYSIS_FLAG_IS_ELLIPSIS.html">ANALYSIS_FLAG_IS_ELLIPSIS</a></li>
+          <li class="constant"><a href="Pango.ANALYSIS_FLAG_NEED_HYPHEN.html">ANALYSIS_FLAG_NEED_HYPHEN</a></li>
+          <li class="constant"><a href="Pango.ATTR_INDEX_FROM_TEXT_BEGINNING.html">ATTR_INDEX_FROM_TEXT_BEGINNING</a></li>
+          <li class="constant"><a href="Pango.ATTR_INDEX_TO_TEXT_END.html">ATTR_INDEX_TO_TEXT_END</a></li>
+          <li class="constant"><a href="Pango.GLYPH_EMPTY.html">GLYPH_EMPTY</a></li>
+          <li class="constant"><a href="Pango.GLYPH_INVALID_INPUT.html">GLYPH_INVALID_INPUT</a></li>
+          <li class="constant"><a href="Pango.GLYPH_UNKNOWN_FLAG.html">GLYPH_UNKNOWN_FLAG</a></li>
+          <li class="constant"><a href="Pango.SCALE.html">SCALE</a></li>
+          <li class="constant"><a href="Pango.VERSION_MAJOR.html">VERSION_MAJOR</a></li>
+          <li class="constant"><a href="Pango.VERSION_MICRO.html">VERSION_MICRO</a></li>
+          <li class="constant"><a href="Pango.VERSION_MINOR.html">VERSION_MINOR</a></li>
+          <li class="constant"><a href="Pango.VERSION_STRING.html">VERSION_STRING</a></li>
+          <li class="delegate"><a href="Pango.AttrDataCopyFunc.html">AttrDataCopyFunc</a></li>
+          <li class="delegate"><a href="Pango.AttrFilterFunc.html">AttrFilterFunc</a></li>
+          <li class="delegate"><a href="Pango.FontsetForeachFunc.html">FontsetForeachFunc</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.@break.html">@break</a></span></li>
+          <li class="method"><a href="Pango.attr_allow_breaks_new.html">attr_allow_breaks_new</a></li>
+          <li class="method"><a href="Pango.attr_background_alpha_new.html">attr_background_alpha_new</a></li>
+          <li class="method"><a href="Pango.attr_background_new.html">attr_background_new</a></li>
+          <li class="method"><a href="Pango.attr_baseline_shift_new.html">attr_baseline_shift_new</a></li>
+          <li class="method"><a href="Pango.attr_break.html">attr_break</a></li>
+          <li class="method"><a href="Pango.attr_fallback_new.html">attr_fallback_new</a></li>
+          <li class="method"><a href="Pango.attr_family_new.html">attr_family_new</a></li>
+          <li class="method"><a href="Pango.attr_font_desc_new.html">attr_font_desc_new</a></li>
+          <li class="method"><a href="Pango.attr_font_scale_new.html">attr_font_scale_new</a></li>
+          <li class="method"><a href="Pango.attr_foreground_alpha_new.html">attr_foreground_alpha_new</a></li>
+          <li class="method"><a href="Pango.attr_foreground_new.html">attr_foreground_new</a></li>
+          <li class="method"><a href="Pango.attr_gravity_hint_new.html">attr_gravity_hint_new</a></li>
+          <li class="method"><a href="Pango.attr_gravity_new.html">attr_gravity_new</a></li>
+          <li class="method"><a href="Pango.attr_insert_hyphens_new.html">attr_insert_hyphens_new</a></li>
+          <li class="method"><a href="Pango.attr_letter_spacing_new.html">attr_letter_spacing_new</a></li>
+          <li class="method"><a href="Pango.attr_line_height_new.html">attr_line_height_new</a></li>
+          <li class="method"><a href="Pango.attr_line_height_new_absolute.html">attr_line_height_new_absolute</a></li>
+          <li class="method"><a href="Pango.attr_list_from_string.html">attr_list_from_string</a></li>
+          <li class="method"><a href="Pango.attr_overline_color_new.html">attr_overline_color_new</a></li>
+          <li class="method"><a href="Pango.attr_overline_new.html">attr_overline_new</a></li>
+          <li class="method"><a href="Pango.attr_rise_new.html">attr_rise_new</a></li>
+          <li class="method"><a href="Pango.attr_scale_new.html">attr_scale_new</a></li>
+          <li class="method"><a href="Pango.attr_sentence_new.html">attr_sentence_new</a></li>
+          <li class="method"><a href="Pango.attr_show_new.html">attr_show_new</a></li>
+          <li class="method"><a href="Pango.attr_stretch_new.html">attr_stretch_new</a></li>
+          <li class="method"><a href="Pango.attr_strikethrough_color_new.html">attr_strikethrough_color_new</a></li>
+          <li class="method"><a href="Pango.attr_strikethrough_new.html">attr_strikethrough_new</a></li>
+          <li class="method"><a href="Pango.attr_style_new.html">attr_style_new</a></li>
+          <li class="method"><a href="Pango.attr_text_transform_new.html">attr_text_transform_new</a></li>
+          <li class="method"><a href="Pango.attr_type_get_name.html">attr_type_get_name</a></li>
+          <li class="method"><a href="Pango.attr_type_register.html">attr_type_register</a></li>
+          <li class="method"><a href="Pango.attr_underline_color_new.html">attr_underline_color_new</a></li>
+          <li class="method"><a href="Pango.attr_underline_new.html">attr_underline_new</a></li>
+          <li class="method"><a href="Pango.attr_variant_new.html">attr_variant_new</a></li>
+          <li class="method"><a href="Pango.attr_weight_new.html">attr_weight_new</a></li>
+          <li class="method"><a href="Pango.attr_word_new.html">attr_word_new</a></li>
+          <li class="method"><a href="Pango.bidi_type_for_unichar.html">bidi_type_for_unichar</a></li>
+          <li class="method"><a href="Pango.default_break.html">default_break</a></li>
+          <li class="method"><a href="Pango.extents_to_pixels.html">extents_to_pixels</a></li>
+          <li class="method"><a href="Pango.find_base_dir.html">find_base_dir</a></li>
+          <li class="method"><a href="Pango.find_paragraph_boundary.html">find_paragraph_boundary</a></li>
+          <li class="method"><a href="Pango.font_description_from_string.html">font_description_from_string</a></li>
+          <li class="method"><a href="Pango.get_log_attrs.html">get_log_attrs</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.get_mirror_char.html">get_mirror_char</a></span></li>
+          <li class="method"><a href="Pango.gravity_get_for_matrix.html">gravity_get_for_matrix</a></li>
+          <li class="method"><a href="Pango.gravity_get_for_script.html">gravity_get_for_script</a></li>
+          <li class="method"><a href="Pango.gravity_get_for_script_and_width.html">gravity_get_for_script_and_width</a></li>
+          <li class="method"><a href="Pango.gravity_to_rotation.html">gravity_to_rotation</a></li>
+          <li class="method">is_zero_width</li>
+          <li class="method"><a href="Pango.itemize.html">itemize</a></li>
+          <li class="method"><a href="Pango.itemize_with_base_dir.html">itemize_with_base_dir</a></li>
+          <li class="method"><a href="Pango.language_from_string.html">language_from_string</a></li>
+          <li class="method"><a href="Pango.language_get_default.html">language_get_default</a></li>
+          <li class="method"><a href="Pango.language_get_preferred.html">language_get_preferred</a></li>
+          <li class="method"><a href="Pango.layout_deserialize_error_quark.html">layout_deserialize_error_quark</a></li>
+          <li class="method"><a href="Pango.log2vis_get_embedding_levels.html">log2vis_get_embedding_levels</a></li>
+          <li class="method"><a href="Pango.markup_parser_finish.html">markup_parser_finish</a></li>
+          <li class="method"><a href="Pango.markup_parser_new.html">markup_parser_new</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.parse_enum.html">parse_enum</a></span></li>
+          <li class="method"><a href="Pango.parse_markup.html">parse_markup</a></li>
+          <li class="method"><a href="Pango.parse_stretch.html">parse_stretch</a></li>
+          <li class="method"><a href="Pango.parse_style.html">parse_style</a></li>
+          <li class="method"><a href="Pango.parse_variant.html">parse_variant</a></li>
+          <li class="method"><a href="Pango.parse_weight.html">parse_weight</a></li>
+          <li class="method"><a href="Pango.quantize_line_geometry.html">quantize_line_geometry</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.read_line.html">read_line</a></span></li>
+          <li class="method"><a href="Pango.reorder_items.html">reorder_items</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.scan_int.html">scan_int</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Pango.scan_string.html">scan_string</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Pango.scan_word.html">scan_word</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Pango.script_for_unichar.html">script_for_unichar</a></span></li>
+          <li class="method"><a href="Pango.script_get_sample_language.html">script_get_sample_language</a></li>
+          <li class="method"><a href="Pango.shape.html">shape</a></li>
+          <li class="method"><a href="Pango.shape_full.html">shape_full</a></li>
+          <li class="method"><a href="Pango.shape_item.html">shape_item</a></li>
+          <li class="method"><a href="Pango.shape_with_flags.html">shape_with_flags</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.skip_space.html">skip_space</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Pango.split_file_list.html">split_file_list</a></span></li>
+          <li class="method"><a href="Pango.tab_array_from_string.html">tab_array_from_string</a></li>
+          <li class="method"><a href="Pango.tailor_break.html">tailor_break</a></li>
+          <li class="method"><span class="deprecated"><a href="Pango.trim_string.html">trim_string</a></span></li>
+          <li class="method"><a href="Pango.unichar_direction.html">unichar_direction</a></li>
+          <li class="method"><a href="Pango.units_from_double.html">units_from_double</a></li>
+          <li class="method"><a href="Pango.units_to_double.html">units_to_double</a></li>
+          <li class="method"><a href="Pango.version.html">version</a></li>
+          <li class="method"><a href="Pango.version_check.html">version_check</a></li>
+          <li class="method"><a href="Pango.version_string.html">version_string</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">is_zero_width</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><br/>[ <span class="main_type">Version</span> ( since = <span class="main_literal">"1.10"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><span class="method">is_zero_width</span></b> (<span class="main_basic_type"><a href="../glib-2.0/unichar.html" class="struct">unichar</a></span> ch)
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Pango.html">Pango</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">pango</a>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

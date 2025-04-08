@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.StyleContext.render_slider &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.StyleContext.render_slider &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="Gtk.StyleContext.html">StyleContext</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.StyleContext.direction.html">direction</a></li>
+          <li class="property"><a href="Gtk.StyleContext.paint_clock.html">paint_clock</a></li>
+          <li class="property"><a href="Gtk.StyleContext.parent.html">parent</a></li>
+          <li class="property"><a href="Gtk.StyleContext.screen.html">screen</a></li>
+          <li class="static_method"><a href="Gtk.StyleContext.add_provider_for_screen.html">add_provider_for_screen</a></li>
+          <li class="static_method"><a href="Gtk.StyleContext.remove_provider_for_screen.html">remove_provider_for_screen</a></li>
+          <li class="static_method"><a href="Gtk.StyleContext.reset_widgets.html">reset_widgets</a></li>
+          <li class="creation_method"><a href="Gtk.StyleContext.StyleContext.html">StyleContext</a></li>
+          <li class="method"><a href="Gtk.StyleContext.@get.html">@get</a></li>
+          <li class="method"><a href="Gtk.StyleContext.add_class.html">add_class</a></li>
+          <li class="method"><a href="Gtk.StyleContext.add_provider.html">add_provider</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.add_region.html">add_region</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.cancel_animations.html">cancel_animations</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.get_background_color.html">get_background_color</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.get_border.html">get_border</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.get_border_color.html">get_border_color</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.get_color.html">get_color</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.get_direction.html">get_direction</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.get_font.html">get_font</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.get_frame_clock.html">get_frame_clock</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_junction_sides.html">get_junction_sides</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_margin.html">get_margin</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_padding.html">get_padding</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_parent.html">get_parent</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_path.html">get_path</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_property.html">get_property</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_scale.html">get_scale</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_screen.html">get_screen</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_section.html">get_section</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_state.html">get_state</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_style.html">get_style</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_style_property.html">get_style_property</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_style_valist.html">get_style_valist</a></li>
+          <li class="method"><a href="Gtk.StyleContext.get_valist.html">get_valist</a></li>
+          <li class="method"><a href="Gtk.StyleContext.has_class.html">has_class</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.has_region.html">has_region</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.invalidate.html">invalidate</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.list_classes.html">list_classes</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.list_regions.html">list_regions</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.lookup_color.html">lookup_color</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.lookup_icon_set.html">lookup_icon_set</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.notify_state_change.html">notify_state_change</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.pop_animatable_region.html">pop_animatable_region</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.push_animatable_region.html">push_animatable_region</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.remove_class.html">remove_class</a></li>
+          <li class="method"><a href="Gtk.StyleContext.remove_provider.html">remove_provider</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.remove_region.html">remove_region</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.render_activity.html">render_activity</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_arrow.html">render_arrow</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_background.html">render_background</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_background_get_clip.html">render_background_get_clip</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_check.html">render_check</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_expander.html">render_expander</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_extension.html">render_extension</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_focus.html">render_focus</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_frame.html">render_frame</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.render_frame_gap.html">render_frame_gap</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.render_handle.html">render_handle</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_icon.html">render_icon</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.render_icon_pixbuf.html">render_icon_pixbuf</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.render_icon_surface.html">render_icon_surface</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_insertion_cursor.html">render_insertion_cursor</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_layout.html">render_layout</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_line.html">render_line</a></li>
+          <li class="method"><a href="Gtk.StyleContext.render_option.html">render_option</a></li>
+          <li class="method">render_slider</li>
+          <li class="method"><a href="Gtk.StyleContext.restore.html">restore</a></li>
+          <li class="method"><a href="Gtk.StyleContext.save.html">save</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.scroll_animations.html">scroll_animations</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.set_background.html">set_background</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.set_direction.html">set_direction</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.set_frame_clock.html">set_frame_clock</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_junction_sides.html">set_junction_sides</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_parent.html">set_parent</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_path.html">set_path</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_scale.html">set_scale</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_screen.html">set_screen</a></li>
+          <li class="method"><a href="Gtk.StyleContext.set_state.html">set_state</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.StyleContext.state_is_running.html">state_is_running</a></span></li>
+          <li class="method"><a href="Gtk.StyleContext.to_string.html">to_string</a></li>
+          <li class="signal"><a href="Gtk.StyleContext.changed.html">changed</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">render_slider</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"gtk_render_slider"</span> ) ]<br/>[ <span class="main_type">Version</span> ( since = <span class="main_literal">"3.0"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><span class="method">render_slider</span></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> height, <span class="main_type"><a href="Gtk.Orientation.html" class="enum">Orientation</a></span> orientation)
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

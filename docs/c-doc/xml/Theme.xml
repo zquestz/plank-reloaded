@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankTheme">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankTheme.top_of_page">PlankTheme</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankTheme</refname>
+<refpurpose>A themed renderer for windows.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankTheme.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-THEME:CAPS">PLANK_TYPE_THEME</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-THEME-DEFAULT-NAME:CAPS">PLANK_THEME_DEFAULT_NAME</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-THEME-GTK-THEME-NAME:CAPS">PLANK_THEME_GTK_THEME_NAME</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankTheme">PlankTheme</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankThemeClass">PlankThemeClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankTheme.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankTheme.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankTheme.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-THEME:CAPS" role="macro">
+<title>PLANK_TYPE_THEME</title>
+<indexterm zone="PLANK-TYPE-THEME:CAPS"><primary>PLANK_TYPE_THEME</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_THEME (plank_theme_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankTheme"><type>PlankTheme</type></link>.</para>
+</refsect2>
+<refsect2 id="PLANK-THEME-DEFAULT-NAME:CAPS" role="macro">
+<title>PLANK_THEME_DEFAULT_NAME</title>
+<indexterm zone="PLANK-THEME-DEFAULT-NAME:CAPS"><primary>PLANK_THEME_DEFAULT_NAME</primary></indexterm>
+<programlisting language="C">#define PLANK_THEME_DEFAULT_NAME "Default"
+</programlisting>
+</refsect2>
+<refsect2 id="PLANK-THEME-GTK-THEME-NAME:CAPS" role="macro">
+<title>PLANK_THEME_GTK_THEME_NAME</title>
+<indexterm zone="PLANK-THEME-GTK-THEME-NAME:CAPS"><primary>PLANK_THEME_GTK_THEME_NAME</primary></indexterm>
+<programlisting language="C">#define PLANK_THEME_GTK_THEME_NAME "Gtk+"
+</programlisting>
+</refsect2>
+<refsect2 id="PlankTheme" role="struct">
+<title>struct PlankTheme</title>
+<indexterm zone="PlankTheme"><primary>PlankTheme</primary></indexterm>
+<programlisting language="C">struct PlankTheme {
+	PlankPreferences parent_instance;
+	PlankThemePrivate * priv;
+};
+</programlisting>
+<para>A themed renderer for windows.</para>
+</refsect2>
+<refsect2 id="PlankThemeClass" role="struct">
+<title>struct PlankThemeClass</title>
+<indexterm zone="PlankThemeClass"><primary>PlankThemeClass</primary></indexterm>
+<programlisting language="C">struct PlankThemeClass {
+	PlankPreferencesClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-THEME:CAPS"><literal>PLANK_TYPE_THEME</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankThemeClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

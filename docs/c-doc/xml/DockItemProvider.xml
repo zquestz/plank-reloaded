@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankDockItemProvider">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankDockItemProvider.top_of_page">PlankDockItemProvider</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankDockItemProvider</refname>
+<refpurpose>A container and controller class for managing dock items.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankDockItemProvider.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-DOCK-ITEM-PROVIDER:CAPS">PLANK_TYPE_DOCK_ITEM_PROVIDER</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockItemProvider">PlankDockItemProvider</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockItemProviderClass">PlankDockItemProviderClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankDockItemProvider.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockItemProvider.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockItemProvider.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-DOCK-ITEM-PROVIDER:CAPS" role="macro">
+<title>PLANK_TYPE_DOCK_ITEM_PROVIDER</title>
+<indexterm zone="PLANK-TYPE-DOCK-ITEM-PROVIDER:CAPS"><primary>PLANK_TYPE_DOCK_ITEM_PROVIDER</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_DOCK_ITEM_PROVIDER (plank_dock_item_provider_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankDockItemProvider"><type>PlankDockItemProvider</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankDockItemProvider" role="struct">
+<title>struct PlankDockItemProvider</title>
+<indexterm zone="PlankDockItemProvider"><primary>PlankDockItemProvider</primary></indexterm>
+<programlisting language="C">struct PlankDockItemProvider {
+	PlankDockContainer parent_instance;
+	PlankDockItemProviderPrivate * priv;
+};
+</programlisting>
+<para>A container and controller class for managing dock items.</para>
+</refsect2>
+<refsect2 id="PlankDockItemProviderClass" role="struct">
+<title>struct PlankDockItemProviderClass</title>
+<indexterm zone="PlankDockItemProviderClass"><primary>PlankDockItemProviderClass</primary></indexterm>
+<programlisting language="C">struct PlankDockItemProviderClass {
+	PlankDockContainerClass parent_class;
+	gboolean (*item_exists_for_uri) (PlankDockItemProvider* self, const gchar* uri);
+	PlankDockItem* (*item_for_uri) (PlankDockItemProvider* self, const gchar* uri);
+	gboolean (*add_item_with_uri) (PlankDockItemProvider* self, const gchar* uri, PlankDockItem* target);
+	void (*handle_item_deleted) (PlankDockItemProvider* self, PlankDockItem* item);
+	gchar** (*get_dockitem_filenames) (PlankDockItemProvider* self, gint* result_length1);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-DOCK-ITEM-PROVIDER:CAPS"><literal>PLANK_TYPE_DOCK_ITEM_PROVIDER</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankDockItemProviderClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockItemProviderClass.item-exists-for-uri">item_exists_for_uri</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-item-provider-item-exists-for-uri"><function><link linkend="plank-dock-item-provider-item-exists-for-uri"><function>plank_dock_item_provider_item_exists_for_uri()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockItemProviderClass.item-for-uri">item_for_uri</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-item-provider-item-for-uri"><function><link linkend="plank-dock-item-provider-item-for-uri"><function>plank_dock_item_provider_item_for_uri()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockItemProviderClass.add-item-with-uri">add_item_with_uri</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-item-provider-add-item-with-uri"><function><link linkend="plank-dock-item-provider-add-item-with-uri"><function>plank_dock_item_provider_add_item_with_uri()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockItemProviderClass.handle-item-deleted">handle_item_deleted</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockItemProviderClass.get-dockitem-filenames">get_dockitem_filenames</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-item-provider-get-dockitem-filenames"><function><link linkend="plank-dock-item-provider-get-dockitem-filenames"><function>plank_dock_item_provider_get_dockitem_filenames()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

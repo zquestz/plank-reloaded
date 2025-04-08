@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.IOChannel &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.IOChannel &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">glib-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">IOChannel</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="static_method"><a href="GLib.IOChannel.win32_poll.html">win32_poll</a></li>
+          <li class="creation_method"><a href="GLib.IOChannel.IOChannel.file.html">IOChannel.file</a></li>
+          <li class="creation_method"><a href="GLib.IOChannel.IOChannel.unix_new.html">IOChannel.unix_new</a></li>
+          <li class="creation_method"><a href="GLib.IOChannel.IOChannel.win32_messages.html">IOChannel.win32_messages</a></li>
+          <li class="creation_method"><a href="GLib.IOChannel.IOChannel.win32_new_fd.html">IOChannel.win32_new_fd</a></li>
+          <li class="creation_method"><a href="GLib.IOChannel.IOChannel.win32_socket.html">IOChannel.win32_socket</a></li>
+          <li class="method"><a href="GLib.IOChannel.add_watch.html">add_watch</a></li>
+          <li class="method"><a href="GLib.IOChannel.add_watch_full.html">add_watch_full</a></li>
+          <li class="method"><a href="GLib.IOChannel.create_watch.html">create_watch</a></li>
+          <li class="method"><a href="GLib.IOChannel.flush.html">flush</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_buffer_condition.html">get_buffer_condition</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_buffer_size.html">get_buffer_size</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_buffered.html">get_buffered</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_close_on_unref.html">get_close_on_unref</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_encoding.html">get_encoding</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_flags.html">get_flags</a></li>
+          <li class="method"><a href="GLib.IOChannel.get_line_term.html">get_line_term</a></li>
+          <li class="method"><a href="GLib.IOChannel.init.html">init</a></li>
+          <li class="method"><a href="GLib.IOChannel.read_chars.html">read_chars</a></li>
+          <li class="method"><a href="GLib.IOChannel.read_line.html">read_line</a></li>
+          <li class="method"><a href="GLib.IOChannel.read_line_string.html">read_line_string</a></li>
+          <li class="method"><a href="GLib.IOChannel.read_to_end.html">read_to_end</a></li>
+          <li class="method"><a href="GLib.IOChannel.read_unichar.html">read_unichar</a></li>
+          <li class="method"><a href="GLib.IOChannel.seek_position.html">seek_position</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_buffer_size.html">set_buffer_size</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_buffered.html">set_buffered</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_close_on_unref.html">set_close_on_unref</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_encoding.html">set_encoding</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_flags.html">set_flags</a></li>
+          <li class="method"><a href="GLib.IOChannel.set_line_term.html">set_line_term</a></li>
+          <li class="method"><a href="GLib.IOChannel.shutdown.html">shutdown</a></li>
+          <li class="method"><a href="GLib.IOChannel.unix_get_fd.html">unix_get_fd</a></li>
+          <li class="method"><a href="GLib.IOChannel.win32_get_fd.html">win32_get_fd</a></li>
+          <li class="method"><a href="GLib.IOChannel.win32_make_pollfd.html">win32_make_pollfd</a></li>
+          <li class="method"><a href="GLib.IOChannel.win32_set_debug.html">win32_set_debug</a></li>
+          <li class="method"><a href="GLib.IOChannel.write_chars.html">write_chars</a></li>
+          <li class="method"><a href="GLib.IOChannel.write_unichar.html">write_unichar</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">IOChannel</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.IOChannel" alt="Object hierarchy for IOChannel" src="img/GLib.IOChannel.png"/>
+
+      <map id="GLib.IOChannel" name="GLib.IOChannel">
+<area shape="rect" id="node1" href="GLib.IOChannel.html" title="GLib.IOChannel" alt="" coords="5,5,150,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( ref_function = <span class="main_literal">"g_io_channel_ref"</span> ,  type_id = <span class="main_literal">"G_TYPE_IO_CHANNEL"</span> ,  unref_function = <span class="main_literal">"g_io_channel_unref"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">IOChannel</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.IOChannel.win32_poll.html" class="static_method">win32_poll</a></b> (<span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span>[] fds, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> timeout)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.IOChannel.IOChannel.file.html" class="creation_method">IOChannel.file</a></b> (<span class="main_basic_type"><a href="string.html" class="class">string</a></span> filename, <span class="main_basic_type"><a href="string.html" class="class">string</a></span> mode) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.FileError.html" class="errordomain">FileError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.IOChannel.IOChannel.unix_new.html" class="creation_method">IOChannel.unix_new</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> fd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.IOChannel.IOChannel.win32_messages.html" class="creation_method">IOChannel.win32_messages</a></b> (<span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> hwnd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.IOChannel.IOChannel.win32_new_fd.html" class="creation_method">IOChannel.win32_new_fd</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> fd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.IOChannel.IOChannel.win32_socket.html" class="creation_method">IOChannel.win32_socket</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> socket)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.IOChannel.add_watch.html" class="method">add_watch</a></b> (<span class="main_type"><a href="GLib.IOCondition.html" class="enum">IOCondition</a></span> condition, <span class="main_type"><a href="GLib.IOFunc.html" class="delegate">IOFunc</a></span> func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.IOChannel.add_watch_full.html" class="method">add_watch_full</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> priority, <span class="main_type"><a href="GLib.IOCondition.html" class="enum">IOCondition</a></span> condition, <span class="main_keyword">owned</span> <span class="main_type"><a href="GLib.IOFunc.html" class="delegate">IOFunc</a></span> func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOSource.html" class="class">IOSource</a></span> <b><a href="GLib.IOChannel.create_watch.html" class="method">create_watch</a></b> (<span class="main_type"><a href="GLib.IOCondition.html" class="enum">IOCondition</a></span> condition)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.flush.html" class="method">flush</a></b> () <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOCondition.html" class="enum">IOCondition</a></span> <b><a href="GLib.IOChannel.get_buffer_condition.html" class="method">get_buffer_condition</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> <b><a href="GLib.IOChannel.get_buffer_size.html" class="method">get_buffer_size</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.IOChannel.get_buffered.html" class="method">get_buffered</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.IOChannel.get_close_on_unref.html" class="method">get_close_on_unref</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="string.html" class="class">string</a></span> <b><a href="GLib.IOChannel.get_encoding.html" class="method">get_encoding</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOFlags.html" class="enum">IOFlags</a></span> <b><a href="GLib.IOChannel.get_flags.html" class="method">get_flags</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="string.html" class="class">string</a></span> <b><a href="GLib.IOChannel.get_line_term.html" class="method">get_line_term</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> length)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.init.html" class="method">init</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.read_chars.html" class="method">read_chars</a></b> (<span class="main_basic_type"><a href="char.html" class="struct">char</a></span>[] buf, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> bytes_read) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.read_line.html" class="method">read_line</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="string.html" class="class">string</a></span> str_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> length, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> terminator_pos) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.read_line_string.html" class="method">read_line_string</a></b> (<span class="main_type"><a href="GLib.StringBuilder.html" class="class">StringBuilder</a></span> buffer, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> terminator_pos) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.read_to_end.html" class="method">read_to_end</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="string.html" class="class">string</a></span> str_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> length) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.read_unichar.html" class="method">read_unichar</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="unichar.html" class="struct">unichar</a></span> thechar) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.seek_position.html" class="method">seek_position</a></b> (<span class="main_basic_type"><a href="int64.html" class="struct">int64</a></span> offset, <span class="main_type"><a href="GLib.SeekType.html" class="enum">SeekType</a></span> type) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.set_buffer_size.html" class="method">set_buffer_size</a></b> (<span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.set_buffered.html" class="method">set_buffered</a></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> buffered)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.set_close_on_unref.html" class="method">set_close_on_unref</a></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> do_close)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.set_encoding.html" class="method">set_encoding</a></b> (<span class="main_basic_type"><a href="string.html" class="class">string</a></span>? encoding) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.set_flags.html" class="method">set_flags</a></b> (<span class="main_type"><a href="GLib.IOFlags.html" class="enum">IOFlags</a></span> flags) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.set_line_term.html" class="method">set_line_term</a></b> (<span class="main_basic_type"><a href="string.html" class="class">string</a></span> line_term, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> length)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.shutdown.html" class="method">shutdown</a></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> flush) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.IOChannel.unix_get_fd.html" class="method">unix_get_fd</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.IOChannel.win32_get_fd.html" class="method">win32_get_fd</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.win32_make_pollfd.html" class="method">win32_make_pollfd</a></b> (<span class="main_type"><a href="GLib.IOCondition.html" class="enum">IOCondition</a></span> condition, <span class="main_keyword">ref</span> <span class="main_type"><a href="GLib.PollFD.html" class="struct">PollFD</a></span> fd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOChannel.win32_set_debug.html" class="method">win32_set_debug</a></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> flag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.write_chars.html" class="method">write_chars</a></b> (<span class="main_basic_type"><a href="char.html" class="struct">char</a></span>[] buf, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="size_t.html" class="struct">size_t</a></span> bytes_written) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.IOStatus.html" class="enum">IOStatus</a></span> <b><a href="GLib.IOChannel.write_unichar.html" class="method">write_unichar</a></b> (<span class="main_basic_type"><a href="unichar.html" class="struct">unichar</a></span> thechar) <span class="main_keyword">throws</span> <span class="main_type"><a href="GLib.ConvertError.html" class="errordomain">ConvertError</a></span>, <span class="main_type"><a href="GLib.IOChannelError.html" class="errordomain">IOChannelError</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankItemFactory">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankItemFactory.top_of_page">PlankItemFactory</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankItemFactory</refname>
+<refpurpose>An item factory. Creates <link linkend="PlankDockItem"><type>PlankDockItem</type></link>s based on .dockitem files.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankItemFactory.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-ITEM-FACTORY:CAPS">PLANK_TYPE_ITEM_FACTORY</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankItemFactory">PlankItemFactory</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankItemFactoryClass">PlankItemFactoryClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankItemFactory.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankItemFactory.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankItemFactory.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-ITEM-FACTORY:CAPS" role="macro">
+<title>PLANK_TYPE_ITEM_FACTORY</title>
+<indexterm zone="PLANK-TYPE-ITEM-FACTORY:CAPS"><primary>PLANK_TYPE_ITEM_FACTORY</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_ITEM_FACTORY (plank_item_factory_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankItemFactory"><type>PlankItemFactory</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankItemFactory" role="struct">
+<title>struct PlankItemFactory</title>
+<indexterm zone="PlankItemFactory"><primary>PlankItemFactory</primary></indexterm>
+<programlisting language="C">struct PlankItemFactory {
+	GObject parent_instance;
+	PlankItemFactoryPrivate * priv;
+	GFile* launchers_dir;
+};
+</programlisting>
+<para>An item factory. Creates <link linkend="PlankDockItem"><type>PlankDockItem</type></link>s based on .dockitem files.</para>
+<refsect3 id="PlankItemFactory.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="PlankItemFactoryPrivate"><type>PlankItemFactoryPrivate</type></link>&#160;*<structfield id="PlankItemFactory.priv">priv</structfield>;</para></entry>
+<entry /><entry />
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="GFile"><type>GFile</type></link>&#160;*<structfield id="PlankItemFactory.launchers-dir">launchers_dir</structfield>;</para></entry>
+<entry role="struct_member_description"><para>The directory containing .dockitem files.</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="PlankItemFactoryClass" role="struct">
+<title>struct PlankItemFactoryClass</title>
+<indexterm zone="PlankItemFactoryClass"><primary>PlankItemFactoryClass</primary></indexterm>
+<programlisting language="C">struct PlankItemFactoryClass {
+	GObjectClass parent_class;
+	PlankDockElement* (*make_element) (PlankItemFactory* self, GFile* file);
+	PlankDockItem* (*get_item_for_dock) (PlankItemFactory* self);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-ITEM-FACTORY:CAPS"><literal>PLANK_TYPE_ITEM_FACTORY</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankItemFactoryClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankItemFactoryClass.make-element">make_element</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-item-factory-make-element"><function><link linkend="plank-item-factory-make-element"><function>plank_item_factory_make_element()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankItemFactoryClass.get-item-for-dock">get_item_for_dock</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-item-factory-get-item-for-dock"><function><link linkend="plank-item-factory-get-item-for-dock"><function>plank_item_factory_get_item_for_dock()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

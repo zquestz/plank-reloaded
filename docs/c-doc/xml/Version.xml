@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-Version">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-Version.top_of_page">Version</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>Version</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-Version.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-MAJOR-VERSION:CAPS">PLANK_MAJOR_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-MINOR-VERSION:CAPS">PLANK_MINOR_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-MICRO-VERSION:CAPS">PLANK_MICRO_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-NANO-VERSION:CAPS">PLANK_NANO_VERSION</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-Version.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-Version.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-Version.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-MAJOR-VERSION:CAPS" role="macro">
+<title>PLANK_MAJOR_VERSION</title>
+<indexterm zone="PLANK-MAJOR-VERSION:CAPS"><primary>PLANK_MAJOR_VERSION</primary></indexterm>
+<programlisting language="C">#define PLANK_MAJOR_VERSION 0
+</programlisting>
+<para>Like get_major_version, but from the headers used at application compile time, rather than from the library linked against at application run time</para>
+</refsect2>
+<refsect2 id="PLANK-MINOR-VERSION:CAPS" role="macro">
+<title>PLANK_MINOR_VERSION</title>
+<indexterm zone="PLANK-MINOR-VERSION:CAPS"><primary>PLANK_MINOR_VERSION</primary></indexterm>
+<programlisting language="C">#define PLANK_MINOR_VERSION 11
+</programlisting>
+<para>Like get_minor_version, but from the headers used at application compile time, rather than from the library linked against at application run time</para>
+</refsect2>
+<refsect2 id="PLANK-MICRO-VERSION:CAPS" role="macro">
+<title>PLANK_MICRO_VERSION</title>
+<indexterm zone="PLANK-MICRO-VERSION:CAPS"><primary>PLANK_MICRO_VERSION</primary></indexterm>
+<programlisting language="C">#define PLANK_MICRO_VERSION 118
+</programlisting>
+<para>Like get_micro_version, but from the headers used at application compile time, rather than from the library linked against at application run time</para>
+</refsect2>
+<refsect2 id="PLANK-NANO-VERSION:CAPS" role="macro">
+<title>PLANK_NANO_VERSION</title>
+<indexterm zone="PLANK-NANO-VERSION:CAPS"><primary>PLANK_NANO_VERSION</primary></indexterm>
+<programlisting language="C">#define PLANK_NANO_VERSION 0
+</programlisting>
+<para>Like get_nano_version, but from the headers used at application compile time, rather than from the library linked against at application run time</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

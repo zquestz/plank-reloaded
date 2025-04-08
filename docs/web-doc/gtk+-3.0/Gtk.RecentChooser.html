@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.RecentChooser &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.RecentChooser &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="interface">RecentChooser</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.RecentChooser.filter.html">filter</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.limit.html">limit</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.local_only.html">local_only</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.recent_manager.html">recent_manager</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.select_multiple.html">select_multiple</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.show_icons.html">show_icons</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.show_not_found.html">show_not_found</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.show_private.html">show_private</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.show_tips.html">show_tips</a></li>
+          <li class="property"><a href="Gtk.RecentChooser.sort_type.html">sort_type</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.add_filter.html">add_filter</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_current_item.html">get_current_item</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.get_current_uri.html">get_current_uri</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_filter.html">get_filter</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.get_items.html">get_items</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_limit.html">get_limit</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_local_only.html">get_local_only</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.get_recent_manager.html">get_recent_manager</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_select_multiple.html">get_select_multiple</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_show_icons.html">get_show_icons</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_show_not_found.html">get_show_not_found</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_show_private.html">get_show_private</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_show_tips.html">get_show_tips</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_sort_type.html">get_sort_type</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.get_uris.html">get_uris</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.list_filters.html">list_filters</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.remove_filter.html">remove_filter</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.select_all.html">select_all</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.select_uri.html">select_uri</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.set_current_uri.html">set_current_uri</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_filter.html">set_filter</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_limit.html">set_limit</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_local_only.html">set_local_only</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_select_multiple.html">set_select_multiple</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_show_icons.html">set_show_icons</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_show_not_found.html">set_show_not_found</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_show_private.html">set_show_private</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_show_tips.html">set_show_tips</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.set_sort_func.html">set_sort_func</a></li>
+          <li class="method"><a href="Gtk.RecentChooser.set_sort_type.html">set_sort_type</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.unselect_all.html">unselect_all</a></li>
+          <li class="abstract_method"><a href="Gtk.RecentChooser.unselect_uri.html">unselect_uri</a></li>
+          <li class="signal"><a href="Gtk.RecentChooser.item_activated.html">item_activated</a></li>
+          <li class="signal"><a href="Gtk.RecentChooser.selection_changed.html">selection_changed</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">RecentChooser</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.RecentChooser" alt="Object hierarchy for RecentChooser" src="img/Gtk.RecentChooser.png"/>
+
+      <map id="Gtk.RecentChooser" name="Gtk.RecentChooser">
+<area shape="rect" id="node1" href="Gtk.RecentChooser.html" title="Gtk.RecentChooser" alt="" coords="5,101,169,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="31,5,143,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gtk_recent_chooser_get_type ()"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">interface</span> <b><span class="interface">RecentChooser</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1990')">All known implementing classes:</div>
+          <div class="content" id="box-content-1990">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.RecentAction.html">RecentAction</a></li>
+                <li class="class"><a href="Gtk.RecentChooserDialog.html">RecentChooserDialog</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.RecentChooserMenu.html">RecentChooserMenu</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.RecentChooserWidget.html">RecentChooserWidget</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span> <b><a href="Gtk.RecentChooser.filter.html" class="property">filter</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.RecentChooser.limit.html" class="property">limit</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.local_only.html" class="property">local_only</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.RecentManager.html" class="class">RecentManager</a></span> <b><a href="Gtk.RecentChooser.recent_manager.html" class="property">recent_manager</a></b> { <span class="main_keyword">construct</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.select_multiple.html" class="property">select_multiple</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.show_icons.html" class="property">show_icons</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.show_not_found.html" class="property">show_not_found</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.show_private.html" class="property">show_private</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.show_tips.html" class="property">show_tips</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.RecentSortType.html" class="enum">RecentSortType</a></span> <b><a href="Gtk.RecentChooser.sort_type.html" class="property">sort_type</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.add_filter.html" class="abstract_method">add_filter</a></b> (<span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span> filter)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.RecentInfo.html" class="class">RecentInfo</a></span> <b><a href="Gtk.RecentChooser.get_current_item.html" class="method">get_current_item</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.RecentChooser.get_current_uri.html" class="abstract_method">get_current_uri</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span> <b><a href="Gtk.RecentChooser.get_filter.html" class="method">get_filter</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_type"><a href="Gtk.RecentInfo.html" class="class">RecentInfo</a></span>&gt; <b><a href="Gtk.RecentChooser.get_items.html" class="abstract_method">get_items</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.RecentChooser.get_limit.html" class="method">get_limit</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_local_only.html" class="method">get_local_only</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.RecentManager.html" class="class">RecentManager</a></span> <b><a href="Gtk.RecentChooser.get_recent_manager.html" class="abstract_method">get_recent_manager</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_select_multiple.html" class="method">get_select_multiple</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_show_icons.html" class="method">get_show_icons</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_show_not_found.html" class="method">get_show_not_found</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_show_private.html" class="method">get_show_private</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.get_show_tips.html" class="method">get_show_tips</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.RecentSortType.html" class="enum">RecentSortType</a></span> <b><a href="Gtk.RecentChooser.get_sort_type.html" class="method">get_sort_type</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>[] <b><a href="Gtk.RecentChooser.get_uris.html" class="method">get_uris</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><a href="../glib-2.0/GLib.SList.html" class="class">SList</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span>&gt; <b><a href="Gtk.RecentChooser.list_filters.html" class="abstract_method">list_filters</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.remove_filter.html" class="abstract_method">remove_filter</a></b> (<span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span> filter)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.select_all.html" class="abstract_method">select_all</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.select_uri.html" class="abstract_method">select_uri</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> uri) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.RecentChooser.set_current_uri.html" class="abstract_method">set_current_uri</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> uri) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_filter.html" class="method">set_filter</a></b> (<span class="main_type"><a href="Gtk.RecentFilter.html" class="class">RecentFilter</a></span>? filter)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_limit.html" class="method">set_limit</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_local_only.html" class="method">set_local_only</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> local_only)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_select_multiple.html" class="method">set_select_multiple</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> select_multiple)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_show_icons.html" class="method">set_show_icons</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> show_icons)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_show_not_found.html" class="method">set_show_not_found</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> show_not_found)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_show_private.html" class="method">set_show_private</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> show_private)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_show_tips.html" class="method">set_show_tips</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> show_tips)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_sort_func.html" class="abstract_method">set_sort_func</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><a href="Gtk.RecentSortFunc.html" class="delegate">RecentSortFunc</a></span> sort_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.set_sort_type.html" class="method">set_sort_type</a></b> (<span class="main_type"><a href="Gtk.RecentSortType.html" class="enum">RecentSortType</a></span> sort_type)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.unselect_all.html" class="abstract_method">unselect_all</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.unselect_uri.html" class="abstract_method">unselect_uri</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> uri)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.item_activated.html" class="signal">item_activated</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.RecentChooser.selection_changed.html" class="signal">selection_changed</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1991')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-1991">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

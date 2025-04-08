@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.warn_if_fail &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.warn_if_fail &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">glib-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.Aligned.html">Aligned</a></li>
+          <li class="namespace"><a href="GLib.AtomicInt.html">AtomicInt</a></li>
+          <li class="namespace"><a href="GLib.AtomicPointer.html">AtomicPointer</a></li>
+          <li class="namespace"><a href="GLib.AtomicUint.html">AtomicUint</a></li>
+          <li class="namespace"><a href="GLib.Base64.html">Base64</a></li>
+          <li class="namespace"><a href="GLib.Bit.html">Bit</a></li>
+          <li class="namespace"><a href="GLib.CharacterSet.html">CharacterSet</a></li>
+          <li class="namespace"><a href="GLib.ChildWatch.html">ChildWatch</a></li>
+          <li class="namespace"><a href="GLib.DirUtils.html">DirUtils</a></li>
+          <li class="namespace"><a href="GLib.Environ.html">Environ</a></li>
+          <li class="namespace"><a href="GLib.Environment.html">Environment</a></li>
+          <li class="namespace"><a href="GLib.FileUtils.html">FileUtils</a></li>
+          <li class="namespace"><a href="GLib.Filename.html">Filename</a></li>
+          <li class="namespace"><a href="GLib.Hostname.html">Hostname</a></li>
+          <li class="namespace"><a href="GLib.Idle.html">Idle</a></li>
+          <li class="namespace"><a href="GLib.Intl.html">Intl</a></li>
+          <li class="namespace"><a href="GLib.KeyFileDesktop.html">KeyFileDesktop</a></li>
+          <li class="namespace"><a href="GLib.Log.html">Log</a></li>
+          <li class="namespace"><a href="GLib.Markup.html">Markup</a></li>
+          <li class="namespace"><a href="GLib.Math.html">Math</a></li>
+          <li class="namespace"><a href="GLib.Memory.html">Memory</a></li>
+          <li class="namespace"><a href="GLib.OsInfoKey.html">OsInfoKey</a></li>
+          <li class="namespace"><a href="GLib.Path.html">Path</a></li>
+          <li class="namespace"><a href="GLib.Priority.html">Priority</a></li>
+          <li class="namespace"><a href="GLib.Process.html">Process</a></li>
+          <li class="namespace"><a href="GLib.Random.html">Random</a></li>
+          <li class="namespace"><a href="GLib.Shell.html">Shell</a></li>
+          <li class="namespace"><a href="GLib.Slice.html">Slice</a></li>
+          <li class="namespace"><a href="GLib.SpacedPrimes.html">SpacedPrimes</a></li>
+          <li class="namespace"><a href="GLib.Test.html">Test</a></li>
+          <li class="namespace"><a href="GLib.Timeout.html">Timeout</a></li>
+          <li class="namespace"><a href="GLib.Unix.html">Unix</a></li>
+          <li class="namespace"><a href="GLib.Uuid.html">Uuid</a></li>
+          <li class="namespace"><a href="GLib.Version.html">Version</a></li>
+          <li class="namespace"><a href="GLib.Win32.html">Win32</a></li>
+          <li class="enum"><a href="GLib.ByteOrder.html">ByteOrder</a></li>
+          <li class="enum"><a href="GLib.ChecksumType.html">ChecksumType</a></li>
+          <li class="enum"><a href="GLib.CompareOperator.html">CompareOperator</a></li>
+          <li class="enum"><a href="GLib.DateDMY.html">DateDMY</a></li>
+          <li class="enum"><a href="GLib.DateMonth.html">DateMonth</a></li>
+          <li class="enum"><a href="GLib.DateWeekday.html">DateWeekday</a></li>
+          <li class="enum"><a href="GLib.ErrorType.html">ErrorType</a></li>
+          <li class="enum"><a href="GLib.FileSeek.html">FileSeek</a></li>
+          <li class="enum"><a href="GLib.FileSetContentsFlags.html">FileSetContentsFlags</a></li>
+          <li class="enum"><a href="GLib.FileTest.html">FileTest</a></li>
+          <li class="enum"><a href="GLib.FormatSizeFlags.html">FormatSizeFlags</a></li>
+          <li class="enum"><a href="GLib.IOCondition.html">IOCondition</a></li>
+          <li class="enum"><a href="GLib.IOFlags.html">IOFlags</a></li>
+          <li class="enum"><a href="GLib.IOStatus.html">IOStatus</a></li>
+          <li class="enum"><a href="GLib.KeyFileFlags.html">KeyFileFlags</a></li>
+          <li class="enum"><a href="GLib.LocaleCategory.html">LocaleCategory</a></li>
+          <li class="enum"><a href="GLib.LogLevelFlags.html">LogLevelFlags</a></li>
+          <li class="enum"><a href="GLib.LogWriterOutput.html">LogWriterOutput</a></li>
+          <li class="enum"><a href="GLib.MainContextFlags.html">MainContextFlags</a></li>
+          <li class="enum"><a href="GLib.MarkupParseFlags.html">MarkupParseFlags</a></li>
+          <li class="enum"><a href="GLib.NormalizeMode.html">NormalizeMode</a></li>
+          <li class="enum"><a href="GLib.OnceStatus.html">OnceStatus</a></li>
+          <li class="enum"><a href="GLib.OptionArg.html">OptionArg</a></li>
+          <li class="enum"><a href="GLib.OptionFlags.html">OptionFlags</a></li>
+          <li class="enum"><a href="GLib.ProcessSignal.html">ProcessSignal</a></li>
+          <li class="enum"><a href="GLib.RegexCompileFlags.html">RegexCompileFlags</a></li>
+          <li class="enum"><a href="GLib.RegexMatchFlags.html">RegexMatchFlags</a></li>
+          <li class="enum"><a href="GLib.SeekType.html">SeekType</a></li>
+          <li class="enum"><a href="GLib.SliceConfig.html">SliceConfig</a></li>
+          <li class="enum"><a href="GLib.SpawnFlags.html">SpawnFlags</a></li>
+          <li class="enum"><a href="GLib.TestSubprocessFlags.html">TestSubprocessFlags</a></li>
+          <li class="enum"><a href="GLib.TestTrapFlags.html">TestTrapFlags</a></li>
+          <li class="enum"><a href="GLib.ThreadPriority.html">ThreadPriority</a></li>
+          <li class="enum"><a href="GLib.TimeType.html">TimeType</a></li>
+          <li class="enum"><a href="GLib.TokenType.html">TokenType</a></li>
+          <li class="enum"><a href="GLib.TraverseFlags.html">TraverseFlags</a></li>
+          <li class="enum"><a href="GLib.TraverseType.html">TraverseType</a></li>
+          <li class="enum"><a href="GLib.UnicodeBreakType.html">UnicodeBreakType</a></li>
+          <li class="enum"><a href="GLib.UnicodeScript.html">UnicodeScript</a></li>
+          <li class="enum"><a href="GLib.UnicodeType.html">UnicodeType</a></li>
+          <li class="enum"><a href="GLib.UriFlags.html">UriFlags</a></li>
+          <li class="enum"><a href="GLib.UriHideFlags.html">UriHideFlags</a></li>
+          <li class="enum"><a href="GLib.UriParamsFlags.html">UriParamsFlags</a></li>
+          <li class="enum"><a href="GLib.UserDirectory.html">UserDirectory</a></li>
+          <li class="class"><a href="GLib.Array.html">Array</a></li>
+          <li class="class"><a href="GLib.AsyncQueue.html">AsyncQueue</a></li>
+          <li class="class"><a href="GLib.BookmarkFile.html">BookmarkFile</a></li>
+          <li class="class"><a href="GLib.BusName.html">BusName</a></li>
+          <li class="class"><a href="GLib.ByteArray.html">ByteArray</a></li>
+          <li class="class"><a href="GLib.Bytes.html">Bytes</a></li>
+          <li class="class"><a href="GLib.Checksum.html">Checksum</a></li>
+          <li class="class"><a href="GLib.ChildWatchSource.html">ChildWatchSource</a></li>
+          <li class="class"><span class="deprecated"><a href="GLib.Completion.html">Completion</a></span></li>
+          <li class="class"><a href="GLib.DateTime.html">DateTime</a></li>
+          <li class="class"><a href="GLib.Dir.html">Dir</a></li>
+          <li class="class"><a href="GLib.Error.html">Error</a></li>
+          <li class="class"><a href="GLib.FileStream.html">FileStream</a></li>
+          <li class="class"><a href="GLib.GenericArray.html">GenericArray</a></li>
+          <li class="class"><a href="GLib.GenericSet.html">GenericSet</a></li>
+          <li class="class"><a href="GLib.HashTable.html">HashTable</a></li>
+          <li class="class"><a href="GLib.Hmac.html">Hmac</a></li>
+          <li class="class"><a href="GLib.IOChannel.html">IOChannel</a></li>
+          <li class="class"><a href="GLib.IOSource.html">IOSource</a></li>
+          <li class="class"><a href="GLib.IdleSource.html">IdleSource</a></li>
+          <li class="class"><a href="GLib.KeyFile.html">KeyFile</a></li>
+          <li class="class"><a href="GLib.List.html">List</a></li>
+          <li class="class"><a href="GLib.MainContext.html">MainContext</a></li>
+          <li class="class"><a href="GLib.MainContextPusher.html">MainContextPusher</a></li>
+          <li class="class"><a href="GLib.MainLoop.html">MainLoop</a></li>
+          <li class="class"><a href="GLib.MappedFile.html">MappedFile</a></li>
+          <li class="class"><a href="GLib.MarkupParseContext.html">MarkupParseContext</a></li>
+          <li class="class"><a href="GLib.MatchInfo.html">MatchInfo</a></li>
+          <li class="class"><a href="GLib.MemVTable.html">MemVTable</a></li>
+          <li class="class"><a href="GLib.MutexLocker.html">MutexLocker</a></li>
+          <li class="class"><a href="GLib.Node.html">Node</a></li>
+          <li class="class"><a href="GLib.ObjectPath.html">ObjectPath</a></li>
+          <li class="class"><a href="GLib.OptionContext.html">OptionContext</a></li>
+          <li class="class"><a href="GLib.OptionGroup.html">OptionGroup</a></li>
+          <li class="class"><a href="GLib.PathBuf.html">PathBuf</a></li>
+          <li class="class"><a href="GLib.PatternSpec.html">PatternSpec</a></li>
+          <li class="class"><a href="GLib.Private.html">Private</a></li>
+          <li class="class"><a href="GLib.PtrArray.html">PtrArray</a></li>
+          <li class="class"><a href="GLib.Queue.html">Queue</a></li>
+          <li class="class"><a href="GLib.RWLockReaderLocker.html">RWLockReaderLocker</a></li>
+          <li class="class"><a href="GLib.RWLockWriterLocker.html">RWLockWriterLocker</a></li>
+          <li class="class"><a href="GLib.Rand.html">Rand</a></li>
+          <li class="class"><a href="GLib.RecMutexLocker.html">RecMutexLocker</a></li>
+          <li class="class"><a href="GLib.RefString.html">RefString</a></li>
+          <li class="class"><a href="GLib.Regex.html">Regex</a></li>
+          <li class="class"><a href="GLib.SList.html">SList</a></li>
+          <li class="class"><a href="GLib.Scanner.html">Scanner</a></li>
+          <li class="class"><a href="GLib.Sequence.html">Sequence</a></li>
+          <li class="class"><a href="GLib.SequenceIter.html">SequenceIter</a></li>
+          <li class="abstract_class"><a href="GLib.Source.html">Source</a></li>
+          <li class="class"><a href="GLib.SourceCallbackFuncs.html">SourceCallbackFuncs</a></li>
+          <li class="class"><a href="GLib.StringBuilder.html">StringBuilder</a></li>
+          <li class="class"><a href="GLib.StringChunk.html">StringChunk</a></li>
+          <li class="class"><a href="GLib.StrvBuilder.html">StrvBuilder</a></li>
+          <li class="class"><a href="GLib.TestCase.html">TestCase</a></li>
+          <li class="class"><a href="GLib.TestSuite.html">TestSuite</a></li>
+          <li class="class"><a href="GLib.Thread.html">Thread</a></li>
+          <li class="class"><a href="GLib.ThreadPool.html">ThreadPool</a></li>
+          <li class="class"><a href="GLib.TimeZone.html">TimeZone</a></li>
+          <li class="class"><a href="GLib.TimeoutSource.html">TimeoutSource</a></li>
+          <li class="class"><a href="GLib.Timer.html">Timer</a></li>
+          <li class="class"><a href="GLib.Tree.html">Tree</a></li>
+          <li class="class"><a href="GLib.TreeNode.html">TreeNode</a></li>
+          <li class="class"><a href="GLib.Uri.html">Uri</a></li>
+          <li class="class"><a href="GLib.Variant.html">Variant</a></li>
+          <li class="class"><a href="GLib.VariantBuilder.html">VariantBuilder</a></li>
+          <li class="class"><a href="GLib.VariantDict.html">VariantDict</a></li>
+          <li class="class"><a href="GLib.VariantIter.html">VariantIter</a></li>
+          <li class="class"><a href="GLib.VariantType.html">VariantType</a></li>
+          <li class="struct"><a href="GLib.Cond.html">Cond</a></li>
+          <li class="struct"><a href="GLib.Datalist.html">Datalist</a></li>
+          <li class="struct"><a href="GLib.Date.html">Date</a></li>
+          <li class="struct"><a href="GLib.DateDay.html">DateDay</a></li>
+          <li class="struct"><a href="GLib.DateYear.html">DateYear</a></li>
+          <li class="struct"><a href="GLib.DebugKey.html">DebugKey</a></li>
+          <li class="struct"><a href="GLib.GenericSetIter.html">GenericSetIter</a></li>
+          <li class="struct"><a href="GLib.HashTableIter.html">HashTableIter</a></li>
+          <li class="struct"><a href="GLib.IConv.html">IConv</a></li>
+          <li class="struct"><a href="GLib.LogField.html">LogField</a></li>
+          <li class="struct"><a href="GLib.MarkupParser.html">MarkupParser</a></li>
+          <li class="struct"><a href="GLib.Mutex.html">Mutex</a></li>
+          <li class="struct"><a href="GLib.Once.html">Once</a></li>
+          <li class="struct"><a href="GLib.OptionEntry.html">OptionEntry</a></li>
+          <li class="struct"><a href="GLib.Pid.html">Pid</a></li>
+          <li class="struct"><a href="GLib.PollFD.html">PollFD</a></li>
+          <li class="struct"><a href="GLib.Quark.html">Quark</a></li>
+          <li class="struct"><a href="GLib.RWLock.html">RWLock</a></li>
+          <li class="struct"><a href="GLib.RecMutex.html">RecMutex</a></li>
+          <li class="struct"><a href="GLib.ScannerConfig.html">ScannerConfig</a></li>
+          <li class="struct"><a href="GLib.SourceFuncs.html">SourceFuncs</a></li>
+          <li class="struct"><a href="GLib.Stat.html">Stat</a></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.StaticMutex.html">StaticMutex</a></span></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.StaticPrivate.html">StaticPrivate</a></span></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.StaticRWLock.html">StaticRWLock</a></span></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.StaticRecMutex.html">StaticRecMutex</a></span></li>
+          <li class="struct"><a href="GLib.Time.html">Time</a></li>
+          <li class="struct"><a href="GLib.TimeSpan.html">TimeSpan</a></li>
+          <li class="struct"><span class="deprecated"><a href="GLib.TimeVal.html">TimeVal</a></span></li>
+          <li class="struct"><a href="GLib.TokenValue.html">TokenValue</a></li>
+          <li class="struct"><a href="GLib.UTimBuf.html">UTimBuf</a></li>
+          <li class="struct"><a href="GLib.UriParamsIter.html">UriParamsIter</a></li>
+          <li class="struct"><a href="GLib.pointer.html">pointer</a></li>
+          <li class="constant"><a href="GLib.BYTE_ORDER.html">BYTE_ORDER</a></li>
+          <li class="constant"><a href="GLib.OPTION_REMAINING.html">OPTION_REMAINING</a></li>
+          <li class="delegate"><a href="GLib.ArraySearchFunc.html">ArraySearchFunc</a></li>
+          <li class="delegate"><a href="GLib.ChildWatchFunc.html">ChildWatchFunc</a></li>
+          <li class="delegate"><a href="GLib.CompareDataFunc.html">CompareDataFunc</a></li>
+          <li class="delegate"><a href="GLib.CompareFunc.html">CompareFunc</a></li>
+          <li class="delegate"><a href="GLib.CompletionFunc.html">CompletionFunc</a></li>
+          <li class="delegate"><a href="GLib.CompletionStrncmpFunc.html">CompletionStrncmpFunc</a></li>
+          <li class="delegate"><a href="GLib.CopyFunc.html">CopyFunc</a></li>
+          <li class="delegate"><a href="GLib.DataForeachFunc.html">DataForeachFunc</a></li>
+          <li class="delegate"><a href="GLib.DestroyNotify.html">DestroyNotify</a></li>
+          <li class="delegate"><a href="GLib.DuplicateFunc.html">DuplicateFunc</a></li>
+          <li class="delegate"><a href="GLib.EqualFunc.html">EqualFunc</a></li>
+          <li class="delegate"><a href="GLib.EqualFuncFull.html">EqualFuncFull</a></li>
+          <li class="delegate"><a href="GLib.FreeFunc.html">FreeFunc</a></li>
+          <li class="delegate"><a href="GLib.Func.html">Func</a></li>
+          <li class="delegate"><a href="GLib.HFunc.html">HFunc</a></li>
+          <li class="delegate"><a href="GLib.HRFunc.html">HRFunc</a></li>
+          <li class="delegate"><a href="GLib.HashFunc.html">HashFunc</a></li>
+          <li class="delegate"><a href="GLib.IOFunc.html">IOFunc</a></li>
+          <li class="delegate"><a href="GLib.LogFunc.html">LogFunc</a></li>
+          <li class="delegate"><a href="GLib.LogWriterFunc.html">LogWriterFunc</a></li>
+          <li class="delegate"><a href="GLib.MarkupParserEndElementFunc.html">MarkupParserEndElementFunc</a></li>
+          <li class="delegate"><a href="GLib.MarkupParserErrorFunc.html">MarkupParserErrorFunc</a></li>
+          <li class="delegate"><a href="GLib.MarkupParserPassthroughFunc.html">MarkupParserPassthroughFunc</a></li>
+          <li class="delegate"><a href="GLib.MarkupParserStartElementFunc.html">MarkupParserStartElementFunc</a></li>
+          <li class="delegate"><a href="GLib.MarkupParserTextFunc.html">MarkupParserTextFunc</a></li>
+          <li class="delegate"><a href="GLib.NodeForeachFunc.html">NodeForeachFunc</a></li>
+          <li class="delegate"><a href="GLib.NodeTraverseFunc.html">NodeTraverseFunc</a></li>
+          <li class="delegate"><a href="GLib.OnceFunc.html">OnceFunc</a></li>
+          <li class="delegate"><a href="GLib.OptionArgFunc.html">OptionArgFunc</a></li>
+          <li class="delegate"><a href="GLib.OptionErrorFunc.html">OptionErrorFunc</a></li>
+          <li class="delegate"><a href="GLib.OptionParseFunc.html">OptionParseFunc</a></li>
+          <li class="delegate"><a href="GLib.PollFunc.html">PollFunc</a></li>
+          <li class="delegate"><a href="GLib.PrintFunc.html">PrintFunc</a></li>
+          <li class="delegate"><a href="GLib.RegexEvalCallback.html">RegexEvalCallback</a></li>
+          <li class="delegate"><a href="GLib.ScannerMsgFunc.html">ScannerMsgFunc</a></li>
+          <li class="delegate"><a href="GLib.SearchFunc.html">SearchFunc</a></li>
+          <li class="delegate"><a href="GLib.SequenceIterCompareFunc.html">SequenceIterCompareFunc</a></li>
+          <li class="delegate"><a href="GLib.SignalHandlerFunc.html">SignalHandlerFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceCallbackGetFunc.html">SourceCallbackGetFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceCallbackRefFunc.html">SourceCallbackRefFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceCallbackUnrefFunc.html">SourceCallbackUnrefFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceCheckFunc.html">SourceCheckFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceDispatchFunc.html">SourceDispatchFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceDisposeFunc.html">SourceDisposeFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceDummyMarshal.html">SourceDummyMarshal</a></li>
+          <li class="delegate"><a href="GLib.SourceFinalizeFunc.html">SourceFinalizeFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceFunc.html">SourceFunc</a></li>
+          <li class="delegate"><a href="GLib.SourceOnceFunc.html">SourceOnceFunc</a></li>
+          <li class="delegate"><a href="GLib.SourcePrepareFunc.html">SourcePrepareFunc</a></li>
+          <li class="delegate"><a href="GLib.SpawnChildSetupFunc.html">SpawnChildSetupFunc</a></li>
+          <li class="delegate"><a href="GLib.TestDataFunc.html">TestDataFunc</a></li>
+          <li class="delegate"><a href="GLib.TestFixtureFunc.html">TestFixtureFunc</a></li>
+          <li class="delegate"><a href="GLib.TestFunc.html">TestFunc</a></li>
+          <li class="delegate"><a href="GLib.ThreadFunc.html">ThreadFunc</a></li>
+          <li class="delegate"><a href="GLib.ThreadPoolFunc.html">ThreadPoolFunc</a></li>
+          <li class="delegate"><a href="GLib.TranslateFunc.html">TranslateFunc</a></li>
+          <li class="delegate"><a href="GLib.TraverseFunc.html">TraverseFunc</a></li>
+          <li class="delegate"><a href="GLib.TraverseNodeFunc.html">TraverseNodeFunc</a></li>
+          <li class="delegate"><a href="GLib.TreeSearchFunc.html">TreeSearchFunc</a></li>
+          <li class="delegate"><a href="GLib.VoidFunc.html">VoidFunc</a></li>
+          <li class="method"><a href="GLib.C_.html">C_</a></li>
+          <li class="method"><a href="GLib.NC_.html">NC_</a></li>
+          <li class="method"><a href="GLib.N_.html">N_</a></li>
+          <li class="method"><a href="GLib.Q_.html">Q_</a></li>
+          <li class="method"><a href="GLib._.html">_</a></li>
+          <li class="method"><a href="GLib.assert.html">assert</a></li>
+          <li class="method"><a href="GLib.assert_cmpfloat.html">assert_cmpfloat</a></li>
+          <li class="method"><a href="GLib.assert_cmpfloat_with_epsilon.html">assert_cmpfloat_with_epsilon</a></li>
+          <li class="method"><a href="GLib.assert_cmphex.html">assert_cmphex</a></li>
+          <li class="method"><a href="GLib.assert_cmpint.html">assert_cmpint</a></li>
+          <li class="method"><a href="GLib.assert_cmpmem.html">assert_cmpmem</a></li>
+          <li class="method"><a href="GLib.assert_cmpstr.html">assert_cmpstr</a></li>
+          <li class="method"><a href="GLib.assert_cmpstrv.html">assert_cmpstrv</a></li>
+          <li class="method"><a href="GLib.assert_cmpuint.html">assert_cmpuint</a></li>
+          <li class="method"><a href="GLib.assert_cmpvariant.html">assert_cmpvariant</a></li>
+          <li class="method"><a href="GLib.assert_error.html">assert_error</a></li>
+          <li class="method"><a href="GLib.assert_false.html">assert_false</a></li>
+          <li class="method"><a href="GLib.assert_no_error.html">assert_no_error</a></li>
+          <li class="method"><a href="GLib.assert_nonnull.html">assert_nonnull</a></li>
+          <li class="method"><a href="GLib.assert_not_reached.html">assert_not_reached</a></li>
+          <li class="method"><a href="GLib.assert_null.html">assert_null</a></li>
+          <li class="method"><a href="GLib.assert_true.html">assert_true</a></li>
+          <li class="method"><a href="GLib.breakpoint.html">breakpoint</a></li>
+          <li class="method"><a href="GLib.convert.html">convert</a></li>
+          <li class="method"><a href="GLib.convert_with_fallback.html">convert_with_fallback</a></li>
+          <li class="method"><a href="GLib.convert_with_iconv.html">convert_with_iconv</a></li>
+          <li class="method"><a href="GLib.critical.html">critical</a></li>
+          <li class="method"><a href="GLib.dcgettext.html">dcgettext</a></li>
+          <li class="method"><a href="GLib.debug.html">debug</a></li>
+          <li class="method"><a href="GLib.debug_here.html">debug_here</a></li>
+          <li class="method"><a href="GLib.dgettext.html">dgettext</a></li>
+          <li class="method"><a href="GLib.dngettext.html">dngettext</a></li>
+          <li class="method"><a href="GLib.dpgettext.html">dpgettext</a></li>
+          <li class="method"><a href="GLib.dpgettext2.html">dpgettext2</a></li>
+          <li class="method"><a href="GLib.error.html">error</a></li>
+          <li class="method"><a href="GLib.format_size.html">format_size</a></li>
+          <li class="method"><span class="deprecated"><a href="GLib.format_size_for_display.html">format_size_for_display</a></span></li>
+          <li class="method"><a href="GLib.free.html">free</a></li>
+          <li class="method"><a href="GLib.free_sized.html">free_sized</a></li>
+          <li class="method"><a href="GLib.get_charset.html">get_charset</a></li>
+          <li class="method"><a href="GLib.get_console_charset.html">get_console_charset</a></li>
+          <li class="method"><a href="GLib.get_filename_charsets.html">get_filename_charsets</a></li>
+          <li class="method"><a href="GLib.get_monotonic_time.html">get_monotonic_time</a></li>
+          <li class="method"><a href="GLib.get_num_processors.html">get_num_processors</a></li>
+          <li class="method"><a href="GLib.get_real_time.html">get_real_time</a></li>
+          <li class="method"><a href="GLib.gettext.html">gettext</a></li>
+          <li class="method"><a href="GLib.info.html">info</a></li>
+          <li class="method"><a href="GLib.likely.html">likely</a></li>
+          <li class="method"><a href="GLib.log.html">log</a></li>
+          <li class="method"><a href="GLib.log_structured.html">log_structured</a></li>
+          <li class="method"><a href="GLib.log_structured_array.html">log_structured_array</a></li>
+          <li class="method"><a href="GLib.log_variant.html">log_variant</a></li>
+          <li class="method"><a href="GLib.logv.html">logv</a></li>
+          <li class="method"><a href="GLib.malloc.html">malloc</a></li>
+          <li class="method"><a href="GLib.malloc0.html">malloc0</a></li>
+          <li class="method"><span class="deprecated"><a href="GLib.mem_is_system_malloc.html">mem_is_system_malloc</a></span></li>
+          <li class="method"><span class="deprecated"><a href="GLib.mem_profile.html">mem_profile</a></span></li>
+          <li class="method"><span class="deprecated"><a href="GLib.mem_set_vtable.html">mem_set_vtable</a></span></li>
+          <li class="method"><a href="GLib.message.html">message</a></li>
+          <li class="method"><a href="GLib.ngettext.html">ngettext</a></li>
+          <li class="method"><a href="GLib.on_error_query.html">on_error_query</a></li>
+          <li class="method"><a href="GLib.on_error_stack_trace.html">on_error_stack_trace</a></li>
+          <li class="method"><a href="GLib.parse_debug_string.html">parse_debug_string</a></li>
+          <li class="method"><a href="GLib.poll.html">poll</a></li>
+          <li class="method"><a href="GLib.print.html">print</a></li>
+          <li class="method"><a href="GLib.printerr.html">printerr</a></li>
+          <li class="method"><a href="GLib.qsort_with_data.html">qsort_with_data</a></li>
+          <li class="method"><a href="GLib.realloc.html">realloc</a></li>
+          <li class="method"><a href="GLib.return_if_fail.html">return_if_fail</a></li>
+          <li class="method"><a href="GLib.return_if_reached.html">return_if_reached</a></li>
+          <li class="method"><a href="GLib.return_val_if_fail.html">return_val_if_fail</a></li>
+          <li class="method"><a href="GLib.return_val_if_reached.html">return_val_if_reached</a></li>
+          <li class="method"><a href="GLib.set_print_handler.html">set_print_handler</a></li>
+          <li class="method"><a href="GLib.set_printerr_handler.html">set_printerr_handler</a></li>
+          <li class="method"><a href="GLib.static_assert.html">static_assert</a></li>
+          <li class="method"><a href="GLib.strdup.html">strdup</a></li>
+          <li class="method"><a href="GLib.strdupv.html">strdupv</a></li>
+          <li class="method"><a href="GLib.strerror.html">strerror</a></li>
+          <li class="method"><a href="GLib.strfreev.html">strfreev</a></li>
+          <li class="method"><a href="GLib.strsignal.html">strsignal</a></li>
+          <li class="method"><a href="GLib.strv_contains.html">strv_contains</a></li>
+          <li class="method"><a href="GLib.strv_length.html">strv_length</a></li>
+          <li class="method"><a href="GLib.try_malloc.html">try_malloc</a></li>
+          <li class="method"><a href="GLib.try_malloc0.html">try_malloc0</a></li>
+          <li class="method"><a href="GLib.try_realloc.html">try_realloc</a></li>
+          <li class="method"><a href="GLib.unlikely.html">unlikely</a></li>
+          <li class="method">warn_if_fail</li>
+          <li class="method"><a href="GLib.warn_if_reached.html">warn_if_reached</a></li>
+          <li class="method"><a href="GLib.warning.html">warning</a></li>
+          <li class="method"><a href="GLib.warning_once.html">warning_once</a></li>
+          <li class="field"><a href="GLib.direct_equal.html">direct_equal</a></li>
+          <li class="field"><a href="GLib.direct_hash.html">direct_hash</a></li>
+          <li class="field"><a href="GLib.double_equal.html">double_equal</a></li>
+          <li class="field"><a href="GLib.double_hash.html">double_hash</a></li>
+          <li class="field"><a href="GLib.errno.html">errno</a></li>
+          <li class="field"><a href="GLib.g_free.html">g_free</a></li>
+          <li class="field"><a href="GLib.g_list_free.html">g_list_free</a></li>
+          <li class="field"><a href="GLib.g_variant_unref.html">g_variant_unref</a></li>
+          <li class="field"><a href="GLib.int64_equal.html">int64_equal</a></li>
+          <li class="field"><a href="GLib.int64_hash.html">int64_hash</a></li>
+          <li class="field"><a href="GLib.int_equal.html">int_equal</a></li>
+          <li class="field"><a href="GLib.int_hash.html">int_hash</a></li>
+          <li class="field"><span class="deprecated"><a href="GLib.mem_profiler_table.html">mem_profiler_table</a></span></li>
+          <li class="field"><a href="GLib.stderr.html">stderr</a></li>
+          <li class="field"><a href="GLib.stdin.html">stdin</a></li>
+          <li class="field"><a href="GLib.stdout.html">stdout</a></li>
+          <li class="field"><a href="GLib.str_equal.html">str_equal</a></li>
+          <li class="field"><a href="GLib.str_hash.html">str_hash</a></li>
+          <li class="field"><a href="GLib.strcmp.html">strcmp</a></li>
+          <li class="field"><a href="GLib.strv_equal.html">strv_equal</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">warn_if_fail</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Version</span> ( since = <span class="main_literal">"2.16"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><span class="method">warn_if_fail</span></b> (<span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> expr)
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

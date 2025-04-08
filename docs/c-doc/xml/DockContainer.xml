@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankDockContainer">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankDockContainer.top_of_page">PlankDockContainer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankDockContainer</refname>
+<refpurpose>A container and controller class for managing dock elements on a dock.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankDockContainer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-DOCK-CONTAINER:CAPS">PLANK_TYPE_DOCK_CONTAINER</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockContainer">PlankDockContainer</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockContainerClass">PlankDockContainerClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankDockContainer.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockContainer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockContainer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-DOCK-CONTAINER:CAPS" role="macro">
+<title>PLANK_TYPE_DOCK_CONTAINER</title>
+<indexterm zone="PLANK-TYPE-DOCK-CONTAINER:CAPS"><primary>PLANK_TYPE_DOCK_CONTAINER</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_DOCK_CONTAINER (plank_dock_container_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankDockContainer"><type>PlankDockContainer</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankDockContainer" role="struct">
+<title>struct PlankDockContainer</title>
+<indexterm zone="PlankDockContainer"><primary>PlankDockContainer</primary></indexterm>
+<programlisting language="C">struct PlankDockContainer {
+	PlankDockElement parent_instance;
+	PlankDockContainerPrivate * priv;
+	GeeArrayList* visible_elements;
+	GeeArrayList* internal_elements;
+};
+</programlisting>
+<para>A container and controller class for managing dock elements on a dock.</para>
+</refsect2>
+<refsect2 id="PlankDockContainerClass" role="struct">
+<title>struct PlankDockContainerClass</title>
+<indexterm zone="PlankDockContainerClass"><primary>PlankDockContainerClass</primary></indexterm>
+<programlisting language="C">struct PlankDockContainerClass {
+	PlankDockElementClass parent_class;
+	void (*prepare) (PlankDockContainer* self);
+	void (*update_visible_elements) (PlankDockContainer* self);
+	gboolean (*move_to) (PlankDockContainer* self, PlankDockElement* move, PlankDockElement* target);
+	gboolean (*replace) (PlankDockContainer* self, PlankDockElement* new_element, PlankDockElement* old_element);
+	void (*connect_element) (PlankDockContainer* self, PlankDockElement* element);
+	void (*disconnect_element) (PlankDockContainer* self, PlankDockElement* element);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-DOCK-CONTAINER:CAPS"><literal>PLANK_TYPE_DOCK_CONTAINER</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankDockContainerClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.prepare">prepare</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-container-prepare"><function><link linkend="plank-dock-container-prepare"><function>plank_dock_container_prepare()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.update-visible-elements">update_visible_elements</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.move-to">move_to</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-container-move-to"><function><link linkend="plank-dock-container-move-to"><function>plank_dock_container_move_to()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.replace">replace</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-dock-container-replace"><function><link linkend="plank-dock-container-replace"><function>plank_dock_container_replace()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.connect-element">connect_element</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankDockContainerClass.disconnect-element">disconnect_element</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

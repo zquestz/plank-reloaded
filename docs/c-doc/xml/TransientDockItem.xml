@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankTransientDockItem">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankTransientDockItem.top_of_page">PlankTransientDockItem</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankTransientDockItem</refname>
+<refpurpose>A dock item for applications which aren&apos;t pinned or doesn&apos;t have a matched desktop-files.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankTransientDockItem.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-TRANSIENT-DOCK-ITEM:CAPS">PLANK_TYPE_TRANSIENT_DOCK_ITEM</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankTransientDockItem">PlankTransientDockItem</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankTransientDockItemClass">PlankTransientDockItemClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankTransientDockItem.description" role="desc">
+<title role="desc.title">Description</title>
+<para>Usually this represents a running application while it is possible it is a virtual item added through e.g. libunity-support to show specific application information.</para>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankTransientDockItem.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankTransientDockItem.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-TRANSIENT-DOCK-ITEM:CAPS" role="macro">
+<title>PLANK_TYPE_TRANSIENT_DOCK_ITEM</title>
+<indexterm zone="PLANK-TYPE-TRANSIENT-DOCK-ITEM:CAPS"><primary>PLANK_TYPE_TRANSIENT_DOCK_ITEM</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_TRANSIENT_DOCK_ITEM (plank_transient_dock_item_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankTransientDockItem"><type>PlankTransientDockItem</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankTransientDockItem" role="struct">
+<title>struct PlankTransientDockItem</title>
+<indexterm zone="PlankTransientDockItem"><primary>PlankTransientDockItem</primary></indexterm>
+<programlisting language="C">struct PlankTransientDockItem {
+	PlankApplicationDockItem parent_instance;
+	PlankTransientDockItemPrivate * priv;
+};
+</programlisting>
+<para>A dock item for applications which aren&apos;t pinned or doesn&apos;t have a matched desktop-files.</para>
+<para>Usually this represents a running application while it is possible it is a virtual item added through e.g. libunity-support to show specific application information.</para>
+</refsect2>
+<refsect2 id="PlankTransientDockItemClass" role="struct">
+<title>struct PlankTransientDockItemClass</title>
+<indexterm zone="PlankTransientDockItemClass"><primary>PlankTransientDockItemClass</primary></indexterm>
+<programlisting language="C">struct PlankTransientDockItemClass {
+	PlankApplicationDockItemClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-TRANSIENT-DOCK-ITEM:CAPS"><literal>PLANK_TYPE_TRANSIENT_DOCK_ITEM</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankTransientDockItemClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.CellRenderer &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.CellRenderer &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">CellRenderer</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.CellRenderer" alt="Object hierarchy for CellRenderer" src="img/Gtk.CellRenderer.png"/>
+
+      <map id="Gtk.CellRenderer" name="Gtk.CellRenderer">
+<area shape="rect" id="node1" href="Gtk.CellRenderer.html" title="Gtk.CellRenderer" alt="" coords="26,197,176,245"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.InitiallyUnowned.html" title="GLib.InitiallyUnowned" alt="" coords="5,101,197,149"/>
+<area shape="rect" id="node3" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="45,5,157,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gtk_cell_renderer_get_type ()"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">class</span> <b><span class="abstract_class">CellRenderer</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.InitiallyUnowned.html" class="class">InitiallyUnowned</a></span>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-585')">All known sub-classes:</div>
+          <div class="content" id="box-content-585">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.CellRendererAccel.html">CellRendererAccel</a></li>
+                <li class="class"><a href="Gtk.CellRendererCombo.html">CellRendererCombo</a></li>
+                <li class="class"><a href="Gtk.CellRendererPixbuf.html">CellRendererPixbuf</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.CellRendererProgress.html">CellRendererProgress</a></li>
+                <li class="class"><a href="Gtk.CellRendererSpin.html">CellRendererSpin</a></li>
+                <li class="class"><a href="Gtk.CellRendererSpinner.html">CellRendererSpinner</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.CellRendererText.html">CellRendererText</a></li>
+                <li class="class"><a href="Gtk.CellRendererToggle.html">CellRendererToggle</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.CellRenderer.cell_background.html" class="property">cell_background</a></b> { <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span> <b><a href="Gtk.CellRenderer.cell_background_gdk.html" class="property">cell_background_gdk</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.RGBA.html" class="struct">RGBA</a></span> <b><a href="Gtk.CellRenderer.cell_background_rgba.html" class="property">cell_background_rgba</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.cell_background_set.html" class="property">cell_background_set</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.editing.html" class="property">editing</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.CellRenderer.height.html" class="property">height</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.is_expanded.html" class="property">is_expanded</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.is_expander.html" class="property">is_expander</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.CellRendererMode.html" class="enum">CellRendererMode</a></span> <b><a href="Gtk.CellRenderer.mode.html" class="property">mode</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.sensitive.html" class="property">sensitive</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.visible.html" class="property">visible</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.CellRenderer.width.html" class="property">width</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> <b><a href="Gtk.CellRenderer.xalign.html" class="property">xalign</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.CellRenderer.xpad.html" class="property">xpad</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> <b><a href="Gtk.CellRenderer.yalign.html" class="property">yalign</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.CellRenderer.ypad.html" class="property">ypad</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <b><a href="Gtk.CellRenderer.CellRenderer.html" class="creation_method">CellRenderer</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.activate.html" class="virtual_method">activate</a></b> (<span class="main_type"><a href="../gdk-3.0/Gdk.Event.html" class="class">Event</a></span> event, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> background_area, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> cell_area, <span class="main_type"><a href="Gtk.CellRendererState.html" class="enum">CellRendererState</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> <b><a href="Gtk.CellRenderer.get_aligned_area.html" class="virtual_method">get_aligned_area</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_type"><a href="Gtk.CellRendererState.html" class="enum">CellRendererState</a></span> flags, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> cell_area)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_alignment.html" class="method">get_alignment</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> xalign, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> yalign)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_fixed_size.html" class="method">get_fixed_size</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_padding.html" class="method">get_padding</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> xpad, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> ypad)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_preferred_height.html" class="virtual_method">get_preferred_height</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> minimum_size, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> natural_size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_preferred_height_for_width.html" class="virtual_method">get_preferred_height_for_width</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> minimum_height, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> natural_height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_preferred_size.html" class="method">get_preferred_size</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_keyword">out</span> <span class="main_type"><a href="Gtk.Requisition.html" class="struct">Requisition</a></span> minimum_size, <span class="main_keyword">out</span> <span class="main_type"><a href="Gtk.Requisition.html" class="struct">Requisition</a></span> natural_size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_preferred_width.html" class="virtual_method">get_preferred_width</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> minimum_size, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> natural_size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_preferred_width_for_height.html" class="virtual_method">get_preferred_width_for_height</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> minimum_width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> natural_width)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="Gtk.SizeRequestMode.html" class="enum">SizeRequestMode</a></span> <b><a href="Gtk.CellRenderer.get_request_mode.html" class="virtual_method">get_request_mode</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.get_sensitive.html" class="method">get_sensitive</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.get_size.html" class="virtual_method">get_size</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span>? cell_area, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x_offset, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y_offset, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.StateFlags.html" class="enum">StateFlags</a></span> <b><a href="Gtk.CellRenderer.get_state.html" class="method">get_state</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span>? widget, <span class="main_type"><a href="Gtk.CellRendererState.html" class="enum">CellRendererState</a></span> cell_state)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.get_visible.html" class="method">get_visible</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.CellRenderer.is_activatable.html" class="method">is_activatable</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.render.html" class="abstract_method">render</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> background_area, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> cell_area, <span class="main_type"><a href="Gtk.CellRendererState.html" class="enum">CellRendererState</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">class</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_accessible_type.html" class="method">set_accessible_type</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> type)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_alignment.html" class="method">set_alignment</a></b> (<span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> xalign, <span class="main_basic_type"><a href="../glib-2.0/float.html" class="struct">float</a></span> yalign)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_fixed_size.html" class="method">set_fixed_size</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_padding.html" class="method">set_padding</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> xpad, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> ypad)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_sensitive.html" class="method">set_sensitive</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> sensitive)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.set_visible.html" class="method">set_visible</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> visible)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.CellEditable.html" class="interface">CellEditable</a></span>? <b><a href="Gtk.CellRenderer.start_editing.html" class="virtual_method">start_editing</a></b> (<span class="main_type"><a href="../gdk-3.0/Gdk.Event.html" class="class">Event</a></span>? event, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> background_area, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> cell_area, <span class="main_type"><a href="Gtk.CellRendererState.html" class="enum">CellRendererState</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.stop_editing.html" class="method">stop_editing</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> canceled)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.editing_canceled.html" class="signal">editing_canceled</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.CellRenderer.editing_started.html" class="signal">editing_started</a></b> (<span class="main_type"><a href="Gtk.CellEditable.html" class="interface">CellEditable</a></span> editable, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-586')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-586">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

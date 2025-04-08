@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Plank.DockElement &ndash; plank-reloaded &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Plank.DockElement &ndash; plank-reloaded Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">plank-reloaded</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Plank.html">Plank</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="abstract_class">DockElement</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Plank.DockElement.AddTime.html">AddTime</a></li>
+          <li class="property"><a href="Plank.DockElement.Button.html">Button</a></li>
+          <li class="property"><a href="Plank.DockElement.ClickedAnimation.html">ClickedAnimation</a></li>
+          <li class="property"><a href="Plank.DockElement.Container.html">Container</a></li>
+          <li class="property"><a href="Plank.DockElement.HoveredAnimation.html">HoveredAnimation</a></li>
+          <li class="property"><a href="Plank.DockElement.IsAttached.html">IsAttached</a></li>
+          <li class="property"><a href="Plank.DockElement.IsVisible.html">IsVisible</a></li>
+          <li class="property"><a href="Plank.DockElement.LastActive.html">LastActive</a></li>
+          <li class="property"><a href="Plank.DockElement.LastClicked.html">LastClicked</a></li>
+          <li class="property"><a href="Plank.DockElement.LastHovered.html">LastHovered</a></li>
+          <li class="property"><a href="Plank.DockElement.LastMove.html">LastMove</a></li>
+          <li class="property"><a href="Plank.DockElement.LastScrolled.html">LastScrolled</a></li>
+          <li class="property"><a href="Plank.DockElement.LastUrgent.html">LastUrgent</a></li>
+          <li class="property"><a href="Plank.DockElement.LastValid.html">LastValid</a></li>
+          <li class="property"><a href="Plank.DockElement.RemoveTime.html">RemoveTime</a></li>
+          <li class="property"><a href="Plank.DockElement.ScrolledAnimation.html">ScrolledAnimation</a></li>
+          <li class="property"><a href="Plank.DockElement.Text.html">Text</a></li>
+          <li class="static_method"><a href="Plank.DockElement.create_literal_menu_item.html">create_literal_menu_item</a></li>
+          <li class="static_method"><a href="Plank.DockElement.create_literal_menu_item_with_pixbuf.html">create_literal_menu_item_with_pixbuf</a>
+          </li>
+          <li class="static_method"><a href="Plank.DockElement.create_menu_item.html">create_menu_item</a></li>
+          <li class="static_method"><a href="Plank.DockElement.create_menu_item_with_pixbuf.html">create_menu_item_with_pixbuf</a></li>
+          <li class="creation_method"><a href="Plank.DockElement.DockElement.html">DockElement</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.accept_drop.html">accept_drop</a></li>
+          <li class="method"><a href="Plank.DockElement.as_uri.html">as_uri</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.can_accept_drop.html">can_accept_drop</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.can_be_removed.html">can_be_removed</a></li>
+          <li class="method"><a href="Plank.DockElement.clicked.html">clicked</a></li>
+          <li class="method"><a href="Plank.DockElement.get_dock.html">get_dock</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.get_drop_text.html">get_drop_text</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.get_menu_items.html">get_menu_items</a></li>
+          <li class="method"><a href="Plank.DockElement.hovered.html">hovered</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.on_clicked.html">on_clicked</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.on_hovered.html">on_hovered</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.on_scrolled.html">on_scrolled</a></li>
+          <li class="abstract_method"><a href="Plank.DockElement.reset_buffers.html">reset_buffers</a></li>
+          <li class="method"><a href="Plank.DockElement.scrolled.html">scrolled</a></li>
+          <li class="virtual_method"><a href="Plank.DockElement.unique_id.html">unique_id</a></li>
+          <li class="signal"><a href="Plank.DockElement.needs_redraw.html">needs_redraw</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">DockElement</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Plank.DockElement" alt="Object hierarchy for DockElement" src="img/Plank.DockElement.png"/>
+
+      <map id="Plank.DockElement" name="Plank.DockElement">
+<area shape="rect" id="node1" href="Plank.DockElement.html" title="Plank.DockElement" alt="" coords="5,101,173,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="33,5,145,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">class</span> <b><span class="abstract_class">DockElement</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div>
+        <div class="description">
+          <p>The base class for all dock elements.</p>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-62')">All known sub-classes:</div>
+          <div class="content" id="box-content-62">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Plank.ApplicationDockItem.html">ApplicationDockItem</a></li>
+                <li class="class"><a href="Plank.ApplicationDockItemProvider.html">ApplicationDockItemProvider</a></li>
+                <li class="class"><a href="Plank.DefaultApplicationDockItemProvider.html">DefaultApplicationDockItemProvider</a></li>
+                <li class="abstract_class"><a href="Plank.DockContainer.html">DockContainer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Plank.DockController.html">DockController</a></li>
+                <li class="abstract_class"><a href="Plank.DockItem.html">DockItem</a></li>
+                <li class="class"><a href="Plank.DockItemProvider.html">DockItemProvider</a></li>
+                <li class="abstract_class"><a href="Plank.DockletItem.html">DockletItem</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Plank.FileDockItem.html">FileDockItem</a></li>
+                <li class="class"><a href="Plank.PlaceholderDockItem.html">PlaceholderDockItem</a></li>
+                <li class="class"><a href="Plank.PlankDockItem.html">PlankDockItem</a></li>
+                <li class="class"><a href="Plank.TransientDockItem.html">TransientDockItem</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Plank.html">Plank</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">plank-reloaded</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.AddTime.html" class="property">AddTime</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The time the item was added to the dock.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.PopupButton.html" class="enum">PopupButton</a></span> <b><a href="Plank.DockElement.Button.html" class="property">Button</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The buttons this item shows popup menus for.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.ClickedAnimation.html" class="property">ClickedAnimation</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The animation to show for the item's last click event.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.DockContainer.html" class="abstract_class">DockContainer</a></span>? <b><a href="Plank.DockElement.Container.html" class="property">Container</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The dock element's container which it is added too (if any).</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.HoveredAnimation.html" class="property">HoveredAnimation</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The animation to show for the item's last hover event.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.DockElement.IsAttached.html" class="property">IsAttached</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Whether the item is currently hidden on the dock. If TRUE it will be 
+                drawn and does consume space. If FALSE it will not be drawn and does not consume space.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.DockElement.IsVisible.html" class="property">IsVisible</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Whether the item is currently visible on the dock. If TRUE it will be 
+                drawn and does consume space. If FALSE it will not be drawn and does consume space.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastActive.html" class="property">LastActive</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item changed its active status.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastClicked.html" class="property">LastClicked</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item was clicked.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastHovered.html" class="property">LastHovered</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item was hovered.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastMove.html" class="property">LastMove</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item changed its position.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastScrolled.html" class="property">LastScrolled</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item was scrolled.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastUrgent.html" class="property">LastUrgent</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item changed its urgent status.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.LastValid.html" class="property">LastValid</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The last time the item was valid.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int64.html" class="struct">int64</a></span> <b><a href="Plank.DockElement.RemoveTime.html" class="property">RemoveTime</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The time the item was removed from the dock.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.ScrolledAnimation.html" class="property">ScrolledAnimation</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">protected</span> <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The animation to show for the item's last scroll event.</span>
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Plank.DockElement.Text.html" class="property">Text</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The dock item's text.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">static</span> <span class="main_type"><a href="../gtk+-3.0/Gtk.MenuItem.html" class="class">MenuItem</a></span> <b><a href="Plank.DockElement.create_literal_menu_item.html" class="static_method">create_literal_menu_item</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> title, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? icon = <span class="main_literal">null</span>, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> force_show_icon = <span class="main_literal">true</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a new menu item with mnemonics disabled.</span>
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">static</span> <span class="main_type"><a href="../gtk+-3.0/Gtk.MenuItem.html" class="class">MenuItem</a></span> <b><a href="Plank.DockElement.create_literal_menu_item_with_pixbuf.html" class="static_method">create_literal_menu_item_with_pixbuf</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> title, <span class="main_keyword">owned</span> <span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span> pixbuf, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> force_show_icon = <span class="main_literal">true</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a new menu item with mnemonics disabled.</span>
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">static</span> <span class="main_type"><a href="../gtk+-3.0/Gtk.MenuItem.html" class="class">MenuItem</a></span> <b><a href="Plank.DockElement.create_menu_item.html" class="static_method">create_menu_item</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> title, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? icon = <span class="main_literal">null</span>, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> force_show_icon = <span class="main_literal">false</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a new menu item with mnemonics enabled.</span>
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">static</span> <span class="main_type"><a href="../gtk+-3.0/Gtk.MenuItem.html" class="class">MenuItem</a></span> <b><a href="Plank.DockElement.create_menu_item_with_pixbuf.html" class="static_method">create_menu_item_with_pixbuf</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> title, <span class="main_keyword">owned</span> <span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span> pixbuf, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> force_show_icon = <span class="main_literal">false</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a new menu item with mnemonics enabled.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <b><a href="Plank.DockElement.DockElement.html" class="creation_method">DockElement</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.DockElement.accept_drop.html" class="virtual_method">accept_drop</a></b> (<span class="main_type"><a href="../gee-0.8/Gee.ArrayList.html" class="class">ArrayList</a></span>&lt;<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>&gt; uris)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Accepts a drop of the given URIs.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Plank.DockElement.as_uri.html" class="method">as_uri</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns a unique URI for this dock element.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.DockElement.can_accept_drop.html" class="virtual_method">can_accept_drop</a></b> (<span class="main_type"><a href="../gee-0.8/Gee.ArrayList.html" class="class">ArrayList</a></span>&lt;<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>&gt; uris)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns if the item accepts a drop of the given URIs.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.DockElement.can_be_removed.html" class="virtual_method">can_be_removed</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns if this item can be removed from the dock.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Plank.DockElement.clicked.html" class="method">clicked</a></b> (<span class="main_type"><a href="Plank.PopupButton.html" class="enum">PopupButton</a></span> button, <span class="main_type"><a href="../gdk-3.0/Gdk.ModifierType.html" class="enum">ModifierType</a></span> mod, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item is clicked on.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Plank.DockController.html" class="class">DockController</a></span>? <b><a href="Plank.DockElement.get_dock.html" class="method">get_dock</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Get the dock which this element is part of</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Plank.DockElement.get_drop_text.html" class="virtual_method">get_drop_text</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The item's text for drop actions.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="../gee-0.8/Gee.ArrayList.html" class="class">ArrayList</a></span>&lt;<span class="main_type"><a href="../gtk+-3.0/Gtk.MenuItem.html" class="class">MenuItem</a></span>&gt; <b><a href="Plank.DockElement.get_menu_items.html" class="virtual_method">get_menu_items</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns a list of the item's menu items.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Plank.DockElement.hovered.html" class="method">hovered</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item gets hovered.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.on_clicked.html" class="virtual_method">on_clicked</a></b> (<span class="main_type"><a href="Plank.PopupButton.html" class="enum">PopupButton</a></span> button, <span class="main_type"><a href="../gdk-3.0/Gdk.ModifierType.html" class="enum">ModifierType</a></span> mod, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item is clicked on.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.on_hovered.html" class="virtual_method">on_hovered</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item gets hovered.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="Plank.AnimationType.html" class="enum">AnimationType</a></span> <b><a href="Plank.DockElement.on_scrolled.html" class="virtual_method">on_scrolled</a></b> (<span class="main_type"><a href="../gdk-3.0/Gdk.ScrollDirection.html" class="enum">ScrollDirection</a></span> direction, <span class="main_type"><a href="../gdk-3.0/Gdk.ModifierType.html" class="enum">ModifierType</a></span> mod, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item is scrolled over.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Plank.DockElement.reset_buffers.html" class="abstract_method">reset_buffers</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Resets the buffers for this element.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Plank.DockElement.scrolled.html" class="method">scrolled</a></b> (<span class="main_type"><a href="../gdk-3.0/Gdk.ScrollDirection.html" class="enum">ScrollDirection</a></span> direction, <span class="main_type"><a href="../gdk-3.0/Gdk.ModifierType.html" class="enum">ModifierType</a></span> mod, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Called when an item is scrolled over.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Plank.DockElement.unique_id.html" class="virtual_method">unique_id</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns a unique ID for this dock item.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Plank.DockElement.needs_redraw.html" class="signal">needs_redraw</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Signal fired when the dock element needs redrawn.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-63')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-63">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

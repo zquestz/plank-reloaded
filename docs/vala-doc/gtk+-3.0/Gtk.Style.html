@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.Style &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.Style &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">Style</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.Style" alt="Object hierarchy for Style" src="img/Gtk.Style.png"/>
+
+      <map id="Gtk.Style" name="Gtk.Style">
+<area shape="rect" id="node1" href="Gtk.Style.html" title="Gtk.Style" alt="" coords="16,101,107,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="5,5,118,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gtk_style_get_type ()"</span> ) ]<br/>[ <span class="main_type">Version</span> ( deprecated = <span class="main_literal">true</span> ,  deprecated_since = <span class="main_literal">"3.0"</span> ,  replacement = <span class="main_literal">"StyleContext"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Style</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div>
+        <div class="description">
+          <p><b>Warning:</b> Style is deprecated since 3.0. Use StyleContext.</p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.StyleContext.html" class="class">StyleContext</a></span> <b><a href="Gtk.Style.context.html" class="property">context</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">construct</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Gtk.Style.Style.html" class="creation_method">Style</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.@get.html" class="method">@get</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> widget_type, ...)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.apply_default_background.html" class="method">apply_default_background</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="../gdk-3.0/Gdk.Window.html" class="class">Window</a></span> window, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><span class="class">Style</span></span> <b><a href="Gtk.Style.clone.html" class="virtual_method">clone</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Style</span></span> <b><a href="Gtk.Style.copy.html" class="method">copy</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.copy_to.html" class="virtual_method">copy_to</a></b> (<span class="main_type"><span class="class">Style</span></span> dest)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.detach.html" class="method">detach</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_arrow.html" class="virtual_method">draw_arrow</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_type"><a href="Gtk.ArrowType.html" class="enum">ArrowType</a></span> arrow_type, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> fill, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_box.html" class="virtual_method">draw_box</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_box_gap.html" class="virtual_method">draw_box_gap</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_type"><a href="Gtk.PositionType.html" class="enum">PositionType</a></span> gap_side, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> gap_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> gap_width)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_check.html" class="virtual_method">draw_check</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_diamond.html" class="virtual_method">draw_diamond</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_expander.html" class="virtual_method">draw_expander</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_type"><a href="Gtk.ExpanderStyle.html" class="enum">ExpanderStyle</a></span> expander_style)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_extension.html" class="virtual_method">draw_extension</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_type"><a href="Gtk.PositionType.html" class="enum">PositionType</a></span> gap_side)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_flat_box.html" class="virtual_method">draw_flat_box</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_focus.html" class="virtual_method">draw_focus</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_handle.html" class="virtual_method">draw_handle</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_type"><a href="Gtk.Orientation.html" class="enum">Orientation</a></span> orientation)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_hline.html" class="virtual_method">draw_hline</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x1, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x2, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_layout.html" class="virtual_method">draw_layout</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> use_text, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_type"><a href="../pango/Pango.Layout.html" class="class">Layout</a></span> layout)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_option.html" class="virtual_method">draw_option</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_resize_grip.html" class="virtual_method">draw_resize_grip</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_type"><a href="../gdk-3.0/Gdk.WindowEdge.html" class="enum">WindowEdge</a></span> edge, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_shadow.html" class="virtual_method">draw_shadow</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_shadow_gap.html" class="virtual_method">draw_shadow_gap</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_type"><a href="Gtk.PositionType.html" class="enum">PositionType</a></span> gap_side, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> gap_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> gap_width)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_slider.html" class="virtual_method">draw_slider</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_type"><a href="Gtk.Orientation.html" class="enum">Orientation</a></span> orientation)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_spinner.html" class="virtual_method">draw_spinner</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> step, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_tab.html" class="virtual_method">draw_tab</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.ShadowType.html" class="enum">ShadowType</a></span> shadow_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.draw_vline.html" class="virtual_method">draw_vline</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> detail, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y1_, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y2_, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.get_style_property.html" class="method">get_style_property</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> widget_type, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> property_name, <span class="main_keyword">ref</span> <span class="main_type"><a href="../gobject-2.0/GLib.Value.html" class="struct">Value</a></span> value)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.get_valist.html" class="method">get_valist</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> widget_type, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> first_property_name, <span class="main_type"><a href="../glib-2.0/va_list.html" class="struct">va_list</a></span> var_args)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.Style.has_context.html" class="method">has_context</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.init_from_rc.html" class="virtual_method">init_from_rc</a></b> (<span class="main_type"><a href="Gtk.RcStyle.html" class="class">RcStyle</a></span> rc_style)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.Style.lookup_color.html" class="method">lookup_color</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> color_name, <span class="main_keyword">out</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span> color)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.IconSet.html" class="class">IconSet</a></span> <b><a href="Gtk.Style.lookup_icon_set.html" class="method">lookup_icon_set</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> stock_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span> <b><a href="Gtk.Style.render_icon.html" class="virtual_method">render_icon</a></b> (<span class="main_type"><a href="Gtk.IconSource.html" class="class">IconSource</a></span> source, <span class="main_type"><a href="Gtk.TextDirection.html" class="enum">TextDirection</a></span> direction, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> size, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span>? widget, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? detail)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.set_background.html" class="virtual_method">set_background</a></b> (<span class="main_type"><a href="../gdk-3.0/Gdk.Window.html" class="class">Window</a></span> window, <span class="main_type"><a href="Gtk.StateType.html" class="enum">StateType</a></span> state_type)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.realize.html" class="signal">realize</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.Style.unrealize.html" class="signal">unrealize</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Fields:</h3>
+        <ul class="navi_inline">
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.@base.html" class="field">@base</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> (<span class="main_keyword">unowned</span> <span class="main_type"><a href="../cairo/Cairo.Pattern.html" class="class">Pattern</a></span>)[] <b><a href="Gtk.Style.background.html" class="field">background</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.bg.html" class="field">bg</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span> <b><a href="Gtk.Style.black.html" class="field">black</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.dark.html" class="field">dark</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.fg.html" class="field">fg</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../pango/Pango.FontDescription.html" class="class">FontDescription</a></span> <b><a href="Gtk.Style.font_desc.html" class="field">font_desc</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.light.html" class="field">light</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.mid.html" class="field">mid</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.text.html" class="field">text</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span>[] <b><a href="Gtk.Style.text_aa.html" class="field">text_aa</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gdk-3.0/Gdk.Color.html" class="struct">Color</a></span> <b><a href="Gtk.Style.white.html" class="field">white</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.Style.xthickness.html" class="field">xthickness</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.Style.ythickness.html" class="field">ythickness</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1700')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-1700">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

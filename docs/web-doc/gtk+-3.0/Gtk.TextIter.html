@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.TextIter &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.TextIter &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="struct">TextIter</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="method"><a href="Gtk.TextIter.assign.html">assign</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_char.html">backward_char</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_chars.html">backward_chars</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_cursor_position.html">backward_cursor_position</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_cursor_positions.html">backward_cursor_positions</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_find_char.html">backward_find_char</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_line.html">backward_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_lines.html">backward_lines</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_search.html">backward_search</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_sentence_start.html">backward_sentence_start</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_sentence_starts.html">backward_sentence_starts</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_to_tag_toggle.html">backward_to_tag_toggle</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_cursor_position.html">backward_visible_cursor_position</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_cursor_positions.html">backward_visible_cursor_positions</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_line.html">backward_visible_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_lines.html">backward_visible_lines</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_word_start.html">backward_visible_word_start</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_visible_word_starts.html">backward_visible_word_starts</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_word_start.html">backward_word_start</a></li>
+          <li class="method"><a href="Gtk.TextIter.backward_word_starts.html">backward_word_starts</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.TextIter.begins_tag.html">begins_tag</a></span></li>
+          <li class="method"><a href="Gtk.TextIter.can_insert.html">can_insert</a></li>
+          <li class="method"><a href="Gtk.TextIter.compare.html">compare</a></li>
+          <li class="method"><a href="Gtk.TextIter.copy.html">copy</a></li>
+          <li class="method"><a href="Gtk.TextIter.editable.html">editable</a></li>
+          <li class="method"><a href="Gtk.TextIter.ends_line.html">ends_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.ends_sentence.html">ends_sentence</a></li>
+          <li class="method"><a href="Gtk.TextIter.ends_tag.html">ends_tag</a></li>
+          <li class="method"><a href="Gtk.TextIter.ends_word.html">ends_word</a></li>
+          <li class="method"><a href="Gtk.TextIter.equal.html">equal</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_char.html">forward_char</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_chars.html">forward_chars</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_cursor_position.html">forward_cursor_position</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_cursor_positions.html">forward_cursor_positions</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_find_char.html">forward_find_char</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_line.html">forward_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_lines.html">forward_lines</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_search.html">forward_search</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_sentence_end.html">forward_sentence_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_sentence_ends.html">forward_sentence_ends</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_to_end.html">forward_to_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_to_line_end.html">forward_to_line_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_to_tag_toggle.html">forward_to_tag_toggle</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_cursor_position.html">forward_visible_cursor_position</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_cursor_positions.html">forward_visible_cursor_positions</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_line.html">forward_visible_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_lines.html">forward_visible_lines</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_word_end.html">forward_visible_word_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_visible_word_ends.html">forward_visible_word_ends</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_word_end.html">forward_word_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.forward_word_ends.html">forward_word_ends</a></li>
+          <li class="method"><a href="Gtk.TextIter.free.html">free</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_attributes.html">get_attributes</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_buffer.html">get_buffer</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_bytes_in_line.html">get_bytes_in_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_char.html">get_char</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_chars_in_line.html">get_chars_in_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_child_anchor.html">get_child_anchor</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_language.html">get_language</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_line.html">get_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_line_index.html">get_line_index</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_line_offset.html">get_line_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_marks.html">get_marks</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_offset.html">get_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_pixbuf.html">get_pixbuf</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_slice.html">get_slice</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_tags.html">get_tags</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_text.html">get_text</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_toggled_tags.html">get_toggled_tags</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_visible_line_index.html">get_visible_line_index</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_visible_line_offset.html">get_visible_line_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_visible_slice.html">get_visible_slice</a></li>
+          <li class="method"><a href="Gtk.TextIter.get_visible_text.html">get_visible_text</a></li>
+          <li class="method"><a href="Gtk.TextIter.has_tag.html">has_tag</a></li>
+          <li class="method"><a href="Gtk.TextIter.in_range.html">in_range</a></li>
+          <li class="method"><a href="Gtk.TextIter.inside_sentence.html">inside_sentence</a></li>
+          <li class="method"><a href="Gtk.TextIter.inside_word.html">inside_word</a></li>
+          <li class="method"><a href="Gtk.TextIter.is_cursor_position.html">is_cursor_position</a></li>
+          <li class="method"><a href="Gtk.TextIter.is_end.html">is_end</a></li>
+          <li class="method"><a href="Gtk.TextIter.is_start.html">is_start</a></li>
+          <li class="method"><a href="Gtk.TextIter.order.html">order</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_line.html">set_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_line_index.html">set_line_index</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_line_offset.html">set_line_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_offset.html">set_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_visible_line_index.html">set_visible_line_index</a></li>
+          <li class="method"><a href="Gtk.TextIter.set_visible_line_offset.html">set_visible_line_offset</a></li>
+          <li class="method"><a href="Gtk.TextIter.starts_line.html">starts_line</a></li>
+          <li class="method"><a href="Gtk.TextIter.starts_sentence.html">starts_sentence</a></li>
+          <li class="method"><a href="Gtk.TextIter.starts_tag.html">starts_tag</a></li>
+          <li class="method"><a href="Gtk.TextIter.starts_word.html">starts_word</a></li>
+          <li class="method"><a href="Gtk.TextIter.toggles_tag.html">toggles_tag</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">TextIter</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.TextIter" alt="Object hierarchy for TextIter" src="img/Gtk.TextIter.png"/>
+
+      <map id="Gtk.TextIter" name="Gtk.TextIter">
+<area shape="rect" id="node1" href="Gtk.TextIter.html" title="Gtk.TextIter" alt="" coords="5,5,116,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( copy_function = <span class="main_literal">"g_boxed_copy"</span> ,  free_function = <span class="main_literal">"g_boxed_free"</span> ,  type_id = <span class="main_literal">"gtk_text_iter_get_type ()"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">struct</span> <b><span class="struct">TextIter</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.assign.html" class="method">assign</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> other)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_char.html" class="method">backward_char</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_chars.html" class="method">backward_chars</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_cursor_position.html" class="method">backward_cursor_position</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_cursor_positions.html" class="method">backward_cursor_positions</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_find_char.html" class="method">backward_find_char</a></b> (<span class="main_type"><a href="Gtk.TextCharPredicate.html" class="delegate">TextCharPredicate</a></span> pred, <span class="main_type"><span class="struct">TextIter</span></span>? limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_line.html" class="method">backward_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_lines.html" class="method">backward_lines</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_search.html" class="method">backward_search</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> str, <span class="main_type"><a href="Gtk.TextSearchFlags.html" class="enum">TextSearchFlags</a></span> flags, <span class="main_keyword">out</span> <span class="main_type"><span class="struct">TextIter</span></span> match_start, <span class="main_keyword">out</span> <span class="main_type"><span class="struct">TextIter</span></span> match_end, <span class="main_type"><span class="struct">TextIter</span></span>? limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_sentence_start.html" class="method">backward_sentence_start</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_sentence_starts.html" class="method">backward_sentence_starts</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_to_tag_toggle.html" class="method">backward_to_tag_toggle</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_cursor_position.html" class="method">backward_visible_cursor_position</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_cursor_positions.html" class="method">backward_visible_cursor_positions</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_line.html" class="method">backward_visible_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_lines.html" class="method">backward_visible_lines</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_word_start.html" class="method">backward_visible_word_start</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_visible_word_starts.html" class="method">backward_visible_word_starts</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_word_start.html" class="method">backward_word_start</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.backward_word_starts.html" class="method">backward_word_starts</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.begins_tag.html" class="method">begins_tag</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.can_insert.html" class="method">can_insert</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> default_editability)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.compare.html" class="method">compare</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> rhs)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="struct">TextIter</span></span>? <b><a href="Gtk.TextIter.copy.html" class="method">copy</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.editable.html" class="method">editable</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> default_setting)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.ends_line.html" class="method">ends_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.ends_sentence.html" class="method">ends_sentence</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.ends_tag.html" class="method">ends_tag</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.ends_word.html" class="method">ends_word</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.equal.html" class="method">equal</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> rhs)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_char.html" class="method">forward_char</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_chars.html" class="method">forward_chars</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_cursor_position.html" class="method">forward_cursor_position</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_cursor_positions.html" class="method">forward_cursor_positions</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_find_char.html" class="method">forward_find_char</a></b> (<span class="main_type"><a href="Gtk.TextCharPredicate.html" class="delegate">TextCharPredicate</a></span> pred, <span class="main_type"><span class="struct">TextIter</span></span>? limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_line.html" class="method">forward_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_lines.html" class="method">forward_lines</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_search.html" class="method">forward_search</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> str, <span class="main_type"><a href="Gtk.TextSearchFlags.html" class="enum">TextSearchFlags</a></span> flags, <span class="main_keyword">out</span> <span class="main_type"><span class="struct">TextIter</span></span> match_start, <span class="main_keyword">out</span> <span class="main_type"><span class="struct">TextIter</span></span> match_end, <span class="main_type"><span class="struct">TextIter</span></span>? limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_sentence_end.html" class="method">forward_sentence_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_sentence_ends.html" class="method">forward_sentence_ends</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.forward_to_end.html" class="method">forward_to_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_to_line_end.html" class="method">forward_to_line_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_to_tag_toggle.html" class="method">forward_to_tag_toggle</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_cursor_position.html" class="method">forward_visible_cursor_position</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_cursor_positions.html" class="method">forward_visible_cursor_positions</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_line.html" class="method">forward_visible_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_lines.html" class="method">forward_visible_lines</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_word_end.html" class="method">forward_visible_word_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_visible_word_ends.html" class="method">forward_visible_word_ends</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_word_end.html" class="method">forward_word_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.forward_word_ends.html" class="method">forward_word_ends</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> count)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.free.html" class="method">free</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.get_attributes.html" class="method">get_attributes</a></b> (<span class="main_type"><a href="Gtk.TextAttributes.html" class="class">TextAttributes</a></span> values)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.TextBuffer.html" class="class">TextBuffer</a></span> <b><a href="Gtk.TextIter.get_buffer.html" class="method">get_buffer</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_bytes_in_line.html" class="method">get_bytes_in_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/unichar.html" class="struct">unichar</a></span> <b><a href="Gtk.TextIter.get_char.html" class="method">get_char</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_chars_in_line.html" class="method">get_chars_in_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.TextChildAnchor.html" class="class">TextChildAnchor</a></span> <b><a href="Gtk.TextIter.get_child_anchor.html" class="method">get_child_anchor</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../pango/Pango.Language.html" class="class">Language</a></span> <b><a href="Gtk.TextIter.get_language.html" class="method">get_language</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_line.html" class="method">get_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_line_index.html" class="method">get_line_index</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_line_offset.html" class="method">get_line_offset</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.SList.html" class="class">SList</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.TextMark.html" class="class">TextMark</a></span>&gt; <b><a href="Gtk.TextIter.get_marks.html" class="method">get_marks</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_offset.html" class="method">get_offset</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span> <b><a href="Gtk.TextIter.get_pixbuf.html" class="method">get_pixbuf</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.TextIter.get_slice.html" class="method">get_slice</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> end)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.SList.html" class="class">SList</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>&gt; <b><a href="Gtk.TextIter.get_tags.html" class="method">get_tags</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.TextIter.get_text.html" class="method">get_text</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> end)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.SList.html" class="class">SList</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>&gt; <b><a href="Gtk.TextIter.get_toggled_tags.html" class="method">get_toggled_tags</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> toggled_on)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_visible_line_index.html" class="method">get_visible_line_index</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.TextIter.get_visible_line_offset.html" class="method">get_visible_line_offset</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.TextIter.get_visible_slice.html" class="method">get_visible_slice</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> end)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.TextIter.get_visible_text.html" class="method">get_visible_text</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> end)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.has_tag.html" class="method">has_tag</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span> tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.in_range.html" class="method">in_range</a></b> (<span class="main_type"><span class="struct">TextIter</span></span> start, <span class="main_type"><span class="struct">TextIter</span></span> end)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.inside_sentence.html" class="method">inside_sentence</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.inside_word.html" class="method">inside_word</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.is_cursor_position.html" class="method">is_cursor_position</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.is_end.html" class="method">is_end</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.is_start.html" class="method">is_start</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.order.html" class="method">order</a></b> (<span class="main_keyword">ref</span> <span class="main_type"><span class="struct">TextIter</span></span> second)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_line.html" class="method">set_line</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> line_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_line_index.html" class="method">set_line_index</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> byte_on_line)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_line_offset.html" class="method">set_line_offset</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> char_on_line)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_offset.html" class="method">set_offset</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> char_offset)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_visible_line_index.html" class="method">set_visible_line_index</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> byte_on_line)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.TextIter.set_visible_line_offset.html" class="method">set_visible_line_offset</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> char_on_line)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.starts_line.html" class="method">starts_line</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.starts_sentence.html" class="method">starts_sentence</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.starts_tag.html" class="method">starts_tag</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.starts_word.html" class="method">starts_word</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.TextIter.toggles_tag.html" class="method">toggles_tag</a></b> (<span class="main_type"><a href="Gtk.TextTag.html" class="class">TextTag</a></span>? tag)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.IOExtensionPoint &ndash; gio-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.IOExtensionPoint &ndash; gio-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gio-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">IOExtensionPoint</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="constant"><a href="GLib.IOExtensionPoint.DEBUG_CONTROLLER.html">DEBUG_CONTROLLER</a></li>
+          <li class="constant"><span class="deprecated"><a href="GLib.IOExtensionPoint.DESKTOP_APP_INFO_LOOKUP.html">DESKTOP_APP_INFO_LOOKUP</a>
+            </span></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.MEMORY_MONITOR.html">MEMORY_MONITOR</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.NATIVE_VOLUME_MONITOR.html">NATIVE_VOLUME_MONITOR</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.NETWORK_MONITOR.html">NETWORK_MONITOR</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.POWER_PROFILE_MONITOR.html">POWER_PROFILE_MONITOR</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.PROXY.html">PROXY</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.PROXY_RESOLVER.html">PROXY_RESOLVER</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.SETTINGS_BACKEND.html">SETTINGS_BACKEND</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.TLS_BACKEND.html">TLS_BACKEND</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.VFS.html">VFS</a></li>
+          <li class="constant"><a href="GLib.IOExtensionPoint.VOLUME_MONITOR.html">VOLUME_MONITOR</a></li>
+          <li class="static_method"><a href="GLib.IOExtensionPoint.implement.html">implement</a></li>
+          <li class="static_method"><a href="GLib.IOExtensionPoint.lookup.html">lookup</a></li>
+          <li class="static_method"><a href="GLib.IOExtensionPoint.register.html">register</a></li>
+          <li class="method"><a href="GLib.IOExtensionPoint.get_extension_by_name.html">get_extension_by_name</a></li>
+          <li class="method"><a href="GLib.IOExtensionPoint.get_extensions.html">get_extensions</a></li>
+          <li class="method"><a href="GLib.IOExtensionPoint.get_required_type.html">get_required_type</a></li>
+          <li class="method"><a href="GLib.IOExtensionPoint.set_required_type.html">set_required_type</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">IOExtensionPoint</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.IOExtensionPoint" alt="Object hierarchy for IOExtensionPoint" src="img/GLib.IOExtensionPoint.png"/>
+
+      <map id="GLib.IOExtensionPoint" name="GLib.IOExtensionPoint">
+<area shape="rect" id="node1" href="GLib.IOExtensionPoint.html" title="GLib.IOExtensionPoint" alt="" coords="5,5,199,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( has_type_id = <span class="main_literal">false</span> ) ]<br/>[ <span class="main_type">Compact</span> ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">IOExtensionPoint</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gio-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Constants:</h3>
+        <ul class="navi_inline">
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.DEBUG_CONTROLLER.html" class="constant">DEBUG_CONTROLLER</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.DESKTOP_APP_INFO_LOOKUP.html" class="constant">DESKTOP_APP_INFO_LOOKUP</a></b>
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.MEMORY_MONITOR.html" class="constant">MEMORY_MONITOR</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.NATIVE_VOLUME_MONITOR.html" class="constant">NATIVE_VOLUME_MONITOR</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.NETWORK_MONITOR.html" class="constant">NETWORK_MONITOR</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.POWER_PROFILE_MONITOR.html" class="constant">POWER_PROFILE_MONITOR</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.PROXY.html" class="constant">PROXY</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.PROXY_RESOLVER.html" class="constant">PROXY_RESOLVER</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.SETTINGS_BACKEND.html" class="constant">SETTINGS_BACKEND</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.TLS_BACKEND.html" class="constant">TLS_BACKEND</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.VFS.html" class="constant">VFS</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="constant"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">const</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="GLib.IOExtensionPoint.VOLUME_MONITOR.html" class="constant">VOLUME_MONITOR</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.IOExtension.html" class="class">IOExtension</a></span> <b><a href="GLib.IOExtensionPoint.implement.html" class="static_method">implement</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> extension_point_name, <span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> type, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> extension_name, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> priority)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">IOExtensionPoint</span></span> <b><a href="GLib.IOExtensionPoint.lookup.html" class="static_method">lookup</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">IOExtensionPoint</span></span> <b><a href="GLib.IOExtensionPoint.register.html" class="static_method">register</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="GLib.IOExtension.html" class="class">IOExtension</a></span> <b><a href="GLib.IOExtensionPoint.get_extension_by_name.html" class="method">get_extension_by_name</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_type"><a href="GLib.IOExtension.html" class="class">IOExtension</a></span>&gt; <b><a href="GLib.IOExtensionPoint.get_extensions.html" class="method">get_extensions</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> <b><a href="GLib.IOExtensionPoint.get_required_type.html" class="method">get_required_type</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.IOExtensionPoint.set_required_type.html" class="method">set_required_type</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Type.html" class="struct">Type</a></span> type)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

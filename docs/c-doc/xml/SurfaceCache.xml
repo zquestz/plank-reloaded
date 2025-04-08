@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankSurfaceCache">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankSurfaceCache.top_of_page">PlankSurfaceCache</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankSurfaceCache</refname>
+<refpurpose>Cache multiple sizes of the assumed same image</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankSurfaceCache.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_proto_type" colwidth="150px"/>
+<colspec colname="functions_proto_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="PlankSurface"><returnvalue>PlankSurface</returnvalue></link>&#160;*
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="PlankDrawFunc">*PlankDrawFunc</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="PlankSurface"><returnvalue>PlankSurface</returnvalue></link>&#160;*
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="PlankDrawDataFunc">*PlankDrawDataFunc</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="plank-reloaded-PlankSurfaceCache.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-SURFACE-CACHE:CAPS">PLANK_TYPE_SURFACE_CACHE</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankSurfaceCache">PlankSurfaceCache</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankSurfaceCacheClass">PlankSurfaceCacheClass</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankSurfaceCacheFlags">PlankSurfaceCacheFlags</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankSurfaceCache.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankSurfaceCache.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="PlankDrawFunc" role="function">
+<title>PlankDrawFunc&#160;()</title>
+<indexterm zone="PlankDrawFunc"><primary>PlankDrawFunc</primary></indexterm>
+<programlisting language="C"><link linkend="PlankSurface"><returnvalue>PlankSurface</returnvalue></link>&#160;*
+<phrase role="c_punctuation">(</phrase>*PlankDrawFunc<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="gint"><type>gint</type></link> width</parameter>,
+                  <parameter><link linkend="gint"><type>gint</type></link> height</parameter>,
+                  <parameter><link linkend="PlankSurface"><type>PlankSurface</type></link> *model</parameter>,
+                  <parameter><link linkend="PlankDrawDataFunc"><type>PlankDrawDataFunc</type></link> draw_data_func</parameter>,
+                  <parameter><link linkend="gpointer"><type>gpointer</type></link> draw_data_func_target</parameter>,
+                  <parameter><link linkend="gpointer"><type>gpointer</type></link> user_data</parameter>);</programlisting>
+<para>Creates a new surface based on the given information</para>
+<refsect3 id="PlankDrawFunc.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>the width </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>the height </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>existing surface to use as basis of new surface </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>draw_data_func</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>function which changes the surface </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>][<acronym>allow-none</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>draw_data_func_target</para></entry>
+<entry role="parameter_description"><para>user data to pass to <parameter>draw_data_func</parameter>
+. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>allow-none</acronym>][<acronym>closure</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>data to pass to the delegate function. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>closure</acronym>]</emphasis></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="PlankDrawFunc.returns" role="returns">
+<title>Returns</title>
+<para>the newly created surface or NULL </para>
+</refsect3></refsect2>
+<refsect2 id="PlankDrawDataFunc" role="function">
+<title>PlankDrawDataFunc&#160;()</title>
+<indexterm zone="PlankDrawDataFunc"><primary>PlankDrawDataFunc</primary></indexterm>
+<programlisting language="C"><link linkend="PlankSurface"><returnvalue>PlankSurface</returnvalue></link>&#160;*
+<phrase role="c_punctuation">(</phrase>*PlankDrawDataFunc<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="gint"><type>gint</type></link> width</parameter>,
+                      <parameter><link linkend="gint"><type>gint</type></link> height</parameter>,
+                      <parameter><link linkend="PlankSurface"><type>PlankSurface</type></link> *model</parameter>,
+                      <parameter><link linkend="gconstpointer"><type>gconstpointer</type></link> data</parameter>,
+                      <parameter><link linkend="gpointer"><type>gpointer</type></link> user_data</parameter>);</programlisting>
+<para>Creates a new surface using the given element and information</para>
+<refsect3 id="PlankDrawDataFunc.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>the width </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>the height </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>existing surface to use as basis of new surface </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>&nbsp;.  <para>the data object used for drawing </para>. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>in</acronym>]</emphasis></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>data to pass to the delegate function. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>closure</acronym>]</emphasis></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="PlankDrawDataFunc.returns" role="returns">
+<title>Returns</title>
+<para>the newly created surface or NULL </para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankSurfaceCache.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-SURFACE-CACHE:CAPS" role="macro">
+<title>PLANK_TYPE_SURFACE_CACHE</title>
+<indexterm zone="PLANK-TYPE-SURFACE-CACHE:CAPS"><primary>PLANK_TYPE_SURFACE_CACHE</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_SURFACE_CACHE (plank_surface_cache_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankSurfaceCache"><type>PlankSurfaceCache</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankSurfaceCache" role="struct">
+<title>struct PlankSurfaceCache</title>
+<indexterm zone="PlankSurfaceCache"><primary>PlankSurfaceCache</primary></indexterm>
+<programlisting language="C">struct PlankSurfaceCache {
+	GObject parent_instance;
+	PlankSurfaceCachePrivate * priv;
+};
+</programlisting>
+<para>Cache multiple sizes of the assumed same image</para>
+</refsect2>
+<refsect2 id="PlankSurfaceCacheClass" role="struct">
+<title>struct PlankSurfaceCacheClass</title>
+<indexterm zone="PlankSurfaceCacheClass"><primary>PlankSurfaceCacheClass</primary></indexterm>
+<programlisting language="C">struct PlankSurfaceCacheClass {
+	GObjectClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-SURFACE-CACHE:CAPS"><literal>PLANK_TYPE_SURFACE_CACHE</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankSurfaceCacheClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="PlankSurfaceCacheFlags" role="enum">
+<title>enum PlankSurfaceCacheFlags</title>
+<indexterm zone="PlankSurfaceCacheFlags"><primary>PlankSurfaceCacheFlags</primary></indexterm>
+<para>Controls some internal behaviors of a <link linkend="PlankSurfaceCache"><type>PlankSurfaceCache</type></link></para>
+<refsect3 id="PlankSurfaceCacheFlags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-SURFACE-CACHE-FLAGS-NONE:CAPS">PLANK_SURFACE_CACHE_FLAGS_NONE</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-SURFACE-CACHE-FLAGS-ALLOW-DOWNSCALE:CAPS">PLANK_SURFACE_CACHE_FLAGS_ALLOW_DOWNSCALE</para></entry>
+<entry role="enum_member_description"><para>Allow down-scaling of an existing cached surface for better performance</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-SURFACE-CACHE-FLAGS-ALLOW-UPSCALE:CAPS">PLANK_SURFACE_CACHE_FLAGS_ALLOW_UPSCALE</para></entry>
+<entry role="enum_member_description"><para>Allow up-scaling of an existing cached surface for better performance</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-SURFACE-CACHE-FLAGS-ALLOW-SCALE:CAPS">PLANK_SURFACE_CACHE_FLAGS_ALLOW_SCALE</para></entry>
+<entry role="enum_member_description"><para>Allow scaling of an existing cached surface for better performance (This basically means the cache will only contain one entry which will be scaled accordingly on request)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-SURFACE-CACHE-FLAGS-ADAPTIVE-SCALE:CAPS">PLANK_SURFACE_CACHE_FLAGS_ADAPTIVE_SCALE</para></entry>
+<entry role="enum_member_description"><para>Allow scaling if the drawing-time is significatly high</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

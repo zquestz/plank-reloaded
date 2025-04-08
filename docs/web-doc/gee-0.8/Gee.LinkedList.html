@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gee.LinkedList &ndash; gee-0.8 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gee.LinkedList &ndash; gee-0.8 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gee-0.8</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gee.html">Gee</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">LinkedList</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gee.LinkedList.equal_func.html">equal_func</a></li>
+          <li class="virtual_property"><a href="Gee.LinkedList.read_only.html">read_only</a></li>
+          <li class="virtual_property"><a href="Gee.LinkedList.size.html">size</a></li>
+          <li class="creation_method"><a href="Gee.LinkedList.LinkedList.html">LinkedList</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.@foreach.html">@foreach</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.@get.html">@get</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.@set.html">@set</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.add.html">add</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.bidir_list_iterator.html">bidir_list_iterator</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.clear.html">clear</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.contains.html">contains</a></li>
+          <li class="method"><a href="Gee.LinkedList.first.html">first</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.index_of.html">index_of</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.insert.html">insert</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.iterator.html">iterator</a></li>
+          <li class="method"><a href="Gee.LinkedList.last.html">last</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.list_iterator.html">list_iterator</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.remove.html">remove</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.remove_at.html">remove_at</a></li>
+          <li class="virtual_method"><a href="Gee.LinkedList.slice.html">slice</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">LinkedList</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gee.LinkedList" alt="Object hierarchy for LinkedList" src="img/Gee.LinkedList.png"/>
+
+      <map id="Gee.LinkedList" name="Gee.LinkedList">
+<area shape="rect" id="node1" href="Gee.LinkedList.html" title="Gee.LinkedList" alt="" coords="547,389,682,437"/>
+<area shape="rect" id="node2" href="Gee.AbstractBidirList.html" title="Gee.AbstractBidirList" alt="" coords="356,293,538,341"/>
+<area shape="rect" id="node3" href="Gee.AbstractList.html" title="Gee.AbstractList" alt="" coords="296,197,441,245"/>
+<area shape="rect" id="node4" href="Gee.AbstractCollection.html" title="Gee.AbstractCollection" alt="" coords="191,101,383,149"/>
+<area shape="rect" id="node5" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="5,5,118,53"/>
+<area shape="rect" id="node6" href="Gee.Traversable.html" title="Gee.Traversable" alt="" coords="142,5,282,53"/>
+<area shape="rect" id="node7" href="Gee.Iterable.html" title="Gee.Iterable" alt="" coords="306,5,417,53"/>
+<area shape="rect" id="node8" href="Gee.Collection.html" title="Gee.Collection" alt="" coords="441,5,572,53"/>
+<area shape="rect" id="node9" href="Gee.List.html" title="Gee.List" alt="" coords="407,101,492,149"/>
+<area shape="rect" id="node10" href="Gee.BidirList.html" title="Gee.BidirList" alt="" coords="465,197,586,245"/>
+<area shape="rect" id="node11" href="Gee.Queue.html" title="Gee.Queue" alt="" coords="563,293,667,341"/>
+<area shape="rect" id="node12" href="Gee.Deque.html" title="Gee.Deque" alt="" coords="691,293,795,341"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">LinkedList</span></b>&lt;<b><span>G</span></b>&gt; : <span class="main_type"><a href="Gee.AbstractBidirList.html" class="abstract_class">AbstractBidirList</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;, <span class="main_type"><a href="Gee.Queue.html" class="interface">Queue</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;, <span class="main_type"><a href="Gee.Deque.html" class="interface">Deque</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;
+        </div>
+        <div class="description">
+          <p>Doubly-linked list implementation of the <a href="Gee.List.html" class="interface">List</a> interface.</p>
+          <p>This implementation is pretty well designed for highly mutable data. When indexed access is privileged prefer using 
+            <a href="Gee.ArrayList.html" class="class">ArrayList</a>.</p>
+          <h2 class="main_title">See also:</h2>
+          <p><a href="Gee.ArrayList.html" class="class">ArrayList</a></p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gee.html">Gee</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gee-0.8</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gee.EqualDataFunc.html" class="delegate">EqualDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.LinkedList.equal_func.html" class="property">equal_func</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The elements' equality testing function.</span>
+            </div></li>
+          <li class="virtual_property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.LinkedList.read_only.html" class="virtual_property">read_only</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Specifies whether this collection can change - i.e. whether 
+                <a href="Gee.Collection.add.html" class="abstract_method">add</a>, <a href="Gee.Collection.remove.html" class="abstract_method">remove
+                </a> etc. are legal operations.</span>
+            </div></li>
+          <li class="virtual_property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gee.LinkedList.size.html" class="virtual_property">size</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">The number of items in this collection.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Gee.LinkedList.LinkedList.html" class="creation_method">LinkedList</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><a href="Gee.EqualDataFunc.html" class="delegate">EqualDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;? equal_func = <span class="main_literal">null</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Constructs a new, empty linked list.</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.LinkedList.@foreach.html" class="virtual_method">@foreach</a></b> (<span class="main_type"><a href="Gee.ForallFunc.html" class="delegate">ForallFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; f)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.LinkedList.@get.html" class="virtual_method">@get</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> index)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Gee.LinkedList.@set.html" class="virtual_method">@set</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> index, <span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.LinkedList.add.html" class="virtual_method">add</a></b> (<span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Adds an item to this collection. Must not be called on read-only 
+                collections.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><a href="Gee.BidirListIterator.html" class="interface">BidirListIterator</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.LinkedList.bidir_list_iterator.html" class="virtual_method">bidir_list_iterator</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns a BidirListIterator that can be used for iteration over this 
+                list.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Gee.LinkedList.clear.html" class="virtual_method">clear</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Removes all items from this collection. Must not be called on read-
+                only collections.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.LinkedList.contains.html" class="virtual_method">contains</a></b> (<span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Determines whether this collection contains the specified item.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.LinkedList.first.html" class="method">first</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gee.LinkedList.index_of.html" class="virtual_method">index_of</a></b> (<span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Gee.LinkedList.insert.html" class="virtual_method">insert</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> index, <span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><a href="Gee.Iterator.html" class="interface">Iterator</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.LinkedList.iterator.html" class="virtual_method">iterator</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Returns a <a href="Gee.Iterator.html" class="interface">Iterator</a> 
+                that can be used for simple iteration over a collection.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.LinkedList.last.html" class="method">last</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><a href="Gee.ListIterator.html" class="interface">ListIterator</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="Gee.LinkedList.list_iterator.html" class="virtual_method">list_iterator</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.LinkedList.remove.html" class="virtual_method">remove</a></b> (<span class="main_type"><span>G</span></span> item)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Removes the first occurrence of an item from this collection. Must not
+                be called on read-only collections.</span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.LinkedList.remove_at.html" class="virtual_method">remove_at</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> index)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_type"><a href="Gee.List.html" class="interface">List</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;? <b><a href="Gee.LinkedList.slice.html" class="virtual_method">slice</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> start, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> stop)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2409')">All known members inherited from class Gee.AbstractBidirList</div>
+          <div class="content" id="box-content-2409">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.AbstractBidirList.bidir_list_iterator.html">bidir_list_iterator</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_property"><a href="Gee.AbstractBidirList.read_only_view.html">read_only_view</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2410')">All known members inherited from class Gee.AbstractList</div>
+          <div class="content" id="box-content-2410">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.AbstractList.@get.html">@get</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractList.@set.html">@set</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractList.index_of.html">index_of</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.AbstractList.insert.html">insert</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractList.list_iterator.html">list_iterator</a></li>
+                <li class="virtual_property"><a href="Gee.AbstractList.read_only_view.html">read_only_view</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.AbstractList.remove_at.html">remove_at</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractList.slice.html">slice</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2411')">All known members inherited from class Gee.AbstractCollection</div>
+          <div class="content" id="box-content-2411">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.AbstractCollection.@foreach.html">@foreach</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractCollection.add.html">add</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractCollection.clear.html">clear</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.AbstractCollection.contains.html">contains</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractCollection.iterator.html">iterator</a></li>
+                <li class="abstract_property"><a href="Gee.AbstractCollection.read_only.html">read_only</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_property"><a href="Gee.AbstractCollection.read_only_view.html">read_only_view</a></li>
+                <li class="abstract_method"><a href="Gee.AbstractCollection.remove.html">remove</a></li>
+                <li class="abstract_property"><a href="Gee.AbstractCollection.size.html">size</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2412')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-2412">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2413')">All known members inherited from interface Gee.Queue</div>
+          <div class="content" id="box-content-2413">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="constant"><a href="Gee.Queue.UNBOUNDED_CAPACITY.html">UNBOUNDED_CAPACITY</a></li>
+                <li class="abstract_property"><a href="Gee.Queue.capacity.html">capacity</a></li>
+                <li class="virtual_method"><a href="Gee.Queue.drain.html">drain</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_property"><a href="Gee.Queue.is_full.html">is_full</a></li>
+                <li class="virtual_method"><a href="Gee.Queue.offer.html">offer</a></li>
+                <li class="abstract_method"><a href="Gee.Queue.peek.html">peek</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Queue.poll.html">poll</a></li>
+                <li class="abstract_property"><a href="Gee.Queue.remaining_capacity.html">remaining_capacity</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2414')">All known members inherited from interface Gee.Deque</div>
+          <div class="content" id="box-content-2414">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Deque.drain_head.html">drain_head</a></li>
+                <li class="abstract_method"><a href="Gee.Deque.drain_tail.html">drain_tail</a></li>
+                <li class="abstract_method"><a href="Gee.Deque.offer_head.html">offer_head</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Deque.offer_tail.html">offer_tail</a></li>
+                <li class="abstract_method"><a href="Gee.Deque.peek_head.html">peek_head</a></li>
+                <li class="abstract_method"><a href="Gee.Deque.peek_tail.html">peek_tail</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Deque.poll_head.html">poll_head</a></li>
+                <li class="abstract_method"><a href="Gee.Deque.poll_tail.html">poll_tail</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2415')">All known members inherited from interface Gee.BidirList</div>
+          <div class="content" id="box-content-2415">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.BidirList.bidir_list_iterator.html">bidir_list_iterator</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_property"><a href="Gee.BidirList.read_only_view.html">read_only_view</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2416')">All known members inherited from interface Gee.List</div>
+          <div class="content" id="box-content-2416">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.List.@get.html">@get</a></li>
+                <li class="abstract_method"><a href="Gee.List.@set.html">@set</a></li>
+                <li class="static_method"><a href="Gee.List.empty.html">empty</a></li>
+                <li class="virtual_method"><a href="Gee.List.first.html">first</a></li>
+                <li class="abstract_method"><a href="Gee.List.index_of.html">index_of</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.List.insert.html">insert</a></li>
+                <li class="virtual_method"><a href="Gee.List.insert_all.html">insert_all</a></li>
+                <li class="virtual_method"><a href="Gee.List.last.html">last</a></li>
+                <li class="abstract_method"><a href="Gee.List.list_iterator.html">list_iterator</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_property"><a href="Gee.List.read_only_view.html">read_only_view</a></li>
+                <li class="abstract_method"><a href="Gee.List.remove_at.html">remove_at</a></li>
+                <li class="abstract_method"><a href="Gee.List.slice.html">slice</a></li>
+                <li class="virtual_method"><a href="Gee.List.sort.html">sort</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2417')">All known members inherited from interface Gee.Traversable</div>
+          <div class="content" id="box-content-2417">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Traversable.@foreach.html">@foreach</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.all_match.html">all_match</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.any_match.html">any_match</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.chop.html">chop</a></li>
+                <li class="virtual_property"><a href="Gee.Traversable.element_type.html">element_type</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.filter.html">filter</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Traversable.first_match.html">first_match</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.flat_map.html">flat_map</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.fold.html">fold</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.map.html">map</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.max.html">max</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Traversable.min.html">min</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.order_by.html">order_by</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.scan.html">scan</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.stream.html">stream</a></li>
+                <li class="virtual_method"><a href="Gee.Traversable.tee.html">tee</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2418')">All known members inherited from interface Gee.Iterable</div>
+          <div class="content" id="box-content-2418">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Iterable.iterator.html">iterator</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2419')">All known members inherited from interface Gee.Collection</div>
+          <div class="content" id="box-content-2419">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Collection.add.html">add</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all.html">add_all</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all_array.html">add_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.add_all_iterator.html">add_all_iterator</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.clear.html">clear</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.contains.html">contains</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.contains_all.html">contains_all</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Collection.contains_all_array.html">contains_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.contains_all_iterator.html">contains_all_iterator</a></li>
+                <li class="static_method"><a href="Gee.Collection.empty.html">empty</a></li>
+                <li class="virtual_property"><a href="Gee.Collection.is_empty.html">is_empty</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.read_only.html">read_only</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.read_only_view.html">read_only_view</a></li>
+                <li class="abstract_method"><a href="Gee.Collection.remove.html">remove</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="virtual_method"><a href="Gee.Collection.remove_all.html">remove_all</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.remove_all_array.html">remove_all_array</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.remove_all_iterator.html">remove_all_iterator</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.retain_all.html">retain_all</a></li>
+                <li class="abstract_property"><a href="Gee.Collection.size.html">size</a></li>
+                <li class="virtual_method"><a href="Gee.Collection.to_array.html">to_array</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

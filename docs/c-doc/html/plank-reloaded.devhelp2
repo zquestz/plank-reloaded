@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title=" Reference Manual" link="index.html" author="" name="plank-reloaded" version="2" language="c" online="http://[SERVER]//index.html">
+  <chapters>
+    <sub name="plank-reloaded API Reference" link="ch01.html">
+      <sub name="Version" link="plank-reloaded-Version.html"/>
+      <sub name="PlankDockletItem" link="plank-reloaded-PlankDockletItem.html"/>
+      <sub name="PlankUnity" link="plank-reloaded-PlankUnity.html"/>
+      <sub name="PlankDBusClient" link="plank-reloaded-PlankDBusClient.html"/>
+      <sub name="PlankWorker" link="plank-reloaded-PlankWorker.html"/>
+      <sub name="PlankDockContainer" link="plank-reloaded-PlankDockContainer.html"/>
+      <sub name="PlankHideManager" link="plank-reloaded-PlankHideManager.html"/>
+      <sub name="PlankDocklet" link="plank-reloaded-PlankDocklet.html"/>
+      <sub name="PlankApplicationDockItemProvider" link="plank-reloaded-PlankApplicationDockItemProvider.html"/>
+      <sub name="PlankDBusManager" link="plank-reloaded-PlankDBusManager.html"/>
+      <sub name="Color" link="plank-reloaded-Color.html"/>
+      <sub name="PlankPositionManager" link="plank-reloaded-PlankPositionManager.html"/>
+      <sub name="PlankSettings" link="plank-reloaded-PlankSettings.html"/>
+      <sub name="PlankPreferencesWindow" link="plank-reloaded-PlankPreferencesWindow.html"/>
+      <sub name="PlankDragManager" link="plank-reloaded-PlankDragManager.html"/>
+      <sub name="PlankDockPreferences" link="plank-reloaded-PlankDockPreferences.html"/>
+      <sub name="PlankLogger" link="plank-reloaded-PlankLogger.html"/>
+      <sub name="PlankDockRenderer" link="plank-reloaded-PlankDockRenderer.html"/>
+      <sub name="PlankDefaultApplicationDockItemProvider" link="plank-reloaded-PlankDefaultApplicationDockItemProvider.html"/>
+      <sub name="PlankCompositedWindow" link="plank-reloaded-PlankCompositedWindow.html"/>
+      <sub name="PlankDockItemPreferences" link="plank-reloaded-PlankDockItemPreferences.html"/>
+      <sub name="PlankTheme" link="plank-reloaded-PlankTheme.html"/>
+      <sub name="PlankRenderer" link="plank-reloaded-PlankRenderer.html"/>
+      <sub name="PlankDrawingService" link="plank-reloaded-PlankDrawingService.html"/>
+      <sub name="PlankHoverWindow" link="plank-reloaded-PlankHoverWindow.html"/>
+      <sub name="PlankDockItem" link="plank-reloaded-PlankDockItem.html"/>
+      <sub name="PlankTitledSeparatorMenuItem" link="plank-reloaded-PlankTitledSeparatorMenuItem.html"/>
+      <sub name="PlankDockTheme" link="plank-reloaded-PlankDockTheme.html"/>
+      <sub name="PlankSurface" link="plank-reloaded-PlankSurface.html"/>
+      <sub name="PlankDockElement" link="plank-reloaded-PlankDockElement.html"/>
+      <sub name="Easing" link="plank-reloaded-Easing.html"/>
+      <sub name="PlankTransientDockItem" link="plank-reloaded-PlankTransientDockItem.html"/>
+      <sub name="PlankAbstractMain" link="plank-reloaded-PlankAbstractMain.html"/>
+      <sub name="PlankDockItemDrawValue" link="plank-reloaded-PlankDockItemDrawValue.html"/>
+      <sub name="PlankDockController" link="plank-reloaded-PlankDockController.html"/>
+      <sub name="PlankFactory" link="plank-reloaded-PlankFactory.html"/>
+      <sub name="PlankFileDockItem" link="plank-reloaded-PlankFileDockItem.html"/>
+      <sub name="PlankPreferences" link="plank-reloaded-PlankPreferences.html"/>
+      <sub name="PlankSurfaceCache" link="plank-reloaded-PlankSurfaceCache.html"/>
+      <sub name="PlankDockWindow" link="plank-reloaded-PlankDockWindow.html"/>
+      <sub name="PlankPaths" link="plank-reloaded-PlankPaths.html"/>
+      <sub name="PlankDockletManager" link="plank-reloaded-PlankDockletManager.html"/>
+      <sub name="PlankDockItemProvider" link="plank-reloaded-PlankDockItemProvider.html"/>
+      <sub name="PlankPlaceholderDockItem" link="plank-reloaded-PlankPlaceholderDockItem.html"/>
+      <sub name="PlankPlankDockItem" link="plank-reloaded-PlankPlankDockItem.html"/>
+      <sub name="PlankSystem" link="plank-reloaded-PlankSystem.html"/>
+      <sub name="PlankPoofWindow" link="plank-reloaded-PlankPoofWindow.html"/>
+      <sub name="Enums" link="plank-reloaded-Enums.html"/>
+      <sub name="PlankApplicationDockItem" link="plank-reloaded-PlankApplicationDockItem.html"/>
+      <sub name="PlankItemFactory" link="plank-reloaded-PlankItemFactory.html"/>
+      <sub name="Environment" link="plank-reloaded-Environment.html"/>
+    </sub>
+    <sub name="API Index" link="api-index-full.html"/>
+    <sub name="Index of deprecated API" link="deprecated-api-index.html"/>
+    <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+  </chapters>
+  <functions>
+    <keyword type="macro" name="PLANK_MAJOR_VERSION" link="plank-reloaded-Version.html#PLANK-MAJOR-VERSION:CAPS"/>
+    <keyword type="macro" name="PLANK_MINOR_VERSION" link="plank-reloaded-Version.html#PLANK-MINOR-VERSION:CAPS"/>
+    <keyword type="macro" name="PLANK_MICRO_VERSION" link="plank-reloaded-Version.html#PLANK-MICRO-VERSION:CAPS"/>
+    <keyword type="macro" name="PLANK_NANO_VERSION" link="plank-reloaded-Version.html#PLANK-NANO-VERSION:CAPS"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCKLET_ITEM" link="plank-reloaded-PlankDockletItem.html#PLANK-TYPE-DOCKLET-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankDockletItem" link="plank-reloaded-PlankDockletItem.html#PlankDockletItem"/>
+    <keyword type="struct" name="struct PlankDockletItemClass" link="plank-reloaded-PlankDockletItem.html#PlankDockletItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_UNITY" link="plank-reloaded-PlankUnity.html#PLANK-TYPE-UNITY:CAPS"/>
+    <keyword type="struct" name="struct PlankUnity" link="plank-reloaded-PlankUnity.html#PlankUnity"/>
+    <keyword type="struct" name="struct PlankUnityClass" link="plank-reloaded-PlankUnity.html#PlankUnityClass"/>
+    <keyword type="struct" name="PlankUnityClient" link="plank-reloaded-PlankUnity.html#PlankUnityClient"/>
+    <keyword type="struct" name="struct PlankUnityClientIface" link="plank-reloaded-PlankUnity.html#PlankUnityClientIface"/>
+    <keyword type="macro" name="PLANK_TYPE_DBUS_CLIENT" link="plank-reloaded-PlankDBusClient.html#PLANK-TYPE-DBUS-CLIENT:CAPS"/>
+    <keyword type="struct" name="struct PlankDBusClient" link="plank-reloaded-PlankDBusClient.html#PlankDBusClient"/>
+    <keyword type="struct" name="struct PlankDBusClientClass" link="plank-reloaded-PlankDBusClient.html#PlankDBusClientClass"/>
+    <keyword type="function" name="PlankTaskFunc ()" link="plank-reloaded-PlankWorker.html#PlankTaskFunc"/>
+    <keyword type="macro" name="PLANK_TYPE_WORKER" link="plank-reloaded-PlankWorker.html#PLANK-TYPE-WORKER:CAPS"/>
+    <keyword type="struct" name="struct PlankWorker" link="plank-reloaded-PlankWorker.html#PlankWorker"/>
+    <keyword type="struct" name="struct PlankWorkerClass" link="plank-reloaded-PlankWorker.html#PlankWorkerClass"/>
+    <keyword type="enum" name="enum PlankTaskPriority" link="plank-reloaded-PlankWorker.html#PlankTaskPriority"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_CONTAINER" link="plank-reloaded-PlankDockContainer.html#PLANK-TYPE-DOCK-CONTAINER:CAPS"/>
+    <keyword type="struct" name="struct PlankDockContainer" link="plank-reloaded-PlankDockContainer.html#PlankDockContainer"/>
+    <keyword type="struct" name="struct PlankDockContainerClass" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass"/>
+    <keyword type="macro" name="PLANK_TYPE_HIDE_MANAGER" link="plank-reloaded-PlankHideManager.html#PLANK-TYPE-HIDE-MANAGER:CAPS"/>
+    <keyword type="struct" name="struct PlankHideManager" link="plank-reloaded-PlankHideManager.html#PlankHideManager"/>
+    <keyword type="struct" name="struct PlankHideManagerClass" link="plank-reloaded-PlankHideManager.html#PlankHideManagerClass"/>
+    <keyword type="enum" name="enum PlankHideType" link="plank-reloaded-PlankHideManager.html#PlankHideType"/>
+    <keyword type="struct" name="PlankDocklet" link="plank-reloaded-PlankDocklet.html#PlankDocklet"/>
+    <keyword type="struct" name="struct PlankDockletIface" link="plank-reloaded-PlankDocklet.html#PlankDockletIface"/>
+    <keyword type="macro" name="PLANK_TYPE_APPLICATION_DOCK_ITEM_PROVIDER" link="plank-reloaded-PlankApplicationDockItemProvider.html#PLANK-TYPE-APPLICATION-DOCK-ITEM-PROVIDER:CAPS"/>
+    <keyword type="struct" name="struct PlankApplicationDockItemProvider" link="plank-reloaded-PlankApplicationDockItemProvider.html#PlankApplicationDockItemProvider"/>
+    <keyword type="struct" name="struct PlankApplicationDockItemProviderClass" link="plank-reloaded-PlankApplicationDockItemProvider.html#PlankApplicationDockItemProviderClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DBUS_MANAGER" link="plank-reloaded-PlankDBusManager.html#PLANK-TYPE-DBUS-MANAGER:CAPS"/>
+    <keyword type="struct" name="struct PlankDBusManager" link="plank-reloaded-PlankDBusManager.html#PlankDBusManager"/>
+    <keyword type="struct" name="struct PlankDBusManagerClass" link="plank-reloaded-PlankDBusManager.html#PlankDBusManagerClass"/>
+    <keyword type="typedef" name="PlankColor" link="plank-reloaded-Color.html#PlankColor"/>
+    <keyword type="macro" name="PLANK_TYPE_POSITION_MANAGER" link="plank-reloaded-PlankPositionManager.html#PLANK-TYPE-POSITION-MANAGER:CAPS"/>
+    <keyword type="struct" name="struct PlankPositionManager" link="plank-reloaded-PlankPositionManager.html#PlankPositionManager"/>
+    <keyword type="struct" name="struct PlankPositionManagerClass" link="plank-reloaded-PlankPositionManager.html#PlankPositionManagerClass"/>
+    <keyword type="macro" name="PLANK_TYPE_SETTINGS" link="plank-reloaded-PlankSettings.html#PLANK-TYPE-SETTINGS:CAPS"/>
+    <keyword type="struct" name="struct PlankSettings" link="plank-reloaded-PlankSettings.html#PlankSettings"/>
+    <keyword type="struct" name="struct PlankSettingsClass" link="plank-reloaded-PlankSettings.html#PlankSettingsClass"/>
+    <keyword type="macro" name="PLANK_TYPE_PREFERENCES_WINDOW" link="plank-reloaded-PlankPreferencesWindow.html#PLANK-TYPE-PREFERENCES-WINDOW:CAPS"/>
+    <keyword type="struct" name="struct PlankPreferencesWindow" link="plank-reloaded-PlankPreferencesWindow.html#PlankPreferencesWindow"/>
+    <keyword type="struct" name="struct PlankPreferencesWindowClass" link="plank-reloaded-PlankPreferencesWindow.html#PlankPreferencesWindowClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DRAG_MANAGER" link="plank-reloaded-PlankDragManager.html#PLANK-TYPE-DRAG-MANAGER:CAPS"/>
+    <keyword type="struct" name="struct PlankDragManager" link="plank-reloaded-PlankDragManager.html#PlankDragManager"/>
+    <keyword type="struct" name="struct PlankDragManagerClass" link="plank-reloaded-PlankDragManager.html#PlankDragManagerClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_PREFERENCES" link="plank-reloaded-PlankDockPreferences.html#PLANK-TYPE-DOCK-PREFERENCES:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MIN_ICON_SIZE" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MIN-ICON-SIZE:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MAX_ICON_SIZE" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MAX-ICON-SIZE:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MIN_ICON_ZOOM" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MIN-ICON-ZOOM:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MAX-ICON-ZOOM:CAPS"/>
+    <keyword type="struct" name="struct PlankDockPreferences" link="plank-reloaded-PlankDockPreferences.html#PlankDockPreferences"/>
+    <keyword type="struct" name="struct PlankDockPreferencesClass" link="plank-reloaded-PlankDockPreferences.html#PlankDockPreferencesClass"/>
+    <keyword type="macro" name="PLANK_TYPE_LOGGER" link="plank-reloaded-PlankLogger.html#PLANK-TYPE-LOGGER:CAPS"/>
+    <keyword type="struct" name="struct PlankLogger" link="plank-reloaded-PlankLogger.html#PlankLogger"/>
+    <keyword type="struct" name="struct PlankLoggerClass" link="plank-reloaded-PlankLogger.html#PlankLoggerClass"/>
+    <keyword type="enum" name="enum PlankLogLevel" link="plank-reloaded-PlankLogger.html#PlankLogLevel"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_RENDERER" link="plank-reloaded-PlankDockRenderer.html#PLANK-TYPE-DOCK-RENDERER:CAPS"/>
+    <keyword type="struct" name="struct PlankDockRenderer" link="plank-reloaded-PlankDockRenderer.html#PlankDockRenderer"/>
+    <keyword type="struct" name="struct PlankDockRendererClass" link="plank-reloaded-PlankDockRenderer.html#PlankDockRendererClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DEFAULT_APPLICATION_DOCK_ITEM_PROVIDER" link="plank-reloaded-PlankDefaultApplicationDockItemProvider.html#PLANK-TYPE-DEFAULT-APPLICATION-DOCK-ITEM-PROVIDER:CAPS"/>
+    <keyword type="struct" name="struct PlankDefaultApplicationDockItemProvider" link="plank-reloaded-PlankDefaultApplicationDockItemProvider.html#PlankDefaultApplicationDockItemProvider"/>
+    <keyword type="struct" name="struct PlankDefaultApplicationDockItemProviderClass" link="plank-reloaded-PlankDefaultApplicationDockItemProvider.html#PlankDefaultApplicationDockItemProviderClass"/>
+    <keyword type="macro" name="PLANK_TYPE_COMPOSITED_WINDOW" link="plank-reloaded-PlankCompositedWindow.html#PLANK-TYPE-COMPOSITED-WINDOW:CAPS"/>
+    <keyword type="struct" name="struct PlankCompositedWindow" link="plank-reloaded-PlankCompositedWindow.html#PlankCompositedWindow"/>
+    <keyword type="struct" name="struct PlankCompositedWindowClass" link="plank-reloaded-PlankCompositedWindow.html#PlankCompositedWindowClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_ITEM_PREFERENCES" link="plank-reloaded-PlankDockItemPreferences.html#PLANK-TYPE-DOCK-ITEM-PREFERENCES:CAPS"/>
+    <keyword type="struct" name="struct PlankDockItemPreferences" link="plank-reloaded-PlankDockItemPreferences.html#PlankDockItemPreferences"/>
+    <keyword type="struct" name="struct PlankDockItemPreferencesClass" link="plank-reloaded-PlankDockItemPreferences.html#PlankDockItemPreferencesClass"/>
+    <keyword type="macro" name="PLANK_TYPE_THEME" link="plank-reloaded-PlankTheme.html#PLANK-TYPE-THEME:CAPS"/>
+    <keyword type="macro" name="PLANK_THEME_DEFAULT_NAME" link="plank-reloaded-PlankTheme.html#PLANK-THEME-DEFAULT-NAME:CAPS"/>
+    <keyword type="macro" name="PLANK_THEME_GTK_THEME_NAME" link="plank-reloaded-PlankTheme.html#PLANK-THEME-GTK-THEME-NAME:CAPS"/>
+    <keyword type="struct" name="struct PlankTheme" link="plank-reloaded-PlankTheme.html#PlankTheme"/>
+    <keyword type="struct" name="struct PlankThemeClass" link="plank-reloaded-PlankTheme.html#PlankThemeClass"/>
+    <keyword type="macro" name="PLANK_TYPE_RENDERER" link="plank-reloaded-PlankRenderer.html#PLANK-TYPE-RENDERER:CAPS"/>
+    <keyword type="struct" name="struct PlankRenderer" link="plank-reloaded-PlankRenderer.html#PlankRenderer"/>
+    <keyword type="struct" name="struct PlankRendererClass" link="plank-reloaded-PlankRenderer.html#PlankRendererClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DRAWING_SERVICE" link="plank-reloaded-PlankDrawingService.html#PLANK-TYPE-DRAWING-SERVICE:CAPS"/>
+    <keyword type="struct" name="struct PlankDrawingService" link="plank-reloaded-PlankDrawingService.html#PlankDrawingService"/>
+    <keyword type="struct" name="struct PlankDrawingServiceClass" link="plank-reloaded-PlankDrawingService.html#PlankDrawingServiceClass"/>
+    <keyword type="macro" name="PLANK_TYPE_HOVER_WINDOW" link="plank-reloaded-PlankHoverWindow.html#PLANK-TYPE-HOVER-WINDOW:CAPS"/>
+    <keyword type="struct" name="struct PlankHoverWindow" link="plank-reloaded-PlankHoverWindow.html#PlankHoverWindow"/>
+    <keyword type="struct" name="struct PlankHoverWindowClass" link="plank-reloaded-PlankHoverWindow.html#PlankHoverWindowClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_ITEM" link="plank-reloaded-PlankDockItem.html#PLANK-TYPE-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankDockItem" link="plank-reloaded-PlankDockItem.html#PlankDockItem"/>
+    <keyword type="struct" name="struct PlankDockItemClass" link="plank-reloaded-PlankDockItem.html#PlankDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_TITLED_SEPARATOR_MENU_ITEM" link="plank-reloaded-PlankTitledSeparatorMenuItem.html#PLANK-TYPE-TITLED-SEPARATOR-MENU-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankTitledSeparatorMenuItem" link="plank-reloaded-PlankTitledSeparatorMenuItem.html#PlankTitledSeparatorMenuItem"/>
+    <keyword type="struct" name="struct PlankTitledSeparatorMenuItemClass" link="plank-reloaded-PlankTitledSeparatorMenuItem.html#PlankTitledSeparatorMenuItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_THEME" link="plank-reloaded-PlankDockTheme.html#PLANK-TYPE-DOCK-THEME:CAPS"/>
+    <keyword type="struct" name="struct PlankDockTheme" link="plank-reloaded-PlankDockTheme.html#PlankDockTheme"/>
+    <keyword type="struct" name="struct PlankDockThemeClass" link="plank-reloaded-PlankDockTheme.html#PlankDockThemeClass"/>
+    <keyword type="macro" name="PLANK_TYPE_SURFACE" link="plank-reloaded-PlankSurface.html#PLANK-TYPE-SURFACE:CAPS"/>
+    <keyword type="struct" name="struct PlankSurface" link="plank-reloaded-PlankSurface.html#PlankSurface"/>
+    <keyword type="struct" name="struct PlankSurfaceClass" link="plank-reloaded-PlankSurface.html#PlankSurfaceClass"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_ELEMENT" link="plank-reloaded-PlankDockElement.html#PLANK-TYPE-DOCK-ELEMENT:CAPS"/>
+    <keyword type="struct" name="struct PlankDockElement" link="plank-reloaded-PlankDockElement.html#PlankDockElement"/>
+    <keyword type="struct" name="struct PlankDockElementClass" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass"/>
+    <keyword type="enum" name="enum PlankAnimationMode" link="plank-reloaded-Easing.html#PlankAnimationMode"/>
+    <keyword type="macro" name="PLANK_TYPE_TRANSIENT_DOCK_ITEM" link="plank-reloaded-PlankTransientDockItem.html#PLANK-TYPE-TRANSIENT-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankTransientDockItem" link="plank-reloaded-PlankTransientDockItem.html#PlankTransientDockItem"/>
+    <keyword type="struct" name="struct PlankTransientDockItemClass" link="plank-reloaded-PlankTransientDockItem.html#PlankTransientDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_ABSTRACT_MAIN" link="plank-reloaded-PlankAbstractMain.html#PLANK-TYPE-ABSTRACT-MAIN:CAPS"/>
+    <keyword type="struct" name="struct PlankAbstractMain" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMain"/>
+    <keyword type="struct" name="struct PlankAbstractMainClass" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMainClass"/>
+    <keyword type="function" name="PlankDrawValueFunc ()" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDrawValueFunc"/>
+    <keyword type="function" name="PlankDrawValuesFunc ()" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDrawValuesFunc"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_ITEM_DRAW_VALUE" link="plank-reloaded-PlankDockItemDrawValue.html#PLANK-TYPE-DOCK-ITEM-DRAW-VALUE:CAPS"/>
+    <keyword type="struct" name="struct PlankDockItemDrawValue" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDockItemDrawValue"/>
+    <keyword type="struct" name="struct PlankDockItemDrawValueClass" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDockItemDrawValueClass"/>
+    <keyword type="struct" name="struct PlankPointD" link="plank-reloaded-PlankDockItemDrawValue.html#PlankPointD"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_CONTROLLER" link="plank-reloaded-PlankDockController.html#PLANK-TYPE-DOCK-CONTROLLER:CAPS"/>
+    <keyword type="struct" name="struct PlankDockController" link="plank-reloaded-PlankDockController.html#PlankDockController"/>
+    <keyword type="struct" name="struct PlankDockControllerClass" link="plank-reloaded-PlankDockController.html#PlankDockControllerClass"/>
+    <keyword type="macro" name="PLANK_G_RESOURCE_PATH" link="plank-reloaded-PlankDockController.html#PLANK-G-RESOURCE-PATH:CAPS"/>
+    <keyword type="macro" name="PLANK_TYPE_FACTORY" link="plank-reloaded-PlankFactory.html#PLANK-TYPE-FACTORY:CAPS"/>
+    <keyword type="struct" name="struct PlankFactory" link="plank-reloaded-PlankFactory.html#PlankFactory"/>
+    <keyword type="struct" name="struct PlankFactoryClass" link="plank-reloaded-PlankFactory.html#PlankFactoryClass"/>
+    <keyword type="macro" name="PLANK_TYPE_FILE_DOCK_ITEM" link="plank-reloaded-PlankFileDockItem.html#PLANK-TYPE-FILE-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankFileDockItem" link="plank-reloaded-PlankFileDockItem.html#PlankFileDockItem"/>
+    <keyword type="struct" name="struct PlankFileDockItemClass" link="plank-reloaded-PlankFileDockItem.html#PlankFileDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_PREFERENCES" link="plank-reloaded-PlankPreferences.html#PLANK-TYPE-PREFERENCES:CAPS"/>
+    <keyword type="struct" name="struct PlankPreferences" link="plank-reloaded-PlankPreferences.html#PlankPreferences"/>
+    <keyword type="struct" name="struct PlankPreferencesClass" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass"/>
+    <keyword type="struct" name="PlankSerializable" link="plank-reloaded-PlankPreferences.html#PlankSerializable"/>
+    <keyword type="struct" name="struct PlankSerializableIface" link="plank-reloaded-PlankPreferences.html#PlankSerializableIface"/>
+    <keyword type="function" name="PlankDrawFunc ()" link="plank-reloaded-PlankSurfaceCache.html#PlankDrawFunc"/>
+    <keyword type="function" name="PlankDrawDataFunc ()" link="plank-reloaded-PlankSurfaceCache.html#PlankDrawDataFunc"/>
+    <keyword type="macro" name="PLANK_TYPE_SURFACE_CACHE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-TYPE-SURFACE-CACHE:CAPS"/>
+    <keyword type="struct" name="struct PlankSurfaceCache" link="plank-reloaded-PlankSurfaceCache.html#PlankSurfaceCache"/>
+    <keyword type="struct" name="struct PlankSurfaceCacheClass" link="plank-reloaded-PlankSurfaceCache.html#PlankSurfaceCacheClass"/>
+    <keyword type="enum" name="enum PlankSurfaceCacheFlags" link="plank-reloaded-PlankSurfaceCache.html#PlankSurfaceCacheFlags"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_WINDOW" link="plank-reloaded-PlankDockWindow.html#PLANK-TYPE-DOCK-WINDOW:CAPS"/>
+    <keyword type="struct" name="struct PlankDockWindow" link="plank-reloaded-PlankDockWindow.html#PlankDockWindow"/>
+    <keyword type="struct" name="struct PlankDockWindowClass" link="plank-reloaded-PlankDockWindow.html#PlankDockWindowClass"/>
+    <keyword type="macro" name="PLANK_TYPE_PATHS" link="plank-reloaded-PlankPaths.html#PLANK-TYPE-PATHS:CAPS"/>
+    <keyword type="struct" name="struct PlankPaths" link="plank-reloaded-PlankPaths.html#PlankPaths"/>
+    <keyword type="struct" name="struct PlankPathsClass" link="plank-reloaded-PlankPaths.html#PlankPathsClass"/>
+    <keyword type="function" name="PlankDockletInitFunc ()" link="plank-reloaded-PlankDockletManager.html#PlankDockletInitFunc"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCKLET_MANAGER" link="plank-reloaded-PlankDockletManager.html#PLANK-TYPE-DOCKLET-MANAGER:CAPS"/>
+    <keyword type="struct" name="struct PlankDockletManager" link="plank-reloaded-PlankDockletManager.html#PlankDockletManager"/>
+    <keyword type="struct" name="struct PlankDockletManagerClass" link="plank-reloaded-PlankDockletManager.html#PlankDockletManagerClass"/>
+    <keyword type="macro" name="PLANK_DOCKLET_ENTRY_POINT" link="plank-reloaded-PlankDockletManager.html#PLANK-DOCKLET-ENTRY-POINT:CAPS"/>
+    <keyword type="macro" name="PLANK_TYPE_DOCK_ITEM_PROVIDER" link="plank-reloaded-PlankDockItemProvider.html#PLANK-TYPE-DOCK-ITEM-PROVIDER:CAPS"/>
+    <keyword type="struct" name="struct PlankDockItemProvider" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProvider"/>
+    <keyword type="struct" name="struct PlankDockItemProviderClass" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass"/>
+    <keyword type="macro" name="PLANK_TYPE_PLACEHOLDER_DOCK_ITEM" link="plank-reloaded-PlankPlaceholderDockItem.html#PLANK-TYPE-PLACEHOLDER-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankPlaceholderDockItem" link="plank-reloaded-PlankPlaceholderDockItem.html#PlankPlaceholderDockItem"/>
+    <keyword type="struct" name="struct PlankPlaceholderDockItemClass" link="plank-reloaded-PlankPlaceholderDockItem.html#PlankPlaceholderDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_PLANK_DOCK_ITEM" link="plank-reloaded-PlankPlankDockItem.html#PLANK-TYPE-PLANK-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankPlankDockItem" link="plank-reloaded-PlankPlankDockItem.html#PlankPlankDockItem"/>
+    <keyword type="struct" name="struct PlankPlankDockItemClass" link="plank-reloaded-PlankPlankDockItem.html#PlankPlankDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_SYSTEM" link="plank-reloaded-PlankSystem.html#PLANK-TYPE-SYSTEM:CAPS"/>
+    <keyword type="struct" name="struct PlankSystem" link="plank-reloaded-PlankSystem.html#PlankSystem"/>
+    <keyword type="struct" name="struct PlankSystemClass" link="plank-reloaded-PlankSystem.html#PlankSystemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_POOF_WINDOW" link="plank-reloaded-PlankPoofWindow.html#PLANK-TYPE-POOF-WINDOW:CAPS"/>
+    <keyword type="struct" name="struct PlankPoofWindow" link="plank-reloaded-PlankPoofWindow.html#PlankPoofWindow"/>
+    <keyword type="struct" name="struct PlankPoofWindowClass" link="plank-reloaded-PlankPoofWindow.html#PlankPoofWindowClass"/>
+    <keyword type="enum" name="enum PlankAnimationType" link="plank-reloaded-Enums.html#PlankAnimationType"/>
+    <keyword type="enum" name="enum PlankIndicatorState" link="plank-reloaded-Enums.html#PlankIndicatorState"/>
+    <keyword type="enum" name="enum PlankItemState" link="plank-reloaded-Enums.html#PlankItemState"/>
+    <keyword type="enum" name="enum PlankPopupButton" link="plank-reloaded-Enums.html#PlankPopupButton"/>
+    <keyword type="macro" name="PLANK_TYPE_APPLICATION_DOCK_ITEM" link="plank-reloaded-PlankApplicationDockItem.html#PLANK-TYPE-APPLICATION-DOCK-ITEM:CAPS"/>
+    <keyword type="struct" name="struct PlankApplicationDockItem" link="plank-reloaded-PlankApplicationDockItem.html#PlankApplicationDockItem"/>
+    <keyword type="struct" name="struct PlankApplicationDockItemClass" link="plank-reloaded-PlankApplicationDockItem.html#PlankApplicationDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_ITEM_FACTORY" link="plank-reloaded-PlankItemFactory.html#PLANK-TYPE-ITEM-FACTORY:CAPS"/>
+    <keyword type="struct" name="struct PlankItemFactory" link="plank-reloaded-PlankItemFactory.html#PlankItemFactory"/>
+    <keyword type="struct" name="struct PlankItemFactoryClass" link="plank-reloaded-PlankItemFactory.html#PlankItemFactoryClass"/>
+    <keyword type="enum" name="enum PlankXdgSessionClass" link="plank-reloaded-Environment.html#PlankXdgSessionClass"/>
+    <keyword type="enum" name="enum PlankXdgSessionDesktop" link="plank-reloaded-Environment.html#PlankXdgSessionDesktop"/>
+    <keyword type="enum" name="enum PlankXdgSessionType" link="plank-reloaded-Environment.html#PlankXdgSessionType"/>
+    <keyword type="constant" name="PLANK_TASK_PRIORITY_LOW" link="plank-reloaded-PlankWorker.html#PLANK-TASK-PRIORITY-LOW:CAPS"/>
+    <keyword type="constant" name="PLANK_TASK_PRIORITY_DEFAULT" link="plank-reloaded-PlankWorker.html#PLANK-TASK-PRIORITY-DEFAULT:CAPS"/>
+    <keyword type="constant" name="PLANK_TASK_PRIORITY_HIGH" link="plank-reloaded-PlankWorker.html#PLANK-TASK-PRIORITY-HIGH:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_NONE" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-NONE:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_INTELLIGENT" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-INTELLIGENT:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_AUTO" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-AUTO:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_DODGE_MAXIMIZED" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-DODGE-MAXIMIZED:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_WINDOW_DODGE" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-WINDOW-DODGE:CAPS"/>
+    <keyword type="constant" name="PLANK_HIDE_TYPE_DODGE_ACTIVE" link="plank-reloaded-PlankHideManager.html#PLANK-HIDE-TYPE-DODGE-ACTIVE:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_VERBOSE" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-VERBOSE:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_DEBUG" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-DEBUG:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_INFO" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-INFO:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_NOTIFY" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-NOTIFY:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_WARN" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-WARN:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_CRITICAL" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-CRITICAL:CAPS"/>
+    <keyword type="constant" name="PLANK_LOG_LEVEL_ERROR" link="plank-reloaded-PlankLogger.html#PLANK-LOG-LEVEL-ERROR:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_CUSTOM" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-CUSTOM:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_LINEAR" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-LINEAR:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_QUAD" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-QUAD:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_QUAD" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-QUAD:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_QUAD" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-QUAD:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_CUBIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-CUBIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_CUBIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-CUBIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_CUBIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-CUBIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_QUART" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-QUART:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_QUART" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-QUART:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_QUART" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-QUART:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_QUINT" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-QUINT:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_QUINT" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-QUINT:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_QUINT" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-QUINT:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_SINE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-SINE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_SINE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-SINE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_SINE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-SINE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_EXPO" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-EXPO:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_EXPO" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-EXPO:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_EXPO" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-EXPO:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_CIRC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-CIRC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_CIRC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-CIRC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_CIRC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-CIRC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_ELASTIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-ELASTIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_ELASTIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-ELASTIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_ELASTIC" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-ELASTIC:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_BACK" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-BACK:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_BACK" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-BACK:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_BACK" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-BACK:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_BOUNCE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-BOUNCE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_OUT_BOUNCE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-OUT-BOUNCE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_EASE_IN_OUT_BOUNCE" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-EASE-IN-OUT-BOUNCE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_MODE_LAST" link="plank-reloaded-Easing.html#PLANK-ANIMATION-MODE-LAST:CAPS"/>
+    <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_NONE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-NONE:CAPS"/>
+    <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ALLOW_DOWNSCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ALLOW-DOWNSCALE:CAPS"/>
+    <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ALLOW_UPSCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ALLOW-UPSCALE:CAPS"/>
+    <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ALLOW_SCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ALLOW-SCALE:CAPS"/>
+    <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ADAPTIVE_SCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ADAPTIVE-SCALE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_TYPE_NONE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-NONE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_TYPE_BOUNCE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-BOUNCE:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_TYPE_DARKEN" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-DARKEN:CAPS"/>
+    <keyword type="constant" name="PLANK_ANIMATION_TYPE_LIGHTEN" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-LIGHTEN:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STATE_NONE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-NONE:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STATE_SINGLE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-SINGLE:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STATE_SINGLE_PLUS" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-SINGLE-PLUS:CAPS"/>
+    <keyword type="constant" name="PLANK_ITEM_STATE_NORMAL" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-NORMAL:CAPS"/>
+    <keyword type="constant" name="PLANK_ITEM_STATE_ACTIVE" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-ACTIVE:CAPS"/>
+    <keyword type="constant" name="PLANK_ITEM_STATE_URGENT" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-URGENT:CAPS"/>
+    <keyword type="constant" name="PLANK_ITEM_STATE_MOVE" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-MOVE:CAPS"/>
+    <keyword type="constant" name="PLANK_ITEM_STATE_INVALID" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-INVALID:CAPS"/>
+    <keyword type="constant" name="PLANK_POPUP_BUTTON_NONE" link="plank-reloaded-Enums.html#PLANK-POPUP-BUTTON-NONE:CAPS"/>
+    <keyword type="constant" name="PLANK_POPUP_BUTTON_LEFT" link="plank-reloaded-Enums.html#PLANK-POPUP-BUTTON-LEFT:CAPS"/>
+    <keyword type="constant" name="PLANK_POPUP_BUTTON_MIDDLE" link="plank-reloaded-Enums.html#PLANK-POPUP-BUTTON-MIDDLE:CAPS"/>
+    <keyword type="constant" name="PLANK_POPUP_BUTTON_RIGHT" link="plank-reloaded-Enums.html#PLANK-POPUP-BUTTON-RIGHT:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_CLASS_USER" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-CLASS-USER:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_CLASS_GREETER" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-CLASS-GREETER:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_CLASS_LOCK_SCREEN" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-CLASS-LOCK-SCREEN:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_CLASS_BACKGROUND" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-CLASS-BACKGROUND:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_UNKNOWN" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_GNOME" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-GNOME:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_KDE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-KDE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_LXDE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-LXDE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_MATE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-MATE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_RAZOR" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-RAZOR:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_ROX" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-ROX:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_TDE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-TDE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_UNITY" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-UNITY:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_XFCE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-XFCE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_EDE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-EDE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_CINNAMON" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-CINNAMON:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_PANTHEON" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-PANTHEON:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_DDE" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-DDE:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_ENDLESS" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-ENDLESS:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_OLD" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-OLD:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_DESKTOP_UBUNTU" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-DESKTOP-UBUNTU:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_TYPE_UNSPECIFIED" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-TYPE-UNSPECIFIED:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_TYPE_TTY" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-TYPE-TTY:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_TYPE_X11" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-TYPE-X11:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_TYPE_WAYLAND" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-TYPE-WAYLAND:CAPS"/>
+    <keyword type="constant" name="PLANK_XDG_SESSION_TYPE_MIR" link="plank-reloaded-Environment.html#PLANK-XDG-SESSION-TYPE-MIR:CAPS"/>
+    <keyword type="member" name="PlankUnityClientIface.parent-iface" link="plank-reloaded-PlankUnity.html#PlankUnityClientIface.parent-iface"/>
+    <keyword type="member" name="PlankUnityClientIface.update-launcher-entry" link="plank-reloaded-PlankUnity.html#PlankUnityClientIface.update-launcher-entry"/>
+    <keyword type="member" name="PlankUnityClientIface.remove-launcher-entry" link="plank-reloaded-PlankUnity.html#PlankUnityClientIface.remove-launcher-entry"/>
+    <keyword type="member" name="PlankDockContainerClass.prepare" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.prepare"/>
+    <keyword type="member" name="PlankDockContainerClass.update-visible-elements" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.update-visible-elements"/>
+    <keyword type="member" name="PlankDockContainerClass.move-to" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.move-to"/>
+    <keyword type="member" name="PlankDockContainerClass.replace" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.replace"/>
+    <keyword type="member" name="PlankDockContainerClass.connect-element" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.connect-element"/>
+    <keyword type="member" name="PlankDockContainerClass.disconnect-element" link="plank-reloaded-PlankDockContainer.html#PlankDockContainerClass.disconnect-element"/>
+    <keyword type="member" name="PlankDockletIface.parent-iface" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.parent-iface"/>
+    <keyword type="member" name="PlankDockletIface.get-id" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.get-id"/>
+    <keyword type="member" name="PlankDockletIface.get-name" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.get-name"/>
+    <keyword type="member" name="PlankDockletIface.get-description" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.get-description"/>
+    <keyword type="member" name="PlankDockletIface.get-icon" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.get-icon"/>
+    <keyword type="member" name="PlankDockletIface.is-supported" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.is-supported"/>
+    <keyword type="member" name="PlankDockletIface.make-element" link="plank-reloaded-PlankDocklet.html#PlankDockletIface.make-element"/>
+    <keyword type="member" name="PlankApplicationDockItemProviderClass.app-opened" link="plank-reloaded-PlankApplicationDockItemProvider.html#PlankApplicationDockItemProviderClass.app-opened"/>
+    <keyword type="member" name="PlankSettingsClass.verify" link="plank-reloaded-PlankSettings.html#PlankSettingsClass.verify"/>
+    <keyword type="member" name="PlankRendererClass.animation-needed" link="plank-reloaded-PlankRenderer.html#PlankRendererClass.animation-needed"/>
+    <keyword type="member" name="PlankRendererClass.initialize-frame" link="plank-reloaded-PlankRenderer.html#PlankRendererClass.initialize-frame"/>
+    <keyword type="member" name="PlankRendererClass.draw" link="plank-reloaded-PlankRenderer.html#PlankRendererClass.draw"/>
+    <keyword type="member" name="PlankDockItemClass.load-from-launcher" link="plank-reloaded-PlankDockItem.html#PlankDockItemClass.load-from-launcher"/>
+    <keyword type="member" name="PlankDockItemClass.draw-icon" link="plank-reloaded-PlankDockItem.html#PlankDockItemClass.draw-icon"/>
+    <keyword type="member" name="PlankDockItemClass.draw-icon-fast" link="plank-reloaded-PlankDockItem.html#PlankDockItemClass.draw-icon-fast"/>
+    <keyword type="member" name="PlankDockItemClass.is-valid" link="plank-reloaded-PlankDockItem.html#PlankDockItemClass.is-valid"/>
+    <keyword type="member" name="PlankDockElementClass.on-clicked" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.on-clicked"/>
+    <keyword type="member" name="PlankDockElementClass.on-hovered" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.on-hovered"/>
+    <keyword type="member" name="PlankDockElementClass.on-scrolled" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.on-scrolled"/>
+    <keyword type="member" name="PlankDockElementClass.get-menu-items" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.get-menu-items"/>
+    <keyword type="member" name="PlankDockElementClass.get-drop-text" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.get-drop-text"/>
+    <keyword type="member" name="PlankDockElementClass.can-be-removed" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.can-be-removed"/>
+    <keyword type="member" name="PlankDockElementClass.can-accept-drop" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.can-accept-drop"/>
+    <keyword type="member" name="PlankDockElementClass.accept-drop" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.accept-drop"/>
+    <keyword type="member" name="PlankDockElementClass.unique-id" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.unique-id"/>
+    <keyword type="member" name="PlankDockElementClass.reset-buffers" link="plank-reloaded-PlankDockElement.html#PlankDockElementClass.reset-buffers"/>
+    <keyword type="member" name="PlankAbstractMainClass.initialize" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMainClass.initialize"/>
+    <keyword type="member" name="PlankAbstractMainClass.create-docks" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMainClass.create-docks"/>
+    <keyword type="member" name="PlankAbstractMainClass.create-actions" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMainClass.create-actions"/>
+    <keyword type="member" name="PlankDockItemDrawValueClass.finalize" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDockItemDrawValueClass.finalize"/>
+    <keyword type="member" name="PlankFactory.priv" link="plank-reloaded-PlankFactory.html#PlankFactory.priv"/>
+    <keyword type="member" name="PlankPreferencesClass.verify" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass.verify"/>
+    <keyword type="member" name="PlankPreferencesClass.reset-properties" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass.reset-properties"/>
+    <keyword type="member" name="PlankSerializableIface.parent-iface" link="plank-reloaded-PlankPreferences.html#PlankSerializableIface.parent-iface"/>
+    <keyword type="member" name="PlankSerializableIface.serialize" link="plank-reloaded-PlankPreferences.html#PlankSerializableIface.serialize"/>
+    <keyword type="member" name="PlankSerializableIface.deserialize" link="plank-reloaded-PlankPreferences.html#PlankSerializableIface.deserialize"/>
+    <keyword type="member" name="PlankDockItemProviderClass.item-exists-for-uri" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass.item-exists-for-uri"/>
+    <keyword type="member" name="PlankDockItemProviderClass.item-for-uri" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass.item-for-uri"/>
+    <keyword type="member" name="PlankDockItemProviderClass.add-item-with-uri" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass.add-item-with-uri"/>
+    <keyword type="member" name="PlankDockItemProviderClass.handle-item-deleted" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass.handle-item-deleted"/>
+    <keyword type="member" name="PlankDockItemProviderClass.get-dockitem-filenames" link="plank-reloaded-PlankDockItemProvider.html#PlankDockItemProviderClass.get-dockitem-filenames"/>
+    <keyword type="member" name="PlankItemFactory.priv" link="plank-reloaded-PlankItemFactory.html#PlankItemFactory.priv"/>
+    <keyword type="member" name="PlankItemFactory.launchers-dir" link="plank-reloaded-PlankItemFactory.html#PlankItemFactory.launchers-dir"/>
+    <keyword type="member" name="PlankItemFactoryClass.make-element" link="plank-reloaded-PlankItemFactory.html#PlankItemFactoryClass.make-element"/>
+    <keyword type="member" name="PlankItemFactoryClass.get-item-for-dock" link="plank-reloaded-PlankItemFactory.html#PlankItemFactoryClass.get-item-for-dock"/>
+  </functions>
+</book>

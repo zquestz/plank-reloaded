@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.FontChooser &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.FontChooser &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="interface">FontChooser</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gtk.FontChooser.font.html">font</a></li>
+          <li class="property"><a href="Gtk.FontChooser.font_desc.html">font_desc</a></li>
+          <li class="property"><a href="Gtk.FontChooser.font_features.html">font_features</a></li>
+          <li class="property"><a href="Gtk.FontChooser.language.html">language</a></li>
+          <li class="property"><a href="Gtk.FontChooser.level.html">level</a></li>
+          <li class="property"><a href="Gtk.FontChooser.preview_text.html">preview_text</a></li>
+          <li class="property"><a href="Gtk.FontChooser.show_preview_entry.html">show_preview_entry</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_font.html">get_font</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_font_desc.html">get_font_desc</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.get_font_face.html">get_font_face</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.get_font_family.html">get_font_family</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_font_features.html">get_font_features</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.get_font_map.html">get_font_map</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.get_font_size.html">get_font_size</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_language.html">get_language</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_level.html">get_level</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_preview_text.html">get_preview_text</a></li>
+          <li class="method"><a href="Gtk.FontChooser.get_show_preview_entry.html">get_show_preview_entry</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.set_filter_func.html">set_filter_func</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_font.html">set_font</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_font_desc.html">set_font_desc</a></li>
+          <li class="abstract_method"><a href="Gtk.FontChooser.set_font_map.html">set_font_map</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_language.html">set_language</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_level.html">set_level</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_preview_text.html">set_preview_text</a></li>
+          <li class="method"><a href="Gtk.FontChooser.set_show_preview_entry.html">set_show_preview_entry</a></li>
+          <li class="signal"><a href="Gtk.FontChooser.font_activated.html">font_activated</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">FontChooser</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.FontChooser" alt="Object hierarchy for FontChooser" src="img/Gtk.FontChooser.png"/>
+
+      <map id="Gtk.FontChooser" name="Gtk.FontChooser">
+<area shape="rect" id="node1" href="Gtk.FontChooser.html" title="Gtk.FontChooser" alt="" coords="5,101,152,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="22,5,135,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gtk_font_chooser_get_type ()"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">interface</span> <b><span class="interface">FontChooser</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1984')">All known implementing classes:</div>
+          <div class="content" id="box-content-1984">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.FontButton.html">FontButton</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.FontChooserDialog.html">FontChooserDialog</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gtk.FontChooserWidget.html">FontChooserWidget</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.font.html" class="property">font</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../pango/Pango.FontDescription.html" class="class">FontDescription</a></span> <b><a href="Gtk.FontChooser.font_desc.html" class="property">font_desc</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.font_features.html" class="property">font_features</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.language.html" class="property">language</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.FontChooserLevel.html" class="enum">FontChooserLevel</a></span> <b><a href="Gtk.FontChooser.level.html" class="property">level</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.preview_text.html" class="property">preview_text</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.FontChooser.show_preview_entry.html" class="property">show_preview_entry</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? <b><a href="Gtk.FontChooser.get_font.html" class="method">get_font</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../pango/Pango.FontDescription.html" class="class">FontDescription</a></span>? <b><a href="Gtk.FontChooser.get_font_desc.html" class="method">get_font_desc</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../pango/Pango.FontFace.html" class="abstract_class">FontFace</a></span>? <b><a href="Gtk.FontChooser.get_font_face.html" class="abstract_method">get_font_face</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../pango/Pango.FontFamily.html" class="abstract_class">FontFamily</a></span>? <b><a href="Gtk.FontChooser.get_font_family.html" class="abstract_method">get_font_family</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.get_font_features.html" class="method">get_font_features</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><a href="../pango/Pango.FontMap.html" class="abstract_class">FontMap</a></span>? <b><a href="Gtk.FontChooser.get_font_map.html" class="abstract_method">get_font_map</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gtk.FontChooser.get_font_size.html" class="abstract_method">get_font_size</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.get_language.html" class="method">get_language</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gtk.FontChooserLevel.html" class="enum">FontChooserLevel</a></span> <b><a href="Gtk.FontChooser.get_level.html" class="method">get_level</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.FontChooser.get_preview_text.html" class="method">get_preview_text</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.FontChooser.get_show_preview_entry.html" class="method">get_show_preview_entry</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_filter_func.html" class="abstract_method">set_filter_func</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><a href="Gtk.FontFilterFunc.html" class="delegate">FontFilterFunc</a></span>? filter)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_font.html" class="method">set_font</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> fontname)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_font_desc.html" class="method">set_font_desc</a></b> (<span class="main_type"><a href="../pango/Pango.FontDescription.html" class="class">FontDescription</a></span> font_desc)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_font_map.html" class="abstract_method">set_font_map</a></b> (<span class="main_type"><a href="../pango/Pango.FontMap.html" class="abstract_class">FontMap</a></span>? fontmap)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_language.html" class="method">set_language</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> language)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_level.html" class="method">set_level</a></b> (<span class="main_type"><a href="Gtk.FontChooserLevel.html" class="enum">FontChooserLevel</a></span> level)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_preview_text.html" class="method">set_preview_text</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> text)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.set_show_preview_entry.html" class="method">set_show_preview_entry</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> show_preview_entry)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.FontChooser.font_activated.html" class="signal">font_activated</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> fontname)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1985')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-1985">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

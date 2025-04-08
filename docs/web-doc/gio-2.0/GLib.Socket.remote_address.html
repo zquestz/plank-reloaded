@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.Socket.remote_address &ndash; gio-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.Socket.remote_address &ndash; gio-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gio-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="GLib.Socket.html">Socket</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="GLib.Socket.blocking.html">blocking</a></li>
+          <li class="property"><a href="GLib.Socket.broadcast.html">broadcast</a></li>
+          <li class="property"><a href="GLib.Socket.family.html">family</a></li>
+          <li class="property"><a href="GLib.Socket.fd.html">fd</a></li>
+          <li class="property"><a href="GLib.Socket.keepalive.html">keepalive</a></li>
+          <li class="property"><a href="GLib.Socket.listen_backlog.html">listen_backlog</a></li>
+          <li class="property"><a href="GLib.Socket.local_address.html">local_address</a></li>
+          <li class="property"><a href="GLib.Socket.multicast_loopback.html">multicast_loopback</a></li>
+          <li class="property"><a href="GLib.Socket.multicast_ttl.html">multicast_ttl</a></li>
+          <li class="property"><a href="GLib.Socket.protocol.html">protocol</a></li>
+          <li class="property">remote_address</li>
+          <li class="property"><a href="GLib.Socket.timeout.html">timeout</a></li>
+          <li class="property"><a href="GLib.Socket.ttl.html">ttl</a></li>
+          <li class="property"><a href="GLib.Socket.type.html">type</a></li>
+          <li class="creation_method"><a href="GLib.Socket.Socket.html">Socket</a></li>
+          <li class="creation_method"><a href="GLib.Socket.Socket.from_fd.html">Socket.from_fd</a></li>
+          <li class="method"><a href="GLib.Socket.accept.html">accept</a></li>
+          <li class="method"><a href="GLib.Socket.bind.html">bind</a></li>
+          <li class="method"><a href="GLib.Socket.check_connect_result.html">check_connect_result</a></li>
+          <li class="method"><a href="GLib.Socket.close.html">close</a></li>
+          <li class="method"><a href="GLib.Socket.condition_check.html">condition_check</a></li>
+          <li class="method"><a href="GLib.Socket.condition_timed_wait.html">condition_timed_wait</a></li>
+          <li class="method"><a href="GLib.Socket.condition_wait.html">condition_wait</a></li>
+          <li class="method"><a href="GLib.Socket.connect.html">connect</a></li>
+          <li class="method"><a href="GLib.Socket.create_source.html">create_source</a></li>
+          <li class="method"><a href="GLib.Socket.get_available_bytes.html">get_available_bytes</a></li>
+          <li class="method"><a href="GLib.Socket.get_blocking.html">get_blocking</a></li>
+          <li class="method"><a href="GLib.Socket.get_broadcast.html">get_broadcast</a></li>
+          <li class="method"><a href="GLib.Socket.get_credentials.html">get_credentials</a></li>
+          <li class="method"><a href="GLib.Socket.get_family.html">get_family</a></li>
+          <li class="method"><a href="GLib.Socket.get_fd.html">get_fd</a></li>
+          <li class="method"><a href="GLib.Socket.get_keepalive.html">get_keepalive</a></li>
+          <li class="method"><a href="GLib.Socket.get_listen_backlog.html">get_listen_backlog</a></li>
+          <li class="method"><a href="GLib.Socket.get_local_address.html">get_local_address</a></li>
+          <li class="method"><a href="GLib.Socket.get_multicast_loopback.html">get_multicast_loopback</a></li>
+          <li class="method"><a href="GLib.Socket.get_multicast_ttl.html">get_multicast_ttl</a></li>
+          <li class="method"><a href="GLib.Socket.get_option.html">get_option</a></li>
+          <li class="method"><a href="GLib.Socket.get_protocol.html">get_protocol</a></li>
+          <li class="method"><a href="GLib.Socket.get_remote_address.html">get_remote_address</a></li>
+          <li class="method"><a href="GLib.Socket.get_socket_type.html">get_socket_type</a></li>
+          <li class="method"><a href="GLib.Socket.get_timeout.html">get_timeout</a></li>
+          <li class="method"><a href="GLib.Socket.get_ttl.html">get_ttl</a></li>
+          <li class="method"><a href="GLib.Socket.is_closed.html">is_closed</a></li>
+          <li class="method"><a href="GLib.Socket.is_connected.html">is_connected</a></li>
+          <li class="method"><a href="GLib.Socket.join_multicast_group.html">join_multicast_group</a></li>
+          <li class="method"><a href="GLib.Socket.join_multicast_group_ssm.html">join_multicast_group_ssm</a></li>
+          <li class="method"><a href="GLib.Socket.leave_multicast_group.html">leave_multicast_group</a></li>
+          <li class="method"><a href="GLib.Socket.leave_multicast_group_ssm.html">leave_multicast_group_ssm</a></li>
+          <li class="method"><a href="GLib.Socket.listen.html">listen</a></li>
+          <li class="method"><a href="GLib.Socket.receive.html">receive</a></li>
+          <li class="method"><a href="GLib.Socket.receive_bytes.html">receive_bytes</a></li>
+          <li class="method"><a href="GLib.Socket.receive_bytes_from.html">receive_bytes_from</a></li>
+          <li class="method"><a href="GLib.Socket.receive_from.html">receive_from</a></li>
+          <li class="method"><a href="GLib.Socket.receive_message.html">receive_message</a></li>
+          <li class="method"><a href="GLib.Socket.receive_messages.html">receive_messages</a></li>
+          <li class="method"><a href="GLib.Socket.receive_with_blocking.html">receive_with_blocking</a></li>
+          <li class="method"><a href="GLib.Socket.send.html">send</a></li>
+          <li class="method"><a href="GLib.Socket.send_message.html">send_message</a></li>
+          <li class="method"><a href="GLib.Socket.send_message_with_timeout.html">send_message_with_timeout</a></li>
+          <li class="method"><a href="GLib.Socket.send_messages.html">send_messages</a></li>
+          <li class="method"><a href="GLib.Socket.send_to.html">send_to</a></li>
+          <li class="method"><a href="GLib.Socket.send_with_blocking.html">send_with_blocking</a></li>
+          <li class="method"><a href="GLib.Socket.set_blocking.html">set_blocking</a></li>
+          <li class="method"><a href="GLib.Socket.set_broadcast.html">set_broadcast</a></li>
+          <li class="method"><a href="GLib.Socket.set_keepalive.html">set_keepalive</a></li>
+          <li class="method"><a href="GLib.Socket.set_listen_backlog.html">set_listen_backlog</a></li>
+          <li class="method"><a href="GLib.Socket.set_multicast_loopback.html">set_multicast_loopback</a></li>
+          <li class="method"><a href="GLib.Socket.set_multicast_ttl.html">set_multicast_ttl</a></li>
+          <li class="method"><a href="GLib.Socket.set_option.html">set_option</a></li>
+          <li class="method"><a href="GLib.Socket.set_timeout.html">set_timeout</a></li>
+          <li class="method"><a href="GLib.Socket.set_ttl.html">set_ttl</a></li>
+          <li class="method"><a href="GLib.Socket.shutdown.html">shutdown</a></li>
+          <li class="method"><a href="GLib.Socket.speaks_ipv4.html">speaks_ipv4</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">remote_address</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">NoAccessorMethod</span> ]<br/><span class="main_keyword">public</span> <span class="main_type"><a href="GLib.SocketAddress.html" class="abstract_class">SocketAddress</a></span> <b><span class="property">remote_address</span></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

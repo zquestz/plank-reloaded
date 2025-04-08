@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.SList &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.SList &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">glib-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">SList</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="creation_method"><a href="GLib.SList.SList.html">SList</a></li>
+          <li class="method"><a href="GLib.SList.@foreach.html">@foreach</a></li>
+          <li class="method"><a href="GLib.SList.append.html">append</a></li>
+          <li class="method"><a href="GLib.SList.concat.html">concat</a></li>
+          <li class="method"><a href="GLib.SList.copy.html">copy</a></li>
+          <li class="method"><a href="GLib.SList.copy_deep.html">copy_deep</a></li>
+          <li class="method"><a href="GLib.SList.delete_link.html">delete_link</a></li>
+          <li class="method"><a href="GLib.SList.find.html">find</a></li>
+          <li class="method"><a href="GLib.SList.find_custom.html">find_custom</a></li>
+          <li class="method"><a href="GLib.SList.index.html">index</a></li>
+          <li class="method"><a href="GLib.SList.insert.html">insert</a></li>
+          <li class="method"><a href="GLib.SList.insert_before.html">insert_before</a></li>
+          <li class="method"><a href="GLib.SList.insert_sorted.html">insert_sorted</a></li>
+          <li class="method"><a href="GLib.SList.insert_sorted_with_data.html">insert_sorted_with_data</a></li>
+          <li class="method"><a href="GLib.SList.is_empty.html">is_empty</a></li>
+          <li class="method"><a href="GLib.SList.last.html">last</a></li>
+          <li class="method"><a href="GLib.SList.length.html">length</a></li>
+          <li class="method"><a href="GLib.SList.nth.html">nth</a></li>
+          <li class="method"><a href="GLib.SList.nth_data.html">nth_data</a></li>
+          <li class="method"><a href="GLib.SList.position.html">position</a></li>
+          <li class="method"><a href="GLib.SList.prepend.html">prepend</a></li>
+          <li class="method"><a href="GLib.SList.remove.html">remove</a></li>
+          <li class="method"><a href="GLib.SList.remove_all.html">remove_all</a></li>
+          <li class="method"><a href="GLib.SList.remove_all_full.html">remove_all_full</a></li>
+          <li class="method"><a href="GLib.SList.remove_full.html">remove_full</a></li>
+          <li class="method"><a href="GLib.SList.remove_link.html">remove_link</a></li>
+          <li class="method"><a href="GLib.SList.reverse.html">reverse</a></li>
+          <li class="method"><a href="GLib.SList.search.html">search</a></li>
+          <li class="method"><a href="GLib.SList.sort.html">sort</a></li>
+          <li class="method"><a href="GLib.SList.sort_with_data.html">sort_with_data</a></li>
+          <li class="field"><a href="GLib.SList.data.html">data</a></li>
+          <li class="field"><a href="GLib.SList.next.html">next</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">SList</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.SList" alt="Object hierarchy for SList" src="img/GLib.SList.png"/>
+
+      <map id="GLib.SList" name="GLib.SList">
+<area shape="rect" id="node1" href="GLib.SList.html" title="GLib.SList" alt="" coords="5,5,108,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( dup_function = <span class="main_literal">"g_slist_copy"</span> ,  free_function = <span class="main_literal">"g_slist_free"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">SList</span></b>&lt;<b><span>G</span></b>&gt;
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-6')">All known sub-classes:</div>
+          <div class="content" id="box-content-6">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="../atk/Atk.AttributeSet.html">AttributeSet</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.SList.SList.html" class="creation_method">SList</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.@foreach.html" class="method">@foreach</a></b> (<span class="main_type"><a href="GLib.Func.html" class="delegate">Func</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.append.html" class="method">append</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.concat.html" class="method">concat</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; list2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.copy.html" class="method">copy</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.copy_deep.html" class="method">copy_deep</a></b> (<span class="main_type"><a href="GLib.CopyFunc.html" class="delegate">CopyFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.delete_link.html" class="method">delete_link</a></b> (<span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; link_)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.find.html" class="method">find</a></b> (<span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.find_custom.html" class="method">find_custom</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareFunc.html" class="delegate">CompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.SList.index.html" class="method">index</a></b> (<span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.insert.html" class="method">insert</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> position)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.insert_before.html" class="method">insert_before</a></b> (<span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; sibling, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.insert_sorted.html" class="method">insert_sorted</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareFunc.html" class="delegate">CompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; compare_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.insert_sorted_with_data.html" class="method">insert_sorted_with_data</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; compare_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">inline</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.SList.is_empty.html" class="method">is_empty</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.last.html" class="method">last</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.SList.length.html" class="method">length</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.nth.html" class="method">nth</a></b> (<span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> n)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span>G</span></span> <b><a href="GLib.SList.nth_data.html" class="method">nth_data</a></b> (<span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> n)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.SList.position.html" class="method">position</a></b> (<span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; llink)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.prepend.html" class="method">prepend</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.remove.html" class="method">remove</a></b> (<span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.remove_all.html" class="method">remove_all</a></b> (<span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.remove_all_full.html" class="method">remove_all_full</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.FreeFunc.html" class="delegate">FreeFunc</a></span>? func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.remove_full.html" class="method">remove_full</a></b> (<span class="main_type"><span>G</span></span> data, <span class="main_type"><a href="GLib.FreeFunc.html" class="delegate">FreeFunc</a></span>? func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.remove_link.html" class="method">remove_link</a></b> (<span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; llink)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.reverse.html" class="method">reverse</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.search.html" class="method">search</a></b>&lt;<b><span>T</span></b>&gt; (<span class="main_type"><span>T</span></span> data, <span class="main_type"><a href="GLib.SearchFunc.html" class="delegate">SearchFunc</a></span>&lt;<span class="main_type"><span>G</span></span>,<span class="main_type"><span>T</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.sort.html" class="method">sort</a></b> (<span class="main_type"><a href="GLib.CompareFunc.html" class="delegate">CompareFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; compare_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.SList.sort_with_data.html" class="method">sort_with_data</a></b> (<span class="main_type"><a href="GLib.CompareDataFunc.html" class="delegate">CompareDataFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; compare_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Fields:</h3>
+        <ul class="navi_inline">
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span>G</span></span> <b><a href="GLib.SList.data.html" class="field">data</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">SList</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.SList.next.html" class="field">next</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Pango.Script.get_sample_language &ndash; pango &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Pango.Script.get_sample_language &ndash; pango Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">pango</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Pango.html">Pango</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="enum"><a href="Pango.Script.html">Script</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="enumvalue"><a href="Pango.Script.AHOM.html">AHOM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ANATOLIAN_HIEROGLYPHS.html">ANATOLIAN_HIEROGLYPHS</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ARABIC.html">ARABIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ARMENIAN.html">ARMENIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BALINESE.html">BALINESE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BASSA_VAH.html">BASSA_VAH</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BATAK.html">BATAK</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BENGALI.html">BENGALI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BOPOMOFO.html">BOPOMOFO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BRAHMI.html">BRAHMI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BRAILLE.html">BRAILLE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BUGINESE.html">BUGINESE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.BUHID.html">BUHID</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CANADIAN_ABORIGINAL.html">CANADIAN_ABORIGINAL</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CARIAN.html">CARIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CAUCASIAN_ALBANIAN.html">CAUCASIAN_ALBANIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CHAKMA.html">CHAKMA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CHAM.html">CHAM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CHEROKEE.html">CHEROKEE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.COMMON.html">COMMON</a></li>
+          <li class="enumvalue"><a href="Pango.Script.COPTIC.html">COPTIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CUNEIFORM.html">CUNEIFORM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CYPRIOT.html">CYPRIOT</a></li>
+          <li class="enumvalue"><a href="Pango.Script.CYRILLIC.html">CYRILLIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.DESERET.html">DESERET</a></li>
+          <li class="enumvalue"><a href="Pango.Script.DEVANAGARI.html">DEVANAGARI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.DUPLOYAN.html">DUPLOYAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ELBASAN.html">ELBASAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ETHIOPIC.html">ETHIOPIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GEORGIAN.html">GEORGIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GLAGOLITIC.html">GLAGOLITIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GOTHIC.html">GOTHIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GRANTHA.html">GRANTHA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GREEK.html">GREEK</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GUJARATI.html">GUJARATI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.GURMUKHI.html">GURMUKHI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HAN.html">HAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HANGUL.html">HANGUL</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HANUNOO.html">HANUNOO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HATRAN.html">HATRAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HEBREW.html">HEBREW</a></li>
+          <li class="enumvalue"><a href="Pango.Script.HIRAGANA.html">HIRAGANA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.INHERITED.html">INHERITED</a></li>
+          <li class="enumvalue"><a href="Pango.Script.INVALID_CODE.html">INVALID_CODE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KANNADA.html">KANNADA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KATAKANA.html">KATAKANA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KAYAH_LI.html">KAYAH_LI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KHAROSHTHI.html">KHAROSHTHI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KHMER.html">KHMER</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KHOJKI.html">KHOJKI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.KHUDAWADI.html">KHUDAWADI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LAO.html">LAO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LATIN.html">LATIN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LEPCHA.html">LEPCHA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LIMBU.html">LIMBU</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LINEAR_A.html">LINEAR_A</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LINEAR_B.html">LINEAR_B</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LYCIAN.html">LYCIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.LYDIAN.html">LYDIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MAHAJANI.html">MAHAJANI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MALAYALAM.html">MALAYALAM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MANDAIC.html">MANDAIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MANICHAEAN.html">MANICHAEAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MENDE_KIKAKUI.html">MENDE_KIKAKUI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MEROITIC_CURSIVE.html">MEROITIC_CURSIVE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MEROITIC_HIEROGLYPHS.html">MEROITIC_HIEROGLYPHS</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MIAO.html">MIAO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MODI.html">MODI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MONGOLIAN.html">MONGOLIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MRO.html">MRO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MULTANI.html">MULTANI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.MYANMAR.html">MYANMAR</a></li>
+          <li class="enumvalue"><a href="Pango.Script.NABATAEAN.html">NABATAEAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.NEW_TAI_LUE.html">NEW_TAI_LUE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.NKO.html">NKO</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OGHAM.html">OGHAM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OLD_HUNGARIAN.html">OLD_HUNGARIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OLD_ITALIC.html">OLD_ITALIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OLD_NORTH_ARABIAN.html">OLD_NORTH_ARABIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OLD_PERMIC.html">OLD_PERMIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OLD_PERSIAN.html">OLD_PERSIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OL_CHIKI.html">OL_CHIKI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.ORIYA.html">ORIYA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.OSMANYA.html">OSMANYA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PAHAWH_HMONG.html">PAHAWH_HMONG</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PALMYRENE.html">PALMYRENE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PAU_CIN_HAU.html">PAU_CIN_HAU</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PHAGS_PA.html">PHAGS_PA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PHOENICIAN.html">PHOENICIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.PSALTER_PAHLAVI.html">PSALTER_PAHLAVI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.REJANG.html">REJANG</a></li>
+          <li class="enumvalue"><a href="Pango.Script.RUNIC.html">RUNIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SAURASHTRA.html">SAURASHTRA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SHARADA.html">SHARADA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SHAVIAN.html">SHAVIAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SIDDHAM.html">SIDDHAM</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SIGNWRITING.html">SIGNWRITING</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SINHALA.html">SINHALA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SORA_SOMPENG.html">SORA_SOMPENG</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SUNDANESE.html">SUNDANESE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SYLOTI_NAGRI.html">SYLOTI_NAGRI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.SYRIAC.html">SYRIAC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TAGALOG.html">TAGALOG</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TAGBANWA.html">TAGBANWA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TAI_LE.html">TAI_LE</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TAKRI.html">TAKRI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TAMIL.html">TAMIL</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TELUGU.html">TELUGU</a></li>
+          <li class="enumvalue"><a href="Pango.Script.THAANA.html">THAANA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.THAI.html">THAI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TIBETAN.html">TIBETAN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TIFINAGH.html">TIFINAGH</a></li>
+          <li class="enumvalue"><a href="Pango.Script.TIRHUTA.html">TIRHUTA</a></li>
+          <li class="enumvalue"><a href="Pango.Script.UGARITIC.html">UGARITIC</a></li>
+          <li class="enumvalue"><a href="Pango.Script.UNKNOWN.html">UNKNOWN</a></li>
+          <li class="enumvalue"><a href="Pango.Script.VAI.html">VAI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.WARANG_CITI.html">WARANG_CITI</a></li>
+          <li class="enumvalue"><a href="Pango.Script.YI.html">YI</a></li>
+          <li class="static_method"><span class="deprecated"><a href="Pango.Script.for_unichar.html">for_unichar</a></span></li>
+          <li class="method">get_sample_language</li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">get_sample_language</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Version</span> ( since = <span class="main_literal">"1.4"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_type"><a href="Pango.Language.html" class="class">Language</a></span>? <b><span class="method">get_sample_language</span></b> ()
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

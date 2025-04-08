@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.UIManager &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.UIManager &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><span class="deprecated">UIManager</span></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><span class="deprecated"><a href="Gtk.UIManager.add_tearoffs.html">add_tearoffs</a></span></li>
+          <li class="property"><a href="Gtk.UIManager.ui.html">ui</a></li>
+          <li class="creation_method"><a href="Gtk.UIManager.UIManager.html">UIManager</a></li>
+          <li class="method"><a href="Gtk.UIManager.add_ui.html">add_ui</a></li>
+          <li class="method"><a href="Gtk.UIManager.add_ui_from_file.html">add_ui_from_file</a></li>
+          <li class="method"><a href="Gtk.UIManager.add_ui_from_resource.html">add_ui_from_resource</a></li>
+          <li class="method"><a href="Gtk.UIManager.add_ui_from_string.html">add_ui_from_string</a></li>
+          <li class="method"><a href="Gtk.UIManager.ensure_update.html">ensure_update</a></li>
+          <li class="method"><a href="Gtk.UIManager.get_accel_group.html">get_accel_group</a></li>
+          <li class="virtual_method"><a href="Gtk.UIManager.get_action.html">get_action</a></li>
+          <li class="method"><a href="Gtk.UIManager.get_action_groups.html">get_action_groups</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.UIManager.get_add_tearoffs.html">get_add_tearoffs</a></span></li>
+          <li class="method"><a href="Gtk.UIManager.get_toplevels.html">get_toplevels</a></li>
+          <li class="method"><a href="Gtk.UIManager.get_ui.html">get_ui</a></li>
+          <li class="virtual_method"><a href="Gtk.UIManager.get_widget.html">get_widget</a></li>
+          <li class="method"><a href="Gtk.UIManager.insert_action_group.html">insert_action_group</a></li>
+          <li class="method"><a href="Gtk.UIManager.new_merge_id.html">new_merge_id</a></li>
+          <li class="method"><a href="Gtk.UIManager.remove_action_group.html">remove_action_group</a></li>
+          <li class="method"><a href="Gtk.UIManager.remove_ui.html">remove_ui</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.UIManager.set_add_tearoffs.html">set_add_tearoffs</a></span></li>
+          <li class="signal"><a href="Gtk.UIManager.actions_changed.html">actions_changed</a></li>
+          <li class="signal"><a href="Gtk.UIManager.add_widget.html">add_widget</a></li>
+          <li class="signal"><a href="Gtk.UIManager.connect_proxy.html">connect_proxy</a></li>
+          <li class="signal"><a href="Gtk.UIManager.disconnect_proxy.html">disconnect_proxy</a></li>
+          <li class="signal"><a href="Gtk.UIManager.post_activate.html">post_activate</a></li>
+          <li class="signal"><a href="Gtk.UIManager.pre_activate.html">pre_activate</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">UIManager</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gtk.UIManager" alt="Object hierarchy for UIManager" src="img/Gtk.UIManager.png"/>
+
+      <map id="Gtk.UIManager" name="Gtk.UIManager">
+<area shape="rect" id="node1" href="Gtk.UIManager.html" title="Gtk.UIManager" alt="" coords="64,101,201,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="5,5,118,53"/>
+<area shape="rect" id="node3" href="Gtk.Buildable.html" title="Gtk.Buildable" alt="" coords="141,5,264,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gtk_ui_manager_get_type ()"</span> ) ]<br/>[ <span class="main_type">Version</span> ( deprecated = <span class="main_literal">true</span> ,  deprecated_since = <span class="main_literal">"3.10"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">UIManager</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>, <span class="main_type"><a href="Gtk.Buildable.html" class="interface">Buildable</a></span>
+        </div>
+        <div class="description">
+          <p><b>Warning:</b> UIManager is deprecated since 3.10.</p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.UIManager.add_tearoffs.html" class="property">add_tearoffs</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.UIManager.ui.html" class="property">ui</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Gtk.UIManager.UIManager.html" class="creation_method">UIManager</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.add_ui.html" class="method">add_ui</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> merge_id, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? action, <span class="main_type"><a href="Gtk.UIManagerItemType.html" class="enum">UIManagerItemType</a></span> type, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> top)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.UIManager.add_ui_from_file.html" class="method">add_ui_from_file</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> filename) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.UIManager.add_ui_from_resource.html" class="method">add_ui_from_resource</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> resource_path) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.UIManager.add_ui_from_string.html" class="method">add_ui_from_string</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> buffer, <span class="main_basic_type"><a href="../glib-2.0/ssize_t.html" class="struct">ssize_t</a></span> length) <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.ensure_update.html" class="method">ensure_update</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.AccelGroup.html" class="class">AccelGroup</a></span> <b><a href="Gtk.UIManager.get_accel_group.html" class="method">get_accel_group</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.Action.html" class="class">Action</a></span> <b><a href="Gtk.UIManager.get_action.html" class="virtual_method">get_action</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_type"><a href="Gtk.ActionGroup.html" class="class">ActionGroup</a></span>&gt; <b><a href="Gtk.UIManager.get_action_groups.html" class="method">get_action_groups</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gtk.UIManager.get_add_tearoffs.html" class="method">get_add_tearoffs</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.SList.html" class="class">SList</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span>&gt; <b><a href="Gtk.UIManager.get_toplevels.html" class="method">get_toplevels</a></b> (<span class="main_type"><a href="Gtk.UIManagerItemType.html" class="enum">UIManagerItemType</a></span> types)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Gtk.UIManager.get_ui.html" class="method">get_ui</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> <b><a href="Gtk.UIManager.get_widget.html" class="virtual_method">get_widget</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> path)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.insert_action_group.html" class="method">insert_action_group</a></b> (<span class="main_type"><a href="Gtk.ActionGroup.html" class="class">ActionGroup</a></span> action_group, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> pos)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Gtk.UIManager.new_merge_id.html" class="method">new_merge_id</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.remove_action_group.html" class="method">remove_action_group</a></b> (<span class="main_type"><a href="Gtk.ActionGroup.html" class="class">ActionGroup</a></span> action_group)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.remove_ui.html" class="method">remove_ui</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> merge_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.set_add_tearoffs.html" class="method">set_add_tearoffs</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> add_tearoffs)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.actions_changed.html" class="signal">actions_changed</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.add_widget.html" class="signal">add_widget</a></b> (<span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> widget)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.connect_proxy.html" class="signal">connect_proxy</a></b> (<span class="main_type"><a href="Gtk.Action.html" class="class">Action</a></span> action, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> proxy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.disconnect_proxy.html" class="signal">disconnect_proxy</a></b> (<span class="main_type"><a href="Gtk.Action.html" class="class">Action</a></span> action, <span class="main_type"><a href="Gtk.Widget.html" class="class">Widget</a></span> proxy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.post_activate.html" class="signal">post_activate</a></b> (<span class="main_type"><a href="Gtk.Action.html" class="class">Action</a></span> action)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gtk.UIManager.pre_activate.html" class="signal">pre_activate</a></b> (<span class="main_type"><a href="Gtk.Action.html" class="class">Action</a></span> action)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1868')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-1868">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-1869')">All known members inherited from interface Gtk.Buildable</div>
+          <div class="content" id="box-content-1869">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gtk.Buildable.add_child.html">add_child</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.construct_child.html">construct_child</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.custom_finished.html">custom_finished</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.custom_tag_end.html">custom_tag_end</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gtk.Buildable.custom_tag_start.html">custom_tag_start</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.get_internal_child.html">get_internal_child</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.get_name.html">get_name</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gtk.Buildable.parser_finished.html">parser_finished</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.set_buildable_property.html">set_buildable_property</a></li>
+                <li class="abstract_method"><a href="Gtk.Buildable.set_name.html">set_name</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

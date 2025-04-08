@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>X.Display &ndash; x11 &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">X.Display &ndash; x11 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">Display</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#X.Display" alt="Object hierarchy for Display" src="img/X.Display.png"/>
+
+      <map id="X.Display" name="X.Display">
+<area shape="rect" id="node1" href="X.Display.html" title="X.Display" alt="" coords="5,5,101,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"Display"</span> ,  free_function = <span class="main_literal">"XCloseDisplay"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Display</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="X.html">X</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">x11</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> <b><a href="X.Display.get_all_planes.html" class="static_method">get_all_planes</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="X.Display.Display.html" class="creation_method">Display</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? name = <span class="main_literal">null</span>)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.activate_screensaver.html" class="method">activate_screensaver</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.add_to_save_set.html" class="method">add_to_save_set</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.allow_events.html" class="method">allow_events</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> event_mode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> time)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.bitmap_bit_order.html" class="method">bitmap_bit_order</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.bitmap_scanline_padding.html" class="method">bitmap_scanline_padding</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.bitmap_scanline_unit.html" class="method">bitmap_scanline_unit</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.change_property.html" class="method">change_property</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> property, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> type, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> format, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> mode, <span class="main_basic_type"><a href="../glib-2.0/uchar.html" class="struct">uchar</a></span>[] data, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> nelements)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.change_window_attributes.html" class="method">change_window_attributes</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> valuemask, <span class="main_type"><a href="X.SetWindowAttributes.html" class="struct">SetWindowAttributes</a></span> attributes)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.configure_window.html" class="method">configure_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> value_mask, <span class="main_type"><a href="X.WindowChanges.html" class="struct">WindowChanges</a></span> values)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.connection_number.html" class="method">connection_number</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> <b><a href="X.Display.default_root_window.html" class="method">default_root_window</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="X.Screen.html" class="class">Screen</a></span> <b><a href="X.Display.default_screen.html" class="method">default_screen</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.delete_property.html" class="method">delete_property</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> property)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="X.Display.display_string.html" class="method">display_string</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.event_queue_length.html" class="method">event_queue_length</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.events_queued.html" class="method">events_queued</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> mode)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.flush.html" class="method">flush</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.force_screensaver.html" class="method">force_screensaver</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> mode)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="X.Display.get_atom_name.html" class="method">get_atom_name</a></b> (<span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> atom)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.get_atom_names.html" class="method">get_atom_names</a></b> (<span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] atoms, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>[] names)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.get_geometry.html" class="method">get_geometry</a></b> (<span class="main_type"><a href="X.Drawable.html" class="struct">Drawable</a></span> d, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> root_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> width_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> height_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> border_width_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> depth_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.get_input_focus.html" class="method">get_input_focus</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> focus_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> revert_to_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span>[] <b><a href="X.Display.get_keyboard_mapping.html" class="method">get_keyboard_mapping</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uchar.html" class="struct">uchar</a></span> first_keycode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keycode_count, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keysyms_per_keycode_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.ModifierKeymap.html" class="class">ModifierKeymap</a></span> <b><a href="X.Display.get_modifier_mapping.html" class="method">get_modifier_mapping</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.get_screensaver.html" class="method">get_screensaver</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> timeout, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> interval, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> prefer_blanking, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> allow_exposures)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> <b><a href="X.Display.get_selection_owner.html" class="method">get_selection_owner</a></b> (<span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> selection)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.get_transient_for_hint.html" class="method">get_transient_for_hint</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> prop_window)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.VisualInfo.html" class="struct">VisualInfo</a></span>? <b><a href="X.Display.get_visual_info.html" class="method">get_visual_info</a></b> (<span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> vinfo_mask, <span class="main_type"><a href="X.VisualInfo.html" class="struct">VisualInfo</a></span> template, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> nitems_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.get_window_attributes.html" class="method">get_window_attributes</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_keyword">out</span> <span class="main_type"><a href="X.WindowAttributes.html" class="struct">WindowAttributes</a></span> window_attributes_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.get_window_property.html" class="method">get_window_property</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> property, <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> long_offset, <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> long_length, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> @delete, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> req_type, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> actual_type_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> actual_format_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> nitems_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> bytes_after_return, <span class="main_keyword">out</span> <span class="main_keyword">void</span>* prop_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.get_wm_protocols.html" class="method">get_wm_protocols</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] protocols)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.grab_button.html" class="method">grab_button</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> modifiers, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> grab_window, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> owner_events, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> event_mask, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> pointer_mode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keyboard_mode, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> confine_to, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> cursor)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.grab_key.html" class="method">grab_key</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keycode, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> modifiers, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> grab_window, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> owner_events, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> pointer_mode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keyboard_mode)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.grab_pointer.html" class="method">grab_pointer</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> grab_window, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> owner_events, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> event_mask, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> pointer_mode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keyboard_mode, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> confine_to, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> cursor, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> time)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.grab_server.html" class="method">grab_server</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.iconify_window.html" class="method">iconify_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.image_byte_order.html" class="method">image_byte_order</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> <b><a href="X.Display.intern_atom.html" class="method">intern_atom</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> atom_name, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> only_if_exists)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.intern_atoms.html" class="method">intern_atoms</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>[] names, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> only_if_exists, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] atoms_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.internal_connection_numbers.html" class="method">internal_connection_numbers</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span>[] fd_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> <b><a href="X.Display.keycode_to_keysym.html" class="method">keycode_to_keysym</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uchar.html" class="struct">uchar</a></span> keycode, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> index)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.keycodes.html" class="method">keycodes</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> min_keycodes_return, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> max_keycodes_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uchar.html" class="struct">uchar</a></span> <b><a href="X.Display.keysym_to_keycode.html" class="method">keysym_to_keycode</a></b> (<span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> keysym)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> <b><a href="X.Display.last_known_request_processed.html" class="method">last_known_request_processed</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] <b><a href="X.Display.list_properties.html" class="method">list_properties</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.lock_display.html" class="method">lock_display</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.lower_window.html" class="method">lower_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.map_raised.html" class="method">map_raised</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.map_window.html" class="method">map_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.match_visual_info.html" class="method">match_visual_info</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> depth, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> @class, <span class="main_keyword">out</span> <span class="main_type"><a href="X.VisualInfo.html" class="struct">VisualInfo</a></span> vinfo_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> <b><a href="X.Display.max_extended_request_size.html" class="method">max_extended_request_size</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> <b><a href="X.Display.max_request_size.html" class="method">max_request_size</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.move_resize_window.html" class="method">move_resize_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> window, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.move_window.html" class="method">move_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> window, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.next_event.html" class="method">next_event</a></b> (<span class="main_keyword">ref</span> <span class="main_type"><a href="X.Event.html" class="struct">Event</a></span> event_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/ulong.html" class="struct">ulong</a></span> <b><a href="X.Display.next_request.html" class="method">next_request</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.no_operation.html" class="method">no_operation</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.number_of_screens.html" class="method">number_of_screens</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.pending.html" class="method">pending</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.process_internal_connection.html" class="method">process_internal_connection</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> fd)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.protocol_revision.html" class="method">protocol_revision</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.protocol_version.html" class="method">protocol_version</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="X.Display.query_extension.html" class="method">query_extension</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> name, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> major_opcode, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> first_event_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> first_error_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="X.Display.query_pointer.html" class="method">query_pointer</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> root_retur, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> child_retur, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> win_x_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> win_y_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> mask_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.query_tree.html" class="method">query_tree</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> root_return, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> parent_return, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span>[] children_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.raise_window.html" class="method">raise_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.reparent_window.html" class="method">reparent_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> parent, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.reset_screensaver.html" class="method">reset_screensaver</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.resize_window.html" class="method">resize_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> <b><a href="X.Display.root_window.html" class="method">root_window</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="X.Screen.html" class="class">Screen</a></span> <b><a href="X.Display.screen_by_id.html" class="method">screen_by_id</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.screen_count.html" class="method">screen_count</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="X.Screen.html" class="class">Screen</a></span> <b><a href="X.Display.screen_of_display.html" class="method">screen_of_display</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.select_input.html" class="method">select_input</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> event_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.send_event.html" class="method">send_event</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> propagate, <span class="main_basic_type"><a href="../glib-2.0/long.html" class="struct">long</a></span> event_mask, <span class="main_keyword">ref</span> <span class="main_type"><a href="X.Event.html" class="struct">Event</a></span> event_send)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.set_close_down_mode.html" class="method">set_close_down_mode</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> close_mode)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.set_input_focus.html" class="method">set_input_focus</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> focus, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> revert_to, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> time)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.set_screensaver.html" class="method">set_screensaver</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> timeout, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> interval, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> prefer_blanking, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> allow_exposures)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> <b><a href="X.Display.set_selection_owner.html" class="method">set_selection_owner</a></b> (<span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span> selection, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> owner, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> time)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.set_transient_for_hint.html" class="method">set_transient_for_hint</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> prop_window)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.set_wm_normal_hints.html" class="method">set_wm_normal_hints</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_type"><a href="X.SizeHints.html" class="struct">SizeHints</a></span> hints)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.set_wm_protocols.html" class="method">set_wm_protocols</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] protocols)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.set_wm_protocols_n.html" class="method">set_wm_protocols_n</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="X.Atom.html" class="struct">Atom</a></span>[] protocols)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="X.Display.translate_coordinates.html" class="method">translate_coordinates</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> src_w, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> dest_w, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> src_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> src_y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dest_x_return, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dest_y_return, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> child_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.ungrab_button.html" class="method">ungrab_button</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> modifiers, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> grab_window)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.ungrab_key.html" class="method">ungrab_key</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> keycode, <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> modifiers, <span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> grab_window)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.ungrab_pointer.html" class="method">ungrab_pointer</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> time)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.ungrab_server.html" class="method">ungrab_server</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="X.Display.unlock_display.html" class="method">unlock_display</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.unmap_window.html" class="method">unmap_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.window_event.html" class="method">window_event</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_type"><a href="X.EventMask.html" class="enum">EventMask</a></span> event_mask, <span class="main_keyword">out</span> <span class="main_type"><a href="X.Event.html" class="struct">Event</a></span> event_return)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="X.Status.html" class="struct">Status</a></span> <b><a href="X.Display.withdraw_window.html" class="method">withdraw_window</a></b> (<span class="main_type"><a href="X.Window.html" class="struct">Window</a></span> w, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> screen_number)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="X.Display.xserver_vendor_name.html" class="method">xserver_vendor_name</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="X.Display.xserver_vendor_release.html" class="method">xserver_vendor_release</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

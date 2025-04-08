@@ -1,0 +1,291 @@
+78% symbol docs coverage.
+848 symbols documented.
+53 symbols incomplete.
+239 not documented.
+
+
+PLANK_DOCKLET_ENTRY_POINT
+PLANK_DOCK_PREFERENCES_MAX_ICON_SIZE
+PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM
+PLANK_DOCK_PREFERENCES_MIN_ICON_SIZE
+PLANK_DOCK_PREFERENCES_MIN_ICON_ZOOM
+PLANK_G_RESOURCE_PATH
+PLANK_THEME_DEFAULT_NAME
+PLANK_THEME_GTK_THEME_NAME
+PlankAbstractMain (<items>)
+PlankAnimationMode (PLANK_ANIMATION_MODE_CUSTOM, PLANK_ANIMATION_MODE_LAST)
+PlankApplicationDockItem (<items>)
+PlankApplicationDockItem:App
+PlankApplicationDockItemProvider (<items>)
+PlankApplicationDockItemProvider::item-window-added
+PlankApplicationDockItemProvider:LaunchersDir
+PlankCompositedWindow (<items>)
+PlankDBusClient (<items>)
+PlankDBusManager (<items>)
+PlankDBusManager:controller
+PlankDefaultApplicationDockItemProvider (<items>)
+PlankDefaultApplicationDockItemProvider:Prefs
+PlankDockContainer (<items>)
+PlankDockController (<items>)
+PlankDockController:config-folder
+PlankDockController:default-provider
+PlankDockController:drag-manager
+PlankDockController:hide-manager
+PlankDockController:hover
+PlankDockController:launchers-folder
+PlankDockController:name
+PlankDockController:position-manager
+PlankDockController:prefs
+PlankDockController:renderer
+PlankDockController:window
+PlankDockElement (<items>)
+PlankDockItem (<items>)
+PlankDockItem:ForcePixbuf
+PlankDockItemDrawValue (<items>)
+PlankDockItemDrawValueClass (finalize)
+PlankDockItemPreferences (<items>)
+PlankDockItemPreferences:Launcher
+PlankDockItemProvider (<items>)
+PlankDockPreferences (<items>)
+PlankDockPreferences:Alignment
+PlankDockPreferences:AnchorDocklets
+PlankDockPreferences:AnchorFiles
+PlankDockPreferences:AutoPinning
+PlankDockPreferences:CurrentWorkspaceOnly
+PlankDockPreferences:DockItems
+PlankDockPreferences:HideDelay
+PlankDockPreferences:HideMode
+PlankDockPreferences:IconSize
+PlankDockPreferences:ItemsAlignment
+PlankDockPreferences:LockItems
+PlankDockPreferences:Monitor
+PlankDockPreferences:Offset
+PlankDockPreferences:PinnedOnly
+PlankDockPreferences:Position
+PlankDockPreferences:PressureReveal
+PlankDockPreferences:ShowDockItem
+PlankDockPreferences:Theme
+PlankDockPreferences:TooltipsEnabled
+PlankDockPreferences:UnhideDelay
+PlankDockPreferences:ZoomEnabled
+PlankDockPreferences:ZoomPercent
+PlankDockRenderer (<items>)
+PlankDockRenderer:controller
+PlankDockRenderer:theme
+PlankDockTheme (<items>)
+PlankDockTheme:ActiveTime
+PlankDockTheme:BadgeColor
+PlankDockTheme:BottomPadding
+PlankDockTheme:CascadeHide
+PlankDockTheme:ClickTime
+PlankDockTheme:FadeOpacity
+PlankDockTheme:FadeTime
+PlankDockTheme:GlowPulseTime
+PlankDockTheme:GlowSize
+PlankDockTheme:GlowTime
+PlankDockTheme:HideTime
+PlankDockTheme:HorizPadding
+PlankDockTheme:IconShadowSize
+PlankDockTheme:IndicatorSize
+PlankDockTheme:ItemMoveTime
+PlankDockTheme:ItemPadding
+PlankDockTheme:LaunchBounceHeight
+PlankDockTheme:LaunchBounceTime
+PlankDockTheme:SlideTime
+PlankDockTheme:TopPadding
+PlankDockTheme:UrgentBounceHeight
+PlankDockTheme:UrgentBounceTime
+PlankDockTheme:UrgentHueShift
+PlankDockWindow (<items>)
+PlankDockletInitFunc
+PlankDockletItem (<items>)
+PlankDockletManager (<items>)
+PlankDockletManager::docklet-added
+PlankDragManager (<items>)
+PlankDragManager:DragItem
+PlankDragManager:DragNeedsCheck
+PlankDragManager:ExternalDragActive
+PlankDragManager:InternalDragActive
+PlankDragManager:RepositionMode
+PlankDragManager:controller
+PlankDrawingService (<items>)
+PlankFactory (priv)
+PlankFileDockItem (<items>)
+PlankFileDockItem:OwnedFile
+PlankHideManager (<items>)
+PlankHideManager:controller
+PlankHoverWindow (<items>)
+PlankItemFactory (priv)
+PlankLogger (<items>)
+PlankPaths (<items>)
+PlankPlaceholderDockItem (<items>)
+PlankPlankDockItem (<items>)
+PlankPointD (<items>)
+PlankPoofWindow (<items>)
+PlankPositionManager (<items>)
+PlankPositionManager:controller
+PlankPositionManager:screen-is-composited
+PlankPreferences (<items>)
+PlankPreferencesWindow (<items>)
+PlankRenderer (<items>)
+PlankRenderer:frame-time
+PlankRenderer:widget
+PlankSettings (<items>)
+PlankSettings:bind-flags
+PlankSettings:settings
+PlankSurface (<items>)
+PlankSurfaceCache (<items>)
+PlankSurfaceCache:flags
+PlankSurfaceCacheFlags (PLANK_SURFACE_CACHE_FLAGS_NONE)
+PlankSystem (<items>)
+PlankSystem:context
+PlankTaskFunc
+PlankTaskPriority (<items>)
+PlankTheme (<items>)
+PlankTheme:BottomRoundness
+PlankTheme:FillEndColor
+PlankTheme:FillStartColor
+PlankTheme:InnerStrokeColor
+PlankTheme:LineWidth
+PlankTheme:OuterStrokeColor
+PlankTheme:TopRoundness
+PlankTitledSeparatorMenuItem (<items>)
+PlankTransientDockItem (<items>)
+PlankUnity (<items>)
+PlankWorker (<items>)
+PlankXdgSessionClass (<items>)
+PlankXdgSessionDesktop (<items>)
+PlankXdgSessionType (<items>)
+plank_application_dock_item_is_running
+plank_application_dock_item_is_window
+plank_application_dock_item_new
+plank_application_dock_item_new_with_dockitem_file
+plank_application_dock_item_new_with_dockitem_filename
+plank_application_dock_item_provider_app_opened
+plank_application_dock_item_provider_delay_items_monitor
+plank_application_dock_item_provider_item_for_application
+plank_application_dock_item_provider_resume_items_monitor
+plank_application_dock_item_set_urgent
+plank_composited_window_new
+plank_composited_window_new_with_type
+plank_dbus_manager_new
+plank_default_application_dock_item_provider_pin_item
+plank_dock_container_connect_element
+plank_dock_container_disconnect_element
+plank_dock_container_move_element
+plank_dock_container_update_visible_elements
+plank_dock_item_draw_value_move_in
+plank_dock_item_draw_value_move_right
+plank_dock_item_draw_value_new
+plank_dock_item_preferences_new
+plank_dock_item_preferences_new_with_file
+plank_dock_item_preferences_new_with_filename
+plank_dock_item_preferences_new_with_launcher
+plank_dock_item_provider_allow_duplicate_item
+plank_dock_item_provider_handle_item_deleted
+plank_dock_item_unset_move_state
+plank_dock_preferences_new
+plank_dock_renderer_animate_items
+plank_dock_renderer_update_local_cursor
+plank_dock_theme_new
+plank_docklet_get_description
+plank_docklet_get_icon
+plank_docklet_get_id
+plank_docklet_get_name
+plank_docklet_is_supported
+plank_docklet_make_element
+plank_docklet_manager_get_default
+plank_drag_manager_ensure_proxy
+plank_drawing_service_get_icon_theme
+plank_environment_initialize
+plank_environment_is_session_class
+plank_environment_is_session_desktop
+plank_environment_is_session_type
+plank_environment_session_class
+plank_environment_session_desktop
+plank_environment_session_type
+plank_factory_new
+plank_file_dock_item_new
+plank_file_dock_item_new_with_dockitem_file
+plank_file_dock_item_new_with_dockitem_filename
+plank_file_dock_item_new_with_file
+plank_hide_manager_update_barrier
+plank_hover_window_new
+plank_item_factory_new
+plank_plank_dock_item_get_instance
+plank_poof_window_get_default
+plank_position_manager_get_barrier
+plank_position_manager_get_monitor_plug_names
+plank_preferences_window_new
+plank_surface_cache_clear
+plank_surface_cache_get_surface
+plank_surface_cache_new
+plank_system_get_default
+plank_system_new
+plank_theme_create_style_context
+plank_theme_get_style_context
+plank_titled_separator_menu_item_new
+plank_titled_separator_menu_item_new_no_line
+plank_transient_dock_item_new
+plank_transient_dock_item_new_with_launcher
+plank_unity_get_default
+plank_worker_get_default
+plank_xdg_session_class_from_string
+plank_xdg_session_desktop_from_string
+plank_xdg_session_type_from_string
+
+AbstractMain:long_description
+ApplicationDockItem:long_description
+ApplicationDockItemProvider:long_description
+Client:long_description
+Color:long_description
+Color:short_description
+CompositedWindow:long_description
+DBusManager:long_description
+DefaultApplicationDockItemProvider:long_description
+DockContainer:long_description
+DockElement:long_description
+DockItem:long_description
+DockItemDrawValue:long_description
+DockItemPreferences:long_description
+DockItemProvider:long_description
+DockPreferences:long_description
+DockRenderer:long_description
+DockTheme:long_description
+DockWindow:long_description
+Docklet:long_description
+DockletItem:long_description
+DockletItem:short_description
+DockletManager:long_description
+DragManager:long_description
+DrawingService:long_description
+Easing:long_description
+Easing:short_description
+Enums:long_description
+Enums:short_description
+Environment:long_description
+Environment:short_description
+Factory:long_description
+HideManager:long_description
+HoverWindow:long_description
+ItemFactory:long_description
+Logger:long_description
+PlaceholderDockItem:long_description
+PlankDockItem:long_description
+PoofWindow:long_description
+PositionManager:long_description
+Preferences:long_description
+PreferencesWindow:long_description
+PreferencesWindow:short_description
+Renderer:long_description
+Settings:long_description
+Surface:long_description
+SurfaceCache:long_description
+System:long_description
+Theme:long_description
+TitledSeparatorMenuItem:long_description
+Unity:long_description
+Version:long_description
+Version:short_description
+Worker:long_description
+Worker:short_description

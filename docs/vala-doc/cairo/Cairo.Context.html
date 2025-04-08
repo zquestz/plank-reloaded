@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Cairo.Context &ndash; cairo &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Cairo.Context &ndash; cairo Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">Context</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Cairo.Context" alt="Object hierarchy for Context" src="img/Cairo.Context.png"/>
+
+      <map id="Cairo.Context" name="Cairo.Context">
+<area shape="rect" id="node1" href="Cairo.Context.html" title="Cairo.Context" alt="" coords="5,5,129,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"cairo_t"</span> ,  cprefix = <span class="main_literal">"cairo_"</span> ,  ref_function = <span class="main_literal">"cairo_reference"</span> ,  type_id = <span class="main_literal">"cairo_gobject_context_get_type ()"</span> ,  unref_function = <span class="main_literal">"cairo_destroy"</span> ) ]<br/>[ <span class="main_type">Compact</span> ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Context</span></b>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Cairo.html">Cairo</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">cairo</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Cairo.Context.Context.html" class="creation_method">Context</a></b> (<span class="main_type"><a href="Cairo.Surface.html" class="class">Surface</a></span> target)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.append_path.html" class="method">append_path</a></b> (<span class="main_type"><a href="Cairo.Path.html" class="class">Path</a></span> path)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.arc.html" class="method">arc</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> xc, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> yc, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> radius, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> angle1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> angle2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.arc_negative.html" class="method">arc_negative</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> xc, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> yc, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> radius, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> angle1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> angle2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.clip.html" class="method">clip</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.clip_extents.html" class="method">clip_extents</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x2, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.clip_preserve.html" class="method">clip_preserve</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.close_path.html" class="method">close_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.RectangleList.html" class="class">RectangleList</a></span> <b><a href="Cairo.Context.copy_clip_rectangle_list.html" class="method">copy_clip_rectangle_list</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.copy_page.html" class="method">copy_page</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Path.html" class="class">Path</a></span> <b><a href="Cairo.Context.copy_path.html" class="method">copy_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Path.html" class="class">Path</a></span> <b><a href="Cairo.Context.copy_path_flat.html" class="method">copy_path_flat</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.curve_to.html" class="method">curve_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x2, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y2, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x3, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y3)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.device_to_user.html" class="method">device_to_user</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.device_to_user_distance.html" class="method">device_to_user_distance</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.fill.html" class="method">fill</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.fill_extents.html" class="method">fill_extents</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x2, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.fill_preserve.html" class="method">fill_preserve</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.font_extents.html" class="method">font_extents</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="Cairo.FontExtents.html" class="struct">FontExtents</a></span> extents)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Antialias.html" class="enum">Antialias</a></span> <b><a href="Cairo.Context.get_antialias.html" class="method">get_antialias</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.get_current_point.html" class="method">get_current_point</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.get_dash.html" class="method">get_dash</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span>[]? dashes, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span>[]? offset)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Cairo.Context.get_dash_count.html" class="method">get_dash_count</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.FillRule.html" class="enum">FillRule</a></span> <b><a href="Cairo.Context.get_fill_rule.html" class="method">get_fill_rule</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Cairo.FontFace.html" class="class">FontFace</a></span> <b><a href="Cairo.Context.get_font_face.html" class="method">get_font_face</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.get_font_matrix.html" class="method">get_font_matrix</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="Cairo.Matrix.html" class="struct">Matrix</a></span> matrix)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.get_font_options.html" class="method">get_font_options</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="Cairo.FontOptions.html" class="class">FontOptions</a></span> options)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Cairo.Surface.html" class="class">Surface</a></span> <b><a href="Cairo.Context.get_group_target.html" class="method">get_group_target</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.LineCap.html" class="enum">LineCap</a></span> <b><a href="Cairo.Context.get_line_cap.html" class="method">get_line_cap</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.LineJoin.html" class="enum">LineJoin</a></span> <b><a href="Cairo.Context.get_line_join.html" class="method">get_line_join</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> <b><a href="Cairo.Context.get_line_width.html" class="method">get_line_width</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Matrix.html" class="struct">Matrix</a></span> <b><a href="Cairo.Context.get_matrix.html" class="method">get_matrix</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> <b><a href="Cairo.Context.get_miter_limit.html" class="method">get_miter_limit</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Operator.html" class="enum">Operator</a></span> <b><a href="Cairo.Context.get_operator.html" class="method">get_operator</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Cairo.Context.get_reference_count.html" class="method">get_reference_count</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Cairo.ScaledFont.html" class="class">ScaledFont</a></span> <b><a href="Cairo.Context.get_scaled_font.html" class="method">get_scaled_font</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Cairo.Pattern.html" class="class">Pattern</a></span> <b><a href="Cairo.Context.get_source.html" class="method">get_source</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Cairo.Surface.html" class="class">Surface</a></span> <b><a href="Cairo.Context.get_target.html" class="method">get_target</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> <b><a href="Cairo.Context.get_tolerance.html" class="method">get_tolerance</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span>G</span></span> <b><a href="Cairo.Context.get_user_data.html" class="method">get_user_data</a></b>&lt;<b><span>G</span></b>&gt; (<span class="main_type"><a href="Cairo.UserDataKey.html" class="struct">UserDataKey</a></span>? key)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.glyph_extents.html" class="method">glyph_extents</a></b> (<span class="main_type"><a href="Cairo.Glyph.html" class="struct">Glyph</a></span>[] glyphs, <span class="main_keyword">out</span> <span class="main_type"><a href="Cairo.TextExtents.html" class="struct">TextExtents</a></span> extents)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.glyph_path.html" class="method">glyph_path</a></b> (<span class="main_type"><a href="Cairo.Glyph.html" class="struct">Glyph</a></span>[] glyphs)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Cairo.Context.has_current_point.html" class="method">has_current_point</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.identity_matrix.html" class="method">identity_matrix</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Cairo.Context.in_clip.html" class="method">in_clip</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Cairo.Context.in_fill.html" class="method">in_fill</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Cairo.Context.in_stroke.html" class="method">in_stroke</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.line_to.html" class="method">line_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.mask.html" class="method">mask</a></b> (<span class="main_type"><a href="Cairo.Pattern.html" class="class">Pattern</a></span> pattern)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.mask_surface.html" class="method">mask_surface</a></b> (<span class="main_type"><a href="Cairo.Surface.html" class="class">Surface</a></span> surface, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> surface_x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> surface_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.move_to.html" class="method">move_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.new_path.html" class="method">new_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.new_sub_path.html" class="method">new_sub_path</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.paint.html" class="method">paint</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.paint_with_alpha.html" class="method">paint_with_alpha</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> alpha)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.path_extents.html" class="method">path_extents</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x2, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Pattern.html" class="class">Pattern</a></span> <b><a href="Cairo.Context.pop_group.html" class="method">pop_group</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.pop_group_to_source.html" class="method">pop_group_to_source</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.push_group.html" class="method">push_group</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.push_group_with_content.html" class="method">push_group_with_content</a></b> (<span class="main_type"><a href="Cairo.Content.html" class="enum">Content</a></span> content)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.rectangle.html" class="method">rectangle</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.rel_curve_to.html" class="method">rel_curve_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy1, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx2, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy2, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx3, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy3)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.rel_line_to.html" class="method">rel_line_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.rel_move_to.html" class="method">rel_move_to</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.reset_clip.html" class="method">reset_clip</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.restore.html" class="method">restore</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.rotate.html" class="method">rotate</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> angle)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.save.html" class="method">save</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.scale.html" class="method">scale</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> sx, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> sy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.select_font_face.html" class="method">select_font_face</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> family, <span class="main_type"><a href="Cairo.FontSlant.html" class="enum">FontSlant</a></span> slant, <span class="main_type"><a href="Cairo.FontWeight.html" class="enum">FontWeight</a></span> weight)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_antialias.html" class="method">set_antialias</a></b> (<span class="main_type"><a href="Cairo.Antialias.html" class="enum">Antialias</a></span> antialias)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_dash.html" class="method">set_dash</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span>[]? dashes, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> offset)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_fill_rule.html" class="method">set_fill_rule</a></b> (<span class="main_type"><a href="Cairo.FillRule.html" class="enum">FillRule</a></span> fill_rule)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_font_face.html" class="method">set_font_face</a></b> (<span class="main_type"><a href="Cairo.FontFace.html" class="class">FontFace</a></span> font_face)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_font_matrix.html" class="method">set_font_matrix</a></b> (<span class="main_type"><a href="Cairo.Matrix.html" class="struct">Matrix</a></span> matrix)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_font_options.html" class="method">set_font_options</a></b> (<span class="main_type"><a href="Cairo.FontOptions.html" class="class">FontOptions</a></span> options)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_font_size.html" class="method">set_font_size</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_line_cap.html" class="method">set_line_cap</a></b> (<span class="main_type"><a href="Cairo.LineCap.html" class="enum">LineCap</a></span> line_cap)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_line_join.html" class="method">set_line_join</a></b> (<span class="main_type"><a href="Cairo.LineJoin.html" class="enum">LineJoin</a></span> line_join)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_line_width.html" class="method">set_line_width</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> width)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_matrix.html" class="method">set_matrix</a></b> (<span class="main_type"><a href="Cairo.Matrix.html" class="struct">Matrix</a></span> matrix)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_miter_limit.html" class="method">set_miter_limit</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> limit)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_operator.html" class="method">set_operator</a></b> (<span class="main_type"><a href="Cairo.Operator.html" class="enum">Operator</a></span> op)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_scaled_font.html" class="method">set_scaled_font</a></b> (<span class="main_type"><a href="Cairo.ScaledFont.html" class="class">ScaledFont</a></span> font)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_source.html" class="method">set_source</a></b> (<span class="main_type"><a href="Cairo.Pattern.html" class="class">Pattern</a></span> source)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_source_rgb.html" class="method">set_source_rgb</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> red, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> green, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> blue)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_source_rgba.html" class="method">set_source_rgba</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> red, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> green, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> blue, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> alpha)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_source_surface.html" class="method">set_source_surface</a></b> (<span class="main_type"><a href="Cairo.Surface.html" class="class">Surface</a></span> surface, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.set_tolerance.html" class="method">set_tolerance</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> tolerance)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Status.html" class="enum">Status</a></span> <b><a href="Cairo.Context.set_user_data.html" class="method">set_user_data</a></b>&lt;<b><span>G</span></b>&gt; (<span class="main_type"><a href="Cairo.UserDataKey.html" class="struct">UserDataKey</a></span>? key, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.show_glyphs.html" class="method">show_glyphs</a></b> (<span class="main_type"><a href="Cairo.Glyph.html" class="struct">Glyph</a></span>[] glyphs)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.show_page.html" class="method">show_page</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.show_text.html" class="method">show_text</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> utf8)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Status.html" class="enum">Status</a></span> <b><a href="Cairo.Context.show_text_glyphs.html" class="method">show_text_glyphs</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> utf8, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> utf8_len, <span class="main_type"><a href="Cairo.Glyph.html" class="struct">Glyph</a></span>[] glyphs, <span class="main_type"><a href="Cairo.TextCluster.html" class="struct">TextCluster</a></span>[] clusters, <span class="main_type"><a href="Cairo.TextClusterFlags.html" class="enum">TextClusterFlags</a></span> cluster_flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Cairo.Status.html" class="enum">Status</a></span> <b><a href="Cairo.Context.status.html" class="method">status</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.stroke.html" class="method">stroke</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.stroke_extents.html" class="method">stroke_extents</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y1, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x2, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y2)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.stroke_preserve.html" class="method">stroke_preserve</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.tag_begin.html" class="method">tag_begin</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> tag_name, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> attributes)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.tag_end.html" class="method">tag_end</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> tag_name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.text_extents.html" class="method">text_extents</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> utf8, <span class="main_keyword">out</span> <span class="main_type"><a href="Cairo.TextExtents.html" class="struct">TextExtents</a></span> extents)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.text_path.html" class="method">text_path</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> utf8)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.transform.html" class="method">transform</a></b> (<span class="main_type"><a href="Cairo.Matrix.html" class="struct">Matrix</a></span> matrix)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.translate.html" class="method">translate</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> tx, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> ty)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.user_to_device.html" class="method">user_to_device</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Cairo.Context.user_to_device_distance.html" class="method">user_to_device_distance</a></b> (<span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dx, <span class="main_keyword">ref</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

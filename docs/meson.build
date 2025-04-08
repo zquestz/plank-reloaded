@@ -79,6 +79,9 @@ if get_option('enable-docs')
     '--package-name', meson.project_name(),
     '--package-version', meson.project_version(),
     '--pkg', 'plank-internal',
+    '--pkg', 'compat',
+    '--pkg', 'config',
+    '--deps',
     '--vapidir=' + meson.current_build_dir() / '../lib',
     '--vapidir=' + meson.project_source_root() / 'vapi',
   ] + vala_pkgs + vala_defines

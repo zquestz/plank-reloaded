@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gtk.binding_entry_add_signal_from_string &ndash; gtk+-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gtk.binding_entry_add_signal_from_string &ndash; gtk+-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gtk+-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.html">Gtk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gtk.Stock.html">Stock</a></li>
+          <li class="enum"><a href="Gtk.AccelFlags.html">AccelFlags</a></li>
+          <li class="enum"><a href="Gtk.Align.html">Align</a></li>
+          <li class="enum"><a href="Gtk.ApplicationInhibitFlags.html">ApplicationInhibitFlags</a></li>
+          <li class="enum"><a href="Gtk.ArrowPlacement.html">ArrowPlacement</a></li>
+          <li class="enum"><a href="Gtk.ArrowType.html">ArrowType</a></li>
+          <li class="enum"><a href="Gtk.AssistantPageType.html">AssistantPageType</a></li>
+          <li class="enum"><a href="Gtk.AttachOptions.html">AttachOptions</a></li>
+          <li class="enum"><a href="Gtk.BaselinePosition.html">BaselinePosition</a></li>
+          <li class="enum"><a href="Gtk.BorderStyle.html">BorderStyle</a></li>
+          <li class="enum"><a href="Gtk.ButtonBoxStyle.html">ButtonBoxStyle</a></li>
+          <li class="enum"><a href="Gtk.ButtonRole.html">ButtonRole</a></li>
+          <li class="enum"><a href="Gtk.ButtonsType.html">ButtonsType</a></li>
+          <li class="enum"><a href="Gtk.CalendarDisplayOptions.html">CalendarDisplayOptions</a></li>
+          <li class="enum"><a href="Gtk.CellRendererAccelMode.html">CellRendererAccelMode</a></li>
+          <li class="enum"><a href="Gtk.CellRendererMode.html">CellRendererMode</a></li>
+          <li class="enum"><a href="Gtk.CellRendererState.html">CellRendererState</a></li>
+          <li class="enum"><a href="Gtk.CornerType.html">CornerType</a></li>
+          <li class="enum"><a href="Gtk.CssSectionType.html">CssSectionType</a></li>
+          <li class="enum"><a href="Gtk.DebugFlag.html">DebugFlag</a></li>
+          <li class="enum"><a href="Gtk.DeleteType.html">DeleteType</a></li>
+          <li class="enum"><a href="Gtk.DestDefaults.html">DestDefaults</a></li>
+          <li class="enum"><a href="Gtk.DialogFlags.html">DialogFlags</a></li>
+          <li class="enum"><a href="Gtk.DirectionType.html">DirectionType</a></li>
+          <li class="enum"><a href="Gtk.DragResult.html">DragResult</a></li>
+          <li class="enum"><a href="Gtk.EntryIconPosition.html">EntryIconPosition</a></li>
+          <li class="enum"><a href="Gtk.EventControllerScrollFlags.html">EventControllerScrollFlags</a></li>
+          <li class="enum"><a href="Gtk.EventSequenceState.html">EventSequenceState</a></li>
+          <li class="enum"><a href="Gtk.ExpanderStyle.html">ExpanderStyle</a></li>
+          <li class="enum"><a href="Gtk.FileChooserAction.html">FileChooserAction</a></li>
+          <li class="enum"><a href="Gtk.FileChooserConfirmation.html">FileChooserConfirmation</a></li>
+          <li class="enum"><a href="Gtk.FileFilterFlags.html">FileFilterFlags</a></li>
+          <li class="enum"><a href="Gtk.FontChooserLevel.html">FontChooserLevel</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.IMPreeditStyle.html">IMPreeditStyle</a></span></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.IMStatusStyle.html">IMStatusStyle</a></span></li>
+          <li class="enum"><a href="Gtk.IconLookupFlags.html">IconLookupFlags</a></li>
+          <li class="enum"><a href="Gtk.IconSize.html">IconSize</a></li>
+          <li class="enum"><a href="Gtk.IconViewDropPosition.html">IconViewDropPosition</a></li>
+          <li class="enum"><a href="Gtk.ImageType.html">ImageType</a></li>
+          <li class="enum"><a href="Gtk.InputHints.html">InputHints</a></li>
+          <li class="enum"><a href="Gtk.InputPurpose.html">InputPurpose</a></li>
+          <li class="enum"><a href="Gtk.JunctionSides.html">JunctionSides</a></li>
+          <li class="enum"><a href="Gtk.Justification.html">Justification</a></li>
+          <li class="enum"><a href="Gtk.LevelBarMode.html">LevelBarMode</a></li>
+          <li class="enum"><a href="Gtk.License.html">License</a></li>
+          <li class="enum"><a href="Gtk.MenuDirectionType.html">MenuDirectionType</a></li>
+          <li class="enum"><a href="Gtk.MessageType.html">MessageType</a></li>
+          <li class="enum"><a href="Gtk.MovementStep.html">MovementStep</a></li>
+          <li class="enum"><a href="Gtk.NotebookTab.html">NotebookTab</a></li>
+          <li class="enum"><a href="Gtk.NumberUpLayout.html">NumberUpLayout</a></li>
+          <li class="enum"><a href="Gtk.Orientation.html">Orientation</a></li>
+          <li class="enum"><a href="Gtk.PackDirection.html">PackDirection</a></li>
+          <li class="enum"><a href="Gtk.PackType.html">PackType</a></li>
+          <li class="enum"><a href="Gtk.PadActionType.html">PadActionType</a></li>
+          <li class="enum"><a href="Gtk.PageOrientation.html">PageOrientation</a></li>
+          <li class="enum"><a href="Gtk.PageSet.html">PageSet</a></li>
+          <li class="enum"><a href="Gtk.PanDirection.html">PanDirection</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.PathPriorityType.html">PathPriorityType</a></span></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.PathType.html">PathType</a></span></li>
+          <li class="enum"><a href="Gtk.PlacesOpenFlags.html">PlacesOpenFlags</a></li>
+          <li class="enum"><a href="Gtk.PolicyType.html">PolicyType</a></li>
+          <li class="enum"><a href="Gtk.PopoverConstraint.html">PopoverConstraint</a></li>
+          <li class="enum"><a href="Gtk.PositionType.html">PositionType</a></li>
+          <li class="enum"><a href="Gtk.PrintDuplex.html">PrintDuplex</a></li>
+          <li class="enum"><a href="Gtk.PrintOperationAction.html">PrintOperationAction</a></li>
+          <li class="enum"><a href="Gtk.PrintOperationResult.html">PrintOperationResult</a></li>
+          <li class="enum"><a href="Gtk.PrintPages.html">PrintPages</a></li>
+          <li class="enum"><a href="Gtk.PrintQuality.html">PrintQuality</a></li>
+          <li class="enum"><a href="Gtk.PrintStatus.html">PrintStatus</a></li>
+          <li class="enum"><a href="Gtk.PropagationPhase.html">PropagationPhase</a></li>
+          <li class="enum"><a href="Gtk.RcFlags.html">RcFlags</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.RcTokenType.html">RcTokenType</a></span></li>
+          <li class="enum"><a href="Gtk.RecentFilterFlags.html">RecentFilterFlags</a></li>
+          <li class="enum"><a href="Gtk.RecentSortType.html">RecentSortType</a></li>
+          <li class="enum"><a href="Gtk.RegionFlags.html">RegionFlags</a></li>
+          <li class="enum"><a href="Gtk.ReliefStyle.html">ReliefStyle</a></li>
+          <li class="enum"><a href="Gtk.ResizeMode.html">ResizeMode</a></li>
+          <li class="enum"><a href="Gtk.ResponseType.html">ResponseType</a></li>
+          <li class="enum"><a href="Gtk.RevealerTransitionType.html">RevealerTransitionType</a></li>
+          <li class="enum"><a href="Gtk.ScrollStep.html">ScrollStep</a></li>
+          <li class="enum"><a href="Gtk.ScrollType.html">ScrollType</a></li>
+          <li class="enum"><a href="Gtk.ScrollablePolicy.html">ScrollablePolicy</a></li>
+          <li class="enum"><a href="Gtk.SelectionMode.html">SelectionMode</a></li>
+          <li class="enum"><a href="Gtk.SensitivityType.html">SensitivityType</a></li>
+          <li class="enum"><a href="Gtk.ShadowType.html">ShadowType</a></li>
+          <li class="enum"><a href="Gtk.ShortcutType.html">ShortcutType</a></li>
+          <li class="enum"><a href="Gtk.SizeGroupMode.html">SizeGroupMode</a></li>
+          <li class="enum"><a href="Gtk.SizeRequestMode.html">SizeRequestMode</a></li>
+          <li class="enum"><a href="Gtk.SortColumn.html">SortColumn</a></li>
+          <li class="enum"><a href="Gtk.SortType.html">SortType</a></li>
+          <li class="enum"><a href="Gtk.SpinButtonUpdatePolicy.html">SpinButtonUpdatePolicy</a></li>
+          <li class="enum"><a href="Gtk.SpinType.html">SpinType</a></li>
+          <li class="enum"><a href="Gtk.StackTransitionType.html">StackTransitionType</a></li>
+          <li class="enum"><a href="Gtk.StateFlags.html">StateFlags</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.StateType.html">StateType</a></span></li>
+          <li class="enum"><a href="Gtk.StyleContextPrintFlags.html">StyleContextPrintFlags</a></li>
+          <li class="enum"><a href="Gtk.TargetFlags.html">TargetFlags</a></li>
+          <li class="enum"><a href="Gtk.TextBufferTargetInfo.html">TextBufferTargetInfo</a></li>
+          <li class="enum"><a href="Gtk.TextDirection.html">TextDirection</a></li>
+          <li class="enum"><a href="Gtk.TextExtendSelection.html">TextExtendSelection</a></li>
+          <li class="enum"><a href="Gtk.TextSearchFlags.html">TextSearchFlags</a></li>
+          <li class="enum"><a href="Gtk.TextViewLayer.html">TextViewLayer</a></li>
+          <li class="enum"><a href="Gtk.TextWindowType.html">TextWindowType</a></li>
+          <li class="enum"><a href="Gtk.ToolPaletteDragTargets.html">ToolPaletteDragTargets</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.ToolbarSpaceStyle.html">ToolbarSpaceStyle</a></span></li>
+          <li class="enum"><a href="Gtk.ToolbarStyle.html">ToolbarStyle</a></li>
+          <li class="enum"><a href="Gtk.TreeModelFlags.html">TreeModelFlags</a></li>
+          <li class="enum"><a href="Gtk.TreeViewColumnSizing.html">TreeViewColumnSizing</a></li>
+          <li class="enum"><a href="Gtk.TreeViewDropPosition.html">TreeViewDropPosition</a></li>
+          <li class="enum"><a href="Gtk.TreeViewGridLines.html">TreeViewGridLines</a></li>
+          <li class="enum"><span class="deprecated"><a href="Gtk.UIManagerItemType.html">UIManagerItemType</a></span></li>
+          <li class="enum"><a href="Gtk.Unit.html">Unit</a></li>
+          <li class="enum"><a href="Gtk.WidgetHelpType.html">WidgetHelpType</a></li>
+          <li class="enum"><a href="Gtk.WindowPosition.html">WindowPosition</a></li>
+          <li class="enum"><a href="Gtk.WindowType.html">WindowType</a></li>
+          <li class="enum"><a href="Gtk.WrapMode.html">WrapMode</a></li>
+          <li class="interface"><a href="Gtk.Actionable.html">Actionable</a></li>
+          <li class="interface"><span class="deprecated"><a href="Gtk.Activatable.html">Activatable</a></span></li>
+          <li class="interface"><a href="Gtk.AppChooser.html">AppChooser</a></li>
+          <li class="interface"><a href="Gtk.Buildable.html">Buildable</a></li>
+          <li class="interface"><a href="Gtk.CellAccessibleParent.html">CellAccessibleParent</a></li>
+          <li class="interface"><a href="Gtk.CellEditable.html">CellEditable</a></li>
+          <li class="interface"><a href="Gtk.CellLayout.html">CellLayout</a></li>
+          <li class="interface"><a href="Gtk.ColorChooser.html">ColorChooser</a></li>
+          <li class="interface"><a href="Gtk.Editable.html">Editable</a></li>
+          <li class="interface"><a href="Gtk.FileChooser.html">FileChooser</a></li>
+          <li class="interface"><a href="Gtk.FontChooser.html">FontChooser</a></li>
+          <li class="interface"><a href="Gtk.Orientable.html">Orientable</a></li>
+          <li class="interface"><a href="Gtk.PrintOperationPreview.html">PrintOperationPreview</a></li>
+          <li class="interface"><a href="Gtk.RecentChooser.html">RecentChooser</a></li>
+          <li class="interface"><a href="Gtk.Scrollable.html">Scrollable</a></li>
+          <li class="interface"><a href="Gtk.StyleProvider.html">StyleProvider</a></li>
+          <li class="interface"><a href="Gtk.ToolShell.html">ToolShell</a></li>
+          <li class="interface"><a href="Gtk.TreeDragDest.html">TreeDragDest</a></li>
+          <li class="interface"><a href="Gtk.TreeDragSource.html">TreeDragSource</a></li>
+          <li class="interface"><a href="Gtk.TreeModel.html">TreeModel</a></li>
+          <li class="interface"><a href="Gtk.TreeSortable.html">TreeSortable</a></li>
+          <li class="class"><a href="Gtk.AboutDialog.html">AboutDialog</a></li>
+          <li class="class"><a href="Gtk.AccelGroup.html">AccelGroup</a></li>
+          <li class="class"><a href="Gtk.AccelLabel.html">AccelLabel</a></li>
+          <li class="class"><a href="Gtk.AccelMap.html">AccelMap</a></li>
+          <li class="class"><a href="Gtk.Accessible.html">Accessible</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.Action.html">Action</a></span></li>
+          <li class="class"><a href="Gtk.ActionBar.html">ActionBar</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.ActionGroup.html">ActionGroup</a></span></li>
+          <li class="class"><a href="Gtk.Adjustment.html">Adjustment</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.Alignment.html">Alignment</a></span></li>
+          <li class="class"><a href="Gtk.AppChooserButton.html">AppChooserButton</a></li>
+          <li class="class"><a href="Gtk.AppChooserDialog.html">AppChooserDialog</a></li>
+          <li class="class"><a href="Gtk.AppChooserWidget.html">AppChooserWidget</a></li>
+          <li class="class"><a href="Gtk.Application.html">Application</a></li>
+          <li class="class"><a href="Gtk.ApplicationWindow.html">ApplicationWindow</a></li>
+          <li class="class"><a href="Gtk.Arrow.html">Arrow</a></li>
+          <li class="class"><a href="Gtk.ArrowAccessible.html">ArrowAccessible</a></li>
+          <li class="class"><a href="Gtk.AspectFrame.html">AspectFrame</a></li>
+          <li class="class"><a href="Gtk.Assistant.html">Assistant</a></li>
+          <li class="abstract_class"><a href="Gtk.Bin.html">Bin</a></li>
+          <li class="class"><a href="Gtk.BindingEntry.html">BindingEntry</a></li>
+          <li class="class"><a href="Gtk.BindingSet.html">BindingSet</a></li>
+          <li class="class"><a href="Gtk.BindingSignal.html">BindingSignal</a></li>
+          <li class="class"><a href="Gtk.BooleanCellAccessible.html">BooleanCellAccessible</a></li>
+          <li class="class"><a href="Gtk.Box.html">Box</a></li>
+          <li class="class"><a href="Gtk.Builder.html">Builder</a></li>
+          <li class="class"><a href="Gtk.Button.html">Button</a></li>
+          <li class="class"><a href="Gtk.ButtonAccessible.html">ButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.ButtonBox.html">ButtonBox</a></li>
+          <li class="class"><a href="Gtk.Calendar.html">Calendar</a></li>
+          <li class="class"><a href="Gtk.CellAccessible.html">CellAccessible</a></li>
+          <li class="abstract_class"><a href="Gtk.CellArea.html">CellArea</a></li>
+          <li class="class"><a href="Gtk.CellAreaBox.html">CellAreaBox</a></li>
+          <li class="class"><a href="Gtk.CellAreaContext.html">CellAreaContext</a></li>
+          <li class="abstract_class"><a href="Gtk.CellRenderer.html">CellRenderer</a></li>
+          <li class="class"><a href="Gtk.CellRendererAccel.html">CellRendererAccel</a></li>
+          <li class="class"><a href="Gtk.CellRendererCombo.html">CellRendererCombo</a></li>
+          <li class="class"><a href="Gtk.CellRendererPixbuf.html">CellRendererPixbuf</a></li>
+          <li class="class"><a href="Gtk.CellRendererProgress.html">CellRendererProgress</a></li>
+          <li class="class"><a href="Gtk.CellRendererSpin.html">CellRendererSpin</a></li>
+          <li class="class"><a href="Gtk.CellRendererSpinner.html">CellRendererSpinner</a></li>
+          <li class="class"><a href="Gtk.CellRendererText.html">CellRendererText</a></li>
+          <li class="class"><a href="Gtk.CellRendererToggle.html">CellRendererToggle</a></li>
+          <li class="class"><a href="Gtk.CellView.html">CellView</a></li>
+          <li class="class"><a href="Gtk.CheckButton.html">CheckButton</a></li>
+          <li class="class"><a href="Gtk.CheckMenuItem.html">CheckMenuItem</a></li>
+          <li class="class"><a href="Gtk.CheckMenuItemAccessible.html">CheckMenuItemAccessible</a></li>
+          <li class="class"><a href="Gtk.Clipboard.html">Clipboard</a></li>
+          <li class="class"><a href="Gtk.ColorButton.html">ColorButton</a></li>
+          <li class="class"><a href="Gtk.ColorChooserDialog.html">ColorChooserDialog</a></li>
+          <li class="class"><a href="Gtk.ColorChooserWidget.html">ColorChooserWidget</a></li>
+          <li class="class"><a href="Gtk.ColorSelection.html">ColorSelection</a></li>
+          <li class="class"><a href="Gtk.ColorSelectionDialog.html">ColorSelectionDialog</a></li>
+          <li class="class"><a href="Gtk.ComboBox.html">ComboBox</a></li>
+          <li class="class"><a href="Gtk.ComboBoxAccessible.html">ComboBoxAccessible</a></li>
+          <li class="class"><a href="Gtk.ComboBoxText.html">ComboBoxText</a></li>
+          <li class="abstract_class"><a href="Gtk.Container.html">Container</a></li>
+          <li class="class"><a href="Gtk.ContainerAccessible.html">ContainerAccessible</a></li>
+          <li class="class"><a href="Gtk.ContainerCellAccessible.html">ContainerCellAccessible</a></li>
+          <li class="class"><a href="Gtk.CssProvider.html">CssProvider</a></li>
+          <li class="class"><a href="Gtk.CssSection.html">CssSection</a></li>
+          <li class="class"><a href="Gtk.Dialog.html">Dialog</a></li>
+          <li class="class"><a href="Gtk.DrawingArea.html">DrawingArea</a></li>
+          <li class="class"><a href="Gtk.Entry.html">Entry</a></li>
+          <li class="class"><a href="Gtk.EntryAccessible.html">EntryAccessible</a></li>
+          <li class="class"><a href="Gtk.EntryBuffer.html">EntryBuffer</a></li>
+          <li class="class"><a href="Gtk.EntryCompletion.html">EntryCompletion</a></li>
+          <li class="class"><a href="Gtk.EventBox.html">EventBox</a></li>
+          <li class="abstract_class"><a href="Gtk.EventController.html">EventController</a></li>
+          <li class="class"><a href="Gtk.EventControllerKey.html">EventControllerKey</a></li>
+          <li class="class"><a href="Gtk.EventControllerMotion.html">EventControllerMotion</a></li>
+          <li class="class"><a href="Gtk.EventControllerScroll.html">EventControllerScroll</a></li>
+          <li class="class"><a href="Gtk.Expander.html">Expander</a></li>
+          <li class="class"><a href="Gtk.ExpanderAccessible.html">ExpanderAccessible</a></li>
+          <li class="class"><a href="Gtk.FileChooserButton.html">FileChooserButton</a></li>
+          <li class="class"><a href="Gtk.FileChooserDialog.html">FileChooserDialog</a></li>
+          <li class="class"><a href="Gtk.FileChooserNative.html">FileChooserNative</a></li>
+          <li class="class"><a href="Gtk.FileChooserWidget.html">FileChooserWidget</a></li>
+          <li class="class"><a href="Gtk.FileFilter.html">FileFilter</a></li>
+          <li class="class"><a href="Gtk.FileFilterInfo.html">FileFilterInfo</a></li>
+          <li class="class"><a href="Gtk.Fixed.html">Fixed</a></li>
+          <li class="class"><a href="Gtk.FixedChild.html">FixedChild</a></li>
+          <li class="class"><a href="Gtk.FlowBox.html">FlowBox</a></li>
+          <li class="class"><a href="Gtk.FlowBoxAccessible.html">FlowBoxAccessible</a></li>
+          <li class="class"><a href="Gtk.FlowBoxChild.html">FlowBoxChild</a></li>
+          <li class="class"><a href="Gtk.FlowBoxChildAccessible.html">FlowBoxChildAccessible</a></li>
+          <li class="class"><a href="Gtk.FontButton.html">FontButton</a></li>
+          <li class="class"><a href="Gtk.FontChooserDialog.html">FontChooserDialog</a></li>
+          <li class="class"><a href="Gtk.FontChooserWidget.html">FontChooserWidget</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.FontSelection.html">FontSelection</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.FontSelectionDialog.html">FontSelectionDialog</a></span></li>
+          <li class="class"><a href="Gtk.Frame.html">Frame</a></li>
+          <li class="class"><a href="Gtk.FrameAccessible.html">FrameAccessible</a></li>
+          <li class="class"><a href="Gtk.GLArea.html">GLArea</a></li>
+          <li class="abstract_class"><a href="Gtk.Gesture.html">Gesture</a></li>
+          <li class="class"><a href="Gtk.GestureDrag.html">GestureDrag</a></li>
+          <li class="class"><a href="Gtk.GestureLongPress.html">GestureLongPress</a></li>
+          <li class="class"><a href="Gtk.GestureMultiPress.html">GestureMultiPress</a></li>
+          <li class="class"><a href="Gtk.GesturePan.html">GesturePan</a></li>
+          <li class="class"><a href="Gtk.GestureRotate.html">GestureRotate</a></li>
+          <li class="class"><a href="Gtk.GestureSingle.html">GestureSingle</a></li>
+          <li class="class"><a href="Gtk.GestureStylus.html">GestureStylus</a></li>
+          <li class="class"><a href="Gtk.GestureSwipe.html">GestureSwipe</a></li>
+          <li class="class"><a href="Gtk.GestureZoom.html">GestureZoom</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.Gradient.html">Gradient</a></span></li>
+          <li class="class"><a href="Gtk.Grid.html">Grid</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HBox.html">HBox</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HButtonBox.html">HButtonBox</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HPaned.html">HPaned</a></span></li>
+          <li class="class"><a href="Gtk.HSV.html">HSV</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HScale.html">HScale</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HScrollbar.html">HScrollbar</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HSeparator.html">HSeparator</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.HandleBox.html">HandleBox</a></span></li>
+          <li class="class"><a href="Gtk.HeaderBar.html">HeaderBar</a></li>
+          <li class="abstract_class"><a href="Gtk.IMContext.html">IMContext</a></li>
+          <li class="class"><a href="Gtk.IMContextSimple.html">IMContextSimple</a></li>
+          <li class="class"><a href="Gtk.IMMulticontext.html">IMMulticontext</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.IconFactory.html">IconFactory</a></span></li>
+          <li class="class"><a href="Gtk.IconInfo.html">IconInfo</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.IconSet.html">IconSet</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.IconSource.html">IconSource</a></span></li>
+          <li class="class"><a href="Gtk.IconTheme.html">IconTheme</a></li>
+          <li class="class"><a href="Gtk.IconView.html">IconView</a></li>
+          <li class="class"><a href="Gtk.IconViewAccessible.html">IconViewAccessible</a></li>
+          <li class="class"><a href="Gtk.Image.html">Image</a></li>
+          <li class="class"><a href="Gtk.ImageAccessible.html">ImageAccessible</a></li>
+          <li class="class"><a href="Gtk.ImageCellAccessible.html">ImageCellAccessible</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.ImageMenuItem.html">ImageMenuItem</a></span></li>
+          <li class="class"><a href="Gtk.InfoBar.html">InfoBar</a></li>
+          <li class="class"><a href="Gtk.Invisible.html">Invisible</a></li>
+          <li class="class"><a href="Gtk.Label.html">Label</a></li>
+          <li class="class"><a href="Gtk.LabelAccessible.html">LabelAccessible</a></li>
+          <li class="class"><a href="Gtk.LabelSelectionInfo.html">LabelSelectionInfo</a></li>
+          <li class="class"><a href="Gtk.Layout.html">Layout</a></li>
+          <li class="class"><a href="Gtk.LevelBar.html">LevelBar</a></li>
+          <li class="class"><a href="Gtk.LevelBarAccessible.html">LevelBarAccessible</a></li>
+          <li class="class"><a href="Gtk.LinkButton.html">LinkButton</a></li>
+          <li class="class"><a href="Gtk.LinkButtonAccessible.html">LinkButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.ListBox.html">ListBox</a></li>
+          <li class="class"><a href="Gtk.ListBoxAccessible.html">ListBoxAccessible</a></li>
+          <li class="class"><a href="Gtk.ListBoxRow.html">ListBoxRow</a></li>
+          <li class="class"><a href="Gtk.ListBoxRowAccessible.html">ListBoxRowAccessible</a></li>
+          <li class="class"><a href="Gtk.ListStore.html">ListStore</a></li>
+          <li class="class"><a href="Gtk.LockButton.html">LockButton</a></li>
+          <li class="class"><a href="Gtk.LockButtonAccessible.html">LockButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.Menu.html">Menu</a></li>
+          <li class="class"><a href="Gtk.MenuAccessible.html">MenuAccessible</a></li>
+          <li class="class"><a href="Gtk.MenuBar.html">MenuBar</a></li>
+          <li class="class"><a href="Gtk.MenuButton.html">MenuButton</a></li>
+          <li class="class"><a href="Gtk.MenuButtonAccessible.html">MenuButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.MenuItem.html">MenuItem</a></li>
+          <li class="class"><a href="Gtk.MenuItemAccessible.html">MenuItemAccessible</a></li>
+          <li class="abstract_class"><a href="Gtk.MenuShell.html">MenuShell</a></li>
+          <li class="class"><a href="Gtk.MenuShellAccessible.html">MenuShellAccessible</a></li>
+          <li class="class"><a href="Gtk.MenuToolButton.html">MenuToolButton</a></li>
+          <li class="class"><a href="Gtk.MessageDialog.html">MessageDialog</a></li>
+          <li class="abstract_class"><span class="deprecated"><a href="Gtk.Misc.html">Misc</a></span></li>
+          <li class="class"><a href="Gtk.ModelButton.html">ModelButton</a></li>
+          <li class="class"><a href="Gtk.MountOperation.html">MountOperation</a></li>
+          <li class="abstract_class"><a href="Gtk.NativeDialog.html">NativeDialog</a></li>
+          <li class="class"><a href="Gtk.Notebook.html">Notebook</a></li>
+          <li class="class"><a href="Gtk.NotebookAccessible.html">NotebookAccessible</a></li>
+          <li class="class"><a href="Gtk.NotebookPageAccessible.html">NotebookPageAccessible</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.NumerableIcon.html">NumerableIcon</a></span></li>
+          <li class="class"><a href="Gtk.OffscreenWindow.html">OffscreenWindow</a></li>
+          <li class="class"><a href="Gtk.Overlay.html">Overlay</a></li>
+          <li class="class"><a href="Gtk.PadController.html">PadController</a></li>
+          <li class="class"><a href="Gtk.PageSetup.html">PageSetup</a></li>
+          <li class="class"><a href="Gtk.Paned.html">Paned</a></li>
+          <li class="class"><a href="Gtk.PanedAccessible.html">PanedAccessible</a></li>
+          <li class="class"><a href="Gtk.PaperSize.html">PaperSize</a></li>
+          <li class="class"><a href="Gtk.PlacesSidebar.html">PlacesSidebar</a></li>
+          <li class="class"><a href="Gtk.Plug.html">Plug</a></li>
+          <li class="class"><a href="Gtk.PlugAccessible.html">PlugAccessible</a></li>
+          <li class="class"><a href="Gtk.Popover.html">Popover</a></li>
+          <li class="class"><a href="Gtk.PopoverAccessible.html">PopoverAccessible</a></li>
+          <li class="class"><a href="Gtk.PopoverMenu.html">PopoverMenu</a></li>
+          <li class="class"><a href="Gtk.PrintContext.html">PrintContext</a></li>
+          <li class="class"><a href="Gtk.PrintOperation.html">PrintOperation</a></li>
+          <li class="class"><a href="Gtk.PrintSettings.html">PrintSettings</a></li>
+          <li class="class"><a href="Gtk.ProgressBar.html">ProgressBar</a></li>
+          <li class="class"><a href="Gtk.ProgressBarAccessible.html">ProgressBarAccessible</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.RadioAction.html">RadioAction</a></span></li>
+          <li class="class"><a href="Gtk.RadioButton.html">RadioButton</a></li>
+          <li class="class"><a href="Gtk.RadioButtonAccessible.html">RadioButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.RadioMenuItem.html">RadioMenuItem</a></li>
+          <li class="class"><a href="Gtk.RadioMenuItemAccessible.html">RadioMenuItemAccessible</a></li>
+          <li class="class"><a href="Gtk.RadioToolButton.html">RadioToolButton</a></li>
+          <li class="abstract_class"><a href="Gtk.Range.html">Range</a></li>
+          <li class="class"><a href="Gtk.RangeAccessible.html">RangeAccessible</a></li>
+          <li class="class"><a href="Gtk.RcContext.html">RcContext</a></li>
+          <li class="class"><a href="Gtk.RcStyle.html">RcStyle</a></li>
+          <li class="class"><a href="Gtk.RecentAction.html">RecentAction</a></li>
+          <li class="class"><a href="Gtk.RecentChooserDialog.html">RecentChooserDialog</a></li>
+          <li class="class"><a href="Gtk.RecentChooserMenu.html">RecentChooserMenu</a></li>
+          <li class="class"><a href="Gtk.RecentChooserWidget.html">RecentChooserWidget</a></li>
+          <li class="class"><a href="Gtk.RecentFilter.html">RecentFilter</a></li>
+          <li class="class"><a href="Gtk.RecentInfo.html">RecentInfo</a></li>
+          <li class="class"><a href="Gtk.RecentManager.html">RecentManager</a></li>
+          <li class="class"><a href="Gtk.RendererCellAccessible.html">RendererCellAccessible</a></li>
+          <li class="class"><a href="Gtk.Revealer.html">Revealer</a></li>
+          <li class="class"><a href="Gtk.Scale.html">Scale</a></li>
+          <li class="class"><a href="Gtk.ScaleAccessible.html">ScaleAccessible</a></li>
+          <li class="class"><a href="Gtk.ScaleButton.html">ScaleButton</a></li>
+          <li class="class"><a href="Gtk.ScaleButtonAccessible.html">ScaleButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.Scrollbar.html">Scrollbar</a></li>
+          <li class="class"><a href="Gtk.ScrolledWindow.html">ScrolledWindow</a></li>
+          <li class="class"><a href="Gtk.ScrolledWindowAccessible.html">ScrolledWindowAccessible</a></li>
+          <li class="class"><a href="Gtk.SearchBar.html">SearchBar</a></li>
+          <li class="class"><a href="Gtk.SearchEntry.html">SearchEntry</a></li>
+          <li class="class"><a href="Gtk.SelectionData.html">SelectionData</a></li>
+          <li class="class"><a href="Gtk.Separator.html">Separator</a></li>
+          <li class="class"><a href="Gtk.SeparatorMenuItem.html">SeparatorMenuItem</a></li>
+          <li class="class"><a href="Gtk.SeparatorToolItem.html">SeparatorToolItem</a></li>
+          <li class="class"><a href="Gtk.Settings.html">Settings</a></li>
+          <li class="class"><a href="Gtk.ShortcutLabel.html">ShortcutLabel</a></li>
+          <li class="class"><a href="Gtk.ShortcutsGroup.html">ShortcutsGroup</a></li>
+          <li class="class"><a href="Gtk.ShortcutsSection.html">ShortcutsSection</a></li>
+          <li class="class"><a href="Gtk.ShortcutsShortcut.html">ShortcutsShortcut</a></li>
+          <li class="class"><a href="Gtk.ShortcutsWindow.html">ShortcutsWindow</a></li>
+          <li class="class"><a href="Gtk.SizeGroup.html">SizeGroup</a></li>
+          <li class="class"><a href="Gtk.Socket.html">Socket</a></li>
+          <li class="class"><a href="Gtk.SocketAccessible.html">SocketAccessible</a></li>
+          <li class="class"><a href="Gtk.SpinButton.html">SpinButton</a></li>
+          <li class="class"><a href="Gtk.SpinButtonAccessible.html">SpinButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.Spinner.html">Spinner</a></li>
+          <li class="class"><a href="Gtk.SpinnerAccessible.html">SpinnerAccessible</a></li>
+          <li class="class"><a href="Gtk.Stack.html">Stack</a></li>
+          <li class="class"><a href="Gtk.StackAccessible.html">StackAccessible</a></li>
+          <li class="class"><a href="Gtk.StackSidebar.html">StackSidebar</a></li>
+          <li class="class"><a href="Gtk.StackSwitcher.html">StackSwitcher</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.StatusIcon.html">StatusIcon</a></span></li>
+          <li class="class"><a href="Gtk.Statusbar.html">Statusbar</a></li>
+          <li class="class"><a href="Gtk.StatusbarAccessible.html">StatusbarAccessible</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.Style.html">Style</a></span></li>
+          <li class="class"><a href="Gtk.StyleContext.html">StyleContext</a></li>
+          <li class="class"><a href="Gtk.StyleProperties.html">StyleProperties</a></li>
+          <li class="class"><a href="Gtk.Switch.html">Switch</a></li>
+          <li class="class"><a href="Gtk.SwitchAccessible.html">SwitchAccessible</a></li>
+          <li class="class"><a href="Gtk.SymbolicColor.html">SymbolicColor</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.Table.html">Table</a></span></li>
+          <li class="class"><a href="Gtk.TargetList.html">TargetList</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.TearoffMenuItem.html">TearoffMenuItem</a></span></li>
+          <li class="class"><a href="Gtk.TextAttributes.html">TextAttributes</a></li>
+          <li class="class"><a href="Gtk.TextBTree.html">TextBTree</a></li>
+          <li class="class"><a href="Gtk.TextBuffer.html">TextBuffer</a></li>
+          <li class="class"><a href="Gtk.TextCellAccessible.html">TextCellAccessible</a></li>
+          <li class="class"><a href="Gtk.TextChildAnchor.html">TextChildAnchor</a></li>
+          <li class="class"><a href="Gtk.TextMark.html">TextMark</a></li>
+          <li class="class"><a href="Gtk.TextTag.html">TextTag</a></li>
+          <li class="class"><a href="Gtk.TextTagTable.html">TextTagTable</a></li>
+          <li class="class"><a href="Gtk.TextView.html">TextView</a></li>
+          <li class="class"><a href="Gtk.TextViewAccessible.html">TextViewAccessible</a></li>
+          <li class="class"><a href="Gtk.ThemeEngine.html">ThemeEngine</a></li>
+          <li class="class"><a href="Gtk.ThemingEngine.html">ThemingEngine</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.ToggleAction.html">ToggleAction</a></span></li>
+          <li class="class"><a href="Gtk.ToggleButton.html">ToggleButton</a></li>
+          <li class="class"><a href="Gtk.ToggleButtonAccessible.html">ToggleButtonAccessible</a></li>
+          <li class="class"><a href="Gtk.ToggleToolButton.html">ToggleToolButton</a></li>
+          <li class="class"><a href="Gtk.ToolButton.html">ToolButton</a></li>
+          <li class="class"><a href="Gtk.ToolItem.html">ToolItem</a></li>
+          <li class="class"><a href="Gtk.ToolItemGroup.html">ToolItemGroup</a></li>
+          <li class="class"><a href="Gtk.ToolPalette.html">ToolPalette</a></li>
+          <li class="class"><a href="Gtk.Toolbar.html">Toolbar</a></li>
+          <li class="class"><a href="Gtk.Tooltip.html">Tooltip</a></li>
+          <li class="class"><a href="Gtk.ToplevelAccessible.html">ToplevelAccessible</a></li>
+          <li class="class"><a href="Gtk.TreeModelFilter.html">TreeModelFilter</a></li>
+          <li class="class"><a href="Gtk.TreeModelSort.html">TreeModelSort</a></li>
+          <li class="class"><a href="Gtk.TreePath.html">TreePath</a></li>
+          <li class="class"><a href="Gtk.TreeRowReference.html">TreeRowReference</a></li>
+          <li class="class"><a href="Gtk.TreeSelection.html">TreeSelection</a></li>
+          <li class="class"><a href="Gtk.TreeStore.html">TreeStore</a></li>
+          <li class="class"><a href="Gtk.TreeView.html">TreeView</a></li>
+          <li class="class"><a href="Gtk.TreeViewAccessible.html">TreeViewAccessible</a></li>
+          <li class="class"><a href="Gtk.TreeViewColumn.html">TreeViewColumn</a></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.UIManager.html">UIManager</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VBox.html">VBox</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VButtonBox.html">VButtonBox</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VPaned.html">VPaned</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VScale.html">VScale</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VScrollbar.html">VScrollbar</a></span></li>
+          <li class="class"><span class="deprecated"><a href="Gtk.VSeparator.html">VSeparator</a></span></li>
+          <li class="class"><a href="Gtk.Viewport.html">Viewport</a></li>
+          <li class="class"><a href="Gtk.VolumeButton.html">VolumeButton</a></li>
+          <li class="class"><a href="Gtk.Widget.html">Widget</a></li>
+          <li class="class"><a href="Gtk.WidgetAccessible.html">WidgetAccessible</a></li>
+          <li class="class"><a href="Gtk.WidgetPath.html">WidgetPath</a></li>
+          <li class="class"><a href="Gtk.Window.html">Window</a></li>
+          <li class="class"><a href="Gtk.WindowAccessible.html">WindowAccessible</a></li>
+          <li class="class"><a href="Gtk.WindowGeometryInfo.html">WindowGeometryInfo</a></li>
+          <li class="class"><a href="Gtk.WindowGroup.html">WindowGroup</a></li>
+          <li class="struct"><a href="Gtk.AccelGroupEntry.html">AccelGroupEntry</a></li>
+          <li class="struct"><a href="Gtk.AccelKey.html">AccelKey</a></li>
+          <li class="struct"><span class="deprecated"><a href="Gtk.ActionEntry.html">ActionEntry</a></span></li>
+          <li class="struct"><a href="Gtk.Allocation.html">Allocation</a></li>
+          <li class="struct"><a href="Gtk.BindingArg.html">BindingArg</a></li>
+          <li class="struct"><a href="Gtk.Border.html">Border</a></li>
+          <li class="struct"><a href="Gtk.IMContextInfo.html">IMContextInfo</a></li>
+          <li class="struct"><a href="Gtk.PadActionEntry.html">PadActionEntry</a></li>
+          <li class="struct"><a href="Gtk.PageRange.html">PageRange</a></li>
+          <li class="struct"><span class="deprecated"><a href="Gtk.RadioActionEntry.html">RadioActionEntry</a></span></li>
+          <li class="struct"><a href="Gtk.RecentData.html">RecentData</a></li>
+          <li class="struct"><a href="Gtk.RecentFilterInfo.html">RecentFilterInfo</a></li>
+          <li class="struct"><a href="Gtk.RequestedSize.html">RequestedSize</a></li>
+          <li class="struct"><a href="Gtk.Requisition.html">Requisition</a></li>
+          <li class="struct"><a href="Gtk.SettingsValue.html">SettingsValue</a></li>
+          <li class="struct"><span class="deprecated"><a href="Gtk.StockItem.html">StockItem</a></span></li>
+          <li class="struct"><a href="Gtk.TargetEntry.html">TargetEntry</a></li>
+          <li class="struct"><a href="Gtk.TextAppearance.html">TextAppearance</a></li>
+          <li class="struct"><a href="Gtk.TextIter.html">TextIter</a></li>
+          <li class="struct"><span class="deprecated"><a href="Gtk.ToggleActionEntry.html">ToggleActionEntry</a></span></li>
+          <li class="struct"><a href="Gtk.TreeIter.html">TreeIter</a></li>
+          <li class="constant"><a href="Gtk.BINARY_AGE.html">BINARY_AGE</a></li>
+          <li class="constant"><a href="Gtk.INPUT_ERROR.html">INPUT_ERROR</a></li>
+          <li class="constant"><a href="Gtk.INTERFACE_AGE.html">INTERFACE_AGE</a></li>
+          <li class="constant"><a href="Gtk.LEVEL_BAR_OFFSET_FULL.html">LEVEL_BAR_OFFSET_FULL</a></li>
+          <li class="constant"><a href="Gtk.LEVEL_BAR_OFFSET_HIGH.html">LEVEL_BAR_OFFSET_HIGH</a></li>
+          <li class="constant"><a href="Gtk.LEVEL_BAR_OFFSET_LOW.html">LEVEL_BAR_OFFSET_LOW</a></li>
+          <li class="constant"><a href="Gtk.MAJOR_VERSION.html">MAJOR_VERSION</a></li>
+          <li class="constant"><a href="Gtk.MAX_COMPOSE_LEN.html">MAX_COMPOSE_LEN</a></li>
+          <li class="constant"><a href="Gtk.MICRO_VERSION.html">MICRO_VERSION</a></li>
+          <li class="constant"><a href="Gtk.MINOR_VERSION.html">MINOR_VERSION</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_A3.html">PAPER_NAME_A3</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_A4.html">PAPER_NAME_A4</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_A5.html">PAPER_NAME_A5</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_B5.html">PAPER_NAME_B5</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_EXECUTIVE.html">PAPER_NAME_EXECUTIVE</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_LEGAL.html">PAPER_NAME_LEGAL</a></li>
+          <li class="constant"><a href="Gtk.PAPER_NAME_LETTER.html">PAPER_NAME_LETTER</a></li>
+          <li class="constant"><a href="Gtk.PATH_PRIO_MASK.html">PATH_PRIO_MASK</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_COLLATE.html">PRINT_SETTINGS_COLLATE</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_DEFAULT_SOURCE.html">PRINT_SETTINGS_DEFAULT_SOURCE</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_DITHER.html">PRINT_SETTINGS_DITHER</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_DUPLEX.html">PRINT_SETTINGS_DUPLEX</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_FINISHINGS.html">PRINT_SETTINGS_FINISHINGS</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_MEDIA_TYPE.html">PRINT_SETTINGS_MEDIA_TYPE</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_NUMBER_UP.html">PRINT_SETTINGS_NUMBER_UP</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_NUMBER_UP_LAYOUT.html">PRINT_SETTINGS_NUMBER_UP_LAYOUT</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_N_COPIES.html">PRINT_SETTINGS_N_COPIES</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_ORIENTATION.html">PRINT_SETTINGS_ORIENTATION</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_OUTPUT_BASENAME.html">PRINT_SETTINGS_OUTPUT_BASENAME</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_OUTPUT_BIN.html">PRINT_SETTINGS_OUTPUT_BIN</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_OUTPUT_DIR.html">PRINT_SETTINGS_OUTPUT_DIR</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_OUTPUT_FILE_FORMAT.html">PRINT_SETTINGS_OUTPUT_FILE_FORMAT</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_OUTPUT_URI.html">PRINT_SETTINGS_OUTPUT_URI</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PAGE_RANGES.html">PRINT_SETTINGS_PAGE_RANGES</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PAGE_SET.html">PRINT_SETTINGS_PAGE_SET</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PAPER_FORMAT.html">PRINT_SETTINGS_PAPER_FORMAT</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PAPER_HEIGHT.html">PRINT_SETTINGS_PAPER_HEIGHT</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PAPER_WIDTH.html">PRINT_SETTINGS_PAPER_WIDTH</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PRINTER.html">PRINT_SETTINGS_PRINTER</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PRINTER_LPI.html">PRINT_SETTINGS_PRINTER_LPI</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_PRINT_PAGES.html">PRINT_SETTINGS_PRINT_PAGES</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_QUALITY.html">PRINT_SETTINGS_QUALITY</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_RESOLUTION.html">PRINT_SETTINGS_RESOLUTION</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_RESOLUTION_X.html">PRINT_SETTINGS_RESOLUTION_X</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_RESOLUTION_Y.html">PRINT_SETTINGS_RESOLUTION_Y</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_REVERSE.html">PRINT_SETTINGS_REVERSE</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_SCALE.html">PRINT_SETTINGS_SCALE</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_USE_COLOR.html">PRINT_SETTINGS_USE_COLOR</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_WIN32_DRIVER_EXTRA.html">PRINT_SETTINGS_WIN32_DRIVER_EXTRA</a></li>
+          <li class="constant"><a href="Gtk.PRINT_SETTINGS_WIN32_DRIVER_VERSION.html">PRINT_SETTINGS_WIN32_DRIVER_VERSION</a></li>
+          <li class="constant"><a href="Gtk.PRIORITY_RESIZE.html">PRIORITY_RESIZE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_ACCELERATOR.html">STYLE_CLASS_ACCELERATOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_ARROW.html">STYLE_CLASS_ARROW</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_BACKGROUND.html">STYLE_CLASS_BACKGROUND</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_BOTTOM.html">STYLE_CLASS_BOTTOM</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_BUTTON.html">STYLE_CLASS_BUTTON</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CALENDAR.html">STYLE_CLASS_CALENDAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CELL.html">STYLE_CLASS_CELL</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CHECK.html">STYLE_CLASS_CHECK</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_COMBOBOX_ENTRY.html">STYLE_CLASS_COMBOBOX_ENTRY</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CONTEXT_MENU.html">STYLE_CLASS_CONTEXT_MENU</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CSD.html">STYLE_CLASS_CSD</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_CURSOR_HANDLE.html">STYLE_CLASS_CURSOR_HANDLE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_DEFAULT.html">STYLE_CLASS_DEFAULT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION.html">STYLE_CLASS_DESTRUCTIVE_ACTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_DIM_LABEL.html">STYLE_CLASS_DIM_LABEL</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_DND.html">STYLE_CLASS_DND</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_DOCK.html">STYLE_CLASS_DOCK</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_ENTRY.html">STYLE_CLASS_ENTRY</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_ERROR.html">STYLE_CLASS_ERROR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_EXPANDER.html">STYLE_CLASS_EXPANDER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_FLAT.html">STYLE_CLASS_FLAT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_FRAME.html">STYLE_CLASS_FRAME</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_GRIP.html">STYLE_CLASS_GRIP</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_HEADER.html">STYLE_CLASS_HEADER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_HIGHLIGHT.html">STYLE_CLASS_HIGHLIGHT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_HORIZONTAL.html">STYLE_CLASS_HORIZONTAL</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_IMAGE.html">STYLE_CLASS_IMAGE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_INFO.html">STYLE_CLASS_INFO</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_INLINE_TOOLBAR.html">STYLE_CLASS_INLINE_TOOLBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_INSERTION_CURSOR.html">STYLE_CLASS_INSERTION_CURSOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LABEL.html">STYLE_CLASS_LABEL</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LEFT.html">STYLE_CLASS_LEFT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LEVEL_BAR.html">STYLE_CLASS_LEVEL_BAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LINKED.html">STYLE_CLASS_LINKED</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LIST.html">STYLE_CLASS_LIST</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_LIST_ROW.html">STYLE_CLASS_LIST_ROW</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MARK.html">STYLE_CLASS_MARK</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MENU.html">STYLE_CLASS_MENU</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MENUBAR.html">STYLE_CLASS_MENUBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MENUITEM.html">STYLE_CLASS_MENUITEM</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MESSAGE_DIALOG.html">STYLE_CLASS_MESSAGE_DIALOG</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_MONOSPACE.html">STYLE_CLASS_MONOSPACE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_NEEDS_ATTENTION.html">STYLE_CLASS_NEEDS_ATTENTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_NOTEBOOK.html">STYLE_CLASS_NOTEBOOK</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_OSD.html">STYLE_CLASS_OSD</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_OVERSHOOT.html">STYLE_CLASS_OVERSHOOT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_PANE_SEPARATOR.html">STYLE_CLASS_PANE_SEPARATOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_PAPER.html">STYLE_CLASS_PAPER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_POPOVER.html">STYLE_CLASS_POPOVER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_POPUP.html">STYLE_CLASS_POPUP</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_PRIMARY_TOOLBAR.html">STYLE_CLASS_PRIMARY_TOOLBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_PROGRESSBAR.html">STYLE_CLASS_PROGRESSBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_PULSE.html">STYLE_CLASS_PULSE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_QUESTION.html">STYLE_CLASS_QUESTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_RADIO.html">STYLE_CLASS_RADIO</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_RAISED.html">STYLE_CLASS_RAISED</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_READ_ONLY.html">STYLE_CLASS_READ_ONLY</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_RIGHT.html">STYLE_CLASS_RIGHT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_RUBBERBAND.html">STYLE_CLASS_RUBBERBAND</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SCALE.html">STYLE_CLASS_SCALE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SCALE_HAS_MARKS_ABOVE.html">STYLE_CLASS_SCALE_HAS_MARKS_ABOVE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SCALE_HAS_MARKS_BELOW.html">STYLE_CLASS_SCALE_HAS_MARKS_BELOW</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SCROLLBAR.html">STYLE_CLASS_SCROLLBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SCROLLBARS_JUNCTION.html">STYLE_CLASS_SCROLLBARS_JUNCTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SEPARATOR.html">STYLE_CLASS_SEPARATOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SIDEBAR.html">STYLE_CLASS_SIDEBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SLIDER.html">STYLE_CLASS_SLIDER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SPINBUTTON.html">STYLE_CLASS_SPINBUTTON</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SPINNER.html">STYLE_CLASS_SPINNER</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_STATUSBAR.html">STYLE_CLASS_STATUSBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SUBTITLE.html">STYLE_CLASS_SUBTITLE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_SUGGESTED_ACTION.html">STYLE_CLASS_SUGGESTED_ACTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TITLE.html">STYLE_CLASS_TITLE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TITLEBAR.html">STYLE_CLASS_TITLEBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TOOLBAR.html">STYLE_CLASS_TOOLBAR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TOOLTIP.html">STYLE_CLASS_TOOLTIP</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TOP.html">STYLE_CLASS_TOP</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TOUCH_SELECTION.html">STYLE_CLASS_TOUCH_SELECTION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_TROUGH.html">STYLE_CLASS_TROUGH</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_UNDERSHOOT.html">STYLE_CLASS_UNDERSHOOT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_VERTICAL.html">STYLE_CLASS_VERTICAL</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_VIEW.html">STYLE_CLASS_VIEW</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_WARNING.html">STYLE_CLASS_WARNING</a></li>
+          <li class="constant"><a href="Gtk.STYLE_CLASS_WIDE.html">STYLE_CLASS_WIDE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BACKGROUND_COLOR.html">STYLE_PROPERTY_BACKGROUND_COLOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BACKGROUND_IMAGE.html">STYLE_PROPERTY_BACKGROUND_IMAGE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BORDER_COLOR.html">STYLE_PROPERTY_BORDER_COLOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BORDER_RADIUS.html">STYLE_PROPERTY_BORDER_RADIUS</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BORDER_STYLE.html">STYLE_PROPERTY_BORDER_STYLE</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_BORDER_WIDTH.html">STYLE_PROPERTY_BORDER_WIDTH</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_COLOR.html">STYLE_PROPERTY_COLOR</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_FONT.html">STYLE_PROPERTY_FONT</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_MARGIN.html">STYLE_PROPERTY_MARGIN</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROPERTY_PADDING.html">STYLE_PROPERTY_PADDING</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION.html">STYLE_PROVIDER_PRIORITY_APPLICATION</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK.html">STYLE_PROVIDER_PRIORITY_FALLBACK</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROVIDER_PRIORITY_SETTINGS.html">STYLE_PROVIDER_PRIORITY_SETTINGS</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROVIDER_PRIORITY_THEME.html">STYLE_PROVIDER_PRIORITY_THEME</a></li>
+          <li class="constant"><a href="Gtk.STYLE_PROVIDER_PRIORITY_USER.html">STYLE_PROVIDER_PRIORITY_USER</a></li>
+          <li class="constant"><span class="deprecated"><a href="Gtk.STYLE_REGION_COLUMN.html">STYLE_REGION_COLUMN</a></span></li>
+          <li class="constant"><span class="deprecated"><a href="Gtk.STYLE_REGION_COLUMN_HEADER.html">STYLE_REGION_COLUMN_HEADER</a></span></li>
+          <li class="constant"><span class="deprecated"><a href="Gtk.STYLE_REGION_ROW.html">STYLE_REGION_ROW</a></span></li>
+          <li class="constant"><span class="deprecated"><a href="Gtk.STYLE_REGION_TAB.html">STYLE_REGION_TAB</a></span></li>
+          <li class="constant"><a href="Gtk.TEXT_VIEW_PRIORITY_VALIDATE.html">TEXT_VIEW_PRIORITY_VALIDATE</a></li>
+          <li class="constant"><a href="Gtk.TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID.html">TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID</a></li>
+          <li class="constant"><a href="Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.html">TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID</a></li>
+          <li class="delegate"><a href="Gtk.AccelGroupActivate.html">AccelGroupActivate</a></li>
+          <li class="delegate"><a href="Gtk.AccelGroupFindFunc.html">AccelGroupFindFunc</a></li>
+          <li class="delegate"><a href="Gtk.AccelMapForeach.html">AccelMapForeach</a></li>
+          <li class="delegate"><span class="deprecated"><a href="Gtk.ActionCallback.html">ActionCallback</a></span></li>
+          <li class="delegate"><a href="Gtk.AssistantPageFunc.html">AssistantPageFunc</a></li>
+          <li class="delegate"><a href="Gtk.BuilderConnectFunc.html">BuilderConnectFunc</a></li>
+          <li class="delegate"><a href="Gtk.CalendarDetailFunc.html">CalendarDetailFunc</a></li>
+          <li class="delegate"><a href="Gtk.Callback.html">Callback</a></li>
+          <li class="delegate"><a href="Gtk.CellAllocCallback.html">CellAllocCallback</a></li>
+          <li class="delegate"><a href="Gtk.CellCallback.html">CellCallback</a></li>
+          <li class="delegate"><a href="Gtk.CellLayoutDataFunc.html">CellLayoutDataFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardClearFunc.html">ClipboardClearFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardGetFunc.html">ClipboardGetFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardImageReceivedFunc.html">ClipboardImageReceivedFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardReceivedFunc.html">ClipboardReceivedFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardRichTextReceivedFunc.html">ClipboardRichTextReceivedFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardTargetsReceivedFunc.html">ClipboardTargetsReceivedFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardTextReceivedFunc.html">ClipboardTextReceivedFunc</a></li>
+          <li class="delegate"><a href="Gtk.ClipboardURIReceivedFunc.html">ClipboardURIReceivedFunc</a></li>
+          <li class="delegate"><span class="deprecated"><a href="Gtk.ColorSelectionChangePaletteFunc.html">ColorSelectionChangePaletteFunc</a></span>
+          </li>
+          <li class="delegate"><span class="deprecated"><a href="Gtk.ColorSelectionChangePaletteWithScreenFunc.html">
+                ColorSelectionChangePaletteWithScreenFunc</a></span></li>
+          <li class="delegate"><a href="Gtk.EntryCompletionMatchFunc.html">EntryCompletionMatchFunc</a></li>
+          <li class="delegate"><a href="Gtk.FileFilterFunc.html">FileFilterFunc</a></li>
+          <li class="delegate"><a href="Gtk.FlowBoxCreateWidgetFunc.html">FlowBoxCreateWidgetFunc</a></li>
+          <li class="delegate"><a href="Gtk.FlowBoxFilterFunc.html">FlowBoxFilterFunc</a></li>
+          <li class="delegate"><a href="Gtk.FlowBoxForeachFunc.html">FlowBoxForeachFunc</a></li>
+          <li class="delegate"><a href="Gtk.FlowBoxSortFunc.html">FlowBoxSortFunc</a></li>
+          <li class="delegate"><a href="Gtk.FontFilterFunc.html">FontFilterFunc</a></li>
+          <li class="delegate"><a href="Gtk.IconViewForeachFunc.html">IconViewForeachFunc</a></li>
+          <li class="delegate"><a href="Gtk.KeySnoopFunc.html">KeySnoopFunc</a></li>
+          <li class="delegate"><a href="Gtk.ListBoxCreateWidgetFunc.html">ListBoxCreateWidgetFunc</a></li>
+          <li class="delegate"><a href="Gtk.ListBoxFilterFunc.html">ListBoxFilterFunc</a></li>
+          <li class="delegate"><a href="Gtk.ListBoxForeachFunc.html">ListBoxForeachFunc</a></li>
+          <li class="delegate"><a href="Gtk.ListBoxSortFunc.html">ListBoxSortFunc</a></li>
+          <li class="delegate"><a href="Gtk.ListBoxUpdateHeaderFunc.html">ListBoxUpdateHeaderFunc</a></li>
+          <li class="delegate"><a href="Gtk.MenuDetachFunc.html">MenuDetachFunc</a></li>
+          <li class="delegate"><a href="Gtk.MenuPositionFunc.html">MenuPositionFunc</a></li>
+          <li class="delegate"><a href="Gtk.ModuleDisplayInitFunc.html">ModuleDisplayInitFunc</a></li>
+          <li class="delegate"><a href="Gtk.ModuleInitFunc.html">ModuleInitFunc</a></li>
+          <li class="delegate"><a href="Gtk.PageSetupDoneFunc.html">PageSetupDoneFunc</a></li>
+          <li class="delegate"><a href="Gtk.PrintSettingsFunc.html">PrintSettingsFunc</a></li>
+          <li class="delegate"><a href="Gtk.RadioActionCallback.html">RadioActionCallback</a></li>
+          <li class="delegate"><a href="Gtk.RcPropertyParser.html">RcPropertyParser</a></li>
+          <li class="delegate"><a href="Gtk.RecentFilterFunc.html">RecentFilterFunc</a></li>
+          <li class="delegate"><a href="Gtk.RecentSortFunc.html">RecentSortFunc</a></li>
+          <li class="delegate"><a href="Gtk.StylePropertyParser.html">StylePropertyParser</a></li>
+          <li class="delegate"><a href="Gtk.TextBufferDeserializeFunc.html">TextBufferDeserializeFunc</a></li>
+          <li class="delegate"><a href="Gtk.TextBufferSerializeFunc.html">TextBufferSerializeFunc</a></li>
+          <li class="delegate"><a href="Gtk.TextCharPredicate.html">TextCharPredicate</a></li>
+          <li class="delegate"><a href="Gtk.TextTagTableForeach.html">TextTagTableForeach</a></li>
+          <li class="delegate"><a href="Gtk.TickCallback.html">TickCallback</a></li>
+          <li class="delegate"><span class="deprecated"><a href="Gtk.TranslateFunc.html">TranslateFunc</a></span></li>
+          <li class="delegate"><a href="Gtk.TreeCellDataFunc.html">TreeCellDataFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeDestroyCountFunc.html">TreeDestroyCountFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeIterCompareFunc.html">TreeIterCompareFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeModelFilterModifyFunc.html">TreeModelFilterModifyFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeModelFilterVisibleFunc.html">TreeModelFilterVisibleFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeModelForeachFunc.html">TreeModelForeachFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeSelectionForeachFunc.html">TreeSelectionForeachFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeSelectionFunc.html">TreeSelectionFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeViewColumnDropFunc.html">TreeViewColumnDropFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeViewMappingFunc.html">TreeViewMappingFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeViewRowSeparatorFunc.html">TreeViewRowSeparatorFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeViewSearchEqualFunc.html">TreeViewSearchEqualFunc</a></li>
+          <li class="delegate"><a href="Gtk.TreeViewSearchPositionFunc.html">TreeViewSearchPositionFunc</a></li>
+          <li class="method"><a href="Gtk.accel_groups_activate.html">accel_groups_activate</a></li>
+          <li class="method"><a href="Gtk.accel_groups_from_object.html">accel_groups_from_object</a></li>
+          <li class="method"><a href="Gtk.accelerator_get_default_mod_mask.html">accelerator_get_default_mod_mask</a></li>
+          <li class="method"><a href="Gtk.accelerator_get_label.html">accelerator_get_label</a></li>
+          <li class="method"><a href="Gtk.accelerator_get_label_with_keycode.html">accelerator_get_label_with_keycode</a></li>
+          <li class="method"><a href="Gtk.accelerator_name.html">accelerator_name</a></li>
+          <li class="method"><a href="Gtk.accelerator_name_with_keycode.html">accelerator_name_with_keycode</a></li>
+          <li class="method"><a href="Gtk.accelerator_parse.html">accelerator_parse</a></li>
+          <li class="method"><a href="Gtk.accelerator_parse_with_keycode.html">accelerator_parse_with_keycode</a></li>
+          <li class="method"><a href="Gtk.accelerator_set_default_mod_mask.html">accelerator_set_default_mod_mask</a></li>
+          <li class="method"><a href="Gtk.accelerator_valid.html">accelerator_valid</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.alternative_dialog_button_order.html">alternative_dialog_button_order</a></span>
+          </li>
+          <li class="method">binding_entry_add_signal_from_string</li>
+          <li class="method"><a href="Gtk.binding_entry_add_signall.html">binding_entry_add_signall</a></li>
+          <li class="method"><a href="Gtk.binding_entry_remove.html">binding_entry_remove</a></li>
+          <li class="method"><a href="Gtk.binding_entry_skip.html">binding_entry_skip</a></li>
+          <li class="method"><a href="Gtk.binding_set_find.html">binding_set_find</a></li>
+          <li class="method"><a href="Gtk.bindings_activate.html">bindings_activate</a></li>
+          <li class="method"><a href="Gtk.bindings_activate_event.html">bindings_activate_event</a></li>
+          <li class="method"><a href="Gtk.builder_error_quark.html">builder_error_quark</a></li>
+          <li class="method"><a href="Gtk.cairo_should_draw_window.html">cairo_should_draw_window</a></li>
+          <li class="method"><a href="Gtk.cairo_transform_to_window.html">cairo_transform_to_window</a></li>
+          <li class="method"><a href="Gtk.check_version.html">check_version</a></li>
+          <li class="method"><a href="Gtk.css_provider_error_quark.html">css_provider_error_quark</a></li>
+          <li class="method"><a href="Gtk.device_grab_add.html">device_grab_add</a></li>
+          <li class="method"><a href="Gtk.device_grab_remove.html">device_grab_remove</a></li>
+          <li class="method"><a href="Gtk.disable_setlocale.html">disable_setlocale</a></li>
+          <li class="method"><a href="Gtk.distribute_natural_allocation.html">distribute_natural_allocation</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.drag_begin.html">drag_begin</a></span></li>
+          <li class="method"><a href="Gtk.drag_begin_with_coordinates.html">drag_begin_with_coordinates</a></li>
+          <li class="method"><a href="Gtk.drag_cancel.html">drag_cancel</a></li>
+          <li class="method"><a href="Gtk.drag_check_threshold.html">drag_check_threshold</a></li>
+          <li class="method"><a href="Gtk.drag_dest_add_image_targets.html">drag_dest_add_image_targets</a></li>
+          <li class="method"><a href="Gtk.drag_dest_add_text_targets.html">drag_dest_add_text_targets</a></li>
+          <li class="method"><a href="Gtk.drag_dest_add_uri_targets.html">drag_dest_add_uri_targets</a></li>
+          <li class="method"><a href="Gtk.drag_dest_find_target.html">drag_dest_find_target</a></li>
+          <li class="method"><a href="Gtk.drag_dest_get_target_list.html">drag_dest_get_target_list</a></li>
+          <li class="method"><a href="Gtk.drag_dest_get_track_motion.html">drag_dest_get_track_motion</a></li>
+          <li class="method"><a href="Gtk.drag_dest_set.html">drag_dest_set</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.drag_dest_set_proxy.html">drag_dest_set_proxy</a></span></li>
+          <li class="method"><a href="Gtk.drag_dest_set_target_list.html">drag_dest_set_target_list</a></li>
+          <li class="method"><a href="Gtk.drag_dest_set_track_motion.html">drag_dest_set_track_motion</a></li>
+          <li class="method"><a href="Gtk.drag_dest_unset.html">drag_dest_unset</a></li>
+          <li class="method"><a href="Gtk.drag_finish.html">drag_finish</a></li>
+          <li class="method"><a href="Gtk.drag_get_data.html">drag_get_data</a></li>
+          <li class="method"><a href="Gtk.drag_get_source_widget.html">drag_get_source_widget</a></li>
+          <li class="method"><a href="Gtk.drag_highlight.html">drag_highlight</a></li>
+          <li class="method"><a href="Gtk.drag_set_icon_default.html">drag_set_icon_default</a></li>
+          <li class="method"><a href="Gtk.drag_set_icon_gicon.html">drag_set_icon_gicon</a></li>
+          <li class="method"><a href="Gtk.drag_set_icon_name.html">drag_set_icon_name</a></li>
+          <li class="method"><a href="Gtk.drag_set_icon_pixbuf.html">drag_set_icon_pixbuf</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.drag_set_icon_stock.html">drag_set_icon_stock</a></span></li>
+          <li class="method"><a href="Gtk.drag_set_icon_surface.html">drag_set_icon_surface</a></li>
+          <li class="method"><a href="Gtk.drag_set_icon_widget.html">drag_set_icon_widget</a></li>
+          <li class="method"><a href="Gtk.drag_source_add_image_targets.html">drag_source_add_image_targets</a></li>
+          <li class="method"><a href="Gtk.drag_source_add_text_targets.html">drag_source_add_text_targets</a></li>
+          <li class="method"><a href="Gtk.drag_source_add_uri_targets.html">drag_source_add_uri_targets</a></li>
+          <li class="method"><a href="Gtk.drag_source_get_target_list.html">drag_source_get_target_list</a></li>
+          <li class="method"><a href="Gtk.drag_source_set.html">drag_source_set</a></li>
+          <li class="method"><a href="Gtk.drag_source_set_icon_gicon.html">drag_source_set_icon_gicon</a></li>
+          <li class="method"><a href="Gtk.drag_source_set_icon_name.html">drag_source_set_icon_name</a></li>
+          <li class="method"><a href="Gtk.drag_source_set_icon_pixbuf.html">drag_source_set_icon_pixbuf</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.drag_source_set_icon_stock.html">drag_source_set_icon_stock</a></span></li>
+          <li class="method"><a href="Gtk.drag_source_set_target_list.html">drag_source_set_target_list</a></li>
+          <li class="method"><a href="Gtk.drag_source_unset.html">drag_source_unset</a></li>
+          <li class="method"><a href="Gtk.drag_unhighlight.html">drag_unhighlight</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.draw_insertion_cursor.html">draw_insertion_cursor</a></span></li>
+          <li class="method"><a href="Gtk.events_pending.html">events_pending</a></li>
+          <li class="method"><a href="Gtk.file_chooser_error_quark.html">file_chooser_error_quark</a></li>
+          <li class="method"><a href="Gtk.get_binary_age.html">get_binary_age</a></li>
+          <li class="method"><a href="Gtk.get_current_event.html">get_current_event</a></li>
+          <li class="method"><a href="Gtk.get_current_event_device.html">get_current_event_device</a></li>
+          <li class="method"><a href="Gtk.get_current_event_state.html">get_current_event_state</a></li>
+          <li class="method"><a href="Gtk.get_current_event_time.html">get_current_event_time</a></li>
+          <li class="method"><a href="Gtk.get_debug_flags.html">get_debug_flags</a></li>
+          <li class="method"><a href="Gtk.get_default_language.html">get_default_language</a></li>
+          <li class="method"><a href="Gtk.get_event_widget.html">get_event_widget</a></li>
+          <li class="method"><a href="Gtk.get_interface_age.html">get_interface_age</a></li>
+          <li class="method"><a href="Gtk.get_locale_direction.html">get_locale_direction</a></li>
+          <li class="method"><a href="Gtk.get_major_version.html">get_major_version</a></li>
+          <li class="method"><a href="Gtk.get_micro_version.html">get_micro_version</a></li>
+          <li class="method"><a href="Gtk.get_minor_version.html">get_minor_version</a></li>
+          <li class="method"><a href="Gtk.get_option_group.html">get_option_group</a></li>
+          <li class="method"><a href="Gtk.grab_add.html">grab_add</a></li>
+          <li class="method"><a href="Gtk.grab_get_current.html">grab_get_current</a></li>
+          <li class="method"><a href="Gtk.grab_remove.html">grab_remove</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.icon_size_from_name.html">icon_size_from_name</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.icon_size_get_name.html">icon_size_get_name</a></span></li>
+          <li class="method"><a href="Gtk.icon_size_lookup.html">icon_size_lookup</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.icon_size_lookup_for_settings.html">icon_size_lookup_for_settings</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.icon_size_register.html">icon_size_register</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.icon_size_register_alias.html">icon_size_register_alias</a></span></li>
+          <li class="method"><a href="Gtk.icon_theme_error_quark.html">icon_theme_error_quark</a></li>
+          <li class="method"><a href="Gtk.init.html">init</a></li>
+          <li class="method"><a href="Gtk.init_check.html">init_check</a></li>
+          <li class="method"><a href="Gtk.init_with_args.html">init_with_args</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.key_snooper_install.html">key_snooper_install</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.key_snooper_remove.html">key_snooper_remove</a></span></li>
+          <li class="method"><a href="Gtk.main.html">main</a></li>
+          <li class="method"><a href="Gtk.main_do_event.html">main_do_event</a></li>
+          <li class="method"><a href="Gtk.main_iteration.html">main_iteration</a></li>
+          <li class="method"><a href="Gtk.main_iteration_do.html">main_iteration_do</a></li>
+          <li class="method"><a href="Gtk.main_level.html">main_level</a></li>
+          <li class="method"><a href="Gtk.main_quit.html">main_quit</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_arrow.html">paint_arrow</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_box.html">paint_box</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_box_gap.html">paint_box_gap</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_check.html">paint_check</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_diamond.html">paint_diamond</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_expander.html">paint_expander</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_extension.html">paint_extension</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_flat_box.html">paint_flat_box</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_focus.html">paint_focus</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_handle.html">paint_handle</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_hline.html">paint_hline</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_layout.html">paint_layout</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_option.html">paint_option</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_resize_grip.html">paint_resize_grip</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_shadow.html">paint_shadow</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_shadow_gap.html">paint_shadow_gap</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_slider.html">paint_slider</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_spinner.html">paint_spinner</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_tab.html">paint_tab</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.paint_vline.html">paint_vline</a></span></li>
+          <li class="method"><a href="Gtk.paper_size_get_default.html">paper_size_get_default</a></li>
+          <li class="method"><a href="Gtk.paper_size_get_paper_sizes.html">paper_size_get_paper_sizes</a></li>
+          <li class="method"><a href="Gtk.parse_args.html">parse_args</a></li>
+          <li class="method"><a href="Gtk.print_error_quark.html">print_error_quark</a></li>
+          <li class="method"><a href="Gtk.print_run_page_setup_dialog.html">print_run_page_setup_dialog</a></li>
+          <li class="method"><a href="Gtk.print_run_page_setup_dialog_async.html">print_run_page_setup_dialog_async</a></li>
+          <li class="method"><a href="Gtk.propagate_event.html">propagate_event</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_add_default_file.html">rc_add_default_file</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_find_module_in_path.html">rc_find_module_in_path</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_find_pixmap_in_path.html">rc_find_pixmap_in_path</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_default_files.html">rc_get_default_files</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_im_module_file.html">rc_get_im_module_file</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_im_module_path.html">rc_get_im_module_path</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_module_dir.html">rc_get_module_dir</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_style.html">rc_get_style</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_style_by_paths.html">rc_get_style_by_paths</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_get_theme_dir.html">rc_get_theme_dir</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse.html">rc_parse</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse_color.html">rc_parse_color</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse_color_full.html">rc_parse_color_full</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse_priority.html">rc_parse_priority</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse_state.html">rc_parse_state</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_parse_string.html">rc_parse_string</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_reparse_all.html">rc_reparse_all</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_reparse_all_for_settings.html">rc_reparse_all_for_settings</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_reset_styles.html">rc_reset_styles</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_scanner_new.html">rc_scanner_new</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.rc_set_default_files.html">rc_set_default_files</a></span></li>
+          <li class="method"><a href="Gtk.recent_chooser_error_quark.html">recent_chooser_error_quark</a></li>
+          <li class="method"><a href="Gtk.recent_manager_error_quark.html">recent_manager_error_quark</a></li>
+          <li class="method"><a href="Gtk.render_icon_surface.html">render_icon_surface</a></li>
+          <li class="method"><a href="Gtk.render_insertion_cursor.html">render_insertion_cursor</a></li>
+          <li class="method"><a href="Gtk.rgb_to_hsv.html">rgb_to_hsv</a></li>
+          <li class="method"><a href="Gtk.selection_add_target.html">selection_add_target</a></li>
+          <li class="method"><a href="Gtk.selection_add_targets.html">selection_add_targets</a></li>
+          <li class="method"><a href="Gtk.selection_clear_targets.html">selection_clear_targets</a></li>
+          <li class="method"><a href="Gtk.selection_convert.html">selection_convert</a></li>
+          <li class="method"><a href="Gtk.selection_owner_set.html">selection_owner_set</a></li>
+          <li class="method"><a href="Gtk.selection_owner_set_for_display.html">selection_owner_set_for_display</a></li>
+          <li class="method"><a href="Gtk.selection_remove_all.html">selection_remove_all</a></li>
+          <li class="method"><a href="Gtk.set_debug_flags.html">set_debug_flags</a></li>
+          <li class="method"><a href="Gtk.show_about_dialog.html">show_about_dialog</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.show_uri.html">show_uri</a></span></li>
+          <li class="method"><a href="Gtk.show_uri_on_window.html">show_uri_on_window</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.stock_add.html">stock_add</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.stock_add_static.html">stock_add_static</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.stock_list_ids.html">stock_list_ids</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.stock_lookup.html">stock_lookup</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.stock_set_translate_func.html">stock_set_translate_func</a></span></li>
+          <li class="method"><a href="Gtk.target_table_free.html">target_table_free</a></li>
+          <li class="method"><a href="Gtk.target_table_new_from_list.html">target_table_new_from_list</a></li>
+          <li class="method"><a href="Gtk.targets_include_image.html">targets_include_image</a></li>
+          <li class="method"><a href="Gtk.targets_include_rich_text.html">targets_include_rich_text</a></li>
+          <li class="method"><a href="Gtk.targets_include_text.html">targets_include_text</a></li>
+          <li class="method"><a href="Gtk.targets_include_uri.html">targets_include_uri</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_create_simple_window.html">test_create_simple_window</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_create_widget.html">test_create_widget</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_display_button_window.html">test_display_button_window</a></span></li>
+          <li class="method"><a href="Gtk.test_find_label.html">test_find_label</a></li>
+          <li class="method"><a href="Gtk.test_find_sibling.html">test_find_sibling</a></li>
+          <li class="method"><a href="Gtk.test_find_widget.html">test_find_widget</a></li>
+          <li class="method"><a href="Gtk.test_init.html">test_init</a></li>
+          <li class="method"><a href="Gtk.test_list_all_types.html">test_list_all_types</a></li>
+          <li class="method"><a href="Gtk.test_register_all_types.html">test_register_all_types</a></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_slider_get_value.html">test_slider_get_value</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_slider_set_perc.html">test_slider_set_perc</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_spin_button_click.html">test_spin_button_click</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_text_get.html">test_text_get</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_text_set.html">test_text_set</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gtk.test_widget_click.html">test_widget_click</a></span></li>
+          <li class="method"><a href="Gtk.test_widget_send_key.html">test_widget_send_key</a></li>
+          <li class="method"><a href="Gtk.test_widget_wait_for_draw.html">test_widget_wait_for_draw</a></li>
+          <li class="method"><a href="Gtk.tree_get_row_drag_data.html">tree_get_row_drag_data</a></li>
+          <li class="method"><a href="Gtk.tree_row_reference_deleted.html">tree_row_reference_deleted</a></li>
+          <li class="method"><a href="Gtk.tree_row_reference_inserted.html">tree_row_reference_inserted</a></li>
+          <li class="method"><a href="Gtk.tree_set_row_drag_data.html">tree_set_row_drag_data</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">binding_entry_add_signal_from_string</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><br/>[ <span class="main_type">Version</span> ( replacement = <span class="main_literal">"BindingEntry.add_signal_from_string"</span> ,  since = <span class="main_literal">"3.0"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.TokenType.html" class="enum">TokenType</a></span> <b><span class="method">binding_entry_add_signal_from_string</span></b> (<span class="main_type"><a href="Gtk.BindingSet.html" class="class">BindingSet</a></span> binding_set, <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> signal_desc)
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gtk.html">Gtk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gtk+-3.0</a>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

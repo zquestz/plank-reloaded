@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gee.Deque &ndash; gee-0.8 &ndash; Vala Binding Reference</title>
+    <link href="devhelpstyle.css" rel="stylesheet" type="text/css"/><script src="scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gee.Deque &ndash; gee-0.8 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_content">
+        <h1 class="main_title">Deque</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gee.Deque" alt="Object hierarchy for Deque" src="img/Gee.Deque.png"/>
+
+      <map id="Gee.Deque" name="Gee.Deque">
+<area shape="rect" id="node1" href="Gee.Deque.html" title="Gee.Deque" alt="" coords="5,101,110,149"/>
+<area shape="rect" id="node2" href="Gee.Queue.html" title="Gee.Queue" alt="" coords="5,5,110,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><br/>[ <span class="main_type">GenericAccessors</span> ]<br/><span class="main_keyword">public</span> <span class="main_keyword">interface</span> <b><span class="interface">Deque</span></b>&lt;<b><span>G</span></b>&gt; : <span class="main_type"><a href="Gee.Queue.html" class="interface">Queue</a></span>&lt;<span class="main_type"><span>G</span></span>&gt;
+        </div>
+        <div class="description">
+          <p>A double-ended queue.</p>
+          <p>A deque can be used either as a queue (First-In-First-Out behavior) or as a stack (Last-In-First-Out behavior).</p>
+          <p>The methods defined by this interface behaves exactely in the same way as the <a href="Gee.Queue.html" class="interface">Queue</a> 
+            methods with respect to capacity bounds.</p>
+          <p>The Deque interface inherits from the <a href="Gee.Queue.html" class="interface">Queue</a> interface. Thus, to use a deque as a queue, 
+            you can equivalently use the following method set:</p>
+          <table class="main_table">
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="text-align: center; "><b>Queue method</b></td>
+              <td class="main_table" colspan="1" rowspan="1" style="text-align: center; "><b>Deque method</b></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Queue.offer.html" class="virtual_method">Queue.offer</a></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.offer_tail.html" class="abstract_method">offer_tail</a></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Queue.peek.html" class="abstract_method">Queue.peek</a></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.peek_head.html" class="abstract_method">peek_head</a></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Queue.poll.html" class="abstract_method">Queue.poll</a></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.poll_head.html" class="abstract_method">poll_head</a></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Queue.drain.html" class="virtual_method">Queue.drain</a></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.drain_head.html" class="abstract_method">drain_head</a></td>
+            </tr>
+          </table>
+          <p>To use a deque as a stack, just use the method set that acts at the head of the deque:</p>
+          <table class="main_table">
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="text-align: center; "><b>Operation</b></td>
+              <td class="main_table" colspan="1" rowspan="1" style="text-align: center; "><b>Deque method</b></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">push an element</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.offer_head.html" class="abstract_method">offer_head</a></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">peek an element</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.peek_head.html" class="abstract_method">peek_head</a></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">pop an element</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Gee.Deque.poll_head.html" class="abstract_method">poll_head</a></td>
+            </tr>
+          </table>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2483')">All known implementing classes:</div>
+          <div class="content" id="box-content-2483">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gee.ArrayQueue.html">ArrayQueue</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gee.LinkedList.html">LinkedList</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="Gee.UnrolledLinkedList.html">UnrolledLinkedList</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gee.html">Gee</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gee-0.8</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gee.Deque.drain_head.html" class="abstract_method">drain_head</a></b> (<span class="main_type"><a href="Gee.Collection.html" class="interface">Collection</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; recipient, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> amount = <span class="main_literal">-1</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Drains the specified amount of elements from the head of this queue in
+                the specified recipient collection.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gee.Deque.drain_tail.html" class="abstract_method">drain_tail</a></b> (<span class="main_type"><a href="Gee.Collection.html" class="interface">Collection</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; recipient, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> amount = <span class="main_literal">-1</span>)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Drains the specified amount of elements from the tail of this queue in
+                the specified recipient collection.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.Deque.offer_head.html" class="abstract_method">offer_head</a></b> (<span class="main_type"><span>G</span></span> element)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Offers the specified element to the head of this deque.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gee.Deque.offer_tail.html" class="abstract_method">offer_tail</a></b> (<span class="main_type"><span>G</span></span> element)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Offers the specified element to the tail of this deque</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.Deque.peek_head.html" class="abstract_method">peek_head</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Peeks (retrieves, but not remove) an element from this queue.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.Deque.peek_tail.html" class="abstract_method">peek_tail</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Peeks (retrieves, but not remove) an element from the tail of this 
+                queue.</span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.Deque.poll_head.html" class="abstract_method">poll_head</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Polls (retrieves and remove) an element from the head of this queue.
+              </span>
+            </div></li>
+          <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_type"><span>G</span></span> <b><a href="Gee.Deque.poll_tail.html" class="abstract_method">poll_tail</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Polls (retrieves and remove) an element from the tail of this queue.
+              </span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2484')">All known members inherited from interface Gee.Queue</div>
+          <div class="content" id="box-content-2484">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="constant"><a href="Gee.Queue.UNBOUNDED_CAPACITY.html">UNBOUNDED_CAPACITY</a></li>
+                <li class="abstract_property"><a href="Gee.Queue.capacity.html">capacity</a></li>
+                <li class="virtual_method"><a href="Gee.Queue.drain.html">drain</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_property"><a href="Gee.Queue.is_full.html">is_full</a></li>
+                <li class="virtual_method"><a href="Gee.Queue.offer.html">offer</a></li>
+                <li class="abstract_method"><a href="Gee.Queue.peek.html">peek</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Gee.Queue.poll.html">poll</a></li>
+                <li class="abstract_property"><a href="Gee.Queue.remaining_capacity.html">remaining_capacity</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

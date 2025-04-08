@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankPositionManager">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankPositionManager.top_of_page">PlankPositionManager</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankPositionManager</refname>
+<refpurpose>Handles computing any size/position information for the dock.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankPositionManager.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-POSITION-MANAGER:CAPS">PLANK_TYPE_POSITION_MANAGER</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankPositionManager">PlankPositionManager</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankPositionManagerClass">PlankPositionManagerClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankPositionManager.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankPositionManager.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankPositionManager.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-POSITION-MANAGER:CAPS" role="macro">
+<title>PLANK_TYPE_POSITION_MANAGER</title>
+<indexterm zone="PLANK-TYPE-POSITION-MANAGER:CAPS"><primary>PLANK_TYPE_POSITION_MANAGER</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_POSITION_MANAGER (plank_position_manager_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankPositionManager"><type>PlankPositionManager</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankPositionManager" role="struct">
+<title>struct PlankPositionManager</title>
+<indexterm zone="PlankPositionManager"><primary>PlankPositionManager</primary></indexterm>
+<programlisting language="C">struct PlankPositionManager {
+	GObject parent_instance;
+	PlankPositionManagerPrivate * priv;
+};
+</programlisting>
+<para>Handles computing any size/position information for the dock.</para>
+</refsect2>
+<refsect2 id="PlankPositionManagerClass" role="struct">
+<title>struct PlankPositionManagerClass</title>
+<indexterm zone="PlankPositionManagerClass"><primary>PlankPositionManagerClass</primary></indexterm>
+<programlisting language="C">struct PlankPositionManagerClass {
+	GObjectClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-POSITION-MANAGER:CAPS"><literal>PLANK_TYPE_POSITION_MANAGER</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankPositionManagerClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

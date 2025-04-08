@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankDockletManager">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankDockletManager.top_of_page">PlankDockletManager</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankDockletManager</refname>
+<refpurpose>A controller class for managing all available docklets.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankDockletManager.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_proto_type" colwidth="150px"/>
+<colspec colname="functions_proto_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="PlankDockletInitFunc">*PlankDockletInitFunc</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockletManager.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-DOCKLET-MANAGER:CAPS">PLANK_TYPE_DOCKLET_MANAGER</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockletManager">PlankDockletManager</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockletManagerClass">PlankDockletManagerClass</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCKLET-ENTRY-POINT:CAPS">PLANK_DOCKLET_ENTRY_POINT</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankDockletManager.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockletManager.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="PlankDockletInitFunc" role="function">
+<title>PlankDockletInitFunc&#160;()</title>
+<indexterm zone="PlankDockletInitFunc"><primary>PlankDockletInitFunc</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*PlankDockletInitFunc<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="PlankDockletManager"><type>PlankDockletManager</type></link> *manager</parameter>,
+                         <parameter><link linkend="gpointer"><type>gpointer</type></link> user_data</parameter>);</programlisting>
+<refsect3 id="PlankDockletInitFunc.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>manager</para></entry>
+<entry role="parameter_description"><para>&nbsp;</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>data to pass to the delegate function. </para></entry>
+<entry role="parameter_annotations"><emphasis role="annotation">[<acronym>closure</acronym>]</emphasis></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankDockletManager.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-DOCKLET-MANAGER:CAPS" role="macro">
+<title>PLANK_TYPE_DOCKLET_MANAGER</title>
+<indexterm zone="PLANK-TYPE-DOCKLET-MANAGER:CAPS"><primary>PLANK_TYPE_DOCKLET_MANAGER</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_DOCKLET_MANAGER (plank_docklet_manager_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankDockletManager"><type>PlankDockletManager</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankDockletManager" role="struct">
+<title>struct PlankDockletManager</title>
+<indexterm zone="PlankDockletManager"><primary>PlankDockletManager</primary></indexterm>
+<programlisting language="C">struct PlankDockletManager {
+	GObject parent_instance;
+	PlankDockletManagerPrivate * priv;
+};
+</programlisting>
+<para>A controller class for managing all available docklets.</para>
+</refsect2>
+<refsect2 id="PlankDockletManagerClass" role="struct">
+<title>struct PlankDockletManagerClass</title>
+<indexterm zone="PlankDockletManagerClass"><primary>PlankDockletManagerClass</primary></indexterm>
+<programlisting language="C">struct PlankDockletManagerClass {
+	GObjectClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-DOCKLET-MANAGER:CAPS"><literal>PLANK_TYPE_DOCKLET_MANAGER</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankDockletManagerClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="PLANK-DOCKLET-ENTRY-POINT:CAPS" role="macro">
+<title>PLANK_DOCKLET_ENTRY_POINT</title>
+<indexterm zone="PLANK-DOCKLET-ENTRY-POINT:CAPS"><primary>PLANK_DOCKLET_ENTRY_POINT</primary></indexterm>
+<programlisting language="C">#define PLANK_DOCKLET_ENTRY_POINT "docklet_init"
+</programlisting>
+</refsect2>
+
+</refsect1>
+
+</refentry>

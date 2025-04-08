@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankHoverWindow">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankHoverWindow.top_of_page">PlankHoverWindow</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankHoverWindow</refname>
+<refpurpose>A hover window that shows labels for dock items. This window floats outside (but near) the dock.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankHoverWindow.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-HOVER-WINDOW:CAPS">PLANK_TYPE_HOVER_WINDOW</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankHoverWindow">PlankHoverWindow</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankHoverWindowClass">PlankHoverWindowClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankHoverWindow.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankHoverWindow.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankHoverWindow.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-HOVER-WINDOW:CAPS" role="macro">
+<title>PLANK_TYPE_HOVER_WINDOW</title>
+<indexterm zone="PLANK-TYPE-HOVER-WINDOW:CAPS"><primary>PLANK_TYPE_HOVER_WINDOW</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_HOVER_WINDOW (plank_hover_window_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankHoverWindow"><type>PlankHoverWindow</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankHoverWindow" role="struct">
+<title>struct PlankHoverWindow</title>
+<indexterm zone="PlankHoverWindow"><primary>PlankHoverWindow</primary></indexterm>
+<programlisting language="C">struct PlankHoverWindow {
+	GtkWindow parent_instance;
+	PlankHoverWindowPrivate * priv;
+};
+</programlisting>
+<para>A hover window that shows labels for dock items. This window floats outside (but near) the dock.</para>
+</refsect2>
+<refsect2 id="PlankHoverWindowClass" role="struct">
+<title>struct PlankHoverWindowClass</title>
+<indexterm zone="PlankHoverWindowClass"><primary>PlankHoverWindowClass</primary></indexterm>
+<programlisting language="C">struct PlankHoverWindowClass {
+	GtkWindowClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-HOVER-WINDOW:CAPS"><literal>PLANK_TYPE_HOVER_WINDOW</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankHoverWindowClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

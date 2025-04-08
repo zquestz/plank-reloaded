@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankRenderer">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankRenderer.top_of_page">PlankRenderer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankRenderer</refname>
+<refpurpose>Handles animated rendering. Uses a timer and continues requesting redraws for a widget until no more animation is needed.</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankRenderer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-RENDERER:CAPS">PLANK_TYPE_RENDERER</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankRenderer">PlankRenderer</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankRendererClass">PlankRendererClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankRenderer.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankRenderer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankRenderer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-RENDERER:CAPS" role="macro">
+<title>PLANK_TYPE_RENDERER</title>
+<indexterm zone="PLANK-TYPE-RENDERER:CAPS"><primary>PLANK_TYPE_RENDERER</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_RENDERER (plank_renderer_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankRenderer"><type>PlankRenderer</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankRenderer" role="struct">
+<title>struct PlankRenderer</title>
+<indexterm zone="PlankRenderer"><primary>PlankRenderer</primary></indexterm>
+<programlisting language="C">struct PlankRenderer {
+	GObject parent_instance;
+	PlankRendererPrivate * priv;
+};
+</programlisting>
+<para>Handles animated rendering. Uses a timer and continues requesting redraws for a widget until no more animation is needed.</para>
+</refsect2>
+<refsect2 id="PlankRendererClass" role="struct">
+<title>struct PlankRendererClass</title>
+<indexterm zone="PlankRendererClass"><primary>PlankRendererClass</primary></indexterm>
+<programlisting language="C">struct PlankRendererClass {
+	GObjectClass parent_class;
+	gboolean (*animation_needed) (PlankRenderer* self, gint64 frame_time);
+	void (*initialize_frame) (PlankRenderer* self, gint64 frame_time);
+	void (*draw) (PlankRenderer* self, cairo_t* cr, gint64 frame_time);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-RENDERER:CAPS"><literal>PLANK_TYPE_RENDERER</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankRendererClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankRendererClass.animation-needed">animation_needed</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankRendererClass.initialize-frame">initialize_frame</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method used internally</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankRendererClass.draw">draw</structfield>&#160;()</para></entry>
+<entry role="struct_member_description"><para>virtual method called by <link linkend="plank-renderer-draw"><function><link linkend="plank-renderer-draw"><function>plank_renderer_draw()</function></link></function></link></para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

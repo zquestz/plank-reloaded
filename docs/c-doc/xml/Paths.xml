@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="plank-reloaded-PlankPaths">
+<refmeta>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankPaths.top_of_page">PlankPaths</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>PlankPaths</refname>
+<refpurpose>A wrapper class that gives static instances of <link linkend="GFile"><type>GFile</type></link> for commonly used paths. Most paths are retrieved from GLib.Environment, which on Linux uses the XDG Base Directory specification (see <ulink url="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html"></ulink>).</refpurpose>
+</refnamediv>
+
+<refsect1 id="plank-reloaded-PlankPaths.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="other_proto_type" colwidth="150px"/>
+<colspec colname="other_proto_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-PATHS:CAPS">PLANK_TYPE_PATHS</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankPaths">PlankPaths</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankPathsClass">PlankPathsClass</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="plank-reloaded-PlankPaths.description" role="desc">
+<title role="desc.title">Description</title>
+<para>Initializing this class also ensures any writable directories exist.</para>
+
+</refsect1>
+<refsect1 id="plank-reloaded-PlankPaths.functions_details" role="details">
+<title role="details.title">Functions</title>
+<para />
+</refsect1>
+<refsect1 id="plank-reloaded-PlankPaths.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="PLANK-TYPE-PATHS:CAPS" role="macro">
+<title>PLANK_TYPE_PATHS</title>
+<indexterm zone="PLANK-TYPE-PATHS:CAPS"><primary>PLANK_TYPE_PATHS</primary></indexterm>
+<programlisting language="C">#define PLANK_TYPE_PATHS (plank_paths_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankPaths"><type>PlankPaths</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankPaths" role="struct">
+<title>struct PlankPaths</title>
+<indexterm zone="PlankPaths"><primary>PlankPaths</primary></indexterm>
+<programlisting language="C">struct PlankPaths {
+	GObject parent_instance;
+	PlankPathsPrivate * priv;
+};
+</programlisting>
+<para>A wrapper class that gives static instances of <link linkend="GFile"><type>GFile</type></link> for commonly used paths. Most paths are retrieved from GLib.Environment, which on Linux uses the XDG Base Directory specification (see <ulink url="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html"></ulink>).</para>
+<para>Initializing this class also ensures any writable directories exist.</para>
+</refsect2>
+<refsect2 id="PlankPathsClass" role="struct">
+<title>struct PlankPathsClass</title>
+<indexterm zone="PlankPathsClass"><primary>PlankPathsClass</primary></indexterm>
+<programlisting language="C">struct PlankPathsClass {
+	GObjectClass parent_class;
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-TYPE-PATHS:CAPS"><literal>PLANK_TYPE_PATHS</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankPathsClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

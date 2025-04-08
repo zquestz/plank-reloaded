@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Reference Manual:  Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Reference Manual">
+<link rel="next" href="ch01.html" title="plank-reloaded API Reference">
+<meta name="generator" content="GTK-Doc V1.34.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="book">
+<div class="titlepage">
+<div>
+<div><table class="navigation" id="top" width="100%" cellpadding="2" cellspacing="0"><tr><th valign="middle"><p class="title"> Reference Manual</p></th></tr></table></div>
+<div><p class="releaseinfo">
+      for .
+      The latest version of this documentation can be found on-line at
+      <a class="ulink" href="http://[SERVER]//index.html" target="_top">http://[SERVER]//</a>.
+    </p></div>
+</div>
+<hr>
+</div>
+<div class="toc"><dl class="toc">
+<dt><span class="chapter"><a href="ch01.html">plank-reloaded API Reference</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-Version.html">Version</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockletItem.html">PlankDockletItem</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankUnity.html">PlankUnity</a></span><span class="refpurpose"> — Handle the LauncherEntry DBus interface implemented by applications.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDBusClient.html">PlankDBusClient</a></span><span class="refpurpose"> — Connects to a running instance of plank via DBus and provides remote interface to a currently runnning dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankWorker.html">PlankWorker</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockContainer.html">PlankDockContainer</a></span><span class="refpurpose"> — A container and controller class for managing dock elements on a dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankHideManager.html">PlankHideManager</a></span><span class="refpurpose"> — Handles checking if a dock should hide or not.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDocklet.html">PlankDocklet</a></span><span class="refpurpose"> — The common interface for all docklets.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankApplicationDockItemProvider.html">PlankApplicationDockItemProvider</a></span><span class="refpurpose"> — A container and controller class for managing application dock items on a dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDBusManager.html">PlankDBusManager</a></span><span class="refpurpose"> — Handles all the exported DBus functions of the dock</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-Color.html">Color</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPositionManager.html">PlankPositionManager</a></span><span class="refpurpose"> — Handles computing any size/position information for the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankSettings.html">PlankSettings</a></span><span class="refpurpose"> — The base class for gsettings-based configuration classes. Defined properties will be bound to the corresponing schema-key of the given schema-path. The property's nick-name must match the schema-key.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPreferencesWindow.html">PlankPreferencesWindow</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDragManager.html">PlankDragManager</a></span><span class="refpurpose"> — Handles all of the drag'n'drop events for a dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockPreferences.html">PlankDockPreferences</a></span><span class="refpurpose"> — Contains all preferences for docks.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankLogger.html">PlankLogger</a></span><span class="refpurpose"> — A logging class to display all console messages in a nice colored format.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockRenderer.html">PlankDockRenderer</a></span><span class="refpurpose"> — Handles all of the drawing for a dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDefaultApplicationDockItemProvider.html">PlankDefaultApplicationDockItemProvider</a></span><span class="refpurpose"> — The default container and controller class for managing application dock items on a dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankCompositedWindow.html">PlankCompositedWindow</a></span><span class="refpurpose"> — A <span class="type">GtkWindow</span> with compositing support enabled. The default expose event will draw a completely transparent window.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockItemPreferences.html">PlankDockItemPreferences</a></span><span class="refpurpose"> — Contains preference keys for a dock item.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankTheme.html">PlankTheme</a></span><span class="refpurpose"> — A themed renderer for windows.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankRenderer.html">PlankRenderer</a></span><span class="refpurpose"> — Handles animated rendering. Uses a timer and continues requesting redraws for a widget until no more animation is needed.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDrawingService.html">PlankDrawingService</a></span><span class="refpurpose"> — Utility service for loading icons and working with pixbufs.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankHoverWindow.html">PlankHoverWindow</a></span><span class="refpurpose"> — A hover window that shows labels for dock items. This window floats outside (but near) the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockItem.html">PlankDockItem</a></span><span class="refpurpose"> — The base class for all dock items.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankTitledSeparatorMenuItem.html">PlankTitledSeparatorMenuItem</a></span><span class="refpurpose"> — A <span class="type">GtkSeparatorMenuItem</span> with a title on it. The separator can be drawn with or without a line.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockTheme.html">PlankDockTheme</a></span><span class="refpurpose"> — A themed renderer for dock windows.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankSurface.html">PlankSurface</a></span><span class="refpurpose"> — A surface is a wrapper class for a <span class="type">cairo_surface_t</span>. It encapsulates a surface/context and provides utility methods.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockElement.html">PlankDockElement</a></span><span class="refpurpose"> — The base class for all dock elements.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-Easing.html">Easing</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankTransientDockItem.html">PlankTransientDockItem</a></span><span class="refpurpose"> — A dock item for applications which aren't pinned or doesn't have a matched desktop-files.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankAbstractMain.html">PlankAbstractMain</a></span><span class="refpurpose"> — The main class for all dock applications. All docks should extend this class. In the constructor, the string fields should be initialized to customize the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockItemDrawValue.html">PlankDockItemDrawValue</a></span><span class="refpurpose"> — Contains all positions and modifications to draw a dock-item on the dock</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockController.html">PlankDockController</a></span><span class="refpurpose"> — A controller class for managing a single dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankFactory.html">PlankFactory</a></span><span class="refpurpose"> — The main factory class for the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankFileDockItem.html">PlankFileDockItem</a></span><span class="refpurpose"> — A dock item for files or folders on the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPreferences.html">PlankPreferences</a></span><span class="refpurpose"> — The base class for all preferences in the system. Preferences are serialized to files. The file is watched for changes and loads new values if the backing file changed. When any public property of a sub-class is changed, the public properties are serialized to the backing file.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankSurfaceCache.html">PlankSurfaceCache</a></span><span class="refpurpose"> — Cache multiple sizes of the assumed same image</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockWindow.html">PlankDockWindow</a></span><span class="refpurpose"> — The main window for all docks.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPaths.html">PlankPaths</a></span><span class="refpurpose"> — A wrapper class that gives static instances of <span class="type">GFile</span> for commonly used paths. Most paths are retrieved from GLib.Environment, which on Linux uses the XDG Base Directory specification (see http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html).</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockletManager.html">PlankDockletManager</a></span><span class="refpurpose"> — A controller class for managing all available docklets.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankDockItemProvider.html">PlankDockItemProvider</a></span><span class="refpurpose"> — A container and controller class for managing dock items.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPlaceholderDockItem.html">PlankPlaceholderDockItem</a></span><span class="refpurpose"> — A dock item as a placeholder for the dock itself if nothing was added yet.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPlankDockItem.html">PlankPlankDockItem</a></span><span class="refpurpose"> — A dock item for the dock itself. Has things like about, help, quit etc.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankSystem.html">PlankSystem</a></span><span class="refpurpose"> — A utility class for launching applications and opening files/URIs.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankPoofWindow.html">PlankPoofWindow</a></span><span class="refpurpose"> — An animated window that draws a 'poof' animation. Used when dragging items off the dock.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-Enums.html">Enums</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankApplicationDockItem.html">PlankApplicationDockItem</a></span><span class="refpurpose"> — A dock item for applications (with .desktop launchers).</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-PlankItemFactory.html">PlankItemFactory</a></span><span class="refpurpose"> — An item factory. Creates <span class="type">PlankDockItem</span>s based on .dockitem files.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="plank-reloaded-Environment.html">Environment</a></span><span class="refpurpose"></span>
+</dt>
+</dl></dd>
+<dt><span class="index"><a href="api-index-full.html">API Index</a></span></dt>
+<dt><span class="glossary"><a href="annotation-glossary.html">Annotation Glossary</a></span></dt>
+</dl></div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.34.0</div>
+</body>
+</html>

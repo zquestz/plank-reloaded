@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>GLib.Node &ndash; glib-2.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">GLib.Node &ndash; glib-2.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">glib-2.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="GLib.html">GLib</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">Node</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="creation_method"><a href="GLib.Node.Node.html">Node</a></li>
+          <li class="method"><a href="GLib.Node._unlink.html">_unlink</a></li>
+          <li class="method"><a href="GLib.Node.append.html">append</a></li>
+          <li class="method"><a href="GLib.Node.append_data.html">append_data</a></li>
+          <li class="method"><a href="GLib.Node.child_index.html">child_index</a></li>
+          <li class="method"><a href="GLib.Node.child_position.html">child_position</a></li>
+          <li class="method"><a href="GLib.Node.children_foreach.html">children_foreach</a></li>
+          <li class="method"><a href="GLib.Node.copy.html">copy</a></li>
+          <li class="method"><a href="GLib.Node.copy_deep.html">copy_deep</a></li>
+          <li class="method"><a href="GLib.Node.depth.html">depth</a></li>
+          <li class="method"><a href="GLib.Node.find.html">find</a></li>
+          <li class="method"><a href="GLib.Node.find_child.html">find_child</a></li>
+          <li class="method"><a href="GLib.Node.first_child.html">first_child</a></li>
+          <li class="method"><a href="GLib.Node.first_sibling.html">first_sibling</a></li>
+          <li class="method"><a href="GLib.Node.get_root.html">get_root</a></li>
+          <li class="method"><a href="GLib.Node.insert.html">insert</a></li>
+          <li class="method"><a href="GLib.Node.insert_after.html">insert_after</a></li>
+          <li class="method"><a href="GLib.Node.insert_before.html">insert_before</a></li>
+          <li class="method"><a href="GLib.Node.insert_data.html">insert_data</a></li>
+          <li class="method"><a href="GLib.Node.insert_data_before.html">insert_data_before</a></li>
+          <li class="method"><a href="GLib.Node.is_ancestor.html">is_ancestor</a></li>
+          <li class="method"><a href="GLib.Node.is_leaf.html">is_leaf</a></li>
+          <li class="method"><a href="GLib.Node.is_root.html">is_root</a></li>
+          <li class="method"><a href="GLib.Node.last_child.html">last_child</a></li>
+          <li class="method"><a href="GLib.Node.last_sibling.html">last_sibling</a></li>
+          <li class="method"><a href="GLib.Node.max_height.html">max_height</a></li>
+          <li class="method"><a href="GLib.Node.n_children.html">n_children</a></li>
+          <li class="method"><a href="GLib.Node.n_nodes.html">n_nodes</a></li>
+          <li class="method"><a href="GLib.Node.next_sibling.html">next_sibling</a></li>
+          <li class="method"><a href="GLib.Node.nth_child.html">nth_child</a></li>
+          <li class="method"><a href="GLib.Node.prepend.html">prepend</a></li>
+          <li class="method"><a href="GLib.Node.prepend_data.html">prepend_data</a></li>
+          <li class="method"><a href="GLib.Node.prev_sibling.html">prev_sibling</a></li>
+          <li class="method"><a href="GLib.Node.reverse_children.html">reverse_children</a></li>
+          <li class="method"><a href="GLib.Node.traverse.html">traverse</a></li>
+          <li class="method"><a href="GLib.Node.unlink.html">unlink</a></li>
+          <li class="field"><a href="GLib.Node.children.html">children</a></li>
+          <li class="field"><a href="GLib.Node.data.html">data</a></li>
+          <li class="field"><a href="GLib.Node.next.html">next</a></li>
+          <li class="field"><a href="GLib.Node.parent.html">parent</a></li>
+          <li class="field"><a href="GLib.Node.prev.html">prev</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">Node</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#GLib.Node" alt="Object hierarchy for Node" src="img/GLib.Node.png"/>
+
+      <map id="GLib.Node" name="GLib.Node">
+<area shape="rect" id="node1" href="GLib.Node.html" title="GLib.Node" alt="" coords="5,5,109,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">Compact</span> ]<br/>[ <span class="main_type">CCode</span> ( dup_function = <span class="main_literal">"g_node_copy"</span> ,  free_function = <span class="main_literal">"g_node_destroy"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Node</span></b>&lt;<b><span>G</span></b>&gt;
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="GLib.html">GLib</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">glib-2.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="GLib.Node.Node.html" class="creation_method">Node</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data = <span class="main_literal">null</span>)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Node._unlink.html" class="method">_unlink</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.append.html" class="method">append</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; node)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.append_data.html" class="method">append_data</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.Node.child_index.html" class="method">child_index</a></b> (<span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> <b><a href="GLib.Node.child_position.html" class="method">child_position</a></b> (<span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; child)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Node.children_foreach.html" class="method">children_foreach</a></b> (<span class="main_type"><a href="GLib.TraverseFlags.html" class="enum">TraverseFlags</a></span> flags, <span class="main_type"><a href="GLib.NodeForeachFunc.html" class="delegate">NodeForeachFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.copy.html" class="method">copy</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.copy_deep.html" class="method">copy_deep</a></b> (<span class="main_type"><a href="GLib.CopyFunc.html" class="delegate">CopyFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; copy_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.Node.depth.html" class="method">depth</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.find.html" class="method">find</a></b> (<span class="main_type"><a href="GLib.TraverseType.html" class="enum">TraverseType</a></span> order, <span class="main_type"><a href="GLib.TraverseFlags.html" class="enum">TraverseFlags</a></span> flags, <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.find_child.html" class="method">find_child</a></b> (<span class="main_type"><a href="GLib.TraverseFlags.html" class="enum">TraverseFlags</a></span> flags, <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.first_child.html" class="method">first_child</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.first_sibling.html" class="method">first_sibling</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.get_root.html" class="method">get_root</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.insert.html" class="method">insert</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> position, <span class="main_keyword">owned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; node)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.insert_after.html" class="method">insert_after</a></b> (<span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; sibling, <span class="main_keyword">owned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; node)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.insert_before.html" class="method">insert_before</a></b> (<span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; sibling, <span class="main_keyword">owned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; node)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.insert_data.html" class="method">insert_data</a></b> (<span class="main_basic_type"><a href="int.html" class="struct">int</a></span> position, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.insert_data_before.html" class="method">insert_data_before</a></b> (<span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; sibling, <span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.Node.is_ancestor.html" class="method">is_ancestor</a></b> (<span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; descendant)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.Node.is_leaf.html" class="method">is_leaf</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="bool.html" class="struct">bool</a></span> <b><a href="GLib.Node.is_root.html" class="method">is_root</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.last_child.html" class="method">last_child</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.last_sibling.html" class="method">last_sibling</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.Node.max_height.html" class="method">max_height</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.Node.n_children.html" class="method">n_children</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> <b><a href="GLib.Node.n_nodes.html" class="method">n_nodes</a></b> (<span class="main_type"><a href="GLib.TraverseFlags.html" class="enum">TraverseFlags</a></span> flags)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.next_sibling.html" class="method">next_sibling</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.nth_child.html" class="method">nth_child</a></b> (<span class="main_basic_type"><a href="uint.html" class="struct">uint</a></span> n)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.prepend.html" class="method">prepend</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; node)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.prepend_data.html" class="method">prepend_data</a></b> (<span class="main_keyword">owned</span> <span class="main_type"><span>G</span></span> data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.prev_sibling.html" class="method">prev_sibling</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Node.reverse_children.html" class="method">reverse_children</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="GLib.Node.traverse.html" class="method">traverse</a></b> (<span class="main_type"><a href="GLib.TraverseType.html" class="enum">TraverseType</a></span> order, <span class="main_type"><a href="GLib.TraverseFlags.html" class="enum">TraverseFlags</a></span> flags, <span class="main_basic_type"><a href="int.html" class="struct">int</a></span> max_depth, <span class="main_type"><a href="GLib.NodeTraverseFunc.html" class="delegate">NodeTraverseFunc</a></span>&lt;<span class="main_type"><span>G</span></span>&gt; func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.unlink.html" class="method">unlink</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Fields:</h3>
+        <ul class="navi_inline">
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.children.html" class="field">children</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span>G</span></span> <b><a href="GLib.Node.data.html" class="field">data</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.next.html" class="field">next</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.parent.html" class="field">parent</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Node</span></span>&lt;<span class="main_type"><span>G</span></span>&gt; <b><a href="GLib.Node.prev.html" class="field">prev</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Gdk.Window &ndash; gdk-3.0 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Gdk.Window &ndash; gdk-3.0 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">gdk-3.0</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Gdk.html">Gdk</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">Window</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Gdk.Window.cursor.html">cursor</a></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.at_pointer.html">at_pointer</a></span></li>
+          <li class="static_method"><a href="Gdk.Window.constrain_size.html">constrain_size</a></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.process_all_updates.html">process_all_updates</a></span></li>
+          <li class="static_method"><span class="deprecated"><a href="Gdk.Window.set_debug_updates.html">set_debug_updates</a></span></li>
+          <li class="creation_method"><a href="Gdk.Window.Window.html">Window</a></li>
+          <li class="method"><a href="Gdk.Window.add_filter.html">add_filter</a></li>
+          <li class="method"><a href="Gdk.Window.beep.html">beep</a></li>
+          <li class="method"><a href="Gdk.Window.begin_draw_frame.html">begin_draw_frame</a></li>
+          <li class="method"><a href="Gdk.Window.begin_move_drag.html">begin_move_drag</a></li>
+          <li class="method"><a href="Gdk.Window.begin_move_drag_for_device.html">begin_move_drag_for_device</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.begin_paint_rect.html">begin_paint_rect</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.begin_paint_region.html">begin_paint_region</a></span></li>
+          <li class="method"><a href="Gdk.Window.begin_resize_drag.html">begin_resize_drag</a></li>
+          <li class="method"><a href="Gdk.Window.begin_resize_drag_for_device.html">begin_resize_drag_for_device</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.configure_finished.html">configure_finished</a></span></li>
+          <li class="method"><a href="Gdk.Window.coords_from_parent.html">coords_from_parent</a></li>
+          <li class="method"><a href="Gdk.Window.coords_to_parent.html">coords_to_parent</a></li>
+          <li class="method"><a href="Gdk.Window.create_gl_context.html">create_gl_context</a></li>
+          <li class="method"><a href="Gdk.Window.create_similar_image_surface.html">create_similar_image_surface</a></li>
+          <li class="method"><a href="Gdk.Window.create_similar_surface.html">create_similar_surface</a></li>
+          <li class="method"><a href="Gdk.Window.deiconify.html">deiconify</a></li>
+          <li class="method"><a href="Gdk.Window.destroy.html">destroy</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.enable_synchronized_configure.html">enable_synchronized_configure</a></span>
+          </li>
+          <li class="method"><a href="Gdk.Window.end_draw_frame.html">end_draw_frame</a></li>
+          <li class="method"><a href="Gdk.Window.end_paint.html">end_paint</a></li>
+          <li class="method"><a href="Gdk.Window.ensure_native.html">ensure_native</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.flush.html">flush</a></span></li>
+          <li class="method"><a href="Gdk.Window.focus.html">focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.freeze_toplevel_updates_libgtk_only.html">
+                freeze_toplevel_updates_libgtk_only</a></span></li>
+          <li class="method"><a href="Gdk.Window.freeze_updates.html">freeze_updates</a></li>
+          <li class="method"><a href="Gdk.Window.fullscreen.html">fullscreen</a></li>
+          <li class="method"><a href="Gdk.Window.fullscreen_on_monitor.html">fullscreen_on_monitor</a></li>
+          <li class="method"><a href="Gdk.Window.geometry_changed.html">geometry_changed</a></li>
+          <li class="method"><a href="Gdk.Window.get_accept_focus.html">get_accept_focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_background_pattern.html">get_background_pattern</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_children.html">get_children</a></li>
+          <li class="method"><a href="Gdk.Window.get_children_with_user_data.html">get_children_with_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.get_clip_region.html">get_clip_region</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_composited.html">get_composited</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_cursor.html">get_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.get_decorations.html">get_decorations</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_cursor.html">get_device_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_events.html">get_device_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_position.html">get_device_position</a></li>
+          <li class="method"><a href="Gdk.Window.get_device_position_double.html">get_device_position_double</a></li>
+          <li class="method"><a href="Gdk.Window.get_display.html">get_display</a></li>
+          <li class="method"><a href="Gdk.Window.get_drag_protocol.html">get_drag_protocol</a></li>
+          <li class="method"><a href="Gdk.Window.get_effective_parent.html">get_effective_parent</a></li>
+          <li class="method"><a href="Gdk.Window.get_effective_toplevel.html">get_effective_toplevel</a></li>
+          <li class="method"><a href="Gdk.Window.get_event_compression.html">get_event_compression</a></li>
+          <li class="method"><a href="Gdk.Window.get_events.html">get_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_focus_on_map.html">get_focus_on_map</a></li>
+          <li class="method"><a href="Gdk.Window.get_frame_clock.html">get_frame_clock</a></li>
+          <li class="method"><a href="Gdk.Window.get_frame_extents.html">get_frame_extents</a></li>
+          <li class="method"><a href="Gdk.Window.get_fullscreen_mode.html">get_fullscreen_mode</a></li>
+          <li class="method"><a href="Gdk.Window.get_geometry.html">get_geometry</a></li>
+          <li class="method"><a href="Gdk.Window.get_group.html">get_group</a></li>
+          <li class="method"><a href="Gdk.Window.get_height.html">get_height</a></li>
+          <li class="method"><a href="Gdk.Window.get_modal_hint.html">get_modal_hint</a></li>
+          <li class="method"><a href="Gdk.Window.get_origin.html">get_origin</a></li>
+          <li class="method"><a href="Gdk.Window.get_parent.html">get_parent</a></li>
+          <li class="method"><a href="Gdk.Window.get_pass_through.html">get_pass_through</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.get_pointer.html">get_pointer</a></span></li>
+          <li class="method"><a href="Gdk.Window.get_position.html">get_position</a></li>
+          <li class="method"><a href="Gdk.Window.get_root_coords.html">get_root_coords</a></li>
+          <li class="method"><a href="Gdk.Window.get_root_origin.html">get_root_origin</a></li>
+          <li class="method"><a href="Gdk.Window.get_scale_factor.html">get_scale_factor</a></li>
+          <li class="method"><a href="Gdk.Window.get_screen.html">get_screen</a></li>
+          <li class="method"><a href="Gdk.Window.get_source_events.html">get_source_events</a></li>
+          <li class="method"><a href="Gdk.Window.get_state.html">get_state</a></li>
+          <li class="method"><a href="Gdk.Window.get_support_multidevice.html">get_support_multidevice</a></li>
+          <li class="method"><a href="Gdk.Window.get_toplevel.html">get_toplevel</a></li>
+          <li class="method"><a href="Gdk.Window.get_type_hint.html">get_type_hint</a></li>
+          <li class="method"><a href="Gdk.Window.get_update_area.html">get_update_area</a></li>
+          <li class="method"><a href="Gdk.Window.get_user_data.html">get_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.get_visible_region.html">get_visible_region</a></li>
+          <li class="method"><a href="Gdk.Window.get_visual.html">get_visual</a></li>
+          <li class="method"><a href="Gdk.Window.get_width.html">get_width</a></li>
+          <li class="method"><a href="Gdk.Window.get_window_type.html">get_window_type</a></li>
+          <li class="method"><a href="Gdk.Window.has_native.html">has_native</a></li>
+          <li class="method"><a href="Gdk.Window.hide.html">hide</a></li>
+          <li class="method"><a href="Gdk.Window.iconify.html">iconify</a></li>
+          <li class="method"><a href="Gdk.Window.input_shape_combine_region.html">input_shape_combine_region</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_maybe_recurse.html">invalidate_maybe_recurse</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_rect.html">invalidate_rect</a></li>
+          <li class="method"><a href="Gdk.Window.invalidate_region.html">invalidate_region</a></li>
+          <li class="method"><a href="Gdk.Window.is_destroyed.html">is_destroyed</a></li>
+          <li class="method"><a href="Gdk.Window.is_input_only.html">is_input_only</a></li>
+          <li class="method"><a href="Gdk.Window.is_shaped.html">is_shaped</a></li>
+          <li class="method"><a href="Gdk.Window.is_viewable.html">is_viewable</a></li>
+          <li class="method"><a href="Gdk.Window.is_visible.html">is_visible</a></li>
+          <li class="method"><a href="Gdk.Window.lower.html">lower</a></li>
+          <li class="method"><a href="Gdk.Window.mark_paint_from_clip.html">mark_paint_from_clip</a></li>
+          <li class="method"><a href="Gdk.Window.maximize.html">maximize</a></li>
+          <li class="method"><a href="Gdk.Window.merge_child_input_shapes.html">merge_child_input_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.merge_child_shapes.html">merge_child_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.move.html">move</a></li>
+          <li class="method"><a href="Gdk.Window.move_region.html">move_region</a></li>
+          <li class="method"><a href="Gdk.Window.move_resize.html">move_resize</a></li>
+          <li class="method"><a href="Gdk.Window.move_to_rect.html">move_to_rect</a></li>
+          <li class="method"><a href="Gdk.Window.peek_children.html">peek_children</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.process_updates.html">process_updates</a></span></li>
+          <li class="method"><a href="Gdk.Window.raise.html">raise</a></li>
+          <li class="method"><a href="Gdk.Window.register_dnd.html">register_dnd</a></li>
+          <li class="method"><a href="Gdk.Window.remove_filter.html">remove_filter</a></li>
+          <li class="method"><a href="Gdk.Window.reparent.html">reparent</a></li>
+          <li class="method"><a href="Gdk.Window.resize.html">resize</a></li>
+          <li class="method"><a href="Gdk.Window.restack.html">restack</a></li>
+          <li class="method"><a href="Gdk.Window.scroll.html">scroll</a></li>
+          <li class="method"><a href="Gdk.Window.set_accept_focus.html">set_accept_focus</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background.html">set_background</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background_pattern.html">set_background_pattern</a></span></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_background_rgba.html">set_background_rgba</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_child_input_shapes.html">set_child_input_shapes</a></li>
+          <li class="method"><a href="Gdk.Window.set_child_shapes.html">set_child_shapes</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_composited.html">set_composited</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_cursor.html">set_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.set_decorations.html">set_decorations</a></li>
+          <li class="method"><a href="Gdk.Window.set_device_cursor.html">set_device_cursor</a></li>
+          <li class="method"><a href="Gdk.Window.set_device_events.html">set_device_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_event_compression.html">set_event_compression</a></li>
+          <li class="method"><a href="Gdk.Window.set_events.html">set_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_focus_on_map.html">set_focus_on_map</a></li>
+          <li class="method"><a href="Gdk.Window.set_fullscreen_mode.html">set_fullscreen_mode</a></li>
+          <li class="method"><a href="Gdk.Window.set_functions.html">set_functions</a></li>
+          <li class="method"><a href="Gdk.Window.set_geometry_hints.html">set_geometry_hints</a></li>
+          <li class="method"><a href="Gdk.Window.set_group.html">set_group</a></li>
+          <li class="method"><a href="Gdk.Window.set_icon_list.html">set_icon_list</a></li>
+          <li class="method"><a href="Gdk.Window.set_icon_name.html">set_icon_name</a></li>
+          <li class="method"><a href="Gdk.Window.set_keep_above.html">set_keep_above</a></li>
+          <li class="method"><a href="Gdk.Window.set_keep_below.html">set_keep_below</a></li>
+          <li class="method"><a href="Gdk.Window.set_modal_hint.html">set_modal_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_opacity.html">set_opacity</a></li>
+          <li class="method"><a href="Gdk.Window.set_opaque_region.html">set_opaque_region</a></li>
+          <li class="method"><a href="Gdk.Window.set_override_redirect.html">set_override_redirect</a></li>
+          <li class="method"><a href="Gdk.Window.set_pass_through.html">set_pass_through</a></li>
+          <li class="method"><a href="Gdk.Window.set_role.html">set_role</a></li>
+          <li class="method"><a href="Gdk.Window.set_shadow_width.html">set_shadow_width</a></li>
+          <li class="method"><a href="Gdk.Window.set_skip_pager_hint.html">set_skip_pager_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_skip_taskbar_hint.html">set_skip_taskbar_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_source_events.html">set_source_events</a></li>
+          <li class="method"><a href="Gdk.Window.set_startup_id.html">set_startup_id</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.set_static_gravities.html">set_static_gravities</a></span></li>
+          <li class="method"><a href="Gdk.Window.set_support_multidevice.html">set_support_multidevice</a></li>
+          <li class="method"><a href="Gdk.Window.set_title.html">set_title</a></li>
+          <li class="method"><a href="Gdk.Window.set_transient_for.html">set_transient_for</a></li>
+          <li class="method"><a href="Gdk.Window.set_type_hint.html">set_type_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_urgency_hint.html">set_urgency_hint</a></li>
+          <li class="method"><a href="Gdk.Window.set_user_data.html">set_user_data</a></li>
+          <li class="method"><a href="Gdk.Window.shape_combine_region.html">shape_combine_region</a></li>
+          <li class="method"><a href="Gdk.Window.show.html">show</a></li>
+          <li class="method"><a href="Gdk.Window.show_unraised.html">show_unraised</a></li>
+          <li class="method"><a href="Gdk.Window.show_window_menu.html">show_window_menu</a></li>
+          <li class="method"><a href="Gdk.Window.stick.html">stick</a></li>
+          <li class="method"><span class="deprecated"><a href="Gdk.Window.thaw_toplevel_updates_libgtk_only.html">thaw_toplevel_updates_libgtk_only
+              </a></span></li>
+          <li class="method"><a href="Gdk.Window.thaw_updates.html">thaw_updates</a></li>
+          <li class="method"><a href="Gdk.Window.unfullscreen.html">unfullscreen</a></li>
+          <li class="method"><a href="Gdk.Window.unmaximize.html">unmaximize</a></li>
+          <li class="method"><a href="Gdk.Window.unstick.html">unstick</a></li>
+          <li class="method"><a href="Gdk.Window.withdraw.html">withdraw</a></li>
+          <li class="signal"><a href="Gdk.Window.create_surface.html">create_surface</a></li>
+          <li class="signal"><a href="Gdk.Window.from_embedder.html">from_embedder</a></li>
+          <li class="signal"><a href="Gdk.Window.moved_to_rect.html">moved_to_rect</a></li>
+          <li class="signal"><a href="Gdk.Window.pick_embedded_child.html">pick_embedded_child</a></li>
+          <li class="signal"><a href="Gdk.Window.to_embedder.html">to_embedder</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">Window</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Gdk.Window" alt="Object hierarchy for Window" src="img/Gdk.Window.png"/>
+
+      <map id="Gdk.Window" name="Gdk.Window">
+<area shape="rect" id="node1" href="Gdk.Window.html" title="Gdk.Window" alt="" coords="5,101,125,149"/>
+<area shape="rect" id="node2" href="../gobject-2.0/GLib.Object.html" title="GLib.Object" alt="" coords="9,5,121,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( type_id = <span class="main_literal">"gdk_window_get_type ()"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Window</span></b> : <span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2168')">All known sub-classes:</div>
+          <div class="content" id="box-content-2168">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="../gdk-x11-3.0/Gdk.X11.Window.html">Window</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="class"><a href="../gdk-x11-3.0/Gdk.X11Window.html">X11Window</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Gdk.html">Gdk</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">gdk-3.0</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.Cursor.html" class="class">Cursor</a></span> <b><a href="Gdk.Window.cursor.html" class="property">cursor</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.at_pointer.html" class="static_method">at_pointer</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> win_x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> win_y)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.constrain_size.html" class="static_method">constrain_size</a></b> (<span class="main_type"><a href="Gdk.Geometry.html" class="struct">Geometry</a></span> geometry, <span class="main_type"><a href="Gdk.WindowHints.html" class="enum">WindowHints</a></span> flags, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> new_width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> new_height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.process_all_updates.html" class="static_method">process_all_updates</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_debug_updates.html" class="static_method">set_debug_updates</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> setting)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Gdk.Window.Window.html" class="creation_method">Window</a></b> (<span class="main_type"><span class="class">Window</span></span>? parent, <span class="main_type"><a href="Gdk.WindowAttr.html" class="struct">WindowAttr</a></span> attributes, <span class="main_type"><a href="Gdk.WindowAttributesType.html" class="enum">WindowAttributesType</a></span> attributes_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.add_filter.html" class="method">add_filter</a></b> (<span class="main_type"><a href="Gdk.FilterFunc.html" class="delegate">FilterFunc</a></span> function)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.beep.html" class="method">beep</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.DrawingContext.html" class="class">DrawingContext</a></span> <b><a href="Gdk.Window.begin_draw_frame.html" class="method">begin_draw_frame</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> region)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_move_drag.html" class="method">begin_move_drag</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> timestamp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_move_drag_for_device.html" class="method">begin_move_drag_for_device</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> timestamp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_paint_rect.html" class="method">begin_paint_rect</a></b> (<span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span> rectangle)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_paint_region.html" class="method">begin_paint_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> region)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_resize_drag.html" class="method">begin_resize_drag</a></b> (<span class="main_type"><a href="Gdk.WindowEdge.html" class="enum">WindowEdge</a></span> edge, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> timestamp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.begin_resize_drag_for_device.html" class="method">begin_resize_drag_for_device</a></b> (<span class="main_type"><a href="Gdk.WindowEdge.html" class="enum">WindowEdge</a></span> edge, <span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> button, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> timestamp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.configure_finished.html" class="method">configure_finished</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.coords_from_parent.html" class="method">coords_from_parent</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> parent_x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> parent_y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.coords_to_parent.html" class="method">coords_to_parent</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> parent_x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> parent_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.GLContext.html" class="abstract_class">GLContext</a></span> <b><a href="Gdk.Window.create_gl_context.html" class="method">create_gl_context</a></b> () <span class="main_keyword">throws</span> <span class="main_type"><a href="../glib-2.0/GLib.Error.html" class="class">Error</a></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../cairo/Cairo.ImageSurface.html" class="class">ImageSurface</a></span> <b><a href="Gdk.Window.create_similar_image_surface.html" class="method">create_similar_image_surface</a></b> (<span class="main_type"><a href="../cairo/Cairo.Format.html" class="enum">Format</a></span> format, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> scale)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../cairo/Cairo.Surface.html" class="class">Surface</a></span> <b><a href="Gdk.Window.create_similar_surface.html" class="method">create_similar_surface</a></b> (<span class="main_type"><a href="../cairo/Cairo.Content.html" class="enum">Content</a></span> content, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.deiconify.html" class="method">deiconify</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.destroy.html" class="method">destroy</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.enable_synchronized_configure.html" class="method">enable_synchronized_configure</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.end_draw_frame.html" class="method">end_draw_frame</a></b> (<span class="main_type"><a href="Gdk.DrawingContext.html" class="class">DrawingContext</a></span> context)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.end_paint.html" class="method">end_paint</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.ensure_native.html" class="method">ensure_native</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.flush.html" class="method">flush</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.focus.html" class="method">focus</a></b> (<span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> timestamp)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.freeze_toplevel_updates_libgtk_only.html" class="method">freeze_toplevel_updates_libgtk_only</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.freeze_updates.html" class="method">freeze_updates</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.fullscreen.html" class="method">fullscreen</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.fullscreen_on_monitor.html" class="method">fullscreen_on_monitor</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> monitor)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.geometry_changed.html" class="method">geometry_changed</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_accept_focus.html" class="method">get_accept_focus</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../cairo/Cairo.Pattern.html" class="class">Pattern</a></span>? <b><a href="Gdk.Window.get_background_pattern.html" class="method">get_background_pattern</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>&gt; <b><a href="Gdk.Window.get_children.html" class="method">get_children</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>&gt; <b><a href="Gdk.Window.get_children_with_user_data.html" class="method">get_children_with_user_data</a></b> (<span class="main_keyword">void</span>* user_data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> <b><a href="Gdk.Window.get_clip_region.html" class="method">get_clip_region</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_composited.html" class="method">get_composited</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.Cursor.html" class="class">Cursor</a></span>? <b><a href="Gdk.Window.get_cursor.html" class="method">get_cursor</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_decorations.html" class="method">get_decorations</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="Gdk.WMDecoration.html" class="enum">WMDecoration</a></span> decorations)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.Cursor.html" class="class">Cursor</a></span>? <b><a href="Gdk.Window.get_device_cursor.html" class="method">get_device_cursor</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> <b><a href="Gdk.Window.get_device_events.html" class="method">get_device_events</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>? <b><a href="Gdk.Window.get_device_position.html" class="method">get_device_position</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_keyword">out</span> <span class="main_type"><a href="Gdk.ModifierType.html" class="enum">ModifierType</a></span> mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>? <b><a href="Gdk.Window.get_device_position_double.html" class="method">get_device_position_double</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y, <span class="main_keyword">out</span> <span class="main_type"><a href="Gdk.ModifierType.html" class="enum">ModifierType</a></span> mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.Display.html" class="class">Display</a></span> <b><a href="Gdk.Window.get_display.html" class="method">get_display</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.DragProtocol.html" class="enum">DragProtocol</a></span> <b><a href="Gdk.Window.get_drag_protocol.html" class="method">get_drag_protocol</a></b> (<span class="main_keyword">out</span> <span class="main_type"><span class="class">Window</span></span> target)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.get_effective_parent.html" class="method">get_effective_parent</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.get_effective_toplevel.html" class="method">get_effective_toplevel</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_event_compression.html" class="method">get_event_compression</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> <b><a href="Gdk.Window.get_events.html" class="method">get_events</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_focus_on_map.html" class="method">get_focus_on_map</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.FrameClock.html" class="abstract_class">FrameClock</a></span> <b><a href="Gdk.Window.get_frame_clock.html" class="method">get_frame_clock</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_frame_extents.html" class="method">get_frame_extents</a></b> (<span class="main_keyword">out</span> <span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span> rect)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.FullscreenMode.html" class="enum">FullscreenMode</a></span> <b><a href="Gdk.Window.get_fullscreen_mode.html" class="method">get_fullscreen_mode</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_geometry.html" class="method">get_geometry</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.get_group.html" class="method">get_group</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gdk.Window.get_height.html" class="method">get_height</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_modal_hint.html" class="method">get_modal_hint</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gdk.Window.get_origin.html" class="method">get_origin</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.get_parent.html" class="method">get_parent</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_pass_through.html" class="method">get_pass_through</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>? <b><a href="Gdk.Window.get_pointer.html" class="method">get_pointer</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_keyword">out</span> <span class="main_type"><a href="Gdk.ModifierType.html" class="enum">ModifierType</a></span> mask)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_position.html" class="method">get_position</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_root_coords.html" class="method">get_root_coords</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> root_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_root_origin.html" class="method">get_root_origin</a></b> (<span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gdk.Window.get_scale_factor.html" class="method">get_scale_factor</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.Screen.html" class="class">Screen</a></span> <b><a href="Gdk.Window.get_screen.html" class="method">get_screen</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> <b><a href="Gdk.Window.get_source_events.html" class="method">get_source_events</a></b> (<span class="main_type"><a href="Gdk.InputSource.html" class="enum">InputSource</a></span> source)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.WindowState.html" class="enum">WindowState</a></span> <b><a href="Gdk.Window.get_state.html" class="method">get_state</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.get_support_multidevice.html" class="method">get_support_multidevice</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span> <b><a href="Gdk.Window.get_toplevel.html" class="method">get_toplevel</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.WindowTypeHint.html" class="enum">WindowTypeHint</a></span> <b><a href="Gdk.Window.get_type_hint.html" class="method">get_type_hint</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> <b><a href="Gdk.Window.get_update_area.html" class="method">get_update_area</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.get_user_data.html" class="method">get_user_data</a></b> (<span class="main_keyword">out</span> <span class="main_keyword">void</span>* data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> <b><a href="Gdk.Window.get_visible_region.html" class="method">get_visible_region</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="Gdk.Visual.html" class="class">Visual</a></span> <b><a href="Gdk.Window.get_visual.html" class="method">get_visual</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Gdk.Window.get_width.html" class="method">get_width</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Gdk.WindowType.html" class="enum">WindowType</a></span> <b><a href="Gdk.Window.get_window_type.html" class="method">get_window_type</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.has_native.html" class="method">has_native</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.hide.html" class="method">hide</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.iconify.html" class="method">iconify</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.input_shape_combine_region.html" class="method">input_shape_combine_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> shape_region, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> offset_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> offset_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.invalidate_maybe_recurse.html" class="method">invalidate_maybe_recurse</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> region, <span class="main_type"><a href="Gdk.WindowChildFunc.html" class="delegate">WindowChildFunc</a></span>? child_func)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.invalidate_rect.html" class="method">invalidate_rect</a></b> (<span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span>? rect, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> invalidate_children)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.invalidate_region.html" class="method">invalidate_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> region, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> invalidate_children)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.is_destroyed.html" class="method">is_destroyed</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.is_input_only.html" class="method">is_input_only</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.is_shaped.html" class="method">is_shaped</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.is_viewable.html" class="method">is_viewable</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.is_visible.html" class="method">is_visible</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.lower.html" class="method">lower</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.mark_paint_from_clip.html" class="method">mark_paint_from_clip</a></b> (<span class="main_type"><a href="../cairo/Cairo.Context.html" class="class">Context</a></span> cr)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.maximize.html" class="method">maximize</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.merge_child_input_shapes.html" class="method">merge_child_input_shapes</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.merge_child_shapes.html" class="method">merge_child_shapes</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.move.html" class="method">move</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.move_region.html" class="method">move_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span> region, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dx, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.move_resize.html" class="method">move_resize</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.move_to_rect.html" class="method">move_to_rect</a></b> (<span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span> rect, <span class="main_type"><a href="Gdk.Gravity.html" class="enum">Gravity</a></span> rect_anchor, <span class="main_type"><a href="Gdk.Gravity.html" class="enum">Gravity</a></span> window_anchor, <span class="main_type"><a href="Gdk.AnchorHints.html" class="enum">AnchorHints</a></span> anchor_hints, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> rect_anchor_dx, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> rect_anchor_dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_type"><span class="class">Window</span></span>&gt; <b><a href="Gdk.Window.peek_children.html" class="method">peek_children</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.process_updates.html" class="method">process_updates</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> update_children)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.raise.html" class="method">raise</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.register_dnd.html" class="method">register_dnd</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.remove_filter.html" class="method">remove_filter</a></b> (<span class="main_type"><a href="Gdk.FilterFunc.html" class="delegate">FilterFunc</a></span> function)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.reparent.html" class="method">reparent</a></b> (<span class="main_type"><span class="class">Window</span></span> new_parent, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.resize.html" class="method">resize</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.restack.html" class="method">restack</a></b> (<span class="main_type"><span class="class">Window</span></span>? sibling, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> above)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.scroll.html" class="method">scroll</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dx, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> dy)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_accept_focus.html" class="method">set_accept_focus</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> accept_focus)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_background.html" class="method">set_background</a></b> (<span class="main_type"><a href="Gdk.Color.html" class="struct">Color</a></span> color)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_background_pattern.html" class="method">set_background_pattern</a></b> (<span class="main_type"><a href="../cairo/Cairo.Pattern.html" class="class">Pattern</a></span>? pattern)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_background_rgba.html" class="method">set_background_rgba</a></b> (<span class="main_type"><a href="Gdk.RGBA.html" class="struct">RGBA</a></span> rgba)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_child_input_shapes.html" class="method">set_child_input_shapes</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_child_shapes.html" class="method">set_child_shapes</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_composited.html" class="method">set_composited</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> composited)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_cursor.html" class="method">set_cursor</a></b> (<span class="main_type"><a href="Gdk.Cursor.html" class="class">Cursor</a></span>? cursor)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_decorations.html" class="method">set_decorations</a></b> (<span class="main_type"><a href="Gdk.WMDecoration.html" class="enum">WMDecoration</a></span> decorations)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_device_cursor.html" class="method">set_device_cursor</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_type"><a href="Gdk.Cursor.html" class="class">Cursor</a></span> cursor)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_device_events.html" class="method">set_device_events</a></b> (<span class="main_type"><a href="Gdk.Device.html" class="abstract_class">Device</a></span> device, <span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> event_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_event_compression.html" class="method">set_event_compression</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> event_compression)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_events.html" class="method">set_events</a></b> (<span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> event_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_focus_on_map.html" class="method">set_focus_on_map</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> focus_on_map)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_fullscreen_mode.html" class="method">set_fullscreen_mode</a></b> (<span class="main_type"><a href="Gdk.FullscreenMode.html" class="enum">FullscreenMode</a></span> mode)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_functions.html" class="method">set_functions</a></b> (<span class="main_type"><a href="Gdk.WMFunction.html" class="enum">WMFunction</a></span> functions)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_geometry_hints.html" class="method">set_geometry_hints</a></b> (<span class="main_type"><a href="Gdk.Geometry.html" class="struct">Geometry</a></span> geometry, <span class="main_type"><a href="Gdk.WindowHints.html" class="enum">WindowHints</a></span> geom_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_group.html" class="method">set_group</a></b> (<span class="main_type"><span class="class">Window</span></span>? leader)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_icon_list.html" class="method">set_icon_list</a></b> (<span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span>&gt; pixbufs)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_icon_name.html" class="method">set_icon_name</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span>? name)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_keep_above.html" class="method">set_keep_above</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> setting)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_keep_below.html" class="method">set_keep_below</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> setting)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_modal_hint.html" class="method">set_modal_hint</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> modal)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_opacity.html" class="method">set_opacity</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> opacity)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_opaque_region.html" class="method">set_opaque_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span>? region)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_override_redirect.html" class="method">set_override_redirect</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> override_redirect)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_pass_through.html" class="method">set_pass_through</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> pass_through)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_role.html" class="method">set_role</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> role)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_shadow_width.html" class="method">set_shadow_width</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> left, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> right, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> top, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> bottom)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_skip_pager_hint.html" class="method">set_skip_pager_hint</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> skips_pager)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_skip_taskbar_hint.html" class="method">set_skip_taskbar_hint</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> skips_taskbar)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_source_events.html" class="method">set_source_events</a></b> (<span class="main_type"><a href="Gdk.InputSource.html" class="enum">InputSource</a></span> source, <span class="main_type"><a href="Gdk.EventMask.html" class="enum">EventMask</a></span> event_mask)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_startup_id.html" class="method">set_startup_id</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> startup_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.set_static_gravities.html" class="method">set_static_gravities</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> use_static)
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_support_multidevice.html" class="method">set_support_multidevice</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> support_multidevice)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_title.html" class="method">set_title</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> title)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_transient_for.html" class="method">set_transient_for</a></b> (<span class="main_type"><span class="class">Window</span></span> parent)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_type_hint.html" class="method">set_type_hint</a></b> (<span class="main_type"><a href="Gdk.WindowTypeHint.html" class="enum">WindowTypeHint</a></span> hint)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_urgency_hint.html" class="method">set_urgency_hint</a></b> (<span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> urgent)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.set_user_data.html" class="method">set_user_data</a></b> (<span class="main_type"><a href="../gobject-2.0/GLib.Object.html" class="class">Object</a></span>? user_data)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.shape_combine_region.html" class="method">shape_combine_region</a></b> (<span class="main_type"><a href="../cairo/Cairo.Region.html" class="class">Region</a></span>? shape_region, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> offset_x, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> offset_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.show.html" class="method">show</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.show_unraised.html" class="method">show_unraised</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Gdk.Window.show_window_menu.html" class="method">show_window_menu</a></b> (<span class="main_type"><a href="Gdk.Event.html" class="class">Event</a></span> event)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.stick.html" class="method">stick</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="deprecated"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.thaw_toplevel_updates_libgtk_only.html" class="method">thaw_toplevel_updates_libgtk_only</a></b> ()
+              </span></span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.thaw_updates.html" class="method">thaw_updates</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.unfullscreen.html" class="method">unfullscreen</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.unmaximize.html" class="method">unmaximize</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.unstick.html" class="method">unstick</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.withdraw.html" class="method">withdraw</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_type"><a href="../cairo/Cairo.Surface.html" class="class">Surface</a></span> <b><a href="Gdk.Window.create_surface.html" class="signal">create_surface</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> width, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> height)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.from_embedder.html" class="signal">from_embedder</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> embedder_x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> embedder_y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> offscreen_x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> offscreen_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.moved_to_rect.html" class="signal">moved_to_rect</a></b> (<span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span> flipped_rect, <span class="main_type"><a href="Gdk.Rectangle.html" class="struct">Rectangle</a></span> final_rect, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> flipped_x, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> flipped_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">unowned</span> <span class="main_type"><span class="class">Window</span></span>? <b><a href="Gdk.Window.pick_embedded_child.html" class="signal">pick_embedded_child</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Gdk.Window.to_embedder.html" class="signal">to_embedder</a></b> (<span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> offscreen_x, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> offscreen_y, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> embedder_x, <span class="main_keyword">out</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> embedder_y)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2169')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-2169">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.@new.html">@new</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@ref.html">@ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.@set.html">@set</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_toggle_ref.html">add_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.add_weak_pointer.html">add_weak_pointer</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.bind_property.html">bind_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.connect.html">connect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.constructed.html">constructed</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.disconnect.html">disconnect</a></li>
+                <li class="virtual_method"><a href="../gobject-2.0/GLib.Object.dispose.html">dispose</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_data.html">dup_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.dup_qdata.html">dup_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.force_floating.html">force_floating</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.freeze_notify.html">freeze_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_class.html">get_class</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_data.html">get_data</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_property.html">get_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_qdata.html">get_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.get_type.html">get_type</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.getv.html">getv</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_find_property.html">interface_find_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_install_property.html">interface_install_property</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.interface_list_properties.html">interface_list_properties</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.is_floating.html">is_floating</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_valist.html">new_valist</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.new_with_properties.html">new_with_properties</a></li>
+                <li class="static_method"><a href="../gobject-2.0/GLib.Object.newv.html">newv</a></li>
+                <li class="signal"><a href="../gobject-2.0/GLib.Object.notify.html">notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.notify_property.html">notify_property</a></li>
+                <li class="field"><a href="../gobject-2.0/GLib.Object.ref_count.html">ref_count</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.ref_sink.html">ref_sink</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_toggle_ref.html">remove_toggle_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.remove_weak_pointer.html">remove_weak_pointer</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_data.html">replace_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.replace_qdata.html">replace_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data.html">set_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_data_full.html">set_data_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_property.html">set_property</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata.html">set_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_qdata_full.html">set_qdata_full</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.set_valist.html">set_valist</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.setv.html">setv</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_data.html">steal_data</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.steal_qdata.html">steal_qdata</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.thaw_notify.html">thaw_notify</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.unref.html">unref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.watch_closure.html">watch_closure</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_ref.html">weak_ref</a></li>
+                <li class="method"><a href="../gobject-2.0/GLib.Object.weak_unref.html">weak_unref</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>
