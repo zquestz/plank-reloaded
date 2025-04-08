@@ -176,6 +176,10 @@ Add Plank Reloaded to your desktop environment's startup applications. The comma
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
 
+### How can application developers show counts or progress indicators on their dock icons?
+
+Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
+
 ## Reporting Bugs
 
 For Plank Reloaded specific issues, please report them here:
