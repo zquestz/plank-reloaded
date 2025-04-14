@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 16:44-1000\n"
-"PO-Revision-Date: 2025-04-03 02:48\n"
+"POT-Creation-Date: 2025-04-02 17:19-1000\n"
+"PO-Revision-Date: 2025-04-14 21:25\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -269,7 +269,7 @@ msgstr ""
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "Без батареи"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
@@ -359,7 +359,7 @@ msgstr "Мониторинг ЦП"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Следите за этим Процессором. И когда он выходит из строя..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
@@ -420,7 +420,7 @@ msgstr "Корзина"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Проверьте вашу Корзину!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
 #: docklets/Workspaces/WorkspacesDockItem.vala:556
@@ -450,12 +450,12 @@ msgstr "Рабочие области"
 #: docklets/Workspaces/WorkspacesDockItem.vala:215
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "Рабочая область %d из %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:536
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Рабочая область %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:563
 msgid "_Live Previews"
@@ -468,7 +468,7 @@ msgstr "_Живые предпросмотры"
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "Переключатель между рабочими областями."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
