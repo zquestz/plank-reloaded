@@ -413,6 +413,13 @@ namespace Plank {
 
       ZoomPercent = (screen_is_composited ? prefs.ZoomPercent / 100.0 : 1.0);
       ZoomIconSize = (screen_is_composited && prefs.ZoomEnabled ? (int) Math.round (IconSize * ZoomPercent) : IconSize);
+
+      freeze_notify ();
+
+      update_dimensions ();
+      update_regions ();
+
+      thaw_notify ();
     }
 
     /**
@@ -457,7 +464,7 @@ namespace Plank {
         height -= top_offset;
 
       // height of the dock window
-      var dock_height = height + (screen_is_composited ? UrgentBounceHeight : 0);
+      var dock_height = height + (screen_is_composited ? UrgentBounceHeight : 0) * (int) (Math.ceil (ZoomPercent));
 
       var width = 0;
       switch (Alignment) {
@@ -808,9 +815,9 @@ namespace Plank {
 
         double offset_percent;
         if (expand_for_drop) {
-          // Provide space for dropping between items
+          double orig_offset = offset;
           offset += offset * zoom_icon_size / icon_size;
-          offset_percent = double.min (1.0, offset / (2.0 * zoom_icon_size));
+          offset_percent = double.min (orig_offset / zoom_icon_size, offset / (2.0 * zoom_icon_size));
         } else {
           offset_percent = offset / zoom_icon_size;
         }
@@ -829,7 +836,11 @@ namespace Plank {
         // The .66 value comes from the area under the curve.  Dont ask me to explain it too much because it's too clever for me.
 
         if (expand_for_drop) {
-          offset *= zoom_in_progress / 2.0;
+          double zoom_adjust = 1.0;
+          if (zoom_enabled) {
+            zoom_adjust = 1 + (icon_size / zoom_icon_size);
+          }
+          offset *= zoom_in_progress / zoom_adjust;
         } else {
           offset *= zoom_in_percent - 1.0;
         }

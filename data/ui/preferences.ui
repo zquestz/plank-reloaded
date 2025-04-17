@@ -44,7 +44,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
   </object>
   <object class="GtkAdjustment" id="adj_zoom_percent">
     <property name="lower">100</property>
-    <property name="upper">200</property>
+    <property name="upper">400</property>
     <property name="value">150</property>
     <property name="step_increment">5</property>
     <property name="page_increment">10</property>
