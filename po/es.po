@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
-"PO-Revision-Date: 2025-04-01 00:35\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"PO-Revision-Date: 2025-04-18 01:41\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -499,8 +499,8 @@ msgstr ""
 "  libuntu https://launchpad.net/~libuntu\n"
 "  rodrigo.kataishi https://launchpad.net/~rodrigo-kataishi-ubuntu"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "_Mantener en el dock"
 
@@ -517,15 +517,39 @@ msgstr "_Cerrar"
 msgid "Drop to open with %s"
 msgstr "Soltar para abrir con %s"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr "_Ordenar por"
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr "Nombre"
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr "Tipo"
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr "Tamaño"
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr "Fecha de Creación"
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr "Fecha de modificación"
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "_Abrir en el gestor de archivos"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "_Abrir"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "Abrir la _carpeta contenedora"
 

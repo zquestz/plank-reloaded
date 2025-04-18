@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
 "PO-Revision-Date: 2022-12-13 10:34+0000\n"
 "Last-Translator: Mike Gabriel <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -478,8 +478,8 @@ msgstr ""
 "  alexisme https://launchpad.net/~alexanderc-spa\n"
 "  origpumu https://launchpad.net/~originalpumuckl-5"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "Im Dock _behalten"
 
@@ -496,15 +496,39 @@ msgstr "_Schließen"
 msgid "Drop to open with %s"
 msgstr "Loslassen, um mit %s zu öffnen"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "In der _Dateiverwaltung öffnen"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "Ö_ffnen"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "Übergeordneten _Ordner öffnen"
 

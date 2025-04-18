@@ -130,9 +130,27 @@ namespace Plank {
       return AnimationType.NONE;
     }
 
-    public override bool can_be_removed ()
-    {
-        return true;
+    public override bool can_be_removed () {
+      return true;
+    }
+
+    public class FileSortData {
+      public string creation_date { get; private set; }
+      public string modified_date { get; private set; }
+      public string display_name { get; private set; }
+      public string content_type { get; private set; }
+      public int64 size { get; private set; }
+      public Gtk.MenuItem menu_item { get; private set; }
+
+      public FileSortData (string creation_date, string modified_date, string display_name,
+        string content_type, int64 size, Gtk.MenuItem menu_item) {
+        this.creation_date = creation_date;
+        this.modified_date = modified_date;
+        this.display_name = display_name;
+        this.content_type = content_type;
+        this.size = size;
+        this.menu_item = menu_item;
+      }
     }
 
     /**
@@ -147,14 +165,41 @@ namespace Plank {
 
     Gee.ArrayList<Gtk.MenuItem> get_dir_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
-
-      var menu_items = new Gee.HashMap<string, Gtk.MenuItem> ();
-      var keys = new Gee.ArrayList<string> ();
+      var sorted_items = new Gee.ArrayList<FileSortData> ();
 
       get_files (OwnedFile).map_iterator ().foreach ((display_name, file) => {
         Gtk.MenuItem item;
-        string icon, text;
+        string content_type = "", creation_date = "", modified_date = "", icon, text;
+        int64 size = 0;
         var uri = file.get_uri ();
+
+        try {
+          var fileInfo = file.query_info (GLib.FileAttribute.TIME_CREATED + ","
+                                          + GLib.FileAttribute.TIME_MODIFIED + ","
+                                          + GLib.FileAttribute.STANDARD_CONTENT_TYPE + ","
+                                          + GLib.FileAttribute.STANDARD_SIZE + ","
+                                          + GLib.FileAttribute.STANDARD_TYPE, 0);
+
+          var creation_datetime = fileInfo.get_creation_date_time ();
+          if (creation_datetime != null) {
+            creation_date = creation_datetime.to_string ();
+          }
+
+          var modified_datetime = fileInfo.get_modification_date_time ();
+          if (modified_datetime != null) {
+            modified_date = modified_datetime.to_string ();
+          }
+
+          content_type = fileInfo.get_content_type () ?? "";
+          size = fileInfo.get_size ();
+
+          if (fileInfo.get_file_type () == GLib.FileType.DIRECTORY) {
+            content_type = "directory";
+          }
+        } catch (GLib.Error e) {
+          // Use default values if information can't be determined
+        }
+
         if (uri.has_suffix (".desktop")) {
           ApplicationDockItem.parse_launcher (uri, out icon, out text);
           item = create_menu_item (text, icon, true);
@@ -174,19 +219,131 @@ namespace Plank {
           });
         }
 
-        var key = "%s%s".printf (text, uri);
-        menu_items.set (key, item);
-        keys.add (key);
+        var sort_data = new FileSortData (creation_date, modified_date, text, content_type, size, item);
+        sorted_items.add (sort_data);
 
         return true;
       });
 
-      keys.sort ();
-      foreach (var s in keys)
-        items.add (menu_items.get (s));
+      sorted_items.sort ((a, b) => {
+        bool a_is_dir = (a.content_type == "directory");
+        bool b_is_dir = (b.content_type == "directory");
 
-      if (keys.size > 0)
+        if (Prefs.SortBy == "kind" && a_is_dir != b_is_dir) {
+          return a_is_dir ? -1 : 1;
+        }
+
+        switch (Prefs.SortBy) {
+          case "name" :
+            return a.display_name.collate (b.display_name);
+          case "date-created":
+            string date_a = a.creation_date;
+            string date_b = b.creation_date;
+
+            // Sort by name if no date is available
+            if (date_a == date_b || date_a == "" || date_b == "") {
+              return a.display_name.collate (b.display_name);
+            }
+
+            return date_b.collate (date_a);
+          case "date-modified":
+            string date_a = a.modified_date;
+            string date_b = b.modified_date;
+
+            // Sort by name if no date is available
+            if (date_a == date_b || date_a == "" || date_b == "") {
+              return a.display_name.collate (b.display_name);
+            }
+
+            return date_b.collate (date_a);
+          case "kind":
+            int type_compare = a.content_type.collate (b.content_type);
+            if (type_compare != 0) {
+              return type_compare;
+            }
+
+            return a.display_name.collate (b.display_name);
+          case "size":
+            if (a.size == b.size) {
+              return a.display_name.collate (b.display_name);
+            }
+
+            return (b.size > a.size) ? 1 : -1;
+          default:
+            return a.display_name.collate (b.display_name);
+        }
+      });
+
+      foreach (var data in sorted_items) {
+        items.add (data.menu_item);
+      }
+
+      if (sorted_items.size > 0) {
         items.add (new Gtk.SeparatorMenuItem ());
+      }
+
+      var sort_menu = new Gtk.MenuItem.with_mnemonic (_("_Sort By"));
+      var sort_submenu = new Gtk.Menu ();
+      sort_menu.set_submenu (sort_submenu);
+
+      var name_item = new Gtk.RadioMenuItem.with_label (null, _("Name"));
+      name_item.active = (Prefs.SortBy == "name");
+      name_item.activate.connect (() => {
+        if (name_item.active) {
+          Prefs.SortBy = "name";
+          reset_icon_buffer ();
+        }
+      });
+      sort_submenu.append (name_item);
+
+      var kind_item = new Gtk.RadioMenuItem.with_label_from_widget (
+                                                                    name_item, _("Kind"));
+      kind_item.active = (Prefs.SortBy == "kind");
+      kind_item.activate.connect (() => {
+        if (kind_item.active) {
+          Prefs.SortBy = "kind";
+          reset_icon_buffer ();
+        }
+      });
+      sort_submenu.append (kind_item);
+
+      var size_item = new Gtk.RadioMenuItem.with_label_from_widget (
+                                                                    name_item, _("Size"));
+      size_item.active = (Prefs.SortBy == "size");
+      size_item.activate.connect (() => {
+        if (size_item.active) {
+          Prefs.SortBy = "size";
+          reset_icon_buffer ();
+        }
+      });
+      sort_submenu.append (size_item);
+
+      var date_created_item = new Gtk.RadioMenuItem.with_label_from_widget (
+                                                                            name_item, _("Date Created"));
+      date_created_item.active = (Prefs.SortBy == "date-created");
+      date_created_item.activate.connect (() => {
+        if (date_created_item.active) {
+          Prefs.SortBy = "date-created";
+          reset_icon_buffer ();
+        }
+      });
+      sort_submenu.append (date_created_item);
+
+      var date_modified_item = new Gtk.RadioMenuItem.with_label_from_widget (
+                                                                             name_item, _("Date Modified"));
+      date_modified_item.active = (Prefs.SortBy == "date-modified");
+      date_modified_item.activate.connect (() => {
+        if (date_modified_item.active) {
+          Prefs.SortBy = "date-modified";
+          reset_icon_buffer ();
+        }
+      });
+      sort_submenu.append (date_modified_item);
+
+      sort_menu.show_all ();
+      items.add (sort_menu);
+      items.add (new Gtk.SeparatorMenuItem ());
+
 
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
       if (default_provider != null

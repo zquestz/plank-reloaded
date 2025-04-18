@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
-"PO-Revision-Date: 2025-04-01 00:35\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"PO-Revision-Date: 2025-04-18 01:40\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -481,8 +481,8 @@ msgstr ""
 "  Youngbin Han https://launchpad.net/~sukso96100\n"
 "  cafeinoz https://launchpad.net/~cafeinoz"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "플랭크에 두기 (_K)"
 
@@ -499,15 +499,39 @@ msgstr "닫기 (_C)"
 msgid "Drop to open with %s"
 msgstr "%s로 열려면 가져다 놓으세요"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr "_정렬 기준"
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr "이름"
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr "종류"
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr "크기"
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr "생성 날짜"
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr "수정한 날짜"
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "파일 브라우저에서 열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "들어 있는 폴더 열기 (_F)"
 

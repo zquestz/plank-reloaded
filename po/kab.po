@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
 "PO-Revision-Date: 2019-06-15 11:48+0000\n"
 "Last-Translator: Amaziɣ Agrawliw <Unknown>\n"
 "Language-Team: Kabyle <kab@li.org>\n"
@@ -469,8 +469,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Amaziɣ Agrawliw https://launchpad.net/~mldamazigh15"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "_Eǧǧ-it deg Dock"
 
@@ -487,15 +487,39 @@ msgstr "_Mdel"
 msgid "Drop to open with %s"
 msgstr "Serreḥ i wakken ad teldiḍ akkʷed %s"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "_Ldi deg Iminig n Ufaylu"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "_Ldi"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "Ldi Afaylu _Agbur"
 

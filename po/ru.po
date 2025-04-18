@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
-"PO-Revision-Date: 2025-04-14 21:25\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"PO-Revision-Date: 2025-04-18 01:42\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -381,10 +381,10 @@ msgstr "В Корзине нет объектов"
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%u объект в Корзине"
+msgstr[1] "%u объект в Корзине"
+msgstr[2] "%u объект в Корзине"
+msgstr[3] "%u объект в Корзине"
 
 #: docklets/Trash/TrashDockItem.vala:145
 msgid "Drop to move to Trash"
@@ -491,8 +491,8 @@ msgstr ""
 "Github Contributions:\n"
 "Danila Vyalikov https://github.com/col83"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "_Прикрепить к панели"
 
@@ -509,15 +509,39 @@ msgstr "_Закрыть"
 msgid "Drop to open with %s"
 msgstr "Отпустите, чтобы открыть в %s"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr "_Сортировка"
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr "Имя"
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr "Тип"
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr "Размер"
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr "Дата создания"
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr "Дата изменения"
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "Открыть в _файловом менеджере"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "_Открыть"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "Открыть в _папке"
 

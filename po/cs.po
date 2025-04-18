@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-02 17:19-1000\n"
+"POT-Creation-Date: 2025-04-17 15:27-1000\n"
 "PO-Revision-Date: 2016-05-12 03:03+0000\n"
 "Last-Translator: Lebus <lebus88@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -475,8 +475,8 @@ msgstr ""
 "  Tomáš Jakl https://launchpad.net/~tomasjakll\n"
 "  zimmi https://launchpad.net/~zimmicz"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:194
-#: lib/Items/FileDockItem.vala:215
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
+#: lib/Items/FileDockItem.vala:373
 msgid "_Keep in Dock"
 msgstr "_Ponechat v liště"
 
@@ -493,15 +493,39 @@ msgstr "_Zavřít"
 msgid "Drop to open with %s"
 msgstr "Upuštěním otevřít s %s"
 
-#: lib/Items/FileDockItem.vala:200
+#: lib/Items/FileDockItem.vala:286
+msgid "_Sort By"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:290
+msgid "Name"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:301
+msgid "Kind"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:312
+msgid "Size"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:323
+msgid "Date Created"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:334
+msgid "Date Modified"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:358
 msgid "_Open in File Browser"
 msgstr "Otevřít ve správci souborů"
 
-#: lib/Items/FileDockItem.vala:221
+#: lib/Items/FileDockItem.vala:379
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: lib/Items/FileDockItem.vala:225
+#: lib/Items/FileDockItem.vala:383
 msgid "Open Containing _Folder"
 msgstr "Otevřít mateřskou _složku"
 
