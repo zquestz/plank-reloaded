@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"POT-Creation-Date: 2025-04-17 15:54-1000\n"
 "PO-Revision-Date: 2020-05-21 18:49+0000\n"
 "Last-Translator: Jean-Marc <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
@@ -488,8 +488,8 @@ msgstr ""
 "  benjamin SIENTZOFF https://launchpad.net/~benjamin-sientzoff\n"
 "  houdas.rodolphe https://launchpad.net/~houdas-rodolphe"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
-#: lib/Items/FileDockItem.vala:373
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Épingler au Dock"
 
@@ -506,39 +506,39 @@ msgstr "_Fermer"
 msgid "Drop to open with %s"
 msgstr "Relâcher pour ouvrir avec %s"
 
-#: lib/Items/FileDockItem.vala:286
+#: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:290
+#: lib/Items/FileDockItem.vala:289
 msgid "Name"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:301
+#: lib/Items/FileDockItem.vala:300
 msgid "Kind"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:312
+#: lib/Items/FileDockItem.vala:311
 msgid "Size"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:323
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Created"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:334
+#: lib/Items/FileDockItem.vala:333
 msgid "Date Modified"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:358
+#: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
 msgstr "_Ouvrir dans le Gestionnaire de fichiers"
 
-#: lib/Items/FileDockItem.vala:379
+#: lib/Items/FileDockItem.vala:378
 msgid "_Open"
 msgstr "_Ouvrir"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
 msgstr "Ouvrir le _dossier parent"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"POT-Creation-Date: 2025-04-17 15:54-1000\n"
 "PO-Revision-Date: 2025-04-18 01:41\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -479,8 +479,8 @@ msgstr ""
 "  Cristian Moldovan https://launchpad.net/~crismblog\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
-#: lib/Items/FileDockItem.vala:373
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Păstrează în panou"
 
@@ -497,39 +497,39 @@ msgstr "În_chide"
 msgid "Drop to open with %s"
 msgstr "Dă drumul pentru a deschide cu %s"
 
-#: lib/Items/FileDockItem.vala:286
+#: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
 msgstr "_Sortează după"
 
-#: lib/Items/FileDockItem.vala:290
+#: lib/Items/FileDockItem.vala:289
 msgid "Name"
 msgstr "Nume"
 
-#: lib/Items/FileDockItem.vala:301
+#: lib/Items/FileDockItem.vala:300
 msgid "Kind"
 msgstr "Tip"
 
-#: lib/Items/FileDockItem.vala:312
+#: lib/Items/FileDockItem.vala:311
 msgid "Size"
 msgstr "Dimensiune"
 
-#: lib/Items/FileDockItem.vala:323
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Created"
 msgstr "Data creării"
 
-#: lib/Items/FileDockItem.vala:334
+#: lib/Items/FileDockItem.vala:333
 msgid "Date Modified"
 msgstr "Data modificării"
 
-#: lib/Items/FileDockItem.vala:358
+#: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
 msgstr "Deschide în navigat_orul de fișiere"
 
-#: lib/Items/FileDockItem.vala:379
+#: lib/Items/FileDockItem.vala:378
 msgid "_Open"
 msgstr "_Deschide"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
 msgstr "Deschide _dosarul conținător"
 

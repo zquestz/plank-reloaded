@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"POT-Creation-Date: 2025-04-17 15:54-1000\n"
 "PO-Revision-Date: 2016-07-08 12:18+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <>\n"
@@ -473,8 +473,8 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  Tomasz Wiśniewski https://launchpad.net/~weykk27"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
-#: lib/Items/FileDockItem.vala:373
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Przechowywanie aktywatora"
 
@@ -491,39 +491,39 @@ msgstr "Za_mknij"
 msgid "Drop to open with %s"
 msgstr "Upuść, aby otworzyć poprzez %s"
 
-#: lib/Items/FileDockItem.vala:286
+#: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:290
+#: lib/Items/FileDockItem.vala:289
 msgid "Name"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:301
+#: lib/Items/FileDockItem.vala:300
 msgid "Kind"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:312
+#: lib/Items/FileDockItem.vala:311
 msgid "Size"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:323
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Created"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:334
+#: lib/Items/FileDockItem.vala:333
 msgid "Date Modified"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:358
+#: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
 msgstr "_Otwórz w menedżerze plików"
 
-#: lib/Items/FileDockItem.vala:379
+#: lib/Items/FileDockItem.vala:378
 msgid "_Open"
 msgstr "_Uruchom"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
 msgstr "Otwórz katalog _docelowy"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-17 15:27-1000\n"
+"POT-Creation-Date: 2025-04-17 15:54-1000\n"
 "PO-Revision-Date: 2025-04-18 01:40\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -479,8 +479,8 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:352
-#: lib/Items/FileDockItem.vala:373
+#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
@@ -497,39 +497,39 @@ msgstr "_关闭"
 msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"
 
-#: lib/Items/FileDockItem.vala:286
+#: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
 msgstr "_排序方式"
 
-#: lib/Items/FileDockItem.vala:290
+#: lib/Items/FileDockItem.vala:289
 msgid "Name"
 msgstr "名称"
 
-#: lib/Items/FileDockItem.vala:301
+#: lib/Items/FileDockItem.vala:300
 msgid "Kind"
 msgstr "类型"
 
-#: lib/Items/FileDockItem.vala:312
+#: lib/Items/FileDockItem.vala:311
 msgid "Size"
 msgstr "大小"
 
-#: lib/Items/FileDockItem.vala:323
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Created"
 msgstr "创建日期"
 
-#: lib/Items/FileDockItem.vala:334
+#: lib/Items/FileDockItem.vala:333
 msgid "Date Modified"
 msgstr "修改日期"
 
-#: lib/Items/FileDockItem.vala:358
+#: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
 msgstr "_在文件浏览器中打开"
 
-#: lib/Items/FileDockItem.vala:379
+#: lib/Items/FileDockItem.vala:378
 msgid "_Open"
 msgstr "_打开"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
 msgstr "打开所在文件夹"
 

@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.119 "Reloaded" (2025-04-17)
+
+- Added sorting options for directories
+- Updated translations
+
 ## 0.11.118 "Reloaded" (2025-04-02)
 
 - Fix choppy magnification for digital clock
