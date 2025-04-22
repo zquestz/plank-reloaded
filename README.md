@@ -14,6 +14,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 - Migrated to modern meson build system for easier compilation and installation
 - Added AnchorDocklets/AnchorFiles settings to anchor docklets/files to the end of the dock
 - Fixed Restrict to Workspace so applications only show up on their active workspace
+- Max Zoom has been increased to 400%
 - Comprehensive docklet improvements:
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
