@@ -1,3 +1,10 @@
+plank-reloaded (0.11.120-1) unstable; urgency=medium
+
+  * Increased Max Zoom to 400%
+  * Removed requirement on GLib truncate_middle in Clippy Docklet
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 21 Apr 2025 14:27:31 -1000
+
 plank-reloaded (0.11.119-1) unstable; urgency=medium
 
   * Added sorting options for directories

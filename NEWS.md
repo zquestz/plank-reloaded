@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.120 "Reloaded" (2025-04-21)
+
+- Increased Max Zoom to 400%
+- Removed requirement on GLib truncate_middle in Clippy Docklet
+
 ## 0.11.119 "Reloaded" (2025-04-17)
 
 - Added sorting options for directories
