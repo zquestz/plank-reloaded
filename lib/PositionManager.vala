@@ -91,6 +91,9 @@ namespace Plank {
       case "Monitor":
         prefs_monitor_changed ();
         break;
+      case "GapSize":
+        prefs_gap_size_changed ();
+        break;
       case "ZoomPercent":
       case "ZoomEnabled":
         prefs_zoom_changed ();
@@ -201,6 +204,11 @@ namespace Plank {
      * Cached current icon size for the dock.
      */
     public int IconSize { get; private set; }
+
+    /**
+     * Cached current gap size for the dock.
+     */
+    public int GapSize { get; private set; }
 
     /**
      * Cached current icon size for the dock.
@@ -372,6 +380,7 @@ namespace Plank {
       }
 
       IconSize = int.min (MaxIconSize, prefs.IconSize);
+      GapSize = prefs.GapSize;
       ZoomPercent = (screen_is_composited ? prefs.ZoomPercent / 100.0 : 1.0);
       ZoomIconSize = (screen_is_composited && prefs.ZoomEnabled ? (int) Math.round (IconSize * ZoomPercent) : IconSize);
 
@@ -418,6 +427,19 @@ namespace Plank {
 
       update_dimensions ();
       update_regions ();
+
+      thaw_notify ();
+    }
+
+    void prefs_gap_size_changed () {
+      unowned DockPreferences prefs = controller.prefs;
+
+      GapSize = prefs.GapSize;
+
+      freeze_notify ();
+
+      update_dock_position ();
+      controller.window.update_size_and_position ();
 
       thaw_notify ();
     }
@@ -1326,19 +1348,19 @@ namespace Plank {
       default:
       case Gtk.PositionType.BOTTOM:
         win_x = monitor_geo.x + xoffset;
-        win_y = monitor_geo.y + monitor_geo.height - DockHeight;
+        win_y = monitor_geo.y + monitor_geo.height - DockHeight - GapSize;
         break;
       case Gtk.PositionType.TOP:
         win_x = monitor_geo.x + xoffset;
-        win_y = monitor_geo.y;
+        win_y = monitor_geo.y + GapSize;
         break;
       case Gtk.PositionType.LEFT:
         win_y = monitor_geo.y + yoffset;
-        win_x = monitor_geo.x;
+        win_x = monitor_geo.x + GapSize;
         break;
       case Gtk.PositionType.RIGHT:
         win_y = monitor_geo.y + yoffset;
-        win_x = monitor_geo.x + monitor_geo.width - DockWidth;
+        win_x = monitor_geo.x + monitor_geo.width - DockWidth - GapSize;
         break;
       }
 

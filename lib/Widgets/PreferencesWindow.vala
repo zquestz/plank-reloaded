@@ -56,6 +56,8 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.Adjustment adj_iconsize;
     [GtkChild]
+    unowned Gtk.Adjustment adj_gapsize;
+    [GtkChild]
     unowned Gtk.Adjustment adj_offset;
     [GtkChild]
     unowned Gtk.Adjustment adj_zoom_percent;
@@ -125,6 +127,9 @@ namespace Plank {
         break;
       case "IconSize":
         adj_iconsize.value = prefs.IconSize;
+        break;
+      case "GapSize":
+        adj_gapsize.value = prefs.GapSize;
         break;
       case "ItemsAlignment":
         cb_items_alignment.active_id = ((int) prefs.ItemsAlignment).to_string ();
@@ -279,6 +284,10 @@ namespace Plank {
       prefs.IconSize = (int) adj.value;
     }
 
+    void gapsize_changed (Gtk.Adjustment adj) {
+      prefs.GapSize = (int) adj.value;
+    }
+
     void offset_changed (Gtk.Adjustment adj) {
       prefs.Offset = (int) adj.value;
     }
@@ -309,6 +318,7 @@ namespace Plank {
       adj_unhide_delay.value_changed.connect (unhide_delay_changed);
       cb_display_plug.changed.connect (monitor_changed);
       adj_iconsize.value_changed.connect (iconsize_changed);
+      adj_gapsize.value_changed.connect (gapsize_changed);
       adj_offset.value_changed.connect (offset_changed);
       adj_zoom_percent.value_changed.connect (zoom_percent_changed);
       sw_hide.notify["active"].connect (hide_toggled);
@@ -334,6 +344,7 @@ namespace Plank {
       adj_unhide_delay.value_changed.disconnect (unhide_delay_changed);
       cb_display_plug.changed.disconnect (monitor_changed);
       adj_iconsize.value_changed.disconnect (iconsize_changed);
+      adj_gapsize.value_changed.disconnect (gapsize_changed);
       adj_offset.value_changed.disconnect (offset_changed);
       adj_zoom_percent.value_changed.disconnect (zoom_percent_changed);
       sw_hide.notify["active"].disconnect (hide_toggled);
@@ -379,6 +390,7 @@ namespace Plank {
       sp_unhide_delay.sensitive = (prefs.HideMode != HideType.NONE);
 
       adj_iconsize.value = prefs.IconSize;
+      adj_gapsize.value = prefs.GapSize;
       adj_offset.value = prefs.Offset;
       adj_zoom_percent.value = prefs.ZoomPercent;
       s_offset.sensitive = (prefs.Alignment == Gtk.Align.CENTER);

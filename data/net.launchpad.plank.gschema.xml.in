@@ -71,6 +71,12 @@
 			<summary>Icon Size</summary>
 			<description>The size of dock items, in pixels.</description>
 		</key>
+		<key name="gap-size" type="i">
+			<range min="0" max="50"/>
+			<default>0</default>
+			<summary>Gap Size</summary>
+			<description>The size of the gap between the dock and the screen edge, in pixels.</description>
+		</key>
 		<key name="items-alignment" enum='GtkAlignType'>
 			<default>'center'</default>
 			<summary>The alignment of dock items</summary>
