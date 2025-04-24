@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-21 14:29-1000\n"
+"POT-Creation-Date: 2025-04-23 22:19-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -67,148 +67,152 @@ msgstr ""
 msgid "Dock"
 msgstr ""
 
-#: data/ui/preferences.ui:82
+#: data/ui/preferences.ui:87
 msgid "Theme:"
 msgstr "Téma:"
 
-#: data/ui/preferences.ui:95
+#: data/ui/preferences.ui:100
 msgid "Position:"
 msgstr "Elhelyezés:"
 
-#: data/ui/preferences.ui:122
+#: data/ui/preferences.ui:127
 msgid "Left"
 msgstr "Bal"
 
-#: data/ui/preferences.ui:123
+#: data/ui/preferences.ui:128
 msgid "Right"
 msgstr "Jobb"
 
-#: data/ui/preferences.ui:124
+#: data/ui/preferences.ui:129
 msgid "Top"
 msgstr "Fent"
 
-#: data/ui/preferences.ui:125
+#: data/ui/preferences.ui:130
 msgid "Bottom"
 msgstr "Lent"
 
-#: data/ui/preferences.ui:139
+#: data/ui/preferences.ui:144
 msgid "Alignment:"
 msgstr "Elrendezés:"
 
-#: data/ui/preferences.ui:152
+#: data/ui/preferences.ui:157
 msgid "Fill"
 msgstr "Kitöltés"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
+#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
 msgid "Start"
 msgstr "Eleje"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
+#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
 msgid "End"
 msgstr "Vége"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
+#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
 msgid "Center"
 msgstr "Közép"
 
-#: data/ui/preferences.ui:171
+#: data/ui/preferences.ui:176
 msgid "On Primary Display:"
 msgstr "Elsődleges képernyőn:"
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:202
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Eltolás százalékban a képernyőszél közepétől"
 
-#: data/ui/preferences.ui:217
+#: data/ui/preferences.ui:222
 msgid "Icon Alignment:"
 msgstr "Ikon elrendezés:"
 
-#: data/ui/preferences.ui:247
+#: data/ui/preferences.ui:252
 msgid "Icon Size:"
 msgstr "Ikon méret:"
 
-#: data/ui/preferences.ui:313
+#: data/ui/preferences.ui:318
 msgid "Icon Zoom:"
 msgstr "Ikon nagyítása:"
 
-#: data/ui/preferences.ui:337
+#: data/ui/preferences.ui:332
+msgid "Gap Size:"
+msgstr ""
+
+#: data/ui/preferences.ui:383
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: data/ui/preferences.ui:357
+#: data/ui/preferences.ui:403
 msgid "Intellihide"
 msgstr "Inteligens elrejtés"
 
-#: data/ui/preferences.ui:358
+#: data/ui/preferences.ui:404
 msgid "Autohide"
 msgstr "Automatikus elrejtés"
 
-#: data/ui/preferences.ui:359
+#: data/ui/preferences.ui:405
 msgid "Dodge maximized window"
 msgstr "Eltüntetés maximalizált ablak elől"
 
-#: data/ui/preferences.ui:360
+#: data/ui/preferences.ui:406
 msgid "Window Dodge"
 msgstr "Ablak dokkolása"
 
-#: data/ui/preferences.ui:361
+#: data/ui/preferences.ui:407
 msgid "Dodge active window"
 msgstr "Aktív ablak félreugrása"
 
-#: data/ui/preferences.ui:387
+#: data/ui/preferences.ui:433
 msgid "Hide Dock"
 msgstr "Dokk elrejtése"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:449
 msgid "Hide Delay:"
 msgstr "Elrejtés késleltetése:"
 
-#: data/ui/preferences.ui:417
+#: data/ui/preferences.ui:463
 msgid "Delay in ms before hiding the dock"
 msgstr ""
 "A késleltetés mértéke ezredmásodpercben megadva, mielőtt eltűnne a dokk"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:482
 msgid "Unhide Delay:"
 msgstr "Felfedés késleltetése:"
 
-#: data/ui/preferences.ui:450
+#: data/ui/preferences.ui:496
 msgid "Delay in ms before showing the dock"
 msgstr "Megjelenítés előtti várakozás ms-ban"
 
-#: data/ui/preferences.ui:469
+#: data/ui/preferences.ui:515
 msgid "Pressure Reveal:"
 msgstr "Felfedés nyomásra:"
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:542
 msgid "Item Management"
 msgstr "Elemek kezelése"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:561
 msgid "Show Unpinned:"
 msgstr "Rögzítetlenek mutatása:"
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:588
 msgid "Restrict to Workspace:"
 msgstr "Korlátozás munkaterületre:"
 
-#: data/ui/preferences.ui:567
+#: data/ui/preferences.ui:613
 msgid "Lock Icons:"
 msgstr "Ikonok zárolása:"
 
-#: data/ui/preferences.ui:594
+#: data/ui/preferences.ui:640
 msgid "Anchor Docklets:"
 msgstr ""
 
-#: data/ui/preferences.ui:621
+#: data/ui/preferences.ui:667
 msgid "Anchor Files:"
 msgstr ""
 
-#: data/ui/preferences.ui:643
+#: data/ui/preferences.ui:689
 msgid "Behaviour"
 msgstr "Viselkedés"
 
-#: data/ui/preferences.ui:663
+#: data/ui/preferences.ui:709
 msgid "Docklets"
 msgstr "Dockletek"
 
@@ -553,7 +557,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:91
+#: lib/Widgets/PreferencesWindow.vala:93
 msgid "Preferences"
 msgstr "Beállítások"
 

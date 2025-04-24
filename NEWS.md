@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.121 "Reloaded" (2025-04-23)
+
+- Added GapSize to set the gap between the dock and the screen edge
+
 ## 0.11.120 "Reloaded" (2025-04-21)
 
 - Increased Max Zoom to 400%

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-21 14:29-1000\n"
-"PO-Revision-Date: 2025-04-18 01:40\n"
+"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"PO-Revision-Date: 2025-04-24 07:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -71,147 +71,151 @@ msgstr "Plank Reloaded 開發者團隊"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:82
+#: data/ui/preferences.ui:87
 msgid "Theme:"
 msgstr "佈景主題："
 
-#: data/ui/preferences.ui:95
+#: data/ui/preferences.ui:100
 msgid "Position:"
 msgstr "位置："
 
-#: data/ui/preferences.ui:122
+#: data/ui/preferences.ui:127
 msgid "Left"
 msgstr "左"
 
-#: data/ui/preferences.ui:123
+#: data/ui/preferences.ui:128
 msgid "Right"
 msgstr "右"
 
-#: data/ui/preferences.ui:124
+#: data/ui/preferences.ui:129
 msgid "Top"
 msgstr "頂"
 
-#: data/ui/preferences.ui:125
+#: data/ui/preferences.ui:130
 msgid "Bottom"
 msgstr "底"
 
-#: data/ui/preferences.ui:139
+#: data/ui/preferences.ui:144
 msgid "Alignment:"
 msgstr "對齊："
 
-#: data/ui/preferences.ui:152
+#: data/ui/preferences.ui:157
 msgid "Fill"
 msgstr "填充"
 
-#: data/ui/preferences.ui:153 data/ui/preferences.ui:231
+#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
 msgid "Start"
 msgstr "開始"
 
-#: data/ui/preferences.ui:154 data/ui/preferences.ui:232
+#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
 msgid "End"
 msgstr "結束"
 
-#: data/ui/preferences.ui:155 data/ui/preferences.ui:233
+#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
 msgid "Center"
 msgstr "置中"
 
-#: data/ui/preferences.ui:171
+#: data/ui/preferences.ui:176
 msgid "On Primary Display:"
 msgstr "放在主要顯示器："
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:202
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "從螢幕邊緣的中心算起的偏移比率"
 
-#: data/ui/preferences.ui:217
+#: data/ui/preferences.ui:222
 msgid "Icon Alignment:"
 msgstr "圖示對齊："
 
-#: data/ui/preferences.ui:247
+#: data/ui/preferences.ui:252
 msgid "Icon Size:"
 msgstr "圖示大小："
 
-#: data/ui/preferences.ui:313
+#: data/ui/preferences.ui:318
 msgid "Icon Zoom:"
 msgstr "圖示縮放："
 
-#: data/ui/preferences.ui:337
+#: data/ui/preferences.ui:332
+msgid "Gap Size:"
+msgstr "間距大小："
+
+#: data/ui/preferences.ui:383
 msgid "Appearance"
 msgstr "外觀"
 
-#: data/ui/preferences.ui:357
+#: data/ui/preferences.ui:403
 msgid "Intellihide"
 msgstr "智慧隱藏"
 
-#: data/ui/preferences.ui:358
+#: data/ui/preferences.ui:404
 msgid "Autohide"
 msgstr "自動隱藏"
 
-#: data/ui/preferences.ui:359
+#: data/ui/preferences.ui:405
 msgid "Dodge maximized window"
 msgstr "視窗最大化時閃避"
 
-#: data/ui/preferences.ui:360
+#: data/ui/preferences.ui:406
 msgid "Window Dodge"
 msgstr "視窗切換"
 
-#: data/ui/preferences.ui:361
+#: data/ui/preferences.ui:407
 msgid "Dodge active window"
 msgstr "閃避使用中視窗"
 
-#: data/ui/preferences.ui:387
+#: data/ui/preferences.ui:433
 msgid "Hide Dock"
 msgstr "隱藏 Dock"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:449
 msgid "Hide Delay:"
 msgstr "隱藏延遲："
 
-#: data/ui/preferences.ui:417
+#: data/ui/preferences.ui:463
 msgid "Delay in ms before hiding the dock"
 msgstr "隱藏延遲間隔長度 (ms)"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:482
 msgid "Unhide Delay:"
 msgstr "結束隱藏延遲："
 
-#: data/ui/preferences.ui:450
+#: data/ui/preferences.ui:496
 msgid "Delay in ms before showing the dock"
 msgstr "在顯示 Dock 前的延遲秒數"
 
-#: data/ui/preferences.ui:469
+#: data/ui/preferences.ui:515
 msgid "Pressure Reveal:"
 msgstr "感壓揭開："
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:542
 msgid "Item Management"
 msgstr "項目管理"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:561
 msgid "Show Unpinned:"
 msgstr "顯示未釘選："
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:588
 msgid "Restrict to Workspace:"
 msgstr "限制在工作區："
 
-#: data/ui/preferences.ui:567
+#: data/ui/preferences.ui:613
 msgid "Lock Icons:"
 msgstr "鎖定圖示："
 
-#: data/ui/preferences.ui:594
+#: data/ui/preferences.ui:640
 msgid "Anchor Docklets:"
 msgstr "錨定小程式："
 
-#: data/ui/preferences.ui:621
+#: data/ui/preferences.ui:667
 msgid "Anchor Files:"
 msgstr "錨定檔案："
 
-#: data/ui/preferences.ui:643
+#: data/ui/preferences.ui:689
 msgid "Behaviour"
 msgstr "行為"
 
-#: data/ui/preferences.ui:663
+#: data/ui/preferences.ui:709
 msgid "Docklets"
 msgstr "小程式"
 
@@ -553,6 +557,6 @@ msgstr "_關於"
 msgid "_Quit"
 msgstr "_離開"
 
-#: lib/Widgets/PreferencesWindow.vala:91
+#: lib/Widgets/PreferencesWindow.vala:93
 msgid "Preferences"
 msgstr "偏好設定"
