@@ -132,30 +132,6 @@ namespace Docky {
     }
 
     /**
-     * Truncates a string at the middle to ensure it is no longer than max_length.
-     * If the string is truncated, an ellipsis will be inserted in the middle.
-     *
-     * @param str The string to truncate
-     * @param max_length Maximum length for the returned string
-     * @return A string not longer than max_length
-     */
-    private string truncate_middle(string str, int max_length) {
-      if (str.length <= max_length) {
-        return str;
-      }
-
-      if (max_length < 5) {
-        return str.substring(0, max_length);
-      }
-
-      int half = (max_length - 1) / 2;
-      int left_size = half;
-      int right_size = max_length - left_size - 1;
-
-      return str.substring(0, left_size) + "…" + str.substring(str.length - right_size);
-    }
-
-    /**
      * Get a display-friendly version of this item's content.
      *
      * @param max_length Maximum length for text content
@@ -170,7 +146,7 @@ namespace Docky {
           stripped_text = lines[0] + "... [" + lines.length.to_string() + "]";
         }
 
-        stripped_text = truncate_middle(stripped_text, max_length);
+        stripped_text = Helpers.truncate_middle(stripped_text, max_length);
 
         return stripped_text;
       } else {

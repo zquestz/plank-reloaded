@@ -39,6 +39,7 @@ plank_lib_sources = [
   'Services/Environment.vala',
   'Services/EnvironmentSettings.vala',
   'Services/Logger.vala',
+  'Services/Helpers.vala',
   'Services/Paths.vala',
   'Services/Preferences.vala',
   'Services/Settings.vala',
