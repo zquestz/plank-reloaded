@@ -79,13 +79,7 @@ namespace Plank {
             item.IsAttached = false;
           } else {
             var current_windows = transient.App.get_windows ();
-
-            var window_count = 0;
-            foreach (var win in current_windows) {
-              if (win.is_user_visible ()) {
-                window_count++;
-              }
-            }
+            var window_count = Helpers.visible_window_count (current_windows);
 
             item.IsAttached = window_count > 0;
           }

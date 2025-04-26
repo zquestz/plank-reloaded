@@ -431,6 +431,7 @@ namespace Plank {
       // sometimes compiz plays badly.  This hacks around it
       if (delayed_focus_timer_id > 0U)
         GLib.Source.remove (delayed_focus_timer_id);
+
       delayed_focus_window = targetWindow;
       delayed_focus_timer_id = Gdk.threads_add_timeout (VIEWPORT_CHANGE_DELAY, () => {
         delayed_focus_timer_id = 0U;
