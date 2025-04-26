@@ -19,8 +19,7 @@ using Plank;
 
 namespace Docky {
   public class ApplicationsDockItem : DockletItem {
-    private uint setup_timer_id = 0;
-    private bool first_load = true;
+    private uint update_timer_id = 0;
     private GMenu.Tree apps_menu;
     private Gtk.Menu? app_menu = null;
     private Gee.ArrayList<Gtk.MenuItem>? app_menu_items = null;
@@ -77,9 +76,9 @@ namespace Docky {
     }
 
     ~ApplicationsDockItem() {
-      if (setup_timer_id > 0) {
-        Source.remove(setup_timer_id);
-        setup_timer_id = 0;
+      if (update_timer_id > 0) {
+        Source.remove(update_timer_id);
+        update_timer_id = 0;
       }
 
       if (apps_menu != null) {
@@ -111,15 +110,18 @@ namespace Docky {
         }, TaskPriority.HIGH);
 
         if (apps_loaded) {
-          if (first_load) {
-            setup_timer_id = Timeout.add(2000, () => {
-              build_applications_menu();
-              setup_timer_id = 0;
-              return false;
-            });
-          } else {
-            build_applications_menu();
+          uint old_timer_id = update_timer_id;
+
+          if (old_timer_id > 0) {
+            update_timer_id = 0;
+            Source.remove(old_timer_id);
           }
+
+          update_timer_id = Timeout.add(2000, () => {
+            build_applications_menu();
+            update_timer_id = 0;
+            return false;
+          });
         }
       } catch (Error e) {
         warning("Error updating menu: %s", e.message);
@@ -194,8 +196,6 @@ namespace Docky {
         menu_item.show();
         app_menu.append(menu_item);
       }
-
-      first_load = false;
     }
 
     private void show_applications_menu() {
