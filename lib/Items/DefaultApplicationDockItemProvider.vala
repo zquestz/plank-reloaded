@@ -55,6 +55,10 @@ namespace Plank {
         disconnect_wnck ();
     }
 
+    public void trigger_update_visible_elements () {
+      update_visible_elements ();
+    }
+
     protected override void update_visible_elements () {
       Logger.verbose ("DefaultDockItemProvider.update_visible_items ()");
 
@@ -66,8 +70,26 @@ namespace Plank {
                              || WindowControl.has_window_on_workspace (transient.App, active_workspace));
         }
       } else {
-        foreach (var item in internal_elements)
-          item.IsAttached = true;
+        foreach (var item in internal_elements) {
+          unowned TransientDockItem? transient = (item as TransientDockItem);
+
+          if (transient == null) {
+            item.IsAttached = true;
+          } else if (transient.App == null) {
+            item.IsAttached = false;
+          } else {
+            var current_windows = transient.App.get_windows ();
+
+            var window_count = 0;
+            foreach (var win in current_windows) {
+              if (win.is_user_visible ()) {
+                window_count++;
+              }
+            }
+
+            item.IsAttached = window_count > 0;
+          }
+        }
       }
 
       base.update_visible_elements ();
@@ -100,12 +122,12 @@ namespace Plank {
 
       if (Prefs.PinnedOnly)
         return;
-      
+
       // Make sure plank never shows up if we don't want the dock item.
       if (!Prefs.ShowDockItem) {
-        string? desktop_file = app.get_desktop_file();
-        if (desktop_file != null && desktop_file.contains("plank.desktop")) {
-            return;
+        string? desktop_file = app.get_desktop_file ();
+        if (desktop_file != null && desktop_file.contains ("plank.desktop")) {
+          return;
         }
       }
 
@@ -190,9 +212,6 @@ namespace Plank {
           found.App = app;
           continue;
         }
-
-        if (!app.is_user_visible ())
-          continue;
 
         transient_items.add (new TransientDockItem.with_application (app));
       }
