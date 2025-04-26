@@ -176,7 +176,7 @@ namespace Plank {
       else if (options.contains ("debug"))
         Logger.DisplayLevel = LogLevel.DEBUG;
       else
-        Logger.DisplayLevel = LogLevel.WARN;
+        Logger.DisplayLevel = LogLevel.INFO;
 
       if (options.lookup ("name", "&s", out dock_name)) {
         application_id = "%s.%s".printf (app_dbus, dock_name);
