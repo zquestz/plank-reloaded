@@ -42,5 +42,16 @@ namespace Plank {
 
       return str.substring(0, left_size) + "…" + str.substring(str.length - right_size);
     }
+
+    public int visible_window_count(GLib.List<weak Bamf.Window> windows) {
+      var window_count = 0;
+      foreach (var win in windows) {
+        if (win.is_user_visible()) {
+          window_count++;
+        }
+      }
+
+      return window_count;
+    }
   }
 }
