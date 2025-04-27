@@ -37,7 +37,7 @@ foreach size : ['16x16', '22x22', '24x24', '32x32', '48x48', '64x64', '128x128']
 endforeach
 
 themes_dir = join_paths(pkgdata_dir, 'themes')
-foreach theme : ['Default', 'Matte', 'Matte-Light', 'Transparent']
+foreach theme : ['Default', 'Matte', 'Matte-Light', 'Minimal', 'Minimal-Light', 'Transparent']
   install_subdir(join_paths('themes', theme), install_dir: themes_dir)
 endforeach
 

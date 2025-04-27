@@ -15,6 +15,7 @@ plank_lib_sources = [
   'Drawing/DrawingService.vala',
   'Drawing/DockTheme.vala',
   'Drawing/Easing.vala',
+  'Drawing/Enums.vala',
   'Drawing/Renderer.vala',
   'Drawing/Surface.vala',
   'Drawing/SurfaceCache.vala',

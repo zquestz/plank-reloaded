@@ -58,16 +58,6 @@ namespace Plank {
      */
     public signal void app_window_removed ();
 
-    /**
-     * Type of event update_indicator is processing.
-     */
-    public enum UpdateIndicatorEvent {
-      INITIALIZE,
-      WINDOW_ADDED,
-      WINDOW_REMOVED,
-      RUNNING_CHANGED,
-    }
-
 #if HAVE_DBUSMENU
     /**
      * The dock item's quicklist-dbusmenu.
