@@ -58,6 +58,7 @@
     <xi:include href="xml/Preferences.xml"/>
     <xi:include href="xml/SurfaceCache.xml"/>
     <xi:include href="xml/DockWindow.xml"/>
+    <xi:include href="xml/Helpers.xml"/>
     <xi:include href="xml/Paths.xml"/>
     <xi:include href="xml/DockletManager.xml"/>
     <xi:include href="xml/DockItemProvider.xml"/>

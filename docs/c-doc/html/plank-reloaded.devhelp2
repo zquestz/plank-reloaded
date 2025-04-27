@@ -38,10 +38,11 @@
       <sub name="PlankDockItemDrawValue" link="plank-reloaded-PlankDockItemDrawValue.html"/>
       <sub name="PlankDockController" link="plank-reloaded-PlankDockController.html"/>
       <sub name="PlankFactory" link="plank-reloaded-PlankFactory.html"/>
-      <sub name="PlankFileDockItem" link="plank-reloaded-PlankFileDockItem.html"/>
+      <sub name="PlankFileDockItemFileSortData" link="plank-reloaded-PlankFileDockItemFileSortData.html"/>
       <sub name="PlankPreferences" link="plank-reloaded-PlankPreferences.html"/>
       <sub name="PlankSurfaceCache" link="plank-reloaded-PlankSurfaceCache.html"/>
       <sub name="PlankDockWindow" link="plank-reloaded-PlankDockWindow.html"/>
+      <sub name="Helpers" link="plank-reloaded-Helpers.html"/>
       <sub name="PlankPaths" link="plank-reloaded-PlankPaths.html"/>
       <sub name="PlankDockletManager" link="plank-reloaded-PlankDockletManager.html"/>
       <sub name="PlankDockItemProvider" link="plank-reloaded-PlankDockItemProvider.html"/>
@@ -112,6 +113,8 @@
     <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MAX_ICON_SIZE" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MAX-ICON-SIZE:CAPS"/>
     <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MIN_ICON_ZOOM" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MIN-ICON-ZOOM:CAPS"/>
     <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MAX-ICON-ZOOM:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MIN-GAP-SIZE:CAPS"/>
+    <keyword type="macro" name="PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE" link="plank-reloaded-PlankDockPreferences.html#PLANK-DOCK-PREFERENCES-MAX-GAP-SIZE:CAPS"/>
     <keyword type="struct" name="struct PlankDockPreferences" link="plank-reloaded-PlankDockPreferences.html#PlankDockPreferences"/>
     <keyword type="struct" name="struct PlankDockPreferencesClass" link="plank-reloaded-PlankDockPreferences.html#PlankDockPreferencesClass"/>
     <keyword type="macro" name="PLANK_TYPE_LOGGER" link="plank-reloaded-PlankLogger.html#PLANK-TYPE-LOGGER:CAPS"/>
@@ -179,9 +182,12 @@
     <keyword type="macro" name="PLANK_TYPE_FACTORY" link="plank-reloaded-PlankFactory.html#PLANK-TYPE-FACTORY:CAPS"/>
     <keyword type="struct" name="struct PlankFactory" link="plank-reloaded-PlankFactory.html#PlankFactory"/>
     <keyword type="struct" name="struct PlankFactoryClass" link="plank-reloaded-PlankFactory.html#PlankFactoryClass"/>
-    <keyword type="macro" name="PLANK_TYPE_FILE_DOCK_ITEM" link="plank-reloaded-PlankFileDockItem.html#PLANK-TYPE-FILE-DOCK-ITEM:CAPS"/>
-    <keyword type="struct" name="struct PlankFileDockItem" link="plank-reloaded-PlankFileDockItem.html#PlankFileDockItem"/>
-    <keyword type="struct" name="struct PlankFileDockItemClass" link="plank-reloaded-PlankFileDockItem.html#PlankFileDockItemClass"/>
+    <keyword type="macro" name="PLANK_TYPE_FILE_DOCK_ITEM" link="plank-reloaded-PlankFileDockItemFileSortData.html#PLANK-TYPE-FILE-DOCK-ITEM:CAPS"/>
+    <keyword type="macro" name="PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA" link="plank-reloaded-PlankFileDockItemFileSortData.html#PLANK-FILE-DOCK-ITEM-TYPE-FILE-SORT-DATA:CAPS"/>
+    <keyword type="struct" name="struct PlankFileDockItemFileSortData" link="plank-reloaded-PlankFileDockItemFileSortData.html#PlankFileDockItemFileSortData"/>
+    <keyword type="struct" name="struct PlankFileDockItemFileSortDataClass" link="plank-reloaded-PlankFileDockItemFileSortData.html#PlankFileDockItemFileSortDataClass"/>
+    <keyword type="struct" name="struct PlankFileDockItem" link="plank-reloaded-PlankFileDockItemFileSortData.html#PlankFileDockItem"/>
+    <keyword type="struct" name="struct PlankFileDockItemClass" link="plank-reloaded-PlankFileDockItemFileSortData.html#PlankFileDockItemClass"/>
     <keyword type="macro" name="PLANK_TYPE_PREFERENCES" link="plank-reloaded-PlankPreferences.html#PLANK-TYPE-PREFERENCES:CAPS"/>
     <keyword type="struct" name="struct PlankPreferences" link="plank-reloaded-PlankPreferences.html#PlankPreferences"/>
     <keyword type="struct" name="struct PlankPreferencesClass" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass"/>
@@ -219,8 +225,11 @@
     <keyword type="macro" name="PLANK_TYPE_POOF_WINDOW" link="plank-reloaded-PlankPoofWindow.html#PLANK-TYPE-POOF-WINDOW:CAPS"/>
     <keyword type="struct" name="struct PlankPoofWindow" link="plank-reloaded-PlankPoofWindow.html#PlankPoofWindow"/>
     <keyword type="struct" name="struct PlankPoofWindowClass" link="plank-reloaded-PlankPoofWindow.html#PlankPoofWindowClass"/>
+    <keyword type="enum" name="enum PlankIndicatorStyleType" link="plank-reloaded-Enums.html#PlankIndicatorStyleType"/>
+    <keyword type="enum" name="enum PlankActiveItemStyleType" link="plank-reloaded-Enums.html#PlankActiveItemStyleType"/>
     <keyword type="enum" name="enum PlankAnimationType" link="plank-reloaded-Enums.html#PlankAnimationType"/>
     <keyword type="enum" name="enum PlankIndicatorState" link="plank-reloaded-Enums.html#PlankIndicatorState"/>
+    <keyword type="enum" name="enum PlankUpdateIndicatorEvent" link="plank-reloaded-Enums.html#PlankUpdateIndicatorEvent"/>
     <keyword type="enum" name="enum PlankItemState" link="plank-reloaded-Enums.html#PlankItemState"/>
     <keyword type="enum" name="enum PlankPopupButton" link="plank-reloaded-Enums.html#PlankPopupButton"/>
     <keyword type="macro" name="PLANK_TYPE_APPLICATION_DOCK_ITEM" link="plank-reloaded-PlankApplicationDockItem.html#PLANK-TYPE-APPLICATION-DOCK-ITEM:CAPS"/>
@@ -286,6 +295,13 @@
     <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ALLOW_UPSCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ALLOW-UPSCALE:CAPS"/>
     <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ALLOW_SCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ALLOW-SCALE:CAPS"/>
     <keyword type="constant" name="PLANK_SURFACE_CACHE_FLAGS_ADAPTIVE_SCALE" link="plank-reloaded-PlankSurfaceCache.html#PLANK-SURFACE-CACHE-FLAGS-ADAPTIVE-SCALE:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STYLE_TYPE_LEGACY" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STYLE-TYPE-LEGACY:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STYLE_TYPE_GLOW" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STYLE-TYPE-GLOW:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STYLE_TYPE_CIRCLE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STYLE-TYPE-CIRCLE:CAPS"/>
+    <keyword type="constant" name="PLANK_INDICATOR_STYLE_TYPE_LINE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STYLE-TYPE-LINE:CAPS"/>
+    <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_LEGACY" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-LEGACY:CAPS"/>
+    <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_GRADIENT" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-GRADIENT:CAPS"/>
+    <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-SOLID:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_NONE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-NONE:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_BOUNCE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-BOUNCE:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_DARKEN" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-DARKEN:CAPS"/>
@@ -293,6 +309,10 @@
     <keyword type="constant" name="PLANK_INDICATOR_STATE_NONE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-NONE:CAPS"/>
     <keyword type="constant" name="PLANK_INDICATOR_STATE_SINGLE" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-SINGLE:CAPS"/>
     <keyword type="constant" name="PLANK_INDICATOR_STATE_SINGLE_PLUS" link="plank-reloaded-Enums.html#PLANK-INDICATOR-STATE-SINGLE-PLUS:CAPS"/>
+    <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_INITIALIZE" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-INITIALIZE:CAPS"/>
+    <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-WINDOW-ADDED:CAPS"/>
+    <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-WINDOW-REMOVED:CAPS"/>
+    <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-RUNNING-CHANGED:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_NORMAL" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-NORMAL:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_ACTIVE" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-ACTIVE:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_URGENT" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-URGENT:CAPS"/>
@@ -368,6 +388,7 @@
     <keyword type="member" name="PlankAbstractMainClass.create-actions" link="plank-reloaded-PlankAbstractMain.html#PlankAbstractMainClass.create-actions"/>
     <keyword type="member" name="PlankDockItemDrawValueClass.finalize" link="plank-reloaded-PlankDockItemDrawValue.html#PlankDockItemDrawValueClass.finalize"/>
     <keyword type="member" name="PlankFactory.priv" link="plank-reloaded-PlankFactory.html#PlankFactory.priv"/>
+    <keyword type="member" name="PlankFileDockItemFileSortDataClass.finalize" link="plank-reloaded-PlankFileDockItemFileSortData.html#PlankFileDockItemFileSortDataClass.finalize"/>
     <keyword type="member" name="PlankPreferencesClass.verify" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass.verify"/>
     <keyword type="member" name="PlankPreferencesClass.reset-properties" link="plank-reloaded-PlankPreferences.html#PlankPreferencesClass.reset-properties"/>
     <keyword type="member" name="PlankSerializableIface.parent-iface" link="plank-reloaded-PlankPreferences.html#PlankSerializableIface.parent-iface"/>

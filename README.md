@@ -26,6 +26,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
   - Refreshed icons across all docklets
   - Support for third party docklets
 - Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
+- Added theme options to set the indicator and active item styles
 - General code cleanup and stability improvements
 
 ## Themes
@@ -41,6 +42,14 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 ### Matte Light
 
 ![Matte Light Theme](screenshots/matte-light.webp)
+
+### Minimal
+
+![Minimal Theme](screenshots/minimal.webp)
+
+### Minimal Light
+
+![Minimal Light Theme](screenshots/minimal-light.webp)
 
 ### Transparent
 

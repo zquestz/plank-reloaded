@@ -41,11 +41,23 @@
 <tbody>
 <tr>
 <td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="plank-reloaded-Enums.html#PlankIndicatorStyleType" title="enum PlankIndicatorStyleType">PlankIndicatorStyleType</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="plank-reloaded-Enums.html#PlankActiveItemStyleType" title="enum PlankActiveItemStyleType">PlankActiveItemStyleType</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
 <td class="function_name"><a class="link" href="plank-reloaded-Enums.html#PlankAnimationType" title="enum PlankAnimationType">PlankAnimationType</a></td>
 </tr>
 <tr>
 <td class="datatype_keyword">enum</td>
 <td class="function_name"><a class="link" href="plank-reloaded-Enums.html#PlankIndicatorState" title="enum PlankIndicatorState">PlankIndicatorState</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="plank-reloaded-Enums.html#PlankUpdateIndicatorEvent" title="enum PlankUpdateIndicatorEvent">PlankUpdateIndicatorEvent</a></td>
 </tr>
 <tr>
 <td class="datatype_keyword">enum</td>
@@ -67,6 +79,89 @@
 </div>
 <div class="refsect1">
 <a name="plank-reloaded-Enums.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="PlankIndicatorStyleType"></a><h3>enum PlankIndicatorStyleType</h3>
+<p>The style of the item indicator.</p>
+<div class="refsect3">
+<a name="PlankIndicatorStyleType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-INDICATOR-STYLE-TYPE-LEGACY:CAPS"></a>PLANK_INDICATOR_STYLE_TYPE_LEGACY</p></td>
+<td class="enum_member_description">
+<p>A glowing dot which is gtk-theme-colored.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-INDICATOR-STYLE-TYPE-GLOW:CAPS"></a>PLANK_INDICATOR_STYLE_TYPE_GLOW</p></td>
+<td class="enum_member_description">
+<p>A glowing dot using a color defined by the theme</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-INDICATOR-STYLE-TYPE-CIRCLE:CAPS"></a>PLANK_INDICATOR_STYLE_TYPE_CIRCLE</p></td>
+<td class="enum_member_description">
+<p>A solid circle using a color defined by the theme</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-INDICATOR-STYLE-TYPE-LINE:CAPS"></a>PLANK_INDICATOR_STYLE_TYPE_LINE</p></td>
+<td class="enum_member_description">
+<p>A solid line using a color defined by the theme</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankActiveItemStyleType"></a><h3>enum PlankActiveItemStyleType</h3>
+<p>The style of the active item.</p>
+<div class="refsect3">
+<a name="PlankActiveItemStyleType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-ACTIVE-ITEM-STYLE-TYPE-LEGACY:CAPS"></a>PLANK_ACTIVE_ITEM_STYLE_TYPE_LEGACY</p></td>
+<td class="enum_member_description">
+<p>A vertical gradient which is colored based of the item's icon.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-ACTIVE-ITEM-STYLE-TYPE-GRADIENT:CAPS"></a>PLANK_ACTIVE_ITEM_STYLE_TYPE_GRADIENT</p></td>
+<td class="enum_member_description">
+<p>A vertical gradient using a color defined by the theme</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-ACTIVE-ITEM-STYLE-TYPE-SOLID:CAPS"></a>PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID</p></td>
+<td class="enum_member_description">
+<p>A solid color defined by the theme</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
 <div class="refsect2">
 <a name="PlankAnimationType"></a><h3>enum PlankAnimationType</h3>
 <p>What type of animation to perform when an item is or was interacted with.</p>
@@ -142,6 +237,51 @@
 <td class="enum_member_name"><p><a name="PLANK-INDICATOR-STATE-SINGLE-PLUS:CAPS"></a>PLANK_INDICATOR_STATE_SINGLE_PLUS</p></td>
 <td class="enum_member_description">
 <p>Show multiple indicators - there are more than 1 window for this item.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PlankUpdateIndicatorEvent"></a><h3>enum PlankUpdateIndicatorEvent</h3>
+<p>Type of event update_indicator is processing.</p>
+<div class="refsect3">
+<a name="PlankUpdateIndicatorEvent.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-UPDATE-INDICATOR-EVENT-INITIALIZE:CAPS"></a>PLANK_UPDATE_INDICATOR_EVENT_INITIALIZE</p></td>
+<td class="enum_member_description">
+<p>Initialize - App state was just initialized.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-UPDATE-INDICATOR-EVENT-WINDOW-ADDED:CAPS"></a>PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED</p></td>
+<td class="enum_member_description">
+<p>Window added - a new window was added to the item.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-UPDATE-INDICATOR-EVENT-WINDOW-REMOVED:CAPS"></a>PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED</p></td>
+<td class="enum_member_description">
+<p>Window removed - a window was removed from the item.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="PLANK-UPDATE-INDICATOR-EVENT-RUNNING-CHANGED:CAPS"></a>PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED</p></td>
+<td class="enum_member_description">
+<p>Running changed - the running state of the item changed.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>

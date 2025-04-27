@@ -6,18 +6,18 @@
   <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
   %gtkdocentities;
 ]>
-<refentry id="plank-reloaded-PlankFileDockItem">
+<refentry id="plank-reloaded-PlankFileDockItemFileSortData">
 <refmeta>
-<refentrytitle role="top_of_page" id="plank-reloaded-PlankFileDockItem.top_of_page">PlankFileDockItem</refentrytitle>
+<refentrytitle role="top_of_page" id="plank-reloaded-PlankFileDockItemFileSortData.top_of_page">PlankFileDockItemFileSortData</refentrytitle>
 <manvolnum>3</manvolnum>
 <refmiscinfo>PLANK-RELOADED Library</refmiscinfo>
 </refmeta>
 <refnamediv>
-<refname>PlankFileDockItem</refname>
+<refname>PlankFileDockItemFileSortData</refname>
 <refpurpose>A dock item for files or folders on the dock.</refpurpose>
 </refnamediv>
 
-<refsect1 id="plank-reloaded-PlankFileDockItem.other" role="other_proto">
+<refsect1 id="plank-reloaded-PlankFileDockItemFileSortData.other" role="other_proto">
 <title role="other_proto.title">Types and Values</title>
 <informaltable pgwide="1" frame="none">
 <tgroup cols="2">
@@ -25,6 +25,9 @@
 <colspec colname="other_proto_name"/>
 <tbody>
 <row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-TYPE-FILE-DOCK-ITEM:CAPS">PLANK_TYPE_FILE_DOCK_ITEM</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-FILE-DOCK-ITEM-TYPE-FILE-SORT-DATA:CAPS">PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankFileDockItemFileSortData">PlankFileDockItemFileSortData</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankFileDockItemFileSortDataClass">PlankFileDockItemFileSortDataClass</link></entry></row>
 <row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankFileDockItem">PlankFileDockItem</link></entry></row>
 <row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankFileDockItemClass">PlankFileDockItemClass</link></entry></row>
 
@@ -34,16 +37,16 @@
 </refsect1>
 
 
-<refsect1 id="plank-reloaded-PlankFileDockItem.description" role="desc">
+<refsect1 id="plank-reloaded-PlankFileDockItemFileSortData.description" role="desc">
 <title role="desc.title">Description</title>
 <para>Folders act like stacks and display the contents of the folder in the popup menu. Files just open the associated file.</para>
 
 </refsect1>
-<refsect1 id="plank-reloaded-PlankFileDockItem.functions_details" role="details">
+<refsect1 id="plank-reloaded-PlankFileDockItemFileSortData.functions_details" role="details">
 <title role="details.title">Functions</title>
 <para />
 </refsect1>
-<refsect1 id="plank-reloaded-PlankFileDockItem.other_details" role="details">
+<refsect1 id="plank-reloaded-PlankFileDockItemFileSortData.other_details" role="details">
 <title role="details.title">Types and Values</title>
 <refsect2 id="PLANK-TYPE-FILE-DOCK-ITEM:CAPS" role="macro">
 <title>PLANK_TYPE_FILE_DOCK_ITEM</title>
@@ -51,6 +54,46 @@
 <programlisting language="C">#define PLANK_TYPE_FILE_DOCK_ITEM (plank_file_dock_item_get_type ())
 </programlisting>
 <para>The type for <link linkend="PlankFileDockItem"><type>PlankFileDockItem</type></link>.</para>
+</refsect2>
+<refsect2 id="PLANK-FILE-DOCK-ITEM-TYPE-FILE-SORT-DATA:CAPS" role="macro">
+<title>PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA</title>
+<indexterm zone="PLANK-FILE-DOCK-ITEM-TYPE-FILE-SORT-DATA:CAPS"><primary>PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA</primary></indexterm>
+<programlisting language="C">#define PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA (plank_file_dock_item_file_sort_data_get_type ())
+</programlisting>
+<para>The type for <link linkend="PlankFileDockItemFileSortData"><type>PlankFileDockItemFileSortData</type></link>.</para>
+</refsect2>
+<refsect2 id="PlankFileDockItemFileSortData" role="struct">
+<title>struct PlankFileDockItemFileSortData</title>
+<indexterm zone="PlankFileDockItemFileSortData"><primary>PlankFileDockItemFileSortData</primary></indexterm>
+<programlisting language="C">struct PlankFileDockItemFileSortData {
+	GTypeInstance parent_instance;
+	volatile int ref_count;
+	PlankFileDockItemFileSortDataPrivate * priv;
+};
+</programlisting>
+</refsect2>
+<refsect2 id="PlankFileDockItemFileSortDataClass" role="struct">
+<title>struct PlankFileDockItemFileSortDataClass</title>
+<indexterm zone="PlankFileDockItemFileSortDataClass"><primary>PlankFileDockItemFileSortDataClass</primary></indexterm>
+<programlisting language="C">struct PlankFileDockItemFileSortDataClass {
+	GTypeClass parent_class;
+	void (*finalize) (PlankFileDockItemFileSortData *self);
+};
+</programlisting>
+<para>The class structure for <link linkend="PLANK-FILE-DOCK-ITEM-TYPE-FILE-SORT-DATA:CAPS"><literal>PLANK_FILE_DOCK_ITEM_TYPE_FILE_SORT_DATA</literal></link>. All the fields in this structure are private and should never be accessed directly.</para>
+<refsect3 id="PlankFileDockItemFileSortDataClass.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><structfield id="PlankFileDockItemFileSortDataClass.finalize">finalize</structfield>&#160;()</para></entry>
+<entry /><entry />
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
 </refsect2>
 <refsect2 id="PlankFileDockItem" role="struct">
 <title>struct PlankFileDockItem</title>

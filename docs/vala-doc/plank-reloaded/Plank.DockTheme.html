@@ -35,6 +35,14 @@
         <h2 class="main_title">Content:</h2>
         <h3 class="main_title">Properties:</h3>
         <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.ActiveItemColor.html" class="property">ActiveItemColor</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.ActiveItemStyleType.html" class="enum">ActiveItemStyleType</a></span> <b><a href="Plank.DockTheme.ActiveItemStyle.html" class="property">ActiveItemStyle</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Plank.DockTheme.ActiveTime.html" class="property">ActiveTime</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
             </span>
             <div class="leaf_brief_description">
@@ -87,7 +95,15 @@
             </span>
             <div class="leaf_brief_description">
             </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.IndicatorColor.html" class="property">IndicatorColor</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> <b><a href="Plank.DockTheme.IndicatorSize.html" class="property">IndicatorSize</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.IndicatorStyleType.html" class="enum">IndicatorStyleType</a></span> <b><a href="Plank.DockTheme.IndicatorStyle.html" class="property">IndicatorStyle</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
             </span>
             <div class="leaf_brief_description">
             </div></li>
@@ -145,6 +161,10 @@
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Creates a surface for an indicator.</span>
             </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> <b><a href="Plank.DockTheme.create_indicator_for_state.html" class="method">create_indicator_for_state</a></b> (<span class="main_type"><a href="Plank.IndicatorState.html" class="enum">IndicatorState</a></span> indicator_state, <span class="main_type"><a href="Plank.ItemState.html" class="enum">ItemState</a></span> item_state, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> icon_size, <span class="main_type"><a href="../gtk+-3.0/Gtk.PositionType.html" class="enum">PositionType</a></span> position, <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> model)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a surface of an indicator for the given states.</span>
+            </div></li>
           <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> <b><a href="Plank.DockTheme.create_urgent_glow.html" class="method">create_urgent_glow</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> size, <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> color, <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> model)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Creates a surface for an urgent glow.</span>
@@ -160,6 +180,10 @@
           <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Plank.DockTheme.draw_item_progress.html" class="method">draw_item_progress</a></b> (<span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> surface, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> icon_size, <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> color, <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> progress)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Draws a progress bar for an item.</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.get_styled_color.html" class="method">get_styled_color</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
             </div></li>
           <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Plank.DockTheme.reset_properties.html" class="virtual_method">reset_properties</a></b> ()
             </span>

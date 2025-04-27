@@ -29,6 +29,8 @@
 <row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCK-PREFERENCES-MAX-ICON-SIZE:CAPS">PLANK_DOCK_PREFERENCES_MAX_ICON_SIZE</link></entry></row>
 <row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCK-PREFERENCES-MIN-ICON-ZOOM:CAPS">PLANK_DOCK_PREFERENCES_MIN_ICON_ZOOM</link></entry></row>
 <row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCK-PREFERENCES-MAX-ICON-ZOOM:CAPS">PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCK-PREFERENCES-MIN-GAP-SIZE:CAPS">PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="PLANK-DOCK-PREFERENCES-MAX-GAP-SIZE:CAPS">PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE</link></entry></row>
 <row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockPreferences">PlankDockPreferences</link></entry></row>
 <row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="PlankDockPreferencesClass">PlankDockPreferencesClass</link></entry></row>
 
@@ -76,7 +78,19 @@
 <refsect2 id="PLANK-DOCK-PREFERENCES-MAX-ICON-ZOOM:CAPS" role="macro">
 <title>PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM</title>
 <indexterm zone="PLANK-DOCK-PREFERENCES-MAX-ICON-ZOOM:CAPS"><primary>PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM</primary></indexterm>
-<programlisting language="C">#define PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM 200
+<programlisting language="C">#define PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM 400
+</programlisting>
+</refsect2>
+<refsect2 id="PLANK-DOCK-PREFERENCES-MIN-GAP-SIZE:CAPS" role="macro">
+<title>PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE</title>
+<indexterm zone="PLANK-DOCK-PREFERENCES-MIN-GAP-SIZE:CAPS"><primary>PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE</primary></indexterm>
+<programlisting language="C">#define PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE 0
+</programlisting>
+</refsect2>
+<refsect2 id="PLANK-DOCK-PREFERENCES-MAX-GAP-SIZE:CAPS" role="macro">
+<title>PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE</title>
+<indexterm zone="PLANK-DOCK-PREFERENCES-MAX-GAP-SIZE:CAPS"><primary>PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE</primary></indexterm>
+<programlisting language="C">#define PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE 50
 </programlisting>
 </refsect2>
 <refsect2 id="PlankDockPreferences" role="struct">

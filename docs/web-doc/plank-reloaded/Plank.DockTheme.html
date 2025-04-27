@@ -27,6 +27,8 @@
         </ul>
         <hr class="navi_hr"/>
         <ul class="navi_main">
+          <li class="property"><a href="Plank.DockTheme.ActiveItemColor.html">ActiveItemColor</a></li>
+          <li class="property"><a href="Plank.DockTheme.ActiveItemStyle.html">ActiveItemStyle</a></li>
           <li class="property"><a href="Plank.DockTheme.ActiveTime.html">ActiveTime</a></li>
           <li class="property"><a href="Plank.DockTheme.BadgeColor.html">BadgeColor</a></li>
           <li class="property"><a href="Plank.DockTheme.BottomPadding.html">BottomPadding</a></li>
@@ -40,7 +42,9 @@
           <li class="property"><a href="Plank.DockTheme.HideTime.html">HideTime</a></li>
           <li class="property"><a href="Plank.DockTheme.HorizPadding.html">HorizPadding</a></li>
           <li class="property"><a href="Plank.DockTheme.IconShadowSize.html">IconShadowSize</a></li>
+          <li class="property"><a href="Plank.DockTheme.IndicatorColor.html">IndicatorColor</a></li>
           <li class="property"><a href="Plank.DockTheme.IndicatorSize.html">IndicatorSize</a></li>
+          <li class="property"><a href="Plank.DockTheme.IndicatorStyle.html">IndicatorStyle</a></li>
           <li class="property"><a href="Plank.DockTheme.ItemMoveTime.html">ItemMoveTime</a></li>
           <li class="property"><a href="Plank.DockTheme.ItemPadding.html">ItemPadding</a></li>
           <li class="property"><a href="Plank.DockTheme.LaunchBounceHeight.html">LaunchBounceHeight</a></li>
@@ -53,10 +57,12 @@
           <li class="creation_method"><a href="Plank.DockTheme.DockTheme.html">DockTheme</a></li>
           <li class="method"><a href="Plank.DockTheme.create_background.html">create_background</a></li>
           <li class="method"><a href="Plank.DockTheme.create_indicator.html">create_indicator</a></li>
+          <li class="method"><a href="Plank.DockTheme.create_indicator_for_state.html">create_indicator_for_state</a></li>
           <li class="method"><a href="Plank.DockTheme.create_urgent_glow.html">create_urgent_glow</a></li>
           <li class="method"><a href="Plank.DockTheme.draw_active_glow.html">draw_active_glow</a></li>
           <li class="method"><a href="Plank.DockTheme.draw_item_count.html">draw_item_count</a></li>
           <li class="method"><a href="Plank.DockTheme.draw_item_progress.html">draw_item_progress</a></li>
+          <li class="method"><a href="Plank.DockTheme.get_styled_color.html">get_styled_color</a></li>
           <li class="virtual_method"><a href="Plank.DockTheme.reset_properties.html">reset_properties</a></li>
           <li class="virtual_method"><a href="Plank.DockTheme.verify.html">verify</a></li>
         </ul>
@@ -87,6 +93,14 @@
         <h2 class="main_title">Content:</h2>
         <h3 class="main_title">Properties:</h3>
         <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.ActiveItemColor.html" class="property">ActiveItemColor</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.ActiveItemStyleType.html" class="enum">ActiveItemStyleType</a></span> <b><a href="Plank.DockTheme.ActiveItemStyle.html" class="property">ActiveItemStyle</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Plank.DockTheme.ActiveTime.html" class="property">ActiveTime</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
             </span>
             <div class="leaf_brief_description">
@@ -139,7 +153,15 @@
             </span>
             <div class="leaf_brief_description">
             </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.IndicatorColor.html" class="property">IndicatorColor</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/double.html" class="struct">double</a></span> <b><a href="Plank.DockTheme.IndicatorSize.html" class="property">IndicatorSize</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.IndicatorStyleType.html" class="enum">IndicatorStyleType</a></span> <b><a href="Plank.DockTheme.IndicatorStyle.html" class="property">IndicatorStyle</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
             </span>
             <div class="leaf_brief_description">
             </div></li>
@@ -197,6 +219,10 @@
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Creates a surface for an indicator.</span>
             </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> <b><a href="Plank.DockTheme.create_indicator_for_state.html" class="method">create_indicator_for_state</a></b> (<span class="main_type"><a href="Plank.IndicatorState.html" class="enum">IndicatorState</a></span> indicator_state, <span class="main_type"><a href="Plank.ItemState.html" class="enum">ItemState</a></span> item_state, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> icon_size, <span class="main_type"><a href="../gtk+-3.0/Gtk.PositionType.html" class="enum">PositionType</a></span> position, <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> model)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Creates a surface of an indicator for the given states.</span>
+            </div></li>
           <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> <b><a href="Plank.DockTheme.create_urgent_glow.html" class="method">create_urgent_glow</a></b> (<span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> size, <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> color, <span class="main_type"><a href="Plank.Surface.html" class="class">Surface</a></span> model)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Creates a surface for an urgent glow.</span>
@@ -213,6 +239,10 @@
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Draws a progress bar for an item.</span>
             </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Plank.Color.html" class="struct">Color</a></span> <b><a href="Plank.DockTheme.get_styled_color.html" class="method">get_styled_color</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Plank.DockTheme.reset_properties.html" class="virtual_method">reset_properties</a></b> ()
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Resets all properties to their default values. Called from construct 
@@ -226,8 +256,8 @@
         </ul>
         <h3 class="main_title">Inherited Members:</h3>
         <div class="box">
-          <div class="headline" onclick="toggle_box (this, 'box-content-17')">All known members inherited from class Plank.Theme</div>
-          <div class="content" id="box-content-17">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2617')">All known members inherited from class Plank.Theme</div>
+          <div class="content" id="box-content-2617">
             <div class="column">
               <ul class="navi_inline">
                 <li class="property"><a href="Plank.Theme.BottomRoundness.html">BottomRoundness</a></li>
@@ -265,8 +295,8 @@
           </div>
         </div>
         <div class="box">
-          <div class="headline" onclick="toggle_box (this, 'box-content-18')">All known members inherited from class Plank.Preferences</div>
-          <div class="content" id="box-content-18">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2618')">All known members inherited from class Plank.Preferences</div>
+          <div class="content" id="box-content-2618">
             <div class="column">
               <ul class="navi_inline">
                 <li class="method"><a href="Plank.Preferences.@delete.html">@delete</a></li>
@@ -292,8 +322,8 @@
           </div>
         </div>
         <div class="box">
-          <div class="headline" onclick="toggle_box (this, 'box-content-19')">All known members inherited from class GLib.Object</div>
-          <div class="content" id="box-content-19">
+          <div class="headline" onclick="toggle_box (this, 'box-content-2619')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-2619">
             <div class="column">
               <ul class="navi_inline">
                 <li class="method"><a href="../gobject-2.0/GLib.Object.@get.html">@get</a></li>

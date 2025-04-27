@@ -40,6 +40,12 @@
  * PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM:
  */
 /**
+ * PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE:
+ */
+/**
+ * PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE:
+ */
+/**
  * plank_dock_preferences_new:
  * @name: &nbsp;
  * 
@@ -86,6 +92,28 @@
  * @value: the new value of the <link linkend="PlankDockPreferences--IconSize"><type>"IconSize"</type></link> property
  * 
  * Set the value of the <link linkend="PlankDockPreferences--IconSize"><type>"IconSize"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
+ * PlankDockPreferences:GapSize:
+ */
+/**
+ * plank_dock_preferences_get_GapSize:
+ * @self: the <link linkend="PlankDockPreferences"><type>PlankDockPreferences</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockPreferences--GapSize"><type>"GapSize"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockPreferences--GapSize"><type>"GapSize"</type></link> property
+ */
+/**
+ * plank_dock_preferences_set_GapSize:
+ * @self: the <link linkend="PlankDockPreferences"><type>PlankDockPreferences</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockPreferences--GapSize"><type>"GapSize"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockPreferences--GapSize"><type>"GapSize"</type></link> property to @value.
  * 
  * 
  */

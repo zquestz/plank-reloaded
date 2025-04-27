@@ -8,6 +8,10 @@
  * The type for <link linkend="PlankDefaultApplicationDockItemProvider"><type>PlankDefaultApplicationDockItemProvider</type></link>.
  */
 /**
+ * plank_default_application_dock_item_provider_trigger_update_visible_elements:
+ * @self: the <link linkend="PlankDefaultApplicationDockItemProvider"><type>PlankDefaultApplicationDockItemProvider</type></link> instance
+ */
+/**
  * plank_default_application_dock_item_provider_pin_item:
  * @self: the <link linkend="PlankDefaultApplicationDockItemProvider"><type>PlankDefaultApplicationDockItemProvider</type></link> instance
  * @item: &nbsp;

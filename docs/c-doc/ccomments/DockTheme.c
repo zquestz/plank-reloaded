@@ -31,6 +31,20 @@
  * Returns: <para>a new surface with the indicator drawn on it </para>
  */
 /**
+ * plank_dock_theme_create_indicator_for_state:
+ * @color: <para>the color of the indicator </para>
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance
+ * @indicator_state: (in): &nbsp;.  <para>the state of indicator </para>
+ * @item_state: (in): &nbsp;.  <para>the state of item </para>
+ * @icon_size: (in): &nbsp;.  <para>the size of icons </para>
+ * @position: (in): &nbsp;.  <para>the position of the dock </para>
+ * @model: (in): &nbsp;.  <para>existing surface to use as basis of new surface </para>
+ * 
+ * Creates a surface of an indicator for the given states.
+ * 
+ * Returns: <para>a new surface with the indicator drawn on it </para>
+ */
+/**
  * plank_dock_theme_create_urgent_glow:
  * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance
  * @size: (in): &nbsp;.  <para>the size of the urgent glow </para>
@@ -72,6 +86,10 @@
  * @progress: (in): &nbsp;.  <para>the value between 0.0 and 1.0 </para>
  * 
  * Draws a progress bar for an item.
+ */
+/**
+ * plank_dock_theme_get_styled_color:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance
  */
 /**
  * plank_dock_theme_new:
@@ -166,6 +184,28 @@
  * 
  */
 /**
+ * PlankDockTheme:IndicatorColor:
+ */
+/**
+ * plank_dock_theme_get_IndicatorColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--IndicatorColor"><type>"IndicatorColor"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--IndicatorColor"><type>"IndicatorColor"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_IndicatorColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--IndicatorColor"><type>"IndicatorColor"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--IndicatorColor"><type>"IndicatorColor"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
  * PlankDockTheme:IndicatorSize:
  */
 /**
@@ -184,6 +224,28 @@
  * @value: the new value of the <link linkend="PlankDockTheme--IndicatorSize"><type>"IndicatorSize"</type></link> property
  * 
  * Set the value of the <link linkend="PlankDockTheme--IndicatorSize"><type>"IndicatorSize"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
+ * PlankDockTheme:IndicatorStyle:
+ */
+/**
+ * plank_dock_theme_get_IndicatorStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--IndicatorStyle"><type>"IndicatorStyle"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--IndicatorStyle"><type>"IndicatorStyle"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_IndicatorStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--IndicatorStyle"><type>"IndicatorStyle"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--IndicatorStyle"><type>"IndicatorStyle"</type></link> property to @value.
  * 
  * 
  */
@@ -580,6 +642,50 @@
  * @value: the new value of the <link linkend="PlankDockTheme--BadgeColor"><type>"BadgeColor"</type></link> property
  * 
  * Set the value of the <link linkend="PlankDockTheme--BadgeColor"><type>"BadgeColor"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
+ * PlankDockTheme:ActiveItemStyle:
+ */
+/**
+ * plank_dock_theme_get_ActiveItemStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--ActiveItemStyle"><type>"ActiveItemStyle"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--ActiveItemStyle"><type>"ActiveItemStyle"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_ActiveItemStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--ActiveItemStyle"><type>"ActiveItemStyle"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--ActiveItemStyle"><type>"ActiveItemStyle"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
+ * PlankDockTheme:ActiveItemColor:
+ */
+/**
+ * plank_dock_theme_get_ActiveItemColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--ActiveItemColor"><type>"ActiveItemColor"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--ActiveItemColor"><type>"ActiveItemColor"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_ActiveItemColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--ActiveItemColor"><type>"ActiveItemColor"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--ActiveItemColor"><type>"ActiveItemColor"</type></link> property to @value.
  * 
  * 
  */

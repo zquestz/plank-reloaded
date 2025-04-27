@@ -51,6 +51,28 @@
  * 
  */
 /**
+ * PlankDockItemPreferences:SortBy:
+ */
+/**
+ * plank_dock_item_preferences_get_SortBy:
+ * @self: the <link linkend="PlankDockItemPreferences"><type>PlankDockItemPreferences</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockItemPreferences--SortBy"><type>"SortBy"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockItemPreferences--SortBy"><type>"SortBy"</type></link> property
+ */
+/**
+ * plank_dock_item_preferences_set_SortBy:
+ * @self: the <link linkend="PlankDockItemPreferences"><type>PlankDockItemPreferences</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockItemPreferences--SortBy"><type>"SortBy"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockItemPreferences--SortBy"><type>"SortBy"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
  * PlankDockItemPreferences:
  * 
  * Contains preference keys for a dock item.

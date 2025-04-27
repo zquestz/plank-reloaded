@@ -1,12 +1,14 @@
-78% symbol docs coverage.
-848 symbols documented.
-53 symbols incomplete.
-239 not documented.
+77% symbol docs coverage.
+881 symbols documented.
+55 symbols incomplete.
+260 not documented.
 
 
 PLANK_DOCKLET_ENTRY_POINT
+PLANK_DOCK_PREFERENCES_MAX_GAP_SIZE
 PLANK_DOCK_PREFERENCES_MAX_ICON_SIZE
 PLANK_DOCK_PREFERENCES_MAX_ICON_ZOOM
+PLANK_DOCK_PREFERENCES_MIN_GAP_SIZE
 PLANK_DOCK_PREFERENCES_MIN_ICON_SIZE
 PLANK_DOCK_PREFERENCES_MIN_ICON_ZOOM
 PLANK_G_RESOURCE_PATH
@@ -45,6 +47,7 @@ PlankDockItemDrawValue (<items>)
 PlankDockItemDrawValueClass (finalize)
 PlankDockItemPreferences (<items>)
 PlankDockItemPreferences:Launcher
+PlankDockItemPreferences:SortBy
 PlankDockItemProvider (<items>)
 PlankDockPreferences (<items>)
 PlankDockPreferences:Alignment
@@ -53,6 +56,7 @@ PlankDockPreferences:AnchorFiles
 PlankDockPreferences:AutoPinning
 PlankDockPreferences:CurrentWorkspaceOnly
 PlankDockPreferences:DockItems
+PlankDockPreferences:GapSize
 PlankDockPreferences:HideDelay
 PlankDockPreferences:HideMode
 PlankDockPreferences:IconSize
@@ -73,6 +77,8 @@ PlankDockRenderer (<items>)
 PlankDockRenderer:controller
 PlankDockRenderer:theme
 PlankDockTheme (<items>)
+PlankDockTheme:ActiveItemColor
+PlankDockTheme:ActiveItemStyle
 PlankDockTheme:ActiveTime
 PlankDockTheme:BadgeColor
 PlankDockTheme:BottomPadding
@@ -86,7 +92,9 @@ PlankDockTheme:GlowTime
 PlankDockTheme:HideTime
 PlankDockTheme:HorizPadding
 PlankDockTheme:IconShadowSize
+PlankDockTheme:IndicatorColor
 PlankDockTheme:IndicatorSize
+PlankDockTheme:IndicatorStyle
 PlankDockTheme:ItemMoveTime
 PlankDockTheme:ItemPadding
 PlankDockTheme:LaunchBounceHeight
@@ -112,6 +120,14 @@ PlankDrawingService (<items>)
 PlankFactory (priv)
 PlankFileDockItem (<items>)
 PlankFileDockItem:OwnedFile
+PlankFileDockItemFileSortData (<items>)
+PlankFileDockItemFileSortData:content-type
+PlankFileDockItemFileSortData:creation-date
+PlankFileDockItemFileSortData:display-name
+PlankFileDockItemFileSortData:menu-item
+PlankFileDockItemFileSortData:modified-date
+PlankFileDockItemFileSortData:size
+PlankFileDockItemFileSortDataClass (finalize)
 PlankHideManager (<items>)
 PlankHideManager:controller
 PlankHoverWindow (<items>)
@@ -170,6 +186,7 @@ plank_composited_window_new
 plank_composited_window_new_with_type
 plank_dbus_manager_new
 plank_default_application_dock_item_provider_pin_item
+plank_default_application_dock_item_provider_trigger_update_visible_elements
 plank_dock_container_connect_element
 plank_dock_container_disconnect_element
 plank_dock_container_move_element
@@ -187,6 +204,7 @@ plank_dock_item_unset_move_state
 plank_dock_preferences_new
 plank_dock_renderer_animate_items
 plank_dock_renderer_update_local_cursor
+plank_dock_theme_get_styled_color
 plank_dock_theme_new
 plank_docklet_get_description
 plank_docklet_get_icon
@@ -205,10 +223,12 @@ plank_environment_session_class
 plank_environment_session_desktop
 plank_environment_session_type
 plank_factory_new
+plank_file_dock_item_file_sort_data_new
 plank_file_dock_item_new
 plank_file_dock_item_new_with_dockitem_file
 plank_file_dock_item_new_with_dockitem_filename
 plank_file_dock_item_new_with_file
+plank_helpers_visible_window_count
 plank_hide_manager_update_barrier
 plank_hover_window_new
 plank_item_factory_new
@@ -266,6 +286,8 @@ Enums:short_description
 Environment:long_description
 Environment:short_description
 Factory:long_description
+Helpers:long_description
+Helpers:short_description
 HideManager:long_description
 HoverWindow:long_description
 ItemFactory:long_description

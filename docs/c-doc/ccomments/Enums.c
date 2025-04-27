@@ -1,4 +1,21 @@
 /**
+ * PlankIndicatorStyleType:
+ * @PLANK_INDICATOR_STYLE_TYPE_LEGACY: A glowing dot which is gtk-theme-colored.
+ * @PLANK_INDICATOR_STYLE_TYPE_GLOW: A glowing dot using a color defined by the theme
+ * @PLANK_INDICATOR_STYLE_TYPE_CIRCLE: A solid circle using a color defined by the theme
+ * @PLANK_INDICATOR_STYLE_TYPE_LINE: A solid line using a color defined by the theme
+ * 
+ * The style of the item indicator.
+ */
+/**
+ * PlankActiveItemStyleType:
+ * @PLANK_ACTIVE_ITEM_STYLE_TYPE_LEGACY: A vertical gradient which is colored based of the item&apos;s icon.
+ * @PLANK_ACTIVE_ITEM_STYLE_TYPE_GRADIENT: A vertical gradient using a color defined by the theme
+ * @PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID: A solid color defined by the theme
+ * 
+ * The style of the active item.
+ */
+/**
  * PlankAnimationType:
  * @PLANK_ANIMATION_TYPE_NONE: No animation.
  * @PLANK_ANIMATION_TYPE_BOUNCE: Bounce the icon.
@@ -14,6 +31,15 @@
  * @PLANK_INDICATOR_STATE_SINGLE_PLUS: Show multiple indicators - there are more than 1 window for this item.
  * 
  * What item indicator to show.
+ */
+/**
+ * PlankUpdateIndicatorEvent:
+ * @PLANK_UPDATE_INDICATOR_EVENT_INITIALIZE: Initialize - App state was just initialized.
+ * @PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED: Window added - a new window was added to the item.
+ * @PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED: Window removed - a window was removed from the item.
+ * @PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED: Running changed - the running state of the item changed.
+ * 
+ * Type of event update_indicator is processing.
  */
 /**
  * PlankItemState:

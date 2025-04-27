@@ -20,6 +20,7 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="namespace"><a href="Plank.html">Plank</a></li>
+          <li class="namespace"><a href="Plank.Helpers.html">Plank.Helpers</a></li>
         </ul>
       </div>
       <div class="site_content">
@@ -148,6 +149,8 @@
           </ul>
           <h3 class="main_title">Enums:</h3>
           <ul class="navi_inline">
+            <li class="enum"><a href="Plank.ActiveItemStyleType.html">ActiveItemStyleType</a> - <span class="brief_description">The style of the 
+                active item.</span></li>
             <li class="enum"><a href="Plank.AnimationMode.html">AnimationMode</a> - <span class="brief_description">The available animation modes
               </span></li>
             <li class="enum"><a href="Plank.AnimationType.html">AnimationType</a> - <span class="brief_description">What type of animation to perform 
@@ -156,6 +159,8 @@
             </li>
             <li class="enum"><a href="Plank.IndicatorState.html">IndicatorState</a> - <span class="brief_description">What item indicator to show.
               </span></li>
+            <li class="enum"><a href="Plank.IndicatorStyleType.html">IndicatorStyleType</a> - <span class="brief_description">The style of the item 
+                indicator.</span></li>
             <li class="enum"><a href="Plank.ItemState.html">ItemState</a> - <span class="brief_description">The current activity state of an item. The
                 item has several states to track and can be in any combination of them.</span></li>
             <li class="enum"><a href="Plank.LogLevel.html">LogLevel</a> - <span class="brief_description">Controls what messages show in the console 
@@ -165,6 +170,8 @@
             <li class="enum"><a href="Plank.SurfaceCacheFlags.html">SurfaceCacheFlags</a> - <span class="brief_description">Controls some internal 
                 behaviors of a <a href="Plank.SurfaceCache.html" class="class">Plank.SurfaceCache</a></span></li>
             <li class="enum"><a href="Plank.TaskPriority.html">TaskPriority</a></li>
+            <li class="enum"><a href="Plank.UpdateIndicatorEvent.html">UpdateIndicatorEvent</a> - <span class="brief_description">Type of event 
+                update_indicator is processing.</span></li>
             <li class="enum"><a href="Plank.XdgSessionClass.html">XdgSessionClass</a></li>
             <li class="enum"><a href="Plank.XdgSessionDesktop.html">XdgSessionDesktop</a></li>
             <li class="enum"><a href="Plank.XdgSessionType.html">XdgSessionType</a></li>
@@ -282,6 +289,19 @@
             <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/uint.html" class="struct">uint</a></span> <b><a href="Plank.get_nano_version.html" class="method">get_nano_version</a></b> ()
               </span>
               <div class="leaf_brief_description"><span class="brief_description">Returns the nano version number of the plank library.</span>
+              </div></li>
+          </ul>
+          <li class="namespace"><a href="Plank.Helpers.html">Helpers</a></li>
+          <h3 class="main_title">Methods:</h3>
+          <ul class="navi_inline">
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> <b><a href="Plank.Helpers.truncate_middle.html" class="method">truncate_middle</a></b> (<span class="main_basic_type"><a href="../glib-2.0/string.html" class="class">string</a></span> str, <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> max_length)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Truncates a string at the middle to ensure it is no longer than 
+                  max_length. If the string is truncated, an ellipsis will be inserted in the middle.</span>
+              </div></li>
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Plank.Helpers.visible_window_count.html" class="method">visible_window_count</a></b> (<span class="main_type"><a href="../glib-2.0/GLib.List.html" class="class">List</a></span>&lt;<span class="main_keyword">unowned</span> <span class="main_type"><a href="../libbamf3/Bamf.Window.html" class="class">Window</a></span>&gt; windows)
+              </span>
+              <div class="leaf_brief_description">
               </div></li>
           </ul>
         </ul>

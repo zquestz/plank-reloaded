@@ -248,6 +248,21 @@
  * Returns: the value of the <link linkend="PlankPositionManager--IconSize"><type>"IconSize"</type></link> property
  */
 /**
+ * PlankPositionManager:GapSize:
+ * 
+ * Cached current gap size for the dock.
+ */
+/**
+ * plank_position_manager_get_GapSize:
+ * @self: the <link linkend="PlankPositionManager"><type>PlankPositionManager</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankPositionManager--GapSize"><type>"GapSize"</type></link> property.
+ * 
+ * Cached current gap size for the dock.
+ * 
+ * Returns: the value of the <link linkend="PlankPositionManager--GapSize"><type>"GapSize"</type></link> property
+ */
+/**
  * PlankPositionManager:ZoomIconSize:
  * 
  * Cached current icon size for the dock.

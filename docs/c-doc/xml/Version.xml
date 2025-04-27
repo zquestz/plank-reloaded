@@ -62,7 +62,7 @@
 <refsect2 id="PLANK-MICRO-VERSION:CAPS" role="macro">
 <title>PLANK_MICRO_VERSION</title>
 <indexterm zone="PLANK-MICRO-VERSION:CAPS"><primary>PLANK_MICRO_VERSION</primary></indexterm>
-<programlisting language="C">#define PLANK_MICRO_VERSION 118
+<programlisting language="C">#define PLANK_MICRO_VERSION 121
 </programlisting>
 <para>Like get_micro_version, but from the headers used at application compile time, rather than from the library linked against at application run time</para>
 </refsect2>
