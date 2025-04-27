@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"POT-Creation-Date: 2025-04-26 17:55-1000\n"
 "PO-Revision-Date: 2020-02-25 01:57+0000\n"
 "Last-Translator: Grzegorz Kulik <Unknown>\n"
 "Language-Team: Silesian <szl@li.org>\n"
@@ -215,11 +215,11 @@ msgstr "Zachowanie"
 msgid "Docklets"
 msgstr "Docklety"
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:32
 msgid "No applications available"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:51
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""
@@ -311,8 +311,8 @@ msgid "Maximum Entries"
 msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:177
-#: docklets/Clippy/ClippyClipboardItem.vala:273
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr ""
 
@@ -473,20 +473,20 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Grzegorz Kulik https://launchpad.net/~chlodny"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "Trzim we do_ku"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close All"
 msgstr "Za_wrzij wszyjsko"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close"
 msgstr "Za_wrzij"
 
-#: lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:495
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Ściepnij, żeby ôtworzić ze %s"

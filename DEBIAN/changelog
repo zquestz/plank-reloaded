@@ -1,3 +1,15 @@
+plank-reloaded (0.11.122-1) unstable; urgency=medium
+
+  * Add new theming options for app indicators and active app
+  * Add new Minimal and Minimal-Light themes
+  * Fix panel display logic for Xfce/MATE/KDE
+  * Shorten long window titles in dock content menu
+  * Update default logging level to INFO
+  * Fix icon race condition when reinstalling/updating applications
+  * Updated documentation to reflect new features
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 26 Apr 2025 18:17:02 -1000
+
 plank-reloaded (0.11.121-1) unstable; urgency=medium
 
   * Added GapSize to set the gap between the dock and screen edge

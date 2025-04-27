@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"POT-Creation-Date: 2025-04-26 17:55-1000\n"
 "PO-Revision-Date: 2017-03-20 05:01+0000\n"
 "Last-Translator: José Alfredo Múrcia Andrés <joamuran@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -215,11 +215,11 @@ msgstr "Comportament"
 msgid "Docklets"
 msgstr "Miniaplicacions"
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:32
 msgid "No applications available"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:51
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""
@@ -311,8 +311,8 @@ msgid "Maximum Entries"
 msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:177
-#: docklets/Clippy/ClippyClipboardItem.vala:273
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr ""
 
@@ -477,20 +477,20 @@ msgstr ""
 "  José Alfredo Múrcia Andrés https://launchpad.net/~joamuran\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Ancora al dock"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close All"
 msgstr "Tan_ca-ho tot"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close"
 msgstr "_Tanca"
 
-#: lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:495
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Deixa anar per obrir amb %s"

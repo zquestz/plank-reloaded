@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"POT-Creation-Date: 2025-04-26 17:55-1000\n"
 "PO-Revision-Date: 2025-04-24 07:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -219,11 +219,11 @@ msgstr "行为"
 msgid "Docklets"
 msgstr "小部件"
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:32
 msgid "No applications available"
 msgstr "沒有可用的应用程序"
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:51
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "应用程序"
@@ -315,8 +315,8 @@ msgid "Maximum Entries"
 msgstr "最大数目"
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:177
-#: docklets/Clippy/ClippyClipboardItem.vala:273
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr "图像"
 
@@ -483,20 +483,20 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close All"
 msgstr "_全部关闭"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close"
 msgstr "_关闭"
 
-#: lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:495
 #, c-format
 msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"

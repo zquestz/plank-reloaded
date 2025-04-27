@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"POT-Creation-Date: 2025-04-26 17:55-1000\n"
 "PO-Revision-Date: 2017-04-15 17:34+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -215,11 +215,11 @@ msgstr "ባህሪው"
 msgid "Docklets"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:32
 msgid "No applications available"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:51
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""
@@ -311,8 +311,8 @@ msgid "Maximum Entries"
 msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:177
-#: docklets/Clippy/ClippyClipboardItem.vala:273
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr ""
 
@@ -474,20 +474,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  samson https://launchpad.net/~sambelet"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "በ ማሳረፊያ ውስጥ ማስቀመጫ"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close All"
 msgstr "ሁሉንም _መዝጊያ"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close"
 msgstr "ዝጋ (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:495
 #, c-format
 msgid "Drop to open with %s"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-23 22:19-1000\n"
+"POT-Creation-Date: 2025-04-26 17:55-1000\n"
 "PO-Revision-Date: 2025-04-24 07:47\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -224,11 +224,11 @@ msgstr "Поведение"
 msgid "Docklets"
 msgstr "Доклеты"
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:32
 msgid "No applications available"
 msgstr "Нет доступных приложений"
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:51
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "Приложения"
@@ -320,8 +320,8 @@ msgid "Maximum Entries"
 msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:180
-#: docklets/Clippy/ClippyClipboardItem.vala:177
-#: docklets/Clippy/ClippyClipboardItem.vala:273
+#: docklets/Clippy/ClippyClipboardItem.vala:153
+#: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
 msgstr "Изображение"
 
@@ -495,20 +495,20 @@ msgstr ""
 "Github Contributions:\n"
 "Danila Vyalikov https://github.com/col83"
 
-#: lib/Items/ApplicationDockItem.vala:412 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Прикрепить к панели"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close All"
 msgstr "_Закрыть всё"
 
-#: lib/Items/ApplicationDockItem.vala:420
+#: lib/Items/ApplicationDockItem.vala:422
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: lib/Items/ApplicationDockItem.vala:492
+#: lib/Items/ApplicationDockItem.vala:495
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Отпустите, чтобы открыть в %s"

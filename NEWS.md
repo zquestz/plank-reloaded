@@ -2,6 +2,16 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.122 "Reloaded" (2025-04-26)
+
+- Add new theming options for app indicators and active app
+- Add new Minimal and Minimal-Light themes
+- Fix panel display logic for Xfce/MATE/KDE
+- Shorten long window titles in dock content menu
+- Update default logging level to INFO
+- Fix icon race condition when reinstalling/updating applications
+- Updated documentation to reflect new features
+
 ## 0.11.121 "Reloaded" (2025-04-23)
 
 - Added GapSize to set the gap between the dock and the screen edge
