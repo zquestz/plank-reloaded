@@ -34,7 +34,7 @@ lt_age = '0'
 lib_version = '@0@.@1@.@2@'.format(lt_current, lt_revision, lt_age)
 lib_soversion = lt_current
 
-production_release = get_option('production_release')
+production_release = get_option('production-release')
 if not production_release
   git_version = run_command('git', 'describe', '--tags', check: false).stdout().strip()
   if git_version != ''

@@ -43,8 +43,8 @@ jobs:
 
       - name: Build
         run: |
-          meson setup --prefix=/usr -Dproduction_release=true build
-          meson configure build -D enable-apport=false
+          meson setup --prefix=/usr build
+          meson configure build -D enable-apport=false -D production-release=true
           meson compile -C build
           meson install --destdir="$(pwd)/release_build" -C build
 

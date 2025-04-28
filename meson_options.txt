@@ -50,7 +50,7 @@ option(
 )
 
 option(
-  'production_release',
+  'production-release',
   type: 'boolean',
   value: false,
   description: 'Build in production release mode'
