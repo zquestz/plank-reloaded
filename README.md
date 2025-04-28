@@ -179,6 +179,20 @@ plank -n dock2
 
 Each instance can be configured independently.
 
+#### Moving Docks Between Monitors
+
+You can instantly move docks to your active monitor (where your cursor is) by sending a USR1 signal to the plank process:
+
+```bash
+killall -USR1 plank
+```
+
+This feature is particularly useful when:
+
+- Assigned to a global keyboard shortcut
+- Configured as a hot corner action
+- Working with dynamic multi-monitor setups
+
 ### How do I auto-start Plank Reloaded when I log in?
 
 Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
