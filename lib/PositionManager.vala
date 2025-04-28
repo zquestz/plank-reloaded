@@ -104,6 +104,32 @@ namespace Plank {
       }
     }
 
+    public void move_to_active_monitor () {
+      var screen = controller.window.get_screen ();
+      var display = screen.get_display ();
+
+      int x, y;
+      display.get_default_seat ()
+       .get_pointer ()
+       .get_position (null, out x, out y);
+
+      var monitor = display.get_monitor_at_point (x, y);
+      int monitor_num = 0;
+
+      int n_monitors = display.get_n_monitors ();
+      for (int i = 0; i < n_monitors; i++) {
+        if (display.get_monitor (i) == monitor)
+          monitor_num = i;
+      }
+
+      string monitor_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (monitor_num);
+
+      if (controller.prefs.Monitor != monitor_name) {
+        debug ("Moving dock to current monitor %d (%s)", monitor_num, monitor_name);
+        controller.prefs.Monitor = monitor_name;
+      }
+    }
+
     public static string[] get_monitor_plug_names (Gdk.Screen screen) {
       var display = screen.get_display ();
       int n_monitors = display.get_n_monitors ();
