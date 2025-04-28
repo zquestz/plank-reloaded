@@ -25612,6 +25612,7 @@
     <keyword type="property" name="Plank.HideManager.Hovered" link="Plank.HideManager.Hovered.html"/>
     <keyword type="" name="Plank.HideManager" link="Plank.HideManager.html"/>
     <keyword type="function" name="Plank.PositionManager.initialize" link="Plank.PositionManager.initialize.html"/>
+    <keyword type="function" name="Plank.PositionManager.move_to_active_monitor" link="Plank.PositionManager.move_to_active_monitor.html"/>
     <keyword type="function" name="Plank.PositionManager.update" link="Plank.PositionManager.update.html"/>
     <keyword type="function" name="Plank.PositionManager.is_horizontal_dock" link="Plank.PositionManager.is_horizontal_dock.html"/>
     <keyword type="function" name="Plank.PositionManager.get_cursor_region" link="Plank.PositionManager.get_cursor_region.html"/>

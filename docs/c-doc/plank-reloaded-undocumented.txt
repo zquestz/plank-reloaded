@@ -1,7 +1,7 @@
 77% symbol docs coverage.
 881 symbols documented.
 55 symbols incomplete.
-260 not documented.
+261 not documented.
 
 
 PLANK_DOCKLET_ENTRY_POINT
@@ -236,6 +236,7 @@ plank_plank_dock_item_get_instance
 plank_poof_window_get_default
 plank_position_manager_get_barrier
 plank_position_manager_get_monitor_plug_names
+plank_position_manager_move_to_active_monitor
 plank_preferences_window_new
 plank_surface_cache_clear
 plank_surface_cache_get_surface

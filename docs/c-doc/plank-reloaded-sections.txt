@@ -264,6 +264,7 @@ plank_color_get_type
 <TITLE>PlankPositionManager</TITLE>
 PLANK_TYPE_POSITION_MANAGER
 plank_position_manager_initialize
+plank_position_manager_move_to_active_monitor
 plank_position_manager_update
 plank_position_manager_is_horizontal_dock
 plank_position_manager_get_cursor_region
