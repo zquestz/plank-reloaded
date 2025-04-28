@@ -44,6 +44,33 @@ namespace Plank {
     {
       Posix.signal (Posix.Signal.INT, sig_handler);
       Posix.signal (Posix.Signal.TERM, sig_handler);
+      Posix.signal (Posix.Signal.USR1, usr1_sig_handler);
+    }
+
+    /**
+     * Provide USR1 signal to move dock to the current monitor.
+     */
+    static void usr1_sig_handler (int sig) {
+      debug ("Caught signal (%d)", sig);
+
+      unowned AbstractMain app = (AbstractMain) GLib.Application.get_default();
+      if (app == null || app.docks == null || app.docks.size == 0)
+        return;
+
+      int x, y;
+      Gdk.Display.get_default().get_pointer(null, out x, out y, null);
+
+      var screen = Gdk.Screen.get_default();
+      var display = screen.get_display();
+      int monitor_num = screen.get_monitor_at_point(x, y);
+      var monitor = display.get_monitor(monitor_num);
+      string monitor_name = monitor.get_model() ?? "PLUG_MONITOR_%i".printf(monitor_num);
+
+      debug ("Moving dock to current monitor (%s)", monitor_name);
+
+      foreach (var dock in app.docks) {
+        dock.prefs.Monitor = monitor_name;
+      }
     }
 
     /**
