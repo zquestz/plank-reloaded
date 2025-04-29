@@ -822,8 +822,9 @@ namespace Plank {
     }
 
     void draw_item_shadow (Cairo.Context cr, DockItem item, DockItemDrawValue draw_value) {
-      unowned PositionManager position_manager = controller.position_manager;
-      var shadow_size = position_manager.IconShadowSize;
+      var scaled_icon_size = draw_value.icon_size / 10.0;
+      var shadow_size = theme.IconShadowSize * scaled_icon_size;
+
       // Inflate size to fit shadow
       var icon_size = (int) (draw_value.icon_size + 2 * shadow_size) * window_scale_factor;
 
@@ -875,9 +876,11 @@ namespace Plank {
     [CCode (instance_pos = -1)]
     Surface draw_item_background (int width, int height, Surface model, DockItem item) {
       unowned PositionManager position_manager = controller.position_manager;
-      var shadow_size = position_manager.IconShadowSize * window_scale_factor;
 
       var draw_value = position_manager.get_draw_value_for_item (item);
+      var scaled_icon_size = draw_value.icon_size / 10.0;
+      var shadow_size = theme.IconShadowSize * scaled_icon_size * window_scale_factor;
+
       var icon_size = (int) draw_value.icon_size * window_scale_factor;
       var icon_surface = item.get_surface (icon_size, icon_size, model);
 
@@ -886,7 +889,7 @@ namespace Plank {
       unowned Cairo.Context cr = surface.Context;
       var shadow_surface = icon_surface.create_mask (0.4, null);
 
-      var xoffset = 0, yoffset = 0;
+      double xoffset = 0, yoffset = 0;
       switch (position_manager.Position) {
       default :
       case Gtk.PositionType.BOTTOM :
@@ -905,7 +908,7 @@ namespace Plank {
 
       cr.set_source_surface (shadow_surface.Internal, shadow_size + xoffset, shadow_size + yoffset);
       cr.paint_with_alpha (0.44);
-      surface.gaussian_blur (shadow_size);
+      surface.gaussian_blur ((int) Math.round(shadow_size));
 
       return surface;
     }
