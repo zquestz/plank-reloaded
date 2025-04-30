@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-26 17:55-1000\n"
+"POT-Creation-Date: 2025-04-29 18:57-1000\n"
 "PO-Revision-Date: 2020-04-11 21:41+0000\n"
 "Last-Translator: mooman <Unknown>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
@@ -466,7 +466,7 @@ msgstr ""
 msgid "Drop to add to dock"
 msgstr "Drop to add to dock"
 
-#: lib/Factories/AbstractMain.vala:405 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"

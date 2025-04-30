@@ -1,3 +1,11 @@
+plank-reloaded (0.11.123-1) unstable; urgency=medium
+
+  * Added USR1 signal support to move dock to the active monitor
+  * Updated quality and consistency of drop shadows
+  * Renamed production release option to production-release
+
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 29 Apr 2025 18:54:11 -1000
+
 plank-reloaded (0.11.122-1) unstable; urgency=medium
 
   * Add new theming options for app indicators and active app

@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.123 "Reloaded" (2025-04-29)
+
+- Added USR1 signal support to move dock to the active monitor
+- Updated quality and consistency of drop shadows
+- Renamed production release option to production-release
+
 ## 0.11.122 "Reloaded" (2025-04-26)
 
 - Add new theming options for app indicators and active app
