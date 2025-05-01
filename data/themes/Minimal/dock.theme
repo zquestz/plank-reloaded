@@ -60,7 +60,7 @@ GlowTime=10000
 #The time (in ms) of each pulse of the hidden-dock urgent glow.
 GlowPulseTime=20000
 #The hue-shift (-180 to 180) of the urgent indicator color.
-UrgentHueShift=180
+UrgentHueShift=0
 #The time (in ms) to move an item to its new position or its addition/removal to/from the dock.
 ItemMoveTime=800
 #Whether background and icons will unhide/hide with different speeds. The top-border of both will leave/hit the screen-edge at the same time.
