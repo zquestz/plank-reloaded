@@ -67,6 +67,10 @@ ItemMoveTime=800
 CascadeHide=true
 #The color (RGBA) of the badge displaying urgent count
 BadgeColor=200;;200;;200;;255
+#The badge style, styles: indicator-color, solid
+BadgeStyle=1
+#The color (RGBA) of the badge text displaying urgent count
+BadgeTextColor=64;;64;;64;;255
 #The style of the active item, styles: gradient, color-gradient, solid.
 ActiveItemStyle=2
 #The color (RGBA) of the active item background.

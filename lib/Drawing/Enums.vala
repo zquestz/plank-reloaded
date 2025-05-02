@@ -58,4 +58,18 @@ namespace Plank {
      */
     SOLID
   }
+
+  /**
+   * The style of the badge.
+   */
+  public enum BadgeStyleType {
+    /**
+     * A vertical gradient which is colored based on the indicator color
+     */
+    LEGACY,
+    /**
+     * A solid color defined by the theme
+     */
+    SOLID
+  }
 }

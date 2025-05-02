@@ -101,6 +101,12 @@ namespace Plank {
     [Description (nick = "badge-color", blurb = "The color (RGBA) of the badge displaying urgent count")]
     public Color BadgeColor { get; set; }
 
+    [Description (nick = "badge-style", blurb = "The badge style, styles: indicator-color, solid")]
+    public BadgeStyleType BadgeStyle { get; set; }
+
+    [Description (nick = "badge-text-color", blurb = "The color (RGBA) of the badge text")]
+    public Color BadgeTextColor { get; set; }
+
     [Description (nick = "active-item-style", blurb = "The style of the active item, styles: gradient, color-gradient, solid.")]
     public ActiveItemStyleType ActiveItemStyle { get; set; }
 
@@ -143,6 +149,8 @@ namespace Plank {
       ItemMoveTime = 450;
       CascadeHide = true;
       BadgeColor = { 0.0, 0.0, 0.0, 0.0 };
+      BadgeStyle = BadgeStyleType.LEGACY;
+      BadgeTextColor = { 0.0, 0.0, 0.0, 0.0 };
       ActiveItemColor = { 0.0, 0.0, 0.0, 1.0 };
       ActiveItemStyle = ActiveItemStyleType.LEGACY;
     }
@@ -483,41 +491,47 @@ namespace Plank {
     public void draw_item_count (Surface surface, int icon_size, Color color, int64 count) {
       unowned Cairo.Context cr = surface.Context;
 
-      // Expect the icon to be in the center of the given surface
-      // and adjust the offset accordingly
-      var x = Math.floor ((surface.Width - icon_size) / 2);
-      var y = Math.floor ((surface.Height - icon_size) / 2);
+      var x = (surface.Width - icon_size) / 2.0;
+      var y = (surface.Height - icon_size) / 2.0;
 
       var badge_color_start = color;
-      badge_color_start.brighten_val (1.0);
       var badge_color_middle = color;
-      badge_color_middle.set_sat (0.87);
       var badge_color_end = color;
-      badge_color_end.set_sat (0.87);
-      badge_color_end.darken_val (0.7);
-      var stroke_color_start = color;
-      stroke_color_start.set_sat (0.9);
-      var stroke_color_end = color;
-      stroke_color_end.set_sat (0.9);
-      stroke_color_end.darken_val (0.9);
 
-      // FIXME enhance scalability and adjustments depending on icon-size
+      var stroke_color_start = color;
+      var stroke_color_end = color;
+
+      if (BadgeStyle == BadgeStyleType.LEGACY) {
+        badge_color_start.brighten_val (1.0);
+        badge_color_middle.set_sat (0.87);
+        badge_color_end.set_sat (0.87);
+        badge_color_end.darken_val (0.7);
+
+        stroke_color_start.set_sat (0.9);
+        stroke_color_end.set_sat (0.9);
+        stroke_color_end.darken_val (0.9);
+      } else if (BadgeStyle == BadgeStyleType.SOLID) {
+        stroke_color_start = BadgeTextColor;
+        stroke_color_end = BadgeTextColor;
+      }
+
       var is_small = icon_size < 32;
-      var is_large = icon_size > 54;
-      var padding = (is_small ? 1.0 : (is_large ? 4.5 : 2.0));
-      var line_width = (is_small ? 0.0 : (is_large ? 2.0 : 1.0));
+      var padding = (is_small ? 0.0 : double.max(1, icon_size / 32.0));
+      var line_width = (is_small ? 0.0 : double.max(1, padding / 2.0));
 
       var height = Math.floor ((is_small ? 0.80 : 0.50) * icon_size - 2.0 * line_width);
       var width = Math.floor ((0.75 + 0.25 * count.to_string ().length) * height);
       var max_width = icon_size - 2.0 * line_width;
-      if (width > max_width)
+      if (width > max_width) {
         width = max_width;
+      }
 
-      // Mirror horizontal badge-position for RTL environments
-      if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
+      if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL) {
         x += line_width + line_width / 2.0;
-      else
+      } else {
         x += icon_size - width - 1.5 * line_width;
+      }
+
       y += line_width + line_width / 2.0;
 
       cr.set_line_width (line_width);
@@ -525,23 +539,34 @@ namespace Plank {
       Cairo.Pattern stroke, fill;
 
       if (!is_small) {
-        // draw outline shadow
-        stroke = new Cairo.Pattern.rgba (0.2, 0.2, 0.2, 0.3);
-        draw_rounded_line (cr, x, y, width + line_width, height, true, true, stroke, null);
+        if (BadgeStyle == BadgeStyleType.LEGACY) {
+          stroke = new Cairo.Pattern.rgba (0.2, 0.2, 0.2, 0.3);
+          draw_rounded_line (cr, x, y, width + line_width, height, true, true, stroke, null);
+        }
 
-        // draw filled gradient with outline
         stroke = new Cairo.Pattern.linear (0, y, 0, y + height);
-        stroke.add_color_stop_rgba (0.2, stroke_color_start.red, stroke_color_start.green, stroke_color_start.blue, 0.8);
-        stroke.add_color_stop_rgba (0.8, stroke_color_end.red, stroke_color_end.green, stroke_color_end.blue, 0.8);
+        if (BadgeStyle == BadgeStyleType.LEGACY) {
+          stroke.add_color_stop_rgba (0.2, stroke_color_start.red, stroke_color_start.green, stroke_color_start.blue, 0.8);
+          stroke.add_color_stop_rgba (0.8, stroke_color_end.red, stroke_color_end.green, stroke_color_end.blue, 0.8);
+        } else if (BadgeStyle == BadgeStyleType.SOLID) {
+          stroke.add_color_stop_rgba (0, stroke_color_start.red, stroke_color_start.green, stroke_color_start.blue, 0.4);
+        }
+
         fill = new Cairo.Pattern.linear (0, y, 0, y + height);
-        fill.add_color_stop_rgba (0.1, badge_color_start.red, badge_color_start.green, badge_color_start.blue, 1.0);
-        fill.add_color_stop_rgba (0.5, badge_color_middle.red, badge_color_middle.green, badge_color_middle.blue, 1.0);
-        fill.add_color_stop_rgba (0.9, badge_color_end.red, badge_color_end.green, badge_color_end.blue, 1.0);
+        if (BadgeStyle == BadgeStyleType.LEGACY) {
+          fill.add_color_stop_rgba (0.1, badge_color_start.red, badge_color_start.green, badge_color_start.blue, 1.0);
+          fill.add_color_stop_rgba (0.5, badge_color_middle.red, badge_color_middle.green, badge_color_middle.blue, 1.0);
+          fill.add_color_stop_rgba (0.9, badge_color_end.red, badge_color_end.green, badge_color_end.blue, 1.0);
+        } else if (BadgeStyle == BadgeStyleType.SOLID) {
+          fill.add_color_stop_rgba (0, badge_color_start.red, badge_color_start.green, badge_color_start.blue, 1.0);
+        }
+
         draw_rounded_line (cr, x, y, width, height, true, true, stroke, fill);
 
-        // draw inline highlight
-        stroke = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 0.1);
-        draw_rounded_line (cr, x + line_width, y + line_width, width - 2 * line_width, height - 2 * line_width, true, true, stroke, null);
+        if (BadgeStyle == BadgeStyleType.LEGACY) {
+          stroke = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 0.1);
+          draw_rounded_line (cr, x + line_width, y + line_width, width - 2 * line_width, height - 2 * line_width, true, true, stroke, null);
+        }
       }
 
       var layout = new Pango.Layout (Gdk.pango_context_get ());
@@ -567,7 +592,6 @@ namespace Plank {
 
       cr.move_to (x + Math.floor (width / 2.0 - scale * logical_rect.width / 2.0), y + Math.floor (height / 2.0 - scale * logical_rect.height / 2.0));
 
-      // draw text
       cr.save ();
       if (scale < 1)
         cr.scale (scale, scale);
@@ -575,7 +599,14 @@ namespace Plank {
       cr.set_line_width (line_width);
       Pango.cairo_layout_path (cr, layout);
       cr.stroke_preserve ();
-      cr.set_source_rgba (1.0, 1.0, 1.0, 0.95);
+
+      var font_color = BadgeTextColor;
+      if (!font_color.equal ({ 0.0, 0.0, 0.0, 0.0 })) {
+        cr.set_source_rgba (font_color.red, font_color.green, font_color.blue, font_color.alpha);
+      } else {
+        cr.set_source_rgba (1.0, 1.0, 1.0, 0.95);
+      }
+
       cr.fill ();
       cr.restore ();
     }
@@ -769,6 +800,14 @@ namespace Plank {
         break;
 
       case "BadgeColor":
+        break;
+
+      case "BadgeStyle":
+        if (BadgeStyle < 0 || BadgeStyle > 1)
+          BadgeStyle = BadgeStyleType.LEGACY;
+        break;
+
+      case "BadgeTextColor":
         break;
 
       case "ActiveColor":
