@@ -288,7 +288,7 @@ namespace Plank {
       if ((item_state & ItemState.URGENT) != 0) {
         color = (IndicatorStyle == IndicatorStyleType.LEGACY ? get_styled_color () : IndicatorColor);
         color.add_hue (UrgentHueShift);
-        color.set_sat (1.0);
+        color.set_sat (0.6);
       } else {
         if (IndicatorStyle == IndicatorStyleType.LEGACY) {
           color = get_styled_color ();
