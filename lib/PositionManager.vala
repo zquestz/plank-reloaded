@@ -104,7 +104,7 @@ namespace Plank {
       }
     }
 
-    public void move_to_active_monitor () {
+    public string active_monitor () {
       var screen = controller.window.get_screen ();
       var display = screen.get_display ();
 
@@ -124,8 +124,14 @@ namespace Plank {
 
       string monitor_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (monitor_num);
 
+      return monitor_name;
+    }
+
+    public void move_to_active_monitor () {
+      string monitor_name = active_monitor ();
+
       if (controller.prefs.Monitor != monitor_name) {
-        debug ("Moving dock to current monitor %d (%s)", monitor_num, monitor_name);
+        debug ("Moving dock to current monitor (%s)", monitor_name);
         controller.prefs.Monitor = monitor_name;
       }
     }
