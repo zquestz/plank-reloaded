@@ -304,6 +304,13 @@ namespace Plank {
         return;
       }
 
+      // If the item isn't transient, then it will always be on the dock,
+      // no need to update visible elements.
+      unowned TransientDockItem? transient = (this as TransientDockItem);
+      if (transient == null) {
+        return;
+      }
+
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
       default_provider?.trigger_update_visible_elements ();
     }
