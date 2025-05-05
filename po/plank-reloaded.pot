@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.123\n"
+"Project-Id-Version: plank-reloaded 0.11.124\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-29 18:57-1000\n"
+"POT-Creation-Date: 2025-05-04 20:02-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,20 +470,20 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close All"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:495
+#: lib/Items/ApplicationDockItem.vala:497
 #, c-format
 msgid "Drop to open with %s"
 msgstr ""

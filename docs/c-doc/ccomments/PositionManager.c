@@ -14,6 +14,10 @@
  * Initializes the position manager.
  */
 /**
+ * plank_position_manager_active_monitor:
+ * @self: the <link linkend="PlankPositionManager"><type>PlankPositionManager</type></link> instance
+ */
+/**
  * plank_position_manager_move_to_active_monitor:
  * @self: the <link linkend="PlankPositionManager"><type>PlankPositionManager</type></link> instance
  */

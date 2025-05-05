@@ -646,6 +646,50 @@
  * 
  */
 /**
+ * PlankDockTheme:BadgeStyle:
+ */
+/**
+ * plank_dock_theme_get_BadgeStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--BadgeStyle"><type>"BadgeStyle"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--BadgeStyle"><type>"BadgeStyle"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_BadgeStyle:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--BadgeStyle"><type>"BadgeStyle"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--BadgeStyle"><type>"BadgeStyle"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
+ * PlankDockTheme:BadgeTextColor:
+ */
+/**
+ * plank_dock_theme_get_BadgeTextColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to query
+ * 
+ * Get and return the current value of the <link linkend="PlankDockTheme--BadgeTextColor"><type>"BadgeTextColor"</type></link> property.
+ * 
+ * 
+ * 
+ * Returns: the value of the <link linkend="PlankDockTheme--BadgeTextColor"><type>"BadgeTextColor"</type></link> property
+ */
+/**
+ * plank_dock_theme_set_BadgeTextColor:
+ * @self: the <link linkend="PlankDockTheme"><type>PlankDockTheme</type></link> instance to modify
+ * @value: the new value of the <link linkend="PlankDockTheme--BadgeTextColor"><type>"BadgeTextColor"</type></link> property
+ * 
+ * Set the value of the <link linkend="PlankDockTheme--BadgeTextColor"><type>"BadgeTextColor"</type></link> property to @value.
+ * 
+ * 
+ */
+/**
  * PlankDockTheme:ActiveItemStyle:
  */
 /**

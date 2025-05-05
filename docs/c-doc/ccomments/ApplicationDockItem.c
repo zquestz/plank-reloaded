@@ -21,6 +21,10 @@
  * @is_urgent: &nbsp;
  */
 /**
+ * plank_application_dock_item_external_update_indicator:
+ * @self: the <link linkend="PlankApplicationDockItem"><type>PlankApplicationDockItem</type></link> instance
+ */
+/**
  * plank_application_dock_item_get_unity_application_uri:
  * @self: the <link linkend="PlankApplicationDockItem"><type>PlankApplicationDockItem</type></link> instance
  * 

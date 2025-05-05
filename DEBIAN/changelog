@@ -1,3 +1,10 @@
+plank-reloaded (0.11.124-1) unstable; urgency=medium
+
+  * Updated theme engine to support badge theming options
+  * Substantial reworking of "Restrict to Workspace" functionality
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 04 May 2025 19:58:37 -1000
+
 plank-reloaded (0.11.123-1) unstable; urgency=medium
 
   * Added USR1 signal support to move dock to the active monitor

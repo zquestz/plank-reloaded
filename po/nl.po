@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-29 18:57-1000\n"
+"POT-Creation-Date: 2025-05-04 20:02-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -484,20 +484,20 @@ msgstr ""
 "  rob https://launchpad.net/~rvdb\n"
 "  tim schoen https://launchpad.net/~timschoen123-deactivatedaccount"
 
-#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Vastzetten in dock"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close All"
 msgstr "Alles sl_uiten"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close"
 msgstr "Sl_uiten"
 
-#: lib/Items/ApplicationDockItem.vala:495
+#: lib/Items/ApplicationDockItem.vala:497
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Laat los om met %s te openen"

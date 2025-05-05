@@ -3923,15 +3923,19 @@
     <keyword type="constant" name="Plank.WindowControl.VIEWPORT_CHANGE_DELAY" link="Plank.WindowControl.VIEWPORT_CHANGE_DELAY.html"/>
     <keyword type="constant" name="Plank.WindowControl.WINDOW_GROUP_DELAY" link="Plank.WindowControl.WINDOW_GROUP_DELAY.html"/>
     <keyword type="function" name="Plank.WindowControl.close_all" link="Plank.WindowControl.close_all.html"/>
+    <keyword type="function" name="Plank.WindowControl.close_all_in_workspace" link="Plank.WindowControl.close_all_in_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_next" link="Plank.WindowControl.focus_next.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_previous" link="Plank.WindowControl.focus_previous.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_window" link="Plank.WindowControl.focus_window.html"/>
     <keyword type="function" name="Plank.WindowControl.get_app_icon" link="Plank.WindowControl.get_app_icon.html"/>
+    <keyword type="function" name="Plank.WindowControl.get_app_xids_on_workspace" link="Plank.WindowControl.get_app_xids_on_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.get_easy_geometry" link="Plank.WindowControl.get_easy_geometry.html"/>
     <keyword type="function" name="Plank.WindowControl.get_ordered_window_stack" link="Plank.WindowControl.get_ordered_window_stack.html"/>
     <keyword type="function" name="Plank.WindowControl.get_window_icon" link="Plank.WindowControl.get_window_icon.html"/>
+    <keyword type="function" name="Plank.WindowControl.get_window_workspace" link="Plank.WindowControl.get_window_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.has_maximized_window" link="Plank.WindowControl.has_maximized_window.html"/>
     <keyword type="function" name="Plank.WindowControl.has_minimized_window" link="Plank.WindowControl.has_minimized_window.html"/>
+    <keyword type="function" name="Plank.WindowControl.has_window" link="Plank.WindowControl.has_window.html"/>
     <keyword type="function" name="Plank.WindowControl.has_window_on_workspace" link="Plank.WindowControl.has_window_on_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.initialize" link="Plank.WindowControl.initialize.html"/>
     <keyword type="function" name="Plank.WindowControl.maximize" link="Plank.WindowControl.maximize.html"/>
@@ -3940,6 +3944,8 @@
     <keyword type="function" name="Plank.WindowControl.smart_focus" link="Plank.WindowControl.smart_focus.html"/>
     <keyword type="function" name="Plank.WindowControl.unmaximize" link="Plank.WindowControl.unmaximize.html"/>
     <keyword type="function" name="Plank.WindowControl.update_icon_regions" link="Plank.WindowControl.update_icon_regions.html"/>
+    <keyword type="function" name="Plank.WindowControl.window_count" link="Plank.WindowControl.window_count.html"/>
+    <keyword type="function" name="Plank.WindowControl.window_on_workspace_count" link="Plank.WindowControl.window_on_workspace_count.html"/>
     <keyword type="" name="Plank.WindowControl" link="Plank.WindowControl.html"/>
     <keyword type="function" name="Plank.create_settings" link="Plank.create_settings.html"/>
     <keyword type="function" name="Plank.file_is_dockitem" link="Plank.file_is_dockitem.html"/>

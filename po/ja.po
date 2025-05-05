@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-29 18:57-1000\n"
+"POT-Creation-Date: 2025-05-04 20:02-1000\n"
 "PO-Revision-Date: 2018-02-24 14:34+0000\n"
 "Last-Translator: Shushi Kurose <md81bird@hitaki.net>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -482,20 +482,20 @@ msgstr ""
 "  night1ynx https://launchpad.net/~night1ynx\n"
 "  smp https://launchpad.net/~cheat-hc0-ms"
 
-#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "ドックに追加(_K)"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close All"
 msgstr "すべて閉じる(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:495
+#: lib/Items/ApplicationDockItem.vala:497
 #, c-format
 msgid "Drop to open with %s"
 msgstr "ドロップして %s で開く"

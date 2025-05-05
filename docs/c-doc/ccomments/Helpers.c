@@ -9,7 +9,13 @@
  * Returns: <para>A string not longer than max_length </para>
  */
 /**
- * plank_helpers_visible_window_count:
+ * plank_helpers_current_workspace_only:
  * @self: the (null) instance
- * @windows: &nbsp;
+ * @provider: &nbsp;
+ */
+/**
+ * plank_helpers_window_count:
+ * @self: the (null) instance
+ * @app: &nbsp;
+ * @provider: &nbsp;
  */

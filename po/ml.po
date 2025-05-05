@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-29 18:57-1000\n"
+"POT-Creation-Date: 2025-05-04 20:02-1000\n"
 "PO-Revision-Date: 2015-12-23 00:40+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Malayalam <ml@li.org>\n"
@@ -476,20 +476,20 @@ msgstr ""
 "  ST Alfas https://launchpad.net/~alfasst\n"
 "  muhammed shameem https://launchpad.net/~shameempk"
 
-#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "ഡോക്കില്‍ _സൂക്ഷിക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close All"
 msgstr "എല്ലാം _അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close"
 msgstr "_അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:495
+#: lib/Items/ApplicationDockItem.vala:497
 #, c-format
 msgid "Drop to open with %s"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-04-29 18:57-1000\n"
+"POT-Creation-Date: 2025-05-04 20:02-1000\n"
 "PO-Revision-Date: 2017-03-20 04:22+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
@@ -487,20 +487,20 @@ msgstr ""
 "  cramejs https://launchpad.net/~cramejs\n"
 "  sddania https://launchpad.net/~sddania"
 
-#: lib/Items/ApplicationDockItem.vala:414 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Mantieni sulla dock"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close All"
 msgstr "_Chiudi tutti"
 
-#: lib/Items/ApplicationDockItem.vala:422
+#: lib/Items/ApplicationDockItem.vala:414
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: lib/Items/ApplicationDockItem.vala:495
+#: lib/Items/ApplicationDockItem.vala:497
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Rilascia per aprire con %s"

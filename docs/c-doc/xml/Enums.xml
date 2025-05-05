@@ -26,6 +26,7 @@
 <tbody>
 <row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankIndicatorStyleType">PlankIndicatorStyleType</link></entry></row>
 <row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankActiveItemStyleType">PlankActiveItemStyleType</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankBadgeStyleType">PlankBadgeStyleType</link></entry></row>
 <row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankAnimationType">PlankAnimationType</link></entry></row>
 <row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankIndicatorState">PlankIndicatorState</link></entry></row>
 <row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="PlankUpdateIndicatorEvent">PlankUpdateIndicatorEvent</link></entry></row>
@@ -105,6 +106,30 @@
 <entry role="enum_member_annotations"></entry>
 </row>
 <row role="constant"><entry role="enum_member_name"><para id="PLANK-ACTIVE-ITEM-STYLE-TYPE-SOLID:CAPS">PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID</para></entry>
+<entry role="enum_member_description"><para>A solid color defined by the theme</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="PlankBadgeStyleType" role="enum">
+<title>enum PlankBadgeStyleType</title>
+<indexterm zone="PlankBadgeStyleType"><primary>PlankBadgeStyleType</primary></indexterm>
+<para>The style of the badge.</para>
+<refsect3 id="PlankBadgeStyleType.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-BADGE-STYLE-TYPE-LEGACY:CAPS">PLANK_BADGE_STYLE_TYPE_LEGACY</para></entry>
+<entry role="enum_member_description"><para>A vertical gradient which is colored based on the indicator color</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-BADGE-STYLE-TYPE-SOLID:CAPS">PLANK_BADGE_STYLE_TYPE_SOLID</para></entry>
 <entry role="enum_member_description"><para>A solid color defined by the theme</para>
 </entry>
 <entry role="enum_member_annotations"></entry>
@@ -203,6 +228,11 @@
 </row>
 <row role="constant"><entry role="enum_member_name"><para id="PLANK-UPDATE-INDICATOR-EVENT-RUNNING-CHANGED:CAPS">PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED</para></entry>
 <entry role="enum_member_description"><para>Running changed - the running state of the item changed.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="PLANK-UPDATE-INDICATOR-EVENT-EXTERNAL:CAPS">PLANK_UPDATE_INDICATOR_EVENT_EXTERNAL</para></entry>
+<entry role="enum_member_description"><para>External - Not sent by a Bamf signal.</para>
 </entry>
 <entry role="enum_member_annotations"></entry>
 </row>

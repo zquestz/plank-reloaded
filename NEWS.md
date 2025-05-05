@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.124 "Reloaded" (2025-05-04)
+
+- Updated theme engine to support badge theming options
+- Substantial reworking of "Restrict to Workspace" functionality
+
 ## 0.11.123 "Reloaded" (2025-04-29)
 
 - Added USR1 signal support to move dock to the active monitor

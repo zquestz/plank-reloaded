@@ -227,6 +227,7 @@
     <keyword type="struct" name="struct PlankPoofWindowClass" link="plank-reloaded-PlankPoofWindow.html#PlankPoofWindowClass"/>
     <keyword type="enum" name="enum PlankIndicatorStyleType" link="plank-reloaded-Enums.html#PlankIndicatorStyleType"/>
     <keyword type="enum" name="enum PlankActiveItemStyleType" link="plank-reloaded-Enums.html#PlankActiveItemStyleType"/>
+    <keyword type="enum" name="enum PlankBadgeStyleType" link="plank-reloaded-Enums.html#PlankBadgeStyleType"/>
     <keyword type="enum" name="enum PlankAnimationType" link="plank-reloaded-Enums.html#PlankAnimationType"/>
     <keyword type="enum" name="enum PlankIndicatorState" link="plank-reloaded-Enums.html#PlankIndicatorState"/>
     <keyword type="enum" name="enum PlankUpdateIndicatorEvent" link="plank-reloaded-Enums.html#PlankUpdateIndicatorEvent"/>
@@ -302,6 +303,8 @@
     <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_LEGACY" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-LEGACY:CAPS"/>
     <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_GRADIENT" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-GRADIENT:CAPS"/>
     <keyword type="constant" name="PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID" link="plank-reloaded-Enums.html#PLANK-ACTIVE-ITEM-STYLE-TYPE-SOLID:CAPS"/>
+    <keyword type="constant" name="PLANK_BADGE_STYLE_TYPE_LEGACY" link="plank-reloaded-Enums.html#PLANK-BADGE-STYLE-TYPE-LEGACY:CAPS"/>
+    <keyword type="constant" name="PLANK_BADGE_STYLE_TYPE_SOLID" link="plank-reloaded-Enums.html#PLANK-BADGE-STYLE-TYPE-SOLID:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_NONE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-NONE:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_BOUNCE" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-BOUNCE:CAPS"/>
     <keyword type="constant" name="PLANK_ANIMATION_TYPE_DARKEN" link="plank-reloaded-Enums.html#PLANK-ANIMATION-TYPE-DARKEN:CAPS"/>
@@ -313,6 +316,7 @@
     <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-WINDOW-ADDED:CAPS"/>
     <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-WINDOW-REMOVED:CAPS"/>
     <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-RUNNING-CHANGED:CAPS"/>
+    <keyword type="constant" name="PLANK_UPDATE_INDICATOR_EVENT_EXTERNAL" link="plank-reloaded-Enums.html#PLANK-UPDATE-INDICATOR-EVENT-EXTERNAL:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_NORMAL" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-NORMAL:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_ACTIVE" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-ACTIVE:CAPS"/>
     <keyword type="constant" name="PLANK_ITEM_STATE_URGENT" link="plank-reloaded-Enums.html#PLANK-ITEM-STATE-URGENT:CAPS"/>

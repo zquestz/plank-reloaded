@@ -1,7 +1,7 @@
 77% symbol docs coverage.
-881 symbols documented.
+886 symbols documented.
 55 symbols incomplete.
-261 not documented.
+266 not documented.
 
 
 PLANK_DOCKLET_ENTRY_POINT
@@ -81,6 +81,8 @@ PlankDockTheme:ActiveItemColor
 PlankDockTheme:ActiveItemStyle
 PlankDockTheme:ActiveTime
 PlankDockTheme:BadgeColor
+PlankDockTheme:BadgeStyle
+PlankDockTheme:BadgeTextColor
 PlankDockTheme:BottomPadding
 PlankDockTheme:CascadeHide
 PlankDockTheme:ClickTime
@@ -172,6 +174,7 @@ PlankWorker (<items>)
 PlankXdgSessionClass (<items>)
 PlankXdgSessionDesktop (<items>)
 PlankXdgSessionType (<items>)
+plank_application_dock_item_external_update_indicator
 plank_application_dock_item_is_running
 plank_application_dock_item_is_window
 plank_application_dock_item_new
@@ -228,12 +231,14 @@ plank_file_dock_item_new
 plank_file_dock_item_new_with_dockitem_file
 plank_file_dock_item_new_with_dockitem_filename
 plank_file_dock_item_new_with_file
-plank_helpers_visible_window_count
+plank_helpers_current_workspace_only
+plank_helpers_window_count
 plank_hide_manager_update_barrier
 plank_hover_window_new
 plank_item_factory_new
 plank_plank_dock_item_get_instance
 plank_poof_window_get_default
+plank_position_manager_active_monitor
 plank_position_manager_get_barrier
 plank_position_manager_get_monitor_plug_names
 plank_position_manager_move_to_active_monitor

@@ -264,6 +264,7 @@ plank_color_get_type
 <TITLE>PlankPositionManager</TITLE>
 PLANK_TYPE_POSITION_MANAGER
 plank_position_manager_initialize
+plank_position_manager_active_monitor
 plank_position_manager_move_to_active_monitor
 plank_position_manager_update
 plank_position_manager_is_horizontal_dock
@@ -836,6 +837,10 @@ plank_dock_theme_get_CascadeHide
 plank_dock_theme_set_CascadeHide
 plank_dock_theme_get_BadgeColor
 plank_dock_theme_set_BadgeColor
+plank_dock_theme_get_BadgeStyle
+plank_dock_theme_set_BadgeStyle
+plank_dock_theme_get_BadgeTextColor
+plank_dock_theme_set_BadgeTextColor
 plank_dock_theme_get_ActiveItemStyle
 plank_dock_theme_set_ActiveItemStyle
 plank_dock_theme_get_ActiveItemColor
@@ -1270,7 +1275,8 @@ plank_dock_window_construct
 <SECTION>
 <FILE>Helpers</FILE>
 plank_helpers_truncate_middle
-plank_helpers_visible_window_count
+plank_helpers_current_workspace_only
+plank_helpers_window_count
 </SECTION>
 <SECTION>
 <FILE>Paths</FILE>
@@ -1449,6 +1455,7 @@ plank_poof_window_construct
 <FILE>Enums</FILE>
 PlankIndicatorStyleType
 PlankActiveItemStyleType
+PlankBadgeStyleType
 PlankAnimationType
 PlankIndicatorState
 PlankUpdateIndicatorEvent
@@ -1460,6 +1467,8 @@ PLANK_TYPE_INDICATOR_STYLE_TYPE
 plank_indicator_style_type_get_type
 PLANK_TYPE_ACTIVE_ITEM_STYLE_TYPE
 plank_active_item_style_type_get_type
+PLANK_TYPE_BADGE_STYLE_TYPE
+plank_badge_style_type_get_type
 PLANK_TYPE_ANIMATION_TYPE
 plank_animation_type_get_type
 PLANK_TYPE_INDICATOR_STATE
@@ -1478,6 +1487,7 @@ PLANK_TYPE_APPLICATION_DOCK_ITEM
 plank_application_dock_item_is_running
 plank_application_dock_item_is_window
 plank_application_dock_item_set_urgent
+plank_application_dock_item_external_update_indicator
 plank_application_dock_item_get_unity_application_uri
 plank_application_dock_item_get_unity_dbusname
 plank_application_dock_item_has_unity_info

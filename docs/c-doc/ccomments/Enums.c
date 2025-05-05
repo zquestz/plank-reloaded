@@ -16,6 +16,13 @@
  * The style of the active item.
  */
 /**
+ * PlankBadgeStyleType:
+ * @PLANK_BADGE_STYLE_TYPE_LEGACY: A vertical gradient which is colored based on the indicator color
+ * @PLANK_BADGE_STYLE_TYPE_SOLID: A solid color defined by the theme
+ * 
+ * The style of the badge.
+ */
+/**
  * PlankAnimationType:
  * @PLANK_ANIMATION_TYPE_NONE: No animation.
  * @PLANK_ANIMATION_TYPE_BOUNCE: Bounce the icon.
@@ -38,6 +45,7 @@
  * @PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED: Window added - a new window was added to the item.
  * @PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED: Window removed - a window was removed from the item.
  * @PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED: Running changed - the running state of the item changed.
+ * @PLANK_UPDATE_INDICATOR_EVENT_EXTERNAL: External - Not sent by a Bamf signal.
  * 
  * Type of event update_indicator is processing.
  */

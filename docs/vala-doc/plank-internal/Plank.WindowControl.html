@@ -45,11 +45,15 @@
             </span>
             <div class="leaf_brief_description">
             </div></li>
-          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.focus_next.html" class="static_method">focus_next</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.close_all_in_workspace.html" class="static_method">close_all_in_workspace</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
             </span>
             <div class="leaf_brief_description">
             </div></li>
-          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.focus_previous.html" class="static_method">focus_previous</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time)
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.focus_next.html" class="static_method">focus_next</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> focus_workspace)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.focus_previous.html" class="static_method">focus_previous</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span> event_time, <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> focus_workspace)
             </span>
             <div class="leaf_brief_description">
             </div></li>
@@ -58,6 +62,10 @@
             <div class="leaf_brief_description">
             </div></li>
           <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../gdk-pixbuf-2.0/Gdk.Pixbuf.html" class="class">Pixbuf</a></span>? <b><a href="Plank.WindowControl.get_app_icon.html" class="static_method">get_app_icon</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_type"><a href="../glib-2.0/GLib.Array.html" class="class">Array</a></span>&lt;<span class="main_basic_type"><a href="../glib-2.0/uint32.html" class="struct">uint32</a></span>&gt; <b><a href="Plank.WindowControl.get_app_xids_on_workspace.html" class="static_method">get_app_xids_on_workspace</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span>? app)
             </span>
             <div class="leaf_brief_description">
             </div></li>
@@ -73,11 +81,19 @@
             </span>
             <div class="leaf_brief_description">
             </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">unowned</span> <span class="main_type"><a href="../libwnck-3.0/Wnck.Workspace.html" class="class">Workspace</a></span>? <b><a href="Plank.WindowControl.get_window_workspace.html" class="static_method">get_window_workspace</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Window.html" class="class">Window</a></span> window)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.WindowControl.has_maximized_window.html" class="static_method">has_maximized_window</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app)
             </span>
             <div class="leaf_brief_description">
             </div></li>
           <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.WindowControl.has_minimized_window.html" class="static_method">has_minimized_window</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/bool.html" class="struct">bool</a></span> <b><a href="Plank.WindowControl.has_window.html" class="static_method">has_window</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app)
             </span>
             <div class="leaf_brief_description">
             </div></li>
@@ -110,6 +126,14 @@
             <div class="leaf_brief_description">
             </div></li>
           <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_keyword">void</span> <b><a href="Plank.WindowControl.update_icon_regions.html" class="static_method">update_icon_regions</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_type"><a href="../gdk-3.0/Gdk.Rectangle.html" class="struct">Rectangle</a></span> rect)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Plank.WindowControl.window_count.html" class="static_method">window_count</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">static</span> <span class="main_basic_type"><a href="../glib-2.0/int.html" class="struct">int</a></span> <b><a href="Plank.WindowControl.window_on_workspace_count.html" class="static_method">window_on_workspace_count</a></b> (<span class="main_type"><a href="../libbamf3/Bamf.Application.html" class="class">Application</a></span> app, <span class="main_type"><a href="../libwnck-3.0/Wnck.Workspace.html" class="class">Workspace</a></span> workspace)
             </span>
             <div class="leaf_brief_description">
             </div></li>

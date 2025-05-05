@@ -33,6 +33,8 @@ PlankItemState
 PLANK_TYPE_ITEM_STATE
 PlankIndicatorStyleType
 PLANK_TYPE_INDICATOR_STYLE_TYPE
+PlankBadgeStyleType
+PLANK_TYPE_BADGE_STYLE_TYPE
 PlankActiveItemStyleType
 PLANK_TYPE_ACTIVE_ITEM_STYLE_TYPE
 PlankAnimationMode

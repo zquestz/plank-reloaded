@@ -29,14 +29,14 @@
       <sub name="TitledSeparatorMenuItem" link="Plank.TitledSeparatorMenuItem.html"></sub><sub name="Helpers" link="Plank.Helpers.html"></sub>
       <sub name="HideType" link="Plank.HideType.html"></sub><sub name="AnimationMode" link="Plank.AnimationMode.html"></sub>
       <sub name="IndicatorStyleType" link="Plank.IndicatorStyleType.html"></sub><sub name="ActiveItemStyleType" link="Plank.ActiveItemStyleType.html">
-      </sub><sub name="SurfaceCacheFlags" link="Plank.SurfaceCacheFlags.html"></sub><sub name="AnimationType" link="Plank.AnimationType.html"></sub>
-      <sub name="IndicatorState" link="Plank.IndicatorState.html"></sub><sub name="UpdateIndicatorEvent" link="Plank.UpdateIndicatorEvent.html"></sub>
-      <sub name="ItemState" link="Plank.ItemState.html"></sub><sub name="PopupButton" link="Plank.PopupButton.html"></sub>
-      <sub name="XdgSessionClass" link="Plank.XdgSessionClass.html"></sub><sub name="XdgSessionDesktop" link="Plank.XdgSessionDesktop.html"></sub>
-      <sub name="XdgSessionType" link="Plank.XdgSessionType.html"></sub><sub name="LogLevel" link="Plank.LogLevel.html"></sub>
-      <sub name="TaskPriority" link="Plank.TaskPriority.html"></sub><sub name="Color" link="Plank.Color.html"></sub>
-      <sub name="PointD" link="Plank.PointD.html"></sub><sub name="Docklet" link="Plank.Docklet.html"></sub>
-      <sub name="Serializable" link="Plank.Serializable.html"></sub><sub name="UnityClient" link="Plank.UnityClient.html"></sub></sub>
+      </sub><sub name="BadgeStyleType" link="Plank.BadgeStyleType.html"></sub><sub name="SurfaceCacheFlags" link="Plank.SurfaceCacheFlags.html"></sub>
+      <sub name="AnimationType" link="Plank.AnimationType.html"></sub><sub name="IndicatorState" link="Plank.IndicatorState.html"></sub>
+      <sub name="UpdateIndicatorEvent" link="Plank.UpdateIndicatorEvent.html"></sub><sub name="ItemState" link="Plank.ItemState.html"></sub>
+      <sub name="PopupButton" link="Plank.PopupButton.html"></sub><sub name="XdgSessionClass" link="Plank.XdgSessionClass.html"></sub>
+      <sub name="XdgSessionDesktop" link="Plank.XdgSessionDesktop.html"></sub><sub name="XdgSessionType" link="Plank.XdgSessionType.html"></sub>
+      <sub name="LogLevel" link="Plank.LogLevel.html"></sub><sub name="TaskPriority" link="Plank.TaskPriority.html"></sub>
+      <sub name="Color" link="Plank.Color.html"></sub><sub name="PointD" link="Plank.PointD.html"></sub><sub name="Docklet" link="Plank.Docklet.html">
+      </sub><sub name="Serializable" link="Plank.Serializable.html"></sub><sub name="UnityClient" link="Plank.UnityClient.html"></sub></sub>
   </chapters><functions><keyword type="function" name="string.str" link="string.str.html"/>
     <keyword type="function" name="string.rstr" link="string.rstr.html"/><keyword type="function" name="string.rstr_len" link="string.rstr_len.html"/>
     <keyword type="function" name="string.index_of" link="string.index_of.html"/>
@@ -3926,15 +3926,19 @@
     <keyword type="constant" name="Plank.WindowControl.VIEWPORT_CHANGE_DELAY" link="Plank.WindowControl.VIEWPORT_CHANGE_DELAY.html"/>
     <keyword type="constant" name="Plank.WindowControl.WINDOW_GROUP_DELAY" link="Plank.WindowControl.WINDOW_GROUP_DELAY.html"/>
     <keyword type="function" name="Plank.WindowControl.close_all" link="Plank.WindowControl.close_all.html"/>
+    <keyword type="function" name="Plank.WindowControl.close_all_in_workspace" link="Plank.WindowControl.close_all_in_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_next" link="Plank.WindowControl.focus_next.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_previous" link="Plank.WindowControl.focus_previous.html"/>
     <keyword type="function" name="Plank.WindowControl.focus_window" link="Plank.WindowControl.focus_window.html"/>
     <keyword type="function" name="Plank.WindowControl.get_app_icon" link="Plank.WindowControl.get_app_icon.html"/>
+    <keyword type="function" name="Plank.WindowControl.get_app_xids_on_workspace" link="Plank.WindowControl.get_app_xids_on_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.get_easy_geometry" link="Plank.WindowControl.get_easy_geometry.html"/>
     <keyword type="function" name="Plank.WindowControl.get_ordered_window_stack" link="Plank.WindowControl.get_ordered_window_stack.html"/>
     <keyword type="function" name="Plank.WindowControl.get_window_icon" link="Plank.WindowControl.get_window_icon.html"/>
+    <keyword type="function" name="Plank.WindowControl.get_window_workspace" link="Plank.WindowControl.get_window_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.has_maximized_window" link="Plank.WindowControl.has_maximized_window.html"/>
     <keyword type="function" name="Plank.WindowControl.has_minimized_window" link="Plank.WindowControl.has_minimized_window.html"/>
+    <keyword type="function" name="Plank.WindowControl.has_window" link="Plank.WindowControl.has_window.html"/>
     <keyword type="function" name="Plank.WindowControl.has_window_on_workspace" link="Plank.WindowControl.has_window_on_workspace.html"/>
     <keyword type="function" name="Plank.WindowControl.initialize" link="Plank.WindowControl.initialize.html"/>
     <keyword type="function" name="Plank.WindowControl.maximize" link="Plank.WindowControl.maximize.html"/>
@@ -3943,6 +3947,8 @@
     <keyword type="function" name="Plank.WindowControl.smart_focus" link="Plank.WindowControl.smart_focus.html"/>
     <keyword type="function" name="Plank.WindowControl.unmaximize" link="Plank.WindowControl.unmaximize.html"/>
     <keyword type="function" name="Plank.WindowControl.update_icon_regions" link="Plank.WindowControl.update_icon_regions.html"/>
+    <keyword type="function" name="Plank.WindowControl.window_count" link="Plank.WindowControl.window_count.html"/>
+    <keyword type="function" name="Plank.WindowControl.window_on_workspace_count" link="Plank.WindowControl.window_on_workspace_count.html"/>
     <keyword type="" name="Plank.WindowControl" link="Plank.WindowControl.html"/>
     <keyword type="function" name="Plank.create_settings" link="Plank.create_settings.html"/>
     <keyword type="function" name="Plank.file_is_dockitem" link="Plank.file_is_dockitem.html"/>
@@ -25612,6 +25618,7 @@
     <keyword type="property" name="Plank.HideManager.Hovered" link="Plank.HideManager.Hovered.html"/>
     <keyword type="" name="Plank.HideManager" link="Plank.HideManager.html"/>
     <keyword type="function" name="Plank.PositionManager.initialize" link="Plank.PositionManager.initialize.html"/>
+    <keyword type="function" name="Plank.PositionManager.active_monitor" link="Plank.PositionManager.active_monitor.html"/>
     <keyword type="function" name="Plank.PositionManager.move_to_active_monitor" link="Plank.PositionManager.move_to_active_monitor.html"/>
     <keyword type="function" name="Plank.PositionManager.update" link="Plank.PositionManager.update.html"/>
     <keyword type="function" name="Plank.PositionManager.is_horizontal_dock" link="Plank.PositionManager.is_horizontal_dock.html"/>
@@ -25724,6 +25731,8 @@
     <keyword type="property" name="Plank.DockTheme.ItemMoveTime" link="Plank.DockTheme.ItemMoveTime.html"/>
     <keyword type="property" name="Plank.DockTheme.CascadeHide" link="Plank.DockTheme.CascadeHide.html"/>
     <keyword type="property" name="Plank.DockTheme.BadgeColor" link="Plank.DockTheme.BadgeColor.html"/>
+    <keyword type="property" name="Plank.DockTheme.BadgeStyle" link="Plank.DockTheme.BadgeStyle.html"/>
+    <keyword type="property" name="Plank.DockTheme.BadgeTextColor" link="Plank.DockTheme.BadgeTextColor.html"/>
     <keyword type="property" name="Plank.DockTheme.ActiveItemStyle" link="Plank.DockTheme.ActiveItemStyle.html"/>
     <keyword type="property" name="Plank.DockTheme.ActiveItemColor" link="Plank.DockTheme.ActiveItemColor.html"/>
     <keyword type="" name="Plank.DockTheme" link="Plank.DockTheme.html"/>
@@ -25831,6 +25840,7 @@
     <keyword type="function" name="Plank.ApplicationDockItem.is_running" link="Plank.ApplicationDockItem.is_running.html"/>
     <keyword type="function" name="Plank.ApplicationDockItem.is_window" link="Plank.ApplicationDockItem.is_window.html"/>
     <keyword type="function" name="Plank.ApplicationDockItem.set_urgent" link="Plank.ApplicationDockItem.set_urgent.html"/>
+    <keyword type="function" name="Plank.ApplicationDockItem.external_update_indicator" link="Plank.ApplicationDockItem.external_update_indicator.html"/>
     <keyword type="function" name="Plank.ApplicationDockItem.on_clicked" link="Plank.ApplicationDockItem.on_clicked.html"/>
     <keyword type="function" name="Plank.ApplicationDockItem.on_scrolled" link="Plank.ApplicationDockItem.on_scrolled.html"/>
     <keyword type="function" name="Plank.ApplicationDockItem.get_menu_items" link="Plank.ApplicationDockItem.get_menu_items.html"/>
@@ -26161,7 +26171,8 @@
     <keyword type="function" name="Plank.get_nano_version" link="Plank.get_nano_version.html"/>
     <keyword type="function" name="Plank.check_version" link="Plank.check_version.html"/>
     <keyword type="function" name="Plank.Helpers.truncate_middle" link="Plank.Helpers.truncate_middle.html"/>
-    <keyword type="function" name="Plank.Helpers.visible_window_count" link="Plank.Helpers.visible_window_count.html"/>
+    <keyword type="function" name="Plank.Helpers.current_workspace_only" link="Plank.Helpers.current_workspace_only.html"/>
+    <keyword type="function" name="Plank.Helpers.window_count" link="Plank.Helpers.window_count.html"/>
     <keyword type="" name="Plank.Helpers" link="Plank.Helpers.html"/>
     <keyword type="constant" name="Plank.G_RESOURCE_PATH" link="Plank.G_RESOURCE_PATH.html"/>
     <keyword type="constant" name="Plank.DOCKLET_ENTRY_POINT" link="Plank.DOCKLET_ENTRY_POINT.html"/>
@@ -26223,6 +26234,9 @@
     <keyword type="" name="Plank.ActiveItemStyleType.GRADIENT" link="Plank.ActiveItemStyleType.GRADIENT.html"/>
     <keyword type="" name="Plank.ActiveItemStyleType.SOLID" link="Plank.ActiveItemStyleType.SOLID.html"/>
     <keyword type="enum" name="Plank.ActiveItemStyleType" link="Plank.ActiveItemStyleType.html"/>
+    <keyword type="" name="Plank.BadgeStyleType.LEGACY" link="Plank.BadgeStyleType.LEGACY.html"/>
+    <keyword type="" name="Plank.BadgeStyleType.SOLID" link="Plank.BadgeStyleType.SOLID.html"/>
+    <keyword type="enum" name="Plank.BadgeStyleType" link="Plank.BadgeStyleType.html"/>
     <keyword type="" name="Plank.SurfaceCacheFlags.NONE" link="Plank.SurfaceCacheFlags.NONE.html"/>
     <keyword type="" name="Plank.SurfaceCacheFlags.ALLOW_DOWNSCALE" link="Plank.SurfaceCacheFlags.ALLOW_DOWNSCALE.html"/>
     <keyword type="" name="Plank.SurfaceCacheFlags.ALLOW_UPSCALE" link="Plank.SurfaceCacheFlags.ALLOW_UPSCALE.html"/>
@@ -26242,6 +26256,7 @@
     <keyword type="" name="Plank.UpdateIndicatorEvent.WINDOW_ADDED" link="Plank.UpdateIndicatorEvent.WINDOW_ADDED.html"/>
     <keyword type="" name="Plank.UpdateIndicatorEvent.WINDOW_REMOVED" link="Plank.UpdateIndicatorEvent.WINDOW_REMOVED.html"/>
     <keyword type="" name="Plank.UpdateIndicatorEvent.RUNNING_CHANGED" link="Plank.UpdateIndicatorEvent.RUNNING_CHANGED.html"/>
+    <keyword type="" name="Plank.UpdateIndicatorEvent.EXTERNAL" link="Plank.UpdateIndicatorEvent.EXTERNAL.html"/>
     <keyword type="enum" name="Plank.UpdateIndicatorEvent" link="Plank.UpdateIndicatorEvent.html"/>
     <keyword type="" name="Plank.ItemState.NORMAL" link="Plank.ItemState.NORMAL.html"/>
     <keyword type="" name="Plank.ItemState.ACTIVE" link="Plank.ItemState.ACTIVE.html"/>
