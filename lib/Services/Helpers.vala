@@ -27,28 +27,44 @@ namespace Plank {
      * @param max_length Maximum length for the returned string
      * @return A string not longer than max_length
      */
-    public string truncate_middle(string str, int max_length) {
+    public string truncate_middle (string str, int max_length) {
       if (str.length <= max_length) {
         return str;
       }
 
       if (max_length < 5) {
-        return str.substring(0, max_length);
+        return str.substring (0, max_length);
       }
 
       int half = (max_length - 1) / 2;
       int left_size = half;
       int right_size = max_length - left_size - 1;
 
-      return str.substring(0, left_size) + "…" + str.substring(str.length - right_size);
+      return str.substring (0, left_size) + "…" + str.substring (str.length - right_size);
     }
 
-    public int visible_window_count(GLib.List<weak Bamf.Window> windows) {
-      var window_count = 0;
-      foreach (var win in windows) {
-        if (win.is_user_visible()) {
-          window_count++;
-        }
+    public static bool current_workspace_only (DefaultApplicationDockItemProvider? provider) {
+      bool current_workspace_only = false;
+
+      if (provider != null) {
+        current_workspace_only = provider.Prefs.CurrentWorkspaceOnly;
+      }
+
+      return current_workspace_only;
+    }
+
+    public static int window_count (Bamf.Application? app, DefaultApplicationDockItemProvider? provider) {
+      int window_count = 0;
+
+      if (app == null) {
+        return window_count;
+      }
+
+      if (current_workspace_only (provider)) {
+        unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+        window_count = WindowControl.window_on_workspace_count (app, active_workspace);
+      } else {
+        window_count = WindowControl.window_count (app);
       }
 
       return window_count;

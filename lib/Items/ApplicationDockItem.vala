@@ -262,6 +262,10 @@ namespace Plank {
       app_window_removed ();
     }
 
+    public void external_update_indicator () {
+      update_indicator (UpdateIndicatorEvent.EXTERNAL);
+    }
+
     void update_indicator (UpdateIndicatorEvent event) {
       var is_running = is_running ();
 
@@ -271,48 +275,22 @@ namespace Plank {
         return;
       }
 
-      var current_windows = App.get_windows ();
-      var total_window_count = current_windows.length ();
-      var window_count = Helpers.visible_window_count (current_windows);
-
-      bool trigger_update = false;
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+      int window_count = Helpers.window_count (App, default_provider);
 
       if (window_count == 0) {
         if (Indicator != IndicatorState.NONE) {
           Indicator = IndicatorState.NONE;
         }
-        if (event == UpdateIndicatorEvent.WINDOW_REMOVED && total_window_count != window_count) {
-          trigger_update = true;
-        }
       } else if (window_count == 1) {
         if (Indicator != IndicatorState.SINGLE) {
           Indicator = IndicatorState.SINGLE;
-        }
-        if (event != UpdateIndicatorEvent.WINDOW_REMOVED) {
-          trigger_update = true;
         }
       } else {
         if (Indicator != IndicatorState.SINGLE_PLUS) {
           Indicator = IndicatorState.SINGLE_PLUS;
         }
-        if (event == UpdateIndicatorEvent.RUNNING_CHANGED) {
-          trigger_update = true;
-        }
       }
-
-      if (!trigger_update) {
-        return;
-      }
-
-      // If the item isn't transient, then it will always be on the dock,
-      // no need to update visible elements.
-      unowned TransientDockItem? transient = (this as TransientDockItem);
-      if (transient == null) {
-        return;
-      }
-
-      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
-      default_provider?.trigger_update_visible_elements ();
     }
 
     inline void reset_application_status () {
@@ -331,15 +309,18 @@ namespace Plank {
      * {@inheritDoc}
      */
     protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time) {
-      if (!is_window ())
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+
+      if (!is_window ()) {
         if (button == PopupButton.MIDDLE
-            || (button == PopupButton.LEFT && (App == null || App.get_windows ().length () == 0
+            || (button == PopupButton.LEFT && (App == null || Helpers.window_count (App, default_provider) == 0
                                                || (mod & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))) {
           launch ();
           return AnimationType.BOUNCE;
         }
+      }
 
-      if (button == PopupButton.LEFT && App != null && Helpers.visible_window_count (App.get_windows ()) > 0) {
+      if (button == PopupButton.LEFT && App != null && Helpers.window_count (App, default_provider) > 0) {
         WindowControl.smart_focus (App, event_time);
         return AnimationType.DARKEN;
       }
@@ -351,7 +332,7 @@ namespace Plank {
      * {@inheritDoc}
      */
     protected override AnimationType on_scrolled (Gdk.ScrollDirection direction, Gdk.ModifierType mod, uint32 event_time) {
-      if (App == null || Helpers.visible_window_count (App.get_windows ()) == 0)
+      if (App == null || WindowControl.window_count (App) == 0)
         return AnimationType.NONE;
 
       if (GLib.get_monotonic_time () - LastScrolled < ITEM_SCROLL_DURATION * 1000)
@@ -359,10 +340,13 @@ namespace Plank {
 
       LastScrolled = GLib.get_monotonic_time ();
 
-      if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT)
-        WindowControl.focus_previous (App, event_time);
-      else
-        WindowControl.focus_next (App, event_time);
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+
+      if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT) {
+        WindowControl.focus_previous (App, event_time, Helpers.current_workspace_only(default_provider));
+      } else {
+        WindowControl.focus_next (App, event_time, Helpers.current_workspace_only(default_provider));
+      }
 
       return AnimationType.DARKEN;
     }
@@ -411,10 +395,11 @@ namespace Plank {
         windows = App.get_windows ();
 
       var window_count = 0U;
-      if (windows != null)
-        window_count = Helpers.visible_window_count (windows);
-
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+
+      if (windows != null)
+        window_count = Helpers.window_count (App, default_provider);
+
       if (default_provider != null
           && !default_provider.Prefs.LockItems
           && !is_window ()) {
@@ -427,7 +412,11 @@ namespace Plank {
       var event_time = Gtk.get_current_event_time ();
       if (is_running () && window_count > 0) {
         var item = create_menu_item ((window_count > 1 ? _("_Close All") : _("_Close")), "window-close-symbolic;;window-close");
-        item.activate.connect (() => WindowControl.close_all (App, event_time));
+        if (Helpers.current_workspace_only(default_provider)) {
+          item.activate.connect (() => WindowControl.close_all_in_workspace (App, event_time));
+        } else {
+          item.activate.connect (() => WindowControl.close_all (App, event_time));
+        }
         items.add (item);
       }
 
@@ -466,10 +455,16 @@ namespace Plank {
         if (items.size > 0)
           items.add (new Gtk.SeparatorMenuItem ());
 
-        foreach (var view in windows) {
-          unowned Bamf.Window? window = (view as Bamf.Window);
+        bool cw_only = Helpers.current_workspace_only (default_provider);
+        unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+
+        foreach (var window in windows) {
           if (window == null || window.get_transient () != null || !window.is_user_visible ())
             continue;
+
+          if (cw_only && WindowControl.get_window_workspace(window) != active_workspace) {
+            continue;
+          }
 
           Gtk.MenuItem window_item;
           var pbuf = WindowControl.get_window_icon (window);

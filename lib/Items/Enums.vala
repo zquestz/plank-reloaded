@@ -79,6 +79,10 @@ namespace Plank {
      * Running changed - the running state of the item changed.
      */
     RUNNING_CHANGED,
+    /**
+    * External - Not sent by a Bamf signal.
+    */
+    EXTERNAL,
   }
 
   /**
