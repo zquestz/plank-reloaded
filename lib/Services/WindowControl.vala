@@ -53,7 +53,9 @@ namespace Plank {
 
       // Make sure internal window-list of Wnck is most up to date
       Gdk.error_trap_push ();
+
       screen.force_update ();
+
       if (Gdk.error_trap_pop () != 0)
         critical ("Wnck.Screen.force_update() caused a XError");
 
@@ -64,9 +66,10 @@ namespace Plank {
     }
 
     static void window_manager_changed (Wnck.Screen screen) {
-      // Make sure internal window-list of Wnck is most up to date
       Gdk.error_trap_push ();
+
       screen.force_update ();
+
       if (Gdk.error_trap_pop () != 0)
         critical ("Wnck.Screen.force_update() caused a XError");
 
@@ -85,7 +88,6 @@ namespace Plank {
     {
       unowned Gdk.Pixbuf? pbuf = null;
 
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);
@@ -132,8 +134,27 @@ namespace Plank {
       return pbuf;
     }
 
+    public static unowned Wnck.Workspace? get_window_workspace (Bamf.Window window)
+    {
+      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Workspace? workspace = null;
+
+      warn_if_fail (w != null);
+
+      if (w == null)
+        return null;
+
+      Gdk.error_trap_push ();
+
+      workspace = w.get_workspace ();
+
+      if (Gdk.error_trap_pop () != 0)
+        critical ("get_window_workspace() for '%s' caused a XError", window.get_name ());
+
+      return workspace;
+    }
+
     public static bool has_maximized_window (Bamf.Application app) {
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);
@@ -148,7 +169,6 @@ namespace Plank {
     }
 
     public static bool has_minimized_window (Bamf.Application app) {
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);
@@ -163,32 +183,100 @@ namespace Plank {
     }
 
     public static bool has_window_on_workspace (Bamf.Application app, Wnck.Workspace workspace) {
-      Wnck.Screen.get_default ();
-      Array<uint32>? xids = app.get_xids ();
-
-      warn_if_fail (xids != null);
-
       var is_virtual = workspace.is_virtual ();
 
-      for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
         if (!is_virtual) {
-          if (window.is_on_workspace (workspace))
+          if (window.is_on_workspace (workspace)) {
             return true;
+          }
         } else {
-          if (window.is_in_viewport (workspace))
+          if (window.is_in_viewport (workspace)) {
             return true;
+          }
         }
       }
 
       return false;
     }
 
+    public static int window_on_workspace_count (Bamf.Application app, Wnck.Workspace workspace) {
+      int window_count = 0;
+      var is_virtual = workspace.is_virtual ();
+
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+        if (window == null || window.is_skip_tasklist ())
+          continue;
+
+        if (!is_virtual) {
+          if (window.is_on_workspace (workspace)) {
+            window_count += 1;
+          }
+        } else {
+          if (window.is_in_viewport (workspace)) {
+            window_count += 1;
+          }
+        }
+      }
+
+      return window_count;
+    }
+
+    public static bool has_window (Bamf.Application app) {
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+        if (window != null && !window.is_skip_tasklist ()) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    public static int window_count (Bamf.Application app) {
+      int window_count = 0;
+
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+        if (window != null && !window.is_skip_tasklist ()) {
+          window_count += 1;
+        }
+      }
+
+      return window_count;
+    }
+
+    public static Array<uint32> get_app_xids_on_workspace (Bamf.Application? app) {
+      Array<uint32> xids = new Array<uint32> ();
+
+      unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+      Array<uint32> app_xids = app.get_xids ();
+
+      if (active_workspace == null) {
+        return app_xids;
+      }
+
+      var is_virtual = active_workspace.is_virtual ();
+
+      foreach (uint32 xid in app_xids) {
+        unowned Wnck.Window window = Wnck.Window.@get (xid);
+
+        if (!is_virtual) {
+          if (window.is_on_workspace (active_workspace)) {
+            xids.append_val (xid);
+          }
+        } else {
+          if (window.is_in_viewport (active_workspace)) {
+            xids.append_val (xid);
+          }
+        }
+      }
+
+      return xids;
+    }
+
     public static void update_icon_regions (Bamf.Application app, Gdk.Rectangle rect) {
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);
@@ -201,7 +289,6 @@ namespace Plank {
     }
 
     public static void close_all (Bamf.Application app, uint32 event_time) {
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);
@@ -213,8 +300,31 @@ namespace Plank {
       }
     }
 
+    public static void close_all_in_workspace (Bamf.Application app, uint32 event_time) {
+      Array<uint32>? xids = app.get_xids ();
+
+      warn_if_fail (xids != null);
+
+      unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+      var is_virtual = active_workspace.is_virtual ();
+
+      for (var i = 0; xids != null && i < xids.length; i++) {
+        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        if (window != null && !window.is_skip_tasklist () && active_workspace != null) {
+          if (!is_virtual) {
+            if (window.is_on_workspace (active_workspace)) {
+              window.close (event_time);
+            }
+          } else {
+            if (window.is_in_viewport (active_workspace)) {
+              window.close (event_time);
+            }
+          }
+        }
+      }
+    }
+
     public static void focus_window (Bamf.Window window, uint32 event_time) {
-      Wnck.Screen.get_default ();
       unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
 
       warn_if_fail (w != null);
@@ -226,7 +336,6 @@ namespace Plank {
     }
 
     static void focus_window_by_xid (uint32 xid, uint32 event_time) {
-      Wnck.Screen.get_default ();
       unowned Wnck.Window w = Wnck.Window.@get (xid);
 
       warn_if_fail (w != null);
@@ -247,9 +356,8 @@ namespace Plank {
       return i;
     }
 
-    public static void focus_previous (Bamf.Application app, uint32 event_time) {
-      Wnck.Screen.get_default ();
-      Array<uint32>? xids = app.get_xids ();
+    public static void focus_previous (Bamf.Application app, uint32 event_time, bool focus_workspace) {
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
 
       warn_if_fail (xids != null);
 
@@ -265,9 +373,8 @@ namespace Plank {
       focus_window_by_xid (xids.index (i), event_time);
     }
 
-    public static void focus_next (Bamf.Application app, uint32 event_time) {
-      Wnck.Screen.get_default ();
-      Array<uint32>? xids = app.get_xids ();
+    public static void focus_next (Bamf.Application app, uint32 event_time, bool focus_workspace) {
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
 
       warn_if_fail (xids != null);
 
@@ -320,7 +427,6 @@ namespace Plank {
     public static GLib.List<unowned Wnck.Window> get_ordered_window_stack (Bamf.Application app) {
       var windows = new GLib.List<unowned Wnck.Window> ();
 
-      Wnck.Screen.get_default ();
       Array<uint32>? xids = app.get_xids ();
 
       warn_if_fail (xids != null);

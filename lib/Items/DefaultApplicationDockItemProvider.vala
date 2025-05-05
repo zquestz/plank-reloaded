@@ -68,20 +68,29 @@ namespace Plank {
           unowned TransientDockItem? transient = (item as TransientDockItem);
           item.IsAttached = (transient == null || transient.App == null || active_workspace == null
                              || WindowControl.has_window_on_workspace (transient.App, active_workspace));
+
+          if (item.IsAttached) {
+            unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
+            if (app_item != null) {
+              app_item.external_update_indicator ();
+            }
+          }
         }
       } else {
         foreach (var item in internal_elements) {
           unowned TransientDockItem? transient = (item as TransientDockItem);
 
-          if (transient == null) {
+          if (transient == null || transient.App == null) {
             item.IsAttached = true;
-          } else if (transient.App == null) {
-            item.IsAttached = false;
           } else {
-            var current_windows = transient.App.get_windows ();
-            var window_count = Helpers.visible_window_count (current_windows);
+            item.IsAttached = WindowControl.has_window (transient.App);
+          }
 
-            item.IsAttached = window_count > 0;
+          if (item.IsAttached) {
+            unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
+            if (app_item != null) {
+              app_item.external_update_indicator ();
+            }
           }
         }
       }
@@ -142,6 +151,7 @@ namespace Plank {
       screen.active_window_changed.connect_after (handle_window_changed);
       screen.active_workspace_changed.connect_after (handle_workspace_changed);
       screen.viewports_changed.connect_after (handle_viewports_changed);
+      screen.window_closed.connect_after (handle_window_closed);
     }
 
     void disconnect_wnck () {
@@ -150,10 +160,16 @@ namespace Plank {
       screen.active_window_changed.disconnect (handle_window_changed);
       screen.active_workspace_changed.disconnect (handle_workspace_changed);
       screen.viewports_changed.disconnect (handle_viewports_changed);
+      screen.window_closed.disconnect (handle_window_closed);
     }
 
     [CCode (instance_pos = -1)]
     void handle_window_changed (Wnck.Screen screen, Wnck.Window? previous) {
+      update_visible_elements ();
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_window_closed (Wnck.Screen screen, Wnck.Window? window) {
       update_visible_elements ();
     }
 
