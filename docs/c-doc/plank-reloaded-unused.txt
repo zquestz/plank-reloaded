@@ -1,2 +1,0 @@
-VALA_EXTERN
-PlankFactory(plank_factory_main, plank_factory_item_factory)

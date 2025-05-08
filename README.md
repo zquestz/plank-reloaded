@@ -244,7 +244,16 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 
 This project intends to be API compatible with the original Plank project.
 
-Plank Reloaded documentation: [API Docs](https://zquestz.github.io/plank-reloaded/docs/web-doc/plank-reloaded/index.htm)
+To build the latest documentation:
+
+```
+meson setup --prefix=/usr build
+meson configure -D enable-docs=true build
+meson compile -C build
+meson compile -C build all-docs
+```
+
+Then you can find the docs in the `build/docs` directory.
 
 ## Development Resources
 

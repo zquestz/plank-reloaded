@@ -46,6 +46,9 @@ po/stamp-po
 docklets/*/*.c
 docklets/*/*.stamp
 docs/*.stamp
+docs/vala-doc
+docs/c-doc
+docs/web-doc
 examples/remote-client
 examples/unity-client
 examples/*.c
