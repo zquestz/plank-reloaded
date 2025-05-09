@@ -73,6 +73,8 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.Switch sw_lock_items;
     [GtkChild]
+    unowned Gtk.Switch sw_tooltips_enabled;
+    [GtkChild]
     unowned Gtk.Switch sw_anchor_docklets;
     [GtkChild]
     unowned Gtk.Switch sw_anchor_files;
@@ -142,6 +144,9 @@ namespace Plank {
         break;
       case "LockItems":
         sw_lock_items.set_active (prefs.LockItems);
+        break;
+      case "TooltipsEnabled":
+        sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);
         break;
       case "AnchorDocklets":
         sw_anchor_docklets.set_active (prefs.AnchorDocklets);
@@ -258,6 +263,10 @@ namespace Plank {
       prefs.LockItems = ((Gtk.Switch) widget).get_active ();
     }
 
+    void tooltips_enabled_toggled (GLib.Object widget, ParamSpec param) {
+      prefs.TooltipsEnabled = ((Gtk.Switch) widget).get_active ();
+    }
+
     void anchor_docklets_toggled (GLib.Object widget, ParamSpec param) {
       prefs.AnchorDocklets = ((Gtk.Switch) widget).get_active ();
     }
@@ -326,6 +335,7 @@ namespace Plank {
       sw_workspace_only.notify["active"].connect (workspace_only_toggled);
       sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
       sw_lock_items.notify["active"].connect (lock_items_toggled);
+      sw_tooltips_enabled.notify["active"].connect (tooltips_enabled_toggled);
       sw_anchor_docklets.notify["active"].connect (anchor_docklets_toggled);
       sw_anchor_files.notify["active"].connect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].connect (pressure_reveal_toggled);
@@ -352,6 +362,7 @@ namespace Plank {
       sw_workspace_only.notify["active"].disconnect (workspace_only_toggled);
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
+      sw_tooltips_enabled.notify["active"].disconnect (tooltips_enabled_toggled);
       sw_pressure_reveal.notify["active"].disconnect (pressure_reveal_toggled);
       sw_zoom_enabled.notify["active"].disconnect (zoom_enabled_toggled);
       cb_alignment.changed.disconnect (alignment_changed);
@@ -400,6 +411,7 @@ namespace Plank {
       sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
       sw_show_unpinned.set_active (!prefs.PinnedOnly);
       sw_lock_items.set_active (prefs.LockItems);
+      sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);
       sw_anchor_docklets.set_active (prefs.AnchorDocklets);
       sw_anchor_files.set_active (prefs.AnchorFiles);
       sw_pressure_reveal.set_active (prefs.PressureReveal);
