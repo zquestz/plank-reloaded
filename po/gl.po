@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"POT-Creation-Date: 2025-05-09 21:30-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -481,20 +481,20 @@ msgstr ""
 "  Xosé https://launchpad.net/~ubuntu-galizaweb\n"
 "  ghas https://launchpad.net/~agghas"
 
-#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Manter na doca"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
 msgstr "_Pechar todo"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
 msgstr "_Pechar"
 
-#: lib/Items/ApplicationDockItem.vala:497
+#: lib/Items/ApplicationDockItem.vala:525
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Soltar para abrir con %s"

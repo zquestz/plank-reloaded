@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"POT-Creation-Date: 2025-05-09 21:30-1000\n"
 "PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -499,20 +499,20 @@ msgstr ""
 "Github Contributions:\n"
 "Danila Vyalikov https://github.com/col83"
 
-#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Прикрепить к панели"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
 msgstr "_Закрыть всё"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: lib/Items/ApplicationDockItem.vala:497
+#: lib/Items/ApplicationDockItem.vala:525
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Отпустите, чтобы открыть в %s"

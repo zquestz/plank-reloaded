@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"POT-Creation-Date: 2025-05-09 21:30-1000\n"
 "PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -489,20 +489,20 @@ msgstr ""
 "  Youngbin Han https://launchpad.net/~sukso96100\n"
 "  cafeinoz https://launchpad.net/~cafeinoz"
 
-#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "플랭크에 두기 (_K)"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
 msgstr "모두 닫기 (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
 msgstr "닫기 (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:497
+#: lib/Items/ApplicationDockItem.vala:525
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s로 열려면 가져다 놓으세요"

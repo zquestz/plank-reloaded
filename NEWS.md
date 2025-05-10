@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.126 "Reloaded" (2025-05-09)
+
+- Fix regression showing unpinned items
+
 ## 0.11.125 "Reloaded" (2025-05-09)
 
 - Added option to disable tooltips

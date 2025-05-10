@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"POT-Creation-Date: 2025-05-09 21:30-1000\n"
 "PO-Revision-Date: 2016-04-24 08:56+0000\n"
 "Last-Translator: ITPROJECTS <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -481,20 +481,20 @@ msgstr ""
 "  Svetoslav Stefanov https://launchpad.net/~svetlisashkov\n"
 "  spacy01 https://launchpad.net/~spacy00001"
 
-#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Запазване в дока"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
 msgstr "_Затваряне на всички"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
 msgstr "Зат_варяне"
 
-#: lib/Items/ApplicationDockItem.vala:497
+#: lib/Items/ApplicationDockItem.vala:525
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Пуснете за отваряне с %s"

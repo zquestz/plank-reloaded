@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"POT-Creation-Date: 2025-05-09 21:30-1000\n"
 "PO-Revision-Date: 2019-06-15 11:48+0000\n"
 "Last-Translator: Amaziɣ Agrawliw <Unknown>\n"
 "Language-Team: Kabyle <kab@li.org>\n"
@@ -477,20 +477,20 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Amaziɣ Agrawliw https://launchpad.net/~mldamazigh15"
 
-#: lib/Items/ApplicationDockItem.vala:406 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Eǧǧ-it deg Dock"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
 msgstr "_Mdel akk ayen yellan"
 
-#: lib/Items/ApplicationDockItem.vala:414
+#: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
 msgstr "_Mdel"
 
-#: lib/Items/ApplicationDockItem.vala:497
+#: lib/Items/ApplicationDockItem.vala:525
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Serreḥ i wakken ad teldiḍ akkʷed %s"
