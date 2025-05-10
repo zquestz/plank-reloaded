@@ -25,8 +25,8 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
   - Workspaces: A graphical workspace switcher
   - Refreshed icons across all docklets
   - Support for third party docklets
-- Updated Matte theme and added MatteLight theme, both based on the [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
-- Added theme options to set the indicator and active item styles
+- Added Matte and Matte-Light themes, based on [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
+- Added theme options to set the indicator, active item, and badge styles
 - General code cleanup and stability improvements
 
 ## Themes
