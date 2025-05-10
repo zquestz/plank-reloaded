@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-04 20:02-1000\n"
-"PO-Revision-Date: 2025-04-24 07:47\n"
+"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -202,22 +202,26 @@ msgid "Restrict to Workspace:"
 msgstr "작업공간으로 제한하기:"
 
 #: data/ui/preferences.ui:613
+msgid "Tooltips Enabled:"
+msgstr "툴팁 활성화:"
+
+#: data/ui/preferences.ui:637
 msgid "Lock Icons:"
 msgstr "아이콘 고정:"
 
-#: data/ui/preferences.ui:640
+#: data/ui/preferences.ui:664
 msgid "Anchor Docklets:"
 msgstr "독크릿 고정:"
 
-#: data/ui/preferences.ui:667
+#: data/ui/preferences.ui:691
 msgid "Anchor Files:"
 msgstr "고정 파일:"
 
-#: data/ui/preferences.ui:689
+#: data/ui/preferences.ui:713
 msgid "Behaviour"
 msgstr "동작"
 
-#: data/ui/preferences.ui:709
+#: data/ui/preferences.ui:733
 msgid "Docklets"
 msgstr "독크릿"
 
@@ -563,6 +567,6 @@ msgstr "정보 (_A)"
 msgid "_Quit"
 msgstr "나가기 (_Q)"
 
-#: lib/Widgets/PreferencesWindow.vala:93
+#: lib/Widgets/PreferencesWindow.vala:95
 msgid "Preferences"
 msgstr "기본 설정"

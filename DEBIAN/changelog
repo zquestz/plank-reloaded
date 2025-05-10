@@ -1,3 +1,10 @@
+plank-reloaded (0.11.125-1) unstable; urgency=medium
+
+  * Added option to disable tooltips
+  * Removed docs from source package
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 09 May 2025 18:15:42 -1000
+
 plank-reloaded (0.11.124-1) unstable; urgency=medium
 
   * Updated theme engine to support badge theming options

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-04 20:02-1000\n"
+"POT-Creation-Date: 2025-05-09 18:17-1000\n"
 "PO-Revision-Date: 2017-03-20 04:18+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -196,22 +196,26 @@ msgid "Restrict to Workspace:"
 msgstr "Begränsa till arbetsyta:"
 
 #: data/ui/preferences.ui:613
+msgid "Tooltips Enabled:"
+msgstr ""
+
+#: data/ui/preferences.ui:637
 msgid "Lock Icons:"
 msgstr "Lås ikoner:"
 
-#: data/ui/preferences.ui:640
+#: data/ui/preferences.ui:664
 msgid "Anchor Docklets:"
 msgstr ""
 
-#: data/ui/preferences.ui:667
+#: data/ui/preferences.ui:691
 msgid "Anchor Files:"
 msgstr ""
 
-#: data/ui/preferences.ui:689
+#: data/ui/preferences.ui:713
 msgid "Behaviour"
 msgstr "Beteende"
 
-#: data/ui/preferences.ui:709
+#: data/ui/preferences.ui:733
 msgid "Docklets"
 msgstr "Dockprogram"
 
@@ -560,7 +564,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:93
+#: lib/Widgets/PreferencesWindow.vala:95
 msgid "Preferences"
 msgstr "Inställningar"
 

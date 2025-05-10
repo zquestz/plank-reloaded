@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-04 20:02-1000\n"
-"PO-Revision-Date: 2025-04-24 07:47\n"
+"POT-Creation-Date: 2025-05-09 18:17-1000\n"
+"PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -204,22 +204,26 @@ msgid "Restrict to Workspace:"
 msgstr "Restringir al área de trabajo:"
 
 #: data/ui/preferences.ui:613
+msgid "Tooltips Enabled:"
+msgstr "Tooltips habilitados:"
+
+#: data/ui/preferences.ui:637
 msgid "Lock Icons:"
 msgstr "Bloquear iconos:"
 
-#: data/ui/preferences.ui:640
+#: data/ui/preferences.ui:664
 msgid "Anchor Docklets:"
 msgstr "Anclar agregados:"
 
-#: data/ui/preferences.ui:667
+#: data/ui/preferences.ui:691
 msgid "Anchor Files:"
 msgstr "Archivos de anclaje:"
 
-#: data/ui/preferences.ui:689
+#: data/ui/preferences.ui:713
 msgid "Behaviour"
 msgstr "Comportamiento"
 
-#: data/ui/preferences.ui:709
+#: data/ui/preferences.ui:733
 msgid "Docklets"
 msgstr "Agregados"
 
@@ -581,6 +585,6 @@ msgstr "_Acerca de"
 msgid "_Quit"
 msgstr "_Salir"
 
-#: lib/Widgets/PreferencesWindow.vala:93
+#: lib/Widgets/PreferencesWindow.vala:95
 msgid "Preferences"
 msgstr "Preferencias"

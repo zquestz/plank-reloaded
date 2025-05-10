@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.125 "Reloaded" (2025-05-09)
+
+- Added option to disable tooltips
+- Removed docs from source package
+
 ## 0.11.124 "Reloaded" (2025-05-04)
 
 - Updated theme engine to support badge theming options
