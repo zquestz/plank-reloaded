@@ -278,19 +278,47 @@ namespace Plank {
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
       int window_count = Helpers.window_count (App, default_provider);
 
+      bool trigger_update = false;
+
       if (window_count == 0) {
         if (Indicator != IndicatorState.NONE) {
           Indicator = IndicatorState.NONE;
+        }
+        if (event == UpdateIndicatorEvent.WINDOW_REMOVED) {
+          trigger_update = true;
         }
       } else if (window_count == 1) {
         if (Indicator != IndicatorState.SINGLE) {
           Indicator = IndicatorState.SINGLE;
         }
+        if (event != UpdateIndicatorEvent.WINDOW_REMOVED) {
+          trigger_update = true;
+        }
       } else {
         if (Indicator != IndicatorState.SINGLE_PLUS) {
           Indicator = IndicatorState.SINGLE_PLUS;
         }
+        if (event == UpdateIndicatorEvent.RUNNING_CHANGED) {
+          trigger_update = true;
+        }
       }
+
+      if (event == UpdateIndicatorEvent.EXTERNAL) {
+        return;
+      }
+
+      if (!trigger_update) {
+        return;
+      }
+
+      // If the item isn't transient, then it will always be on the dock,
+      // no need to update visible elements.
+      unowned TransientDockItem? transient = (this as TransientDockItem);
+      if (transient == null) {
+        return;
+      }
+
+      default_provider?.trigger_update_visible_elements (false);
     }
 
     inline void reset_application_status () {
@@ -343,9 +371,9 @@ namespace Plank {
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
 
       if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT) {
-        WindowControl.focus_previous (App, event_time, Helpers.current_workspace_only(default_provider));
+        WindowControl.focus_previous (App, event_time, Helpers.current_workspace_only (default_provider));
       } else {
-        WindowControl.focus_next (App, event_time, Helpers.current_workspace_only(default_provider));
+        WindowControl.focus_next (App, event_time, Helpers.current_workspace_only (default_provider));
       }
 
       return AnimationType.DARKEN;
@@ -412,7 +440,7 @@ namespace Plank {
       var event_time = Gtk.get_current_event_time ();
       if (is_running () && window_count > 0) {
         var item = create_menu_item ((window_count > 1 ? _("_Close All") : _("_Close")), "window-close-symbolic;;window-close");
-        if (Helpers.current_workspace_only(default_provider)) {
+        if (Helpers.current_workspace_only (default_provider)) {
           item.activate.connect (() => WindowControl.close_all_in_workspace (App, event_time));
         } else {
           item.activate.connect (() => WindowControl.close_all (App, event_time));
@@ -462,7 +490,7 @@ namespace Plank {
           if (window == null || window.get_transient () != null || !window.is_user_visible ())
             continue;
 
-          if (cw_only && WindowControl.get_window_workspace(window) != active_workspace) {
+          if (cw_only && WindowControl.get_window_workspace (window) != active_workspace) {
             continue;
           }
 

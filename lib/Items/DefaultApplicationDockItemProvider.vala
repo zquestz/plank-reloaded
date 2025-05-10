@@ -55,21 +55,22 @@ namespace Plank {
         disconnect_wnck ();
     }
 
-    public void trigger_update_visible_elements () {
-      update_visible_elements ();
+    public void trigger_update_visible_elements (bool update_indicator) {
+      internal_update_visible_elements (update_indicator);
     }
 
-    protected override void update_visible_elements () {
+    protected void internal_update_visible_elements (bool update_indicator) {
       Logger.verbose ("DefaultDockItemProvider.update_visible_items ()");
 
       if (Prefs.CurrentWorkspaceOnly) {
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
         foreach (var item in internal_elements) {
           unowned TransientDockItem? transient = (item as TransientDockItem);
+
           item.IsAttached = (transient == null || transient.App == null || active_workspace == null
                              || WindowControl.has_window_on_workspace (transient.App, active_workspace));
 
-          if (item.IsAttached) {
+          if (update_indicator && item.IsAttached) {
             unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
             if (app_item != null) {
               app_item.external_update_indicator ();
@@ -86,7 +87,7 @@ namespace Plank {
             item.IsAttached = WindowControl.has_window (transient.App);
           }
 
-          if (item.IsAttached) {
+          if (update_indicator && item.IsAttached) {
             unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
             if (app_item != null) {
               app_item.external_update_indicator ();
@@ -96,6 +97,10 @@ namespace Plank {
       }
 
       base.update_visible_elements ();
+    }
+
+    protected override void update_visible_elements () {
+      internal_update_visible_elements (true);
     }
 
     /**
