@@ -593,22 +593,24 @@ namespace Plank {
         }
       }
 
+      var min_hover_region = GapSize > 0 ? (IconSize / 2) : 1;
+
       switch (Position) {
       default :
       case Gtk.PositionType.BOTTOM:
-        cursor_region.height = int.max (1 * window_scale_factor, (int) (progress * cursor_region.height));
+        cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
         cursor_region.y = DockHeight - cursor_region.height + (window_scale_factor - 1);
         break;
       case Gtk.PositionType.TOP:
-        cursor_region.height = int.max (1 * window_scale_factor, (int) (progress * cursor_region.height));
+        cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
         cursor_region.y = 0;
         break;
       case Gtk.PositionType.LEFT:
-        cursor_region.width = int.max (1 * window_scale_factor, (int) (progress * cursor_region.width));
+        cursor_region.width = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.width));
         cursor_region.x = 0;
         break;
       case Gtk.PositionType.RIGHT:
-        cursor_region.width = int.max (1 * window_scale_factor, (int) (progress * cursor_region.width));
+        cursor_region.width = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.width));
         cursor_region.x = DockWidth - cursor_region.width + (window_scale_factor - 1);
         break;
       }
