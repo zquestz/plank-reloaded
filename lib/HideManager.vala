@@ -58,8 +58,7 @@ namespace Plank {
     const uint UPDATE_TIMEOUT = 200U;
 
 #if HAVE_BARRIERS
-    // FIXME Use an IconSize-based value?
-    const double PRESSURE_THRESHOLD = 60.0;
+    const double PRESSURE_THRESHOLD = 50.0;
     const uint PRESSURE_TIMEOUT = 1000U;
 #endif
 
