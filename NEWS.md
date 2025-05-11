@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.127 "Reloaded" (2025-05-10)
+
+- Update reveal logic when using GapSize > 0
+- Reduce pressure threshold for "Pressure Reveal"
+
 ## 0.11.126 "Reloaded" (2025-05-09)
 
 - Fix regression showing unpinned items
