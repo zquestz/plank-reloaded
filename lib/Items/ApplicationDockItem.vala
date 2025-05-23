@@ -487,29 +487,85 @@ namespace Plank {
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
 
         foreach (var window in windows) {
-          if (window == null || window.get_transient () != null || !window.is_user_visible ())
+          if (window == null || window.get_transient () != null || !window.is_user_visible ()) {
             continue;
+          }
 
           if (cw_only && WindowControl.get_window_workspace (window) != active_workspace) {
             continue;
           }
 
-          Gtk.MenuItem window_item;
           var pbuf = WindowControl.get_window_icon (window);
           var window_name = window.get_name ();
           window_name = shorten_window_name (window_name);
-
           window_name = Helpers.truncate_middle (window_name, MAX_WINDOW_NAME_LENGTH);
 
-          if (pbuf != null)
-            window_item = create_literal_menu_item_with_pixbuf (window_name, pbuf);
-          else
-            window_item = create_literal_menu_item (window_name, Icon);
+          var window_item = new Gtk.MenuItem ();
+          var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+          box.margin_end = 5;
 
-          if (window.is_active ())
-            window_item.set_sensitive (false);
-          else
-            window_item.activate.connect (() => WindowControl.focus_window (window, event_time));
+          Gtk.Image image;
+          if (pbuf != null) {
+            int width, height;
+            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out width, out height);
+
+            if (width != pbuf.width || height != pbuf.height) {
+              pbuf = DrawingService.ar_scale (pbuf, width, height);
+            }
+            image = new Gtk.Image.from_pixbuf (pbuf);
+          } else {
+            image = new Gtk.Image.from_icon_name (Icon, Gtk.IconSize.MENU);
+          }
+
+          var label = new Gtk.Label (window_name);
+          label.halign = Gtk.Align.START;
+          label.valign = Gtk.Align.CENTER;
+          label.hexpand = true;
+
+          var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+
+          box.pack_start (image, false, false, 0);
+          box.pack_start (label, true, true, 0);
+          box.pack_end (close_icon, false, false, 0);
+
+          window_item.add (box);
+          window_item.show_all ();
+
+          bool was_close_click = false;
+
+          window_item.button_release_event.connect ((event) => {
+            Gtk.Allocation close_allocation;
+            close_icon.get_allocation (out close_allocation);
+
+            int close_x, close_y;
+            if (close_icon.translate_coordinates (window_item, 0, 0, out close_x, out close_y)) {
+              if (event.x >= close_x &&
+                  event.x <= close_x + close_allocation.width &&
+                  event.y >= close_y &&
+                  event.y <= close_y + close_allocation.height) {
+
+                was_close_click = true;
+                WindowControl.close_window(window, event_time);
+              }
+            }
+
+            return false;
+          });
+
+          window_item.activate.connect (() => {
+            if (was_close_click) {
+              return;
+            }
+
+            if (!window.is_active ()) {
+              WindowControl.focus_window (window, event_time);
+            }
+          });
+
+          if (window.is_active ()) {
+            label.set_sensitive (false);
+            image.set_sensitive (false);
+          }
 
           items.add (window_item);
         }

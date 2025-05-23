@@ -288,6 +288,11 @@ namespace Plank {
       }
     }
 
+    public static void close_window (Bamf.Window window, uint32 event_time) {
+      unowned Wnck.Window wnck_window = Wnck.Window.@get (window.get_xid ());
+      wnck_window.close (event_time);
+    }
+
     public static void close_all (Bamf.Application app, uint32 event_time) {
       Array<uint32>? xids = app.get_xids ();
 
