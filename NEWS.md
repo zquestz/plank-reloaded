@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.128 "Reloaded" (2025-05-22)
+
+- Add close buttons to context menu window list
+
 ## 0.11.127 "Reloaded" (2025-05-10)
 
 - Update reveal logic when using GapSize > 0

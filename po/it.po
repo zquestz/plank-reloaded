@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-10 17:00-1000\n"
+"POT-Creation-Date: 2025-05-22 15:00-1000\n"
 "PO-Revision-Date: 2017-03-20 04:22+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
@@ -504,7 +504,7 @@ msgstr "_Chiudi tutti"
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: lib/Items/ApplicationDockItem.vala:525
+#: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Rilascia per aprire con %s"

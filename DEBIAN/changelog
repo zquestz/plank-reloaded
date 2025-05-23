@@ -1,3 +1,9 @@
+plank-reloaded (0.11.128-1) unstable; urgency=medium
+
+  * Add close buttons to context menu window list
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 22 May 2025 14:57:01 -1000
+
 plank-reloaded (0.11.127-1) unstable; urgency=medium
 
   * Update reveal logic when using GapSize > 0
