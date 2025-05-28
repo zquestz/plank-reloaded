@@ -248,6 +248,7 @@ Here is a list of themes known to support Plank Reloaded:
 
 - Matcha - https://github.com/zquestz/Matcha-gtk-theme
 - Semabe - https://github.com/sewbej/Plank-Themes
+- WhiteSur - https://github.com/vinceliuice/WhiteSur-gtk-theme
 
 ## API Documentation
 
