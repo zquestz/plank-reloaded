@@ -240,6 +240,15 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 
 - [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
 
+## GTK themes
+
+Plank Reloaded supports GTK themes. To use a GTK theme, simply install it and set it as your default theme. Then in settings you can set the Plank Reloaded theme to Gtk+.
+
+Here is a list of themes known to support Plank Reloaded:
+
+- Matcha - https://github.com/zquestz/Matcha-gtk-theme
+- Semabe - https://github.com/sewbej/Plank-Themes
+
 ## API Documentation
 
 This project intends to be API compatible with the original Plank project.
