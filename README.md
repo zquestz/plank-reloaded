@@ -238,6 +238,7 @@ Please search for existing bugs before reporting new ones.
 
 Plank Reloaded encourages developers to write custom docklets! Right now we only have one custom docklet available, but we hope that changes in the future! Feel free to use Picky as an example for writing your own!
 
+- [Last.fm](https://github.com/zquestz/lastfm-docklet) - A Last.fm docklet to show recent scrobbles.
 - [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
 
 ## GTK themes
