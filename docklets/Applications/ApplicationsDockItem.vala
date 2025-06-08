@@ -25,6 +25,7 @@ namespace Docky {
     private Gee.ArrayList<Gtk.MenuItem>? app_menu_items = null;
     private Mutex apps_menu_mutex;
     private bool apps_loaded;
+    private Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
 
     private const string APPLICATIONS_MENU = "applications.menu";
     private const string CINNAMON_APPLICATIONS_MENU = "cinnamon-applications.menu";
@@ -63,6 +64,7 @@ namespace Docky {
 
       apps_menu = new GMenu.Tree(menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
       apps_menu.changed.connect(update_menu);
+      icon_theme.changed.connect(update_menu);
       update_menu.begin();
     }
 
@@ -91,6 +93,8 @@ namespace Docky {
         app_menu.hide.disconnect(on_menu_hide);
         app_menu = null;
       }
+
+      icon_theme.changed.disconnect(update_menu);
     }
 
     private async void update_menu() {
