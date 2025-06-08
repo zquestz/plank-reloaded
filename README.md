@@ -102,6 +102,12 @@ meson compile -C build
 sudo meson install -C build
 ```
 
+### openSUSE
+
+There is a community supported openSUSE package available at:
+
+[https://build.opensuse.org/package/show/home:asdhio/plank](https://build.opensuse.org/package/show/home:asdhio/plank)
+
 ### FreeBSD
 
 Plank Reloaded is available in the FreeBSD Ports Collection. You can install it using one of the following methods:
