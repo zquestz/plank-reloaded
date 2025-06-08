@@ -531,9 +531,13 @@ namespace Docky {
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
+      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
 
       for (int i = 0; i < workspace_count; i++) {
-        var item = new Gtk.MenuItem.with_label (_("Workspace %d").printf (i + 1));
+        unowned Wnck.Workspace? workspace = screen.get_workspace (i);
+        string name = workspace != null? workspace.get_name () : _("Workspace %d").printf (i + 1);
+
+        var item = new Gtk.MenuItem.with_label (name);
 
         if (i == current_workspace) {
           var label = item.get_child () as Gtk.Label;
