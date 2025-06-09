@@ -1,3 +1,10 @@
+plank-reloaded (0.11.129-1) unstable; urgency=medium
+
+  * Update Application Docklet menu icons on theme change
+  * Support custom Workspace names
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 08 Jun 2025 14:38:41 -1000
+
 plank-reloaded (0.11.128-1) unstable; urgency=medium
 
   * Add close buttons to context menu window list

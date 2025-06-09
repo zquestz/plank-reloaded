@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-22 15:00-1000\n"
+"POT-Creation-Date: 2025-06-08 14:42-1000\n"
 "PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -226,45 +226,45 @@ msgstr "Davranış"
 msgid "Docklets"
 msgstr "Uygulamacıklar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:32
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "Hiçbir uygulama mevcut değil"
 
-#: docklets/Applications/ApplicationsDockItem.vala:51
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:296
+#: docklets/Applications/ApplicationsDockItem.vala:300
 msgid "Edit Menu"
 msgstr "Menüyü Düzenle"
 
-#: docklets/Applications/ApplicationsDockItem.vala:315
+#: docklets/Applications/ApplicationsDockItem.vala:319
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:327
 msgid "Reset to Default Icon"
 msgstr "Varsayılan Simgeye Sıfırla"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:337
 msgid "Large Icons"
 msgstr "Büyük Simgeler"
 
-#: docklets/Applications/ApplicationsDockItem.vala:346
+#: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Select Custom Icon"
 msgstr "Özel Simge Seç"
 
-#: docklets/Applications/ApplicationsDockItem.vala:349
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Cancel"
 msgstr "İptal"
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:354
 msgid "Select"
 msgstr "Seç"
 
-#: docklets/Applications/ApplicationsDockItem.vala:368
+#: docklets/Applications/ApplicationsDockItem.vala:372
 msgid "Image Files"
 msgstr "Görüntü Dosyaları"
 
@@ -427,7 +427,7 @@ msgid "Have a look at your trash!"
 msgstr "Çöp kutunuza bir göz atın!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
-#: docklets/Workspaces/WorkspacesDockItem.vala:556
+#: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Rengi Tersine Çevir"
 
@@ -456,12 +456,12 @@ msgstr "Çalışma Alanları"
 msgid "Workspace %d of %d"
 msgstr "Çalışma Alanı %d / %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
 msgstr "Çalışma Alanı %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:563
+#: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
 msgstr "_Canlı Önizlemeler"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-22 15:00-1000\n"
+"POT-Creation-Date: 2025-06-08 14:42-1000\n"
 "PO-Revision-Date: 2025-05-10 04:24\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
@@ -225,45 +225,45 @@ msgstr "व्यवहार"
 msgid "Docklets"
 msgstr "डॉकलेट्स"
 
-#: docklets/Applications/ApplicationsDockItem.vala:32
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "कोई एप्लिकेशन उपलब्ध नहीं"
 
-#: docklets/Applications/ApplicationsDockItem.vala:51
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "एप्लिकेशन"
 
-#: docklets/Applications/ApplicationsDockItem.vala:296
+#: docklets/Applications/ApplicationsDockItem.vala:300
 msgid "Edit Menu"
 msgstr "मेन्यू संपादित करें"
 
-#: docklets/Applications/ApplicationsDockItem.vala:315
+#: docklets/Applications/ApplicationsDockItem.vala:319
 msgid "Choose Custom Icon"
 msgstr "कस्टम आइकन चुनें"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:327
 msgid "Reset to Default Icon"
 msgstr "डिफ़ॉल्ट आइकन पर रीसेट करें"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:337
 msgid "Large Icons"
 msgstr "बड़े आइकन"
 
-#: docklets/Applications/ApplicationsDockItem.vala:346
+#: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Select Custom Icon"
 msgstr "कस्टम आइकन चुनें"
 
-#: docklets/Applications/ApplicationsDockItem.vala:349
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:354
 msgid "Select"
 msgstr "चयन करें"
 
-#: docklets/Applications/ApplicationsDockItem.vala:368
+#: docklets/Applications/ApplicationsDockItem.vala:372
 msgid "Image Files"
 msgstr "छवि फाइलें"
 
@@ -426,7 +426,7 @@ msgid "Have a look at your trash!"
 msgstr "अपने कचरे पर एक नजर डालें!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
-#: docklets/Workspaces/WorkspacesDockItem.vala:556
+#: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_रंग पलटें"
 
@@ -455,12 +455,12 @@ msgstr "कार्यस्थान"
 msgid "Workspace %d of %d"
 msgstr "कार्यस्थान %d / %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
 msgstr "कार्यस्थान %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:563
+#: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
 msgstr "_लाइव प्रीव्यू"
 

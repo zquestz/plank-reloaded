@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-22 15:00-1000\n"
+"POT-Creation-Date: 2025-06-08 14:42-1000\n"
 "PO-Revision-Date: 2017-04-15 17:34+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -219,45 +219,45 @@ msgstr "ባህሪው"
 msgid "Docklets"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:32
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:51
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:296
+#: docklets/Applications/ApplicationsDockItem.vala:300
 msgid "Edit Menu"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:315
+#: docklets/Applications/ApplicationsDockItem.vala:319
 msgid "Choose Custom Icon"
 msgstr ""
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:327
 msgid "Reset to Default Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:337
 msgid "Large Icons"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:346
+#: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Select Custom Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:349
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Cancel"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:354
 msgid "Select"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:368
+#: docklets/Applications/ApplicationsDockItem.vala:372
 msgid "Image Files"
 msgstr ""
 
@@ -420,7 +420,7 @@ msgid "Have a look at your trash!"
 msgstr ""
 
 #: docklets/Separator/SeparatorDockItem.vala:197
-#: docklets/Workspaces/WorkspacesDockItem.vala:556
+#: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr ""
 
@@ -449,12 +449,12 @@ msgstr ""
 msgid "Workspace %d of %d"
 msgstr ""
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:563
+#: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
 msgstr ""
 

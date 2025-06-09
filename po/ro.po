@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-05-22 15:00-1000\n"
+"POT-Creation-Date: 2025-06-08 14:42-1000\n"
 "PO-Revision-Date: 2025-05-10 04:25\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -226,45 +226,45 @@ msgstr "Comportament"
 msgid "Docklets"
 msgstr "Dockleturi"
 
-#: docklets/Applications/ApplicationsDockItem.vala:32
+#: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
 msgstr "Nicio aplicație disponibilă"
 
-#: docklets/Applications/ApplicationsDockItem.vala:51
+#: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr "Aplicații"
 
-#: docklets/Applications/ApplicationsDockItem.vala:296
+#: docklets/Applications/ApplicationsDockItem.vala:300
 msgid "Edit Menu"
 msgstr "Editare meniu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:315
+#: docklets/Applications/ApplicationsDockItem.vala:319
 msgid "Choose Custom Icon"
 msgstr "Alege Pictogramă Personalizată"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:327
 msgid "Reset to Default Icon"
 msgstr "Resetare la pictograma implicită"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:337
 msgid "Large Icons"
 msgstr "Pictograme Mari"
 
-#: docklets/Applications/ApplicationsDockItem.vala:346
+#: docklets/Applications/ApplicationsDockItem.vala:350
 msgid "Select Custom Icon"
 msgstr "Selectează Pictogramă Personalizată"
 
-#: docklets/Applications/ApplicationsDockItem.vala:349
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Cancel"
 msgstr "Anulare"
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:354
 msgid "Select"
 msgstr "Selectează"
 
-#: docklets/Applications/ApplicationsDockItem.vala:368
+#: docklets/Applications/ApplicationsDockItem.vala:372
 msgid "Image Files"
 msgstr "Fișiere imagine"
 
@@ -428,7 +428,7 @@ msgid "Have a look at your trash!"
 msgstr "Aruncă o privire la coșul de gunoi!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
-#: docklets/Workspaces/WorkspacesDockItem.vala:556
+#: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Inversează culoarea"
 
@@ -457,12 +457,12 @@ msgstr "Spații de lucru"
 msgid "Workspace %d of %d"
 msgstr "Spațiul de lucru %d din %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:536
+#: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
 msgstr "Spațiu de lucru %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:563
+#: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
 msgstr "_Previzualizări în direct"
 

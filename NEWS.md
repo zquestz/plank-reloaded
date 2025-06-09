@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.129 "Reloaded" (2025-06-08)
+
+- Update Application Docklet menu icons on theme change
+- Support custom Workspace names
+
 ## 0.11.128 "Reloaded" (2025-05-22)
 
 - Add close buttons to context menu window list
