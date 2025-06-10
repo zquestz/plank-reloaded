@@ -100,6 +100,8 @@ namespace Plank {
     bool dialog_windows_intersect = false;
     Gdk.Rectangle last_window_rect;
 
+    Wnck.Window? last_window = null;
+
 #if HAVE_BARRIERS
     XFixes.PointerBarrier barrier = 0;
     int opcode = 0;
@@ -115,7 +117,7 @@ namespace Plank {
      * @param controller the {@link DockController} to manage hiding for
      */
     public HideManager (DockController controller) {
-      GLib.Object (controller: controller);
+      GLib.Object (controller : controller);
     }
 
     construct
@@ -433,6 +435,7 @@ namespace Plank {
       var active_intersect = false;
       var new_active_window_intersect = false;
       var active_maximized_intersect = false;
+      var ignore_update = false;
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
       unowned Wnck.Window? active_window = screen.get_active_window ();
       unowned Wnck.Workspace? active_workspace = screen.get_active_workspace ();
@@ -471,6 +474,21 @@ namespace Plank {
               break;
           }
         }
+
+        last_window = active_window;
+      } else {
+        // Hack to prevent dock from showing up on Steam menu clicks.
+        if (last_window != null && last_window.get_name () == "Steam") {
+          unowned Wnck.Window? existing_window = Wnck.Window.get (last_window.get_xid ());
+
+          if (existing_window != null) {
+            ignore_update = true;
+          }
+        }
+      }
+
+      if (ignore_update) {
+        return;
       }
 
       window_intersect = intersect;
@@ -639,7 +657,7 @@ namespace Plank {
           distance = Math.fabs (barrier_event.dy);
           slide = Math.fabs (barrier_event.dx);
           break;
-        case Gtk.PositionType.LEFT:
+        case Gtk.PositionType.LEFT :
         case Gtk.PositionType.RIGHT:
           distance = Math.fabs (barrier_event.dx);
           slide = Math.fabs (barrier_event.dy);
