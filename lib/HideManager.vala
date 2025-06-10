@@ -102,6 +102,7 @@ namespace Plank {
 
     string? last_window_name = null;
     ulong last_window_xid = 0;
+    int last_window_workspace_id = -1;
 
 #if HAVE_BARRIERS
     XFixes.PointerBarrier barrier = 0;
@@ -478,16 +479,18 @@ namespace Plank {
 
         last_window_name = active_window.get_name ();
         last_window_xid = active_window.get_xid ();
+        last_window_workspace_id = active_workspace.get_number ();
       } else {
         // Hack to prevent dock from showing up on Steam menu clicks.
         if (last_window_name == "Steam") {
           unowned Wnck.Window? existing_window = Wnck.Window.get (last_window_xid);
 
-          if (existing_window != null) {
+          if (existing_window != null && last_window_workspace_id == active_workspace.get_number ()) {
             ignore_update = true;
           } else {
             last_window_name = null;
             last_window_xid = 0;
+            last_window_workspace_id = -1;
           }
         }
       }
