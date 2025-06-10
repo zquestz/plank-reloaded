@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.130 "Reloaded" (2025-06-09)
+
+- Fix Steam menu activation unhiding dock
+
 ## 0.11.129 "Reloaded" (2025-06-08)
 
 - Update Application Docklet menu icons on theme change
