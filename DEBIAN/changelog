@@ -1,3 +1,9 @@
+plank-reloaded (0.11.131-1) unstable; urgency=medium
+
+  * Improve reliability of Steam menu activation workaround
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 09 Jun 2025 19:40:16 -1000
+
 plank-reloaded (0.11.130-1) unstable; urgency=medium
 
   * Fix Steam menu activation unhiding dock

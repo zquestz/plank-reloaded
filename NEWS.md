@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.131 "Reloaded" (2025-06-09)
+
+- Improve reliability of Steam menu activation workaround
+
 ## 0.11.130 "Reloaded" (2025-06-09)
 
 - Fix Steam menu activation unhiding dock
