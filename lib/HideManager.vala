@@ -100,7 +100,8 @@ namespace Plank {
     bool dialog_windows_intersect = false;
     Gdk.Rectangle last_window_rect;
 
-    Wnck.Window? last_window = null;
+    string? last_window_name = null;
+    ulong last_window_xid = 0;
 
 #if HAVE_BARRIERS
     XFixes.PointerBarrier barrier = 0;
@@ -117,7 +118,7 @@ namespace Plank {
      * @param controller the {@link DockController} to manage hiding for
      */
     public HideManager (DockController controller) {
-      GLib.Object (controller : controller);
+      GLib.Object (controller: controller);
     }
 
     construct
@@ -475,14 +476,18 @@ namespace Plank {
           }
         }
 
-        last_window = active_window;
+        last_window_name = active_window.get_name ();
+        last_window_xid = active_window.get_xid ();
       } else {
         // Hack to prevent dock from showing up on Steam menu clicks.
-        if (last_window != null && last_window.get_name () == "Steam") {
-          unowned Wnck.Window? existing_window = Wnck.Window.get (last_window.get_xid ());
+        if (last_window_name == "Steam") {
+          unowned Wnck.Window? existing_window = Wnck.Window.get (last_window_xid);
 
           if (existing_window != null) {
             ignore_update = true;
+          } else {
+            last_window_name = null;
+            last_window_xid = 0;
           }
         }
       }
