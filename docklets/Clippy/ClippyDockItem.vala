@@ -28,9 +28,11 @@ namespace Docky {
     private const string TRACK_CLIPBOARD_LABEL = _("Enable Clipboard Tracking");
     private const string MAX_ENTRIES_LABEL = _("Maximum Entries");
 
-    private Gtk.Clipboard clipboard;
+    private Gtk.Clipboard primary_clipboard;
+    private Gtk.Clipboard regular_clipboard;
     private Gee.ArrayList<ClippyClipboardItem> clips;
-    private ulong handler_id = 0U;
+    private ulong primary_handler_id = 0U;
+    private ulong regular_handler_id = 0U;
     private uint debounce_timeout_id = 0;
     private const uint DEBOUNCE_DELAY = 500;
 
@@ -47,12 +49,12 @@ namespace Docky {
     {
       Icon = ClippyDocklet.ICON;
       clips = new Gee.ArrayList<ClippyClipboardItem> ();
-      initialize_clipboard();
+      initialize_clipboards();
       update_display();
     }
 
     ~ClippyDockItem() {
-      disconnect_clipboard();
+      disconnect_clipboards();
 
       if (debounce_timeout_id > 0) {
         GLib.Source.remove(debounce_timeout_id);
@@ -60,39 +62,47 @@ namespace Docky {
       }
     }
 
-    private void initialize_clipboard() {
-      var atom_name = prefs.TrackMouseSelections ? "PRIMARY" : "CLIPBOARD";
-      clipboard = Gtk.Clipboard.get(Gdk.Atom.intern(atom_name, true));
-      connect_clipboard();
+    private void initialize_clipboards() {
+      primary_clipboard = Gtk.Clipboard.get(Gdk.Atom.intern("PRIMARY", true));
+      regular_clipboard = Gtk.Clipboard.get(Gdk.Atom.intern("CLIPBOARD", true));
+      connect_clipboards();
     }
 
-    private void connect_clipboard() {
+    private void connect_clipboards() {
       if (!prefs.DisableTracking) {
-        handler_id = clipboard.owner_change.connect((clipboard, ev) => {
-          request_clipboard_content();
+        regular_handler_id = regular_clipboard.owner_change.connect((clipboard, ev) => {
+          request_clipboard_content(regular_clipboard);
+        });
+
+        primary_handler_id = primary_clipboard.owner_change.connect((clipboard, ev) => {
+          if (prefs.TrackMouseSelections) {
+            request_clipboard_content(primary_clipboard);
+          }
         });
       }
     }
 
-    private void disconnect_clipboard() {
-      if (handler_id > 0U) {
-        clipboard.disconnect(handler_id);
-        handler_id = 0U;
+    private void disconnect_clipboards() {
+      if (regular_handler_id > 0U) {
+        regular_clipboard.disconnect(regular_handler_id);
+        regular_handler_id = 0U;
+      }
+
+      if (primary_handler_id > 0U) {
+        primary_clipboard.disconnect(primary_handler_id);
+        primary_handler_id = 0U;
       }
     }
 
     private void toggle_clipboard_tracking() {
       prefs.DisableTracking = !prefs.DisableTracking;
 
-      disconnect_clipboard();
-      connect_clipboard();
+      disconnect_clipboards();
+      connect_clipboards();
     }
 
     private void toggle_selection_tracking() {
       prefs.TrackMouseSelections = !prefs.TrackMouseSelections;
-
-      disconnect_clipboard();
-      initialize_clipboard();
     }
 
     private void toggle_image_tracking() {
@@ -109,7 +119,7 @@ namespace Docky {
       update_display();
     }
 
-    private void request_clipboard_content() {
+    private void request_clipboard_content(Gtk.Clipboard source_clipboard) {
       if (debounce_timeout_id > 0) {
         GLib.Source.remove(debounce_timeout_id);
         debounce_timeout_id = 0;
@@ -119,13 +129,24 @@ namespace Docky {
         debounce_timeout_id = 0;
 
         if (prefs.TrackImages) {
-          clipboard.request_image(handle_image_result);
+          source_clipboard.request_image(handle_image_result);
         } else {
-          request_clipboard_text();
+          request_clipboard_text(source_clipboard);
         }
 
         return false;
       });
+    }
+
+    private void request_clipboard_text(Gtk.Clipboard source_clipboard) {
+      source_clipboard.request_text(handle_text_result);
+    }
+
+    private void handle_text_result(Gtk.Clipboard cb, string? text) {
+      if (text != null && text != "") {
+        var item = new ClippyClipboardItem.with_text(text);
+        process_clipboard_item(item);
+      }
     }
 
     private void handle_image_result(Gtk.Clipboard cb, Gdk.Pixbuf? pixbuf) {
@@ -133,17 +154,8 @@ namespace Docky {
         var item = new ClippyClipboardItem.with_image(pixbuf);
         process_clipboard_item(item);
       } else {
-        request_clipboard_text();
+        request_clipboard_text(cb);
       }
-    }
-
-    private void request_clipboard_text() {
-      clipboard.request_text((cb, text) => {
-        if (text != null && text != "") {
-          var item = new ClippyClipboardItem.with_text(text);
-          process_clipboard_item(item);
-        }
-      });
     }
 
     private void process_clipboard_item(ClippyClipboardItem new_item) {
@@ -190,7 +202,7 @@ namespace Docky {
       }
 
       var item = clips.get(index);
-      item.copy_to_clipboard(clipboard);
+      item.copy_to_clipboard(regular_clipboard);
 
       clips.remove_at(index);
       clips.add(item);
@@ -199,8 +211,11 @@ namespace Docky {
     }
 
     private void clear_clipboard() {
-      clipboard.set_text("", 0);
-      clipboard.clear();
+      regular_clipboard.set_text("", 0);
+      regular_clipboard.clear();
+      primary_clipboard.set_text("", 0);
+      primary_clipboard.clear();
+
       clips.clear();
       update_display();
     }
@@ -281,7 +296,7 @@ namespace Docky {
           gravity = Gdk.Gravity.WEST;
           flipped_gravity = Gdk.Gravity.EAST;
           break;
-        default:
+          default :
           gravity = Gdk.Gravity.NORTH;
           flipped_gravity = Gdk.Gravity.SOUTH;
           break;
