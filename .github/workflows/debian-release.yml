@@ -2,15 +2,8 @@
 name: Build and Release - Debian Bookworm
 
 on:
-  workflow_dispatch:
-    inputs:
-      debian_version:
-        description: 'Debian version to build for'
-        required: false
-        default: 'bookworm'
-        type: choice
-        options:
-          - bookworm
+  release:
+    types: [created]
 
 jobs:
   build-debian:
