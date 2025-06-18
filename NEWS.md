@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.133 "Reloaded" (2025-06-17)
+
+- Update monitors list dynamically in preferences
+
 ## 0.11.132 "Reloaded" (2025-06-17)
 
 - Add multi-monitor support via "On Active Display" setting

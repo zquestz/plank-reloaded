@@ -1,3 +1,9 @@
+plank-reloaded (0.11.133-1) unstable; urgency=medium
+
+  * Update monitors list dynamically in preferences
+
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 17 Jun 2025 20:34:18 -1000
+
 plank-reloaded (0.11.132-1) unstable; urgency=medium
 
   * Add multi-monitor support via "On Active Display" setting

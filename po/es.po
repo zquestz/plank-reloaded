@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-17 14:41-1000\n"
+"POT-Creation-Date: 2025-06-17 20:31-1000\n"
 "PO-Revision-Date: 2025-06-18 00:15\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -593,6 +593,6 @@ msgstr "_Acerca de"
 msgid "_Quit"
 msgstr "_Salir"
 
-#: lib/Widgets/PreferencesWindow.vala:101
+#: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferencias"
