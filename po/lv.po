@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-09 14:19-1000\n"
+"POT-Creation-Date: 2025-06-17 14:00-1000\n"
 "PO-Revision-Date: 2016-10-05 21:29+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -67,155 +67,163 @@ msgstr ""
 msgid "Dock"
 msgstr ""
 
-#: data/ui/preferences.ui:87
+#: data/ui/preferences.ui:93
 msgid "Theme:"
 msgstr "Tēma:"
 
-#: data/ui/preferences.ui:100
+#: data/ui/preferences.ui:106
 msgid "Position:"
 msgstr ""
 
-#: data/ui/preferences.ui:127
+#: data/ui/preferences.ui:133
 msgid "Left"
 msgstr ""
 
-#: data/ui/preferences.ui:128
+#: data/ui/preferences.ui:134
 msgid "Right"
 msgstr ""
 
-#: data/ui/preferences.ui:129
+#: data/ui/preferences.ui:135
 msgid "Top"
 msgstr ""
 
-#: data/ui/preferences.ui:130
+#: data/ui/preferences.ui:136
 msgid "Bottom"
 msgstr ""
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:153
+msgid "On Active Display:"
+msgstr ""
+
+#: data/ui/preferences.ui:180
+msgid "Polling interval in seconds for active display detection"
+msgstr ""
+
+#: data/ui/preferences.ui:197
 msgid "Alignment:"
 msgstr "Novietojums:"
 
-#: data/ui/preferences.ui:157
+#: data/ui/preferences.ui:210
 msgid "Fill"
 msgstr ""
 
-#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
+#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
 msgstr ""
 
-#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
+#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
 msgstr ""
 
-#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
+#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
 msgstr ""
 
-#: data/ui/preferences.ui:176
+#: data/ui/preferences.ui:229
 msgid "On Primary Display:"
 msgstr "Uz Galvenā Ekrāna:"
 
-#: data/ui/preferences.ui:202
+#: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Centra nobīde procentos no ekrāna malas"
 
-#: data/ui/preferences.ui:222
+#: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
 msgstr "Ikonu novietojums:"
 
-#: data/ui/preferences.ui:252
+#: data/ui/preferences.ui:305
 msgid "Icon Size:"
 msgstr "Ikonu izmēri:"
 
-#: data/ui/preferences.ui:318
+#: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
 msgstr "Ikonu palielinājums:"
 
-#: data/ui/preferences.ui:332
+#: data/ui/preferences.ui:385
 msgid "Gap Size:"
 msgstr ""
 
-#: data/ui/preferences.ui:383
+#: data/ui/preferences.ui:436
 msgid "Appearance"
 msgstr "Attēlojums"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:456
 msgid "Intellihide"
 msgstr "Viedpaslēpšana"
 
-#: data/ui/preferences.ui:404
+#: data/ui/preferences.ui:457
 msgid "Autohide"
 msgstr "Automātiskā paslēpšana"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
 msgstr "Izvairīties no pilnekrāna logiem"
 
-#: data/ui/preferences.ui:406
+#: data/ui/preferences.ui:459
 msgid "Window Dodge"
 msgstr "Izvairīšanās no logiem"
 
-#: data/ui/preferences.ui:407
+#: data/ui/preferences.ui:460
 msgid "Dodge active window"
 msgstr "Izvairīties no aktīvā loga"
 
-#: data/ui/preferences.ui:433
+#: data/ui/preferences.ui:486
 msgid "Hide Dock"
 msgstr "Paslēpt paneli"
 
-#: data/ui/preferences.ui:449
+#: data/ui/preferences.ui:502
 msgid "Hide Delay:"
 msgstr "Paslēpšanas laiks:"
 
-#: data/ui/preferences.ui:463
+#: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
 msgstr "Laiks milisekundēs, pirms paneļa paslēpšanas"
 
-#: data/ui/preferences.ui:482
+#: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
 msgstr "Laiks pirms parādīšanās:"
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
 msgstr "Laiks milisekundēs pirms paneļa parādīšanas"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
 msgstr "Spiediena atklāšana:"
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:595
 msgid "Item Management"
 msgstr "Priekšmetu pārvaldīšana"
 
-#: data/ui/preferences.ui:561
+#: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
 msgstr "Rādīt nepiespraustos:"
 
-#: data/ui/preferences.ui:588
+#: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
 msgstr "Norobežot uz darbavirsmas:"
 
-#: data/ui/preferences.ui:613
+#: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
 msgstr ""
 
-#: data/ui/preferences.ui:637
+#: data/ui/preferences.ui:693
 msgid "Lock Icons:"
 msgstr "Iesaldēt ikonas:"
 
-#: data/ui/preferences.ui:664
+#: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
 msgstr ""
 
-#: data/ui/preferences.ui:691
+#: data/ui/preferences.ui:747
 msgid "Anchor Files:"
 msgstr ""
 
-#: data/ui/preferences.ui:713
+#: data/ui/preferences.ui:769
 msgid "Behaviour"
 msgstr "Darbība"
 
-#: data/ui/preferences.ui:733
+#: data/ui/preferences.ui:789
 msgid "Docklets"
 msgstr ""
 
@@ -314,7 +322,7 @@ msgstr ""
 msgid "Maximum Entries"
 msgstr ""
 
-#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
@@ -559,7 +567,7 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:95
+#: lib/Widgets/PreferencesWindow.vala:101
 msgid "Preferences"
 msgstr "Iestatījumi"
 

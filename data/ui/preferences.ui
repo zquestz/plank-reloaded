@@ -54,6 +54,12 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step_increment">5</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkAdjustment" id="adj_active_display_polling_interval">
+    <property name="lower">1</property>
+    <property name="upper">10</property>
+    <property name="value">5</property>
+    <property name="step_increment">1</property>
+  </object>
   <template class="PlankPreferencesWindow" parent="GtkWindow">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
@@ -137,6 +143,53 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
+              <object class="GtkLabel" id="l_active_display">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >On Active Display:</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="sw_active_display">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale" id="s_active_display_polling_interval">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Polling interval in seconds for active display detection</property>
+                <property
+                  name="adjustment"
+                >adj_active_display_polling_interval</property>
+                <property name="digits">0</property>
+                <property name="value_pos">right</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkLabel" id="l_alignment">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -146,7 +199,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -162,7 +215,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -207,7 +260,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -224,7 +277,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">4</property>
+                <property name="top_attach">5</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -240,7 +293,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">4</property>
+                <property name="top_attach">5</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -254,7 +307,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">5</property>
+                <property name="top_attach">6</property>
               </packing>
             </child>
             <child>
@@ -267,7 +320,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">5</property>
+                <property name="top_attach">6</property>
               </packing>
             </child>
             <child>
@@ -281,7 +334,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">5</property>
+                <property name="top_attach">6</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -295,7 +348,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">6</property>
+                <property name="top_attach">7</property>
               </packing>
             </child>
             <child>
@@ -307,7 +360,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">6</property>
+                <property name="top_attach">7</property>
               </packing>
             </child>
             <child>
@@ -320,7 +373,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">6</property>
+                <property name="top_attach">7</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -334,7 +387,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">7</property>
+                <property name="top_attach">8</property>
               </packing>
             </child>
             <child>
@@ -347,7 +400,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">7</property>
+                <property name="top_attach">8</property>
               </packing>
             </child>
             <child>
@@ -361,7 +414,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">7</property>
+                <property name="top_attach">8</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -610,7 +663,10 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="label" translatable="yes">Tooltips Enabled:</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Tooltips Enabled:</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>

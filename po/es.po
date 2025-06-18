@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-09 14:19-1000\n"
-"PO-Revision-Date: 2025-05-10 04:25\n"
+"POT-Creation-Date: 2025-06-17 14:00-1000\n"
+"PO-Revision-Date: 2025-06-18 00:15\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -75,155 +75,163 @@ msgstr "Los desarrolladores de Plank Recargado"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:87
+#: data/ui/preferences.ui:93
 msgid "Theme:"
 msgstr "Tema:"
 
-#: data/ui/preferences.ui:100
+#: data/ui/preferences.ui:106
 msgid "Position:"
 msgstr "Posición:"
 
-#: data/ui/preferences.ui:127
+#: data/ui/preferences.ui:133
 msgid "Left"
 msgstr "Izquierda"
 
-#: data/ui/preferences.ui:128
+#: data/ui/preferences.ui:134
 msgid "Right"
 msgstr "Derecha"
 
-#: data/ui/preferences.ui:129
+#: data/ui/preferences.ui:135
 msgid "Top"
 msgstr "Superior"
 
-#: data/ui/preferences.ui:130
+#: data/ui/preferences.ui:136
 msgid "Bottom"
 msgstr "Inferior"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:153
+msgid "On Active Display:"
+msgstr "En pantalla activa:"
+
+#: data/ui/preferences.ui:180
+msgid "Polling interval in seconds for active display detection"
+msgstr "Intervalo de sondeo en segundos para la detección de pantalla activa"
+
+#: data/ui/preferences.ui:197
 msgid "Alignment:"
 msgstr "Alineación:"
 
-#: data/ui/preferences.ui:157
+#: data/ui/preferences.ui:210
 msgid "Fill"
 msgstr "Rellenar"
 
-#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
+#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
 msgstr "Inicio"
 
-#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
+#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
 msgstr "Fin"
 
-#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
+#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
 msgstr "Centro"
 
-#: data/ui/preferences.ui:176
+#: data/ui/preferences.ui:229
 msgid "On Primary Display:"
 msgstr "En pantalla principal:"
 
-#: data/ui/preferences.ui:202
+#: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Porcentaje de desplazamiento desde el centro del borde de la pantalla"
 
-#: data/ui/preferences.ui:222
+#: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
 msgstr "Alineación de iconos:"
 
-#: data/ui/preferences.ui:252
+#: data/ui/preferences.ui:305
 msgid "Icon Size:"
 msgstr "Tamaño de iconos:"
 
-#: data/ui/preferences.ui:318
+#: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
 msgstr "Escala de iconos:"
 
-#: data/ui/preferences.ui:332
+#: data/ui/preferences.ui:385
 msgid "Gap Size:"
 msgstr "Tamaño del hueco:"
 
-#: data/ui/preferences.ui:383
+#: data/ui/preferences.ui:436
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:456
 msgid "Intellihide"
 msgstr "Ocultamiento inteligente"
 
-#: data/ui/preferences.ui:404
+#: data/ui/preferences.ui:457
 msgid "Autohide"
 msgstr "Ocultar automáticamente"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
 msgstr "Evitar ventanas maximizadas"
 
-#: data/ui/preferences.ui:406
+#: data/ui/preferences.ui:459
 msgid "Window Dodge"
 msgstr "Esquivar ventanas"
 
-#: data/ui/preferences.ui:407
+#: data/ui/preferences.ui:460
 msgid "Dodge active window"
 msgstr "Evadir ventana activa"
 
-#: data/ui/preferences.ui:433
+#: data/ui/preferences.ui:486
 msgid "Hide Dock"
 msgstr "Ocultar dock"
 
-#: data/ui/preferences.ui:449
+#: data/ui/preferences.ui:502
 msgid "Hide Delay:"
 msgstr "Retardo de ocultamiento:"
 
-#: data/ui/preferences.ui:463
+#: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
 msgstr "Retraso en ms antes de ocultar el dock"
 
-#: data/ui/preferences.ui:482
+#: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
 msgstr "Retraso en mostrar:"
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
 msgstr "Retardo en milisegundos antes de mostrar el dock"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
 msgstr "Presión para mostrar:"
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:595
 msgid "Item Management"
 msgstr "Gestión de elementos"
 
-#: data/ui/preferences.ui:561
+#: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
 msgstr "Mostrar iconos no anclados:"
 
-#: data/ui/preferences.ui:588
+#: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
 msgstr "Restringir al área de trabajo:"
 
-#: data/ui/preferences.ui:613
+#: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
 msgstr "Tooltips habilitados:"
 
-#: data/ui/preferences.ui:637
+#: data/ui/preferences.ui:693
 msgid "Lock Icons:"
 msgstr "Bloquear iconos:"
 
-#: data/ui/preferences.ui:664
+#: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
 msgstr "Anclar agregados:"
 
-#: data/ui/preferences.ui:691
+#: data/ui/preferences.ui:747
 msgid "Anchor Files:"
 msgstr "Archivos de anclaje:"
 
-#: data/ui/preferences.ui:713
+#: data/ui/preferences.ui:769
 msgid "Behaviour"
 msgstr "Comportamiento"
 
-#: data/ui/preferences.ui:733
+#: data/ui/preferences.ui:789
 msgid "Docklets"
 msgstr "Agregados"
 
@@ -322,7 +330,7 @@ msgstr "Habilitar seguimiento del portapapeles"
 msgid "Maximum Entries"
 msgstr "Entradas Máximas"
 
-#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
@@ -585,6 +593,6 @@ msgstr "_Acerca de"
 msgid "_Quit"
 msgstr "_Salir"
 
-#: lib/Widgets/PreferencesWindow.vala:95
+#: lib/Widgets/PreferencesWindow.vala:101
 msgid "Preferences"
 msgstr "Preferencias"

@@ -47,6 +47,8 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.Scale s_offset;
     [GtkChild]
+    unowned Gtk.Scale s_active_display_polling_interval;
+    [GtkChild]
     unowned Gtk.Scale s_zoom_percent;
 
     [GtkChild]
@@ -60,12 +62,16 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.Adjustment adj_offset;
     [GtkChild]
+    unowned Gtk.Adjustment adj_active_display_polling_interval;
+    [GtkChild]
     unowned Gtk.Adjustment adj_zoom_percent;
 
     [GtkChild]
     unowned Gtk.Switch sw_hide;
     [GtkChild]
     unowned Gtk.Switch sw_primary_display;
+    [GtkChild]
+    unowned Gtk.Switch sw_active_display;
     [GtkChild]
     unowned Gtk.Switch sw_workspace_only;
     [GtkChild]
@@ -245,9 +251,13 @@ namespace Plank {
       if (((Gtk.Switch) widget).get_active ()) {
         prefs.Monitor = "";
         cb_display_plug.sensitive = false;
+        sw_active_display.set_active (false);
+        s_active_display_polling_interval.sensitive = false;
       } else {
         prefs.Monitor = cb_display_plug.get_active_text ();
-        cb_display_plug.sensitive = true;
+        if (!sw_active_display.get_active ()) {
+          cb_display_plug.sensitive = true;
+        }
       }
     }
 
@@ -317,6 +327,27 @@ namespace Plank {
       prefs.Monitor = ((Gtk.ComboBoxText) widget).get_active_text ();
     }
 
+    void active_display_toggled (GLib.Object widget, ParamSpec param) {
+      var active = ((Gtk.Switch) widget).get_active ();
+      prefs.ActiveDisplay = active;
+
+      if (active) {
+        sw_primary_display.set_active (false);
+        prefs.Monitor = cb_display_plug.get_active_text ();
+        cb_display_plug.sensitive = false;
+        s_active_display_polling_interval.sensitive = true;
+      } else {
+        if (!sw_primary_display.get_active ()) {
+          cb_display_plug.sensitive = true;
+        }
+        s_active_display_polling_interval.sensitive = false;
+      }
+    }
+
+    void active_display_polling_interval_changed (Gtk.Adjustment adj) {
+      prefs.ActiveDisplayPollingInterval = (uint) adj.value;
+    }
+
     void connect_signals () {
       prefs.notify.connect (prefs_changed);
 
@@ -332,6 +363,8 @@ namespace Plank {
       adj_zoom_percent.value_changed.connect (zoom_percent_changed);
       sw_hide.notify["active"].connect (hide_toggled);
       sw_primary_display.notify["active"].connect (primary_display_toggled);
+      sw_active_display.notify["active"].connect (active_display_toggled);
+      adj_active_display_polling_interval.value_changed.connect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].connect (workspace_only_toggled);
       sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
       sw_lock_items.notify["active"].connect (lock_items_toggled);
@@ -359,6 +392,8 @@ namespace Plank {
       adj_zoom_percent.value_changed.disconnect (zoom_percent_changed);
       sw_hide.notify["active"].disconnect (hide_toggled);
       sw_primary_display.notify["active"].disconnect (primary_display_toggled);
+      sw_active_display.notify["active"].disconnect (active_display_toggled);
+      adj_active_display_polling_interval.value_changed.disconnect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].disconnect (workspace_only_toggled);
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
@@ -408,6 +443,18 @@ namespace Plank {
       s_zoom_percent.sensitive = prefs.ZoomEnabled;
       sw_hide.set_active (prefs.HideMode != HideType.NONE);
       sw_primary_display.set_active (prefs.Monitor == "");
+      sw_active_display.set_active (prefs.ActiveDisplay);
+      adj_active_display_polling_interval.value = prefs.ActiveDisplayPollingInterval;
+      if (prefs.ActiveDisplay) {
+        cb_display_plug.sensitive = false;
+        s_active_display_polling_interval.sensitive = true;
+      } else if (prefs.Monitor == "") {
+        cb_display_plug.sensitive = false;
+        s_active_display_polling_interval.sensitive = false;
+      } else {
+        cb_display_plug.sensitive = true;
+        s_active_display_polling_interval.sensitive = false;
+      }
       sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
       sw_show_unpinned.set_active (!prefs.PinnedOnly);
       sw_lock_items.set_active (prefs.LockItems);

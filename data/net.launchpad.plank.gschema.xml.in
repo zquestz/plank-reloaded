@@ -102,6 +102,17 @@
 			<summary>The name of the monitor for the dock to show on</summary>
 			<description>The plug-name of the monitor for the dock to show on (e.g. DVI-I-1, HDMI1, LVDS1). Leave this empty to keep on the primary monitor.</description>
 		</key>
+		<key name="active-display" type="b">
+			<default>false</default>
+			<summary>Automatically follow the active display</summary>
+			<description>If true, automatically move the dock to the display where the cursor is currently located.</description>
+		</key>
+		<key name="active-display-polling-interval" type="u">
+			<range min="1" max="10"/>
+			<default>5</default>
+			<summary>Active display polling interval</summary>
+			<description>Time in seconds between checks for active display changes when active-display is enabled.</description>
+		</key>
 		<key name="offset" type="i">
 			<range min="-100" max="100"/>
 			<default>0</default>
