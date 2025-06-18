@@ -6,7 +6,7 @@ on:
     types: [created]
 
 jobs:
-  build-debian:
+  build:
     name: Build on Debian Bookworm
     runs-on: ubuntu-latest
     container: debian:bookworm
