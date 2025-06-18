@@ -92,9 +92,8 @@ msgid "Bottom"
 msgstr "Унізе"
 
 #: data/ui/preferences.ui:153
-#, fuzzy
 msgid "On Active Display:"
-msgstr "На галоўным экране:"
+msgstr ""
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"

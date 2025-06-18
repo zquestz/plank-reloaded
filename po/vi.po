@@ -92,9 +92,8 @@ msgid "Bottom"
 msgstr "Dưới cùng"
 
 #: data/ui/preferences.ui:153
-#, fuzzy
 msgid "On Active Display:"
-msgstr "Trên màn hình chính:"
+msgstr ""
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"

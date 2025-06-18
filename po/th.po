@@ -92,9 +92,8 @@ msgid "Bottom"
 msgstr "ด้านล่าง"
 
 #: data/ui/preferences.ui:153
-#, fuzzy
 msgid "On Active Display:"
-msgstr "แสดงบนหน้าจอหลักเท่านั้น:"
+msgstr ""
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"

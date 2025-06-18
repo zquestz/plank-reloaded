@@ -92,9 +92,8 @@ msgid "Bottom"
 msgstr "Κάτω"
 
 #: data/ui/preferences.ui:153
-#, fuzzy
 msgid "On Active Display:"
-msgstr "Στην κύρια οθόνη:"
+msgstr ""
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"

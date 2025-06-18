@@ -92,9 +92,8 @@ msgid "Bottom"
 msgstr "तल"
 
 #: data/ui/preferences.ui:153
-#, fuzzy
 msgid "On Active Display:"
-msgstr "प्राथमिक प्रदर्शन मा:"
+msgstr ""
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
