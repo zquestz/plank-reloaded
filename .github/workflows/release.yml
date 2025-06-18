@@ -1,5 +1,5 @@
 ---
-name: Build and Release
+name: Build and Release - Ubuntu Noble Numbat
 
 on:
   release:
@@ -7,9 +7,9 @@ on:
 
 jobs:
   build:
-    name: Build on Ubuntu
+    name: Build on Ubuntu Noble Numbat
     runs-on: ubuntu-latest
-    container: ubuntu:latest
+    container: ubuntu:noble
 
     steps:
       - name: Checkout Code

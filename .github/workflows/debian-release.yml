@@ -1,0 +1,93 @@
+---
+name: Build and Release - Debian Bookworm
+
+on:
+  workflow_dispatch:
+    inputs:
+      debian_version:
+        description: 'Debian version to build for'
+        required: false
+        default: 'bookworm'
+        type: choice
+        options:
+          - bookworm
+
+jobs:
+  build-debian:
+    name: Build on Debian Bookworm
+    runs-on: ubuntu-latest
+    container: debian:bookworm
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            git \
+            dpkg \
+            dpkg-dev \
+            lintian \
+            cmake \
+            gettext \
+            desktop-file-utils \
+            libdbusmenu-glib-dev \
+            libdbusmenu-gtk3-dev \
+            meson \
+            ninja-build \
+            valac \
+            libgnome-menu-3-dev \
+            libxml2-utils \
+            libgtk-3-dev \
+            libgee-0.8-dev \
+            libbamf3-dev \
+            libwnck-3-dev \
+            bamfdaemon \
+            build-essential \
+            pkg-config
+
+      - name: Build
+        run: |
+          meson setup --prefix=/usr build
+          meson configure build -D enable-apport=false -D production-release=true
+          meson compile -C build
+          meson install --destdir="$(pwd)/release_build" -C build
+
+      - name: Package
+        run: |
+          mkdir -p dist/plank-reloaded-debian
+          cp -r release_build/* dist/plank-reloaded-debian/
+          cp -r DEBIAN dist/plank-reloaded-debian/
+          cd dist
+          mv plank-reloaded-debian/DEBIAN/changelog plank-reloaded-debian/usr/share/doc/plank-reloaded/changelog.Debian
+          mv plank-reloaded-debian/DEBIAN/copyright plank-reloaded-debian/usr/share/doc/plank-reloaded/
+          gzip -9n plank-reloaded-debian/usr/share/doc/plank-reloaded/changelog.Debian
+          gzip -9n plank-reloaded-debian/usr/share/man/man1/plank.1
+          strip --strip-unneeded plank-reloaded-debian/usr/bin/plank
+          strip --strip-unneeded plank-reloaded-debian/usr/lib/x86_64-linux-gnu/libplank.so.1.0.0
+          find plank-reloaded-debian/usr/lib/x86_64-linux-gnu/plank/docklets/ -type f -name "*.so" -exec strip --strip-unneeded {} \;
+          dpkg-deb --build plank-reloaded-debian plank-reloaded-debian.deb
+
+      - name: Run Lintian
+        run: |
+          cd dist
+          lintian plank-reloaded-debian.deb || true
+
+      - name: Verify Package
+        run: |
+          cd dist
+          dpkg --info plank-reloaded-debian.deb
+          dpkg --contents plank-reloaded-debian.deb
+
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/plank-reloaded-debian.deb
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
