@@ -29,6 +29,8 @@ namespace Plank {
     Gdk.Rectangle static_dock_region;
     Gee.HashMap<DockElement, DockItemDrawValue> draw_values;
 
+    uint active_display_timeout_id;
+
     Gdk.Rectangle monitor_geo;
 
     int window_scale_factor = 1;
@@ -73,9 +75,15 @@ namespace Plank {
       }
 
       screen_is_composited = screen.is_composited ();
+
+      if (controller.prefs.ActiveDisplay) {
+        start_active_display_polling ();
+      }
     }
 
     ~PositionManager () {
+      stop_active_display_polling ();
+
       unowned Gdk.Screen screen = controller.window.get_screen ();
 
       screen.monitors_changed.disconnect (screen_changed);
@@ -90,6 +98,12 @@ namespace Plank {
       switch (prop.name) {
       case "Monitor":
         prefs_monitor_changed ();
+        break;
+      case "ActiveDisplay":
+        prefs_active_display_changed ();
+        break;
+      case "ActiveDisplayPollingInterval":
+        prefs_active_display_polling_interval_changed ();
         break;
       case "GapSize":
         prefs_gap_size_changed ();
@@ -133,6 +147,25 @@ namespace Plank {
       if (controller.prefs.Monitor != monitor_name) {
         debug ("Moving dock to current monitor (%s)", monitor_name);
         controller.prefs.Monitor = monitor_name;
+      }
+    }
+
+    void start_active_display_polling () {
+      active_display_timeout_id = GLib.Timeout.add_seconds (controller.prefs.ActiveDisplayPollingInterval, () => {
+        if (controller.prefs.ActiveDisplay) {
+          move_to_active_monitor ();
+          return GLib.Source.CONTINUE;
+        } else {
+          active_display_timeout_id = 0;
+          return GLib.Source.REMOVE;
+        }
+      });
+    }
+
+    void stop_active_display_polling () {
+      if (active_display_timeout_id > 0) {
+        GLib.Source.remove (active_display_timeout_id);
+        active_display_timeout_id = 0;
       }
     }
 
@@ -181,6 +214,21 @@ namespace Plank {
 
     void prefs_monitor_changed () {
       screen_changed (controller.window.get_screen ());
+    }
+
+    void prefs_active_display_changed () {
+      if (controller.prefs.ActiveDisplay) {
+        start_active_display_polling ();
+      } else {
+        stop_active_display_polling ();
+      }
+    }
+
+    void prefs_active_display_polling_interval_changed () {
+      if (controller.prefs.ActiveDisplay) {
+        stop_active_display_polling ();
+        start_active_display_polling ();
+      }
     }
 
     void screen_changed (Gdk.Screen screen) {

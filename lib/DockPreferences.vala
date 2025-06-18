@@ -31,6 +31,9 @@ namespace Plank {
     public const int MIN_GAP_SIZE = 0;
     public const int MAX_GAP_SIZE = 50;
 
+    public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
+    public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
+
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
 
@@ -51,6 +54,12 @@ namespace Plank {
 
     [Description (nick = "monitor", blurb = "The plug-name of the monitor for the dock to show on (e.g. DVI-I-1, HDMI1, LVDS1). Leave this empty to keep on the primary monitor.")]
     public string Monitor { get; set; }
+
+    [Description (nick = "active-display", blurb = "Whether to automatically follow the active display (where the cursor is).")]
+    public bool ActiveDisplay { get; set; }
+
+    [Description (nick = "active-display-polling-interval", blurb = "Time (in seconds) between checks for active display changes.")]
+    public uint ActiveDisplayPollingInterval { get; set; }
 
     [Description (nick = "dock-items", blurb = "Array of the dockitem-files on this dock. DO NOT MODIFY")]
     public string[] DockItems { get; set; }
@@ -154,6 +163,13 @@ namespace Plank {
           GapSize = MIN_GAP_SIZE;
         else if (GapSize > MAX_GAP_SIZE)
           GapSize = MAX_GAP_SIZE;
+        break;
+
+      case "ActiveDisplayPollingInterval":
+        if (ActiveDisplayPollingInterval < MIN_ACTIVE_DISPLAY_POLLING_INTERVAL)
+          ActiveDisplayPollingInterval = MIN_ACTIVE_DISPLAY_POLLING_INTERVAL;
+        else if (ActiveDisplayPollingInterval > MAX_ACTIVE_DISPLAY_POLLING_INTERVAL)
+          ActiveDisplayPollingInterval = MAX_ACTIVE_DISPLAY_POLLING_INTERVAL;
         break;
 
       case "Theme":
