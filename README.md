@@ -67,7 +67,7 @@ yay -S plank-reloaded-git
 
 #### Option 1: Using the PPA (Recommended)
 
-Plank Reloaded is available through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
+Plank Reloaded is available for Ubuntu through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
 
 ```bash
 # Add the repository
@@ -81,7 +81,7 @@ sudo apt install plank-reloaded
 
 #### Option 2: Manual Installation
 
-You can download the latest release .deb package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
+You can download the `plank-reloaded.deb` package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
 
 ```bash
 # Completely uninstall plank
@@ -106,7 +106,7 @@ sudo meson install -C build
 
 #### Option 1: Using the PPA (Recommended)
 
-Plank Reloaded is available through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
+Plank Reloaded is available for Debian through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
 
 ```bash
 # Add the repository
@@ -120,7 +120,7 @@ sudo apt install plank-reloaded
 
 #### Option 2: Manual Installation
 
-You can download the latest release .deb package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
+You can download the `plank-reloaded-debian.deb` package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
 
 ```bash
 # Completely uninstall plank
