@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-09 14:19-1000\n"
-"PO-Revision-Date: 2025-05-10 04:25\n"
+"POT-Creation-Date: 2025-06-17 14:00-1000\n"
+"PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
@@ -74,155 +74,163 @@ msgstr "Os desenvolvedores do Plank Reloaded"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:87
+#: data/ui/preferences.ui:93
 msgid "Theme:"
 msgstr "Tema:"
 
-#: data/ui/preferences.ui:100
+#: data/ui/preferences.ui:106
 msgid "Position:"
 msgstr "Posição:"
 
-#: data/ui/preferences.ui:127
+#: data/ui/preferences.ui:133
 msgid "Left"
 msgstr "Esquerda"
 
-#: data/ui/preferences.ui:128
+#: data/ui/preferences.ui:134
 msgid "Right"
 msgstr "Direita"
 
-#: data/ui/preferences.ui:129
+#: data/ui/preferences.ui:135
 msgid "Top"
 msgstr "Superior"
 
-#: data/ui/preferences.ui:130
+#: data/ui/preferences.ui:136
 msgid "Bottom"
 msgstr "Fundo"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:153
+msgid "On Active Display:"
+msgstr "Na Tela Ativa:"
+
+#: data/ui/preferences.ui:180
+msgid "Polling interval in seconds for active display detection"
+msgstr "Intervalo de sondagem em segundos para detecção de exibição ativa"
+
+#: data/ui/preferences.ui:197
 msgid "Alignment:"
 msgstr "Alinhamento:"
 
-#: data/ui/preferences.ui:157
+#: data/ui/preferences.ui:210
 msgid "Fill"
 msgstr "Preencher"
 
-#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
+#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
 msgstr "Iniciar"
 
-#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
+#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
 msgstr "Finalizar"
 
-#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
+#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
 msgstr "Centralizar"
 
-#: data/ui/preferences.ui:176
+#: data/ui/preferences.ui:229
 msgid "On Primary Display:"
 msgstr "Na Tela Principal:"
 
-#: data/ui/preferences.ui:202
+#: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Deslocamento em porcentagem do centro da borda da tela"
 
-#: data/ui/preferences.ui:222
+#: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
 msgstr "Alinhamento do Ícone:"
 
-#: data/ui/preferences.ui:252
+#: data/ui/preferences.ui:305
 msgid "Icon Size:"
 msgstr "Tamanho do Ícone:"
 
-#: data/ui/preferences.ui:318
+#: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
 msgstr "Ampliação de ícone:"
 
-#: data/ui/preferences.ui:332
+#: data/ui/preferences.ui:385
 msgid "Gap Size:"
 msgstr "Tamanho do Gap:"
 
-#: data/ui/preferences.ui:383
+#: data/ui/preferences.ui:436
 msgid "Appearance"
 msgstr "Aparência"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:456
 msgid "Intellihide"
 msgstr "Ocultação inteligente"
 
-#: data/ui/preferences.ui:404
+#: data/ui/preferences.ui:457
 msgid "Autohide"
 msgstr "Ocultação automática"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
 msgstr "Esquivar das janelas maximizadas"
 
-#: data/ui/preferences.ui:406
+#: data/ui/preferences.ui:459
 msgid "Window Dodge"
 msgstr "Desviar das janelas"
 
-#: data/ui/preferences.ui:407
+#: data/ui/preferences.ui:460
 msgid "Dodge active window"
 msgstr "Janela ativa"
 
-#: data/ui/preferences.ui:433
+#: data/ui/preferences.ui:486
 msgid "Hide Dock"
 msgstr "Esconder Dock"
 
-#: data/ui/preferences.ui:449
+#: data/ui/preferences.ui:502
 msgid "Hide Delay:"
 msgstr "Atraso ao ocultar:"
 
-#: data/ui/preferences.ui:463
+#: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
 msgstr "Atraso em ms antes de ocultar o dock"
 
-#: data/ui/preferences.ui:482
+#: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
 msgstr "Atraso ao reaparecer:"
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
 msgstr "Atraso em ms antes de mostrar o dock"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
 msgstr "Revelar sob pressão:"
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:595
 msgid "Item Management"
 msgstr "Gerenciamento de itens"
 
-#: data/ui/preferences.ui:561
+#: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
 msgstr "Mostrar Destravados:"
 
-#: data/ui/preferences.ui:588
+#: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
 msgstr "Restringir à Área de Trabalho:"
 
-#: data/ui/preferences.ui:613
+#: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
 msgstr "Dicas de Ferramentas Ativadas:"
 
-#: data/ui/preferences.ui:637
+#: data/ui/preferences.ui:693
 msgid "Lock Icons:"
 msgstr "Travar Ícones:"
 
-#: data/ui/preferences.ui:664
+#: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
 msgstr "Miniâncoras:"
 
-#: data/ui/preferences.ui:691
+#: data/ui/preferences.ui:747
 msgid "Anchor Files:"
 msgstr "Arquivos de Ancoragem:"
 
-#: data/ui/preferences.ui:713
+#: data/ui/preferences.ui:769
 msgid "Behaviour"
 msgstr "Comportamento"
 
-#: data/ui/preferences.ui:733
+#: data/ui/preferences.ui:789
 msgid "Docklets"
 msgstr "Ícones da Dock"
 
@@ -321,7 +329,7 @@ msgstr "Ativar Rastreamento da Área de Transferência"
 msgid "Maximum Entries"
 msgstr "Entradas Máximas"
 
-#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
@@ -579,6 +587,6 @@ msgstr "_Sobre"
 msgid "_Quit"
 msgstr "_Sair"
 
-#: lib/Widgets/PreferencesWindow.vala:95
+#: lib/Widgets/PreferencesWindow.vala:101
 msgid "Preferences"
 msgstr "Preferências"

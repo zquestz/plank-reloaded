@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-09 14:19-1000\n"
-"PO-Revision-Date: 2025-05-10 04:24\n"
+"POT-Creation-Date: 2025-06-17 14:00-1000\n"
+"PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
@@ -73,155 +73,163 @@ msgstr "प्लैंक रिलोडेड डेवलपर्स"
 msgid "Dock"
 msgstr "डॉक"
 
-#: data/ui/preferences.ui:87
+#: data/ui/preferences.ui:93
 msgid "Theme:"
 msgstr "थीम:"
 
-#: data/ui/preferences.ui:100
+#: data/ui/preferences.ui:106
 msgid "Position:"
 msgstr "स्थिति:"
 
-#: data/ui/preferences.ui:127
+#: data/ui/preferences.ui:133
 msgid "Left"
 msgstr "बाएं"
 
-#: data/ui/preferences.ui:128
+#: data/ui/preferences.ui:134
 msgid "Right"
 msgstr "दाएं"
 
-#: data/ui/preferences.ui:129
+#: data/ui/preferences.ui:135
 msgid "Top"
 msgstr "ऊपर"
 
-#: data/ui/preferences.ui:130
+#: data/ui/preferences.ui:136
 msgid "Bottom"
 msgstr "नीचे"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:153
+msgid "On Active Display:"
+msgstr "सक्रिय डिस्प्ले पर:"
+
+#: data/ui/preferences.ui:180
+msgid "Polling interval in seconds for active display detection"
+msgstr "सक्रिय डिस्प्ले पहचान के लिए सेकंड में पोलिंग अंतराल"
+
+#: data/ui/preferences.ui:197
 msgid "Alignment:"
 msgstr "संरेखण:"
 
-#: data/ui/preferences.ui:157
+#: data/ui/preferences.ui:210
 msgid "Fill"
 msgstr "भरें"
 
-#: data/ui/preferences.ui:158 data/ui/preferences.ui:236
+#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
 msgstr "प्रारंभ"
 
-#: data/ui/preferences.ui:159 data/ui/preferences.ui:237
+#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
 msgstr "अंत"
 
-#: data/ui/preferences.ui:160 data/ui/preferences.ui:238
+#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
 msgstr "केंद्र"
 
-#: data/ui/preferences.ui:176
+#: data/ui/preferences.ui:229
 msgid "On Primary Display:"
 msgstr "प्राथमिक डिस्प्ले पर:"
 
-#: data/ui/preferences.ui:202
+#: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "स्क्रीन-किनारे के केंद्र से प्रतिशत में ऑफसेट"
 
-#: data/ui/preferences.ui:222
+#: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
 msgstr "आइकन संरेखण:"
 
-#: data/ui/preferences.ui:252
+#: data/ui/preferences.ui:305
 msgid "Icon Size:"
 msgstr "आइकन आकार:"
 
-#: data/ui/preferences.ui:318
+#: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
 msgstr "आइकन जूम:"
 
-#: data/ui/preferences.ui:332
+#: data/ui/preferences.ui:385
 msgid "Gap Size:"
 msgstr "गैप आकार:"
 
-#: data/ui/preferences.ui:383
+#: data/ui/preferences.ui:436
 msgid "Appearance"
 msgstr "दिखावट"
 
-#: data/ui/preferences.ui:403
+#: data/ui/preferences.ui:456
 msgid "Intellihide"
 msgstr "इंटेलिहाइड"
 
-#: data/ui/preferences.ui:404
+#: data/ui/preferences.ui:457
 msgid "Autohide"
 msgstr "ऑटो हाइड"
 
-#: data/ui/preferences.ui:405
+#: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
 msgstr "मैक्सिमाइज्ड विंडो को डॉज करें"
 
-#: data/ui/preferences.ui:406
+#: data/ui/preferences.ui:459
 msgid "Window Dodge"
 msgstr "विंडो डॉज"
 
-#: data/ui/preferences.ui:407
+#: data/ui/preferences.ui:460
 msgid "Dodge active window"
 msgstr "सक्रिय विंडो को डॉज करें"
 
-#: data/ui/preferences.ui:433
+#: data/ui/preferences.ui:486
 msgid "Hide Dock"
 msgstr "डॉक छिपाएं"
 
-#: data/ui/preferences.ui:449
+#: data/ui/preferences.ui:502
 msgid "Hide Delay:"
 msgstr "विलंब छिपाएं:"
 
-#: data/ui/preferences.ui:463
+#: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
 msgstr "डॉक को छिपाने से पहले मिलीसेकंड में विलंब"
 
-#: data/ui/preferences.ui:482
+#: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
 msgstr "विलंब दिखाएं:"
 
-#: data/ui/preferences.ui:496
+#: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
 msgstr "डॉक को दिखाने से पहले मिलीसेकंड में विलंब"
 
-#: data/ui/preferences.ui:515
+#: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
 msgstr "दबाव प्रकट करें:"
 
-#: data/ui/preferences.ui:542
+#: data/ui/preferences.ui:595
 msgid "Item Management"
 msgstr "आइटम प्रबंधन"
 
-#: data/ui/preferences.ui:561
+#: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
 msgstr "अनपिन दिखाएं:"
 
-#: data/ui/preferences.ui:588
+#: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
 msgstr "वर्कस्पेस तक सीमित करें:"
 
-#: data/ui/preferences.ui:613
+#: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
 msgstr "टूलटिप्स सक्षम:"
 
-#: data/ui/preferences.ui:637
+#: data/ui/preferences.ui:693
 msgid "Lock Icons:"
 msgstr "आइकन लॉक करें:"
 
-#: data/ui/preferences.ui:664
+#: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
 msgstr "एंकर डॉकलेट्स:"
 
-#: data/ui/preferences.ui:691
+#: data/ui/preferences.ui:747
 msgid "Anchor Files:"
 msgstr "एंकर फ़ाइलें:"
 
-#: data/ui/preferences.ui:713
+#: data/ui/preferences.ui:769
 msgid "Behaviour"
 msgstr "व्यवहार"
 
-#: data/ui/preferences.ui:733
+#: data/ui/preferences.ui:789
 msgid "Docklets"
 msgstr "डॉकलेट्स"
 
@@ -320,7 +328,7 @@ msgstr "क्लिपबोर्ड ट्रैकिंग सक्षम 
 msgid "Maximum Entries"
 msgstr "अधिकतम प्रविष्टियां"
 
-#: docklets/Clippy/ClippyDockItem.vala:180
+#: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
@@ -565,6 +573,6 @@ msgstr "_के बारे में"
 msgid "_Quit"
 msgstr "_बाहर जाएं"
 
-#: lib/Widgets/PreferencesWindow.vala:95
+#: lib/Widgets/PreferencesWindow.vala:101
 msgid "Preferences"
 msgstr "वरीयताएँ"
