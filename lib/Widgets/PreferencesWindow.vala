@@ -27,6 +27,8 @@ namespace Plank {
 
     DockPreferences prefs;
 
+    bool refreshing_display_plugs = false;
+
     [GtkChild]
     unowned Gtk.ComboBoxText cb_theme;
     [GtkChild]
@@ -348,8 +350,46 @@ namespace Plank {
       prefs.ActiveDisplayPollingInterval = (uint) adj.value;
     }
 
+    void refresh_display_plugs () {
+      if (refreshing_display_plugs)
+        return;
+
+      refreshing_display_plugs = true;
+
+      string current_monitor = prefs.Monitor;
+      int selected_pos = -1;
+
+      cb_display_plug.remove_all ();
+
+      var pos = 0;
+      foreach (unowned string plug_name in Plank.PositionManager.get_monitor_plug_names (get_screen ())) {
+        cb_display_plug.append ("%i".printf (pos), plug_name);
+        if (plug_name == current_monitor)
+          selected_pos = pos;
+        pos++;
+      }
+
+      if (selected_pos >= 0) {
+        cb_display_plug.set_active (selected_pos);
+      } else if (current_monitor == "") {
+        cb_display_plug.set_active (0);
+      } else {
+        cb_display_plug.set_active (0);
+        prefs.Monitor = "";
+        sw_primary_display.set_active (true);
+      }
+
+      bool should_be_sensitive = (prefs.Monitor != "" && !prefs.ActiveDisplay);
+      cb_display_plug.sensitive = should_be_sensitive;
+
+      refreshing_display_plugs = false;
+    }
+
     void connect_signals () {
       prefs.notify.connect (prefs_changed);
+
+      unowned Gdk.Screen screen = get_screen ();
+      screen.monitors_changed.connect (refresh_display_plugs);
 
       cb_theme.changed.connect (theme_changed);
       cb_hidemode.changed.connect (hidemode_changed);
@@ -380,6 +420,9 @@ namespace Plank {
     void disconnect_signals () {
       prefs.notify.disconnect (prefs_changed);
 
+      unowned Gdk.Screen screen = get_screen ();
+      screen.monitors_changed.disconnect (refresh_display_plugs);
+
       cb_theme.changed.disconnect (theme_changed);
       cb_hidemode.changed.disconnect (hidemode_changed);
       cb_position.changed.disconnect (position_changed);
@@ -398,6 +441,8 @@ namespace Plank {
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].disconnect (tooltips_enabled_toggled);
+      sw_anchor_docklets.notify["active"].disconnect (anchor_docklets_toggled);
+      sw_anchor_files.notify["active"].disconnect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].disconnect (pressure_reveal_toggled);
       sw_zoom_enabled.notify["active"].disconnect (zoom_enabled_toggled);
       cb_alignment.changed.disconnect (alignment_changed);
@@ -420,17 +465,7 @@ namespace Plank {
       adj_hide_delay.value = prefs.HideDelay;
       adj_unhide_delay.value = prefs.UnhideDelay;
 
-      pos = 0;
-      cb_display_plug.remove_all ();
-      foreach (unowned string plug_name in Plank.PositionManager.get_monitor_plug_names (get_screen ())) {
-        cb_display_plug.append ("%i".printf (pos), plug_name);
-        if (plug_name == prefs.Monitor)
-          cb_display_plug.set_active (pos);
-        pos++;
-      }
-      if (prefs.Monitor == "")
-        cb_display_plug.set_active (0);
-      cb_display_plug.sensitive = (prefs.Monitor != "");
+      refresh_display_plugs ();
 
       sp_hide_delay.sensitive = (prefs.HideMode != HideType.NONE);
       sp_unhide_delay.sensitive = (prefs.HideMode != HideType.NONE);
