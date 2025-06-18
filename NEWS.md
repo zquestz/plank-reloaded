@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.132 "Reloaded" (2025-06-17)
+
+- Add multi-monitor support via "On Active Display" setting
+- Improve Clippy handling of PRIMARY/CLIPBOARD clipboards
+
 ## 0.11.131 "Reloaded" (2025-06-09)
 
 - Improve reliability of Steam menu activation workaround
