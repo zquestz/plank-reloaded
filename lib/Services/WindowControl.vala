@@ -113,17 +113,21 @@ namespace Plank {
 
             // Try to wake up GDK/WNCK event processing
             Gdk.threads_add_idle (() => {
-              // Force GDK to process any pending events
-              var gdk_display = Gdk.Display.get_default ();
-              gdk_display.flush ();
-              gdk_display.sync ();
+              unowned Wnck.Screen screen = Wnck.Screen.get_default ();
 
-              // Also try to process the GTK event queue
-              while (Gtk.events_pending ()) {
-                Gtk.main_iteration_do (false);
+              // Try different WNCK methods
+              message ("Trying to wake up WNCK...");
+
+              // Method 1: Try to get the window list (this might trigger updates)
+              unowned var windows = screen.get_windows ();
+              message ("WNCK reports %f windows", windows.length ());
+
+              // Method 2: Try to get active window (might trigger updates)
+              var active = screen.get_active_window ();
+              if (active != null) {
+                message ("Active window: %s", active.get_name ());
               }
 
-              message ("Triggered GDK event processing after PropertyNotify");
               return false;
             });
           }
