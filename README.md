@@ -16,6 +16,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 - Fixed Restrict to Workspace so applications only show up on their active workspace
 - Max Zoom has been increased to 400%
 - Added GapSize to set the gap between the dock and the screen edge
+- Ability to support multiple monitors
 - Comprehensive docklet improvements:
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
@@ -226,13 +227,13 @@ Each instance can be configured independently.
 
 #### Moving Docks Between Monitors
 
-You can instantly move docks to your active monitor (where your cursor is) by sending a USR1 signal to the plank process:
+You can move docks to your active monitor (where your cursor is) by enabling "On Active Display" in the preferences or by sending a USR1 signal to the plank process:
 
 ```bash
 killall -USR1 plank
 ```
 
-This feature is particularly useful when:
+The signaling feature is particularly useful when:
 
 - Assigned to a global keyboard shortcut
 - Configured as a hot corner action
