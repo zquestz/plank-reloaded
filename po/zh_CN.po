@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-17 20:31-1000\n"
+"POT-Creation-Date: 2025-06-19 11:36-1000\n"
 "PO-Revision-Date: 2025-06-18 00:13\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -384,43 +384,39 @@ msgstr "桌面"
 msgid "Show your Desktop."
 msgstr "显示您的桌面。"
 
-#: docklets/Trash/TrashDockItem.vala:113
+#: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
 msgstr "回收站中没有东西"
 
-#: docklets/Trash/TrashDockItem.vala:114
+#: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u 个文件在回收站中"
 
-#: docklets/Trash/TrashDockItem.vala:145
-msgid "Drop to move to Trash"
-msgstr "移至回收站"
-
-#: docklets/Trash/TrashDockItem.vala:193
-msgid "Restore Files"
-msgstr "还原文件"
-
-#: docklets/Trash/TrashDockItem.vala:247
-msgid "_Open Trash"
-msgstr "_打开回收站"
-
-#: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
-msgid "Empty _Trash"
-msgstr "清空回收站"
-
-#: docklets/Trash/TrashDockItem.vala:345
+#: docklets/Trash/TrashDockItem.vala:293
 msgid "Empty all items from Trash?"
 msgstr "清空回收站中的所有项目？"
 
-#: docklets/Trash/TrashDockItem.vala:348
+#: docklets/Trash/TrashDockItem.vala:296
 msgid "All items in the Trash will be permanently deleted."
 msgstr "回收站中的所有項目將被永久刪除！"
 
-#: docklets/Trash/TrashDockItem.vala:349
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "_Cancel"
 msgstr "_取消"
+
+#: docklets/Trash/TrashDockItem.vala:298 docklets/Trash/TrashDockItem.vala:428
+msgid "Empty _Trash"
+msgstr "清空回收站"
+
+#: docklets/Trash/TrashDockItem.vala:387
+msgid "Drop to move to Trash"
+msgstr "移至回收站"
+
+#: docklets/Trash/TrashDockItem.vala:424
+msgid "_Open Trash"
+msgstr "_打开回收站"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
@@ -576,3 +572,6 @@ msgstr "_退出"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "首选项"
+
+#~ msgid "Restore Files"
+#~ msgstr "还原文件"

@@ -25,6 +25,7 @@ namespace Docky {
 
   public class TrashDockItem : DockletItem {
     private const string TRASH_URI = "trash://";
+    private const string KDE_TRASH_URI = "trash:/";
     private const string NEMO_SCHEMA = "org.nemo.preferences";
     private const string NEMO_PATH = "/org/nemo/preferences/";
 
@@ -33,69 +34,55 @@ namespace Docky {
       + FileAttribute.STANDARD_NAME + ","
       + FileAttribute.ACCESS_CAN_DELETE;
 
-    private const string TRASH_ATTRIBUTES =
-      FileAttribute.STANDARD_TYPE + ","
-      + FileAttribute.STANDARD_NAME;
-
-    private FileMonitor? trash_monitor;
-    private File owned_file;
+    private Gee.ArrayList<FileMonitor> trash_monitors;
+    private File trash;
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
     {
-      GLib.Object(Prefs : new DockItemPreferences.with_file(file));
+      GLib.Object(Prefs: new DockItemPreferences.with_file(file));
     }
 
     construct
     {
-      initialize_trash();
+      trash = environment_is_session_desktop(XdgSessionDesktop.KDE) ? File.new_for_uri(KDE_TRASH_URI) : File.new_for_uri(TRASH_URI);
+      trash_monitors = new Gee.ArrayList<FileMonitor> ();
+
+      setup_monitor();
+      update();
     }
 
     ~TrashDockItem() {
       cleanup_monitor();
     }
 
-    private static GLib.Settings? create_settings(string schema_id, string? path = null)
-    {
-      var schema_source = GLib.SettingsSchemaSource.get_default();
-      var schema = schema_source.lookup(schema_id, true);
-      if (schema == null) {
-        warning("GSettingsSchema '%s' not found", schema_id);
-        return null;
-      }
-      return new GLib.Settings.full(schema, null, path);
-    }
-
-    private bool confirm_trash_delete() {
-      if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
-        var settings = create_settings(NEMO_SCHEMA, NEMO_PATH);
-        if (settings != null) {
-          return settings.get_boolean("confirm-trash");
-        }
-      }
-      return true;
-    }
-
-    private void initialize_trash() {
-      owned_file = File.new_for_uri(TRASH_URI);
-      setup_monitor();
-      update();
-    }
-
     private void setup_monitor() {
       try {
-        trash_monitor = owned_file.monitor(0);
-        trash_monitor.changed.connect(trash_changed);
+        if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+          var trash_dirs = get_trash_directories();
+          foreach (var trash_dir in trash_dirs) {
+            var files_dir = trash_dir.get_child("files");
+            if (files_dir.query_exists()) {
+              var monitor = files_dir.monitor(0);
+              monitor.changed.connect(trash_changed);
+              trash_monitors.add(monitor);
+            }
+          }
+        } else {
+          var monitor = trash.monitor(0);
+          monitor.changed.connect(trash_changed);
+          trash_monitors.add(monitor);
+        }
       } catch (Error e) {
         warning("Could not start file monitor for trash: %s", e.message);
       }
     }
 
     private void cleanup_monitor() {
-      if (trash_monitor != null) {
-        trash_monitor.changed.disconnect(trash_changed);
-        trash_monitor.cancel();
-        trash_monitor = null;
+      foreach (var monitor in trash_monitors) {
+        monitor.changed.disconnect(trash_changed);
+        monitor.cancel();
       }
+      trash_monitors.clear();
     }
 
     private void trash_changed(File f, File? other, FileMonitorEvent event) {
@@ -115,59 +102,105 @@ namespace Docky {
     }
 
     private void update_icon() {
-      var fetched_icon = DrawingService.get_icon_from_file(owned_file);
+      string? icon_name = null;
 
-      if (fetched_icon != null && fetched_icon != "") {
-        Icon = DrawingService.get_icon_from_file(owned_file);
+      if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+        icon_name = get_kde_trash_icon();
+      } else {
+        icon_name = DrawingService.get_icon_from_file(trash);
       }
+
+      if (icon_name != null && icon_name != "") {
+        Icon = icon_name;
+      }
+    }
+
+    private string ? get_kde_trash_icon() {
+      try {
+        string output;
+        Process.spawn_command_line_sync("kioclient stat %s".printf(KDE_TRASH_URI), out output);
+
+        string[] lines = output.split("\n");
+        foreach (string line in lines) {
+          if (line.has_prefix("ICON_NAME")) {
+            string[] parts = line.split_set(" \t", 2);
+            if (parts.length >= 2) {
+              return parts[parts.length - 1].strip();
+            }
+          }
+        }
+      } catch (SpawnError e) {
+        warning("Could not get KDE trash icon: %s", e.message);
+      }
+
+      uint32 item_count = get_trash_item_count();
+      return item_count > 0 ? "user-trash-full" : "user-trash";
+    }
+
+    private Gee.ArrayList<File> get_trash_directories() {
+      var trash_dirs = new Gee.ArrayList<File> ();
+
+      var primary_trash = File.new_for_path(Environment.get_user_data_dir()).get_child("Trash");
+      if (!primary_trash.query_exists()) {
+        primary_trash = File.new_for_path(Environment.get_home_dir()).get_child(".local/share/Trash");
+      }
+      trash_dirs.add(primary_trash);
+
+      // TODO: Add support for per-mount-point trash directories if needed
+      // These would be in .Trash-$UID directories on mounted filesystems
+
+      return trash_dirs;
     }
 
     private uint32 get_trash_item_count() {
-      try {
-        return owned_file.query_info(
-                                     FileAttribute.TRASH_ITEM_COUNT,
-                                     0,
-                                     null
-        ).get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
-      } catch (Error e) {
-        warning("Could not get item count from trash::item-count: %s", e.message);
-      }
-      return 0U;
-    }
-
-    protected override AnimationType on_clicked(PopupButton button,
-                                                Gdk.ModifierType mod,
-                                                uint32 event_time) {
-      if (button == PopupButton.LEFT) {
-        open_trash();
-        return AnimationType.BOUNCE;
-      }
-      return AnimationType.NONE;
-    }
-
-    public override string get_drop_text() {
-      return _("Drop to move to Trash");
-    }
-
-    protected override bool can_accept_drop(Gee.ArrayList<string> uris) {
-      foreach (string uri in uris) {
-        if (File.new_for_uri(uri).query_exists()) {
-          return true;
+      if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+        return get_trash_item_count_manual();
+      } else {
+        try {
+          return trash.query_info(
+                                  FileAttribute.TRASH_ITEM_COUNT,
+                                  0,
+                                  null
+          ).get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
+        } catch (Error e) {
+          warning("Could not get item count from trash::item-count: %s", e.message);
         }
       }
-      return false;
+
+      return get_trash_item_count_manual();
     }
 
-    protected override bool accept_drop(Gee.ArrayList<string> uris) {
-      bool accepted = false;
-      foreach (string uri in uris) {
-        accepted |= move_to_trash(uri);
+    private uint32 get_trash_item_count_manual() {
+      uint32 count = 0;
+
+      var trash_dirs = get_trash_directories();
+
+      foreach (var trash_dir in trash_dirs) {
+        try {
+          var files_dir = trash_dir.get_child("files");
+          if (!files_dir.query_exists()) {
+            continue;
+          }
+
+          var enumerator = files_dir.enumerate_children(
+                                                        FileAttribute.STANDARD_NAME,
+                                                        FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                                                        null
+          );
+
+          if (enumerator != null) {
+            FileInfo? info = null;
+            while ((info = enumerator.next_file()) != null) {
+              count++;
+            }
+            enumerator.close(null);
+          }
+        } catch (Error e) {
+          warning("Could not enumerate trash directory %s: %s", trash_dir.get_path(), e.message);
+        }
       }
 
-      if (accepted) {
-        update();
-      }
-      return accepted;
+      return count;
     }
 
     private bool move_to_trash(string uri) {
@@ -179,133 +212,24 @@ namespace Docky {
       }
     }
 
-    public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
-      var items = new Gee.ArrayList<Gtk.MenuItem> ();
-
-      if (!environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
-        add_restore_items(items);
-      }
-
-      add_trash_operations(items);
-
-      return items;
-    }
-
-    private void add_restore_items(Gee.ArrayList<Gtk.MenuItem> items) {
-      var files = get_trash_files();
-      if (files.size > 0) {
-        items.add(new TitledSeparatorMenuItem.no_line(_("Restore Files")));
-        add_restore_menu_items(items, files);
-        items.add(new Gtk.SeparatorMenuItem());
-      }
-    }
-
-    private Gee.ArrayList<File> get_trash_files() {
-      var files = new Gee.ArrayList<File> ();
-      try {
-        var enumerator = owned_file.enumerate_children(
-                                                       TRASH_ATTRIBUTES,
-                                                       FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                                                       null
-        );
-
-        if (enumerator != null) {
-          FileInfo? info = null;
-          while ((info = enumerator.next_file()) != null) {
-            files.add(owned_file.get_child(info.get_name()));
-          }
-          enumerator.close(null);
-        }
-      } catch (Error e) {
-        warning("Could not enumerate items in the trash: %s", e.message);
-      }
-      return files;
-    }
-
-    private void add_restore_menu_items(Gee.ArrayList<Gtk.MenuItem> items,
-                                        Gee.ArrayList<File> files) {
-      files.sort((CompareDataFunc) compare_files);
-
-      int count = 0;
-      foreach (File file in files) {
-        var menu_item = create_restore_menu_item(file);
-        if (menu_item != null) {
-          items.add(menu_item);
-          if (++count == 5)break;
-        }
-      }
-    }
-
-    private Gtk.MenuItem? create_restore_menu_item(File file)
-    {
-      var item = create_literal_menu_item(
-                                          file.get_basename(),
-                                          DrawingService.get_icon_from_file(file),
-                                          false
-      );
-      item.activate.connect(() => restore_file(file));
-      return item;
-    }
-
-    private void add_trash_operations(Gee.ArrayList<Gtk.MenuItem> items) {
-      var open_item = create_menu_item(_("_Open Trash"), Icon);
-      open_item.activate.connect(open_trash);
-      items.add(open_item);
-
-      var empty_item = create_menu_item(_("Empty _Trash"), "gtk-clear");
-      empty_item.activate.connect(empty_trash);
-      empty_item.sensitive = (get_trash_item_count() > 0);
-      items.add(empty_item);
-    }
-
-    private static int compare_files(File left, File right) {
-      try {
-        string? left_date = left.query_info(
-                                            FileAttribute.TRASH_DELETION_DATE,
-                                            0,
-                                            null
-        ).get_attribute_string(FileAttribute.TRASH_DELETION_DATE);
-
-        string? right_date = right.query_info(
-                                              FileAttribute.TRASH_DELETION_DATE,
-                                              0,
-                                              null
-        ).get_attribute_string(FileAttribute.TRASH_DELETION_DATE);
-
-        return strcmp(right_date ?? "", left_date ?? "");
-      } catch (Error e) {
-        warning("Could not compare trash items: %s", e.message);
-        return 0;
-      }
-    }
-
-    private void restore_file(File file) {
-      try {
-        var info = file.query_info(
-                                   FileAttribute.TRASH_ORIG_PATH,
-                                   0,
-                                   null
-        );
-
-        string? orig_path = info.get_attribute_string(FileAttribute.TRASH_ORIG_PATH);
-        if (orig_path != null) {
-          var dest_file = File.new_for_path(orig_path);
-          file.move(
-                    dest_file,
-                    FileCopyFlags.NOFOLLOW_SYMLINKS
-                    | FileCopyFlags.ALL_METADATA
-                    | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
-                    null,
-                    null
-          );
-        }
-      } catch (Error e) {
-        warning("Could not restore file from trash: %s", e.message);
-      }
-    }
-
     private void open_trash() {
-      System.get_default().open(owned_file);
+      if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+        try {
+          Process.spawn_command_line_async("kioclient exec %s".printf(KDE_TRASH_URI));
+        } catch (SpawnError e) {
+          try {
+            Process.spawn_command_line_async("dolphin %s".printf(KDE_TRASH_URI));
+          } catch (SpawnError e2) {
+            try {
+              Process.spawn_command_line_async("kde-open %s".printf(KDE_TRASH_URI));
+            } catch (SpawnError e3) {
+              warning("Could not open trash in KDE: %s, %s, %s", e.message, e2.message, e3.message);
+            }
+          }
+        }
+      } else {
+        System.get_default().open(trash);
+      }
     }
 
     private void empty_trash() {
@@ -337,6 +261,26 @@ namespace Docky {
       }
 
       show_empty_trash_dialog();
+    }
+
+    private static GLib.Settings? create_settings(string schema_id, string? path = null) {
+      var schema_source = GLib.SettingsSchemaSource.get_default();
+      var schema = schema_source.lookup(schema_id, true);
+      if (schema == null) {
+        warning("GSettingsSchema '%s' not found", schema_id);
+        return null;
+      }
+      return new GLib.Settings.full(schema, null, path);
+    }
+
+    private bool confirm_trash_delete() {
+      if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
+        var settings = create_settings(NEMO_SCHEMA, NEMO_PATH);
+        if (settings != null) {
+          return settings.get_boolean("confirm-trash");
+        }
+      }
+      return true;
     }
 
     private void show_empty_trash_dialog() {
@@ -371,19 +315,40 @@ namespace Docky {
     }
 
     private void perform_empty_trash() {
-      if (trash_monitor != null) {
-        trash_monitor.changed.disconnect(trash_changed);
+      foreach (var monitor in trash_monitors) {
+        monitor.changed.disconnect(trash_changed);
       }
 
       Worker.get_default().add_task_with_result.begin<void*> (() => {
-        delete_children_recursive(owned_file);
+        if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+          delete_kde_trash_files();
+        } else {
+          delete_children_recursive(trash);
+        }
         return null;
       }, TaskPriority.HIGH, () => {
-        if (trash_monitor != null) {
-          trash_monitor.changed.connect(trash_changed);
+        foreach (var monitor in trash_monitors) {
+          monitor.changed.connect(trash_changed);
         }
         update();
       });
+    }
+
+    private void delete_kde_trash_files() {
+      var trash_dirs = get_trash_directories();
+
+      foreach (var trash_dir in trash_dirs) {
+        var files_dir = trash_dir.get_child("files");
+        var info_dir = trash_dir.get_child("info");
+
+        if (files_dir.query_exists()) {
+          delete_children_recursive(files_dir);
+        }
+
+        if (info_dir.query_exists()) {
+          delete_children_recursive(info_dir);
+        }
+      }
     }
 
     private static void delete_children_recursive(File file) {
@@ -416,6 +381,56 @@ namespace Docky {
       } catch (Error e) {
         warning("Could not enumerate trash for deletion: %s", e.message);
       }
+    }
+
+    public override string get_drop_text() {
+      return _("Drop to move to Trash");
+    }
+
+    protected override bool can_accept_drop(Gee.ArrayList<string> uris) {
+      foreach (string uri in uris) {
+        if (File.new_for_uri(uri).query_exists()) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    protected override bool accept_drop(Gee.ArrayList<string> uris) {
+      bool accepted = false;
+      foreach (string uri in uris) {
+        accepted |= move_to_trash(uri);
+      }
+
+      if (accepted) {
+        update();
+      }
+      return accepted;
+    }
+
+    protected override AnimationType on_clicked(PopupButton button,
+                                                Gdk.ModifierType mod,
+                                                uint32 event_time) {
+      if (button == PopupButton.LEFT) {
+        open_trash();
+        return AnimationType.BOUNCE;
+      }
+      return AnimationType.NONE;
+    }
+
+    public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
+      var items = new Gee.ArrayList<Gtk.MenuItem> ();
+
+      var open_item = create_menu_item(_("_Open Trash"), Icon);
+      open_item.activate.connect(open_trash);
+      items.add(open_item);
+
+      var empty_item = create_menu_item(_("Empty _Trash"), "gtk-clear");
+      empty_item.activate.connect(empty_trash);
+      empty_item.sensitive = (get_trash_item_count() > 0);
+      items.add(empty_item);
+
+      return items;
     }
   }
 }
