@@ -139,7 +139,7 @@ namespace Docky {
       }
 
       controller.window.update_icon_regions();
-      controller.hover.hide();
+      controller.window.update_hovered(0, 0);
       controller.renderer.animated_draw();
     }
 
