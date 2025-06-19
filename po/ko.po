@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-17 20:31-1000\n"
+"POT-Creation-Date: 2025-06-19 11:36-1000\n"
 "PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -386,43 +386,39 @@ msgstr "바탕화면"
 msgid "Show your Desktop."
 msgstr "바탕화면을 표시합니다."
 
-#: docklets/Trash/TrashDockItem.vala:113
+#: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
 msgstr "휴지통에 항목 없음"
 
-#: docklets/Trash/TrashDockItem.vala:114
+#: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "휴지통에 %u개 항목"
 
-#: docklets/Trash/TrashDockItem.vala:145
-msgid "Drop to move to Trash"
-msgstr "휴지통으로 이동하려면 드래그하세요"
-
-#: docklets/Trash/TrashDockItem.vala:193
-msgid "Restore Files"
-msgstr "파일 복원"
-
-#: docklets/Trash/TrashDockItem.vala:247
-msgid "_Open Trash"
-msgstr "휴지통 열기 (_O)"
-
-#: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
-msgid "Empty _Trash"
-msgstr "휴지통 비우기 (_T)"
-
-#: docklets/Trash/TrashDockItem.vala:345
+#: docklets/Trash/TrashDockItem.vala:293
 msgid "Empty all items from Trash?"
 msgstr "휴지통의 모든 항목을 비울까요?"
 
-#: docklets/Trash/TrashDockItem.vala:348
+#: docklets/Trash/TrashDockItem.vala:296
 msgid "All items in the Trash will be permanently deleted."
 msgstr "휴지통의 모든 항목이 영구적으로 삭제됩니다."
 
-#: docklets/Trash/TrashDockItem.vala:349
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "_Cancel"
 msgstr "취소 (_C)"
+
+#: docklets/Trash/TrashDockItem.vala:298 docklets/Trash/TrashDockItem.vala:428
+msgid "Empty _Trash"
+msgstr "휴지통 비우기 (_T)"
+
+#: docklets/Trash/TrashDockItem.vala:387
+msgid "Drop to move to Trash"
+msgstr "휴지통으로 이동하려면 드래그하세요"
+
+#: docklets/Trash/TrashDockItem.vala:424
+msgid "_Open Trash"
+msgstr "휴지통 열기 (_O)"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
@@ -578,3 +574,6 @@ msgstr "나가기 (_Q)"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "기본 설정"
+
+#~ msgid "Restore Files"
+#~ msgstr "파일 복원"

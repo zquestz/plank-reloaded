@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-17 20:31-1000\n"
+"POT-Creation-Date: 2025-06-19 11:36-1000\n"
 "PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -389,11 +389,11 @@ msgstr "Рабочий стол"
 msgid "Show your Desktop."
 msgstr "Показать рабочий стол."
 
-#: docklets/Trash/TrashDockItem.vala:113
+#: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
 msgstr "В Корзине нет объектов"
 
-#: docklets/Trash/TrashDockItem.vala:114
+#: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
@@ -402,33 +402,29 @@ msgstr[1] "%u объект в Корзине"
 msgstr[2] "%u объект в Корзине"
 msgstr[3] "%u объект в Корзине"
 
-#: docklets/Trash/TrashDockItem.vala:145
-msgid "Drop to move to Trash"
-msgstr "Перетащите, чтобы переместить в Корзину"
-
-#: docklets/Trash/TrashDockItem.vala:193
-msgid "Restore Files"
-msgstr "Восстановить файлы"
-
-#: docklets/Trash/TrashDockItem.vala:247
-msgid "_Open Trash"
-msgstr "_Открыть Корзину"
-
-#: docklets/Trash/TrashDockItem.vala:251 docklets/Trash/TrashDockItem.vala:350
-msgid "Empty _Trash"
-msgstr "_Очистить корзину"
-
-#: docklets/Trash/TrashDockItem.vala:345
+#: docklets/Trash/TrashDockItem.vala:293
 msgid "Empty all items from Trash?"
 msgstr "Очистить корзину от всех элементов?"
 
-#: docklets/Trash/TrashDockItem.vala:348
+#: docklets/Trash/TrashDockItem.vala:296
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Все элементы в Корзине будут безвозвратно удалены."
 
-#: docklets/Trash/TrashDockItem.vala:349
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "_Cancel"
 msgstr "_Отмена"
+
+#: docklets/Trash/TrashDockItem.vala:298 docklets/Trash/TrashDockItem.vala:428
+msgid "Empty _Trash"
+msgstr "_Очистить корзину"
+
+#: docklets/Trash/TrashDockItem.vala:387
+msgid "Drop to move to Trash"
+msgstr "Перетащите, чтобы переместить в Корзину"
+
+#: docklets/Trash/TrashDockItem.vala:424
+msgid "_Open Trash"
+msgstr "_Открыть Корзину"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
@@ -588,3 +584,6 @@ msgstr "_Выход"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Параметры"
+
+#~ msgid "Restore Files"
+#~ msgstr "Восстановить файлы"
