@@ -98,13 +98,11 @@ namespace Plank {
         message ("X11 DestroyNotify: window=0x%lx, event=0x%lx - forcing WNCK update",
                  destroy_event.window, destroy_event.@event);
 
-        // Force WNCK to process the window changes immediately
-        unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-        Gdk.error_trap_push ();
-        screen.force_update ();
-        if (Gdk.error_trap_pop () != 0) {
-          // Ignore X errors during forced update
-          debug ("X error during WNCK force_update after DestroyNotify");
+        var display = Gdk.Display.get_default ();
+        if (display is Gdk.X11.Display) {
+          var x11_display = (Gdk.X11.Display) display;
+          x11_display.get_xdisplay ().flush ();
+          x11_display.sync ();
         }
       }
 
