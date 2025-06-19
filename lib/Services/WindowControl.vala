@@ -67,8 +67,13 @@ namespace Plank {
       // KDE-specific workaround for delayed window_closed signals
       string wm_name = screen.get_window_manager_name ().down ();
       if ("kwin" in wm_name) {
-        message ("Detected KWin window manager - enabling periodic WNCK updates");
-        kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
+        message ("Detected KWin window manager - using alternative approach");
+        kde_update_timer_id = Gdk.threads_add_timeout (500, () => {
+          // Just trigger the main loop more frequently to process pending events
+          // This might help KDE deliver the window_closed signals faster
+          while (Gtk.events_pending ()) {
+            Gtk.main_iteration ();
+          }
           return true;
         });
       }
@@ -85,20 +90,6 @@ namespace Plank {
         critical ("Wnck.Screen.force_update() caused a XError");
 
       warning ("Window-manager changed: %s", screen.get_window_manager_name ());
-
-      // Restart KDE timer if window manager changed to KWin
-      if (kde_update_timer_id > 0U) {
-        GLib.Source.remove (kde_update_timer_id);
-        kde_update_timer_id = 0U;
-      }
-
-      string wm_name = screen.get_window_manager_name ().down ();
-      if ("kwin" in wm_name) {
-        message ("Window manager changed to KWin - enabling periodic WNCK updates");
-        kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
-          return true;
-        });
-      }
     }
 
     static void handle_window_closed (Wnck.Window window) {
