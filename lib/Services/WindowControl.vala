@@ -92,17 +92,27 @@ namespace Plank {
     static Gdk.FilterReturn x11_destroy_logger (Gdk.XEvent gdk_xevent, Gdk.Event gdk_event) {
       X.Event* xevent = (X.Event*) gdk_xevent;
 
-      // Check for DestroyNotify events
       if (xevent.type == X.EventType.DestroyNotify) {
         var destroy_event = xevent.xdestroywindow;
-        message ("X11 DestroyNotify: window=0x%lx, event=0x%lx - forcing WNCK update",
+        message ("X11 DestroyNotify: window=0x%lx, event=0x%lx",
                  destroy_event.window, destroy_event.@event);
+      }
 
+      // Also monitor PropertyNotify events on the root window
+      if (xevent.type == X.EventType.PropertyNotify) {
+        var prop_event = xevent.xproperty;
         var display = Gdk.Display.get_default ();
         if (display is Gdk.X11.Display) {
           var x11_display = (Gdk.X11.Display) display;
-          x11_display.get_xdisplay ().flush ();
-          x11_display.sync ();
+          unowned var x_display = x11_display.get_xdisplay ();
+          var root_window = x_display.default_root_window ();
+
+          if (prop_event.window == root_window) {
+            // Just log that we got a root window property change
+            // Don't try to get the atom name for now
+            message ("Root PropertyNotify: atom=0x%lx, state=%d",
+                     prop_event.atom, prop_event.state);
+          }
         }
       }
 
