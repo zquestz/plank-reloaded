@@ -43,7 +43,7 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static Wnck.Window? delayed_focus_window = null;
 
-    static uint kde_update_timer_id = 0U;
+    static uint destroy_timer_id = 0U;
 
     WindowControl () {
     }
@@ -107,36 +107,59 @@ namespace Plank {
           var root_window = x11_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            // Get the atom name to see what property is changing
             string atom_name = "unknown";
             var atom_name_ptr = x11_display.get_atom_name (prop_event.atom);
             if (atom_name_ptr != null) {
               atom_name = (string) atom_name_ptr;
             }
 
-            message ("Root PropertyNotify: atom=0x%lx (%s) - forcing idle processing",
-                     prop_event.atom, atom_name);
+            message ("Root PropertyNotify: atom=0x%lx (%s)", prop_event.atom, atom_name);
 
-            // Rest of the processing...
-            while (Gtk.events_pending ()) {
-              Gtk.main_iteration_do (false);
+            if (atom_name == "_NET_CLIENT_LIST") {
+              message ("Premature _NET_CLIENT_LIST update - scheduling post-destroy update");
+
+              if (destroy_timer_id > 0U) {
+                GLib.Source.remove (destroy_timer_id);
+              }
+
+              destroy_timer_id = Gdk.threads_add_timeout (50, () => {
+                message ("Triggering delayed _NET_CLIENT_LIST update");
+                trigger_kde_client_list_update ();
+                destroy_timer_id = 0U;
+                return false;
+              });
             }
-
-            var main_context = GLib.MainContext.default ();
-            while (main_context.pending ()) {
-              main_context.iteration (false);
-            }
-
-            message ("Forced event/idle processing - checking WNCK");
-            unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-            unowned var windows = screen.get_windows ();
-            message ("After forced processing: WNCK reports %f windows", windows.length ());
           }
         }
       }
 
       return Gdk.FilterReturn.CONTINUE;
     }
+
+    static void trigger_kde_client_list_update () {
+      var gdk_display = Gdk.Display.get_default ();
+      if (gdk_display is Gdk.X11.Display) {
+        var x11_display = (Gdk.X11.Display) gdk_display;
+        unowned var x_display = x11_display.get_xdisplay ();
+
+        var active_window_atom = x_display.intern_atom ("_NET_ACTIVE_WINDOW", false);
+        var root_window = x_display.default_root_window ();
+
+        X.Atom actual_type;
+        int actual_format;
+        ulong nitems, bytes_after;
+        void* prop_data;
+
+        x_display.get_window_property (root_window, active_window_atom, 0, 1, false,
+                                       0, out actual_type, out actual_format,
+                                       out nitems, out bytes_after, out prop_data);
+
+
+        x_display.flush ();
+        message ("Triggered KDE property query");
+      }
+    }
+
 
     static void window_manager_changed (Wnck.Screen screen) {
       Gdk.error_trap_push ();
