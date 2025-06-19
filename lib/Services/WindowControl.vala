@@ -520,8 +520,12 @@ namespace Plank {
       intelligent_focus_off_viewport_window (windows.nth_data (0), windows, event_time);
     }
 
-    static void intelligent_focus_off_viewport_window (Wnck.Window targetWindow,
+    static void intelligent_focus_off_viewport_window (Wnck.Window? targetWindow,
                                                        GLib.List<unowned Wnck.Window> additional_windows, uint32 event_time) {
+      if (targetWindow == null) {
+        return;
+      }
+
       additional_windows.reverse ();
 
       foreach (unowned Wnck.Window window in additional_windows) {
