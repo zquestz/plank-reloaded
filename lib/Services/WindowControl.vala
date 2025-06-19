@@ -107,54 +107,26 @@ namespace Plank {
           var root_window = x11_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            message ("Root PropertyNotify: atom=0x%lx - generating ConfigureNotify",
-                     prop_event.atom);
+            message ("Root PropertyNotify: atom=0x%lx - forcing idle processing", prop_event.atom);
 
-            // Try to generate a ConfigureNotify event to wake up WNCK
-            Gdk.threads_add_idle (() => {
-              // Method 1: Try to move a window by 0 pixels (invisible change)
-              var idle_display = Gdk.Display.get_default ();
-              if (idle_display is Gdk.X11.Display) {
-                var idle_x11_display = (Gdk.X11.Display) idle_display;
-                unowned var idle_x_display = idle_x11_display.get_xdisplay ();
+            // Instead of adding idle callbacks, force immediate processing
+            // of the GTK event queue and idle callbacks
+            while (Gtk.events_pending ()) {
+              Gtk.main_iteration_do (false);
+            }
 
-                // Get any window and try to configure it (move by 0 pixels)
-                unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-                unowned var windows = screen.get_windows ();
-                foreach (var window in windows) {
-                  if (window.is_visible_on_workspace (screen.get_active_workspace ())) {
-                    var xid = window.get_xid ();
+            // Also try to process any pending idle callbacks at different priorities
+            var main_context = GLib.MainContext.default ();
+            while (main_context.pending ()) {
+              main_context.iteration (false);
+            }
 
-                    // Get current geometry
-                    int x, y, width, height;
-                    window.get_geometry (out x, out y, out width, out height);
-
-                    // Try to move window to same position (should generate ConfigureNotify but be invisible)
-                    idle_x_display.move_window ((X.Window) xid, x, y);
-                    idle_x_display.flush ();
-                    message ("Generated fake ConfigureNotify for window 0x%lx", xid);
-                    break;
-                  }
-                }
-              }
-              return false;
-            });
+            message ("Forced event/idle processing - checking WNCK");
+            unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+            var windows = screen.get_windows ();
+            message ("After forced processing: WNCK reports %f windows", windows.length ());
           }
         }
-      }
-
-      // Also log ConfigureNotify events to confirm the theory
-      if (xevent.type == X.EventType.ConfigureNotify) {
-        var config_event = xevent.xconfigure;
-        message ("ConfigureNotify: window=0x%lx", config_event.window);
-
-        // Check if WNCK updates after ConfigureNotify
-        Gdk.threads_add_idle (() => {
-          unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-          unowned var windows = screen.get_windows ();
-          message ("After ConfigureNotify: WNCK reports %f windows", windows.length ());
-          return false;
-        });
       }
 
       return Gdk.FilterReturn.CONTINUE;
