@@ -69,11 +69,6 @@ namespace Plank {
       if ("kwin" in wm_name) {
         message ("Detected KWin window manager - enabling periodic WNCK updates");
         kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
-          Gdk.error_trap_push ();
-          screen.force_update ();
-          if (Gdk.error_trap_pop () != 0) {
-            // Silently ignore X errors during forced updates
-          }
           return true;
         });
       }
@@ -101,11 +96,6 @@ namespace Plank {
       if ("kwin" in wm_name) {
         message ("Window manager changed to KWin - enabling periodic WNCK updates");
         kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
-          Gdk.error_trap_push ();
-          screen.force_update ();
-          if (Gdk.error_trap_pop () != 0) {
-            // Silently ignore X errors during forced updates
-          }
           return true;
         });
       }
