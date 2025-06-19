@@ -107,15 +107,21 @@ namespace Plank {
           var root_window = x11_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            message ("Root PropertyNotify: atom=0x%lx - forcing idle processing", prop_event.atom);
+            // Get the atom name to see what property is changing
+            string atom_name = "unknown";
+            var atom_name_ptr = x11_display.get_atom_name (prop_event.atom);
+            if (atom_name_ptr != null) {
+              atom_name = (string) atom_name_ptr;
+            }
 
-            // Instead of adding idle callbacks, force immediate processing
-            // of the GTK event queue and idle callbacks
+            message ("Root PropertyNotify: atom=0x%lx (%s) - forcing idle processing",
+                     prop_event.atom, atom_name);
+
+            // Rest of the processing...
             while (Gtk.events_pending ()) {
               Gtk.main_iteration_do (false);
             }
 
-            // Also try to process any pending idle callbacks at different priorities
             var main_context = GLib.MainContext.default ();
             while (main_context.pending ()) {
               main_context.iteration (false);
