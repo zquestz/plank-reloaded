@@ -115,7 +115,11 @@ namespace Docky {
     }
 
     private void update_icon() {
-      Icon = DrawingService.get_icon_from_file(owned_file);
+      var fetched_icon = DrawingService.get_icon_from_file(owned_file);
+
+      if (fetched_icon != null && fetched_icon != "") {
+        Icon = DrawingService.get_icon_from_file(owned_file);
+      }
     }
 
     private uint32 get_trash_item_count() {
