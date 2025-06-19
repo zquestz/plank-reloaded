@@ -43,6 +43,8 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static Wnck.Window? delayed_focus_window = null;
 
+    static uint kde_update_timer_id = 0U;
+
     WindowControl () {
     }
 
@@ -62,6 +64,20 @@ namespace Plank {
       screen.window_manager_changed.connect_after (window_manager_changed);
       screen.window_closed.connect_after (handle_window_closed);
 
+      // KDE-specific workaround for delayed window_closed signals
+      string wm_name = screen.get_window_manager_name ().down ();
+      if ("kwin" in wm_name) {
+        message ("Detected KWin window manager - enabling periodic WNCK updates");
+        kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
+          Gdk.error_trap_push ();
+          screen.force_update ();
+          if (Gdk.error_trap_pop () != 0) {
+            // Silently ignore X errors during forced updates
+          }
+          return true;
+        });
+      }
+
       message ("Window-manager: %s", screen.get_window_manager_name ());
     }
 
@@ -74,6 +90,25 @@ namespace Plank {
         critical ("Wnck.Screen.force_update() caused a XError");
 
       warning ("Window-manager changed: %s", screen.get_window_manager_name ());
+
+      // Restart KDE timer if window manager changed to KWin
+      if (kde_update_timer_id > 0U) {
+        GLib.Source.remove (kde_update_timer_id);
+        kde_update_timer_id = 0U;
+      }
+
+      string wm_name = screen.get_window_manager_name ().down ();
+      if ("kwin" in wm_name) {
+        message ("Window manager changed to KWin - enabling periodic WNCK updates");
+        kde_update_timer_id = Gdk.threads_add_timeout (100, () => {
+          Gdk.error_trap_push ();
+          screen.force_update ();
+          if (Gdk.error_trap_pop () != 0) {
+            // Silently ignore X errors during forced updates
+          }
+          return true;
+        });
+      }
     }
 
     static void handle_window_closed (Wnck.Window window) {
