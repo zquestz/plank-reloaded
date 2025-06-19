@@ -64,21 +64,42 @@ namespace Plank {
       screen.window_manager_changed.connect_after (window_manager_changed);
       screen.window_closed.connect_after (handle_window_closed);
 
-      // KDE-specific workaround for delayed window_closed signals
+      // Debug logging for X11 DestroyNotify events
       string wm_name = screen.get_window_manager_name ().down ();
       if ("kwin" in wm_name) {
-        message ("Detected KWin window manager - using alternative approach");
-        kde_update_timer_id = Gdk.threads_add_timeout (500, () => {
-          // Just trigger the main loop more frequently to process pending events
-          // This might help KDE deliver the window_closed signals faster
-          while (Gtk.events_pending ()) {
-            Gtk.main_iteration ();
-          }
-          return true;
-        });
+        message ("Detected KWin window manager - enabling X11 DestroyNotify logging");
+        setup_x11_logging_filter ();
       }
 
       message ("Window-manager: %s", screen.get_window_manager_name ());
+    }
+
+    static bool x11_filter_active = false;
+
+    static void setup_x11_logging_filter () {
+      if (x11_filter_active)
+        return;
+
+      var display = Gdk.Display.get_default ();
+      if (display is Gdk.X11.Display) {
+        gdk_window_add_filter (null, (Gdk.FilterFunc) x11_destroy_logger);
+        x11_filter_active = true;
+        message ("Added X11 DestroyNotify logging filter for debugging");
+      }
+    }
+
+    [CCode (instance_pos = -1)]
+    static Gdk.FilterReturn x11_destroy_logger (Gdk.XEvent gdk_xevent, Gdk.Event gdk_event) {
+      X.Event* xevent = (X.Event*) gdk_xevent;
+
+      // Log DestroyNotify events
+      if (xevent.type == X.EventType.DestroyNotify) {
+        var destroy_event = xevent.xdestroywindow;
+        message ("X11 DestroyNotify: window=0x%lx, event=0x%lx",
+                 destroy_event.window, destroy_event.@event);
+      }
+
+      return Gdk.FilterReturn.CONTINUE;
     }
 
     static void window_manager_changed (Wnck.Screen screen) {
