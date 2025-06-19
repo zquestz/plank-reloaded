@@ -98,7 +98,7 @@ namespace Plank {
                  destroy_event.window, destroy_event.@event);
       }
 
-      // Also monitor PropertyNotify events on the root window
+      // Monitor PropertyNotify events on the root window
       if (xevent.type == X.EventType.PropertyNotify) {
         var prop_event = xevent.xproperty;
         var display = Gdk.Display.get_default ();
@@ -108,10 +108,24 @@ namespace Plank {
           var root_window = x_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            // Just log that we got a root window property change
-            // Don't try to get the atom name for now
-            message ("Root PropertyNotify: atom=0x%lx, state=%d",
+            message ("Root PropertyNotify: atom=0x%lx, state=%d - triggering GDK processing",
                      prop_event.atom, prop_event.state);
+
+            // Try to wake up GDK/WNCK event processing
+            Gdk.threads_add_idle (() => {
+              // Force GDK to process any pending events
+              var gdk_display = Gdk.Display.get_default ();
+              gdk_display.flush ();
+              gdk_display.sync ();
+
+              // Also try to process the GTK event queue
+              while (Gtk.events_pending ()) {
+                Gtk.main_iteration_do (false);
+              }
+
+              message ("Triggered GDK event processing after PropertyNotify");
+              return false;
+            });
           }
         }
       }
