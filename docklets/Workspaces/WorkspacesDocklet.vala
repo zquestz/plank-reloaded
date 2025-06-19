@@ -30,7 +30,7 @@ namespace Docky {
    */
   public class WorkspacesDocklet : Object, Plank.Docklet {
     private const string ID = "workspaces";
-    public const string ICON = "workspace-switcher;;preferences-desktop-workspaces;;xfce4-workspaces;;workspaces";
+    public const string ICON = "workspace-switcher;;preferences-desktop-workspaces;;xfce4-workspaces;;workspaces;;virtual-desktops";
 
     /**
      * Returns the unique identifier for this docklet.
