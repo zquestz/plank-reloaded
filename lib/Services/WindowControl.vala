@@ -123,7 +123,7 @@ namespace Plank {
 
             message ("Forced event/idle processing - checking WNCK");
             unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-            var windows = screen.get_windows ();
+            unowned var windows = screen.get_windows ();
             message ("After forced processing: WNCK reports %f windows", windows.length ());
           }
         }
