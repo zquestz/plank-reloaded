@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-19 11:36-1000\n"
+"POT-Creation-Date: 2025-06-19 11:56-1000\n"
 "PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -396,27 +396,27 @@ msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "휴지통에 %u개 항목"
 
-#: docklets/Trash/TrashDockItem.vala:293
+#: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
 msgstr "휴지통의 모든 항목을 비울까요?"
 
-#: docklets/Trash/TrashDockItem.vala:296
+#: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
 msgstr "휴지통의 모든 항목이 영구적으로 삭제됩니다."
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:275
 msgid "_Cancel"
 msgstr "취소 (_C)"
 
-#: docklets/Trash/TrashDockItem.vala:298 docklets/Trash/TrashDockItem.vala:428
+#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
 msgstr "휴지통 비우기 (_T)"
 
-#: docklets/Trash/TrashDockItem.vala:387
+#: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
 msgstr "휴지통으로 이동하려면 드래그하세요"
 
-#: docklets/Trash/TrashDockItem.vala:424
+#: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
 msgstr "휴지통 열기 (_O)"
 

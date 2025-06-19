@@ -92,7 +92,7 @@ namespace Docky {
     private void update() {
       uint32 item_count = get_trash_item_count();
       update_text(item_count);
-      update_icon();
+      update_icon(item_count);
     }
 
     private void update_text(uint32 item_count) {
@@ -101,11 +101,11 @@ namespace Docky {
         ngettext("%u item in Trash", "%u items in Trash", item_count).printf(item_count);
     }
 
-    private void update_icon() {
+    private void update_icon(uint32 item_count) {
       string? icon_name = null;
 
       if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
-        icon_name = get_kde_trash_icon();
+        icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
       } else {
         icon_name = DrawingService.get_icon_from_file(trash);
       }
@@ -113,28 +113,6 @@ namespace Docky {
       if (icon_name != null && icon_name != "") {
         Icon = icon_name;
       }
-    }
-
-    private string ? get_kde_trash_icon() {
-      try {
-        string output;
-        Process.spawn_command_line_sync("kioclient stat %s".printf(KDE_TRASH_URI), out output);
-
-        string[] lines = output.split("\n");
-        foreach (string line in lines) {
-          if (line.has_prefix("ICON_NAME")) {
-            string[] parts = line.split_set(" \t", 2);
-            if (parts.length >= 2) {
-              return parts[parts.length - 1].strip();
-            }
-          }
-        }
-      } catch (SpawnError e) {
-        warning("Could not get KDE trash icon: %s", e.message);
-      }
-
-      uint32 item_count = get_trash_item_count();
-      return item_count > 0 ? "user-trash-full" : "user-trash";
     }
 
     private Gee.ArrayList<File> get_trash_directories() {

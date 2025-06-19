@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-19 11:36-1000\n"
+"POT-Creation-Date: 2025-06-19 11:56-1000\n"
 "PO-Revision-Date: 2025-06-18 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
@@ -398,27 +398,27 @@ msgid_plural "%u items in Trash"
 msgstr[0] "%u item na Lixeira"
 msgstr[1] "%u itens na Lixeira"
 
-#: docklets/Trash/TrashDockItem.vala:293
+#: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
 msgstr "Esvaziar todos os itens da Lixeira?"
 
-#: docklets/Trash/TrashDockItem.vala:296
+#: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Todos os itens na Lixeira serão excluídos permanentemente."
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:275
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: docklets/Trash/TrashDockItem.vala:298 docklets/Trash/TrashDockItem.vala:428
+#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
 msgstr "_Esvaziar Lixeira"
 
-#: docklets/Trash/TrashDockItem.vala:387
+#: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
 msgstr "Soltar para mover para a Lixeira"
 
-#: docklets/Trash/TrashDockItem.vala:424
+#: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
 msgstr "_Abrir Lixeira"
 
