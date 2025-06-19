@@ -141,25 +141,39 @@ namespace Plank {
       if (gdk_display is Gdk.X11.Display) {
         var x11_display = (Gdk.X11.Display) gdk_display;
         unowned var x_display = x11_display.get_xdisplay ();
-
-        var active_window_atom = x_display.intern_atom ("_NET_ACTIVE_WINDOW", false);
         var root_window = x_display.default_root_window ();
+
+        // Try to trigger KDE to re-evaluate window list by querying _NET_CLIENT_LIST directly
+        var client_list_atom = x_display.intern_atom ("_NET_CLIENT_LIST", false);
 
         X.Atom actual_type;
         int actual_format;
         ulong nitems, bytes_after;
         void* prop_data;
 
-        x_display.get_window_property (root_window, active_window_atom, 0, 1, false,
+        // Query the current _NET_CLIENT_LIST (this might trigger KDE to update it)
+        x_display.get_window_property (root_window, client_list_atom, 0, 1024, false,
                                        0, out actual_type, out actual_format,
                                        out nitems, out bytes_after, out prop_data);
 
+        if (prop_data != null) {
+          message ("Read _NET_CLIENT_LIST with %lu items", nitems);
+        }
+
+        // Also try querying _NET_CLIENT_LIST_STACKING
+        var stacking_atom = x_display.intern_atom ("_NET_CLIENT_LIST_STACKING", false);
+        x_display.get_window_property (root_window, stacking_atom, 0, 1024, false,
+                                       0, out actual_type, out actual_format,
+                                       out nitems, out bytes_after, out prop_data);
+
+        if (prop_data != null) {
+          message ("Read _NET_CLIENT_LIST_STACKING with %lu items", nitems);
+        }
 
         x_display.flush ();
-        message ("Triggered KDE property query");
+        message ("Queried _NET_CLIENT_LIST properties directly");
       }
     }
-
 
     static void window_manager_changed (Wnck.Screen screen) {
       Gdk.error_trap_push ();
