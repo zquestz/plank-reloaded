@@ -92,11 +92,20 @@ namespace Plank {
     static Gdk.FilterReturn x11_destroy_logger (Gdk.XEvent gdk_xevent, Gdk.Event gdk_event) {
       X.Event* xevent = (X.Event*) gdk_xevent;
 
-      // Log DestroyNotify events
+      // Check for DestroyNotify events
       if (xevent.type == X.EventType.DestroyNotify) {
         var destroy_event = xevent.xdestroywindow;
-        message ("X11 DestroyNotify: window=0x%lx, event=0x%lx",
+        message ("X11 DestroyNotify: window=0x%lx, event=0x%lx - forcing WNCK update",
                  destroy_event.window, destroy_event.@event);
+
+        // Force WNCK to process the window changes immediately
+        unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+        Gdk.error_trap_push ();
+        screen.force_update ();
+        if (Gdk.error_trap_pop () != 0) {
+          // Ignore X errors during forced update
+          debug ("X error during WNCK force_update after DestroyNotify");
+        }
       }
 
       return Gdk.FilterReturn.CONTINUE;
