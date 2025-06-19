@@ -98,33 +98,61 @@ namespace Plank {
                  destroy_event.window, destroy_event.@event);
       }
 
-      // Monitor PropertyNotify events on the root window
       if (xevent.type == X.EventType.PropertyNotify) {
         var prop_event = xevent.xproperty;
-        var display = Gdk.Display.get_default ();
-        if (display is Gdk.X11.Display) {
-          var x11_display = (Gdk.X11.Display) display;
-          unowned var x_display = x11_display.get_xdisplay ();
-          var root_window = x_display.default_root_window ();
+        var gdk_display = Gdk.Display.get_default ();
+        if (gdk_display is Gdk.X11.Display) {
+          var gdk_x11_display = (Gdk.X11.Display) gdk_display;
+          unowned var x11_display = gdk_x11_display.get_xdisplay ();
+          var root_window = x11_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            message ("Root PropertyNotify: atom=0x%lx, state=%d",
-                     prop_event.atom, prop_event.state);
+            message ("Root PropertyNotify: atom=0x%lx - generating ConfigureNotify",
+                     prop_event.atom);
+
+            // Try to generate a ConfigureNotify event to wake up WNCK
+            Gdk.threads_add_idle (() => {
+              // Method 1: Try to move a window by 0 pixels (invisible change)
+              var idle_display = Gdk.Display.get_default ();
+              if (idle_display is Gdk.X11.Display) {
+                var idle_x11_display = (Gdk.X11.Display) idle_display;
+                unowned var idle_x_display = idle_x11_display.get_xdisplay ();
+
+                // Get any window and try to configure it (move by 0 pixels)
+                unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+                unowned var windows = screen.get_windows ();
+                foreach (var window in windows) {
+                  if (window.is_visible_on_workspace (screen.get_active_workspace ())) {
+                    var xid = window.get_xid ();
+
+                    // Get current geometry
+                    int x, y, width, height;
+                    window.get_geometry (out x, out y, out width, out height);
+
+                    // Try to move window to same position (should generate ConfigureNotify but be invisible)
+                    idle_x_display.move_window ((X.Window) xid, x, y);
+                    idle_x_display.flush ();
+                    message ("Generated fake ConfigureNotify for window 0x%lx", xid);
+                    break;
+                  }
+                }
+              }
+              return false;
+            });
           }
         }
       }
 
-      // Log events that might be related to dock hover
-      if (xevent.type == X.EventType.EnterNotify ||
-          xevent.type == X.EventType.LeaveNotify ||
-          xevent.type == X.EventType.MotionNotify) {
-        message ("Mouse event: type=%d - checking WNCK window count", xevent.type);
+      // Also log ConfigureNotify events to confirm the theory
+      if (xevent.type == X.EventType.ConfigureNotify) {
+        var config_event = xevent.xconfigure;
+        message ("ConfigureNotify: window=0x%lx", config_event.window);
 
-        // Check window count on mouse events
+        // Check if WNCK updates after ConfigureNotify
         Gdk.threads_add_idle (() => {
           unowned Wnck.Screen screen = Wnck.Screen.get_default ();
           unowned var windows = screen.get_windows ();
-          message ("During mouse event: WNCK reports %f windows", windows.length ());
+          message ("After ConfigureNotify: WNCK reports %f windows", windows.length ());
           return false;
         });
       }
