@@ -108,30 +108,25 @@ namespace Plank {
           var root_window = x_display.default_root_window ();
 
           if (prop_event.window == root_window) {
-            message ("Root PropertyNotify: atom=0x%lx, state=%d - triggering GDK processing",
+            message ("Root PropertyNotify: atom=0x%lx, state=%d",
                      prop_event.atom, prop_event.state);
-
-            // Try to wake up GDK/WNCK event processing
-            Gdk.threads_add_idle (() => {
-              unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-
-              // Try different WNCK methods
-              message ("Trying to wake up WNCK...");
-
-              // Method 1: Try to get the window list (this might trigger updates)
-              unowned var windows = screen.get_windows ();
-              message ("WNCK reports %f windows", windows.length ());
-
-              // Method 2: Try to get active window (might trigger updates)
-              var active = screen.get_active_window ();
-              if (active != null) {
-                message ("Active window: %s", active.get_name ());
-              }
-
-              return false;
-            });
           }
         }
+      }
+
+      // Log events that might be related to dock hover
+      if (xevent.type == X.EventType.EnterNotify ||
+          xevent.type == X.EventType.LeaveNotify ||
+          xevent.type == X.EventType.MotionNotify) {
+        message ("Mouse event: type=%d - checking WNCK window count", xevent.type);
+
+        // Check window count on mouse events
+        Gdk.threads_add_idle (() => {
+          unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+          unowned var windows = screen.get_windows ();
+          message ("During mouse event: WNCK reports %f windows", windows.length ());
+          return false;
+        });
       }
 
       return Gdk.FilterReturn.CONTINUE;
