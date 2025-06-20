@@ -298,7 +298,7 @@ namespace Plank {
     public static bool has_window_on_workspace (Bamf.Application app, Wnck.Workspace workspace) {
       var is_virtual = workspace.is_virtual ();
 
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
@@ -320,7 +320,7 @@ namespace Plank {
       int window_count = 0;
       var is_virtual = workspace.is_virtual ();
 
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
@@ -339,7 +339,7 @@ namespace Plank {
     }
 
     public static bool has_window (Bamf.Application app) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app)) {
         if (window != null && !window.is_skip_tasklist ()) {
           return true;
         }
@@ -351,7 +351,7 @@ namespace Plank {
     public static int window_count (Bamf.Application app) {
       int window_count = 0;
 
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app)) {
         if (window != null && !window.is_skip_tasklist ()) {
           window_count += 1;
         }
@@ -509,7 +509,7 @@ namespace Plank {
     }
 
     public static void minimize (Bamf.Application app) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app)) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (!window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
           window.minimize ();
@@ -519,7 +519,7 @@ namespace Plank {
     }
 
     public static void restore (Bamf.Application app, uint32 event_time) {
-      var stack = get_ordered_window_stack (app);
+      var stack = get_unordered_window_stack (app);
       stack.reverse ();
       foreach (unowned Wnck.Window window in stack) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
@@ -531,13 +531,13 @@ namespace Plank {
     }
 
     public static void maximize (Bamf.Application app) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app))
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app))
         if (!window.is_maximized ())
           window.maximize ();
     }
 
     public static void unmaximize (Bamf.Application app) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app))
+      foreach (unowned Wnck.Window window in get_unordered_window_stack (app))
         if (window.is_maximized ())
           window.unmaximize ();
     }
@@ -553,6 +553,26 @@ namespace Plank {
         return windows;
 
       unowned GLib.List<Wnck.Window> stack = Wnck.Screen.get_default ().get_windows_stacked ();
+
+      foreach (unowned Wnck.Window window in stack)
+        for (var j = 0; j < xids.length; j++)
+          if (xids.index (j) == window.get_xid ())
+            windows.append (window);
+
+      return windows;
+    }
+
+    public static GLib.List<unowned Wnck.Window> get_unordered_window_stack (Bamf.Application app) {
+      var windows = new GLib.List<unowned Wnck.Window> ();
+
+      Array<uint32>? xids = app.get_xids ();
+
+      warn_if_fail (xids != null);
+
+      if (xids == null)
+        return windows;
+
+      unowned GLib.List<Wnck.Window> stack = Wnck.Screen.get_default ().get_windows ();
 
       foreach (unowned Wnck.Window window in stack)
         for (var j = 0; j < xids.length; j++)
