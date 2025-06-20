@@ -143,38 +143,40 @@ namespace Plank {
         unowned var x_display = x11_display.get_xdisplay ();
         var root_window = x_display.default_root_window ();
 
-        // Query properties that might force KDE to update stacking order
-        var stacking_atom = x_display.intern_atom ("_NET_CLIENT_LIST_STACKING", false);
-        var client_list_atom = x_display.intern_atom ("_NET_CLIENT_LIST", false);
+        // Try to simulate what hovering does by changing focus
+        // Get the current active window
+        var active_atom = x_display.intern_atom ("_NET_ACTIVE_WINDOW", false);
+        X.Atom actual_type;
+        int actual_format;
+        ulong nitems, bytes_after;
+        void* prop_data;
 
-        // Try to force KDE to update stacking by querying various properties
-        string[] atoms_to_query = {
-          "_NET_CLIENT_LIST_STACKING",
-          "_NET_CLIENT_LIST",
-          "_NET_CURRENT_DESKTOP",
-          "_NET_ACTIVE_WINDOW"
-        };
+        x_display.get_window_property (root_window, active_atom, 0, 1, false,
+                                       0, out actual_type, out actual_format,
+                                       out nitems, out bytes_after, out prop_data);
 
-        foreach (string atom_name in atoms_to_query) {
-          var atom = x_display.intern_atom (atom_name, false);
-          X.Atom actual_type;
-          int actual_format;
-          ulong nitems, bytes_after;
-          void* prop_data;
+        if (prop_data != null && nitems > 0) {
+          X.Window active_window = *((X.Window*) prop_data);
+          message ("Current active window: 0x%lx", active_window);
 
-          x_display.get_window_property (root_window, atom, 0, 1024, false,
-                                         0, out actual_type, out actual_format,
-                                         out nitems, out bytes_after, out prop_data);
-
-          if (prop_data != null) {
-            message ("Read %s with %lu items", atom_name, nitems);
-          }
+          // Try to set focus to the same window (might trigger stacking update)
+          x_display.set_input_focus (active_window, X.RevertTo.PointerRoot, (int)X.CURRENT_TIME);
+          x_display.flush ();
         }
 
+        // Also try to get window stacking directly
+        X.Window root_return, parent_return;
+        X.Window[] children_return;
+
+        x_display.query_tree (root_window, out root_return, out parent_return,
+                                           out children_return);
+
         x_display.flush ();
-        message ("Queried multiple WM properties to trigger stacking update");
+        message ("Triggered focus change and window tree query");
       }
     }
+
+
 
     static void window_manager_changed (Wnck.Screen screen) {
       Gdk.error_trap_push ();
