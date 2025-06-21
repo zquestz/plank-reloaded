@@ -351,6 +351,10 @@ namespace Plank {
      * Theme-based launch-bounce height, scaled by icon size.
      */
     public int LaunchBounceHeight { get; private set; }
+    /**
+     * Theme-based separator padding, scaled by icon size.
+     */
+    public int SeparatorPadding { get; private set; }
 
     int items_width;
     int items_offset;
@@ -473,6 +477,7 @@ namespace Plank {
       TopPadding = (int) (theme.TopPadding * scaled_icon_size);
       BottomPadding = (int) (theme.BottomPadding * scaled_icon_size);
       ItemPadding = (int) (theme.ItemPadding * scaled_icon_size);
+      SeparatorPadding = (int) (theme.SeparatorPadding * scaled_icon_size);
       UrgentBounceHeight = (int) (theme.UrgentBounceHeight * IconSize);
       LaunchBounceHeight = (int) (theme.LaunchBounceHeight * IconSize);
       LineWidth = theme.LineWidth;
@@ -708,7 +713,30 @@ namespace Plank {
       var old_region = static_dock_region;
 
       // width of the items-area of the dock
-      items_width = controller.VisibleItems.size * (ItemPadding + IconSize);
+      items_width = 0;
+      for (int idx = 0; idx < controller.VisibleItems.size; idx++) {
+        var item = controller.VisibleItems[idx];
+        items_width += IconSize;
+        // Add appropriate padding (except after the last element)
+        if (idx < controller.VisibleItems.size - 1) {
+          var next = controller.VisibleItems[idx + 1];
+          double padding = ItemPadding;
+          if (item.is_separator()) {
+            padding = SeparatorPadding;
+          } else if (next.is_separator()) {
+            padding = SeparatorPadding;
+          }
+          items_width += (int) padding;
+        }
+      }
+
+      // Recalculate VisibleDockWidth based on items_width to account for separators
+      int actual_width = items_width + 2 * HorizPadding + 4 * LineWidth;
+      if (is_horizontal_dock()) {
+        VisibleDockWidth = int.min(monitor_geo.width, actual_width);
+      } else {
+        VisibleDockWidth = int.min(monitor_geo.height, actual_width);
+      }
 
       static_dock_region.width = VisibleDockWidth;
       static_dock_region.height = VisibleDockHeight;
@@ -859,7 +887,13 @@ namespace Plank {
       // the line along the dock width about which the center of unzoomed icons sit
       double center_y = (is_horizontal_dock () ? static_dock_region.height / 2.0 : static_dock_region.width / 2.0);
 
-      double center_x = (icon_size + ItemPadding) / 2.0 + items_offset;
+      // Calculate starting position taking into account the first padding
+      double first_padding = ItemPadding;
+      if (items.size > 0 && items[0].is_separator()) {
+        first_padding = SeparatorPadding;
+      }
+      double center_x = (icon_size + first_padding) / 2.0 + items_offset;
+
       if (Alignment == Gtk.Align.FILL) {
         switch (ItemsAlignment) {
         default:
@@ -900,7 +934,8 @@ namespace Plank {
       double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
       double zoom_icon_size = ZoomIconSize;
 
-      foreach (unowned DockItem item in items) {
+      for (int idx = 0; idx < items.size; idx++) {
+        unowned DockItem item = items[idx];
         DockItemDrawValue val = new DockItemDrawValue ();
         val.opacity = 1.0;
         val.darken = 0.0;
@@ -909,7 +944,6 @@ namespace Plank {
         val.zoom = 1.0;
 
         val.static_center = center;
-
         // get us some handy doubles with fancy names
         double cursor_position = cursor.x;
         double center_position = center.x;
@@ -1010,10 +1044,15 @@ namespace Plank {
 
         draw_values[item] = val;
 
-        // FIXME
-        // Don't reserve space for removed items
-        if (item.RemoveTime == 0)
-          center.x += icon_size + ItemPadding;
+        if (item.RemoveTime == 0) {
+          double padding = ItemPadding;
+          if (item.is_separator()) {
+            padding = SeparatorPadding;
+          } else if (idx + 1 < items.size && items[idx + 1].is_separator()) {
+            padding = SeparatorPadding;
+          }
+          center.x += icon_size + padding;
+        }
       }
 
       if (post_func != null)

@@ -25,6 +25,8 @@ TopPadding=2
 BottomPadding=2.4
 #The padding between items on the dock, in tenths of a percent of IconSize.
 ItemPadding=2
+#The padding before and after a separator, in tenths of a percent of IconSize.
+SeparatorPadding=-2
 #The color (RGBA) of the indicator.
 IndicatorColor=128;;128;;128;;255
 #The size of item indicators, in tenths of a percent of IconSize.
