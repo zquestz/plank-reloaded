@@ -272,6 +272,26 @@ namespace Plank {
     public abstract void reset_buffers ();
 
     /**
+     * Adds Plank preferences menu item to the given menu items list.
+     * This method can be called by derived classes to add the preferences option
+     * to their context menus.
+     *
+     * @param items the menu items list to add the preferences item to
+     */
+    protected void add_plank_preferences_menu_item (Gee.ArrayList<Gtk.MenuItem> items) {
+      // Add separator if there are already items
+      if (items.size > 0) {
+        items.add (new Gtk.SeparatorMenuItem ());
+      }
+
+      var preferences_item = create_menu_item (_("_Preferences"), "preferences-system");
+      preferences_item.activate.connect (() => {
+        Application.get_default ().activate_action ("preferences", null);
+      });
+      items.add (preferences_item);
+    }
+
+    /**
      * Creates a new menu item with mnemonics enabled.
      *
      * @param title the title of the menu item
