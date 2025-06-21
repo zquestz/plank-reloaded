@@ -571,6 +571,9 @@ namespace Plank {
         }
       }
 
+      // Add Plank preferences option
+      add_plank_preferences_menu_item (items);
+
       return items;
     }
 
