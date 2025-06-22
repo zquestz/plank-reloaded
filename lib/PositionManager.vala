@@ -351,6 +351,10 @@ namespace Plank {
      * Theme-based launch-bounce height, scaled by icon size.
      */
     public int LaunchBounceHeight { get; private set; }
+    /**
+     * Theme-based separator padding, scaled by icon size.
+     */
+    public int SeparatorPadding { get; private set; }
 
     int items_width;
     int items_offset;
@@ -473,6 +477,7 @@ namespace Plank {
       TopPadding = (int) (theme.TopPadding * scaled_icon_size);
       BottomPadding = (int) (theme.BottomPadding * scaled_icon_size);
       ItemPadding = (int) (theme.ItemPadding * scaled_icon_size);
+      SeparatorPadding = (int) (theme.SeparatorPadding * scaled_icon_size);
       UrgentBounceHeight = (int) (theme.UrgentBounceHeight * IconSize);
       LaunchBounceHeight = (int) (theme.LaunchBounceHeight * IconSize);
       LineWidth = theme.LineWidth;
@@ -524,6 +529,25 @@ namespace Plank {
       thaw_notify ();
     }
 
+    int get_items_width (Gee.ArrayList<unowned DockItem> items) {
+      int width = items.size * IconSize;
+
+      // Add padding between items - separator affects padding on both sides
+      for (int idx = 0; idx < items.size - 1; idx++) {
+        var item = items[idx];
+        var next = items[idx + 1];
+
+        // If either current item or next item is a separator, use SeparatorPadding
+        if (item.is_separator () || next.is_separator ()) {
+          width += SeparatorPadding;
+        } else {
+          width += ItemPadding;
+        }
+      }
+
+      return width;
+    }
+
     /**
      * Find an appropriate MaxIconSize
      */
@@ -531,10 +555,9 @@ namespace Plank {
       unowned DockPreferences prefs = controller.prefs;
 
       // Check if the dock is oversized and doesn't fit the targeted screen-edge
-      var item_count = controller.VisibleItems.size;
-      var width = item_count * (ItemPadding + IconSize) + 2 * HorizPadding + 4 * LineWidth;
+      var width = get_items_width(controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
       var max_width = (is_horizontal_dock () ? monitor_geo.width : monitor_geo.height);
-      var step_size = int.max (1, (int) (Math.fabs (width - max_width) / item_count));
+      var step_size = int.max (1, (int) (Math.fabs (width - max_width) / controller.VisibleItems.size));
 
       if (width > max_width && MaxIconSize > DockPreferences.MIN_ICON_SIZE) {
         MaxIconSize -= step_size;
@@ -574,7 +597,7 @@ namespace Plank {
       case Gtk.Align.START:
       case Gtk.Align.END:
       case Gtk.Align.CENTER:
-        width = controller.VisibleItems.size * (ItemPadding + IconSize) + 2 * HorizPadding + 4 * LineWidth;
+        width = get_items_width(controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
         break;
       case Gtk.Align.FILL:
         if (is_horizontal_dock ())
@@ -708,7 +731,7 @@ namespace Plank {
       var old_region = static_dock_region;
 
       // width of the items-area of the dock
-      items_width = controller.VisibleItems.size * (ItemPadding + IconSize);
+      items_width = get_items_width (controller.VisibleItems);
 
       static_dock_region.width = VisibleDockWidth;
       static_dock_region.height = VisibleDockHeight;
@@ -855,11 +878,16 @@ namespace Plank {
         height = tmp;
       }
 
-      // FIXME
       // the line along the dock width about which the center of unzoomed icons sit
       double center_y = (is_horizontal_dock () ? static_dock_region.height / 2.0 : static_dock_region.width / 2.0);
 
-      double center_x = (icon_size + ItemPadding) / 2.0 + items_offset;
+      // Calculate starting position taking into account the first padding
+      double first_padding = ItemPadding;
+      if (items.size > 0 && items[0].is_separator ()) {
+        first_padding = SeparatorPadding;
+      }
+      double center_x = (icon_size + first_padding) / 2.0 + items_offset;
+
       if (Alignment == Gtk.Align.FILL) {
         switch (ItemsAlignment) {
         default:
@@ -900,7 +928,8 @@ namespace Plank {
       double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
       double zoom_icon_size = ZoomIconSize;
 
-      foreach (unowned DockItem item in items) {
+      for (int idx = 0; idx < items.size; idx++) {
+        unowned DockItem item = items[idx];
         DockItemDrawValue val = new DockItemDrawValue ();
         val.opacity = 1.0;
         val.darken = 0.0;
@@ -1010,10 +1039,15 @@ namespace Plank {
 
         draw_values[item] = val;
 
-        // FIXME
-        // Don't reserve space for removed items
-        if (item.RemoveTime == 0)
-          center.x += icon_size + ItemPadding;
+        if (item.RemoveTime == 0) {
+          double padding = ItemPadding;
+          if (item.is_separator ()) {
+            padding = SeparatorPadding;
+          } else if (idx + 1 < items.size && items[idx + 1].is_separator ()) {
+            padding = SeparatorPadding;
+          }
+          center.x += icon_size + padding;
+        }
       }
 
       if (post_func != null)

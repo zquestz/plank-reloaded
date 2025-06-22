@@ -113,6 +113,9 @@ namespace Plank {
     [Description (nick = "active-item-color", blurb = "The color (RGBA) of the active item background.")]
     public Color ActiveItemColor { get; set; }
 
+    [Description (nick = "separator-padding", blurb = "The padding before and after a separator, in tenths of a percent of IconSize.")]
+    public double SeparatorPadding { get; set; }
+
     public DockTheme (string name) {
       base.with_name (name);
     }
@@ -128,6 +131,7 @@ namespace Plank {
       TopPadding = -11.0;
       BottomPadding = 2.5;
       ItemPadding = 2.5;
+      SeparatorPadding = -1;
       IndicatorColor = { 1.0, 1.0, 1.0, 1.0 };
       IndicatorSize = 5.0;
       IndicatorStyle = IndicatorStyleType.LEGACY;
@@ -816,6 +820,11 @@ namespace Plank {
       case "ActiveStyle":
         if (ActiveItemStyle < 0 || ActiveItemStyle > 2)
           ActiveItemStyle = ActiveItemStyleType.LEGACY;
+        break;
+
+      case "SeparatorPadding":
+        if (SeparatorPadding > ItemPadding)
+          SeparatorPadding = ItemPadding;
         break;
       }
     }
