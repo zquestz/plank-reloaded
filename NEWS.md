@@ -2,6 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.134 "Reloaded" (2025-06-21)
+
+- Handle null window in intelligent_focus_off_viewport_window
+- Update Trash docklet to support KDE
+- Update tooltip hovering logic for Docklets
+- Add SeparatorPadding to themes - Thx to Hilyxx.
+
 ## 0.11.133 "Reloaded" (2025-06-17)
 
 - Update monitors list dynamically in preferences

@@ -36,6 +36,7 @@
   <developer_name>The Plank Reloaded Developers</developer_name>
   <update_contact>quest_at_mac_dot_com</update_contact>
   <releases>
+    <release version="0.11.134" timestamp="1750558685" />
     <release version="0.11.133" timestamp="1750228584" />
     <release version="0.11.132" timestamp="1750207311" />
     <release version="0.11.131" timestamp="1749534148" />
