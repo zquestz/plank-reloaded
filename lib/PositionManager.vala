@@ -555,7 +555,7 @@ namespace Plank {
       unowned DockPreferences prefs = controller.prefs;
 
       // Check if the dock is oversized and doesn't fit the targeted screen-edge
-      var width = get_items_width(controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
+      var width = get_items_width (controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
       var max_width = (is_horizontal_dock () ? monitor_geo.width : monitor_geo.height);
       var step_size = int.max (1, (int) (Math.fabs (width - max_width) / controller.VisibleItems.size));
 
@@ -597,7 +597,7 @@ namespace Plank {
       case Gtk.Align.START:
       case Gtk.Align.END:
       case Gtk.Align.CENTER:
-        width = get_items_width(controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
+        width = get_items_width (controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
         break;
       case Gtk.Align.FILL:
         if (is_horizontal_dock ())
@@ -1665,12 +1665,16 @@ namespace Plank {
      * @return icon geometry for the given application-dockitem
      */
     public Gdk.Rectangle get_icon_geometry (ApplicationDockItem item, bool for_hidden) {
-      var region = get_hover_region_for_element (item);
+      var draw_value = get_draw_value_for_item (item);
+      var static_center = draw_value.static_center;
 
       if (!for_hidden) {
-        region.x += win_x;
-        region.y += win_y;
-
+        // Use static center for external applications instead of current magnified position
+        var region = Gdk.Rectangle ();
+        region.x = (int) (static_center.x - IconSize / 2) + win_x;
+        region.y = (int) (static_center.y - IconSize / 2) + win_y;
+        region.width = IconSize;
+        region.height = IconSize;
         return region;
       }
 
@@ -1679,20 +1683,20 @@ namespace Plank {
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        x += region.x + region.width / 2;
+        x += (int) static_center.x;
         y += DockHeight;
         break;
       case Gtk.PositionType.TOP:
-        x += region.x + region.width / 2;
+        x += (int) static_center.x;
         y += 0;
         break;
       case Gtk.PositionType.LEFT:
         x += 0;
-        y += region.y + region.height / 2;
+        y += (int) static_center.y;
         break;
       case Gtk.PositionType.RIGHT:
         x += DockWidth;
-        y += region.y + region.height / 2;
+        y += (int) static_center.y;
         break;
       }
 

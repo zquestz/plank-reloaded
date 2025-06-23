@@ -336,6 +336,8 @@ namespace Plank {
       if (added.size > 0 || removed.size > 0)
         position_manager.update (renderer.theme);
 
+      position_manager.update_draw_values (VisibleItems);
+
       window.update_icon_regions ();
 
       schedule_serialize_item_positions ();
@@ -349,6 +351,8 @@ namespace Plank {
 
     void handle_positions_changed (DockContainer container, Gee.List<unowned DockElement> moved_items) {
       update_visible_elements ();
+
+      position_manager.update_draw_values (VisibleItems);
 
       foreach (unowned DockElement item in moved_items) {
         unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
