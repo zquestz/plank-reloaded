@@ -221,7 +221,7 @@ namespace Plank {
 
       unowned ApplicationDockItemProvider? app_provider = (provider as ApplicationDockItemProvider);
       if (app_provider != null) {
-        app_provider.item_window_added.connect (window.update_icon_region);
+        app_provider.item_window_added.connect (window.trigger_update_icon_region);
         Unity.get_default ().add_client (app_provider);
       }
     }
@@ -237,7 +237,7 @@ namespace Plank {
 
       unowned ApplicationDockItemProvider? app_provider = (provider as ApplicationDockItemProvider);
       if (app_provider != null) {
-        app_provider.item_window_added.disconnect (window.update_icon_region);
+        app_provider.item_window_added.disconnect (window.trigger_update_icon_region);
         Unity.get_default ().remove_client (app_provider);
       }
     }
@@ -335,8 +335,6 @@ namespace Plank {
 
       if (added.size > 0 || removed.size > 0)
         position_manager.update (renderer.theme);
-
-      position_manager.update_draw_values (VisibleItems);
 
       window.update_icon_regions ();
 

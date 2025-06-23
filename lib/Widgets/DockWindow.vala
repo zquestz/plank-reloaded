@@ -532,6 +532,8 @@ namespace Plank {
     public void update_icon_regions () {
       Logger.verbose ("DockWindow.update_icon_regions ()");
 
+      controller.position_manager.update_draw_values (controller.VisibleItems);
+
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
 
       foreach (var item in controller.VisibleItems) {
@@ -545,13 +547,26 @@ namespace Plank {
     }
 
     /**
+     * Triggers an icon region update for the given item with updated draw values.
+     *
+     + @param appitem the item to update the icon region for
+     */
+    public void trigger_update_icon_region (ApplicationDockItem appitem) {
+      update_icon_region (appitem, true);
+    }
+
+    /**
      * Updates the icon region for the given item.
      *
      + @param appitem the item to update the icon region for
      */
-    public void update_icon_region (ApplicationDockItem appitem) {
+    public void update_icon_region (ApplicationDockItem appitem, bool update_draw_values = false) {
       if (!appitem.is_running ())
         return;
+
+      if (update_draw_values) {
+        controller.position_manager.update_draw_values (controller.VisibleItems);
+      }
 
       Logger.verbose ("DockWindow.update_icon_region ('%s')", appitem.Text);
 
@@ -656,7 +671,7 @@ namespace Plank {
           gravity = Gdk.Gravity.WEST;
           flipped_gravity = Gdk.Gravity.EAST;
           break;
-        default :
+          default :
           gravity = Gdk.Gravity.NORTH;
           flipped_gravity = Gdk.Gravity.SOUTH;
           break;
@@ -742,7 +757,6 @@ namespace Plank {
      * Called when the popup menu hides.
      */
     void on_menu_hide () {
-      update_icon_regions ();
       unowned HideManager hide_manager = controller.hide_manager;
       hide_manager.update_hovered ();
       if (!hide_manager.Hovered) {
@@ -757,7 +771,6 @@ namespace Plank {
      * Called when the popup menu shows.
      */
     void on_menu_show () {
-      update_icon_regions ();
       controller.hover.hide ();
       controller.renderer.animated_draw ();
     }
