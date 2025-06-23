@@ -221,8 +221,8 @@ namespace Plank {
 
       unowned ApplicationDockItemProvider? app_provider = (provider as ApplicationDockItemProvider);
       if (app_provider != null) {
-        app_provider.item_window_added.connect (window.trigger_update_icon_region);
         Unity.get_default ().add_client (app_provider);
+        app_provider.item_window_added.connect (window.trigger_update_icon_region);
       }
     }
 
