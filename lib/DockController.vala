@@ -333,7 +333,7 @@ namespace Plank {
       update_visible_elements ();
       update_items ();
 
-      if (added.size != removed.size)
+      if (added.size > 0 || removed.size > 0)
         position_manager.update (renderer.theme);
 
       window.update_icon_regions ();
