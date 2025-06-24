@@ -1062,6 +1062,8 @@ namespace Plank {
         val.background_region = get_item_background_region (val);
         return true;
       });
+
+      controller.window.update_icon_regions ();
     }
 
     /**
@@ -1658,7 +1660,7 @@ namespace Plank {
     }
 
     /**
-     * Get the item's icon geometry for the dock.
+     * Returns the icon geometry for the given application-dockitem
      *
      * @param item an application-dockitem of the dock
      * @param for_hidden whether the geometry should apply for a hidden dock
@@ -1666,46 +1668,53 @@ namespace Plank {
      */
     public Gdk.Rectangle get_icon_geometry (ApplicationDockItem item, bool for_hidden) {
       var draw_value = get_draw_value_for_item (item);
-      var static_center = draw_value.static_center;
-
-      // If draw value is incomplete, use dock center as fallback position.
-      // We try very hard for this not to happen, and if we see this message we consider
-      // it a bug and it should be reported.
-      if (draw_value.icon_size <= 0) {
-        warning ("Draw value incomplete for '%s', using dock center as fallback", item.Text);
-
-        static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
-        static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
-      }
 
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
-        region.x = (int) (static_center.x - IconSize / 2) + win_x;
-        region.y = (int) (static_center.y - IconSize / 2) + win_y;
-        region.width = IconSize;
-        region.height = IconSize;
+        region.x = (int) Math.round (draw_value.static_center.x - draw_value.icon_size / 2.0) + win_x;
+        region.y = (int) Math.round (draw_value.static_center.y - draw_value.icon_size / 2.0) + win_y;
+        region.width = (int) draw_value.icon_size;
+        region.height = (int) draw_value.icon_size;
+
+        switch (Position) {
+        default:
+        case Gtk.PositionType.BOTTOM:
+          region.y += GapSize;
+          break;
+        case Gtk.PositionType.TOP:
+          region.y -= GapSize;
+          break;
+        case Gtk.PositionType.LEFT:
+          region.x -= GapSize;
+          break;
+        case Gtk.PositionType.RIGHT:
+          region.x += GapSize;
+          break;
+        }
+
         return region;
       }
 
+      // For hidden dock, return point geometry at screen edge
       var x = win_x, y = win_y;
 
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        x += (int) static_center.x;
-        y += DockHeight;
+        x += (int) Math.round (draw_value.static_center.x);
+        y += DockHeight + GapSize;
         break;
       case Gtk.PositionType.TOP:
-        x += (int) static_center.x;
-        y += 0;
+        x += (int) Math.round (draw_value.static_center.x);
+        y -= GapSize;
         break;
       case Gtk.PositionType.LEFT:
-        x += 0;
-        y += (int) static_center.y;
+        x -= GapSize;
+        y += (int) Math.round (draw_value.static_center.y);
         break;
       case Gtk.PositionType.RIGHT:
-        x += DockWidth;
-        y += (int) static_center.y;
+        x += DockWidth + GapSize;
+        y += (int) Math.round (draw_value.static_center.y);
         break;
       }
 

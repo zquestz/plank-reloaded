@@ -506,7 +506,6 @@ namespace Plank {
         controller.renderer.reset_buffers ();
 
         if (!needs_reposition) {
-          update_icon_regions ();
           set_struts ();
           set_hovered_provider (null);
           set_hovered (null);
@@ -519,7 +518,6 @@ namespace Plank {
         requested_y = win_rect.y;
         move (win_rect.x, win_rect.y);
 
-        update_icon_regions ();
         set_struts ();
         set_hovered_provider (null);
         set_hovered (null);
@@ -531,8 +529,6 @@ namespace Plank {
      */
     public void update_icon_regions () {
       Logger.verbose ("DockWindow.update_icon_regions ()");
-
-      controller.position_manager.update_draw_values (controller.VisibleItems);
 
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
 
@@ -547,26 +543,13 @@ namespace Plank {
     }
 
     /**
-     * Triggers an icon region update for the given item with updated draw values.
-     *
-     + @param appitem the item to update the icon region for
-     */
-    public void trigger_update_icon_region (ApplicationDockItem appitem) {
-      update_icon_region (appitem, true);
-    }
-
-    /**
      * Updates the icon region for the given item.
      *
      + @param appitem the item to update the icon region for
      */
-    public void update_icon_region (ApplicationDockItem appitem, bool update_draw_values = false) {
+    public void update_icon_region (ApplicationDockItem appitem) {
       if (!appitem.is_running ())
         return;
-
-      if (update_draw_values) {
-        controller.position_manager.update_draw_values (controller.VisibleItems);
-      }
 
       Logger.verbose ("DockWindow.update_icon_region ('%s')", appitem.Text);
 

@@ -222,7 +222,7 @@ namespace Plank {
       unowned ApplicationDockItemProvider? app_provider = (provider as ApplicationDockItemProvider);
       if (app_provider != null) {
         Unity.get_default ().add_client (app_provider);
-        app_provider.item_window_added.connect (window.trigger_update_icon_region);
+        app_provider.item_window_added.connect (window.update_icon_region);
       }
     }
 
@@ -237,7 +237,7 @@ namespace Plank {
 
       unowned ApplicationDockItemProvider? app_provider = (provider as ApplicationDockItemProvider);
       if (app_provider != null) {
-        app_provider.item_window_added.disconnect (window.trigger_update_icon_region);
+        app_provider.item_window_added.disconnect (window.update_icon_region);
         Unity.get_default ().remove_client (app_provider);
       }
     }
@@ -336,8 +336,6 @@ namespace Plank {
       if (added.size > 0 || removed.size > 0)
         position_manager.update (renderer.theme);
 
-      window.update_icon_regions ();
-
       schedule_serialize_item_positions ();
 
       // FIXME Maybe add a dedicated signal
@@ -350,13 +348,6 @@ namespace Plank {
     void handle_positions_changed (DockContainer container, Gee.List<unowned DockElement> moved_items) {
       update_visible_elements ();
 
-      position_manager.update_draw_values (VisibleItems);
-
-      foreach (unowned DockElement item in moved_items) {
-        unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
-        if (app_item != null)
-          window.update_icon_region (app_item);
-      }
       renderer.animated_draw ();
 
       schedule_serialize_item_positions ();
