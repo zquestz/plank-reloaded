@@ -1671,24 +1671,28 @@ namespace Plank {
 
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
-        region.x = (int) Math.round (draw_value.static_center.x - draw_value.icon_size / 2.0) + win_x;
-        region.y = (int) Math.round (draw_value.static_center.y - draw_value.icon_size / 2.0) + win_y;
-        region.width = (int) draw_value.icon_size;
-        region.height = (int) draw_value.icon_size;
+        int hit_box_size = (int) Math.round(draw_value.icon_size / 4.0);
+
+        region.width = hit_box_size * 2;
+        region.height = hit_box_size * 2;
 
         switch (Position) {
         default:
         case Gtk.PositionType.BOTTOM:
-          region.y += GapSize;
+          region.x = (int) Math.round (draw_value.static_center.x - hit_box_size) + win_x;
+          region.y = win_y + DockHeight + GapSize - hit_box_size;
           break;
         case Gtk.PositionType.TOP:
-          region.y -= GapSize;
+          region.x = (int) Math.round (draw_value.static_center.x - hit_box_size) + win_x;
+          region.y = win_y - GapSize;
           break;
         case Gtk.PositionType.LEFT:
-          region.x -= GapSize;
+          region.y = (int) Math.round (draw_value.static_center.y - hit_box_size) + win_y;
+          region.x = win_x - GapSize;
           break;
         case Gtk.PositionType.RIGHT:
-          region.x += GapSize;
+          region.y = (int) Math.round (draw_value.static_center.y - hit_box_size) + win_y;
+          region.x = win_x + DockWidth + GapSize - hit_box_size;
           break;
         }
 
