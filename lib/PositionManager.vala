@@ -1668,8 +1668,22 @@ namespace Plank {
       var draw_value = get_draw_value_for_item (item);
       var static_center = draw_value.static_center;
 
+      // If draw value is incomplete, use dock center as fallback position.
+      // We try very hard for this not to happen, and if we see this message we consider
+      // it a bug and it should be reported.
+      if (draw_value.icon_size <= 0) {
+        warning ("Draw value incomplete for '%s', using dock center as fallback", item.Text);
+
+        if (is_horizontal_dock ()) {
+          static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
+          static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
+        } else {
+          static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
+          static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
+        }
+      }
+
       if (!for_hidden) {
-        // Use static center for external applications instead of current magnified position
         var region = Gdk.Rectangle ();
         region.x = (int) (static_center.x - IconSize / 2) + win_x;
         region.y = (int) (static_center.y - IconSize / 2) + win_y;
