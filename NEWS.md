@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.135 "Reloaded" (2025-06-24)
+
+- Improve window minimize/restore animations
+- Centralize icon region updates for improved reliability
+
 ## 0.11.134 "Reloaded" (2025-06-21)
 
 - Handle null window in intelligent_focus_off_viewport_window

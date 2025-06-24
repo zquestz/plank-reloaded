@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-19 11:56-1000\n"
+"POT-Creation-Date: 2025-06-24 08:41-1000\n"
 "PO-Revision-Date: 2016-02-17 00:36+0000\n"
 "Last-Translator: Rico Tzschichholz <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -236,36 +236,36 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:300
+#: docklets/Applications/ApplicationsDockItem.vala:298
 msgid "Edit Menu"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:319
+#: docklets/Applications/ApplicationsDockItem.vala:317
 msgid "Choose Custom Icon"
 msgstr ""
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:327
+#: docklets/Applications/ApplicationsDockItem.vala:325
 msgid "Reset to Default Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:337
+#: docklets/Applications/ApplicationsDockItem.vala:335
 msgid "Large Icons"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:350
+#: docklets/Applications/ApplicationsDockItem.vala:348
 msgid "Select Custom Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:353
+#: docklets/Applications/ApplicationsDockItem.vala:351
 msgid "Cancel"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Applications/ApplicationsDockItem.vala:352
 msgid "Select"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:372
+#: docklets/Applications/ApplicationsDockItem.vala:370
 msgid "Image Files"
 msgstr ""
 
