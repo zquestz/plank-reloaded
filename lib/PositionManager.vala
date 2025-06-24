@@ -1674,13 +1674,8 @@ namespace Plank {
       if (draw_value.icon_size <= 0) {
         warning ("Draw value incomplete for '%s', using dock center as fallback", item.Text);
 
-        if (is_horizontal_dock ()) {
-          static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
-          static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
-        } else {
-          static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
-          static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
-        }
+        static_center.x = static_dock_region.x + static_dock_region.width / 2.0;
+        static_center.y = static_dock_region.y + static_dock_region.height / 2.0;
       }
 
       if (!for_hidden) {
