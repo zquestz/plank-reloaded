@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.136 "Reloaded" (2025-06-25)
+
+- Fix icon hitbox issues on KDE
+
 ## 0.11.135 "Reloaded" (2025-06-24)
 
 - Improve window minimize/restore animations
