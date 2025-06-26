@@ -134,7 +134,7 @@ namespace Plank {
           break;
 
         if (name != DEFAULT_ICON)
-          message ("Could not find icon '%s'", name);
+          debug ("Could not find icon '%s'", name);
       }
 
       // Load internal default icon as last resort
@@ -264,7 +264,7 @@ namespace Plank {
           break;
 
         if (name != DEFAULT_ICON)
-          message ("Could not find icon '%s'", name);
+          debug ("Could not find icon '%s'", name);
       }
 
       // Load internal default icon as last resort

@@ -33,6 +33,8 @@ namespace Plank {
 
     Gdk.Rectangle monitor_geo;
 
+    int max_hover_height_cache = 0;
+    int max_hover_width_cache = 0;
     int window_scale_factor = 1;
 
     /**
@@ -652,16 +654,25 @@ namespace Plank {
      */
     public Gdk.Rectangle get_cursor_region () {
       var cursor_region = static_dock_region;
+
+      switch (Position) {
+      case Gtk.PositionType.BOTTOM:
+      case Gtk.PositionType.TOP:
+        cursor_region.height = int.max (cursor_region.height, max_hover_height_cache);
+        break;
+      case Gtk.PositionType.LEFT:
+      case Gtk.PositionType.RIGHT:
+        cursor_region.width = int.max (cursor_region.width, max_hover_width_cache);
+        break;
+      }
+
       var progress = 1.0 - controller.renderer.hide_progress;
       window_scale_factor = controller.window.get_window ().get_scale_factor ();
 
-      // If zoom is enabled extend cursor-region based on current hovered-item
-      if (controller.prefs.ZoomEnabled) {
-        unowned DockItem? hovered_item = controller.window.HoveredItem;
-        if (hovered_item != null) {
-          var hover_region = get_hover_region_for_element (hovered_item);
-          cursor_region.union (hover_region, out cursor_region);
-        }
+      unowned DockItem? hovered_item = controller.window.HoveredItem;
+      if (hovered_item != null) {
+        var hover_region = get_hover_region_for_element (hovered_item);
+        cursor_region.union (hover_region, out cursor_region);
       }
 
       var min_hover_region = GapSize > 0 ? (IconSize / 2) : 1;
@@ -1055,13 +1066,22 @@ namespace Plank {
 
       update_background_region (draw_values[items.first ()], draw_values[items.last ()]);
 
-      // precalculate and cache regions (for the current frame)
+      int max_hover_height = 0;
+      int max_hover_width = 0;
+
       draw_values.map_iterator ().foreach ((i, val) => {
         val.draw_region = get_item_draw_region (val);
         val.hover_region = get_item_hover_region (val);
         val.background_region = get_item_background_region (val);
+
+        max_hover_height = int.max (max_hover_height, val.hover_region.height);
+        max_hover_width = int.max (max_hover_width, val.hover_region.width);
+
         return true;
       });
+
+      max_hover_height_cache = max_hover_height;
+      max_hover_width_cache = max_hover_width;
 
       controller.window.update_icon_regions ();
     }
@@ -1209,6 +1229,24 @@ namespace Plank {
 
       Gdk.Rectangle result;
       first_rect.union (last_rect, out result);
+
+      switch (Position) {
+      case Gtk.PositionType.BOTTOM:
+        result.y = int.min(result.y, static_dock_region.y - (max_hover_height_cache - static_dock_region.height));
+        result.height = int.max(result.height, max_hover_height_cache);
+        break;
+      case Gtk.PositionType.TOP:
+        result.height = int.max(result.height, max_hover_height_cache);
+        break;
+      case Gtk.PositionType.LEFT:
+        result.width = int.max(result.width, max_hover_width_cache);
+        break;
+      case Gtk.PositionType.RIGHT:
+        result.x = int.min(result.x, static_dock_region.x - (max_hover_width_cache - static_dock_region.width));
+        result.width = int.max(result.width, max_hover_width_cache);
+        break;
+      }
+
       return result;
     }
 
