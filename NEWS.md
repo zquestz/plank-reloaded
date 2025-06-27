@@ -2,7 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
-## 0.11.136 "Reloaded" (2025-06-25)
+## 0.11.137 "Reloaded" (2025-06-27)
+
+- Use screen edge to unhide dock with gap size set
+
+## 0.11.136 "Reloaded" (2025-06-26)
 
 - Fix icon hitbox issues on KDE
 

@@ -1,3 +1,9 @@
+plank-reloaded (0.11.137-1) unstable; urgency=medium
+
+  * Use screen edge to unhide dock with gap size set
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 27 Jun 2025 13:39:28 -1000
+
 plank-reloaded (0.11.136-1) unstable; urgency=medium
 
   * Fix icon hitbox issues on KDE
