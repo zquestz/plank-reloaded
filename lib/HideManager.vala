@@ -386,7 +386,7 @@ namespace Plank {
 
 #if HAVE_BARRIERS
       if (Hidden && barriers_supported
-          && controller.prefs.PressureReveal
+          && (controller.prefs.PressureReveal || controller.position_manager.GapSize > 0)
           && device_supports_pressure (event.get_source_device ()))
         return Hidden;
 #endif
@@ -672,22 +672,32 @@ namespace Plank {
           break;
         }
 
-        if (slide < distance) {
-          distance = Math.fmin (15.0, distance);
-          pressure += distance;
-          Logger.verbose ("HideManager (pressure = %f)", pressure);
-        }
+        bool pressure_activation = false;
 
-        if (pressure >= PRESSURE_THRESHOLD) {
-          pressure = 0.0;
-
-          if (pressure_timer_id > 0U) {
-            GLib.Source.remove (pressure_timer_id);
-            pressure_timer_id = 0U;
+        if (controller.position_manager.GapSize > 0 && !controller.prefs.PressureReveal) {
+          pressure_activation = true;
+        } else {
+          if (slide < distance) {
+            distance = Math.fmin (15.0, distance);
+            pressure += distance;
+            Logger.verbose ("HideManager (pressure = %f)", pressure);
           }
 
-          Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
+          if (pressure >= PRESSURE_THRESHOLD) {
+            Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
 
+            pressure = 0.0;
+
+            if (pressure_timer_id > 0U) {
+              GLib.Source.remove (pressure_timer_id);
+              pressure_timer_id = 0U;
+            }
+
+            pressure_activation = true;
+          }
+        }
+
+        if (pressure_activation) {
           freeze_notify ();
 
           if (!Hovered) {
@@ -731,7 +741,7 @@ namespace Plank {
         barrier = 0;
       }
 
-      if (!controller.prefs.PressureReveal)
+      if (!controller.prefs.PressureReveal && controller.position_manager.GapSize == 0)
         return;
 
       if (controller.prefs.HideMode == HideType.NONE)
