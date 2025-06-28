@@ -2,6 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.138 "Reloaded" (2025-06-27)
+
+- Update barrier logic to support GapSize
+- Fix issue with hidden docks capturing click events
+- Fix animation issues when GapSize > 0
+- Improved support for multi-monitor setups
+
 ## 0.11.137 "Reloaded" (2025-06-27)
 
 - Use screen edge to unhide dock with gap size set

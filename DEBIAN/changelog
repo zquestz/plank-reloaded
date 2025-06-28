@@ -1,3 +1,12 @@
+plank-reloaded (0.11.138-1) unstable; urgency=medium
+
+  * Update barrier logic to support GapSize
+  * Fix issue with hidden docks capturing click events
+  * Fix animation issues when GapSize > 0
+  * Improved support for multi-monitor setups
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 27 Jun 2025 18:51:16 -1000
+
 plank-reloaded (0.11.137-1) unstable; urgency=medium
 
   * Use screen edge to unhide dock with gap size set
