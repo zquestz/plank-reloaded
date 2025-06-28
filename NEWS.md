@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.139 "Reloaded" (2025-06-27)
+
+- Fix magnification when using pressure reveal
+- Minor bug fixes for GapSize barrier
+
 ## 0.11.138 "Reloaded" (2025-06-27)
 
 - Update barrier logic to support GapSize
