@@ -387,7 +387,7 @@ namespace Plank {
 
 #if HAVE_BARRIERS
       if (Hidden && barriers_supported
-          && (controller.prefs.PressureReveal || controller.position_manager.GapSize > 0)
+          && (controller.prefs.PressureReveal || controller.prefs.GapSize > 0)
           && device_supports_pressure (event.get_source_device ()))
         return Hidden;
 #endif
@@ -675,7 +675,7 @@ namespace Plank {
 
         bool pressure_activation = false;
 
-        if (controller.position_manager.GapSize > 0 && !controller.prefs.PressureReveal) {
+        if (controller.prefs.GapSize > 0 && !controller.prefs.PressureReveal) {
           pressure_activation = true;
         } else {
           if (slide < distance) {
@@ -699,7 +699,7 @@ namespace Plank {
         }
 
         if (pressure_activation) {
-          if (controller.position_manager.GapSize > 0) {
+          if (controller.prefs.GapSize > 0) {
             show ();
           } else {
             freeze_notify ();
@@ -746,7 +746,7 @@ namespace Plank {
         barrier = 0;
       }
 
-      if (!controller.prefs.PressureReveal && controller.position_manager.GapSize == 0)
+      if (!controller.prefs.PressureReveal && controller.prefs.GapSize == 0)
         return;
 
       if (controller.prefs.HideMode == HideType.NONE)
