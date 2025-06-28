@@ -908,7 +908,7 @@ namespace Plank {
 
       cr.set_source_surface (shadow_surface.Internal, shadow_size + xoffset, shadow_size + yoffset);
       cr.paint_with_alpha (0.44);
-      surface.gaussian_blur ((int) Math.round(shadow_size));
+      surface.gaussian_blur ((int) Math.round (shadow_size));
 
       return surface;
     }

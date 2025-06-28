@@ -763,9 +763,9 @@ namespace Plank {
         return;
 
       var cursor_rect = controller.position_manager.get_cursor_region ();
-      // FIXME bug 768722 - this fixes the crash, but not WHY this happens
-      return_if_fail (cursor_rect.width > 0);
-      return_if_fail (cursor_rect.height > 0);
+      if (cursor_rect.width <= 0 || cursor_rect.height <= 0) {
+        return;
+      }
 
       if (cursor_rect != input_rect) {
         input_rect = cursor_rect;

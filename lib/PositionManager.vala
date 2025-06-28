@@ -675,7 +675,11 @@ namespace Plank {
         cursor_region.union (hover_region, out cursor_region);
       }
 
+#if HAVE_BARRIERS
+      var min_hover_region = GapSize > 0 ? 0 : 1;
+#else
       var min_hover_region = GapSize > 0 ? (IconSize / 2) : 1;
+#endif
 
       switch (Position) {
       default :
@@ -1231,19 +1235,19 @@ namespace Plank {
       first_rect.union (last_rect, out result);
 
       switch (Position) {
-      case Gtk.PositionType.BOTTOM:
-        result.y = int.min(result.y, static_dock_region.y - (max_hover_height_cache - static_dock_region.height));
-        result.height = int.max(result.height, max_hover_height_cache);
+      case Gtk.PositionType.BOTTOM :
+        result.y = int.min (result.y, static_dock_region.y - (max_hover_height_cache - static_dock_region.height));
+        result.height = int.max (result.height, max_hover_height_cache);
         break;
-      case Gtk.PositionType.TOP:
-        result.height = int.max(result.height, max_hover_height_cache);
+      case Gtk.PositionType.TOP :
+        result.height = int.max (result.height, max_hover_height_cache);
         break;
       case Gtk.PositionType.LEFT:
-        result.width = int.max(result.width, max_hover_width_cache);
+        result.width = int.max (result.width, max_hover_width_cache);
         break;
       case Gtk.PositionType.RIGHT:
-        result.x = int.min(result.x, static_dock_region.x - (max_hover_width_cache - static_dock_region.width));
-        result.width = int.max(result.width, max_hover_width_cache);
+        result.x = int.min (result.x, static_dock_region.x - (max_hover_width_cache - static_dock_region.width));
+        result.width = int.max (result.width, max_hover_width_cache);
         break;
       }
 
@@ -1387,7 +1391,7 @@ namespace Plank {
         x = (int) Math.round (center.x + win_x);
         y = (int) Math.round (center.y + win_y - offset);
         break;
-      case Gtk.PositionType.TOP :
+      case Gtk.PositionType.TOP:
         x = (int) Math.round (center.x + win_x);
         y = (int) Math.round (center.y + win_y + offset);
         break;
@@ -1709,7 +1713,7 @@ namespace Plank {
 
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
-        int hit_box_size = (int) Math.round(draw_value.icon_size / 4.0);
+        int hit_box_size = (int) Math.round (draw_value.icon_size / 4.0);
 
         region.width = hit_box_size * 2;
         region.height = hit_box_size * 2;
