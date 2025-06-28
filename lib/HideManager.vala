@@ -699,14 +699,7 @@ namespace Plank {
         }
 
         if (pressure_activation) {
-          freeze_notify ();
-
-          if (!Hovered) {
-            Hovered = true;
-            update_hidden ();
-          }
-
-          thaw_notify ();
+          show ();
         }
         break;
       case XInput.EventType.BARRIER_LEAVE:
