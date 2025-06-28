@@ -266,6 +266,7 @@ namespace Plank {
         });
         break;
       case "PressureReveal":
+      case "GapSize":
 #if HAVE_BARRIERS
         update_barrier ();
 #endif
