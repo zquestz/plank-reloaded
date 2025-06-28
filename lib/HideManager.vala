@@ -699,7 +699,18 @@ namespace Plank {
         }
 
         if (pressure_activation) {
-          show ();
+          if (controller.position_manager.GapSize > 0) {
+            show ();
+          } else {
+            freeze_notify ();
+
+            if (!Hovered) {
+              Hovered = true;
+              update_hidden ();
+            }
+
+            thaw_notify ();
+          }
         }
         break;
       case XInput.EventType.BARRIER_LEAVE:
