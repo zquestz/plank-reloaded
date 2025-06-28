@@ -147,6 +147,10 @@ namespace Plank {
       renderer.initialize ();
 
       window.show_all ();
+
+#if HAVE_BARRIERS
+      hide_manager.update_barrier ();
+#endif
     }
 
     /**

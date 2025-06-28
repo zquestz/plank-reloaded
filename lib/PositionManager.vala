@@ -32,6 +32,7 @@ namespace Plank {
     uint active_display_timeout_id;
 
     Gdk.Rectangle monitor_geo;
+    int monitor_num;
 
     int max_hover_height_cache = 0;
     int max_hover_width_cache = 0;
@@ -67,7 +68,7 @@ namespace Plank {
 
       // NOTE don't call update_monitor_geo to avoid a double-call of dockwindow.set_size on startup
       var display = screen.get_display ();
-      var monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
+      monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
       if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
@@ -130,15 +131,15 @@ namespace Plank {
        .get_position (null, out x, out y);
 
       var monitor = display.get_monitor_at_point (x, y);
-      int monitor_num = 0;
+      int active_monitor_num = 0;
 
       int n_monitors = display.get_n_monitors ();
       for (int i = 0; i < n_monitors; i++) {
         if (display.get_monitor (i) == monitor)
-          monitor_num = i;
+          active_monitor_num = i;
       }
 
-      string monitor_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (monitor_num);
+      string monitor_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (active_monitor_num);
 
       return monitor_name;
     }
@@ -235,9 +236,11 @@ namespace Plank {
 
     void screen_changed (Gdk.Screen screen) {
       var old_monitor_geo = monitor_geo;
+      var old_monitor_num = monitor_num;
 
       var display = screen.get_display ();
-      var monitor = display.get_monitor (find_monitor_number (screen, controller.prefs.Monitor));
+      monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
+      var monitor = display.get_monitor (monitor_num);
 
       if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
         monitor_geo = monitor.get_geometry ();
@@ -246,7 +249,8 @@ namespace Plank {
       }
 
       // No need to do anything if nothing has actually changed
-      if (old_monitor_geo.x == monitor_geo.x
+      if (old_monitor_num == monitor_num
+          && old_monitor_geo.x == monitor_geo.x
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
           && old_monitor_geo.height == monitor_geo.height)
@@ -259,6 +263,10 @@ namespace Plank {
 
       update_dimensions ();
       update_regions ();
+
+#if HAVE_BARRIERS
+      controller.hide_manager.update_barrier ();
+#endif
 
       thaw_notify ();
     }
@@ -813,6 +821,7 @@ namespace Plank {
           || old_region.width != static_dock_region.width
           || old_region.height != static_dock_region.height) {
         controller.window.update_size_and_position ();
+
 #if HAVE_BARRIERS
         controller.hide_manager.update_barrier ();
 #endif
