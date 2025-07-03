@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: plank\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-06-27 18:58-1000\n"
-"PO-Revision-Date: 2016-02-17 00:36+0000\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
+"PO-Revision-Date: 2025-07-03 11:31+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank - Herboren"
 
 #: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
 msgid "Still stupidly simple."
-msgstr "Belachelijk eenvoudig."
+msgstr "Nog steeds belachelijk eenvoudig."
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -34,6 +34,11 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank - Herboren is een afsplitsing van het oorspronkelijke Plank-project, "
+"een eenvoudig dock voor werkomgevingen die gebruikmaken van X11. In eerste "
+"instantie lag de nadruk op het ondersteunen van Cinnamon, maar inmiddels "
+"worden ook andere omgevingen ondersteund, zoals MATE en Xfce. Let op: "
+"Wayland wordt nog niet ondersteund."
 
 #: data/plank.appdata.xml.in:15
 msgid ""
@@ -42,18 +47,21 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Plank - Herboren is, net als zijn voorganger, gericht op het aanbieden van "
+"een zo eenvoudig mogelijk dock. Precies wat je nodig hebt en niets meer dan "
+"dat. Ook wordt een bibliotheek geboden om andere docks van te kunnen maken."
 
 #: data/plank.appdata.xml.in:22
 msgid "dock"
-msgstr ""
+msgstr "dock"
 
 #: data/plank.appdata.xml.in:23
 msgid "launch"
-msgstr ""
+msgstr "starten"
 
 #: data/plank.appdata.xml.in:24
 msgid "panel"
-msgstr ""
+msgstr "paneel"
 
 #: data/plank.appdata.xml.in:25
 msgid "start"
@@ -61,7 +69,7 @@ msgstr "start"
 
 #: data/plank.appdata.xml.in:36
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "De ontwikkelaars van Plank - Herboren"
 
 #: data/plank.desktop.in:3
 msgid "Dock"
@@ -73,7 +81,7 @@ msgstr "Thema:"
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
-msgstr "Positie:"
+msgstr "Locatie:"
 
 #: data/ui/preferences.ui:133
 msgid "Left"
@@ -93,11 +101,11 @@ msgstr "Onderaan"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "Op actief beeldscherm:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "Detectie van actief beeldscherm (in seconden)"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -109,7 +117,7 @@ msgstr "Passend maken"
 
 #: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
-msgstr "Start"
+msgstr "Begin"
 
 #: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
@@ -117,7 +125,7 @@ msgstr "Einde"
 
 #: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
-msgstr "MIdden"
+msgstr "Midden"
 
 #: data/ui/preferences.ui:229
 msgid "On Primary Display:"
@@ -126,7 +134,7 @@ msgstr "Op primair beeldscherm:"
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
 msgstr ""
-"Verschuiving in percentage vanaf het middelpunt van de rand van het scherm"
+"Verschuiving vanaf het middelpunt van de rand van het scherm (percentage)"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
@@ -138,19 +146,19 @@ msgstr "Pictogramgrootte:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr "Pictogram vergroten:"
+msgstr "Pictogrammen vergroten:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "Tussenruimtes:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
-msgstr "Weergave"
+msgstr "Vormgeving"
 
 #: data/ui/preferences.ui:456
 msgid "Intellihide"
-msgstr "Intelligent verbergen"
+msgstr "Slim verbergen"
 
 #: data/ui/preferences.ui:457
 msgid "Autohide"
@@ -162,11 +170,11 @@ msgstr "Gemaximaliseerde vensters ontwijken"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr "Ontwijk vensters"
+msgstr "Vensters ontwijken"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr "Ontwijk actief venster"
+msgstr "Actieve vensters ontwijken"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
@@ -174,19 +182,19 @@ msgstr "Dock verbergen"
 
 #: data/ui/preferences.ui:502
 msgid "Hide Delay:"
-msgstr "Vertraging voor het verbergen:"
+msgstr "Verbergen na:"
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr "Pauze in ms voor het dock verborgen wordt"
+msgstr "Verberg het dock na enige tijd (in milliseconden)"
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr "Vertraging voor het verschijnen:"
+msgstr "Tonen na:"
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr "Aantal milliseconden waarna het dock tevoorschijn komt"
+msgstr "Toon het dock na enige tijd (in milliseconden)"
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
@@ -198,7 +206,7 @@ msgstr "Itembeheer"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr "Niet vastgezette toepassingen tonen:"
+msgstr "Niet-vastgemaakte toepassingen tonen:"
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
@@ -206,19 +214,19 @@ msgstr "Beperken tot één werkblad:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "Hulpballonnen tonen:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr "Pictogrammen vastzetten:"
+msgstr "Pictogrammen vergrendelen:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "Invoegtoepassingen vastmaken:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "Bestanden vastmaken:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
@@ -226,216 +234,216 @@ msgstr "Gedrag"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr "Docklets"
+msgstr "Invoegtoepassingen"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "Er zijn geen toepassingen beschikbaar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "Toepassingen"
 
 #: docklets/Applications/ApplicationsDockItem.vala:298
 msgid "Edit Menu"
-msgstr ""
+msgstr "Menu bewerken"
 
 #: docklets/Applications/ApplicationsDockItem.vala:317
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Eigen pictogram kiezen"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:325
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "Standaardpictogram herstellen"
 
 #: docklets/Applications/ApplicationsDockItem.vala:335
 msgid "Large Icons"
-msgstr ""
+msgstr "Grote pictogrammen"
 
 #: docklets/Applications/ApplicationsDockItem.vala:348
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "Kies een pictogram"
 
 #: docklets/Applications/ApplicationsDockItem.vala:351
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: docklets/Applications/ApplicationsDockItem.vala:352
 msgid "Select"
-msgstr ""
+msgstr "Kiezen"
 
 #: docklets/Applications/ApplicationsDockItem.vala:370
 msgid "Image Files"
-msgstr ""
+msgstr "Afbeeldingsbestanden"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Start een van uw toepassingen."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "Geen accu"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "Accu's"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "Er zijn geen accu's aangetroffen"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "Geen accu's aangetroffen"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "Accu"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "Toon accu-informatie"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "Het klembord is leeg."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Wissen"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "Selecties bijhouden"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "Afbeeldingen bijhouden"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "Klembord bijhouden"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "Maximumaantal items"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Toon recente klemborditems."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Di_gitale klok"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24-uurs_klok"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "_Datum tonen"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Klok"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "Hoe laat is het?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "Cpu-monitor"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Houd uw cpu in de gaten en neem actie indien nodig…"
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "Bureaublad tonen"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "Bureaublad"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Toon uw bureaublad."
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "De prullenbak is leeg"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Er is %u item in de prullenbak"
+msgstr[1] "Er zijn %u items in de prullenbak"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Weet u zeker dat u de prullenbak wilt legen?"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Alle items worden permanent verwijderd."
 
 #: docklets/Trash/TrashDockItem.vala:275
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annuleren"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Prullenbak _legen"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "Laat los om naar de prullenbak te verplaatsen"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "Prullenbak _openen"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "Prullenbak"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Graaf in uw prullenbak!"
 
 #: docklets/Separator/SeparatorDockItem.vala:197
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
-msgstr ""
+msgstr "Kleu_ren omkeren"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Scheidingslijn"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Gewoon een scheidingslijn."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -445,23 +453,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "Werkbladen"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:177
 #: docklets/Workspaces/WorkspacesDockItem.vala:203
 #: docklets/Workspaces/WorkspacesDockItem.vala:215
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "Werkblad %d van %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Werkblad %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
-msgstr ""
+msgstr "_Live-voorvertoningen"
 
 #. *
 #. * Returns the description of this docklet.
@@ -470,11 +478,11 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "Een grafische werkbladwisselaar."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Laat de muis los om aan het dock toe te voegen"
+msgstr "Laat los om aan het dock toe te voegen"
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
@@ -490,12 +498,13 @@ msgstr ""
 "  kay van der Zander https://launchpad.net/~kay20\n"
 "  rickdg28 https://launchpad.net/~rick-dutour-geerling\n"
 "  rob https://launchpad.net/~rvdb\n"
-"  tim schoen https://launchpad.net/~timschoen123-deactivatedaccount"
+"  tim schoen https://launchpad.net/~timschoen123-deactivatedaccount\n"
+"  Heimen Stoffels vistausss@fastmail.com"
 
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "_Vastzetten in dock"
+msgstr "Vastma_ken aan dock"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
@@ -512,31 +521,31 @@ msgstr "Laat los om met %s te openen"
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
-msgstr ""
+msgstr "_Sorteren op"
 
 #: lib/Items/FileDockItem.vala:289
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: lib/Items/FileDockItem.vala:300
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 #: lib/Items/FileDockItem.vala:311
 msgid "Size"
-msgstr ""
+msgstr "Grootte"
 
 #: lib/Items/FileDockItem.vala:322
 msgid "Date Created"
-msgstr ""
+msgstr "Aanmaakdatum"
 
 #: lib/Items/FileDockItem.vala:333
 msgid "Date Modified"
-msgstr ""
+msgstr "Bewerkdatum"
 
 #: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
-msgstr "In bestandsbeheer _openen"
+msgstr "_Openen in bestandsbeheer"
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
@@ -548,28 +557,27 @@ msgstr "Bovenliggende _map openen"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr "Sleep toepassingen of bestanden hiernaartoe"
+msgstr "Sleep toepassingen of bestanden hierheen"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Online _hulp vragen…"
+msgstr "Online om _hulp vragen…"
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "Deze toepassing ver_talen…"
+msgstr "Helpen met ver_talen…"
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Voorkeuren"
+msgstr "_Voorkeuren"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_Over"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "A_fsluiten"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
