@@ -134,7 +134,7 @@ namespace Plank {
       // Make sure plank never shows up if we don't want the dock item.
       if (!Prefs.ShowDockItem) {
         string? desktop_file = app.get_desktop_file ();
-        if (desktop_file != null && desktop_file.contains ("plank.desktop")) {
+        if (desktop_file != null && desktop_file.contains ("net.launchpad.plank.desktop")) {
           return;
         }
       }

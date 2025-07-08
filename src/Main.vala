@@ -62,7 +62,7 @@ namespace Plank {
               app_copyright: "2011-2025",
               app_dbus: "net.launchpad.plank",
               app_icon: "plank-reloaded",
-              app_launcher: "plank.desktop",
+              app_launcher: "net.launchpad.plank.desktop",
 
               main_url: "https://github.com/zquestz/plank-reloaded",
               help_url: "https://github.com/zquestz/plank-reloaded/issues",
