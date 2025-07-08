@@ -471,7 +471,7 @@ namespace Plank {
         var radius = double.max (rect.width, rect.height) / 2.0;
 
         gradient = new Cairo.Pattern.radial (center_x, center_y, 0, center_x, center_y, radius);
-        gradient.add_color_stop_rgba (0, color.red, color.green, color.blue, 0.8 * opacity);
+        gradient.add_color_stop_rgba (0, color.red, color.green, color.blue, 0.6 * opacity);
         gradient.add_color_stop_rgba (1, color.red, color.green, color.blue, 0);
         cr.set_source (gradient);
       } else if (ActiveItemStyle == ActiveItemStyleType.LEGACY || ActiveItemStyle == ActiveItemStyleType.COLOR_GRADIENT) {
