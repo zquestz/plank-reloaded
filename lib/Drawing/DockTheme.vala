@@ -107,7 +107,7 @@ namespace Plank {
     [Description (nick = "badge-text-color", blurb = "The color (RGBA) of the badge text")]
     public Color BadgeTextColor { get; set; }
 
-    [Description (nick = "active-item-style", blurb = "The style of the active item, styles: gradient, color-gradient, solid.")]
+    [Description (nick = "active-item-style", blurb = "The style of the active item, styles: gradient, color-gradient, solid, center-gradient, color-center-gradient.")]
     public ActiveItemStyleType ActiveItemStyle { get; set; }
 
     [Description (nick = "active-item-color", blurb = "The color (RGBA) of the active item background.")]
@@ -416,8 +416,9 @@ namespace Plank {
      * @param pos the dock's position
      */
     public void draw_active_glow (Surface surface, Gdk.Rectangle clip_rect, Gdk.Rectangle rect, Color color, double opacity, Gtk.PositionType pos) {
-      if (opacity <= 0.0 || rect.width <= 0 || rect.height <= 0)
+      if (opacity <= 0.0 || rect.width <= 0 || rect.height <= 0) {
         return;
+      }
 
       unowned Cairo.Context cr = surface.Context;
 
@@ -431,39 +432,32 @@ namespace Plank {
       case Gtk.PositionType.BOTTOM:
         xoffset = clip_rect.x;
         yoffset = clip_rect.y;
-
-        gradient = new Cairo.Pattern.linear (0, rect.y, 0, rect.y + rect.height);
         break;
       case Gtk.PositionType.TOP:
         rotate = Math.PI;
         xoffset = -clip_rect.x - clip_rect.width;
         yoffset = -clip_rect.height;
-
-        gradient = new Cairo.Pattern.linear (0, rect.y + rect.height, 0, rect.y);
         break;
       case Gtk.PositionType.LEFT:
         rotate = Math.PI_2;
         xoffset = clip_rect.y;
         yoffset = -clip_rect.width;
-
-        gradient = new Cairo.Pattern.linear (rect.x + rect.width, 0, rect.x, 0);
         break;
       case Gtk.PositionType.RIGHT:
         rotate = -Math.PI_2;
         xoffset = -clip_rect.y - clip_rect.height;
         yoffset = clip_rect.x;
-
-        gradient = new Cairo.Pattern.linear (rect.x, 0, rect.x + rect.width, 0);
         break;
       }
 
       cr.save ();
       cr.rotate (rotate);
       cr.translate (xoffset, yoffset);
-      if (pos == Gtk.PositionType.BOTTOM || pos == Gtk.PositionType.TOP)
+      if (pos == Gtk.PositionType.BOTTOM || pos == Gtk.PositionType.TOP) {
         draw_inner_rect (cr, clip_rect.width, clip_rect.height);
-      else
+      } else {
         draw_inner_rect (cr, clip_rect.height, clip_rect.width);
+      }
       cr.restore ();
 
       cr.set_line_width (LineWidth);
@@ -471,7 +465,31 @@ namespace Plank {
 
       cr.rectangle (rect.x, rect.y, rect.width, rect.height);
 
-      if (ActiveItemStyle == ActiveItemStyleType.LEGACY || ActiveItemStyle == ActiveItemStyleType.GRADIENT) {
+      if (ActiveItemStyle == ActiveItemStyleType.CENTER_GRADIENT || ActiveItemStyle == ActiveItemStyleType.COLOR_CENTER_GRADIENT) {
+        var center_x = rect.x + rect.width / 2.0;
+        var center_y = rect.y + rect.height / 2.0;
+        var radius = double.max (rect.width, rect.height) / 2.0;
+
+        gradient = new Cairo.Pattern.radial (center_x, center_y, 0, center_x, center_y, radius);
+        gradient.add_color_stop_rgba (0, color.red, color.green, color.blue, 0.8 * opacity);
+        gradient.add_color_stop_rgba (1, color.red, color.green, color.blue, 0);
+        cr.set_source (gradient);
+      } else if (ActiveItemStyle == ActiveItemStyleType.LEGACY || ActiveItemStyle == ActiveItemStyleType.COLOR_GRADIENT) {
+        switch (pos) {
+        default:
+        case Gtk.PositionType.BOTTOM:
+          gradient = new Cairo.Pattern.linear (0, rect.y, 0, rect.y + rect.height);
+          break;
+        case Gtk.PositionType.TOP:
+          gradient = new Cairo.Pattern.linear (0, rect.y + rect.height, 0, rect.y);
+          break;
+        case Gtk.PositionType.LEFT:
+          gradient = new Cairo.Pattern.linear (rect.x + rect.width, 0, rect.x, 0);
+          break;
+        case Gtk.PositionType.RIGHT:
+          gradient = new Cairo.Pattern.linear (rect.x, 0, rect.x + rect.width, 0);
+          break;
+        }
         gradient.add_color_stop_rgba (0, color.red, color.green, color.blue, 0);
         gradient.add_color_stop_rgba (1, color.red, color.green, color.blue, 0.6 * opacity);
         cr.set_source (gradient);
@@ -520,8 +538,8 @@ namespace Plank {
       }
 
       var is_small = icon_size < 32;
-      var padding = (is_small ? 0.0 : double.max(1, icon_size / 32.0));
-      var line_width = (is_small ? 0.0 : double.max(1, padding / 2.0));
+      var padding = (is_small ? 0.0 : double.max (1, icon_size / 32.0));
+      var line_width = (is_small ? 0.0 : double.max (1, padding / 2.0));
 
       var height = Math.floor ((is_small ? 0.80 : 0.50) * icon_size - 2.0 * line_width);
       var width = Math.floor ((0.75 + 0.25 * count.to_string ().length) * height);
@@ -818,7 +836,7 @@ namespace Plank {
         break;
 
       case "ActiveStyle":
-        if (ActiveItemStyle < 0 || ActiveItemStyle > 2)
+        if (ActiveItemStyle < 0 || ActiveItemStyle > 4)
           ActiveItemStyle = ActiveItemStyleType.LEGACY;
         break;
 

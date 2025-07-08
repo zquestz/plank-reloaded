@@ -52,11 +52,19 @@ namespace Plank {
     /**
      * A vertical gradient using a color defined by the theme
      */
-    GRADIENT,
+    COLOR_GRADIENT,
     /**
      * A solid color defined by the theme
      */
-    SOLID
+    SOLID,
+    /**
+     * A centered gradient which is colored based of the item's icon.
+     */
+    CENTER_GRADIENT,
+    /**
+     * A centered gradient using a color defined by the theme
+     */
+    COLOR_CENTER_GRADIENT
   }
 
   /**

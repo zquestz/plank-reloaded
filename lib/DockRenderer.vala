@@ -795,18 +795,20 @@ namespace Plank {
       // draw active glow
       var active_time = int64.max (0LL, frame_time - item.LastActive);
       var opacity = double.min (1, active_time / (double) (theme.ActiveTime * 1000));
-      if ((item.State & ItemState.ACTIVE) == 0)
+      if ((item.State & ItemState.ACTIVE) == 0) {
         opacity = 1 - opacity;
+      }
+
       if (opacity > 0) {
-        var color = (theme.ActiveItemStyle == ActiveItemStyleType.LEGACY ? item.AverageIconColor : theme.ActiveItemColor);
+        var color = ((theme.ActiveItemStyle == ActiveItemStyleType.LEGACY || theme.ActiveItemStyle == ActiveItemStyleType.CENTER_GRADIENT) ? item.AverageIconColor : theme.ActiveItemColor);
         theme.draw_active_glow (item_buffer, background_rect, draw_value.background_region, color, opacity, position);
       }
 
-      // draw the icon
       if (window_scale_factor > 1) {
         cr.save ();
         cr.scale (1.0 / window_scale_factor, 1.0 / window_scale_factor);
       }
+
       var draw_region = draw_value.draw_region;
       cr.set_source_surface (icon_surface.Internal, draw_region.x * window_scale_factor, draw_region.y * window_scale_factor);
       if (draw_value.opacity < 1.0)
