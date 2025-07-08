@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.140 "Reloaded" (2025-07-08)
+
+- Updated Dutch translation
+- Added ActiveItemStyle options (radial gradient, averaged color)
+- Updated Matte themes to use radial gradients
+
 ## 0.11.139 "Reloaded" (2025-06-27)
 
 - Fix magnification when using pressure reveal
