@@ -107,7 +107,7 @@ namespace Plank {
     [Description (nick = "badge-text-color", blurb = "The color (RGBA) of the badge text")]
     public Color BadgeTextColor { get; set; }
 
-    [Description (nick = "active-item-style", blurb = "The style of the active item, styles: gradient, color-gradient, solid, center-gradient, color-center-gradient.")]
+    [Description (nick = "active-item-style", blurb = "The style of the active item, styles: gradient, color-gradient, solid, color-solid, center-gradient, color-center-gradient.")]
     public ActiveItemStyleType ActiveItemStyle { get; set; }
 
     [Description (nick = "active-item-color", blurb = "The color (RGBA) of the active item background.")]
@@ -403,6 +403,20 @@ namespace Plank {
       cr.fill ();
 
       return surface;
+    }
+
+    /**
+     * Determines if we should use the average icon color
+     */
+    public bool use_average_icon_color () {
+      switch (ActiveItemStyle) {
+      case ActiveItemStyleType.LEGACY:
+      case ActiveItemStyleType.SOLID:
+      case ActiveItemStyleType.CENTER_GRADIENT:
+        return true;
+      default:
+        return false;
+      }
     }
 
     /**
@@ -836,7 +850,7 @@ namespace Plank {
         break;
 
       case "ActiveStyle":
-        if (ActiveItemStyle < 0 || ActiveItemStyle > 4)
+        if (ActiveItemStyle < 0 || ActiveItemStyle > 5)
           ActiveItemStyle = ActiveItemStyleType.LEGACY;
         break;
 

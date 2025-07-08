@@ -54,9 +54,13 @@ namespace Plank {
      */
     COLOR_GRADIENT,
     /**
-     * A solid color defined by the theme
+     * A solid color based of the item's icon.
      */
     SOLID,
+    /**
+     * A solid color defined by the theme
+     */
+    COLOR_SOLID,
     /**
      * A centered gradient which is colored based of the item's icon.
      */

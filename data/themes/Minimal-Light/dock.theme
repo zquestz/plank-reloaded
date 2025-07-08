@@ -73,7 +73,7 @@ BadgeColor=200;;200;;200;;255
 BadgeStyle=1
 #The color (RGBA) of the badge text displaying urgent count
 BadgeTextColor=64;;64;;64;;255
-#The style of the active item, styles: gradient, color-gradient, solid, center-gradient, color-center-gradient.
-ActiveItemStyle=2
+#The style of the active item, styles: gradient, color-gradient, solid, color-solid, center-gradient, color-center-gradient.
+ActiveItemStyle=3
 #The color (RGBA) of the active item background.
 ActiveItemColor=0;;0;;0;;0

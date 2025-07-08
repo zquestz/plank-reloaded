@@ -800,7 +800,7 @@ namespace Plank {
       }
 
       if (opacity > 0) {
-        var color = ((theme.ActiveItemStyle == ActiveItemStyleType.LEGACY || theme.ActiveItemStyle == ActiveItemStyleType.CENTER_GRADIENT) ? item.AverageIconColor : theme.ActiveItemColor);
+        var color = (theme.use_average_icon_color () ? item.AverageIconColor : theme.ActiveItemColor);
         theme.draw_active_glow (item_buffer, background_rect, draw_value.background_region, color, opacity, position);
       }
 
