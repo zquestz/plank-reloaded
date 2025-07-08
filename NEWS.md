@@ -7,6 +7,7 @@
 - Updated Dutch translation
 - Added ActiveItemStyle options (radial gradient, averaged color)
 - Updated Matte themes to use radial gradients
+- Update plank.desktop to net.launchpad.plank.desktop
 
 ## 0.11.139 "Reloaded" (2025-06-27)
 
