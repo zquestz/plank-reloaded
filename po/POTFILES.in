@@ -1,5 +1,5 @@
 data/plank.appdata.xml.in
-data/plank.desktop.in
+data/net.launchpad.plank.desktop.in
 data/ui/preferences.ui
 docklets/Applications/ApplicationsDockItem.vala
 docklets/Applications/ApplicationsDocklet.vala

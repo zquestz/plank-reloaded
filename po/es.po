@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2025-06-18 00:15\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr "Plank Recargado"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "Todavía estúpidamente simple."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr "Todavía estúpidamente simple"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -51,27 +51,23 @@ msgstr ""
 "extender para crear otros programas de acoplamiento con características más "
 "avanzadas."
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
-msgstr "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
+msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
-msgstr "lanzar"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
+msgstr "Preferencias de apariencia"
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
-msgstr "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
+msgstr "Preferencias de comportamiento"
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "iniciar"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
+msgstr "Preferencias de Docklets"
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr "Los desarrolladores de Plank Recargado"
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr "Dock"
 
@@ -592,6 +588,3 @@ msgstr "_Salir"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferencias"
-
-#~ msgid "Restore Files"
-#~ msgstr "Restaurar archivos"

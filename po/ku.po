@@ -1,31 +1,29 @@
-# Serbian Latin translation for plank
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2016-08-10 10:39+0000\n"
-"Last-Translator: Igor S. <crni2k8@gmail.com>\n"
-"Language-Team: Serbian Latin <sr@latin@li.org>\n"
-"Language: sr@latin\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
+"Language-Team: Kurdish\n"
+"Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: ku\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr ""
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
-msgid "Still stupidly simple."
-msgstr "Glupavo jenostavan."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -43,55 +41,49 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:25
-#, fuzzy
-msgid "start"
-msgstr "Na početak"
-
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
 msgstr ""
 
-#: data/plank.desktop.in:3
-#, fuzzy
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr "Dokleti"
+msgstr ""
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
-msgstr "Tema:"
+msgstr "رووکار"
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
-msgstr "Pozicija:"
+msgstr "شوێن"
 
 #: data/ui/preferences.ui:133
 msgid "Left"
-msgstr "Levo"
+msgstr "چەپ"
 
 #: data/ui/preferences.ui:134
 msgid "Right"
-msgstr "Desno"
+msgstr "ڕاست"
 
 #: data/ui/preferences.ui:135
 msgid "Top"
-msgstr "Gore"
+msgstr "سەرەوە"
 
 #: data/ui/preferences.ui:136
 msgid "Bottom"
-msgstr "Dole"
+msgstr "خوارەوە"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
@@ -103,43 +95,43 @@ msgstr ""
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
-msgstr "Poravnanje:"
+msgstr "لاگرتن"
 
 #: data/ui/preferences.ui:210
 msgid "Fill"
-msgstr "Ispunjeno"
+msgstr "پڕکردنەوە"
 
 #: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
-msgstr "Na početak"
+msgstr "ده‌ست پێكردن"
 
 #: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
-msgstr "Na kraj"
+msgstr "کۆتایی"
 
 #: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
-msgstr "Po sredini"
+msgstr "ناوه‌ڕاست"
 
 #: data/ui/preferences.ui:229
 msgid "On Primary Display:"
-msgstr "Na glavnom ekranu:"
+msgstr "لەسەر شاشەی بنەڕەتی:"
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr "Pomak u procentima od sredine do ivice ekrana"
+msgstr "سەرجەمی بە ڕێژەی سەدییە لە ناوەڕاستی لێواری شاشەکەوە"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
-msgstr "Poravnanje ikonica:"
+msgstr "لاگرتنی وێنۆچکە:"
 
 #: data/ui/preferences.ui:305
 msgid "Icon Size:"
-msgstr "Veličina ikonica:"
+msgstr "قەبارەی وێنۆچکە:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr "Uveličanje ikonica:"
+msgstr "زوومی وێنۆچکە:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
@@ -147,63 +139,63 @@ msgstr ""
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
-msgstr "Izgled"
+msgstr "ڕووخسار"
 
 #: data/ui/preferences.ui:456
 msgid "Intellihide"
-msgstr "Pametno sakrivanje"
+msgstr "شاردنەوە لە کاتی کردنەوەی پەنجەرە"
 
 #: data/ui/preferences.ui:457
 msgid "Autohide"
-msgstr "Samostalno sakrivanje"
+msgstr "شاردنەوەی خۆکار"
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr "Izbegavaj uvećani prozor"
+msgstr "شاردنەوە لە کاتی کردنەوی پەنجەرەی پڕشاشە"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr "Izbegavaj prozor"
+msgstr "شاردنەوە لەکاتی چوونە سەر پەنجەرە"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr "Izbegavaj aktivni prozor"
+msgstr "شاردنەوە لەکاتی چوونە سەر پەنجەرەی چالاک"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
-msgstr "Sakrij dok"
+msgstr "شاردنەوەی دۆک"
 
 #: data/ui/preferences.ui:502
 msgid "Hide Delay:"
-msgstr "Kašnjenje sakrivanja:"
+msgstr "دواخستنی شاردنەوە:"
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr "Kašnjenje u milisekundama pre nego što se dok sakrije"
+msgstr "دواخستنی پێش شاردنەوی دۆکەکە بە میلی چرکە"
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr "Kašnjenje otkrivanja:"
+msgstr "دواخستنی دەرکەوتن:"
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr "Kašnjenje u milisekundama pre nego što se dok otkrije"
+msgstr "دواخستنی پێش دەرکەوتنی دۆکەکە بە میلی چرکە"
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
-msgstr "Prikazivanje pritiskom:"
+msgstr "دەرخستنی بە پەستان:"
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr "Upravljanje stavkama"
+msgstr "بەڕێوبردنی ىڕگە"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr "Prikaži otkačene:"
+msgstr "پیشاندانی جێگیرنەکراوەکان:"
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
-msgstr "Ograniči na radni prostor:"
+msgstr "سنوردارکردنی شوێنکار:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
@@ -211,7 +203,7 @@ msgstr ""
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr "Zaključaj ikonice:"
+msgstr "قفڵکردنی وێنۆچکە:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
@@ -223,11 +215,11 @@ msgstr ""
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
-msgstr "Ponašanje"
+msgstr "ڕەفتار"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr "Dokleti"
+msgstr "پێوەکراوی دۆک"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
@@ -410,14 +402,12 @@ msgid "Empty _Trash"
 msgstr ""
 
 #: docklets/Trash/TrashDockItem.vala:365
-#, fuzzy
 msgid "Drop to move to Trash"
-msgstr "Privuci da otvoriš sa %s"
+msgstr ""
 
 #: docklets/Trash/TrashDockItem.vala:402
-#, fuzzy
 msgid "_Open Trash"
-msgstr "_Otvori"
+msgstr ""
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
@@ -477,33 +467,31 @@ msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Privuci da dodaš na dok"
+msgstr "فڕێیبدە بۆ زیادکردنی بۆ سەر دۆک"
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Igor S. https://launchpad.net/~crni2k8\n"
-"  Rico Tzschichholz https://launchpad.net/~ricotz\n"
-"  Иван Благојевић https://launchpad.net/~ivanblago"
+"  brwa salam https://launchpad.net/~brwasalam"
 
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "_Zadrži na doku"
+msgstr "ـلە دۆک بیپارێزە"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
-msgstr "_Zatvori sve"
+msgstr "_هەمووی دابخە"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
-msgstr "_Zatvori"
+msgstr "_داخستن"
 
 #: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
-msgstr "Privuci da otvoriš sa %s"
+msgstr "فڕێیبدە بۆ کردنەوەی لەگەڵ %s"
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
@@ -531,32 +519,31 @@ msgstr ""
 
 #: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
-msgstr "_Otvori u Pregledaču datoteka"
+msgstr "_بیکەرەوە لە پەڕگەی وێبگەڕ"
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
-msgstr "_Otvori"
+msgstr "_کردنەوە"
 
 #: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
-msgstr "Otvori _sadržajnu fasciklu"
+msgstr "_بوخچەی لەخۆگر بکەرەوە"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr "Privuci aplikacije ili fajlove ovde"
+msgstr "بەرنامەکان یان پەڕگەکان فڕێبدە ئێرە"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Pronađi _Pomoć na Internetu..."
+msgstr "_یارمەتی سەرهێڵ وەربگرە..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "_Prevedi ovu Aplikaciju..."
+msgstr "_ئەم بەرنامەیە وەربگێڕە..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Podešavanja"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
@@ -568,24 +555,4 @@ msgstr ""
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
-msgstr "Podešavanja"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank bi trebao da bude najjednostavniji dok na planeti. Njegov cilj je "
-#~ "da pruži samo ono što dok treba da pruži i apsolutno ništa više."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "On je, u stvari, biblioteka koja se može proširiti, kako bi se napravili "
-#~ "drugi dok programi sa još naprednijim funkcijama. Stoga, Plank je osnova "
-#~ "za Doki (počevši od verzije 3.0.0) i cilj mu je da pruži sve ključne "
-#~ "funkcije, dok ih Doki proširuje kako bi dodao naprednije stvari kao što "
-#~ "su Dokleti, boje, prozorčići sa podešavanjima, itd."
+msgstr "ڕێکخستنەکان"

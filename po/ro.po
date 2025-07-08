@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2025-06-18 00:14\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -18,13 +18,13 @@ msgstr ""
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr "Plank Reloaded"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "Tot ridicol de simplu."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr "Tot ridicol de simplu"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -50,27 +50,23 @@ msgstr ""
 "mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
 "dock cu funcții mai avansate."
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
-msgstr "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
+msgstr "Dock cu tema Matte"
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
-msgstr "lansare"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
+msgstr "Preferințe de Aspect"
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
-msgstr "panou"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
+msgstr "Preferințe Comportament"
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "pornire"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
+msgstr "Preferințe Docklets"
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr "Programatorii Plank Reloaded"
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr "Dock"
 
@@ -572,6 +568,3 @@ msgstr "_Ieșire"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferințe"
-
-#~ msgid "Restore Files"
-#~ msgstr "Restaurează Fișiere"

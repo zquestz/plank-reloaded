@@ -1,30 +1,29 @@
-# English (Canada) translation for plank
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2020-04-11 21:41+0000\n"
-"Last-Translator: mooman <Unknown>\n"
-"Language-Team: English (Canada) <en_CA@li.org>\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
+"Language-Team: English, Canada\n"
 "Language: en_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-04-12 05:56+0000\n"
-"X-Generator: Launchpad (build 2e26c9bbd21cdca248baaea29aeffb920afcc32a)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: en-CA\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr ""
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "Still stupidly simple."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -42,49 +41,45 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "start"
-
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
 msgstr ""
 
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr "Dock"
+msgstr ""
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
-msgstr "Theme:"
+msgstr ""
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
-msgstr "Position:"
+msgstr ""
 
 #: data/ui/preferences.ui:133
 msgid "Left"
-msgstr "Left"
+msgstr ""
 
 #: data/ui/preferences.ui:134
 msgid "Right"
-msgstr "Right"
+msgstr ""
 
 #: data/ui/preferences.ui:135
 msgid "Top"
-msgstr "Top"
+msgstr ""
 
 #: data/ui/preferences.ui:136
 msgid "Bottom"
@@ -100,107 +95,107 @@ msgstr ""
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
-msgstr "Alignment:"
+msgstr ""
 
 #: data/ui/preferences.ui:210
 msgid "Fill"
-msgstr "Fill"
+msgstr ""
 
 #: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
-msgstr "Start"
+msgstr ""
 
 #: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
-msgstr "End"
+msgstr ""
 
 #: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
-msgstr "Center"
+msgstr ""
 
 #: data/ui/preferences.ui:229
 msgid "On Primary Display:"
-msgstr "On Primary Display:"
+msgstr ""
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr "Offset in percent from the center of the screen-edge"
+msgstr ""
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
-msgstr "Icon Alignment:"
+msgstr ""
 
 #: data/ui/preferences.ui:305
 msgid "Icon Size:"
-msgstr "Icon Size:"
+msgstr ""
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr "Icon Zoom:"
+msgstr ""
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr "Gap Size:"
+msgstr ""
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
-msgstr "Appearance"
+msgstr ""
 
 #: data/ui/preferences.ui:456
 msgid "Intellihide"
-msgstr "Intellihide"
+msgstr ""
 
 #: data/ui/preferences.ui:457
 msgid "Autohide"
-msgstr "Autohide"
+msgstr ""
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr "Dodge maximized window"
+msgstr ""
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr "Window Dodge"
+msgstr ""
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr "Dodge active window"
+msgstr ""
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
-msgstr "Hide Dock"
+msgstr ""
 
 #: data/ui/preferences.ui:502
 msgid "Hide Delay:"
-msgstr "Hide Delay:"
+msgstr ""
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr "Delay in ms before hiding the dock"
+msgstr ""
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr "Unhide Delay:"
+msgstr ""
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr "Delay in ms before showing the dock"
+msgstr ""
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
-msgstr "Pressure Reveal:"
+msgstr ""
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr "Item Management"
+msgstr ""
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr "Show Unpinned:"
+msgstr ""
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
-msgstr "Restrict to Workspace:"
+msgstr ""
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
@@ -208,7 +203,7 @@ msgstr ""
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr "Lock Icons:"
+msgstr ""
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
@@ -220,11 +215,11 @@ msgstr ""
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
-msgstr "Behaviour"
+msgstr ""
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr "Docklets"
+msgstr ""
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
@@ -408,11 +403,11 @@ msgstr ""
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr "Drop to move to Trash"
+msgstr ""
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr "_Open Trash"
+msgstr ""
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
@@ -472,7 +467,7 @@ msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Drop to add to dock"
+msgstr ""
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
@@ -486,20 +481,20 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "_Keep in Dock"
+msgstr ""
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
-msgstr "_Close All"
+msgstr ""
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
-msgstr "_Close"
+msgstr ""
 
 #: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
-msgstr "Drop to open with %s"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
@@ -527,32 +522,31 @@ msgstr ""
 
 #: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
-msgstr "_Open in File Browser"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
-msgstr "_Open"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
-msgstr "Open Containing _Folder"
+msgstr ""
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr "Drop applications or files here"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Get _Help Online..."
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "_Translate This Application..."
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Preferences"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
@@ -564,24 +558,4 @@ msgstr ""
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
-msgstr "Preferences"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features, while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
+msgstr ""

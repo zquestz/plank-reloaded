@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2025-06-18 00:14\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
-"Language: hi_IN\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr "प्लैंक रिलोडेड"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "अब भी बेवकूफी से सरल।"
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr "अब भी बेवकूफी से सरल"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -49,27 +49,23 @@ msgstr ""
 "है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा "
 "सकता है।"
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
-msgstr "डॉक"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
+msgstr "मैट थीम के साथ डॉक"
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
-msgstr "लॉन्च"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
+msgstr "उपस्थिति प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
-msgstr "पैनल"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
+msgstr "व्यवहार प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "स्टार्ट"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
+msgstr "डॉकलेट्स प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr "प्लैंक रिलोडेड डेवलपर्स"
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr "डॉक"
 
@@ -572,6 +568,3 @@ msgstr "_बाहर जाएं"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "वरीयताएँ"
-
-#~ msgid "Restore Files"
-#~ msgstr "फाइलें पुनर्स्थापित करें"

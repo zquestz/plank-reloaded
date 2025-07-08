@@ -20,8 +20,8 @@ plank_gschema_compile = gnome.compile_schemas(
 )
 
 i18n.merge_file(
-  input: 'plank.desktop.in',
-  output: 'plank.desktop',
+  input: 'net.launchpad.plank.desktop.in',
+  output: 'net.launchpad.plank.desktop',
   po_dir: '../po',
   type: 'desktop',
   install: true,

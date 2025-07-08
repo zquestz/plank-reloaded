@@ -1,30 +1,29 @@
-# English (Australia) translation for plank
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2016-02-17 00:36+0000\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
-"Language-Team: English (Australia) <en_AU@li.org>\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
+"Language-Team: English, Australia\n"
 "Language: en_AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: en-AU\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr ""
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "Still stupidly simple."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -42,27 +41,23 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr ""
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr ""
 
@@ -472,7 +467,7 @@ msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Drop to add to dock"
+msgstr ""
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
@@ -484,11 +479,11 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "_Keep in Dock"
+msgstr ""
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
-msgstr "_Close All"
+msgstr ""
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
@@ -497,7 +492,7 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
-msgstr "Drop to open with %s"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
@@ -525,15 +520,15 @@ msgstr ""
 
 #: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
-msgstr "_Open in File Browser"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
-msgstr "_Open"
+msgstr ""
 
 #: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
-msgstr "Open Containing _Folder"
+msgstr ""
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
@@ -541,15 +536,15 @@ msgstr ""
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Get _Help Online..."
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "_Translate This Application..."
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr "_Preferences"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
@@ -561,4 +556,4 @@ msgstr ""
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
-msgstr "Preferences"
+msgstr ""

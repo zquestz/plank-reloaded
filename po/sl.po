@@ -1,31 +1,30 @@
-# Slovenian translation for plank
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the plank package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2016-02-17 00:36+0000\n"
-"Last-Translator: Rico Tzschichholz <Unknown>\n"
-"Language-Team: Slovenian <sl@li.org>\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
+"Language-Team: Slovenian\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-05 06:33+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: sl\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank je bil Znova Zagnan"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
-msgid "Still stupidly simple."
-msgstr "Bedasto preprost."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -43,29 +42,25 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "začetek"
-
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
 msgstr ""
 
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "Sidrišče"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
@@ -213,11 +208,11 @@ msgstr ""
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "Zasidraj:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "Zasidraj Datoteke:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
@@ -225,7 +220,7 @@ msgstr "Obnašanje"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr ""
+msgstr "Sidrišča"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
@@ -247,7 +242,7 @@ msgstr ""
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:325
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "Ponastavi na privzeto ikono"
 
 #: docklets/Applications/ApplicationsDockItem.vala:335
 msgid "Large Icons"
@@ -267,7 +262,7 @@ msgstr ""
 
 #: docklets/Applications/ApplicationsDockItem.vala:370
 msgid "Image Files"
-msgstr ""
+msgstr "Slikovne datoteke"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -316,7 +311,7 @@ msgstr ""
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "Dovoli Odložišče-Trackin'"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
@@ -330,7 +325,7 @@ msgstr ""
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Odložišče"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
@@ -346,11 +341,11 @@ msgstr ""
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "Pokaži Datum"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Ura"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
@@ -358,7 +353,7 @@ msgstr ""
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "Koledar"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
@@ -390,6 +385,8 @@ msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
@@ -550,9 +547,8 @@ msgid "_Translate This Application..."
 msgstr "Pr_evedi to aplikacijo"
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Možnosti"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"

@@ -5,15 +5,16 @@ msgstr ""
 "POT-Creation-Date: 2025-07-08 11:55-1000\n"
 "PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
-"Language-Team: Malayalam\n"
-"Language: ml\n"
+"Language-Team: Serbian (Latin)\n"
+"Language: sr_CS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: plank-reloaded\n"
 "X-Crowdin-Project-ID: 768623\n"
-"X-Crowdin-Language: ml-IN\n"
+"X-Crowdin-Language: sr-CS\n"
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
@@ -63,27 +64,27 @@ msgstr ""
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
-msgstr ""
+msgstr "Tema:"
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
-msgstr ""
+msgstr "Pozicija:"
 
 #: data/ui/preferences.ui:133
 msgid "Left"
-msgstr ""
+msgstr "Levo"
 
 #: data/ui/preferences.ui:134
 msgid "Right"
-msgstr ""
+msgstr "Desno"
 
 #: data/ui/preferences.ui:135
 msgid "Top"
-msgstr ""
+msgstr "Gore"
 
 #: data/ui/preferences.ui:136
 msgid "Bottom"
-msgstr ""
+msgstr "Dole"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
@@ -95,43 +96,43 @@ msgstr ""
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
-msgstr ""
+msgstr "Poravnanje:"
 
 #: data/ui/preferences.ui:210
 msgid "Fill"
-msgstr ""
+msgstr "Ispunjeno"
 
 #: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
-msgstr ""
+msgstr "Na početak"
 
 #: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
-msgstr ""
+msgstr "Na kraj"
 
 #: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
-msgstr ""
+msgstr "Po sredini"
 
 #: data/ui/preferences.ui:229
 msgid "On Primary Display:"
-msgstr ""
+msgstr "Na glavnom ekranu:"
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr ""
+msgstr "Pomak u procentima od sredine do ivice ekrana"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
-msgstr ""
+msgstr "Poravnanje ikonica:"
 
 #: data/ui/preferences.ui:305
 msgid "Icon Size:"
-msgstr ""
+msgstr "Veličina ikonica:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr ""
+msgstr "Uveličanje ikonica:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
@@ -139,63 +140,63 @@ msgstr ""
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
-msgstr ""
+msgstr "Izgled"
 
 #: data/ui/preferences.ui:456
 msgid "Intellihide"
-msgstr ""
+msgstr "Pametno sakrivanje"
 
 #: data/ui/preferences.ui:457
 msgid "Autohide"
-msgstr ""
+msgstr "Samostalno sakrivanje"
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr ""
+msgstr "Izbegavaj uvećani prozor"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr ""
+msgstr "Izbegavaj prozor"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr ""
+msgstr "Izbegavaj aktivni prozor"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
-msgstr ""
+msgstr "Sakrij dok"
 
 #: data/ui/preferences.ui:502
 msgid "Hide Delay:"
-msgstr ""
+msgstr "Kašnjenje sakrivanja:"
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr ""
+msgstr "Kašnjenje u milisekundama pre nego što se dok sakrije"
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr ""
+msgstr "Kašnjenje otkrivanja:"
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr ""
+msgstr "Kašnjenje u milisekundama pre nego što se dok otkrije"
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
-msgstr ""
+msgstr "Prikazivanje pritiskom:"
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr ""
+msgstr "Upravljanje stavkama"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr ""
+msgstr "Prikaži otkačene:"
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
-msgstr ""
+msgstr "Ograniči na radni prostor:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
@@ -203,7 +204,7 @@ msgstr ""
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr ""
+msgstr "Zaključaj ikonice:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
@@ -215,11 +216,11 @@ msgstr ""
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
-msgstr ""
+msgstr "Ponašanje"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr ""
+msgstr "Dokleti"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
@@ -384,6 +385,7 @@ msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
@@ -467,34 +469,33 @@ msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr ""
+msgstr "Privuci da dodaš na dok"
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Jishnu Mohan https://launchpad.net/~jishnu7\n"
+"  Igor S. https://launchpad.net/~crni2k8\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
-"  ST Alfas https://launchpad.net/~alfasst\n"
-"  muhammed shameem https://launchpad.net/~shameempk"
+"  Иван Благојевић https://launchpad.net/~ivanblago"
 
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "ഡോക്കില്‍ _സൂക്ഷിക്കുക"
+msgstr "_Zadrži na doku"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
-msgstr "എല്ലാം _അടയ്ക്കുക"
+msgstr "_Zatvori sve"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
-msgstr "_അടയ്ക്കുക"
+msgstr "_Zatvori"
 
 #: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
-msgstr ""
+msgstr "Privuci da otvoriš sa %s"
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
@@ -522,27 +523,27 @@ msgstr ""
 
 #: lib/Items/FileDockItem.vala:357
 msgid "_Open in File Browser"
-msgstr "ഫയല്‍ ബ്രൗസറില്‍ _തുറക്കുക"
+msgstr "_Otvori u Pregledaču datoteka"
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
-msgstr "_തുറക്കുക"
+msgstr "_Otvori"
 
 #: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
-msgstr "ഉള്‍പ്പെടുന്ന _അറ തുറക്കുക"
+msgstr "Otvori _sadržajnu fasciklu"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr ""
+msgstr "Privuci aplikacije ili fajlove ovde"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "ഓണ്‍ലൈനില്‍ നിന്നും സഹായം _ലഭ്യമാക്കുക..."
+msgstr "Pronađi _Pomoć na Internetu..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "‌_ഈ പ്രയോഗം പരിഭാഷപ്പെടുത്തുക"
+msgstr "_Prevedi ovu Aplikaciju..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
@@ -558,4 +559,4 @@ msgstr ""
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
-msgstr ""
+msgstr "Podešavanja"

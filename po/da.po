@@ -1,33 +1,29 @@
-# Danish translation for plank
-# Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
-# This file is distributed under the same license as the plank package.
-# scootergrisen, 2017.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: plank\n"
+"Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2019-01-17 02:37+0000\n"
-"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
 "Language-Team: Danish\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-01-18 05:39+0000\n"
-"X-Generator: Launchpad (build 18856)\n"
-"X-Language: da_DK\n"
-"X-Source-Language: C\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: plank-reloaded\n"
+"X-Crowdin-Project-ID: 768623\n"
+"X-Crowdin-Language: da\n"
+"X-Crowdin-File: plank-reloaded.pot\n"
+"X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr ""
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-#, fuzzy
-msgid "Still stupidly simple."
-msgstr "Super simpel."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -45,37 +41,33 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "begyndelsen"
-
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
 msgstr ""
 
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr ""
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
-msgstr "Tema:"
+msgstr "Drakt:"
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
-msgstr "Placering:"
+msgstr "Plassering:"
 
 #: data/ui/preferences.ui:133
 msgid "Left"
@@ -475,31 +467,33 @@ msgstr ""
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Slip for at tilføje til dok"
+msgstr "Slepp for å leggja til ei dokk"
 
 #: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  scootergrisen https://launchpad.net/~scootergrisen"
+"  Martin Myrvold https://launchpad.net/~myrvold-martin\n"
+"  Rico Tzschichholz https://launchpad.net/~ricotz\n"
+"  Sigvart Brendberg https://launchpad.net/~sigvabrend"
 
 #: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
-msgstr "_Behold i dok"
+msgstr "_Fest til Dock"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close All"
-msgstr "_Luk alle"
+msgstr "_Lukk alle"
 
 #: lib/Items/ApplicationDockItem.vala:442
 msgid "_Close"
-msgstr "_Luk"
+msgstr "L_ukk"
 
 #: lib/Items/ApplicationDockItem.vala:581
 #, c-format
 msgid "Drop to open with %s"
-msgstr "Slip for at åbne med %s"
+msgstr "Slepp for å opna med %s"
 
 #: lib/Items/FileDockItem.vala:285
 msgid "_Sort By"
@@ -531,11 +525,11 @@ msgstr "_Åbn i filhåndtering"
 
 #: lib/Items/FileDockItem.vala:378
 msgid "_Open"
-msgstr "_Åbn"
+msgstr "_Opna"
 
 #: lib/Items/FileDockItem.vala:382
 msgid "Open Containing _Folder"
-msgstr "Åbn indeholdende _mappe"
+msgstr "Åpne innhaldet _mappe"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
@@ -550,9 +544,8 @@ msgid "_Translate This Application..."
 msgstr "_Oversæt dette program..."
 
 #: lib/Items/PlankDockItem.vala:76
-#, fuzzy
 msgid "_Preferences"
-msgstr "Præferencer"
+msgstr ""
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
@@ -564,25 +557,4 @@ msgstr ""
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
-msgstr "Præferencer"
-
-#~ msgid ""
-#~ "Plank is meant to be the simplest dock on the planet. The goal is to "
-#~ "provide just what a dock needs and absolutely nothing more."
-#~ msgstr ""
-#~ "Plank er tænkt til at være den simpleste dok på planeten. Målet er at "
-#~ "levere lige præcist hvad en dok behøver og intet andet."
-
-#~ msgid ""
-#~ "It is, however, a library which can be extended to create other dock "
-#~ "programs with more advanced features. Thus, Plank is the underlying "
-#~ "technology for Docky (starting in version 3.0.0) and aims to provide all "
-#~ "the core features while Docky extends it to add fancier things like "
-#~ "Docklets, painters, settings dialogs, etc."
-#~ msgstr ""
-#~ "Det er dog et bibliotek som kan udvides for at oprette andre dok-"
-#~ "programmer med mere avancerede funktioner. Plank er således den "
-#~ "underliggende teknologi for Docky (fra version 3.0.0) og går efter at "
-#~ "levere alle kerne-funktionerne, mens Docky udvider Plank med henblik på "
-#~ "tilføjelse af smarte ting såsom dokletter, malere, indstillingsdialoger "
-#~ "osv."
+msgstr "Innstillingar"

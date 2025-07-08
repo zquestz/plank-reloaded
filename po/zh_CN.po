@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2025-06-18 00:13\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr "Plank Reloaded"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "依旧简单得无语。"
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr "依旧简单得无语"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -47,27 +47,23 @@ msgstr ""
 "所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来"
 "开发具有更多进阶功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
-msgstr "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
+msgstr "停靠Matte 主题"
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
-msgstr "运行"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
+msgstr "外观首选项"
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
-msgstr "面板"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
+msgstr "行为首选项"
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "开始"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
+msgstr "小部件首选项"
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr "Plank Reloaded 开发者团队"
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr "Dock"
 
@@ -572,6 +568,3 @@ msgstr "_退出"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "首选项"
-
-#~ msgid "Restore Files"
-#~ msgstr "还原文件"

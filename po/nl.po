@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-06-27 23:22-1000\n"
-"PO-Revision-Date: 2025-07-03 22:11\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"POT-Creation-Date: 2025-07-08 11:55-1000\n"
+"PO-Revision-Date: 2025-07-08 22:18\n"
+"Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Crowdin-File: plank-reloaded.pot\n"
 "X-Crowdin-File-ID: 4\n"
 
-#: data/plank.appdata.xml.in:6 data/plank.desktop.in:2
+#: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
 msgstr "Plank - Herboren"
 
-#: data/plank.appdata.xml.in:7 data/plank.desktop.in:4
-msgid "Still stupidly simple."
-msgstr "Nog steeds belachelijk eenvoudig."
+#: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
+msgid "Still stupidly simple"
+msgstr "Nog steeds belachelijk eenvoudig"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -49,27 +49,23 @@ msgstr ""
 "een zo eenvoudig mogelijk dock. Precies wat je nodig hebt en niets meer dan "
 "dat. Ook wordt een bibliotheek geboden om andere docks van te kunnen maken."
 
-#: data/plank.appdata.xml.in:22
-msgid "dock"
-msgstr "dock"
+#: data/plank.appdata.xml.in:107
+msgid "Dock with Matte theme"
+msgstr "Dock met Matte-thema"
 
-#: data/plank.appdata.xml.in:23
-msgid "launch"
-msgstr "starten"
+#: data/plank.appdata.xml.in:111
+msgid "Appearance Preferences"
+msgstr "Voorkeuren uiterlijk"
 
-#: data/plank.appdata.xml.in:24
-msgid "panel"
-msgstr "paneel"
+#: data/plank.appdata.xml.in:115
+msgid "Behavior Preferences"
+msgstr "Gedrag voorkeuren"
 
-#: data/plank.appdata.xml.in:25
-msgid "start"
-msgstr "start"
+#: data/plank.appdata.xml.in:119
+msgid "Docklets Preferences"
+msgstr "Docklets Voorkeuren"
 
-#: data/plank.appdata.xml.in:36
-msgid "The Plank Reloaded Developers"
-msgstr "De ontwikkelaars van Plank - Herboren"
-
-#: data/plank.desktop.in:3
+#: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
 msgstr "Dock"
 
