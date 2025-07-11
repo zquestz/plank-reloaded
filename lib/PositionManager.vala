@@ -1714,6 +1714,8 @@ namespace Plank {
     public Gdk.Rectangle get_icon_geometry (ApplicationDockItem item, bool for_hidden) {
       var draw_value = get_draw_value_for_item (item);
 
+      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
         int hit_box_size = (int) Math.round (draw_value.icon_size / 4.0);
@@ -1740,6 +1742,11 @@ namespace Plank {
           region.x = win_x + DockWidth + GapSize - hit_box_size;
           break;
         }
+
+        region.x *= window_scale_factor;
+        region.y *= window_scale_factor;
+        region.width *= window_scale_factor;
+        region.height *= window_scale_factor;
 
         return region;
       }
