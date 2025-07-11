@@ -764,8 +764,8 @@ namespace Plank {
 
       if (screen_is_composited) {
         var offset = Offset;
-        xoffset = (int) ((1 + offset / 100.0) * xoffset);
-        yoffset = (int) ((1 + offset / 100.0) * yoffset);
+        xoffset = xoffset + (offset * xoffset) / 100;
+        yoffset = yoffset + (offset * yoffset) / 100;
 
         switch (Alignment) {
         default:
@@ -1484,8 +1484,8 @@ namespace Plank {
 
       if (!screen_is_composited) {
         var offset = Offset;
-        xoffset = (int) ((1 + offset / 100.0) * (monitor_geo.width - DockWidth) / 2);
-        yoffset = (int) ((1 + offset / 100.0) * (monitor_geo.height - DockHeight) / 2);
+        xoffset = (monitor_geo.width - DockWidth) / 2 + (offset * (monitor_geo.width - DockWidth)) / 200;
+        yoffset = (monitor_geo.height - DockHeight) / 2 + (offset * (monitor_geo.height - DockHeight)) / 200;
 
         switch (Alignment) {
         default:
