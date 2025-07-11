@@ -542,6 +542,10 @@ namespace Plank {
     int get_items_width (Gee.ArrayList<unowned DockItem> items) {
       int width = items.size * IconSize;
 
+      if (items.size > 0) {
+        width += items[0].is_separator () ? SeparatorPadding : ItemPadding;
+      }
+
       // Add padding between items - separator affects padding on both sides
       for (int idx = 0; idx < items.size - 1; idx++) {
         var item = items[idx];
