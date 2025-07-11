@@ -542,10 +542,6 @@ namespace Plank {
     int get_items_width (Gee.ArrayList<unowned DockItem> items) {
       int width = items.size * IconSize;
 
-      if (items.size > 0) {
-        width += items[0].is_separator () ? SeparatorPadding : ItemPadding;
-      }
-
       // Add padding between items - separator affects padding on both sides
       for (int idx = 0; idx < items.size - 1; idx++) {
         var item = items[idx];
@@ -908,13 +904,7 @@ namespace Plank {
 
       // the line along the dock width about which the center of unzoomed icons sit
       double center_y = (is_horizontal_dock () ? static_dock_region.height / 2.0 : static_dock_region.width / 2.0);
-
-      // Calculate starting position taking into account the first padding
-      double first_padding = ItemPadding;
-      if (items.size > 0 && items[0].is_separator ()) {
-        first_padding = SeparatorPadding;
-      }
-      double center_x = (icon_size + first_padding) / 2.0 + items_offset;
+      double center_x = (icon_size) / 2.0 + items_offset;
 
       if (Alignment == Gtk.Align.FILL) {
         switch (ItemsAlignment) {
@@ -1067,11 +1057,11 @@ namespace Plank {
 
         draw_values[item] = val;
 
-        if (item.RemoveTime == 0) {
+        if (item.RemoveTime == 0 && idx < (items.size - 1)) {
           double padding = ItemPadding;
           if (item.is_separator ()) {
             padding = SeparatorPadding;
-          } else if (idx + 1 < items.size && items[idx + 1].is_separator ()) {
+          } else if (items[idx + 1].is_separator ()) {
             padding = SeparatorPadding;
           }
           center.x += icon_size + padding;
