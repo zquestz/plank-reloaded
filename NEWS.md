@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.141 "Reloaded" (2025-07-11)
+
+- Fixed slight miscalculation in centering logic
+- Fixed window animations when using fractional scaling
+
 ## 0.11.140 "Reloaded" (2025-07-08)
 
 - Updated Dutch translation
