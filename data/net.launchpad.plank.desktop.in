@@ -8,3 +8,4 @@ Exec=plank
 Icon=plank-reloaded
 Terminal=false
 NoDisplay=false
+StartupWMClass=plank
