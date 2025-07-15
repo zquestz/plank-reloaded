@@ -20,6 +20,9 @@ docklets/CPUMonitor/CPUMonitorDockItem.vala
 docklets/CPUMonitor/CPUMonitorDocklet.vala
 docklets/Desktop/DesktopDockItem.vala
 docklets/Desktop/DesktopDocklet.vala
+docklets/Notifications/NotificationsDockItem.vala
+docklets/Notifications/NotificationsDocklet.vala
+docklets/Notifications/NotificationsPreferences.vala
 docklets/Trash/TrashDockItem.vala
 docklets/Trash/TrashDocklet.vala
 docklets/Separator/SeparatorDockItem.vala
