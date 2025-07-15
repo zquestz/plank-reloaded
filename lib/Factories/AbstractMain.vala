@@ -269,6 +269,9 @@ namespace Plank {
         return;
       }
 
+      // Initialize FontConfig
+      Gdk.pango_context_get ().get_font_map ();
+
       Paths.initialize (exec_name, build_pkg_data_dir);
       WindowControl.initialize ();
       DockletManager.get_default ().load_docklets ();
