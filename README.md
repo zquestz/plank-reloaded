@@ -22,6 +22,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
   - Battery: Modern UPower integration
   - Clock: Enhanced digital display with new pop-up calendar
   - Clippy: Better text handling and menu organization
+  - Notifications: A notification docklet for displaying system notifications
   - Separator: A simple separator so you can setup a Mac OS X like dock experience
   - Workspaces: A graphical workspace switcher
   - Refreshed icons across all docklets
