@@ -23,7 +23,7 @@ namespace Docky {
     private GMenu.Tree apps_menu;
     private Gtk.Menu? app_menu = null;
     private Gee.ArrayList<Gtk.MenuItem>? app_menu_items = null;
-    private Mutex apps_menu_mutex;
+    private Object apps_menu_lock = new Object();
     private bool apps_loaded;
     private Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
 
@@ -62,8 +62,11 @@ namespace Docky {
         break;
       }
 
-      apps_menu = new GMenu.Tree(menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
-      apps_menu.changed.connect(update_menu);
+      lock (apps_menu_lock) {
+        apps_menu = new GMenu.Tree(menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
+        apps_menu.changed.connect(update_menu);
+      }
+
       icon_theme.changed.connect(update_menu);
       update_menu.begin();
     }
@@ -83,9 +86,11 @@ namespace Docky {
         update_timer_id = 0;
       }
 
-      if (apps_menu != null) {
-        apps_menu.changed.disconnect(update_menu);
-        apps_menu = null;
+      lock (apps_menu_lock) {
+        if (apps_menu != null) {
+          apps_menu.changed.disconnect(update_menu);
+          apps_menu = null;
+        }
       }
 
       if (app_menu != null) {
@@ -100,15 +105,14 @@ namespace Docky {
     private async void update_menu() {
       try {
         yield Worker.get_default().add_task_with_result<void*> (() => {
-          apps_menu_mutex.lock();
-          try {
-            apps_menu.load_sync();
-            apps_loaded = true;
-          } catch (Error e) {
-            warning("Failed to load applications (%s)", e.message);
-            apps_loaded = false;
-          } finally {
-            apps_menu_mutex.unlock();
+          lock (apps_menu_lock) {
+            try {
+              apps_menu.load_sync();
+              apps_loaded = true;
+            } catch (Error e) {
+              warning("Failed to load applications (%s)", e.message);
+              apps_loaded = false;
+            }
           }
           return null;
         }, TaskPriority.HIGH);
@@ -185,6 +189,8 @@ namespace Docky {
 
       if (app_menu == null) {
         app_menu = new Gtk.Menu();
+        app_menu.reserve_toggle_size = false;
+
         app_menu.show.connect(on_menu_show);
         app_menu.hide.connect(on_menu_hide);
         app_menu.attach_to_widget(controller.window, null);
@@ -444,8 +450,7 @@ namespace Docky {
     private Gee.ArrayList<Gtk.MenuItem> get_applications_menu_items() {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      apps_menu_mutex.lock();
-      try {
+      lock (apps_menu_lock) {
         if (!apps_loaded) {
           items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
           return items;
@@ -467,8 +472,6 @@ namespace Docky {
             }
           }
         }
-      } finally {
-        apps_menu_mutex.unlock();
       }
 
       return items;
@@ -480,6 +483,7 @@ namespace Docky {
       var icon = DrawingService.get_icon_from_gicon(category.get_icon()) ?? "";
       var item = create_applications_menu_item(category.get_name(), icon, true);
       var submenu = new Gtk.Menu();
+      submenu.reserve_toggle_size = false;
 
       add_menu_items(submenu, category);
 
