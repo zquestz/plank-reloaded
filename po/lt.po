@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-11 09:17-1000\n"
+"POT-Creation-Date: 2025-07-18 13:04-1000\n"
 "PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
@@ -231,36 +231,36 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:298
+#: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:317
+#: docklets/Applications/ApplicationsDockItem.vala:323
 msgid "Choose Custom Icon"
 msgstr ""
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:325
+#: docklets/Applications/ApplicationsDockItem.vala:331
 msgid "Reset to Default Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:335
+#: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:348
+#: docklets/Applications/ApplicationsDockItem.vala:354
 msgid "Select Custom Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:351
+#: docklets/Applications/ApplicationsDockItem.vala:357
 msgid "Cancel"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:352
+#: docklets/Applications/ApplicationsDockItem.vala:358
 msgid "Select"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:376
 msgid "Image Files"
 msgstr ""
 
@@ -375,6 +375,53 @@ msgstr ""
 msgid "Show your Desktop."
 msgstr ""
 
+#: docklets/Notifications/NotificationsDockItem.vala:264
+#: docklets/Notifications/NotificationsDocklet.vala:28
+msgid "Notifications"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:996
+msgid "just now"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:999
+#, c-format
+msgid "%d minute ago"
+msgid_plural "%d minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:1002
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:1048
+msgid "Enable _Expiry"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:1056
+msgid "Show _Count"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:1064
+msgid "Show _Transient"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDockItem.vala:1080
+msgid "Clear Notifications"
+msgstr ""
+
+#: docklets/Notifications/NotificationsDocklet.vala:29
+msgid "Simple notifications docklet."
+msgstr ""
+
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
 msgstr ""
@@ -472,7 +519,7 @@ msgstr ""
 msgid "Drop to add to dock"
 msgstr "Paleiskite, kad įdėtumėte į skydelį"
 
-#: lib/Factories/AbstractMain.vala:424 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
