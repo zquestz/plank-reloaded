@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.143 "Reloaded" (2025-07-19)
+
+- Retry updates on screen_changed signals
+- Added Catalan translations
+- Added optional systemd service
+
 ## 0.11.142 "Reloaded" (2025-07-18)
 
 - Added new Notifications docklet for system notifications

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-18 14:18-1000\n"
+"POT-Creation-Date: 2025-07-19 12:36-1000\n"
 "PO-Revision-Date: 2025-07-18 23:31\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
@@ -49,19 +49,19 @@ msgstr ""
 "है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा "
 "सकता है।"
 
-#: data/plank.appdata.xml.in:109
+#: data/plank.appdata.xml.in:110
 msgid "Dock with Matte theme"
 msgstr "मैट थीम के साथ डॉक"
 
-#: data/plank.appdata.xml.in:113
+#: data/plank.appdata.xml.in:114
 msgid "Appearance Preferences"
 msgstr "उपस्थिति प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Behavior Preferences"
 msgstr "व्यवहार प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Docklets Preferences"
 msgstr "डॉकलेट्स प्राथमिकताएँ"
 
