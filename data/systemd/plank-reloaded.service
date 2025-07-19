@@ -8,6 +8,7 @@ PartOf=graphical-session.target
 Type=simple
 ExecStart=plank
 Restart=on-failure
+KillMode=process
 StandardOutput=journal
 StandardError=journal
 
