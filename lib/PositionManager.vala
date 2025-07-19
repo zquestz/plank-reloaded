@@ -66,12 +66,11 @@ namespace Plank {
       screen.size_changed.connect (screen_changed);
       screen.composited_changed.connect (screen_composited_changed);
 
-      // NOTE don't call update_monitor_geo to avoid a double-call of dockwindow.set_size on startup
       var display = screen.get_display ();
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
+      if (use_monitor_geometry ()) {
         monitor_geo = monitor.get_geometry ();
       } else {
         monitor_geo = monitor.get_workarea ();
@@ -95,6 +94,10 @@ namespace Plank {
       controller.prefs.notify.disconnect (prefs_changed);
 
       draw_values.clear ();
+    }
+
+    bool use_monitor_geometry () {
+      return environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE);
     }
 
     void prefs_changed (Object prefs, ParamSpec prop) {
@@ -235,6 +238,10 @@ namespace Plank {
     }
 
     void screen_changed (Gdk.Screen screen) {
+      do_screen_changed (screen, 0);
+    }
+
+    void do_screen_changed (Gdk.Screen screen, uint retry) {
       var old_monitor_geo = monitor_geo;
       var old_monitor_num = monitor_num;
 
@@ -242,19 +249,26 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE)) {
+      if (use_monitor_geometry ()) {
         monitor_geo = monitor.get_geometry ();
       } else {
         monitor_geo = monitor.get_workarea ();
       }
 
-      // No need to do anything if nothing has actually changed
       if (old_monitor_num == monitor_num
           && old_monitor_geo.x == monitor_geo.x
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
-          && old_monitor_geo.height == monitor_geo.height)
+          && old_monitor_geo.height == monitor_geo.height) {
+        if (retry < 6) {
+          GLib.Timeout.add (500, () => {
+            do_screen_changed (screen, retry + 1);
+            return GLib.Source.REMOVE;
+          });
+          return;
+        }
         return;
+      }
 
       Logger.verbose ("PositionManager.monitor_geo_changed (%i,%i-%ix%i)",
                       monitor_geo.x, monitor_geo.y, monitor_geo.width, monitor_geo.height);
