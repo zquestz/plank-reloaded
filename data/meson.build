@@ -53,3 +53,11 @@ if enable_apport
     install_dir: join_paths(get_option('sysconfdir'), 'apport', 'crashdb.conf.d'),
   )
 endif
+
+systemd = dependency('systemd', required: false)
+if systemd.found()
+  install_data(
+    'plank-reloaded.service',
+    install_dir: systemd.get_variable('systemduserunitdir'),
+  )
+endif

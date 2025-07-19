@@ -21,13 +21,14 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
   - Clock: Enhanced digital display with new pop-up calendar
-  - Clippy: Better text handling and menu organization
+  - Clippy: Image support, improved text handling and menu organization
   - Notifications: A notification docklet for displaying system notifications
   - Separator: A simple separator so you can setup a Mac OS X like dock experience
   - Workspaces: A graphical workspace switcher
   - Refreshed icons across all docklets
   - Support for third party docklets
 - Added Matte and Matte-Light themes, based on [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
+- Optional systemd user service support for automatic startup and service management
 - Added theme options to set the indicator, active item, and badge styles
 - General code cleanup and stability improvements
 
@@ -251,6 +252,41 @@ Check if "Restrict to Workspace" is enabled in preferences. When enabled, applic
 ### How can application developers show counts or progress indicators on their dock icons?
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
+
+## Systemd Support
+
+Plank Reloaded includes an optional systemd user service for automatic startup and service management. This is an alternative to adding Plank to your desktop environment's startup applications.
+
+### Enable and Start the Service
+
+```bash
+# Enable the service to start automatically with your user session
+systemctl --user enable plank-reloaded.service
+
+# Start the service immediately
+systemctl --user start plank-reloaded.service
+```
+
+### Managing the Service
+
+```bash
+# Stop the service
+systemctl --user stop plank-reloaded.service
+
+# Disable automatic startup
+systemctl --user disable plank-reloaded.service
+
+# Check service status
+systemctl --user status plank-reloaded.service
+
+# View service logs
+journalctl --user -u plank-reloaded.service
+
+# Follow logs in real-time
+journalctl --user -u plank-reloaded.service -f
+```
+
+**Note:** The systemd service is completely optional. You can still use traditional startup methods if you prefer.
 
 ## Reporting Bugs
 
