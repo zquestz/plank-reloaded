@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-18 13:04-1000\n"
+"POT-Creation-Date: 2025-07-18 14:16-1000\n"
 "PO-Revision-Date: 2025-07-18 23:31\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
 "dock cu funcții mai avansate."
 
-#: data/plank.appdata.xml.in:108
+#: data/plank.appdata.xml.in:109
 msgid "Dock with Matte theme"
 msgstr "Dock cu tema Matte"
 
-#: data/plank.appdata.xml.in:112
+#: data/plank.appdata.xml.in:113
 msgid "Appearance Preferences"
 msgstr "Preferințe de Aspect"
 
-#: data/plank.appdata.xml.in:116
+#: data/plank.appdata.xml.in:117
 msgid "Behavior Preferences"
 msgstr "Preferințe Comportament"
 
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Docklets Preferences"
 msgstr "Preferințe Docklets"
 

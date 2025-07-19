@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.142 "Reloaded" (2025-07-18)
+
+- Added new Notifications docklet for system notifications
+- Updated Applications docklet locks and menu spacing
+- Added explicit StartupWMClass to .desktop file
+
 ## 0.11.141 "Reloaded" (2025-07-11)
 
 - Fixed slight miscalculation in centering logic

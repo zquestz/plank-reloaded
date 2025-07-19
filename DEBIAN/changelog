@@ -1,3 +1,11 @@
+plank-reloaded (0.11.142-1) unstable; urgency=medium
+
+  * Added new Notifications docklet for system notifications
+  * Updated Applications docklet locks and menu spacing
+  * Added explicit StartupWMClass to .desktop file
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 18 Jul 2025 13:13:07 -1000
+
 plank-reloaded (0.11.141-1) unstable; urgency=medium
 
   * Fixed slight miscalculation in centering logic
