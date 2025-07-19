@@ -5,6 +5,7 @@ Section: x11
 Maintainer: Josh Ellithorpe <quest@mac.com>
 Architecture: amd64
 Depends: bamfdaemon, libgee-0.8-2, libgnome-menu-3-0, libwnck-3-0, libc6
+Conflicts: plank, libplank-common, libplank1
 Homepage: https://github.com/zquestz/plank-reloaded
 Description: Elegant and simple dock.
  Plank Reloaded is a fork of the original Plank project, providing a simple dock
