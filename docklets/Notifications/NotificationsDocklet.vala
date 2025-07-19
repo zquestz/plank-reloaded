@@ -22,7 +22,7 @@ public static void docklet_init (Plank.DockletManager manager) {
 namespace Docky {
   public class NotificationsDocklet : Object, Plank.Docklet {
     private const string ID = "notifications";
-    public const string ICON = "notifications;;cs-notifications;;org.kde.plasma.notifications";
+    public const string ICON = "notifications;;cs-notifications;;org.kde.plasma.notifications;;indicator-notification-read;;ayatana-indicator-notification-read";
 
     public unowned string get_id () { return ID; }
     public unowned string get_name () { return _("Notifications"); }
