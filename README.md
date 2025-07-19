@@ -261,7 +261,7 @@ Plank Reloaded includes an optional systemd user service for automatic startup a
 
 ```bash
 # Enable the service to start automatically with your user session
-systemctl --user enable plank-reloaded.service
+systemctl --user enable plank-reloaded.timer
 
 # Start the service immediately
 systemctl --user start plank-reloaded.service
@@ -274,7 +274,7 @@ systemctl --user start plank-reloaded.service
 systemctl --user stop plank-reloaded.service
 
 # Disable automatic startup
-systemctl --user disable plank-reloaded.service
+systemctl --user disable plank-reloaded.timer
 
 # Check service status
 systemctl --user status plank-reloaded.service

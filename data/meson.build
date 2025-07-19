@@ -57,7 +57,11 @@ endif
 systemd = dependency('systemd', required: false)
 if systemd.found()
   install_data(
-    'plank-reloaded.service',
+    'systemd/plank-reloaded.service',
+    install_dir: systemd.get_variable('systemduserunitdir'),
+  )
+  install_data(
+    'systemd/plank-reloaded.timer',
     install_dir: systemd.get_variable('systemduserunitdir'),
   )
 endif
