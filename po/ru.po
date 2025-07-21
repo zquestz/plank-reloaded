@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-19 12:36-1000\n"
+"POT-Creation-Date: 2025-07-20 17:25-1000\n"
 "PO-Revision-Date: 2025-07-18 23:31\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -40,7 +40,7 @@ msgstr ""
 "рабочего стола, включая MATE и Xfce. Wayland в настоящее время не "
 "поддерживается."
 
-#: data/plank.appdata.xml.in:15
+#: data/plank.appdata.xml.in:12
 msgid ""
 "Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
 "planet, providing just what a dock needs and absolutely nothing more. It "
@@ -52,19 +52,19 @@ msgstr ""
 "абсолютно ничего лишнего. Он также остаётся библиотекой, которую можно "
 "расширять для создания других док-программ с более продвинутыми функциями."
 
-#: data/plank.appdata.xml.in:110
+#: data/plank.appdata.xml.in:106
 msgid "Dock with Matte theme"
 msgstr "Док с темой Матовый"
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:110
 msgid "Appearance Preferences"
 msgstr "Настройки внешнего вида"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:114
 msgid "Behavior Preferences"
 msgstr "Настройки поведения"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:118
 msgid "Docklets Preferences"
 msgstr "Настройки доклетов"
 

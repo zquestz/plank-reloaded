@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.144 "Reloaded" (2025-07-20)
+
+- Fixed dock positioning issues during display transitions
+- Updated Apport to report bugs to GitHub
+- Added Notifications docklet icon for MATE
+
 ## 0.11.143 "Reloaded" (2025-07-19)
 
 - Retry updates on screen_changed signals

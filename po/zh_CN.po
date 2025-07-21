@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-19 12:36-1000\n"
+"POT-Creation-Date: 2025-07-20 17:25-1000\n"
 "PO-Revision-Date: 2025-07-18 23:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -36,7 +36,7 @@ msgstr ""
 "最初专注于 Cinnamon，我们现在积极开发支持 MATE 和 Xfce 在内的多种桌面环境。目"
 "前不支持 Wayland。"
 
-#: data/plank.appdata.xml.in:15
+#: data/plank.appdata.xml.in:12
 msgid ""
 "Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
 "planet, providing just what a dock needs and absolutely nothing more. It "
@@ -47,19 +47,19 @@ msgstr ""
 "所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来"
 "开发具有更多进阶功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:110
+#: data/plank.appdata.xml.in:106
 msgid "Dock with Matte theme"
 msgstr "停靠Matte 主题"
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:110
 msgid "Appearance Preferences"
 msgstr "外观首选项"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:114
 msgid "Behavior Preferences"
 msgstr "行为首选项"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:118
 msgid "Docklets Preferences"
 msgstr "小部件首选项"
 

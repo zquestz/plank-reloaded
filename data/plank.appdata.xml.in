@@ -7,15 +7,10 @@
   <summary>Still stupidly simple</summary>
   <description>
     <p>
-      Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11
-      desktop environments. While development began with a focus on Cinnamon, we now actively
-      support multiple desktop environments including MATE and Xfce. Wayland is not supported at
-      this time.
+      Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time.
     </p>
     <p>
-      Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing
-      just what a dock needs and absolutely nothing more. It also remains a library which can be
-      extended to create other dock programs with more advanced features.
+      Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
     </p>
   </description>
   <keywords>
@@ -40,6 +35,7 @@
   <launchable type="desktop-id">net.launchpad.plank.desktop</launchable>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.11.144" timestamp="1753068107" />
     <release version="0.11.143" timestamp="1752964573" />
     <release version="0.11.142" timestamp="1752884170" />
     <release version="0.11.141" timestamp="1752261449" />

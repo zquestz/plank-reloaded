@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-19 12:36-1000\n"
+"POT-Creation-Date: 2025-07-20 17:25-1000\n"
 "PO-Revision-Date: 2025-07-18 23:32\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -38,7 +38,7 @@ msgstr ""
 "activamente múltiples entornos de escritorio, incluyendo MATE y Xfce. "
 "Wayland no está soportado en este momento."
 
-#: data/plank.appdata.xml.in:15
+#: data/plank.appdata.xml.in:12
 msgid ""
 "Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
 "planet, providing just what a dock needs and absolutely nothing more. It "
@@ -51,19 +51,19 @@ msgstr ""
 "extender para crear otros programas de acoplamiento con características más "
 "avanzadas."
 
-#: data/plank.appdata.xml.in:110
+#: data/plank.appdata.xml.in:106
 msgid "Dock with Matte theme"
 msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:110
 msgid "Appearance Preferences"
 msgstr "Preferencias de apariencia"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:114
 msgid "Behavior Preferences"
 msgstr "Preferencias de comportamiento"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:118
 msgid "Docklets Preferences"
 msgstr "Preferencias de Docklets"
 
