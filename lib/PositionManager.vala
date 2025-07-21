@@ -30,6 +30,7 @@ namespace Plank {
     Gee.HashMap<DockElement, DockItemDrawValue> draw_values;
 
     uint active_display_timeout_id;
+    uint screen_changed_timeout_id;
 
     Gdk.Rectangle monitor_geo;
     int monitor_num;
@@ -85,6 +86,7 @@ namespace Plank {
 
     ~PositionManager () {
       stop_active_display_polling ();
+      stop_screen_changed_timeout ();
 
       unowned Gdk.Screen screen = controller.window.get_screen ();
 
@@ -175,6 +177,13 @@ namespace Plank {
       }
     }
 
+    void stop_screen_changed_timeout () {
+      if (screen_changed_timeout_id > 0) {
+        GLib.Source.remove (screen_changed_timeout_id);
+        screen_changed_timeout_id = 0;
+      }
+    }
+
     public static string[] get_monitor_plug_names (Gdk.Screen screen) {
       var display = screen.get_display ();
       int n_monitors = display.get_n_monitors ();
@@ -238,7 +247,13 @@ namespace Plank {
     }
 
     void screen_changed (Gdk.Screen screen) {
-      do_screen_changed (screen, 0);
+      stop_screen_changed_timeout ();
+
+      screen_changed_timeout_id = GLib.Timeout.add (500, () => {
+        do_screen_changed (screen, 0);
+        screen_changed_timeout_id = 0;
+        return GLib.Source.REMOVE;
+      });
     }
 
     void do_screen_changed (Gdk.Screen screen, uint retry) {
