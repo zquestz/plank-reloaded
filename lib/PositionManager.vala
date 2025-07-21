@@ -99,7 +99,7 @@ namespace Plank {
     }
 
     bool use_monitor_geometry () {
-      return environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE);
+      return environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE);
     }
 
     void prefs_changed (Object prefs, ParamSpec prop) {
