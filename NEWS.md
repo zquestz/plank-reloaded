@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.145 "Reloaded" (2025-07-20)
+
+- Fixed KDE dock positioning after resolution change
+
 ## 0.11.144 "Reloaded" (2025-07-20)
 
 - Fixed dock positioning issues during display transitions

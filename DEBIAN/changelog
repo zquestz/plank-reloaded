@@ -1,3 +1,9 @@
+plank-reloaded (0.11.145-1) unstable; urgency=medium
+
+  * Fixed KDE dock positioning after resolution change
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 20 Jul 2025 18:51:12 -1000
+
 plank-reloaded (0.11.144-1) unstable; urgency=medium
 
   * Fixed dock positioning issues during display transitions
