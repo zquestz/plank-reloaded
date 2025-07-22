@@ -26,6 +26,8 @@ namespace Plank {
       "file:///usr/share/applications/brave-browser.desktop",
       "file:///usr/share/applications/chromium-browser.desktop",
       "file:///usr/share/applications/firefox.desktop",
+      "file:///usr/share/applications/org.mozilla.firefox.desktop",
+      "file:///var/lib/snapd/desktop/applications/firefox_firefox.desktop",
       "file:///usr/share/applications/google-chrome.desktop",
       "file:///usr/share/applications/epiphany.desktop",
       "file:///usr/share/applications/midori.desktop",
@@ -35,8 +37,11 @@ namespace Plank {
     const string[] DEFAULT_APP_MAIL = {
       "file:///usr/share/applications/org.mozilla.Thunderbird.desktop",
       "file:///usr/share/applications/thunderbird.desktop",
+      "file:///var/lib/snapd/desktop/applications/thunderbird_thunderbird.desktop",
       "file:///usr/share/applications/evolution.desktop",
+      "file:///usr/share/applications/org.gnome.Evolution.desktop",
       "file:///usr/share/applications/geary.desktop",
+      "file:///usr/share/applications/org.kde.kmail2.desktop",
       "file:///usr/share/applications/kde4/KMail2.desktop"
     };
 
@@ -44,37 +49,49 @@ namespace Plank {
       "file:///usr/share/applications/com.mitchellh.ghostty.desktop",
       "file:///usr/share/applications/kitty.desktop",
       "file:///usr/share/applications/terminator.desktop",
+      "file:///usr/share/applications/org.gnome.Terminal.desktop",
       "file:///usr/share/applications/gnome-terminal.desktop",
       "file:///usr/share/applications/pantheon-terminal.desktop",
+      "file:///usr/share/applications/org.kde.konsole.desktop",
+      "file:///usr/share/applications/xfce4-terminal.desktop",
+      "file:///usr/share/applications/mate-terminal.desktop",
       "file:///usr/share/applications/kde4/konsole.desktop",
       "file:///usr/share/applications/xterm.desktop"
     };
 
     const string[] DEFAULT_APP_AUDIO = {
+      "file:///usr/share/applications/org.gnome.Rhythmbox3.desktop",
       "file:///usr/share/applications/rhythmbox.desktop",
       "file:///usr/share/applications/spotify.desktop",
       "file:///usr/share/applications/exaile.desktop",
       "file:///usr/share/applications/songbird.desktop",
       "file:///usr/share/applications/noise.desktop",
-      "file:///usr/share/applications/banshee-1.desktop",
+      "file:///usr/share/applications/org.kde.elisa.desktop",
       "file:///usr/share/applications/kde4/amarok.desktop"
     };
 
     const string[] DEFAULT_APP_VIDEO = {
       "file:///usr/share/applications/vlc.desktop",
       "file:///usr/share/applications/totem.desktop",
+      "file:///usr/share/applications/mpv.desktop",
       "file:///usr/share/applications/mplayer.desktop",
       "file:///usr/share/applications/audience.desktop",
-      "file:///usr/share/applications/kde4/amarok.desktop"
+      "file:///usr/share/applications/org.xfce.Parole.desktop",
+      "file:///usr/share/applications/io.github.celluloid_player.Celluloid.desktop",
+      "file:///usr/share/applications/org.kde.dragonplayer.desktop"
     };
 
     const string[] DEFAULT_APP_PHOTO = {
       "file:///usr/share/applications/pix.desktop",
       "file:///usr/share/applications/gimp.desktop",
       "file:///usr/share/applications/eog.desktop",
+      "file:///usr/share/applications/xviewer.desktop",
+      "file:///usr/share/applications/eom.desktop",
       "file:///usr/share/applications/gnome-photos.desktop",
       "file:///usr/share/applications/org.gnome.Photos.desktop",
       "file:///usr/share/applications/shotwell.desktop",
+      "file:///usr/share/applications/org.gnome.Shotwell.desktop",
+      "file:///usr/share/applications/org.kde.gwenview.desktop",
       "file:///usr/share/applications/kde4/digikam.desktop"
     };
 
@@ -265,76 +282,95 @@ namespace Plank {
       }
     }
 
-    bool make_default_gnome_items () {
-      var browser = AppInfo.get_default_for_type ("x-scheme-handler/http", false);
-      var mail = AppInfo.get_default_for_type ("x-scheme-handler/mailto", false);
-      // FIXME dont know how to get terminal...
-      var terminal = AppInfo.get_default_for_uri_scheme ("ssh");
-      var audio = AppInfo.get_default_for_type ("audio/x-vorbis+ogg", false);
-      var video = AppInfo.get_default_for_type ("video/x-ogm+ogg", false);
-      var photo = AppInfo.get_default_for_type ("image/jpeg", false);
-
-      if (browser == null && mail == null && terminal == null
-          && audio == null && video == null && photo == null)
-        return false;
-
-      if (browser != null)
-        make_dock_item_for_desktop_id (browser.get_id ());
-      if (mail != null)
-        make_dock_item_for_desktop_id (mail.get_id ());
-      if (terminal != null)
-        make_dock_item_for_desktop_id (terminal.get_id ());
-      if (audio != null)
-        make_dock_item_for_desktop_id (audio.get_id ());
-      if (video != null)
-        make_dock_item_for_desktop_id (video.get_id ());
-      if (photo != null)
-        make_dock_item_for_desktop_id (photo.get_id ());
-
-      return true;
-    }
-
     /**
      * Creates a bunch of default .dockitem's.
      */
     public void make_default_items () {
-      if (make_default_gnome_items ())
-        return;
-
-      // add browser
-      foreach (unowned string uri in DEFAULT_APP_WEB)
-        if (make_dock_item (uri) != null)
+      GLib.File? web = null;
+      foreach (unowned string uri in DEFAULT_APP_WEB) {
+        web = make_dock_item (uri);
+        if (web != null) {
           break;
+        }
+      }
+      if (web == null) {
+        var web_appinfo = AppInfo.get_default_for_type ("x-scheme-handler/http", false);
+        if (web_appinfo != null) {
+          make_dock_item_for_desktop_id (web_appinfo.get_id ());
+        }
+      }
 
-      // add mail-client
-      foreach (unowned string uri in DEFAULT_APP_MAIL)
-        if (make_dock_item (uri) != null)
+      GLib.File? mail = null;
+      foreach (unowned string uri in DEFAULT_APP_MAIL) {
+        mail = make_dock_item (uri);
+        if (mail != null) {
           break;
+        }
+      }
+      if (mail == null) {
+        var mail_appinfo = AppInfo.get_default_for_type ("x-scheme-handler/mailto", false);
+        if (mail_appinfo != null) {
+          make_dock_item_for_desktop_id (mail_appinfo.get_id ());
+        }
+      }
 
-      // add terminal
-      foreach (unowned string uri in DEFAULT_APP_TERMINAL)
-        if (make_dock_item (uri) != null)
+      GLib.File? terminal;
+      foreach (unowned string uri in DEFAULT_APP_TERMINAL) {
+        terminal = make_dock_item (uri);
+        if (terminal != null) {
           break;
+        }
+      }
 
-      // add audio player
-      foreach (unowned string uri in DEFAULT_APP_AUDIO)
-        if (make_dock_item (uri) != null)
+      GLib.File? audio = null;
+      foreach (unowned string uri in DEFAULT_APP_AUDIO) {
+        audio = make_dock_item (uri);
+        if (audio != null) {
           break;
+        }
+      }
+      if (audio == null) {
+        var audio_appinfo = AppInfo.get_default_for_type ("audio/mpeg", false);
+        if (audio_appinfo != null) {
+          make_dock_item_for_desktop_id (audio_appinfo.get_id ());
+        }
+      }
 
-      // add video player
-      foreach (unowned string uri in DEFAULT_APP_VIDEO)
-        if (make_dock_item (uri) != null)
+      GLib.File? video = null;;
+      foreach (unowned string uri in DEFAULT_APP_VIDEO) {
+        video = make_dock_item (uri);
+        if (video != null) {
           break;
+        }
+      }
+      if (video == null) {
+        var video_appinfo = AppInfo.get_default_for_type ("video/mp4", false);
+        if (video_appinfo != null) {
+          make_dock_item_for_desktop_id (video_appinfo.get_id ());
+        }
+      }
 
-      // add photo viewer
-      foreach (unowned string uri in DEFAULT_APP_PHOTO)
-        if (make_dock_item (uri) != null)
+      GLib.File? photo = null;
+      foreach (unowned string uri in DEFAULT_APP_PHOTO) {
+        photo = make_dock_item (uri);
+        if (photo != null) {
           break;
+        }
+      }
+      if (photo == null) {
+        var photo_appinfo = AppInfo.get_default_for_type ("image/jpeg", false);
+        if (photo_appinfo != null) {
+          make_dock_item_for_desktop_id (photo_appinfo.get_id ());
+        }
+      }
 
-      // add IM client
-      foreach (unowned string uri in DEFAULT_APP_MESSENGER)
-        if (make_dock_item (uri) != null)
+      GLib.File? messenger;
+      foreach (unowned string uri in DEFAULT_APP_MESSENGER) {
+        messenger = make_dock_item (uri);
+        if (messenger != null) {
           break;
+        }
+      }
     }
 
     /**
