@@ -105,6 +105,15 @@ namespace Plank {
       "file:///usr/share/applications/kde4/kopete.desktop"
     };
 
+    const string[] DEFAULT_APP_FILE_MANAGER = {
+      "file:///usr/share/applications/nemo.desktop",
+      "file:///usr/share/applications/thunar.desktop",
+      "file:///usr/share/applications/caja.desktop",
+      "file:///usr/share/applications/org.kde.dolphin.desktop",
+      "file:///usr/share/applications/dolphin.desktop",
+      "file:///usr/share/applications/org.gnome.Nautilus.desktop"
+    };
+
     /**
      * The directory containing .dockitem files.
      */
@@ -368,6 +377,14 @@ namespace Plank {
       foreach (unowned string uri in DEFAULT_APP_MESSENGER) {
         messenger = make_dock_item (uri);
         if (messenger != null) {
+          break;
+        }
+      }
+
+      GLib.File? file_manager;
+      foreach (unowned string uri in DEFAULT_APP_FILE_MANAGER) {
+        file_manager = make_dock_item (uri);
+        if (file_manager != null) {
           break;
         }
       }
