@@ -434,10 +434,10 @@ namespace Plank {
 
       Array<uint32>? xids = app.get_xids ();
 
-      warn_if_fail (xids != null);
-
-      if (xids == null)
+      if (xids == null) {
+        debug("Failed to get xids for %s", app.get_name ());
         return windows;
+      }
 
       unowned GLib.List<Wnck.Window> stack = Wnck.Screen.get_default ().get_windows_stacked ();
 
