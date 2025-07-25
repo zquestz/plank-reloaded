@@ -263,8 +263,8 @@ namespace Plank {
       environment_initialize ();
 
       // Make sure we are not doing silly things like trying to run in a wayland-session!
-      if (!environment_is_session_type (XdgSessionType.X11)) {
-        critical ("Only X11 environments are supported.");
+      if (environment_is_session_type (XdgSessionType.WAYLAND)) {
+        critical ("Wayland environments are not supported.");
         quit ();
         return;
       }
