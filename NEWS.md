@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.147 "Reloaded" (2025-07-28)
+
+- Add file manager to the dock post install
+- Only exit on startup for explicit Wayland environments
+- Don't give warnings for expected window/app close behavior
+
 ## 0.11.146 "Reloaded" (2025-07-21)
 
 - Improve default application detection for fresh installs
