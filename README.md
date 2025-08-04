@@ -11,6 +11,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 ### Key Improvements in Plank Reloaded
 
 - Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, and Xfce)
+- Support for KDE when running in X11
 - Migrated to modern meson build system for easier compilation and installation
 - Added AnchorDocklets/AnchorFiles settings to anchor docklets/files to the end of the dock
 - Fixed Restrict to Workspace so applications only show up on their active workspace
