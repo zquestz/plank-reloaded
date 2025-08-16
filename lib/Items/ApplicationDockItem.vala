@@ -397,7 +397,8 @@ namespace Plank {
             continue;
 
           try {
-            var r = new Regex ("^%s$".printf (p.printf (s)),
+            var escaped_s = Regex.escape_string (s);
+            var r = new Regex ("^%s$".printf (p.printf (escaped_s)),
                                RegexCompileFlags.CASELESS | RegexCompileFlags.ANCHORED | RegexCompileFlags.DOLLAR_ENDONLY,
                                RegexMatchFlags.ANCHORED | RegexMatchFlags.NOTEMPTY);
             r.match (window_name, RegexMatchFlags.ANCHORED | RegexMatchFlags.NOTEMPTY, out m);
@@ -545,7 +546,7 @@ namespace Plank {
                   event.y <= close_y + close_allocation.height) {
 
                 was_close_click = true;
-                WindowControl.close_window(window, event_time);
+                WindowControl.close_window (window, event_time);
               }
             }
 
