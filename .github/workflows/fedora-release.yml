@@ -1,0 +1,102 @@
+---
+name: Build and Release - Fedora Latest
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build on Fedora Latest
+    runs-on: ubuntu-latest
+    container: fedora:latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        run: |
+          dnf update -y
+          dnf install -y \
+            git \
+            rpm-build \
+            rpm-devel \
+            rpmlint \
+            meson \
+            valac \
+            clang \
+            cmake \
+            libgnome-devel \
+            libxml2-devel \
+            gnome-menus-devel \
+            libgee \
+            libgee-devel \
+            libdbusmenu-gtk3-devel \
+            libdbusmenu-gtk3 \
+            libwnck3 \
+            libwnck3-devel \
+            bamf \
+            bamf-devel \
+            bamf-daemon \
+            gettext \
+            desktop-file-utils \
+            gcc \
+            gcc-c++ \
+            pkgconfig \
+            rpmdevtools \
+            ninja-build \
+            gtk3-devel \
+            cairo-devel \
+            gdk-pixbuf2-devel \
+            glib2-devel \
+            systemd-rpm-macros
+
+      - name: Setup RPM Build Environment
+        run: |
+          rpmdev-setuptree
+
+      - name: Create Source Archive
+        run: |
+          VERSION=$(grep "version:" meson.build | head -1 | sed "s/.*version: '\([^']*\)'.*/\1/")
+          tar --transform="s|^|plank-reloaded-${VERSION}/|" \
+              --exclude='.git*' \
+              -czf ~/rpmbuild/SOURCES/plank-reloaded-${VERSION}.tar.gz \
+              *
+
+      - name: Copy Spec File
+        run: |
+          cp RPM/plank-reloaded.spec ~/rpmbuild/SPECS/
+
+      - name: Build RPM
+        run: |
+          VERSION=$(grep "version:" meson.build | head -1 | sed "s/.*version: '\([^']*\)'.*/\1/")
+          rpmbuild -ba ~/rpmbuild/SPECS/plank-reloaded.spec \
+            --define "version ${VERSION}" \
+            --define "release 1"
+
+      - name: Run RPMLint
+        run: |
+          find ~/rpmbuild/RPMS -name "*.rpm" -exec rpmlint {} \; || true
+
+      - name: Verify Package
+        run: |
+          find ~/rpmbuild/RPMS -name "*.rpm" -exec rpm -qip {} \;
+          find ~/rpmbuild/RPMS -name "*.rpm" -exec rpm -qlp {} \;
+
+      - name: Copy RPM to dist
+        run: |
+          mkdir -p dist
+          find ~/rpmbuild/RPMS -name "*.rpm" -exec cp {} dist/ \;
+          ls -la dist/
+
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/*.rpm
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
