@@ -176,7 +176,23 @@ There is a Nix flake available for Plank Reloaded. Just follow the directions in
 
 ### Fedora
 
-Testing is still ongoing for Wayland based operating systems like Fedora. Bugs will be encountered. Please report them, and help us fix them.
+Plank Reloaded works on Fedora when running in X11 mode. Wayland is not supported at this time.
+
+#### Option 1: Using RPM Packages (Recommended for X11 users)
+
+You can download the latest RPM packages from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page.
+
+```bash
+# Install the downloaded package
+sudo dnf install ./plank-reloaded-*.rpm
+
+# Optional: Install development files if you plan to develop docklets
+sudo dnf install ./plank-reloaded-devel-*.rpm
+```
+
+#### Option 2: Build from Source
+
+If you prefer to build from source or are using Wayland (with limitations):
 
 ```bash
 # To start Plank you will need to set the following environment variables:
