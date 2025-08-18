@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-28 19:24-1000\n"
+"POT-Creation-Date: 2025-08-17 16:01-1000\n"
 "PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
@@ -41,19 +41,19 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:109
+#: data/plank.appdata.xml.in:110
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:113
+#: data/plank.appdata.xml.in:114
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Docklets Preferences"
 msgstr ""
 
@@ -528,20 +528,20 @@ msgstr ""
 "  alexisme https://launchpad.net/~alexanderc-spa\n"
 "  origpumu https://launchpad.net/~originalpumuckl-5"
 
-#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "Im Dock _behalten"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close All"
 msgstr "_Alle schließen"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close"
 msgstr "_Schließen"
 
-#: lib/Items/ApplicationDockItem.vala:581
+#: lib/Items/ApplicationDockItem.vala:582
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Loslassen, um mit %s zu öffnen"

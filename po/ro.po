@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-28 19:24-1000\n"
+"POT-Creation-Date: 2025-08-17 16:01-1000\n"
 "PO-Revision-Date: 2025-07-18 23:31\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
 "dock cu funcții mai avansate."
 
-#: data/plank.appdata.xml.in:109
+#: data/plank.appdata.xml.in:110
 msgid "Dock with Matte theme"
 msgstr "Dock cu tema Matte"
 
-#: data/plank.appdata.xml.in:113
+#: data/plank.appdata.xml.in:114
 msgid "Appearance Preferences"
 msgstr "Preferințe de Aspect"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Behavior Preferences"
 msgstr "Preferințe Comportament"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Docklets Preferences"
 msgstr "Preferințe Docklets"
 
@@ -532,20 +532,20 @@ msgstr ""
 "  Cristian Moldovan https://launchpad.net/~crismblog\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Păstrează în panou"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close All"
 msgstr "În_chide toate"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close"
 msgstr "În_chide"
 
-#: lib/Items/ApplicationDockItem.vala:581
+#: lib/Items/ApplicationDockItem.vala:582
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Dă drumul pentru a deschide cu %s"

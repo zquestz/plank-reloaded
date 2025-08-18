@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.148 "Reloaded" (2025-08-17)
+
+- Fix potential pcre segfault in shorten_window_name
+- Add French and Vietnamese translations
+- Add automated Fedora RPM builds
+
 ## 0.11.147 "Reloaded" (2025-07-28)
 
 - Add file manager to the dock post install

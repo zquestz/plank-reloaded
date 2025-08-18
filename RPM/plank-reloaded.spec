@@ -117,8 +117,7 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Sun Aug 17 2025 Josh Ellithorpe <quest@mac.com> - 0.11.147-1
-- Initial RPM package for Fedora
-- Add file manager to the dock post install
-- Only exit on startup for explicit Wayland environments
-- Don't give warnings for expected window/app close behavior
+* Sun Aug 17 2025 Josh Ellithorpe <quest@mac.com> - 0.11.148-1
+- Fix potential pcre segfault in shorten_window_name
+- Add French and Vietnamese translations
+- Add automated Fedora RPM builds

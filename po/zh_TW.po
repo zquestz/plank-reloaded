@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-28 19:24-1000\n"
+"POT-Creation-Date: 2025-08-17 16:01-1000\n"
 "PO-Revision-Date: 2025-07-18 23:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
@@ -47,19 +47,19 @@ msgstr ""
 "Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
 "充來建立具有更多進階功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:109
+#: data/plank.appdata.xml.in:110
 msgid "Dock with Matte theme"
 msgstr "使用霧面主題的 Dock"
 
-#: data/plank.appdata.xml.in:113
+#: data/plank.appdata.xml.in:114
 msgid "Appearance Preferences"
 msgstr "外觀偏好設定"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Behavior Preferences"
 msgstr "行為偏好設定"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Docklets Preferences"
 msgstr "小工具偏好設定"
 
@@ -524,20 +524,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  shoting https://launchpad.net/~shoting"
 
-#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "留在 Dock 中(_K)"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close All"
 msgstr "全部關閉(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:581
+#: lib/Items/ApplicationDockItem.vala:582
 #, c-format
 msgid "Drop to open with %s"
 msgstr "拖曳來以 %s 開啟"

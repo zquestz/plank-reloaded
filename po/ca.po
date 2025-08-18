@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-07-28 19:24-1000\n"
+"POT-Creation-Date: 2025-08-17 16:01-1000\n"
 "PO-Revision-Date: 2025-07-19 21:12\n"
 "Last-Translator: \n"
 "Language-Team: Catalan\n"
@@ -49,19 +49,19 @@ msgstr ""
 "queda una llibreria que pot ser ampliada per crear altres programes "
 "d'acoblador amb funcions més avançades."
 
-#: data/plank.appdata.xml.in:109
+#: data/plank.appdata.xml.in:110
 msgid "Dock with Matte theme"
 msgstr "Acoblador amb tema Matte"
 
-#: data/plank.appdata.xml.in:113
+#: data/plank.appdata.xml.in:114
 msgid "Appearance Preferences"
 msgstr "Preferències d'aparença"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Behavior Preferences"
 msgstr "Preferències de comportament"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Docklets Preferences"
 msgstr "Preferències d'afegits"
 
@@ -530,20 +530,20 @@ msgstr ""
 "  José Alfredo Múrcia Andrés https://launchpad.net/~joamuran\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:434 lib/Items/FileDockItem.vala:351
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
 #: lib/Items/FileDockItem.vala:372
 msgid "_Keep in Dock"
 msgstr "_Ancora a l'acoblador"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close All"
 msgstr "_Tanca-ho tot"
 
-#: lib/Items/ApplicationDockItem.vala:442
+#: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close"
 msgstr "_Tanca"
 
-#: lib/Items/ApplicationDockItem.vala:581
+#: lib/Items/ApplicationDockItem.vala:582
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Deixa anar per obrir amb %s"
