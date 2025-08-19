@@ -2,7 +2,7 @@ diff --git a/data/net.launchpad.plank.desktop.in b/data/net.launchpad.plank.desk
 index 330c3a4..e1bdf5f 100644
 --- a/data/net.launchpad.plank.desktop.in
 +++ b/data/net.launchpad.plank.desktop.in
-@@ -8,3 +8,4 @@ Exec=plank
+@@ -7,3 +7,4 @@ Exec=plank
  Icon=plank-reloaded
  Terminal=false
  NoDisplay=false
