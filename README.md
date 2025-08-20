@@ -172,7 +172,111 @@ For more information about the port, visit [FreshPorts](https://www.freshports.o
 
 ### Nix
 
-There is a Nix flake available for Plank Reloaded. Just follow the directions in `nix/README.md`.
+There is a Nix flake available for Plank Reloaded located at [./flake.nix](./flake.nix) . 
+
+#### Running 
+
+An easy way to test out plank reloaded if you have flakes enabled is to simply run 
+```sh
+nix run github:zquestz/plank-reloaded
+```
+This will download, build and launch the dock
+
+
+#### Building
+
+To build plank-reloaded on Nix, simply run 
+```sh
+nix build github:zquestz/plank-reloaded
+```
+
+The built application will be generated in the "result" directory of
+the current directory. You can then launch it by running the executable located at `./result/bin/plank`
+
+You can also build the app locally by doing the following steps:
+
+1. Clone the repository
+
+    ```sh
+    git clone https://github.com/zquestz/plank-reloaded.git
+    ```
+
+2. Switch to the repository's directory
+    ```sh
+    cd plank-reloaded
+    ```
+
+3. Build plank reloaded
+    ```sh
+    nix build .
+    ```
+
+#### System-wide Installation
+
+To include Plank Reloaded in your system-wide packages, do the following steps to incorporate the flake. Note that the following is an example system config. Yours most likely will be different. 
+
+1. First add the plank-reloaded flake to the inputs section of your own system's flake and add it as a parameter to your outputs:
+
+    ```nix
+    {
+        inputs = {
+            nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+            plank-reloaded = {
+                url = "github:zquestz/plank-reloaded";
+                inputs.nixpkgs.follows = "nixpkgs";   
+            };
+            # ...
+        };
+        outputs = inputs @ { 
+                self, 
+                nixpkgs, 
+                plank-reloaded,
+                # ... 
+            }: {
+            nixosConfigurations.my-computer = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { inherit plank-reloaded; };
+                modules = [
+                    ./configuration.nix
+                    # ...
+                ];
+            };
+        };
+    }
+    ```
+
+2. Next, in your `configuration.nix` or whichever module you prefer, add plank reloaded to your system packages
+
+    ```nix
+    { config, pkgs, plank-reloaded, ... }:
+    let 
+        # Allows the package to be referred to by a handy variable
+        plank-reloaded = plank-reloaded.defaultPackage.${pkgs.system};
+    in {
+        environment.systemPackages = with pkgs; [
+           plank-reloaded
+           # ...
+        ];
+        # ...
+    }
+    ```
+
+    Note that in order for your module to import plank-reloaded, you will need to pass either `plank-reloaded` or `inputs` into `specialArgs` for NixOS or `home-manager.extraSpecialArgs` if running home manager. The above example just passes `plank-reloaded` to the module. 
+
+3. Rebuild your system:
+   ```sh
+   sudo nixos-rebuild switch
+   ```
+4. Verify installation by running:
+   ```sh
+   plank
+   ```
+
+#### Credits
+
+Thanks to [thecreativedg](https://github.com/thecreativedg) for the initial flake which can be found at:
+
+[https://github.com/thecreativedg/plank-reloaded-flake](https://github.com/thecreativedg/plank-reloaded-flake)
 
 ### Fedora
 
