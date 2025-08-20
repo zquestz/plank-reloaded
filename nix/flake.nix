@@ -19,7 +19,7 @@
         owner = "zquestz";
         repo = "plank-reloaded";
         rev = "master";
-        sha256 = "23tRf6dvwDa+47lI5hzC6IGwsNWnREN0sw3aJviHNH0=";
+        sha256 = "sha256-yHvD6pjVKwIBNYr3GWBMbdqcMdBWgxiwrTKqBfVt7+8=";
       };
 
       nativeBuildInputs = [
