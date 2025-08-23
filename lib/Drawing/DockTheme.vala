@@ -25,6 +25,9 @@ namespace Plank {
     const double MIN_INDICATOR_SIZE = 0.0;
     const double MAX_INDICATOR_SIZE = 10.0;
     const double MAX_ICON_SHADOW_SIZE = 5.0;
+    const double PROGRESS_POSITION = 0.8;
+    const double PROGRESS_PADDING_SCALE = 0.4;
+    const double PROGRESS_LINE_WIDTH_SCALE = 0.1;
 
     [Description (nick = "horizontal-padding", blurb = "The padding on the left/right dock edges, in tenths of a percent of IconSize.")]
     public double HorizPadding { get; set; }
@@ -656,64 +659,63 @@ namespace Plank {
      * @param progress the value between 0.0 and 1.0
      */
     public void draw_item_progress (Surface surface, int icon_size, Color color, double progress) {
-      if (progress < 0)
+      if (progress < 0) {
         return;
+      }
 
-      if (progress > 1.0)
+      if (progress > 1.0) {
         progress = 1.0;
+      }
 
       unowned Cairo.Context cr = surface.Context;
 
-      // Expect the icon to be in the center of the given surface
-      // and adjust the offset accordingly
-      var x = Math.floor ((surface.Width - icon_size) / 2);
-      var y = Math.floor ((surface.Height - icon_size) / 2);
+      var scaled_icon_size = icon_size / 10.0;
+      var line_width = double.max (1.0, scaled_icon_size * PROGRESS_LINE_WIDTH_SCALE);
+      var padding = scaled_icon_size * PROGRESS_PADDING_SCALE;
 
-      // FIXME enhance scalability and adjustments depending on icon-size
-      var line_width = 1.0;
-      var padding = 4.0;
-      var width = icon_size - 2.0 * padding;
-      var height = Math.floor (double.min (18.0, (int) (0.15 * icon_size)));
-      x += padding;
-      y += icon_size - height - padding;
+      var base_width = icon_size - 2.0 * padding;
+      var base_height = Math.floor (double.min (18.0, (int) (0.15 * icon_size)));
+
+      // Position progress bar center at PROGRESS_POSITION from top to bottom of icon
+      var icon_top = Math.floor ((surface.Height - icon_size) / 2);
+      var progress_center_y = icon_top + (icon_size * PROGRESS_POSITION);
+
+      var base_x = Math.floor ((surface.Width - icon_size) / 2) + padding;
+      var base_y = progress_center_y - (base_height / 2.0);
 
       cr.set_line_width (line_width);
 
-      Cairo.Pattern stroke, fill;
+      // Always draw the background - shows empty progress bar at 0%
+      var bg_stroke = new Cairo.Pattern.rgba (0.20, 0.20, 0.20, 0.9);
+      var bg_fill = new Cairo.Pattern.linear (0, base_y, 0, base_y + base_height);
+      bg_fill.add_color_stop_rgba (0.4, 0.25, 0.25, 0.25, 1.0);
+      bg_fill.add_color_stop_rgba (0.9, 0.35, 0.35, 0.35, 1.0);
+      draw_rounded_line (cr, base_x, base_y, base_width, base_height, true, true, bg_stroke, bg_fill);
 
-      // draw the outer stroke
-      stroke = new Cairo.Pattern.linear (0, y, 0, y + height);
-      stroke.add_color_stop_rgba (0.5, 0.5, 0.5, 0.5, 0.1);
-      stroke.add_color_stop_rgba (0.9, 0.8, 0.8, 0.8, 0.4);
-      draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, width, height, true, true, stroke, null);
+      // Only draw progress fill if there's actual progress
+      if (progress > 0) {
+        var fill_x = base_x + line_width;
+        var fill_y = base_y + line_width;
+        var fill_max_width = base_width - 2.0 * line_width;
+        var fill_height = base_height - 2.0 * line_width;
+        var fill_width = Math.ceil (progress * fill_max_width);
 
-      // draw the background
-      x += line_width;
-      y += line_width;
-      width -= 2.0 * line_width;
-      height -= 2.0 * line_width;
+        cr.save ();
 
-      stroke = new Cairo.Pattern.rgba (0.20, 0.20, 0.20, 0.9);
-      fill = new Cairo.Pattern.linear (0, y, 0, y + height);
-      fill.add_color_stop_rgba (0.4, 0.25, 0.25, 0.25, 1.0);
-      fill.add_color_stop_rgba (0.9, 0.35, 0.35, 0.35, 1.0);
-      draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, width, height, true, true, stroke, fill);
+        var clip_x = (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
+                          ? fill_x + fill_max_width - fill_width
+                          : fill_x;
 
-      // draw the finished bar
-      x += line_width;
-      y += line_width;
-      width -= 2.0 * line_width;
-      height -= 2.0 * line_width;
+        cr.rectangle (clip_x, fill_y, fill_width, fill_height);
+        cr.clip ();
 
-      var finished_width = Math.ceil (progress * width);
-      stroke = new Cairo.Pattern.rgba (0.8, 0.8, 0.8, 1.0);
-      fill = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 1.0);
+        // Draw the FULL progress bar (always full width, will be clipped)
+        var progress_stroke = new Cairo.Pattern.rgba (0.8, 0.8, 0.8, 1.0);
+        var progress_fill = new Cairo.Pattern.rgba (0.9, 0.9, 0.9, 1.0);
+        draw_rounded_line (cr, fill_x, fill_y, fill_max_width, fill_height, true, true, progress_stroke, progress_fill);
 
-      // Mirror progress-bar for RTL environments
-      if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
-        draw_rounded_line (cr, x + line_width / 2.0 + width - finished_width, y + line_width / 2.0, finished_width, height, true, true, stroke, fill);
-      else
-        draw_rounded_line (cr, x + line_width / 2.0, y + line_width / 2.0, finished_width, height, true, true, stroke, fill);
+        cr.restore ();
+      }
     }
 
     /**
