@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.149 "Reloaded" (2025-08-27)
+
+- Improve progress bar rendering
+- Add Polish translations
+- Cleanup Unity destructor logic
+
 ## 0.11.148 "Reloaded" (2025-08-17)
 
 - Fix potential pcre segfault in shorten_window_name

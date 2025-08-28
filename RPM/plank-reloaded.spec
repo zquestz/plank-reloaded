@@ -117,7 +117,7 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Sun Aug 17 2025 Josh Ellithorpe <quest@mac.com> - 0.11.148-1
-- Fix potential pcre segfault in shorten_window_name
-- Add French and Vietnamese translations
-- Add automated Fedora RPM builds
+* Wed Aug 27 2025 Josh Ellithorpe <quest@mac.com> - 0.11.149-1
+- Improve progress bar rendering
+- Add Polish translations
+- Cleanup Unity destructor logic

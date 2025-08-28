@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-17 16:04-1000\n"
+"POT-Creation-Date: 2025-08-27 17:51-1000\n"
 "PO-Revision-Date: 2025-07-18 23:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
@@ -47,19 +47,19 @@ msgstr ""
 "Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
 "充來建立具有更多進階功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:110
+#: data/plank.appdata.xml.in:111
 msgid "Dock with Matte theme"
 msgstr "使用霧面主題的 Dock"
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:115
 msgid "Appearance Preferences"
 msgstr "外觀偏好設定"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Behavior Preferences"
 msgstr "行為偏好設定"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Docklets Preferences"
 msgstr "小工具偏好設定"
 

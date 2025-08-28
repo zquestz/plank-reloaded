@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.148\n"
+"Project-Id-Version: plank-reloaded 0.11.149\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-17 16:04-1000\n"
+"POT-Creation-Date: 2025-08-27 17:51-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,19 +42,19 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:110
+#: data/plank.appdata.xml.in:111
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:115
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Docklets Preferences"
 msgstr ""
 

@@ -1,3 +1,11 @@
+plank-reloaded (0.11.149-1) unstable; urgency=medium
+
+  * Improve progress bar rendering
+  * Add Polish translations
+  * Cleanup Unity destructor logic
+
+ -- Josh Ellithorpe <quest@mac.com>  Wed, 27 Aug 2025 17:48:27 -1000
+
 plank-reloaded (0.11.148-1) unstable; urgency=medium
 
   * Fix potential pcre segfault in shorten_window_name
