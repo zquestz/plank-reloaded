@@ -407,9 +407,20 @@ namespace Plank {
       if ((bool) event.send_event)
         return Gdk.EVENT_PROPAGATE;
 
-      if (Hovered) {
-        update_hovered_with_coords ((int) event.x, (int) event.y, true);
-      }
+        if (Hovered) {
+          // Don't force unhovered if the mouse is still within the gap area
+          bool force_unhovered = true;
+          if (controller.prefs.GapSize > 0) {
+            // Check if the leave coordinates are still within the extended cursor region (including gap)
+            var cursor_region = controller.position_manager.get_cursor_region();
+            bool still_in_gap_area = ((int) event.x >= cursor_region.x && (int) event.x < cursor_region.x + cursor_region.width
+                                     && (int) event.y >= cursor_region.y && (int) event.y < cursor_region.y + cursor_region.height);
+            if (still_in_gap_area) {
+              force_unhovered = false;
+            }
+          }
+          update_hovered_with_coords ((int) event.x, (int) event.y, force_unhovered);
+        }
 
       return Gdk.EVENT_PROPAGATE;
     }

@@ -723,18 +723,36 @@ namespace Plank {
       case Gtk.PositionType.BOTTOM:
         cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
         cursor_region.y = DockHeight - cursor_region.height + (window_scale_factor - 1);
+        // Extend cursor region to include gap area when GapSize > 0
+        if (GapSize > 0) {
+          cursor_region.height += GapSize;
+        }
         break;
       case Gtk.PositionType.TOP:
         cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
         cursor_region.y = 0;
+        // Extend cursor region to include gap area when GapSize > 0
+        if (GapSize > 0) {
+          cursor_region.height += GapSize;
+          cursor_region.y -= GapSize;
+        }
         break;
       case Gtk.PositionType.LEFT:
         cursor_region.width = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.width));
         cursor_region.x = 0;
+        // Extend cursor region to include gap area when GapSize > 0
+        if (GapSize > 0) {
+          cursor_region.width += GapSize;
+          cursor_region.x -= GapSize;
+        }
         break;
       case Gtk.PositionType.RIGHT:
         cursor_region.width = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.width));
         cursor_region.x = DockWidth - cursor_region.width + (window_scale_factor - 1);
+        // Extend cursor region to include gap area when GapSize > 0
+        if (GapSize > 0) {
+          cursor_region.width += GapSize;
+        }
         break;
       }
 
