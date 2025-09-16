@@ -134,6 +134,39 @@ namespace Plank {
       return pbuf;
     }
 
+    public static Gdk.Pixbuf? get_window_thumbnail (Bamf.Window window)
+    {
+      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+
+      warn_if_fail (w != null);
+
+      if (w == null)
+        return null;
+
+      Gdk.error_trap_push ();
+
+      Gdk.Pixbuf? thumbnail = null;
+
+      var xwindow = w.get_xid ();
+      var gdk_window = Gdk.X11Window.foreign_new_for_display (Gdk.Display.get_default (), xwindow);
+
+      if (gdk_window != null) {
+        int win_width = gdk_window.get_width ();
+        int win_height = gdk_window.get_height ();
+
+        if (win_width < 48 || win_height < 48)
+          return null;
+
+        thumbnail = Gdk.pixbuf_get_from_window (gdk_window, 0, 0, win_width, win_height);
+      }
+
+      if (Gdk.error_trap_pop () != 0)
+        warning ("get_window_thumbnail() for '%s' caused a XError", window.get_name ());
+
+      return thumbnail;
+    }
+
+
     public static unowned Wnck.Workspace? get_window_workspace (Bamf.Window window)
     {
       unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
@@ -435,7 +468,7 @@ namespace Plank {
       Array<uint32>? xids = app.get_xids ();
 
       if (xids == null) {
-        debug("Failed to get xids for %s", app.get_name ());
+        debug ("Failed to get xids for %s", app.get_name ());
         return windows;
       }
 

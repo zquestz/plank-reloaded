@@ -496,7 +496,6 @@ namespace Plank {
             continue;
           }
 
-          var pbuf = WindowControl.get_window_icon (window);
           var window_name = window.get_name ();
           window_name = shorten_window_name (window_name);
           window_name = Helpers.truncate_middle (window_name, MAX_WINDOW_NAME_LENGTH);
@@ -505,12 +504,18 @@ namespace Plank {
           var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
           box.margin_end = 5;
 
-          Gtk.Image image;
-          if (pbuf != null) {
-            int width, height;
-            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out width, out height);
+          int width = 48;
+          int height = 1000000;
 
-            if (width != pbuf.width || height != pbuf.height) {
+          Gtk.Image image;
+
+          var pbuf = WindowControl.get_window_thumbnail (window);
+          if (pbuf == null) {
+            pbuf = WindowControl.get_window_icon (window);
+          }
+
+          if (pbuf != null) {
+            if (width != pbuf.width) {
               pbuf = DrawingService.ar_scale (pbuf, width, height);
             }
             image = new Gtk.Image.from_pixbuf (pbuf);
