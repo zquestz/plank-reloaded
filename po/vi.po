@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-27 17:51-1000\n"
-"PO-Revision-Date: 2025-07-30 00:01\n"
+"POT-Creation-Date: 2025-09-15 17:13-1000\n"
+"PO-Revision-Date: 2025-09-16 03:24\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "Language: vi\n"
@@ -246,11 +246,13 @@ msgid "Edit Menu"
 msgstr "Chỉnh sửa Menu"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Separator/SeparatorDockItem.vala:314
 msgid "Choose Custom Icon"
 msgstr "Chọn biểu tượng tùy chỉnh"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Separator/SeparatorDockItem.vala:321
 msgid "Reset to Default Icon"
 msgstr "Khôi phục về biểu tượng ban đầu"
 
@@ -259,18 +261,22 @@ msgid "Large Icons"
 msgstr "Biểu tượng lớn"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Separator/SeparatorDockItem.vala:247
 msgid "Select Custom Icon"
 msgstr "Chọn biểu tượng tùy chỉnh"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Separator/SeparatorDockItem.vala:250
 msgid "Cancel"
 msgstr "Hủy"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Separator/SeparatorDockItem.vala:251
 msgid "Select"
 msgstr "Chọn"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Separator/SeparatorDockItem.vala:269
 msgid "Image Files"
 msgstr "Tập tin hình ảnh"
 
@@ -468,7 +474,23 @@ msgstr "Thùng rác"
 msgid "Have a look at your trash!"
 msgstr "Hãy kiểm tra thùng rác của bạn!"
 
-#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Separator/SeparatorDockItem.vala:330
+msgid "_Style"
+msgstr "_Kiểu"
+
+#: docklets/Separator/SeparatorDockItem.vala:335
+msgid "_Line"
+msgstr "_Đường kẻ"
+
+#: docklets/Separator/SeparatorDockItem.vala:345
+msgid "_Dot"
+msgstr "_Chấm"
+
+#: docklets/Separator/SeparatorDockItem.vala:355
+msgid "_Space"
+msgstr "_Khoảng trắng"
+
+#: docklets/Separator/SeparatorDockItem.vala:368
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Đảo ngược màu"

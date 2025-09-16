@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-27 17:51-1000\n"
-"PO-Revision-Date: 2025-07-18 23:31\n"
+"POT-Creation-Date: 2025-09-15 17:13-1000\n"
+"PO-Revision-Date: 2025-09-16 03:24\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -244,11 +244,13 @@ msgid "Edit Menu"
 msgstr "Editare meniu"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Separator/SeparatorDockItem.vala:314
 msgid "Choose Custom Icon"
 msgstr "Alege Pictogramă Personalizată"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Separator/SeparatorDockItem.vala:321
 msgid "Reset to Default Icon"
 msgstr "Resetare la pictograma implicită"
 
@@ -257,18 +259,22 @@ msgid "Large Icons"
 msgstr "Pictograme Mari"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Separator/SeparatorDockItem.vala:247
 msgid "Select Custom Icon"
 msgstr "Selectează Pictogramă Personalizată"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Separator/SeparatorDockItem.vala:250
 msgid "Cancel"
 msgstr "Anulare"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Separator/SeparatorDockItem.vala:251
 msgid "Select"
 msgstr "Selectează"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Separator/SeparatorDockItem.vala:269
 msgid "Image Files"
 msgstr "Fișiere imagine"
 
@@ -472,7 +478,23 @@ msgstr "Coș de gunoi"
 msgid "Have a look at your trash!"
 msgstr "Aruncă o privire la coșul de gunoi!"
 
-#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Separator/SeparatorDockItem.vala:330
+msgid "_Style"
+msgstr "_Stil"
+
+#: docklets/Separator/SeparatorDockItem.vala:335
+msgid "_Line"
+msgstr "_Linie"
+
+#: docklets/Separator/SeparatorDockItem.vala:345
+msgid "_Dot"
+msgstr "_Punct"
+
+#: docklets/Separator/SeparatorDockItem.vala:355
+msgid "_Space"
+msgstr "_Spațiu"
+
+#: docklets/Separator/SeparatorDockItem.vala:368
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Inversează culoarea"

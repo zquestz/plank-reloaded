@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-27 17:51-1000\n"
-"PO-Revision-Date: 2025-07-18 23:30\n"
+"POT-Creation-Date: 2025-09-15 17:13-1000\n"
+"PO-Revision-Date: 2025-09-16 03:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -241,11 +241,13 @@ msgid "Edit Menu"
 msgstr "編輯選單"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Separator/SeparatorDockItem.vala:314
 msgid "Choose Custom Icon"
 msgstr "選擇自定義圖標"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Separator/SeparatorDockItem.vala:321
 msgid "Reset to Default Icon"
 msgstr "重設為預設圖示"
 
@@ -254,18 +256,22 @@ msgid "Large Icons"
 msgstr "大圖示"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Separator/SeparatorDockItem.vala:247
 msgid "Select Custom Icon"
 msgstr "選擇自訂圖示"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Separator/SeparatorDockItem.vala:250
 msgid "Cancel"
 msgstr "取消"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Separator/SeparatorDockItem.vala:251
 msgid "Select"
 msgstr "選擇"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Separator/SeparatorDockItem.vala:269
 msgid "Image Files"
 msgstr "圖像檔案"
 
@@ -463,7 +469,23 @@ msgstr "垃圾桶"
 msgid "Have a look at your trash!"
 msgstr "看看您的垃圾桶！"
 
-#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Separator/SeparatorDockItem.vala:330
+msgid "_Style"
+msgstr "_樣式"
+
+#: docklets/Separator/SeparatorDockItem.vala:335
+msgid "_Line"
+msgstr "_線條"
+
+#: docklets/Separator/SeparatorDockItem.vala:345
+msgid "_Dot"
+msgstr "_點"
+
+#: docklets/Separator/SeparatorDockItem.vala:355
+msgid "_Space"
+msgstr "_空格"
+
+#: docklets/Separator/SeparatorDockItem.vala:368
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Invert 顏色"

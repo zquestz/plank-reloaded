@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-08-27 17:51-1000\n"
-"PO-Revision-Date: 2025-07-18 23:32\n"
+"POT-Creation-Date: 2025-09-15 17:13-1000\n"
+"PO-Revision-Date: 2025-09-16 03:24\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -244,11 +244,13 @@ msgid "Edit Menu"
 msgstr "Menüyü Düzenle"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Separator/SeparatorDockItem.vala:314
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Separator/SeparatorDockItem.vala:321
 msgid "Reset to Default Icon"
 msgstr "Varsayılan Simgeye Sıfırla"
 
@@ -257,18 +259,22 @@ msgid "Large Icons"
 msgstr "Büyük Simgeler"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Separator/SeparatorDockItem.vala:247
 msgid "Select Custom Icon"
 msgstr "Özel Simge Seç"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Separator/SeparatorDockItem.vala:250
 msgid "Cancel"
 msgstr "İptal"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Separator/SeparatorDockItem.vala:251
 msgid "Select"
 msgstr "Seç"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Separator/SeparatorDockItem.vala:269
 msgid "Image Files"
 msgstr "Görüntü Dosyaları"
 
@@ -469,7 +475,23 @@ msgstr "Çöp Kutusu"
 msgid "Have a look at your trash!"
 msgstr "Çöp kutunuza bir göz atın!"
 
-#: docklets/Separator/SeparatorDockItem.vala:197
+#: docklets/Separator/SeparatorDockItem.vala:330
+msgid "_Style"
+msgstr "_Stil"
+
+#: docklets/Separator/SeparatorDockItem.vala:335
+msgid "_Line"
+msgstr "_Çizgi"
+
+#: docklets/Separator/SeparatorDockItem.vala:345
+msgid "_Dot"
+msgstr "_Nokta"
+
+#: docklets/Separator/SeparatorDockItem.vala:355
+msgid "_Space"
+msgstr "_Boşluk"
+
+#: docklets/Separator/SeparatorDockItem.vala:368
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
 msgstr "_Rengi Tersine Çevir"

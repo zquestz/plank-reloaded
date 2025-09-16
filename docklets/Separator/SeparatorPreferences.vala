@@ -18,10 +18,24 @@
 using Plank;
 
 namespace Docky {
+  public enum SeparatorStyle {
+    LINE,
+    DOT,
+    SPACE
+  }
+
   public class SeparatorPreferences : DockItemPreferences {
     [Description (nick = "invert-color",
-                  blurb = "Inverts the color of the separator")]
+                  blurb = "Invert separator color")]
     public bool InvertColor { get; set; default = false; }
+
+    [Description (nick = "style",
+                  blurb = "Separator style")]
+    public SeparatorStyle Style { get; set; default = SeparatorStyle.LINE; }
+
+    [Description (nick = "custom-icon",
+                  blurb = "Custom separator icon")]
+    public string CustomIcon { get; set; default = ""; }
 
     public SeparatorPreferences.with_file (GLib.File file)
     {
@@ -30,6 +44,8 @@ namespace Docky {
 
     protected override void reset_properties () {
       InvertColor = false;
+      Style = SeparatorStyle.LINE;
+      CustomIcon = "";
     }
   }
 }
