@@ -18,6 +18,11 @@
 //
 
 namespace Plank {
+  public enum DirStyle {
+    SIMPLE,
+    TILE
+  }
+
   /**
    * Contains preference keys for a dock item.
    */
@@ -27,6 +32,9 @@ namespace Plank {
 
     [Description (nick = "sort-by", blurb = "The sort order for directory items.")]
     public string SortBy { get; set; default = "name"; }
+
+    [Description (nick = "directory-style", blurb = "The style for directory items.")]
+    public DirStyle DirectoryStyle { get; set; default = DirStyle.SIMPLE; }
 
     /**
      * {@inheritDoc}
@@ -59,6 +67,7 @@ namespace Plank {
     public override void reset_properties () {
       Launcher = "";
       SortBy = "name";
+      DirectoryStyle = DirStyle.SIMPLE;
     }
 
     /**

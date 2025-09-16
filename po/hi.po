@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-15 17:13-1000\n"
-"PO-Revision-Date: 2025-09-16 03:23\n"
+"POT-Creation-Date: 2025-09-16 12:28-1000\n"
+"PO-Revision-Date: 2025-09-16 22:32\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -475,6 +475,7 @@ msgid "Have a look at your trash!"
 msgstr "अपने कचरे पर एक नजर डालें!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
+#: lib/Items/FileDockItem.vala:444
 msgid "_Style"
 msgstr "_शैली"
 
@@ -552,8 +553,8 @@ msgstr ""
 "  दिन्चर काव्राल https://launchpad.net/~dkavraal\n"
 "  रिको ज़्चिचोल्ज़ https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
-#: lib/Items/FileDockItem.vala:372
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
+#: lib/Items/FileDockItem.vala:500
 msgid "_Keep in Dock"
 msgstr "_डॉक में रखें"
 
@@ -570,39 +571,47 @@ msgstr "_बंद करें"
 msgid "Drop to open with %s"
 msgstr "%s के साथ खोलने के लिए छोड़ें"
 
-#: lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:383
 msgid "_Sort By"
 msgstr "_क्रमबद्ध करें"
 
-#: lib/Items/FileDockItem.vala:289
+#: lib/Items/FileDockItem.vala:387
 msgid "Name"
 msgstr "नाम"
 
-#: lib/Items/FileDockItem.vala:300
+#: lib/Items/FileDockItem.vala:398
 msgid "Kind"
 msgstr "प्रकार"
 
-#: lib/Items/FileDockItem.vala:311
+#: lib/Items/FileDockItem.vala:409
 msgid "Size"
 msgstr "आकार"
 
-#: lib/Items/FileDockItem.vala:322
+#: lib/Items/FileDockItem.vala:420
 msgid "Date Created"
 msgstr "तिथि बनाई गई"
 
-#: lib/Items/FileDockItem.vala:333
+#: lib/Items/FileDockItem.vala:431
 msgid "Date Modified"
 msgstr "संशोधन दिनांक"
 
-#: lib/Items/FileDockItem.vala:357
+#: lib/Items/FileDockItem.vala:448
+msgid "Simple"
+msgstr "सरल"
+
+#: lib/Items/FileDockItem.vala:460
+msgid "Tile"
+msgstr "टाइल"
+
+#: lib/Items/FileDockItem.vala:485
 msgid "_Open in File Browser"
 msgstr "फाइल ब्राउज़र में खोलें"
 
-#: lib/Items/FileDockItem.vala:378
+#: lib/Items/FileDockItem.vala:506
 msgid "_Open"
 msgstr "_खोलें"
 
-#: lib/Items/FileDockItem.vala:382
+#: lib/Items/FileDockItem.vala:510
 msgid "Open Containing _Folder"
 msgstr "संग्रहित _फ़ोल्डर खोलें"
 

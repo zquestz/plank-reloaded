@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-15 17:13-1000\n"
-"PO-Revision-Date: 2025-09-16 03:24\n"
+"POT-Creation-Date: 2025-09-16 12:28-1000\n"
+"PO-Revision-Date: 2025-09-16 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -476,6 +476,7 @@ msgid "Have a look at your trash!"
 msgstr "Çöp kutunuza bir göz atın!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
+#: lib/Items/FileDockItem.vala:444
 msgid "_Style"
 msgstr "_Stil"
 
@@ -560,8 +561,8 @@ msgstr ""
 "  sakir.mehmetoglu https://launchpad.net/~sakir-mehmetoglu-a\n"
 "  Özgür BASKIN https://launchpad.net/~ozgur-baskin"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
-#: lib/Items/FileDockItem.vala:372
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
+#: lib/Items/FileDockItem.vala:500
 msgid "_Keep in Dock"
 msgstr "_Başlatıcıda tut"
 
@@ -578,39 +579,47 @@ msgstr "_Kapat"
 msgid "Drop to open with %s"
 msgstr "%s ile açmak için üzerine bırakın"
 
-#: lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:383
 msgid "_Sort By"
 msgstr "_Sıralama"
 
-#: lib/Items/FileDockItem.vala:289
+#: lib/Items/FileDockItem.vala:387
 msgid "Name"
 msgstr "İsim"
 
-#: lib/Items/FileDockItem.vala:300
+#: lib/Items/FileDockItem.vala:398
 msgid "Kind"
 msgstr "Tür"
 
-#: lib/Items/FileDockItem.vala:311
+#: lib/Items/FileDockItem.vala:409
 msgid "Size"
 msgstr "Boyut"
 
-#: lib/Items/FileDockItem.vala:322
+#: lib/Items/FileDockItem.vala:420
 msgid "Date Created"
 msgstr "Oluşturulma Tarihi"
 
-#: lib/Items/FileDockItem.vala:333
+#: lib/Items/FileDockItem.vala:431
 msgid "Date Modified"
 msgstr "Değiştirilme Tarihi"
 
-#: lib/Items/FileDockItem.vala:357
+#: lib/Items/FileDockItem.vala:448
+msgid "Simple"
+msgstr "Basit"
+
+#: lib/Items/FileDockItem.vala:460
+msgid "Tile"
+msgstr "Döşeme"
+
+#: lib/Items/FileDockItem.vala:485
 msgid "_Open in File Browser"
 msgstr "_Dosya Yöneticisinde Aç"
 
-#: lib/Items/FileDockItem.vala:378
+#: lib/Items/FileDockItem.vala:506
 msgid "_Open"
 msgstr "_Aç"
 
-#: lib/Items/FileDockItem.vala:382
+#: lib/Items/FileDockItem.vala:510
 msgid "Open Containing _Folder"
 msgstr "Bulunduğu _Klasörü Aç"
 

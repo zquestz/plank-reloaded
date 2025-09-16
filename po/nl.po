@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-15 17:13-1000\n"
-"PO-Revision-Date: 2025-09-16 03:22\n"
+"POT-Creation-Date: 2025-09-16 12:28-1000\n"
+"PO-Revision-Date: 2025-09-16 22:31\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -476,6 +476,7 @@ msgid "Have a look at your trash!"
 msgstr "Graaf in uw prullenbak!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
+#: lib/Items/FileDockItem.vala:444
 msgid "_Style"
 msgstr "_Stijl"
 
@@ -560,8 +561,8 @@ msgstr ""
 "  tim schoen https://launchpad.net/~timschoen123-deactivatedaccount\n"
 "  Heimen Stoffels vistausss@fastmail.com"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
-#: lib/Items/FileDockItem.vala:372
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
+#: lib/Items/FileDockItem.vala:500
 msgid "_Keep in Dock"
 msgstr "Vastma_ken aan dock"
 
@@ -578,39 +579,47 @@ msgstr "Sl_uiten"
 msgid "Drop to open with %s"
 msgstr "Laat los om met %s te openen"
 
-#: lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:383
 msgid "_Sort By"
 msgstr "_Sorteren op"
 
-#: lib/Items/FileDockItem.vala:289
+#: lib/Items/FileDockItem.vala:387
 msgid "Name"
 msgstr "Naam"
 
-#: lib/Items/FileDockItem.vala:300
+#: lib/Items/FileDockItem.vala:398
 msgid "Kind"
 msgstr "Soort"
 
-#: lib/Items/FileDockItem.vala:311
+#: lib/Items/FileDockItem.vala:409
 msgid "Size"
 msgstr "Grootte"
 
-#: lib/Items/FileDockItem.vala:322
+#: lib/Items/FileDockItem.vala:420
 msgid "Date Created"
 msgstr "Aanmaakdatum"
 
-#: lib/Items/FileDockItem.vala:333
+#: lib/Items/FileDockItem.vala:431
 msgid "Date Modified"
 msgstr "Bewerkdatum"
 
-#: lib/Items/FileDockItem.vala:357
+#: lib/Items/FileDockItem.vala:448
+msgid "Simple"
+msgstr "Simpel"
+
+#: lib/Items/FileDockItem.vala:460
+msgid "Tile"
+msgstr "Tegel"
+
+#: lib/Items/FileDockItem.vala:485
 msgid "_Open in File Browser"
 msgstr "_Openen in bestandsbeheer"
 
-#: lib/Items/FileDockItem.vala:378
+#: lib/Items/FileDockItem.vala:506
 msgid "_Open"
 msgstr "_Openen"
 
-#: lib/Items/FileDockItem.vala:382
+#: lib/Items/FileDockItem.vala:510
 msgid "Open Containing _Folder"
 msgstr "Bovenliggende _map openen"
 

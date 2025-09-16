@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded 0.11.149\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-15 17:13-1000\n"
+"POT-Creation-Date: 2025-09-16 12:28-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -468,6 +468,7 @@ msgid "Have a look at your trash!"
 msgstr ""
 
 #: docklets/Separator/SeparatorDockItem.vala:330
+#: lib/Items/FileDockItem.vala:444
 msgid "_Style"
 msgstr ""
 
@@ -539,8 +540,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
-#: lib/Items/FileDockItem.vala:372
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
+#: lib/Items/FileDockItem.vala:500
 msgid "_Keep in Dock"
 msgstr ""
 
@@ -557,39 +558,47 @@ msgstr ""
 msgid "Drop to open with %s"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:383
 msgid "_Sort By"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:289
+#: lib/Items/FileDockItem.vala:387
 msgid "Name"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:300
+#: lib/Items/FileDockItem.vala:398
 msgid "Kind"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:311
+#: lib/Items/FileDockItem.vala:409
 msgid "Size"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:322
+#: lib/Items/FileDockItem.vala:420
 msgid "Date Created"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:333
+#: lib/Items/FileDockItem.vala:431
 msgid "Date Modified"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:357
+#: lib/Items/FileDockItem.vala:448
+msgid "Simple"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:460
+msgid "Tile"
+msgstr ""
+
+#: lib/Items/FileDockItem.vala:485
 msgid "_Open in File Browser"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:378
+#: lib/Items/FileDockItem.vala:506
 msgid "_Open"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:382
+#: lib/Items/FileDockItem.vala:510
 msgid "Open Containing _Folder"
 msgstr ""
 

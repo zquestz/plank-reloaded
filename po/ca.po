@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-15 17:13-1000\n"
-"PO-Revision-Date: 2025-09-16 03:22\n"
+"POT-Creation-Date: 2025-09-16 12:28-1000\n"
+"PO-Revision-Date: 2025-09-16 22:31\n"
 "Last-Translator: \n"
 "Language-Team: Catalan\n"
 "Language: ca\n"
@@ -475,6 +475,7 @@ msgid "Have a look at your trash!"
 msgstr "Fes un cop d'ull a la paperera!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
+#: lib/Items/FileDockItem.vala:444
 msgid "_Style"
 msgstr "_Estil"
 
@@ -552,8 +553,8 @@ msgstr ""
 "  José Alfredo Múrcia Andrés https://launchpad.net/~joamuran\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:351
-#: lib/Items/FileDockItem.vala:372
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
+#: lib/Items/FileDockItem.vala:500
 msgid "_Keep in Dock"
 msgstr "_Ancora a l'acoblador"
 
@@ -570,39 +571,47 @@ msgstr "_Tanca"
 msgid "Drop to open with %s"
 msgstr "Deixa anar per obrir amb %s"
 
-#: lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:383
 msgid "_Sort By"
 msgstr "_Ordena per"
 
-#: lib/Items/FileDockItem.vala:289
+#: lib/Items/FileDockItem.vala:387
 msgid "Name"
 msgstr "Nom"
 
-#: lib/Items/FileDockItem.vala:300
+#: lib/Items/FileDockItem.vala:398
 msgid "Kind"
 msgstr "Tipus"
 
-#: lib/Items/FileDockItem.vala:311
+#: lib/Items/FileDockItem.vala:409
 msgid "Size"
 msgstr "Mida"
 
-#: lib/Items/FileDockItem.vala:322
+#: lib/Items/FileDockItem.vala:420
 msgid "Date Created"
 msgstr "Data de creació"
 
-#: lib/Items/FileDockItem.vala:333
+#: lib/Items/FileDockItem.vala:431
 msgid "Date Modified"
 msgstr "Data de modificació"
 
-#: lib/Items/FileDockItem.vala:357
+#: lib/Items/FileDockItem.vala:448
+msgid "Simple"
+msgstr "Simple"
+
+#: lib/Items/FileDockItem.vala:460
+msgid "Tile"
+msgstr "Tile"
+
+#: lib/Items/FileDockItem.vala:485
 msgid "_Open in File Browser"
 msgstr "_Obre al navegador de fitxers"
 
-#: lib/Items/FileDockItem.vala:378
+#: lib/Items/FileDockItem.vala:506
 msgid "_Open"
 msgstr "_Obre"
 
-#: lib/Items/FileDockItem.vala:382
+#: lib/Items/FileDockItem.vala:510
 msgid "Open Containing _Folder"
 msgstr "Obre la _carpeta contenidora"
 

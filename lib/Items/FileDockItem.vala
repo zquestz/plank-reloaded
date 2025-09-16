@@ -78,9 +78,8 @@ namespace Plank {
 
       Text = get_display_name (OwnedFile);
 
-      // pop up the dir contents on a left click too
       if (OwnedFile.query_file_type (0) == FileType.DIRECTORY) {
-        Button = PopupButton.RIGHT;
+        setup_buttons ();
 
         try {
           dir_monitor = OwnedFile.monitor_directory (0);
@@ -104,9 +103,114 @@ namespace Plank {
       reset_icon_buffer ();
     }
 
+    bool has_default_icon_match () {
+      if (Icon == DEFAULT_ICONS)
+        return true;
+
+      var default_icons = DEFAULT_ICONS.split (";;");
+      foreach (unowned string icon in Icon.split (";;"))
+        if (icon in default_icons)
+          return true;
+
+      return false;
+    }
+
+    void setup_buttons () {
+      switch (Prefs.DirectoryStyle) {
+      case DirStyle.SIMPLE :
+        Button = PopupButton.RIGHT;
+        break;
+      case DirStyle.TILE:
+        Button = PopupButton.RIGHT | PopupButton.LEFT;
+        break;
+      }
+    }
+
+    protected override void draw_icon_fast (Surface surface) {
+      unowned Cairo.Context cr = surface.Context;
+      var width = surface.Width;
+      var height = surface.Height;
+      var radius = 3 + 6 * height / (128 - 48);
+      double x_scale = 1.0, y_scale = 1.0;
+      surface.Internal.get_device_scale (out x_scale, out y_scale);
+      var line_width_half = 0.5 * (int) double.max (x_scale, y_scale);
+
+      cr.move_to (radius, line_width_half);
+      cr.arc (width - radius - line_width_half, radius + line_width_half, radius, -Math.PI_2, 0);
+      cr.arc (width - radius - line_width_half, height - radius - line_width_half, radius, 0, Math.PI_2);
+      cr.arc (radius + line_width_half, height - radius - line_width_half, radius, Math.PI_2, Math.PI);
+      cr.arc (radius + line_width_half, radius + line_width_half, radius, Math.PI, -Math.PI_2);
+      cr.close_path ();
+
+      cr.set_source_rgba (1, 1, 1, 0.6);
+      cr.set_line_width (2 * line_width_half);
+      cr.stroke_preserve ();
+
+      var rg = new Cairo.Pattern.radial (width / 2, height, height / 8, width / 2, height, height);
+      rg.add_color_stop_rgba (0, 0, 0, 0, 1);
+      rg.add_color_stop_rgba (1, 0, 0, 0, 0.6);
+
+      cr.set_source (rg);
+      cr.fill ();
+    }
+
     protected override void draw_icon (Surface surface) {
-      // Just use the default icon drawing behavior
-      base.draw_icon (surface);
+      if (Prefs.DirectoryStyle == DirStyle.SIMPLE) {
+        base.draw_icon (surface);
+        return;
+      }
+
+      if (!is_valid () || !has_default_icon_match ()) {
+        base.draw_icon (surface);
+        return;
+      }
+
+      unowned Cairo.Context cr = surface.Context;
+      var width = surface.Width;
+      var height = surface.Height;
+      var radius = 3 + 6 * height / (128 - 48);
+
+      draw_icon_fast (surface);
+
+      var icons = new Gee.HashMap<string, string> ();
+      var keys = new Gee.ArrayList<string> ();
+
+      get_files (OwnedFile).map_iterator ().foreach ((display_name, file) => {
+        string icon, text;
+        var uri = file.get_uri ();
+        if (uri.has_suffix (".desktop")) {
+          ApplicationDockItem.parse_launcher (uri, out icon, out text);
+        } else {
+          icon = DrawingService.get_icon_from_file (file) ?? "";
+          text = display_name ?? "";
+        }
+
+        var key = "%s%s".printf (text, uri);
+        icons.set (key, icon);
+        keys.add (key);
+
+        return true;
+      });
+
+      var pos = 0;
+      var icon_width = (int) ((width - 80 * radius / 33.0) / 2.0);
+      var icon_height = (int) ((height - 80 * radius / 33.0) / 2.0);
+      var offset = (int) ((width - 2 * icon_width) / 3.0);
+
+      keys.sort ();
+      foreach (var s in keys) {
+        var x = pos % 2;
+        int y = pos / 2;
+
+        if (++pos > 4)
+          break;
+
+        var pbuf = DrawingService.load_icon (icons.get (s), icon_width, icon_height);
+        Gdk.cairo_set_source_pixbuf (cr, pbuf,
+                                     x * (icon_width + offset) + offset + (icon_width - pbuf.width) / 2,
+                                     y * (icon_height + offset) + offset + (icon_height - pbuf.height) / 2);
+        cr.paint ();
+      }
     }
 
     void launch () {
@@ -121,17 +225,11 @@ namespace Plank {
         return AnimationType.BOUNCE;
       }
 
-      // this actually only happens if its a file, not a directory
-      if (button == PopupButton.LEFT) {
-        launch ();
-        return AnimationType.BOUNCE;
-      }
-
       return AnimationType.NONE;
     }
 
     public override bool can_be_removed () {
-      return true;
+      return Prefs.DirectoryStyle == DirStyle.SIMPLE;
     }
 
     public class FileSortData {
@@ -234,7 +332,7 @@ namespace Plank {
         }
 
         switch (Prefs.SortBy) {
-          case "name" :
+          case "name":
             return a.display_name.collate (b.display_name);
           case "date-created":
             string date_a = a.creation_date;
@@ -342,8 +440,38 @@ namespace Plank {
 
       sort_menu.show_all ();
       items.add (sort_menu);
-      items.add (new Gtk.SeparatorMenuItem ());
 
+      var style_menu = new Gtk.MenuItem.with_mnemonic (_("_Style"));
+      var style_submenu = new Gtk.Menu ();
+      style_menu.set_submenu (style_submenu);
+
+      var simple_item = new Gtk.RadioMenuItem.with_label (null, _("Simple"));
+      simple_item.active = (Prefs.DirectoryStyle == DirStyle.SIMPLE);
+      simple_item.activate.connect (() => {
+        if (simple_item.active) {
+          Prefs.DirectoryStyle = DirStyle.SIMPLE;
+          setup_buttons ();
+          reset_icon_buffer ();
+        }
+      });
+      style_submenu.append (simple_item);
+
+      var tile_item = new Gtk.RadioMenuItem.with_label_from_widget (
+                                                                    simple_item, _("Tile"));
+      tile_item.active = (Prefs.DirectoryStyle == DirStyle.TILE);
+      tile_item.activate.connect (() => {
+        if (tile_item.active) {
+          Prefs.DirectoryStyle = DirStyle.TILE;
+          setup_buttons ();
+          reset_icon_buffer ();
+        }
+      });
+      style_submenu.append (tile_item);
+
+      style_submenu.show_all ();
+      items.add (style_menu);
+
+      items.add (new Gtk.SeparatorMenuItem ());
 
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
       if (default_provider != null
