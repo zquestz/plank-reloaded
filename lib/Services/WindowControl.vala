@@ -148,7 +148,12 @@ namespace Plank {
       Gdk.Pixbuf? thumbnail = null;
 
       var xwindow = w.get_xid ();
-      var gdk_window = Gdk.X11Window.foreign_new_for_display (Gdk.Display.get_default (), xwindow);
+      var x11_display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (x11_display == null) {
+        return null;
+      }
+
+      var gdk_window = new Gdk.X11.Window.foreign_for_display (x11_display, xwindow);
 
       if (gdk_window != null) {
         int win_width = gdk_window.get_width ();
