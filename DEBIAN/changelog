@@ -1,3 +1,12 @@
+plank-reloaded (0.11.150-1) unstable; urgency=medium
+
+  * Add pressure support for graphics tablets
+  * Add separator styles and custom icons
+  * Add folder styles (Simple and Tile)
+  * Add window previews to right click app menu
+
+ -- Josh Ellithorpe <quest@mac.com>  Tue, 16 Sep 2025 14:03:15 -1000
+
 plank-reloaded (0.11.149-1) unstable; urgency=medium
 
   * Improve progress bar rendering

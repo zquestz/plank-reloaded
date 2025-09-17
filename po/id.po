@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-16 12:28-1000\n"
+"POT-Creation-Date: 2025-09-16 14:08-1000\n"
 "PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
@@ -41,19 +41,19 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:111
+#: data/plank.appdata.xml.in:112
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:115
+#: data/plank.appdata.xml.in:116
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:120
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Docklets Preferences"
 msgstr ""
 
@@ -557,7 +557,7 @@ msgstr "_Tutup Semua"
 msgid "_Close"
 msgstr "_Tutup"
 
-#: lib/Items/ApplicationDockItem.vala:582
+#: lib/Items/ApplicationDockItem.vala:587
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Letakkan untuk membukanya dengan %s"

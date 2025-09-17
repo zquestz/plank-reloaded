@@ -117,7 +117,8 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Wed Aug 27 2025 Josh Ellithorpe <quest@mac.com> - 0.11.149-1
-- Improve progress bar rendering
-- Add Polish translations
-- Cleanup Unity destructor logic
+* Tue Sep 16 2025 Josh Ellithorpe <quest@mac.com> - 0.11.150-1
+- Add pressure support for graphics tablets
+- Add separator styles and custom icons
+- Add folder styles (Simple and Tile)
+- Add window previews to right click app menu

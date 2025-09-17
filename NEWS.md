@@ -2,6 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.150 "Reloaded" (2025-09-16)
+
+- Add pressure support for graphics tablets
+- Add separator styles and custom icons
+- Add folder styles (Simple and Tile)
+- Add window previews to right click app menu
+
 ## 0.11.149 "Reloaded" (2025-08-27)
 
 - Improve progress bar rendering
