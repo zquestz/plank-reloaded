@@ -1848,31 +1848,33 @@ namespace Plank {
     public Gdk.Rectangle get_barrier () {
       Gdk.Rectangle barrier = {};
 
+      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        barrier.x = monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2;
-        barrier.y = monitor_geo.y + monitor_geo.height;
-        barrier.width = VisibleDockWidth;
+        barrier.x = (monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2) * window_scale_factor;
+        barrier.y = (monitor_geo.y + monitor_geo.height) * window_scale_factor;
+        barrier.width = VisibleDockWidth * window_scale_factor;
         barrier.height = 0;
         break;
       case Gtk.PositionType.TOP:
-        barrier.x = monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2;
-        barrier.y = monitor_geo.y;
-        barrier.width = VisibleDockWidth;
+        barrier.x = (monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2) * window_scale_factor;
+        barrier.y = monitor_geo.y * window_scale_factor;
+        barrier.width = VisibleDockWidth * window_scale_factor;
         barrier.height = 0;
         break;
       case Gtk.PositionType.LEFT:
-        barrier.x = monitor_geo.x;
-        barrier.y = monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2;
+        barrier.x = monitor_geo.x * window_scale_factor;
+        barrier.y = (monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2) * window_scale_factor;
         barrier.width = 0;
-        barrier.height = VisibleDockHeight;
+        barrier.height = VisibleDockHeight * window_scale_factor;
         break;
       case Gtk.PositionType.RIGHT:
-        barrier.x = monitor_geo.x + monitor_geo.width;
-        barrier.y = monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2;
+        barrier.x = (monitor_geo.x + monitor_geo.width) * window_scale_factor;
+        barrier.y = (monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2) * window_scale_factor;
         barrier.width = 0;
-        barrier.height = VisibleDockHeight;
+        barrier.height = VisibleDockHeight * window_scale_factor;
         break;
       }
 
