@@ -737,7 +737,7 @@ namespace Plank {
     }
 
     public void update_barrier () {
-      if (!barriers_supported)
+      if (!barriers_supported || !controller.window.get_realized ())
         return;
 
       unowned Gdk.X11.Display gdk_display = (controller.window.get_display () as Gdk.X11.Display);
