@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-16 14:08-1000\n"
+"POT-Creation-Date: 2025-09-18 17:55-1000\n"
 "PO-Revision-Date: 2025-09-16 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
@@ -50,19 +50,19 @@ msgstr ""
 "dock cần và không cần gì thêm cả. Nó cũng vẫn là một thư viện có thể được mở "
 "rộng để tạo ra các chương trình dock khác với nhiều tính năng nâng cao hơn."
 
-#: data/plank.appdata.xml.in:112
+#: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
 msgstr "Thanh Dock với chủ đề Matte"
 
-#: data/plank.appdata.xml.in:116
+#: data/plank.appdata.xml.in:117
 msgid "Appearance Preferences"
 msgstr "Tùy chỉnh giao diện"
 
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Behavior Preferences"
 msgstr "Tùy chỉnh hành vi"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Docklets Preferences"
 msgstr "Tùy chỉnh thanh Dock"
 

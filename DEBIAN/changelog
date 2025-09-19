@@ -1,3 +1,9 @@
+plank-reloaded (0.11.151-1) unstable; urgency=medium
+
+  * Update barrier calculations to use window scale
+
+  -- Josh Ellithorpe <quest@mac.com>  Thu, 18 Sep 2025 17:53:40 -1000
+
 plank-reloaded (0.11.150-1) unstable; urgency=medium
 
   * Add pressure support for graphics tablets

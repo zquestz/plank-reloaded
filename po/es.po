@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-16 14:08-1000\n"
+"POT-Creation-Date: 2025-09-18 17:55-1000\n"
 "PO-Revision-Date: 2025-09-16 22:32\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -51,19 +51,19 @@ msgstr ""
 "extender para crear otros programas de acoplamiento con características más "
 "avanzadas."
 
-#: data/plank.appdata.xml.in:112
+#: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
 msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:116
+#: data/plank.appdata.xml.in:117
 msgid "Appearance Preferences"
 msgstr "Preferencias de apariencia"
 
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Behavior Preferences"
 msgstr "Preferencias de comportamiento"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Docklets Preferences"
 msgstr "Preferencias de Docklets"
 
