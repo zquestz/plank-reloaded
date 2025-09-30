@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
+"POT-Creation-Date: 2025-09-29 15:33-1000\n"
 "PO-Revision-Date: 2025-07-08 22:18\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
@@ -474,7 +474,7 @@ msgid "Have a look at your trash!"
 msgstr ""
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr ""
 
@@ -554,8 +554,8 @@ msgstr ""
 "  Uri Damsker  אורי דמסקר https://launchpad.net/~ud1955\n"
 "  yagel sheli https://launchpad.net/~yagelsheli"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_שמירה במעגן"
 
@@ -572,49 +572,53 @@ msgstr "_סגירה"
 msgid "Drop to open with %s"
 msgstr "שחרר בכדי לפתוח באמצעות %s"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr ""
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "_פתיחה בדפדפן הקבצים"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "פתיחת התיקייה המ_כילה"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr ""
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
