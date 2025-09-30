@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:32\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:27\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple"
 msgstr "अब भी बेवकूफी से सरल"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"प्लैंक रिलोडेड मूल प्लैंक प्रोजेक्ट का एक फोर्क है, जो X11 डेस्कटॉप वातावरण के लिए एक सरल "
-"डॉक प्रदान करता है। जबकि विकास सिन्नामोन पर ध्यान केंद्रित करके शुरू हुआ था, अब हम "
-"सक्रिय रूप से कई डेस्कटॉप वातावरणों का समर्थन करते हैं जिनमें मेट और एक्सएफसीई शामिल हैं। इस "
-"समय वेयलैंड समर्थित नहीं है।"
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "प्लैंक रिलोडेड मूल प्लैंक प्रोजेक्ट का एक फोर्क है, जो X11 डेस्कटॉप वातावरण के लिए एक सरल डॉक प्रदान करता है। जबकि विकास सिन्नामोन पर ध्यान केंद्रित करके शुरू हुआ था, अब हम सक्रिय रूप से कई डेस्कटॉप वातावरणों का समर्थन करते हैं जिनमें मेट और एक्सएफसीई शामिल हैं। इस समय वेयलैंड समर्थित नहीं है।"
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"अपने पूर्ववर्ती की तरह, प्लैंक रिलोडेड का लक्ष्य ग्रह पर सबसे सरल डॉक होना है, जो केवल एक "
-"डॉक की जरूरतों को पूरा करता है और बिल्कुल भी ज्यादा नहीं। यह एक पुस्तकालय भी बनी रहती "
-"है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा "
-"सकता है।"
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "अपने पूर्ववर्ती की तरह, प्लैंक रिलोडेड का लक्ष्य ग्रह पर सबसे सरल डॉक होना है, जो केवल एक डॉक की जरूरतों को पूरा करता है और बिल्कुल भी ज्यादा नहीं। यह एक पुस्तकालय भी बनी रहती है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा सकता है।"
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -475,7 +459,7 @@ msgid "Have a look at your trash!"
 msgstr "अपने कचरे पर एक नजर डालें!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_शैली"
 
@@ -545,16 +529,15 @@ msgstr "डॉक में जोड़ने के लिए छोड़े�
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"लॉन्चपैड योगदान:\n"
+msgstr "लॉन्चपैड योगदान:\n"
 "  अल्फ्रेडो हर्नान्डेज़ https://launchpad.net/~aldomann\n"
 "  एंथनी हैरिंगटन 😁 https://launchpad.net/~untaintableangel\n"
 "  हटाया गया https://launchpad.net/~old.name\n"
 "  दिन्चर काव्राल https://launchpad.net/~dkavraal\n"
 "  रिको ज़्चिचोल्ज़ https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_डॉक में रखें"
 
@@ -571,49 +554,53 @@ msgstr "_बंद करें"
 msgid "Drop to open with %s"
 msgstr "%s के साथ खोलने के लिए छोड़ें"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_क्रमबद्ध करें"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "नाम"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "प्रकार"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "आकार"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "तिथि बनाई गई"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "संशोधन दिनांक"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "सरल"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "टाइल"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "फाइल ब्राउज़र में खोलें"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_खोलें"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "संग्रहित _फ़ोल्डर खोलें"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "खाली निर्देशिका"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

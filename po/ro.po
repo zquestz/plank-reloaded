@@ -2,16 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:32\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:27\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && "
-"n%100<20)) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
 "X-Crowdin-Project: plank-reloaded\n"
 "X-Crowdin-Project-ID: 768623\n"
 "X-Crowdin-Language: ro\n"
@@ -27,28 +26,12 @@ msgid "Still stupidly simple"
 msgstr "Tot ridicol de simplu"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded este un fork al proiectului original Plank, oferind un dock "
-"simplu pentru mediile desktop X11. Deși efortul inițial era axat pe mediul "
-"Cinnamon, acum suportăm activ mai multe medii desktop, inclusiv MATE și "
-"Xfce. Wayland nu este suportat în acest moment."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded este un fork al proiectului original Plank, oferind un dock simplu pentru mediile desktop X11. Deși efortul inițial era axat pe mediul Cinnamon, acum suportăm activ mai multe medii desktop, inclusiv MATE și Xfce. Wayland nu este suportat în acest moment."
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"La fel ca predecesorul său, Plank Reloaded își propune să fie cel mai simplu "
-"dock din lume, oferind doar strictul necesar pentru un dock și nimic mai "
-"mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
-"dock cu funcții mai avansate."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "La fel ca predecesorul său, Plank Reloaded își propune să fie cel mai simplu dock din lume, oferind doar strictul necesar pentru un dock și nimic mai mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe dock cu funcții mai avansate."
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -479,7 +462,7 @@ msgid "Have a look at your trash!"
 msgstr "Aruncă o privire la coșul de gunoi!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_Stil"
 
@@ -549,14 +532,13 @@ msgstr "Dă drumul pentru a adăuga la dock"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Adi Roiban https://launchpad.net/~adiroiban\n"
 "  Cristian Moldovan https://launchpad.net/~crismblog\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_Păstrează în panou"
 
@@ -573,49 +555,53 @@ msgstr "În_chide"
 msgid "Drop to open with %s"
 msgstr "Dă drumul pentru a deschide cu %s"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_Sortează după"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "Nume"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "Tip"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "Dimensiune"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "Data creării"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "Data modificării"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "Simplu"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "Dale"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "Deschide în navigat_orul de fișiere"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_Deschide"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "Deschide _dosarul conținător"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "Director gol"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:32\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:27\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple"
 msgstr "Continua estupidamente simples"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"O Plank Reloaded é uma derivação do projeto Plank original, fornecendo uma "
-"doca simples para ambientes de trabalho X11. Embora o desenvolvimento tenha "
-"começado com foco no Cinnamon, agora suportamos ativamente vários ambientes "
-"de trabalho, incluindo MATE e Xfce. O Wayland não é suportado no momento."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "O Plank Reloaded é uma derivação do projeto Plank original, fornecendo uma doca simples para ambientes de trabalho X11. Embora o desenvolvimento tenha começado com foco no Cinnamon, agora suportamos ativamente vários ambientes de trabalho, incluindo MATE e Xfce. O Wayland não é suportado no momento."
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Tal como o seu antecessor, o Plank Reloaded pretende ser a doca mais simples "
-"do planeta, fornecendo apenas o que uma doca precisa e absolutamente nada "
-"mais. Também permanece uma biblioteca que pode ser estendida para criar "
-"outros programas de doca com funcionalidades mais avançados."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Tal como o seu antecessor, o Plank Reloaded pretende ser a doca mais simples do planeta, fornecendo apenas o que uma doca precisa e absolutamente nada mais. Também permanece uma biblioteca que pode ser estendida para criar outros programas de doca com funcionalidades mais avançados."
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -475,7 +459,7 @@ msgid "Have a look at your trash!"
 msgstr "Veja o seu lixo!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_Estilo"
 
@@ -545,8 +529,7 @@ msgstr "Largue para adicionar à doca"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Alex Gutierrez https://launchpad.net/~alex-gusilva\n"
 "  André Carvalho https://launchpad.net/~andrecarvalhopt\n"
 "  André Pinela https://launchpad.net/~sheffzor\n"
@@ -560,8 +543,8 @@ msgstr ""
 "  asensio https://launchpad.net/~asensio\n"
 "  yEdubart https://launchpad.net/~vps1992"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_Manter na doca"
 
@@ -578,49 +561,53 @@ msgstr "Fe_char"
 msgid "Drop to open with %s"
 msgstr "Arraste para abrir com %s"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_Ordenar Por"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "Nome"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "Tipo"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "Tamanho"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "Data de Criação"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "Data Modificada"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "Simples"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "Tile"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "_Abrir no gestor de ficheiros"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_Abrir"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "Abrir pasta _respetiva"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "Diretório Vazio"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

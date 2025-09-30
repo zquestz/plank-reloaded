@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:31\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:26\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple"
 msgstr "Nog steeds belachelijk eenvoudig"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank - Herboren is een afsplitsing van het oorspronkelijke Plank-project, "
-"een eenvoudig dock voor werkomgevingen die gebruikmaken van X11. In eerste "
-"instantie lag de nadruk op het ondersteunen van Cinnamon, maar inmiddels "
-"worden ook andere omgevingen ondersteund, zoals MATE en Xfce. Let op: "
-"Wayland wordt nog niet ondersteund."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank - Herboren is een afsplitsing van het oorspronkelijke Plank-project, een eenvoudig dock voor werkomgevingen die gebruikmaken van X11. In eerste instantie lag de nadruk op het ondersteunen van Cinnamon, maar inmiddels worden ook andere omgevingen ondersteund, zoals MATE en Xfce. Let op: Wayland wordt nog niet ondersteund."
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Plank - Herboren is, net als zijn voorganger, gericht op het aanbieden van "
-"een zo eenvoudig mogelijk dock. Precies wat je nodig hebt en niets meer dan "
-"dat. Ook wordt een bibliotheek geboden om andere docks van te kunnen maken."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Plank - Herboren is, net als zijn voorganger, gericht op het aanbieden van een zo eenvoudig mogelijk dock. Precies wat je nodig hebt en niets meer dan dat. Ook wordt een bibliotheek geboden om andere docks van te kunnen maken."
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -127,8 +111,7 @@ msgstr "Op primair beeldscherm:"
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr ""
-"Verschuiving vanaf het middelpunt van de rand van het scherm (percentage)"
+msgstr "Verschuiving vanaf het middelpunt van de rand van het scherm (percentage)"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
@@ -476,7 +459,7 @@ msgid "Have a look at your trash!"
 msgstr "Graaf in uw prullenbak!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_Stijl"
 
@@ -546,8 +529,7 @@ msgstr "Laat los om aan het dock toe te voegen"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Deleted https://launchpad.net/~old.name\n"
 "  Levi Voorintholt https://launchpad.net/~piratelv\n"
 "  McVries https://launchpad.net/~mcvries\n"
@@ -561,8 +543,8 @@ msgstr ""
 "  tim schoen https://launchpad.net/~timschoen123-deactivatedaccount\n"
 "  Heimen Stoffels vistausss@fastmail.com"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "Vastma_ken aan dock"
 
@@ -579,49 +561,53 @@ msgstr "Sl_uiten"
 msgid "Drop to open with %s"
 msgstr "Laat los om met %s te openen"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_Sorteren op"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "Naam"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "Soort"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "Grootte"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "Aanmaakdatum"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "Bewerkdatum"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "Simpel"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "Tegel"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "_Openen in bestandsbeheer"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_Openen"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "Bovenliggende _map openen"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "Lege Map"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

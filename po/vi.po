@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:33\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:28\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "Language: vi\n"
@@ -26,29 +26,12 @@ msgid "Still stupidly simple"
 msgstr "Vẫn cực kỳ đơn giản"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded là một nhánh của dự án Plank ban đầu, cung cấp một thanh dock "
-"đơn giản cho môi trường desktop X11. Mặc dù việc phát triển ban đầu tập "
-"trung vào Cinnamon, hiện nay chúng tôi tích cực hỗ trợ nhiều môi trường "
-"desktop khác bao gồm MATE và Xfce. Wayland chưa được hỗ trợ tại thời điểm "
-"này."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded là một nhánh của dự án Plank ban đầu, cung cấp một thanh dock đơn giản cho môi trường desktop X11. Mặc dù việc phát triển ban đầu tập trung vào Cinnamon, hiện nay chúng tôi tích cực hỗ trợ nhiều môi trường desktop khác bao gồm MATE và Xfce. Wayland chưa được hỗ trợ tại thời điểm này."
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"Giống như phiên bản tiền nhiệm, Plank Reloaded hướng đến việc trở thành "
-"thanh dock đơn giản nhất trên hành tinh, chỉ cung cấp những gì một thanh "
-"dock cần và không cần gì thêm cả. Nó cũng vẫn là một thư viện có thể được mở "
-"rộng để tạo ra các chương trình dock khác với nhiều tính năng nâng cao hơn."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "Giống như phiên bản tiền nhiệm, Plank Reloaded hướng đến việc trở thành thanh dock đơn giản nhất trên hành tinh, chỉ cung cấp những gì một thanh dock cần và không cần gì thêm cả. Nó cũng vẫn là một thư viện có thể được mở rộng để tạo ra các chương trình dock khác với nhiều tính năng nâng cao hơn."
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -100,9 +83,7 @@ msgstr "Trên màn hình hoạt động:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
-"Khoảng thời gian dò tìm (tính bằng giây) cho việc phát hiện màn hình đang "
-"hoạt động"
+msgstr "Khoảng thời gian dò tìm (tính bằng giây) cho việc phát hiện màn hình đang hoạt động"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -475,7 +456,7 @@ msgid "Have a look at your trash!"
 msgstr "Hãy kiểm tra thùng rác của bạn!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_Kiểu"
 
@@ -545,8 +526,7 @@ msgstr "Kéo để thêm vào thanh dock"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad contributions:\n"
+msgstr "Launchpad contributions:\n"
 "Daniel Roussielle https://launchpad.net/~daniel21102003\n"
 "Hoang Duong Bao \n"
 "https://launchpad.net/~baohd\n"
@@ -557,8 +537,8 @@ msgstr ""
 "Nguyen Doan\n"
 "https://launchpad.net/~nguyendoan1508"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_Gắn vào thanh Dock"
 
@@ -575,49 +555,53 @@ msgstr "_Đóng"
 msgid "Drop to open with %s"
 msgstr "Thả để mở với %s"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_Sắp xếp theo"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "Tên"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "Loại"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "Kích thước"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "Ngày tạo"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "Ngày sửa đổi"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "Đơn giản"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "Ngói"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "_Mở thư mục"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_Mở"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "Mở _thư mục chứa"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "Thư mục trống"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

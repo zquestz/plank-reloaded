@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:32\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:27\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -26,28 +26,12 @@ msgid "Still stupidly simple"
 msgstr "여전히 엄청 단순합니다"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"플랭크 리로디드는 원래 Plank 프로젝트에서 파생된 것으로, X11 데스크톱 환경을 "
-"위한 간단한 독을 제공합니다. 처음에는 Cinnamon에 초점을 맞추고 개발을 시작했"
-"지만, 현재 MATE 및 Xfce를 포함한 여러 데스크톱 환경을 적극적으로 지원하고 있"
-"습니다. 현재 Wayland는 지원되지 않습니다."
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "플랭크 리로디드는 원래 Plank 프로젝트에서 파생된 것으로, X11 데스크톱 환경을 위한 간단한 독을 제공합니다. 처음에는 Cinnamon에 초점을 맞추고 개발을 시작했지만, 현재 MATE 및 Xfce를 포함한 여러 데스크톱 환경을 적극적으로 지원하고 있습니다. 현재 Wayland는 지원되지 않습니다."
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"원래 버전과 마찬가지로 Plank Reloaded는 지구상에서 가장 단순한 독이 되는 것"
-"을 목표로 하며, 독에 필요한 것만 제공하고 그 이상은 절대 제공하지 않습니다. "
-"또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브"
-"러리로 남아 있습니다."
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "원래 버전과 마찬가지로 Plank Reloaded는 지구상에서 가장 단순한 독이 되는 것을 목표로 하며, 독에 필요한 것만 제공하고 그 이상은 절대 제공하지 않습니다. 또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브러리로 남아 있습니다."
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -472,7 +456,7 @@ msgid "Have a look at your trash!"
 msgstr "휴지통을 확인해보세요!"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_스타일"
 
@@ -542,8 +526,7 @@ msgstr "플랭크에 올리기"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  B. W. Knight https://launchpad.net/~kbd0651\n"
 "  Hur, Seok https://launchpad.net/~ludishur\n"
 "  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"
@@ -553,8 +536,8 @@ msgstr ""
 "  Youngbin Han https://launchpad.net/~sukso96100\n"
 "  cafeinoz https://launchpad.net/~cafeinoz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "플랭크에 두기 (_K)"
 
@@ -571,49 +554,53 @@ msgstr "닫기 (_C)"
 msgid "Drop to open with %s"
 msgstr "%s로 열려면 가져다 놓으세요"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_정렬 기준"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "이름"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "종류"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "크기"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "생성 날짜"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "수정한 날짜"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "간결성"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "타일"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "파일 브라우저에서 열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "들어 있는 폴더 열기 (_F)"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "빈 디렉토리"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-18 17:55-1000\n"
-"PO-Revision-Date: 2025-09-16 22:31\n"
+"POT-Creation-Date: 2025-09-29 15:20-1000\n"
+"PO-Revision-Date: 2025-09-30 01:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -26,26 +26,12 @@ msgid "Still stupidly simple"
 msgstr "依旧简单得无语"
 
 #: data/plank.appdata.xml.in:9
-msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
-msgstr ""
-"Plank Reloaded 是 Plank 项目的分支，为 X11 桌面环境提供简单的 Dock。尽管开发"
-"最初专注于 Cinnamon，我们现在积极开发支持 MATE 和 Xfce 在内的多种桌面环境。目"
-"前不支持 Wayland。"
+msgid "Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time."
+msgstr "Plank Reloaded 是 Plank 项目的分支，为 X11 桌面环境提供简单的 Dock。尽管开发最初专注于 Cinnamon，我们现在积极开发支持 MATE 和 Xfce 在内的多种桌面环境。目前不支持 Wayland。"
 
 #: data/plank.appdata.xml.in:12
-msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
-msgstr ""
-"与其前身一样，Plank Reloaded 的目标是成为地球上最简单的 Dock，仅提供一个Dock "
-"所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来"
-"开发具有更多进阶功能的其他 Dock 程式。"
+msgid "Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features."
+msgstr "与其前身一样，Plank Reloaded 的目标是成为地球上最简单的 Dock，仅提供一个Dock 所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来开发具有更多进阶功能的其他 Dock 程式。"
 
 #: data/plank.appdata.xml.in:113
 msgid "Dock with Matte theme"
@@ -470,7 +456,7 @@ msgid "Have a look at your trash!"
 msgstr "看看您的回收站。"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:444
+#: lib/Items/FileDockItem.vala:335
 msgid "_Style"
 msgstr "_样式"
 
@@ -540,8 +526,7 @@ msgstr "拖动添加到这里"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
+msgstr "Launchpad Contributions:\n"
 "  Coiby Xu https://launchpad.net/~coiby\n"
 "  Jerry Hu https://launchpad.net/~2445513240-3\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
@@ -551,8 +536,8 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:479
-#: lib/Items/FileDockItem.vala:500
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
+#: lib/Items/FileDockItem.vala:391
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
@@ -569,49 +554,53 @@ msgstr "_关闭"
 msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"
 
-#: lib/Items/FileDockItem.vala:383
+#: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
 msgstr "_排序方式"
 
-#: lib/Items/FileDockItem.vala:387
+#: lib/Items/FileDockItem.vala:278
 msgid "Name"
 msgstr "名称"
 
-#: lib/Items/FileDockItem.vala:398
+#: lib/Items/FileDockItem.vala:289
 msgid "Kind"
 msgstr "类型"
 
-#: lib/Items/FileDockItem.vala:409
+#: lib/Items/FileDockItem.vala:300
 msgid "Size"
 msgstr "大小"
 
-#: lib/Items/FileDockItem.vala:420
+#: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
 msgstr "创建日期"
 
-#: lib/Items/FileDockItem.vala:431
+#: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
 msgstr "修改日期"
 
-#: lib/Items/FileDockItem.vala:448
+#: lib/Items/FileDockItem.vala:339
 msgid "Simple"
 msgstr "简单"
 
-#: lib/Items/FileDockItem.vala:460
+#: lib/Items/FileDockItem.vala:351
 msgid "Tile"
 msgstr "平铺"
 
-#: lib/Items/FileDockItem.vala:485
+#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
 msgstr "_在文件浏览器中打开"
 
-#: lib/Items/FileDockItem.vala:506
+#: lib/Items/FileDockItem.vala:397
 msgid "_Open"
 msgstr "_打开"
 
-#: lib/Items/FileDockItem.vala:510
+#: lib/Items/FileDockItem.vala:401
 msgid "Open Containing _Folder"
 msgstr "打开所在文件夹"
+
+#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+msgid "Empty Directory"
+msgstr "空目录"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
@@ -640,3 +629,4 @@ msgstr "_退出"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "首选项"
+

@@ -551,7 +551,7 @@ namespace Plank {
 
       submenu.append (new Gtk.SeparatorMenuItem ());
 
-      var open_item = create_menu_item (_("Open in File Browser"), "gtk-open");
+      var open_item = create_menu_item (_("_Open in File Browser"), "gtk-open");
       open_item.activate.connect (() => {
         System.get_default ().open (directory);
         ClickedAnimation = AnimationType.BOUNCE;
