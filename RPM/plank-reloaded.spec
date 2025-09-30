@@ -117,5 +117,5 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Tue Sep 16 2025 Josh Ellithorpe <quest@mac.com> - 0.11.151-1
-- Update barrier calculations to use window scale
+* Mon Sep 29 2025 Josh Ellithorpe <quest@mac.com> - 0.11.152-1
+- Add nested directory (subfolders) support

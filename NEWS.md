@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.152 "Reloaded" (2025-09-29)
+
+- Add nested directory (subfolders) support
+
 ## 0.11.151 "Reloaded" (2025-09-18)
 
 - Update barrier calculations to use window scale
