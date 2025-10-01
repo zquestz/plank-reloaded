@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-29 15:38-1000\n"
-"PO-Revision-Date: 2025-07-08 22:18\n"
+"POT-Creation-Date: 2025-09-29 15:41-1000\n"
+"PO-Revision-Date: 2025-10-01 00:22\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
 msgid "Still stupidly simple"
-msgstr ""
+msgstr "驚くほどシンプル"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -32,6 +32,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloadedは、オリジナルのPlankプロジェクトのフォークで、X11デスクトップ"
+"環境向けのシンプルなドックを提供します。開発はCinnamonに焦点を当てて始まりま"
+"したが、現在はMATEやXfceを含む複数のデスクトップ環境を積極的にサポートしてい"
+"ます。現時点ではWaylandはサポートされていません。"
 
 #: data/plank.appdata.xml.in:12
 msgid ""
@@ -40,26 +44,29 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"前身と同様に、Plank Reloadedは世界で最もシンプルなドックを目指しており、ドッ"
+"クに必要なものだけを提供し、それ以上は何もありません。また、より高度な機能を"
+"持つ他のドックプログラムを作成するために拡張できるライブラリでもあります。"
 
 #: data/plank.appdata.xml.in:114
 msgid "Dock with Matte theme"
-msgstr ""
+msgstr "マットテーマのドック"
 
 #: data/plank.appdata.xml.in:118
 msgid "Appearance Preferences"
-msgstr ""
+msgstr "外観設定"
 
 #: data/plank.appdata.xml.in:122
 msgid "Behavior Preferences"
-msgstr ""
+msgstr "動作設定"
 
 #: data/plank.appdata.xml.in:126
 msgid "Docklets Preferences"
-msgstr ""
+msgstr "ドックレット設定"
 
 #: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "ドック"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
@@ -87,11 +94,11 @@ msgstr "下部"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "アクティブディスプレイに表示:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "アクティブディスプレイ検出のポーリング間隔（秒）"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -135,7 +142,7 @@ msgstr "アイコンの拡大:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "間隔サイズ:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
@@ -199,7 +206,7 @@ msgstr "現在のワークスペースのみ表示:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "ツールチップを有効化:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
@@ -207,11 +214,11 @@ msgstr "アイコンをロック:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "ドックレットを固定:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "ファイルを固定:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
@@ -223,275 +230,275 @@ msgstr "ドックレット"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "利用可能なアプリケーションがありません"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "アプリケーション"
 
 #: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
-msgstr ""
+msgstr "メニューを編集"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
 #: docklets/Separator/SeparatorDockItem.vala:314
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "カスタムアイコンを選択"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
 #: docklets/Separator/SeparatorDockItem.vala:321
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "デフォルトアイコンにリセット"
 
 #: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
-msgstr ""
+msgstr "大きいアイコン"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
 #: docklets/Separator/SeparatorDockItem.vala:247
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "カスタムアイコンを選択"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
 #: docklets/Separator/SeparatorDockItem.vala:250
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
 #: docklets/Separator/SeparatorDockItem.vala:251
 msgid "Select"
-msgstr ""
+msgstr "選択"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
 #: docklets/Separator/SeparatorDockItem.vala:269
 msgid "Image Files"
-msgstr ""
+msgstr "画像ファイル"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "アプリケーションを簡単に起動します。"
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "バッテリーなし"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "バッテリー"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "バッテリーが見つかりません"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "バッテリーの検索エラー"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "バッテリー"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "バッテリー情報を表示します"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "クリップボードは現在空です。"
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "クリア(_C)"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "マウス選択を追跡"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "画像を追跡"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "クリップボード追跡を有効化"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "最大エントリ数"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "画像"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "最近のクリップボードエントリを保持します。"
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "デジタル時計(_G)"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24時間表記(_C)"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "日付を表示(_D)"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "時計"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "今何時？"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "カレンダー"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPUモニター"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "CPUを監視します。問題が発生したら..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "デスクトップを表示"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "デスクトップ"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "デスクトップを表示します。"
 
 #: docklets/Notifications/NotificationsDockItem.vala:264
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
-msgstr ""
+msgstr "通知"
 
 #: docklets/Notifications/NotificationsDockItem.vala:996
 msgid "just now"
-msgstr ""
+msgstr "たった今"
 
 #: docklets/Notifications/NotificationsDockItem.vala:999
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
+msgstr[0] "%d分前"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1002
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
+msgstr[0] "%d時間前"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1048
 msgid "Enable _Expiry"
-msgstr ""
+msgstr "期限切れを有効化(_E)"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1056
 msgid "Show _Count"
-msgstr ""
+msgstr "カウントを表示(_C)"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1064
 msgid "Show _Transient"
-msgstr ""
+msgstr "一時的なものを表示(_T)"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "Clear Notifications"
-msgstr ""
+msgstr "通知をクリア"
 
 #: docklets/Notifications/NotificationsDocklet.vala:29
 msgid "Simple notifications docklet."
-msgstr ""
+msgstr "シンプルな通知ドックレット。"
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "ゴミ箱にアイテムがありません"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
+msgstr[0] "ゴミ箱に%u個のアイテム"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "ゴミ箱のすべてのアイテムを空にしますか？"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "ゴミ箱内のすべてのアイテムが完全に削除されます。"
 
 #: docklets/Trash/TrashDockItem.vala:275
 msgid "_Cancel"
-msgstr ""
+msgstr "キャンセル(_C)"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "ゴミ箱を空にする(_T)"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "ドロップしてゴミ箱へ移動"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "ゴミ箱を開く(_O)"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "ゴミ箱"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "ゴミ箱を見てみましょう！"
 
 #: docklets/Separator/SeparatorDockItem.vala:330
 #: lib/Items/FileDockItem.vala:335
 msgid "_Style"
-msgstr ""
+msgstr "スタイル(_S)"
 
 #: docklets/Separator/SeparatorDockItem.vala:335
 msgid "_Line"
-msgstr ""
+msgstr "線(_L)"
 
 #: docklets/Separator/SeparatorDockItem.vala:345
 msgid "_Dot"
-msgstr ""
+msgstr "点(_D)"
 
 #: docklets/Separator/SeparatorDockItem.vala:355
 msgid "_Space"
-msgstr ""
+msgstr "スペース(_S)"
 
 #: docklets/Separator/SeparatorDockItem.vala:368
 #: docklets/Workspaces/WorkspacesDockItem.vala:560
 msgid "_Invert Color"
-msgstr ""
+msgstr "色を反転(_I)"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "区切り線"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "ただの区切り線です。"
 
 #. *
 #. * Returns the display name for this docklet.
@@ -501,23 +508,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:48
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "ワークスペース"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:177
 #: docklets/Workspaces/WorkspacesDockItem.vala:203
 #: docklets/Workspaces/WorkspacesDockItem.vala:215
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "ワークスペース %d / %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:538
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "ワークスペース %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:567
 msgid "_Live Previews"
-msgstr ""
+msgstr "ライブプレビュー(_L)"
 
 #. *
 #. * Returns the description of this docklet.
@@ -526,7 +533,7 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "グラフィカルなワークスペーススイッチャー。"
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
@@ -567,35 +574,35 @@ msgstr "ドロップして %s で開く"
 
 #: lib/Items/FileDockItem.vala:274
 msgid "_Sort By"
-msgstr ""
+msgstr "並び替え(_S)"
 
 #: lib/Items/FileDockItem.vala:278
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #: lib/Items/FileDockItem.vala:289
 msgid "Kind"
-msgstr ""
+msgstr "種類"
 
 #: lib/Items/FileDockItem.vala:300
 msgid "Size"
-msgstr ""
+msgstr "サイズ"
 
 #: lib/Items/FileDockItem.vala:311
 msgid "Date Created"
-msgstr ""
+msgstr "作成日"
 
 #: lib/Items/FileDockItem.vala:322
 msgid "Date Modified"
-msgstr ""
+msgstr "変更日"
 
 #: lib/Items/FileDockItem.vala:339
 msgid "Simple"
-msgstr ""
+msgstr "シンプル"
 
 #: lib/Items/FileDockItem.vala:351
 msgid "Tile"
-msgstr ""
+msgstr "タイル"
 
 #: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
 msgid "_Open in File Browser"
@@ -611,7 +618,7 @@ msgstr "親フォルダーを開く(_F)"
 
 #: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
 msgid "Empty Directory"
-msgstr ""
+msgstr "空のディレクトリ"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
@@ -627,15 +634,15 @@ msgstr "このアプリケーションを翻訳する(_T)..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr ""
+msgstr "設定(_P)"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "このアプリケーションについて(_A)"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "終了(_Q)"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
