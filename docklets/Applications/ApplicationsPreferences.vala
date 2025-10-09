@@ -19,7 +19,6 @@ using Plank;
 
 namespace Docky {
   public class ApplicationsPreferences : DockItemPreferences {
-    public bool LargeIcons { get; set; default = false; }
     public string CustomIcon { get; set; default = ""; }
 
     public ApplicationsPreferences.with_file (GLib.File file)

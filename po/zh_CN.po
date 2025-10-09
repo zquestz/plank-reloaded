@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-29 15:41-1000\n"
-"PO-Revision-Date: 2025-09-30 01:26\n"
+"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"PO-Revision-Date: 2025-10-09 01:01\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -241,13 +241,13 @@ msgid "Edit Menu"
 msgstr "编辑菜单"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
-#: docklets/Separator/SeparatorDockItem.vala:314
+#: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "自定义图标"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
-#: docklets/Separator/SeparatorDockItem.vala:321
+#: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "重设为默认图标"
 
@@ -256,22 +256,22 @@ msgid "Large Icons"
 msgstr "大图标"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
-#: docklets/Separator/SeparatorDockItem.vala:247
+#: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "选择自定义图标"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
-#: docklets/Separator/SeparatorDockItem.vala:250
+#: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "取消"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
-#: docklets/Separator/SeparatorDockItem.vala:251
+#: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "选择"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
-#: docklets/Separator/SeparatorDockItem.vala:269
+#: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "图像文件"
 
@@ -445,7 +445,7 @@ msgstr "清空回收站中的所有项目？"
 msgid "All items in the Trash will be permanently deleted."
 msgstr "回收站中的所有項目將被永久刪除！"
 
-#: docklets/Trash/TrashDockItem.vala:275
+#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_取消"
 
@@ -469,25 +469,24 @@ msgstr "回收站"
 msgid "Have a look at your trash!"
 msgstr "看看您的回收站。"
 
-#: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
 msgstr "_样式"
 
-#: docklets/Separator/SeparatorDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
 msgstr "_线条"
 
-#: docklets/Separator/SeparatorDockItem.vala:345
+#: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
 msgstr "_圆点"
 
-#: docklets/Separator/SeparatorDockItem.vala:355
+#: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
 msgstr "_空格"
 
-#: docklets/Separator/SeparatorDockItem.vala:368
-#: docklets/Workspaces/WorkspacesDockItem.vala:560
+#: docklets/Separator/SeparatorDockItem.vala:379
+#: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
 msgstr "_反转颜色"
 
@@ -504,24 +503,24 @@ msgstr "只是一条分隔符号。"
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "工作区"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:177
-#: docklets/Workspaces/WorkspacesDockItem.vala:203
-#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#: docklets/Workspaces/WorkspacesDockItem.vala:188
+#: docklets/Workspaces/WorkspacesDockItem.vala:214
+#: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "工作区 %d/%d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:538
+#: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:567
+#: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
 msgstr "_实时预览"
 
@@ -551,8 +550,8 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
-#: lib/Items/FileDockItem.vala:391
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
@@ -570,50 +569,74 @@ msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"
 
 #: lib/Items/FileDockItem.vala:274
-msgid "_Sort By"
-msgstr "_排序方式"
+msgid "_View Options"
+msgstr "_查看选项"
 
-#: lib/Items/FileDockItem.vala:278
-msgid "Name"
-msgstr "名称"
-
-#: lib/Items/FileDockItem.vala:289
-msgid "Kind"
-msgstr "类型"
-
-#: lib/Items/FileDockItem.vala:300
-msgid "Size"
-msgstr "大小"
-
-#: lib/Items/FileDockItem.vala:311
-msgid "Date Created"
-msgstr "创建日期"
-
-#: lib/Items/FileDockItem.vala:322
-msgid "Date Modified"
-msgstr "修改日期"
-
-#: lib/Items/FileDockItem.vala:339
-msgid "Simple"
-msgstr "简单"
-
-#: lib/Items/FileDockItem.vala:351
-msgid "Tile"
-msgstr "平铺"
-
-#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
+#: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
 msgstr "_在文件浏览器中打开"
 
-#: lib/Items/FileDockItem.vala:397
+#: lib/Items/FileDockItem.vala:302
+msgid "View Options"
+msgstr "查看选项"
+
+#: lib/Items/FileDockItem.vala:306
+msgid "_OK"
+msgstr "_确定"
+
+#: lib/Items/FileDockItem.vala:320
+msgid "Sort By:"
+msgstr "排序方式:"
+
+#: lib/Items/FileDockItem.vala:324
+msgid "Name"
+msgstr "名称"
+
+#: lib/Items/FileDockItem.vala:325
+msgid "Kind"
+msgstr "类型"
+
+#: lib/Items/FileDockItem.vala:326
+msgid "Size"
+msgstr "大小"
+
+#: lib/Items/FileDockItem.vala:327
+msgid "Date Created"
+msgstr "创建日期"
+
+#: lib/Items/FileDockItem.vala:328
+msgid "Date Modified"
+msgstr "修改日期"
+
+#: lib/Items/FileDockItem.vala:332
+msgid "Style:"
+msgstr "风格："
+
+#: lib/Items/FileDockItem.vala:336
+msgid "Simple"
+msgstr "简单"
+
+#: lib/Items/FileDockItem.vala:337
+msgid "Tile"
+msgstr "平铺"
+
+#: lib/Items/FileDockItem.vala:341
+msgid "Large Icons:"
+msgstr "大图标:"
+
+#: lib/Items/FileDockItem.vala:348
+msgid "Show Hidden Files:"
+msgstr "显示隐藏文件："
+
+#: lib/Items/FileDockItem.vala:411
 msgid "_Open"
 msgstr "_打开"
 
-#: lib/Items/FileDockItem.vala:401
+#: lib/Items/FileDockItem.vala:415
 msgid "Open Containing _Folder"
 msgstr "打开所在文件夹"
 
-#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+#: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
 msgstr "空目录"
 

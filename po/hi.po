@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-29 15:41-1000\n"
-"PO-Revision-Date: 2025-09-30 01:27\n"
+"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"PO-Revision-Date: 2025-10-09 01:02\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -243,13 +243,13 @@ msgid "Edit Menu"
 msgstr "मेन्यू संपादित करें"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
-#: docklets/Separator/SeparatorDockItem.vala:314
+#: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "कस्टम आइकन चुनें"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
-#: docklets/Separator/SeparatorDockItem.vala:321
+#: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "डिफ़ॉल्ट आइकन पर रीसेट करें"
 
@@ -258,22 +258,22 @@ msgid "Large Icons"
 msgstr "बड़े आइकन"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
-#: docklets/Separator/SeparatorDockItem.vala:247
+#: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "कस्टम आइकन चुनें"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
-#: docklets/Separator/SeparatorDockItem.vala:250
+#: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "रद्द करें"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
-#: docklets/Separator/SeparatorDockItem.vala:251
+#: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "चयन करें"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
-#: docklets/Separator/SeparatorDockItem.vala:269
+#: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "छवि फाइलें"
 
@@ -450,7 +450,7 @@ msgstr "क्या सभी आइटम कचरे से हटाए ज
 msgid "All items in the Trash will be permanently deleted."
 msgstr "कचरे में सभी आइटम स्थायी रूप से हटा दिए जाएंगे।"
 
-#: docklets/Trash/TrashDockItem.vala:275
+#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_रद्द करें"
 
@@ -474,25 +474,24 @@ msgstr "कचरा"
 msgid "Have a look at your trash!"
 msgstr "अपने कचरे पर एक नजर डालें!"
 
-#: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
 msgstr "_शैली"
 
-#: docklets/Separator/SeparatorDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
 msgstr "_रेखा"
 
-#: docklets/Separator/SeparatorDockItem.vala:345
+#: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
 msgstr "_बिंदु"
 
-#: docklets/Separator/SeparatorDockItem.vala:355
+#: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
 msgstr "_स्पेस"
 
-#: docklets/Separator/SeparatorDockItem.vala:368
-#: docklets/Workspaces/WorkspacesDockItem.vala:560
+#: docklets/Separator/SeparatorDockItem.vala:379
+#: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
 msgstr "_रंग पलटें"
 
@@ -509,24 +508,24 @@ msgstr "बस एक विभाजक।"
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "कार्यस्थान"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:177
-#: docklets/Workspaces/WorkspacesDockItem.vala:203
-#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#: docklets/Workspaces/WorkspacesDockItem.vala:188
+#: docklets/Workspaces/WorkspacesDockItem.vala:214
+#: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "कार्यस्थान %d / %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:538
+#: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
 msgstr "कार्यस्थान %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:567
+#: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
 msgstr "_लाइव प्रीव्यू"
 
@@ -553,8 +552,8 @@ msgstr ""
 "  दिन्चर काव्राल https://launchpad.net/~dkavraal\n"
 "  रिको ज़्चिचोल्ज़ https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
-#: lib/Items/FileDockItem.vala:391
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_डॉक में रखें"
 
@@ -572,50 +571,74 @@ msgid "Drop to open with %s"
 msgstr "%s के साथ खोलने के लिए छोड़ें"
 
 #: lib/Items/FileDockItem.vala:274
-msgid "_Sort By"
-msgstr "_क्रमबद्ध करें"
+msgid "_View Options"
+msgstr "_दृश्य विकल्प"
 
-#: lib/Items/FileDockItem.vala:278
-msgid "Name"
-msgstr "नाम"
-
-#: lib/Items/FileDockItem.vala:289
-msgid "Kind"
-msgstr "प्रकार"
-
-#: lib/Items/FileDockItem.vala:300
-msgid "Size"
-msgstr "आकार"
-
-#: lib/Items/FileDockItem.vala:311
-msgid "Date Created"
-msgstr "तिथि बनाई गई"
-
-#: lib/Items/FileDockItem.vala:322
-msgid "Date Modified"
-msgstr "संशोधन दिनांक"
-
-#: lib/Items/FileDockItem.vala:339
-msgid "Simple"
-msgstr "सरल"
-
-#: lib/Items/FileDockItem.vala:351
-msgid "Tile"
-msgstr "टाइल"
-
-#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
+#: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
 msgstr "फाइल ब्राउज़र में खोलें"
 
-#: lib/Items/FileDockItem.vala:397
+#: lib/Items/FileDockItem.vala:302
+msgid "View Options"
+msgstr "दृश्य विकल्प"
+
+#: lib/Items/FileDockItem.vala:306
+msgid "_OK"
+msgstr "_ठीक है"
+
+#: lib/Items/FileDockItem.vala:320
+msgid "Sort By:"
+msgstr "क्रमबद्ध करें:"
+
+#: lib/Items/FileDockItem.vala:324
+msgid "Name"
+msgstr "नाम"
+
+#: lib/Items/FileDockItem.vala:325
+msgid "Kind"
+msgstr "प्रकार"
+
+#: lib/Items/FileDockItem.vala:326
+msgid "Size"
+msgstr "आकार"
+
+#: lib/Items/FileDockItem.vala:327
+msgid "Date Created"
+msgstr "तिथि बनाई गई"
+
+#: lib/Items/FileDockItem.vala:328
+msgid "Date Modified"
+msgstr "संशोधन दिनांक"
+
+#: lib/Items/FileDockItem.vala:332
+msgid "Style:"
+msgstr "स्टाइल:"
+
+#: lib/Items/FileDockItem.vala:336
+msgid "Simple"
+msgstr "सरल"
+
+#: lib/Items/FileDockItem.vala:337
+msgid "Tile"
+msgstr "टाइल"
+
+#: lib/Items/FileDockItem.vala:341
+msgid "Large Icons:"
+msgstr "बड़े आइकन:"
+
+#: lib/Items/FileDockItem.vala:348
+msgid "Show Hidden Files:"
+msgstr "छिपी हुई फ़ाइलें दिखाएँ:"
+
+#: lib/Items/FileDockItem.vala:411
 msgid "_Open"
 msgstr "_खोलें"
 
-#: lib/Items/FileDockItem.vala:401
+#: lib/Items/FileDockItem.vala:415
 msgid "Open Containing _Folder"
 msgstr "संग्रहित _फ़ोल्डर खोलें"
 
-#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+#: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
 msgstr "खाली निर्देशिका"
 

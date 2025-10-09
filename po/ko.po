@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-29 15:41-1000\n"
-"PO-Revision-Date: 2025-09-30 01:27\n"
+"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"PO-Revision-Date: 2025-10-09 01:02\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -243,13 +243,13 @@ msgid "Edit Menu"
 msgstr "메뉴 편집"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
-#: docklets/Separator/SeparatorDockItem.vala:314
+#: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "사용자 정의 아이콘 선택"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
-#: docklets/Separator/SeparatorDockItem.vala:321
+#: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "기본 아이콘으로 재설정"
 
@@ -258,22 +258,22 @@ msgid "Large Icons"
 msgstr "큰 아이콘"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
-#: docklets/Separator/SeparatorDockItem.vala:247
+#: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "사용자 정의 아이콘 선택"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
-#: docklets/Separator/SeparatorDockItem.vala:250
+#: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "취소"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
-#: docklets/Separator/SeparatorDockItem.vala:251
+#: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "선택"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
-#: docklets/Separator/SeparatorDockItem.vala:269
+#: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "이미지 파일"
 
@@ -447,7 +447,7 @@ msgstr "휴지통의 모든 항목을 비울까요?"
 msgid "All items in the Trash will be permanently deleted."
 msgstr "휴지통의 모든 항목이 영구적으로 삭제됩니다."
 
-#: docklets/Trash/TrashDockItem.vala:275
+#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "취소 (_C)"
 
@@ -471,25 +471,24 @@ msgstr "휴지통"
 msgid "Have a look at your trash!"
 msgstr "휴지통을 확인해보세요!"
 
-#: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
 msgstr "_스타일"
 
-#: docklets/Separator/SeparatorDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
 msgstr "_선"
 
-#: docklets/Separator/SeparatorDockItem.vala:345
+#: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
 msgstr "_점"
 
-#: docklets/Separator/SeparatorDockItem.vala:355
+#: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
 msgstr "_공백"
 
-#: docklets/Separator/SeparatorDockItem.vala:368
-#: docklets/Workspaces/WorkspacesDockItem.vala:560
+#: docklets/Separator/SeparatorDockItem.vala:379
+#: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
 msgstr "_색상 반전"
 
@@ -506,24 +505,24 @@ msgstr "단순 구분선입니다."
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "작업 공간"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:177
-#: docklets/Workspaces/WorkspacesDockItem.vala:203
-#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#: docklets/Workspaces/WorkspacesDockItem.vala:188
+#: docklets/Workspaces/WorkspacesDockItem.vala:214
+#: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "총 %d개 중 %d번째 작업 공간"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:538
+#: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
 msgstr "작업 공간 %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:567
+#: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
 msgstr "_실시간 미리보기"
 
@@ -553,8 +552,8 @@ msgstr ""
 "  Youngbin Han https://launchpad.net/~sukso96100\n"
 "  cafeinoz https://launchpad.net/~cafeinoz"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
-#: lib/Items/FileDockItem.vala:391
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "플랭크에 두기 (_K)"
 
@@ -572,50 +571,74 @@ msgid "Drop to open with %s"
 msgstr "%s로 열려면 가져다 놓으세요"
 
 #: lib/Items/FileDockItem.vala:274
-msgid "_Sort By"
-msgstr "_정렬 기준"
+msgid "_View Options"
+msgstr "_보기 옵션"
 
-#: lib/Items/FileDockItem.vala:278
-msgid "Name"
-msgstr "이름"
-
-#: lib/Items/FileDockItem.vala:289
-msgid "Kind"
-msgstr "종류"
-
-#: lib/Items/FileDockItem.vala:300
-msgid "Size"
-msgstr "크기"
-
-#: lib/Items/FileDockItem.vala:311
-msgid "Date Created"
-msgstr "생성 날짜"
-
-#: lib/Items/FileDockItem.vala:322
-msgid "Date Modified"
-msgstr "수정한 날짜"
-
-#: lib/Items/FileDockItem.vala:339
-msgid "Simple"
-msgstr "간결성"
-
-#: lib/Items/FileDockItem.vala:351
-msgid "Tile"
-msgstr "타일"
-
-#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
+#: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
 msgstr "파일 브라우저에서 열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:397
+#: lib/Items/FileDockItem.vala:302
+msgid "View Options"
+msgstr "보기 옵션"
+
+#: lib/Items/FileDockItem.vala:306
+msgid "_OK"
+msgstr "_확인"
+
+#: lib/Items/FileDockItem.vala:320
+msgid "Sort By:"
+msgstr "정렬 기준:"
+
+#: lib/Items/FileDockItem.vala:324
+msgid "Name"
+msgstr "이름"
+
+#: lib/Items/FileDockItem.vala:325
+msgid "Kind"
+msgstr "종류"
+
+#: lib/Items/FileDockItem.vala:326
+msgid "Size"
+msgstr "크기"
+
+#: lib/Items/FileDockItem.vala:327
+msgid "Date Created"
+msgstr "생성 날짜"
+
+#: lib/Items/FileDockItem.vala:328
+msgid "Date Modified"
+msgstr "수정한 날짜"
+
+#: lib/Items/FileDockItem.vala:332
+msgid "Style:"
+msgstr "스타일:"
+
+#: lib/Items/FileDockItem.vala:336
+msgid "Simple"
+msgstr "간결성"
+
+#: lib/Items/FileDockItem.vala:337
+msgid "Tile"
+msgstr "타일"
+
+#: lib/Items/FileDockItem.vala:341
+msgid "Large Icons:"
+msgstr "큰 아이콘:"
+
+#: lib/Items/FileDockItem.vala:348
+msgid "Show Hidden Files:"
+msgstr "숨겨진 파일 표시:"
+
+#: lib/Items/FileDockItem.vala:411
 msgid "_Open"
 msgstr "열기 (_O)"
 
-#: lib/Items/FileDockItem.vala:401
+#: lib/Items/FileDockItem.vala:415
 msgid "Open Containing _Folder"
 msgstr "들어 있는 폴더 열기 (_F)"
 
-#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+#: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
 msgstr "빈 디렉토리"
 

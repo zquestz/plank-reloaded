@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-09-29 15:41-1000\n"
-"PO-Revision-Date: 2025-09-30 01:27\n"
+"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"PO-Revision-Date: 2025-10-09 01:02\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt\n"
@@ -243,13 +243,13 @@ msgid "Edit Menu"
 msgstr "Editar menu"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
-#: docklets/Separator/SeparatorDockItem.vala:314
+#: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "Escolher ícone personalizado"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
-#: docklets/Separator/SeparatorDockItem.vala:321
+#: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "Repor o ícone predefinido"
 
@@ -258,22 +258,22 @@ msgid "Large Icons"
 msgstr "Ícones grandes"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
-#: docklets/Separator/SeparatorDockItem.vala:247
+#: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "Selecionar ícone personalizado"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
-#: docklets/Separator/SeparatorDockItem.vala:250
+#: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
-#: docklets/Separator/SeparatorDockItem.vala:251
+#: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "Selecionar"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
-#: docklets/Separator/SeparatorDockItem.vala:269
+#: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "Ficheiros de imagem"
 
@@ -450,7 +450,7 @@ msgstr "Esvaziar todos os itens do lixo?"
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Todos os itens no lixo serão eliminados permanentemente."
 
-#: docklets/Trash/TrashDockItem.vala:275
+#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -474,25 +474,24 @@ msgstr "Lixo"
 msgid "Have a look at your trash!"
 msgstr "Veja o seu lixo!"
 
-#: docklets/Separator/SeparatorDockItem.vala:330
-#: lib/Items/FileDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
 msgstr "_Estilo"
 
-#: docklets/Separator/SeparatorDockItem.vala:335
+#: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
 msgstr "_Linha"
 
-#: docklets/Separator/SeparatorDockItem.vala:345
+#: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
 msgstr "_Ponto"
 
-#: docklets/Separator/SeparatorDockItem.vala:355
+#: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
 msgstr "_Espaço"
 
-#: docklets/Separator/SeparatorDockItem.vala:368
-#: docklets/Workspaces/WorkspacesDockItem.vala:560
+#: docklets/Separator/SeparatorDockItem.vala:379
+#: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
 msgstr "_Inverter cor"
 
@@ -509,24 +508,24 @@ msgstr "Apenas um separador."
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:48
+#: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "Áreas de trabalho"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:177
-#: docklets/Workspaces/WorkspacesDockItem.vala:203
-#: docklets/Workspaces/WorkspacesDockItem.vala:215
+#: docklets/Workspaces/WorkspacesDockItem.vala:188
+#: docklets/Workspaces/WorkspacesDockItem.vala:214
+#: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "Área de trabalho %d de %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:538
+#: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabalho %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:567
+#: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
 msgstr "Pré-visualizações ao _vivo"
 
@@ -560,8 +559,8 @@ msgstr ""
 "  asensio https://launchpad.net/~asensio\n"
 "  yEdubart https://launchpad.net/~vps1992"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:370
-#: lib/Items/FileDockItem.vala:391
+#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Manter na doca"
 
@@ -579,50 +578,74 @@ msgid "Drop to open with %s"
 msgstr "Arraste para abrir com %s"
 
 #: lib/Items/FileDockItem.vala:274
-msgid "_Sort By"
-msgstr "_Ordenar Por"
+msgid "_View Options"
+msgstr "_Opções de Visualização"
 
-#: lib/Items/FileDockItem.vala:278
-msgid "Name"
-msgstr "Nome"
-
-#: lib/Items/FileDockItem.vala:289
-msgid "Kind"
-msgstr "Tipo"
-
-#: lib/Items/FileDockItem.vala:300
-msgid "Size"
-msgstr "Tamanho"
-
-#: lib/Items/FileDockItem.vala:311
-msgid "Date Created"
-msgstr "Data de Criação"
-
-#: lib/Items/FileDockItem.vala:322
-msgid "Date Modified"
-msgstr "Data Modificada"
-
-#: lib/Items/FileDockItem.vala:339
-msgid "Simple"
-msgstr "Simples"
-
-#: lib/Items/FileDockItem.vala:351
-msgid "Tile"
-msgstr "Tile"
-
-#: lib/Items/FileDockItem.vala:376 lib/Items/FileDockItem.vala:554
+#: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
 msgstr "_Abrir no gestor de ficheiros"
 
-#: lib/Items/FileDockItem.vala:397
+#: lib/Items/FileDockItem.vala:302
+msgid "View Options"
+msgstr "Opções de Visualização"
+
+#: lib/Items/FileDockItem.vala:306
+msgid "_OK"
+msgstr "_OK"
+
+#: lib/Items/FileDockItem.vala:320
+msgid "Sort By:"
+msgstr "Ordenar Por:"
+
+#: lib/Items/FileDockItem.vala:324
+msgid "Name"
+msgstr "Nome"
+
+#: lib/Items/FileDockItem.vala:325
+msgid "Kind"
+msgstr "Tipo"
+
+#: lib/Items/FileDockItem.vala:326
+msgid "Size"
+msgstr "Tamanho"
+
+#: lib/Items/FileDockItem.vala:327
+msgid "Date Created"
+msgstr "Data de Criação"
+
+#: lib/Items/FileDockItem.vala:328
+msgid "Date Modified"
+msgstr "Data Modificada"
+
+#: lib/Items/FileDockItem.vala:332
+msgid "Style:"
+msgstr "Estilo:"
+
+#: lib/Items/FileDockItem.vala:336
+msgid "Simple"
+msgstr "Simples"
+
+#: lib/Items/FileDockItem.vala:337
+msgid "Tile"
+msgstr "Tile"
+
+#: lib/Items/FileDockItem.vala:341
+msgid "Large Icons:"
+msgstr "Ícones grandes:"
+
+#: lib/Items/FileDockItem.vala:348
+msgid "Show Hidden Files:"
+msgstr "Mostrar Arquivos Ocultos:"
+
+#: lib/Items/FileDockItem.vala:411
 msgid "_Open"
 msgstr "_Abrir"
 
-#: lib/Items/FileDockItem.vala:401
+#: lib/Items/FileDockItem.vala:415
 msgid "Open Containing _Folder"
 msgstr "Abrir pasta _respetiva"
 
-#: lib/Items/FileDockItem.vala:536 lib/Items/FileDockItem.vala:538
+#: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
 msgstr "Diretório Vazio"
 

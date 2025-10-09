@@ -36,6 +36,12 @@ namespace Plank {
     [Description (nick = "directory-style", blurb = "The style for directory items.")]
     public DirStyle DirectoryStyle { get; set; default = DirStyle.SIMPLE; }
 
+    [Description (nick = "show-hidden-files", blurb = "Show hidden files.")]
+    public bool ShowHiddenFiles { get; set; default = false; }
+
+    [Description (nick = "large-icons", blurb = "Use large icons.")]
+    public bool LargeIcons { get; set; default = false; }
+
     /**
      * {@inheritDoc}
      */
@@ -68,6 +74,8 @@ namespace Plank {
       Launcher = "";
       SortBy = "name";
       DirectoryStyle = DirStyle.SIMPLE;
+      ShowHiddenFiles = false;
+      LargeIcons = false;
     }
 
     /**

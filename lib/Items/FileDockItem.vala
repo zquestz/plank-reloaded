@@ -271,96 +271,11 @@ namespace Plank {
 
       items.add (new Gtk.SeparatorMenuItem ());
 
-      var sort_menu = new Gtk.MenuItem.with_mnemonic (_("_Sort By"));
-      var sort_submenu = new Gtk.Menu ();
-      sort_menu.set_submenu (sort_submenu);
-
-      var name_item = new Gtk.RadioMenuItem.with_label (null, _("Name"));
-      name_item.active = (Prefs.SortBy == "name");
-      name_item.activate.connect (() => {
-        if (name_item.active) {
-          Prefs.SortBy = "name";
-          reset_icon_buffer ();
-        }
+      var view_options_item = new Gtk.MenuItem.with_mnemonic (_("_View Options"));
+      view_options_item.activate.connect (() => {
+        show_view_options_dialog ();
       });
-      sort_submenu.append (name_item);
-
-      var kind_item = new Gtk.RadioMenuItem.with_label_from_widget (
-                                                                    name_item, _("Kind"));
-      kind_item.active = (Prefs.SortBy == "kind");
-      kind_item.activate.connect (() => {
-        if (kind_item.active) {
-          Prefs.SortBy = "kind";
-          reset_icon_buffer ();
-        }
-      });
-      sort_submenu.append (kind_item);
-
-      var size_item = new Gtk.RadioMenuItem.with_label_from_widget (
-                                                                    name_item, _("Size"));
-      size_item.active = (Prefs.SortBy == "size");
-      size_item.activate.connect (() => {
-        if (size_item.active) {
-          Prefs.SortBy = "size";
-          reset_icon_buffer ();
-        }
-      });
-      sort_submenu.append (size_item);
-
-      var date_created_item = new Gtk.RadioMenuItem.with_label_from_widget (
-                                                                            name_item, _("Date Created"));
-      date_created_item.active = (Prefs.SortBy == "date-created");
-      date_created_item.activate.connect (() => {
-        if (date_created_item.active) {
-          Prefs.SortBy = "date-created";
-          reset_icon_buffer ();
-        }
-      });
-      sort_submenu.append (date_created_item);
-
-      var date_modified_item = new Gtk.RadioMenuItem.with_label_from_widget (
-                                                                             name_item, _("Date Modified"));
-      date_modified_item.active = (Prefs.SortBy == "date-modified");
-      date_modified_item.activate.connect (() => {
-        if (date_modified_item.active) {
-          Prefs.SortBy = "date-modified";
-          reset_icon_buffer ();
-        }
-      });
-      sort_submenu.append (date_modified_item);
-
-      sort_menu.show_all ();
-      items.add (sort_menu);
-
-      var style_menu = new Gtk.MenuItem.with_mnemonic (_("_Style"));
-      var style_submenu = new Gtk.Menu ();
-      style_menu.set_submenu (style_submenu);
-
-      var simple_item = new Gtk.RadioMenuItem.with_label (null, _("Simple"));
-      simple_item.active = (Prefs.DirectoryStyle == DirStyle.SIMPLE);
-      simple_item.activate.connect (() => {
-        if (simple_item.active) {
-          Prefs.DirectoryStyle = DirStyle.SIMPLE;
-          setup_buttons ();
-          reset_icon_buffer ();
-        }
-      });
-      style_submenu.append (simple_item);
-
-      var tile_item = new Gtk.RadioMenuItem.with_label_from_widget (
-                                                                    simple_item, _("Tile"));
-      tile_item.active = (Prefs.DirectoryStyle == DirStyle.TILE);
-      tile_item.activate.connect (() => {
-        if (tile_item.active) {
-          Prefs.DirectoryStyle = DirStyle.TILE;
-          setup_buttons ();
-          reset_icon_buffer ();
-        }
-      });
-      style_submenu.append (tile_item);
-
-      style_submenu.show_all ();
-      items.add (style_menu);
+      items.add (view_options_item);
 
       items.add (new Gtk.SeparatorMenuItem ());
 
@@ -380,6 +295,105 @@ namespace Plank {
       items.add (item);
 
       return items;
+    }
+
+    void show_view_options_dialog () {
+      var dialog = new Gtk.Dialog.with_buttons (
+        _("View Options"),
+        null,
+        Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        _("_Cancel"), Gtk.ResponseType.CANCEL,
+        _("_OK"), Gtk.ResponseType.OK
+      );
+
+      dialog.set_resizable (false);
+
+      var content_area = dialog.get_content_area ();
+      content_area.spacing = 12;
+      content_area.border_width = 12;
+
+      var grid = new Gtk.Grid ();
+      grid.set_row_spacing (12);
+      grid.set_column_spacing (12);
+      grid.set_hexpand (true);
+
+      var sort_label = new Gtk.Label (_("Sort By:"));
+      sort_label.set_halign (Gtk.Align.START);
+
+      var sort_combo = new Gtk.ComboBoxText ();
+      sort_combo.append ("name", _("Name"));
+      sort_combo.append ("kind", _("Kind"));
+      sort_combo.append ("size", _("Size"));
+      sort_combo.append ("date-created", _("Date Created"));
+      sort_combo.append ("date-modified", _("Date Modified"));
+      sort_combo.active_id = Prefs.SortBy;
+      sort_combo.set_hexpand (true);
+
+      var style_label = new Gtk.Label (_("Style:"));
+      style_label.set_halign (Gtk.Align.START);
+
+      var style_combo = new Gtk.ComboBoxText ();
+      style_combo.append ("simple", _("Simple"));
+      style_combo.append ("tile", _("Tile"));
+      style_combo.active_id = (Prefs.DirectoryStyle == DirStyle.SIMPLE) ? "simple" : "tile";
+      style_combo.set_hexpand (true);
+
+      var large_icons_label = new Gtk.Label (_("Large Icons:"));
+      large_icons_label.set_halign (Gtk.Align.START);
+
+      var large_icons_switch = new Gtk.Switch ();
+      large_icons_switch.set_active (Prefs.LargeIcons);
+      large_icons_switch.set_halign (Gtk.Align.START);
+
+      var hidden_label = new Gtk.Label (_("Show Hidden Files:"));
+      hidden_label.set_halign (Gtk.Align.START);
+
+      var hidden_switch = new Gtk.Switch ();
+      hidden_switch.set_active (Prefs.ShowHiddenFiles);
+      hidden_switch.set_halign (Gtk.Align.START);
+
+      grid.attach (sort_label, 0, 0, 1, 1);
+      grid.attach (sort_combo, 1, 0, 1, 1);
+      grid.attach (style_label, 0, 1, 1, 1);
+      grid.attach (style_combo, 1, 1, 1, 1);
+      grid.attach (large_icons_label, 0, 2, 1, 1);
+      grid.attach (large_icons_switch, 1, 2, 1, 1);
+      grid.attach (hidden_label, 0, 3, 1, 1);
+      grid.attach (hidden_switch, 1, 3, 1, 1);
+
+      content_area.pack_start (grid, true, true, 0);
+
+      dialog.show_all ();
+
+      dialog.response.connect ((response_id) => {
+        if (response_id == Gtk.ResponseType.OK) {
+          var new_sort = sort_combo.active_id;
+          if (new_sort != null && new_sort != Prefs.SortBy) {
+            Prefs.SortBy = new_sort;
+          }
+
+          var new_style = style_combo.active_id;
+          if (new_style != null) {
+            var new_dir_style = (new_style == "simple") ? DirStyle.SIMPLE : DirStyle.TILE;
+            if (new_dir_style != Prefs.DirectoryStyle) {
+              Prefs.DirectoryStyle = new_dir_style;
+              setup_buttons ();
+              reset_icon_buffer ();
+            }
+          }
+
+          var new_large_icons = large_icons_switch.get_active ();
+          if (new_large_icons != Prefs.LargeIcons) {
+            Prefs.LargeIcons = new_large_icons;
+          }
+
+          var new_hidden = hidden_switch.get_active ();
+          if (new_hidden != Prefs.ShowHiddenFiles) {
+            Prefs.ShowHiddenFiles = new_hidden;
+          }
+        }
+        dialog.destroy ();
+      });
     }
 
     Gee.ArrayList<Gtk.MenuItem> get_file_menu_items () {
@@ -447,7 +461,7 @@ namespace Plank {
 
         if (uri.has_suffix (".desktop")) {
           ApplicationDockItem.parse_launcher (uri, out icon, out text);
-          item = create_menu_item (text, icon, true);
+          item = create_file_menu_item (text, icon, true, true);
           item.activate.connect (() => {
             System.get_default ().launch (file);
             ClickedAnimation = AnimationType.BOUNCE;
@@ -456,7 +470,7 @@ namespace Plank {
         } else {
           icon = DrawingService.get_icon_from_file (file) ?? "";
           text = display_name ?? "";
-          item = create_literal_menu_item (text, icon);
+          item = create_file_menu_item (text, icon, true, false);
 
           if (content_type == "directory") {
             var nested_submenu = new Gtk.Menu ();
@@ -562,7 +576,40 @@ namespace Plank {
       submenu.show_all ();
     }
 
-    static Gee.HashMap<string, File> get_files (File file) {
+    Gtk.MenuItem create_file_menu_item (string title, string? icon, bool force_show_icon = true, bool mnemonics = true) {
+      if (icon == null || icon == "")
+        return new Gtk.MenuItem.with_label (title);
+
+      int width, height;
+      if (Prefs.LargeIcons) {
+        Gtk.icon_size_lookup (Gtk.IconSize.LARGE_TOOLBAR, out width, out height);
+      } else {
+        Gtk.icon_size_lookup (Gtk.IconSize.MENU, out width, out height);
+      }
+
+      var pixbuf = DrawingService.load_icon (icon, width, height);
+
+      var item = new Gtk.MenuItem ();
+      var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+
+      var image = new Gtk.Image.from_pixbuf (pixbuf);
+      var label = mnemonics ? new Gtk.Label.with_mnemonic (title) : new Gtk.Label (title);
+
+      label.halign = Gtk.Align.START;
+      label.valign = Gtk.Align.CENTER;
+
+      if (force_show_icon) {
+        box.pack_start (image, false, false, 0);
+      }
+      box.pack_start (label, true, true, 0);
+
+      item.add (box);
+      item.show_all ();
+
+      return item;
+    }
+
+    Gee.HashMap<string, File> get_files (File file) {
       var files = new Gee.HashMap<string, File> ();
       var count = 0U;
 
@@ -575,7 +622,7 @@ namespace Plank {
         FileInfo info;
 
         while ((info = enumerator.next_file ()) != null) {
-          if (info.get_is_hidden ())
+          if (!Prefs.ShowHiddenFiles && info.get_is_hidden ())
             continue;
 
           if (count++ >= FOLDER_MAX_FILE_COUNT) {
