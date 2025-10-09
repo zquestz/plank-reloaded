@@ -22,6 +22,7 @@ namespace Docky {
     private ulong invert_color_handler_id = 0;
     private ulong live_previews_handler_id = 0;
     private ulong prefs_handler_id = 0;
+    private ulong theme_handler_id = 0UL;
     private uint setup_timer_id = 0;
     private uint redraw_timeout_id = 0;
     private Gee.HashMap<Wnck.Window, Gee.ArrayList<ulong>> window_signals =
@@ -95,6 +96,11 @@ namespace Docky {
           }
         });
 
+        theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (
+        (s, p) => {
+          update_cache ();
+        });
+
         update_cache ();
       } else {
         warning ("WorkspacesDockItem: dock controller still null after timer");
@@ -143,6 +149,11 @@ namespace Docky {
         if (prefs_handler_id > 0) {
           dock.prefs.disconnect (prefs_handler_id);
           prefs_handler_id = 0;
+        }
+
+        if (theme_handler_id > 0UL) {
+          SignalHandler.disconnect (Gtk.Settings.get_default (), theme_handler_id);
+          theme_handler_id = 0UL;
         }
       }
     }

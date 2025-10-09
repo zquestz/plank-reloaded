@@ -23,6 +23,7 @@ namespace Docky {
     private ulong prefs_handler_id = 0;
     private ulong separator_prefs_handler_id = 0;
     private uint setup_timer_id = 0;
+    private ulong theme_handler_id = 0UL;
 
     private Gtk.PositionType cached_position;
     private bool is_light_theme;
@@ -56,6 +57,11 @@ namespace Docky {
         }
       });
 
+      theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (
+      (s, p) => {
+        update_cache (false, true);
+      });
+
       // Setup theme detection with a slight delay to ensure dock is ready
       setup_timer_id = Timeout.add (2000, () => {
         setup_signals ();
@@ -73,6 +79,11 @@ namespace Docky {
       if (separator_prefs_handler_id > 0) {
         separator_prefs.disconnect (separator_prefs_handler_id);
         separator_prefs_handler_id = 0;
+      }
+
+      if (theme_handler_id > 0UL) {
+        SignalHandler.disconnect (Gtk.Settings.get_default (), theme_handler_id);
+        theme_handler_id = 0UL;
       }
 
       disconnect_signals ();
