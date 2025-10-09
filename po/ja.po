@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"POT-Creation-Date: 2025-10-08 15:31-1000\n"
 "PO-Revision-Date: 2025-10-09 01:02\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
@@ -48,19 +48,19 @@ msgstr ""
 "クに必要なものだけを提供し、それ以上は何もありません。また、より高度な機能を"
 "持つ他のドックプログラムを作成するために拡張できるライブラリでもあります。"
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:115
 msgid "Dock with Matte theme"
 msgstr "マットテーマのドック"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Appearance Preferences"
 msgstr "外観設定"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Behavior Preferences"
 msgstr "動作設定"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Docklets Preferences"
 msgstr "ドックレット設定"
 

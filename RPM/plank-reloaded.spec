@@ -117,5 +117,8 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Mon Sep 29 2025 Josh Ellithorpe <quest@mac.com> - 0.11.152-1
-- Add nested directory (subfolders) support
+* Wed Oct 08 2025 Josh Ellithorpe <quest@mac.com> - 0.11.153-1
+- Add "View Options" to directory file items
+- Add "Show Hidden" and "Large Icons" to view options
+- Move "Sort By" and "Style" to view options
+- Fix Invert Color calculation when switching GTK themes

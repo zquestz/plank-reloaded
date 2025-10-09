@@ -1,3 +1,12 @@
+plank-reloaded (0.11.153-1) unstable; urgency=medium
+
+  * Add "View Options" to directory file items
+  * Add "Show Hidden" and "Large Icons" to view options
+  * Move "Sort By" and "Style" to view options
+  * Fix Invert Color calculation when switching GTK themes
+
+  -- Josh Ellithorpe <quest@mac.com>  Wed, 08 Oct 2025 15:27:57 -1000
+
 plank-reloaded (0.11.152-1) unstable; urgency=medium
 
   * Add nested directory (subfolders) support

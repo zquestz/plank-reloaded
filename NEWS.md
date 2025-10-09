@@ -2,6 +2,13 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.153 "Reloaded" (2025-10-08)
+
+- Add "View Options" to directory file items
+- Add "Show Hidden" and "Large Icons" to view options
+- Move "Sort By" and "Style" to view options
+- Fix Invert Color calculation when switching GTK themes
+
 ## 0.11.152 "Reloaded" (2025-09-29)
 
 - Add nested directory (subfolders) support

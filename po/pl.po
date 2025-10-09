@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-10-08 14:39-1000\n"
+"POT-Creation-Date: 2025-10-08 15:31-1000\n"
 "PO-Revision-Date: 2025-10-09 01:02\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -51,19 +51,19 @@ msgstr ""
 "nic więcej. Pozostaje również biblioteką, którą można rozszerzyć, aby "
 "tworzyć inne programy dokujące z bardziej zaawansowanymi funkcjami."
 
-#: data/plank.appdata.xml.in:114
+#: data/plank.appdata.xml.in:115
 msgid "Dock with Matte theme"
 msgstr "Dok z motywem Matte"
 
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Appearance Preferences"
 msgstr "Preferencje wyglądu"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Behavior Preferences"
 msgstr "Preferencje zachowania"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Docklets Preferences"
 msgstr "Preferencje dokletów"
 
