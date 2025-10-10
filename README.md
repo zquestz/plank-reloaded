@@ -451,6 +451,7 @@ Plank Reloaded supports GTK themes. To use a GTK theme, simply install it and se
 
 Here is a list of themes known to support Plank Reloaded:
 
+- Celestial - https://github.com/zquestz/celestial-gtk-theme
 - Matcha - https://github.com/zquestz/Matcha-gtk-theme
 - Semabe - https://github.com/sewbej/Plank-Themes
 - WhiteSur - https://github.com/vinceliuice/WhiteSur-gtk-theme
