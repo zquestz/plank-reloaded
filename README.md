@@ -444,6 +444,7 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 
 - [Last.fm](https://github.com/zquestz/lastfm-docklet) - A Last.fm docklet to show recent scrobbles.
 - [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
+- [Quit](https://github.com/androlekss/quit.git) - A docklet to quick access to session actions.
 
 ## GTK themes
 
