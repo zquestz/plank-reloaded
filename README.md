@@ -446,6 +446,7 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 - [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
 - [Quit](https://github.com/androlekss/quit.git) - A docklet to quick access to session actions.
 - [myIP](https://github.com/androlekss/ip-docklet.git) - A docklet to show public IP.
+- [Volmatic](https://github.com/androlekss/volmatic-docklet.git) - A Volmatic docklet for managing system volume.
 
 ## GTK themes
 
