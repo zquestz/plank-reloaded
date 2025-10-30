@@ -60,8 +60,4 @@ if systemd.found()
     'systemd/plank-reloaded.service',
     install_dir: systemd.get_variable('systemduserunitdir'),
   )
-  install_data(
-    'systemd/plank-reloaded.timer',
-    install_dir: systemd.get_variable('systemduserunitdir'),
-  )
 endif

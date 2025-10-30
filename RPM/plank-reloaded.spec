@@ -92,7 +92,6 @@ chmod 755 %{buildroot}%{_libdir}/libplank.so.*
 %{_mandir}/man1/plank.1.gz
 %{_datadir}/metainfo/plank.appdata.xml
 %{_userunitdir}/plank-reloaded.service
-%{_userunitdir}/plank-reloaded.timer
 
 %files devel
 %doc README.md

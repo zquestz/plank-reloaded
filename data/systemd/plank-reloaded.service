@@ -1,16 +1,19 @@
 [Unit]
 Description=Plank Reloaded
-After=graphical-session.target
-Wants=graphical-session.target
-PartOf=graphical-session.target
+After=graphical-session.target bamfdaemon.service
+BindsTo=graphical-session.target
+Wants=bamfdaemon.service
 
 [Service]
 Type=simple
+TimeoutStartSec=5s
+ExecStartPre=/bin/sh -c 'while ! busctl --user status org.ayatana.bamf >/dev/null 2>&1; do sleep 0.5; done'
 ExecStart=plank
 Restart=on-failure
+RestartSec=1s
 KillMode=process
 StandardOutput=journal
 StandardError=journal
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
