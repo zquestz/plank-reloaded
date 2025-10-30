@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-10-08 15:31-1000\n"
-"PO-Revision-Date: 2025-10-09 01:02\n"
+"POT-Creation-Date: 2025-10-30 12:34-1000\n"
+"PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -48,19 +48,39 @@ msgstr ""
 "クに必要なものだけを提供し、それ以上は何もありません。また、より高度な機能を"
 "持つ他のドックプログラムを作成するために拡張できるライブラリでもあります。"
 
-#: data/plank.appdata.xml.in:115
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "ドック"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "起動"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "パネル"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "上/左寄せ"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "The Plank Reloaded デベロッパーズ"
+
+#: data/plank.appdata.xml.in:116
 msgid "Dock with Matte theme"
 msgstr "マットテーマのドック"
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:120
 msgid "Appearance Preferences"
 msgstr "外観設定"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Behavior Preferences"
 msgstr "動作設定"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Docklets Preferences"
 msgstr "ドックレット設定"
 

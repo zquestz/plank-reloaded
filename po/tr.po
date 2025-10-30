@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-10-08 15:31-1000\n"
-"PO-Revision-Date: 2025-10-09 01:03\n"
+"POT-Creation-Date: 2025-10-30 12:34-1000\n"
+"PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -50,19 +50,39 @@ msgstr ""
 "programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam "
 "ediyor."
 
-#: data/plank.appdata.xml.in:115
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "dock"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "başlat"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panel"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "başlangıç"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Plank Reloaded Geliştiricileri"
+
+#: data/plank.appdata.xml.in:116
 msgid "Dock with Matte theme"
 msgstr "Mat temalı Rıhtım"
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:120
 msgid "Appearance Preferences"
 msgstr "Görünüm Tercihleri"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Behavior Preferences"
 msgstr "Davranış Tercihleri"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Docklets Preferences"
 msgstr "Docklets Tercihleri"
 

@@ -116,8 +116,5 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Wed Oct 08 2025 Josh Ellithorpe <quest@mac.com> - 0.11.153-1
-- Add "View Options" to directory file items
-- Add "Show Hidden" and "Large Icons" to view options
-- Move "Sort By" and "Style" to view options
-- Fix Invert Color calculation when switching GTK themes
+* Thu Oct 30 2025 Josh Ellithorpe <quest@mac.com> - 0.11.154-1
+- Refactor systemd service to work more reliably with bamf failures

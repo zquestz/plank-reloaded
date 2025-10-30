@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.154 "Reloaded" (2025-10-30)
+
+- Refactor systemd service to work more reliably with bamf failures
+
 ## 0.11.153 "Reloaded" (2025-10-08)
 
 - Add "View Options" to directory file items
