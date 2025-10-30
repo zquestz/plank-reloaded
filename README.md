@@ -370,6 +370,32 @@ Add Plank Reloaded to your desktop environment's startup applications. The comma
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
 
+### Running indicators not showing after logout/login?
+
+If running indicators (the glow effect showing active applications) don't appear after logging out and back in, this is typically caused by bamfdaemon failing to restart properly.
+
+**Solution:** Add a restart delay to bamfdaemon by running:
+
+```bash
+systemctl --user edit bamfdaemon.service
+```
+
+Then add the following content:
+
+```ini
+[Service]
+RestartSec=2s
+```
+
+Save and exit, then reload systemd:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart bamfdaemon.service
+```
+
+This 2-second delay resolves race conditions during logout/login cycles. See [issue #115](https://github.com/zquestz/plank-reloaded/issues/115) for details.
+
 ### How can application developers show counts or progress indicators on their dock icons?
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
