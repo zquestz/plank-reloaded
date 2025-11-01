@@ -18,6 +18,8 @@
 using Plank;
 
 namespace Docky {
+  private static bool keybinder_initialized = false;
+
   public class ClippyDockItem : DockletItem {
     private const string EMPTY_CLIPBOARD_TEXT = _("Clipboard is currently empty.");
     private const string CLEAR_MENU_LABEL = _("_Clear");
@@ -35,6 +37,7 @@ namespace Docky {
     private ulong regular_handler_id = 0U;
     private uint debounce_timeout_id = 0;
     private const uint DEBOUNCE_DELAY = 500;
+    private string? current_hotkey = null;
 
     private ClippyPreferences prefs {
       get { return (ClippyPreferences) Prefs; }
@@ -50,15 +53,27 @@ namespace Docky {
       Icon = ClippyDocklet.ICON;
       clips = new Gee.ArrayList<ClippyClipboardItem> ();
       initialize_clipboards();
+      // Defer hotkey initialization to ensure GTK main loop is running
+      GLib.Idle.add(() => {
+        initialize_hotkey();
+        return false;
+      });
       update_display();
     }
 
     ~ClippyDockItem() {
       disconnect_clipboards();
+      unbind_hotkey();
 
       if (debounce_timeout_id > 0) {
         GLib.Source.remove(debounce_timeout_id);
         debounce_timeout_id = 0;
+      }
+
+      if (popup_window != null) {
+        popup_window.destroy();
+        popup_window = null;
+        popup_button = null;
       }
     }
 
@@ -66,6 +81,283 @@ namespace Docky {
       primary_clipboard = Gtk.Clipboard.get(Gdk.Atom.intern("PRIMARY", true));
       regular_clipboard = Gtk.Clipboard.get(Gdk.Atom.intern("CLIPBOARD", true));
       connect_clipboards();
+    }
+
+    private void initialize_hotkey() {
+      if (!keybinder_initialized) {
+        Keybinder.init();
+        keybinder_initialized = true;
+
+        if (!Keybinder.supported()) {
+          warning("Keybinder is not supported on this system");
+          return;
+        }
+      }
+
+      prefs.notify["Hotkey"].connect(() => {
+        update_hotkey_binding();
+      });
+
+      update_hotkey_binding();
+    }
+
+    private void update_hotkey_binding() {
+      unbind_hotkey();
+
+      if (prefs.Hotkey != null && prefs.Hotkey.strip() != "") {
+        bind_hotkey(prefs.Hotkey);
+      }
+    }
+
+    private void bind_hotkey(string keystring) {
+      bool success = Keybinder.bind(keystring, on_hotkey_pressed, this);
+      if (success) {
+        current_hotkey = keystring;
+      } else {
+        warning("Failed to bind hotkey: %s", keystring);
+      }
+    }
+
+    private void unbind_hotkey() {
+      if (current_hotkey != null) {
+        Keybinder.unbind_all(current_hotkey);
+        current_hotkey = null;
+      }
+    }
+
+    private static void on_hotkey_pressed(string keystring, void* user_data) {
+      unowned ClippyDockItem? self = (ClippyDockItem?) user_data;
+      if (self != null) {
+        self.show_clipboard_menu_at_pointer();
+      }
+    }
+
+    private int pos_x;
+    private int pos_y;
+    private Gtk.Window? popup_window = null;
+    private Gtk.Button? popup_button = null;
+    private Gee.ArrayList<Gtk.Button>? menu_buttons = null;
+    private int current_button_index = 0;
+
+    private void show_clipboard_menu_at_pointer() {
+      if (clips.size == 0) {
+        return;
+      }
+
+      // Create a toplevel window to act as our menu
+      var menu_window = new Gtk.Window(Gtk.WindowType.POPUP);
+      menu_window.set_type_hint(Gdk.WindowTypeHint.POPUP_MENU);
+      menu_window.set_decorated(false);
+      menu_window.set_skip_taskbar_hint(true);
+      menu_window.set_skip_pager_hint(true);
+      menu_window.set_resizable(false);
+      menu_window.set_keep_above(true);
+
+      // Create a vertical box to hold menu items
+      var vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+      vbox.get_style_context().add_class("menu");
+      menu_window.add(vbox);
+
+      // List to track buttons for keyboard navigation
+      menu_buttons = new Gee.ArrayList<Gtk.Button>();
+
+      // Build clipboard items list (in reverse order - newest first)
+      for (int i = clips.size - 1; i >= 0; i--) {
+        var index = i;
+        var clip = clips.get(index);
+
+        var button = new Gtk.Button();
+        button.set_relief(Gtk.ReliefStyle.NONE);
+        button.set_can_focus(true);
+        button.set_alignment(0.0f, 0.5f);
+
+        // Get display text from clip
+        if (clip.item_type == ClippyClipboardItem.Type.IMAGE) {
+          button.set_label("Image");
+        } else {
+          button.set_label(clip.get_display_text(MAX_CLIP_MENU_ITEM_LENGTH));
+        }
+
+        button.clicked.connect(() => {
+          copy_item_at(index);
+          Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+          Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+          menu_window.hide();
+          menu_window.destroy();
+        });
+
+        menu_buttons.add(button);
+        vbox.pack_start(button, false, false, 0);
+      }
+
+      // Add separator and clear button if we have items
+      if (clips.size > 0) {
+        var separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+        vbox.pack_start(separator, false, false, 2);
+
+        var clear_button = new Gtk.Button.with_label("Clear");
+        clear_button.set_relief(Gtk.ReliefStyle.NONE);
+        clear_button.set_can_focus(true);
+        clear_button.set_alignment(0.0f, 0.5f);
+        clear_button.clicked.connect(() => {
+          clear_clipboard();
+          Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+          Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+          menu_window.hide();
+          menu_window.destroy();
+        });
+        menu_buttons.add(clear_button);
+        vbox.pack_start(clear_button, false, false, 0);
+      }
+
+      // Get pointer position
+      var display = Gdk.Display.get_default();
+      var seat = display.get_default_seat();
+      var pointer = seat.get_pointer();
+
+      Gdk.Screen screen;
+      pointer.get_position(out screen, out pos_x, out pos_y);
+
+      // Get event time
+      uint32 event_time = Keybinder.get_current_event_time();
+      if (event_time == 0) {
+        event_time = Gtk.get_current_event_time();
+      }
+
+      // Release any existing grabs
+      Gdk.pointer_ungrab(event_time);
+      Gdk.keyboard_ungrab(event_time);
+
+      // Wait a bit for grabs to release
+      Thread.usleep(50000); // 50ms
+
+      // Position and show the menu window
+      menu_window.move(pos_x, pos_y);
+      menu_window.show_all();
+
+      // Set up event mask to receive all events
+      menu_window.add_events(
+        Gdk.EventMask.KEY_PRESS_MASK |
+        Gdk.EventMask.FOCUS_CHANGE_MASK |
+        Gdk.EventMask.BUTTON_PRESS_MASK
+      );
+
+      // Grab keyboard and pointer for the menu window
+      var menu_gdk_window = menu_window.get_window();
+      if (menu_gdk_window != null) {
+        var grab_status = Gdk.pointer_grab(
+          menu_gdk_window,
+          true,
+          Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK,
+          null,
+          null,
+          event_time
+        );
+
+        // Retry keyboard grab multiple times
+        var kbd_grab = Gdk.GrabStatus.FAILED;
+        for (int retry = 0; retry < 5; retry++) {
+          kbd_grab = Gdk.keyboard_grab(menu_gdk_window, true, Gdk.CURRENT_TIME);
+          if (kbd_grab == Gdk.GrabStatus.SUCCESS) {
+            break;
+          }
+          Thread.usleep(10000); // 10ms between retries
+        }
+      }
+
+      // Make window modal and grab focus
+      menu_window.set_modal(true);
+      menu_window.set_accept_focus(true);
+      menu_window.present();
+      menu_window.grab_focus();
+
+      // Focus first button
+      if (menu_buttons != null && menu_buttons.size > 0) {
+        current_button_index = 0;
+        menu_buttons.get(0).grab_focus();
+      }
+
+      // Process events to ensure window is visible
+      while (Gtk.events_pending()) {
+        Gtk.main_iteration();
+      }
+
+      // Close menu when focus is lost
+      menu_window.focus_out_event.connect(() => {
+        Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+        Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+        menu_window.hide();
+        menu_window.destroy();
+        return false;
+      });
+
+      // Handle keyboard navigation and close
+      menu_window.key_press_event.connect((event) => {
+        if (event.keyval == Gdk.Key.Escape) {
+          Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+          Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+          menu_window.hide();
+          menu_window.destroy();
+          return true;
+        }
+
+        // Arrow key navigation
+        if (menu_buttons != null && menu_buttons.size > 0) {
+          if (event.keyval == Gdk.Key.Down || event.keyval == Gdk.Key.Tab) {
+            current_button_index = (current_button_index + 1) % menu_buttons.size;
+            menu_buttons.get(current_button_index).grab_focus();
+            return true;
+          } else if (event.keyval == Gdk.Key.Up || event.keyval == Gdk.Key.ISO_Left_Tab) {
+            current_button_index = (current_button_index - 1 + menu_buttons.size) % menu_buttons.size;
+            menu_buttons.get(current_button_index).grab_focus();
+            return true;
+          } else if (event.keyval == Gdk.Key.Return || event.keyval == Gdk.Key.KP_Enter) {
+            // Activate the currently focused button
+            menu_buttons.get(current_button_index).clicked();
+            return true;
+          }
+        }
+
+        return false;
+      });
+
+      // Close menu when clicking outside - use global button press
+      menu_window.button_press_event.connect((event) => {
+        // Get window size
+        int width, height;
+        menu_window.get_size(out width, out height);
+
+        // Check if click is outside the window bounds
+        if (event.x < 0 || event.x >= width || event.y < 0 || event.y >= height) {
+          Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+          Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+          menu_window.hide();
+          menu_window.destroy();
+          return true;
+        }
+        return false;
+      });
+
+      // Also monitor root window for clicks
+      var root_window = menu_window.get_screen().get_root_window();
+      root_window.add_filter((xevent, event) => {
+        if (event.type == Gdk.EventType.BUTTON_PRESS) {
+          // Check if the event is outside our menu window
+          int menu_x, menu_y, menu_width, menu_height;
+          menu_window.get_position(out menu_x, out menu_y);
+          menu_window.get_size(out menu_width, out menu_height);
+
+          var button_event = (Gdk.EventButton) event;
+          if (button_event.x_root < menu_x || button_event.x_root >= menu_x + menu_width ||
+              button_event.y_root < menu_y || button_event.y_root >= menu_y + menu_height) {
+            Gdk.pointer_ungrab(Gdk.CURRENT_TIME);
+            Gdk.keyboard_ungrab(Gdk.CURRENT_TIME);
+            menu_window.hide();
+            menu_window.destroy();
+          }
+        }
+        return Gdk.FilterReturn.CONTINUE;
+      });
     }
 
     private void connect_clipboards() {
@@ -117,6 +409,10 @@ namespace Docky {
       }
 
       update_display();
+    }
+
+    private void set_hotkey(string hotkey) {
+      prefs.Hotkey = hotkey;
     }
 
     private void request_clipboard_content(Gtk.Clipboard source_clipboard) {
@@ -403,7 +699,91 @@ namespace Docky {
       max_entries_item.set_submenu(max_entries_menu);
       items.add(max_entries_item);
 
+      items.add(new Gtk.SeparatorMenuItem());
+
+      var hotkey_item = new Gtk.MenuItem.with_label(_("Set Hotkey..."));
+      hotkey_item.activate.connect(() => {
+        show_hotkey_dialog();
+      });
+      items.add(hotkey_item);
+
       return items;
+    }
+
+    private void show_hotkey_dialog() {
+      DockController? controller = get_dock();
+      if (controller == null) {
+        return;
+      }
+
+      var dialog = new Gtk.Dialog.with_buttons(
+        _("Set Clipboard Hotkey"),
+        null,
+        Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        _("_Clear"), Gtk.ResponseType.REJECT,
+        _("_Cancel"), Gtk.ResponseType.CANCEL,
+        _("_OK"), Gtk.ResponseType.OK
+      );
+
+      dialog.set_default_response(Gtk.ResponseType.OK);
+      dialog.set_border_width(12);
+
+      var content = dialog.get_content_area();
+      var label = new Gtk.Label(_("Press the key combination you want to use:"));
+      label.xalign = 0;
+      content.pack_start(label, false, false, 6);
+
+      var entry = new Gtk.Entry();
+      entry.set_placeholder_text(_("e.g., <Super>v or <Ctrl><Alt>c"));
+      entry.text = prefs.Hotkey;
+      entry.editable = false;
+      entry.can_focus = true;
+      content.pack_start(entry, false, false, 6);
+
+      var info_label = new Gtk.Label(_("Examples: <Super>v, <Ctrl><Alt>c, <Shift><Super>Insert"));
+      info_label.xalign = 0;
+      info_label.get_style_context().add_class("dim-label");
+      info_label.wrap = true;
+      content.pack_start(info_label, false, false, 6);
+
+      string captured_key = prefs.Hotkey;
+
+      entry.key_press_event.connect((event) => {
+        var keyval = event.keyval;
+        var modifiers = event.state & Gtk.accelerator_get_default_mod_mask();
+
+        // Skip modifier-only presses
+        if (keyval == Gdk.Key.Shift_L || keyval == Gdk.Key.Shift_R ||
+            keyval == Gdk.Key.Control_L || keyval == Gdk.Key.Control_R ||
+            keyval == Gdk.Key.Alt_L || keyval == Gdk.Key.Alt_R ||
+            keyval == Gdk.Key.Super_L || keyval == Gdk.Key.Super_R ||
+            keyval == Gdk.Key.Meta_L || keyval == Gdk.Key.Meta_R) {
+          return true;
+        }
+
+        // Build the accelerator string
+        var key_name = Gtk.accelerator_name(keyval, modifiers);
+        if (key_name != null && key_name != "") {
+          captured_key = key_name;
+          entry.text = key_name;
+        }
+
+        return true;
+      });
+
+      content.show_all();
+
+      int response = dialog.run();
+
+      if (response == Gtk.ResponseType.OK) {
+        if (captured_key != null && captured_key.strip() != "") {
+          set_hotkey(captured_key);
+        }
+      } else if (response == Gtk.ResponseType.REJECT) {
+        set_hotkey("");
+      }
+
+      dialog.destroy();
     }
   }
 }

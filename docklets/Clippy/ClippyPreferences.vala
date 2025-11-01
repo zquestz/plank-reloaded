@@ -34,6 +34,10 @@ namespace Docky {
                   blurb = "Disable clipboard tracking.")]
     public bool DisableTracking { get; set; default = false; }
 
+    [Description (nick = "hotkey",
+                  blurb = "Global hotkey to show clipboard menu at mouse position.")]
+    public string Hotkey { get; set; default = ""; }
+
     public ClippyPreferences.with_file (GLib.File file)
     {
       base.with_file (file);
@@ -44,6 +48,7 @@ namespace Docky {
       TrackMouseSelections = false;
       TrackImages = true;
       DisableTracking = false;
+      Hotkey = "";
     }
   }
 }
