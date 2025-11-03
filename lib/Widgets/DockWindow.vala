@@ -763,9 +763,6 @@ namespace Plank {
         return;
 
       var cursor_rect = controller.position_manager.get_cursor_region ();
-      if (cursor_rect.width <= 0 || cursor_rect.height <= 0) {
-        return;
-      }
 
       if (cursor_rect != input_rect) {
         input_rect = cursor_rect;
