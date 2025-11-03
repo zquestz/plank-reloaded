@@ -29,7 +29,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step_increment">50</property>
   </object>
   <object class="GtkAdjustment" id="adj_iconsize">
-    <property name="lower">24</property>
+    <property name="lower">16</property>
     <property name="upper">128</property>
     <property name="step_increment">2</property>
   </object>

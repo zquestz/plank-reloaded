@@ -22,7 +22,7 @@ namespace Plank {
    * Contains all preferences for docks.
    */
   public class DockPreferences : Plank.Settings {
-    public const int MIN_ICON_SIZE = 24;
+    public const int MIN_ICON_SIZE = 16;
     public const int MAX_ICON_SIZE = 128;
 
     public const int MIN_ICON_ZOOM = 100;

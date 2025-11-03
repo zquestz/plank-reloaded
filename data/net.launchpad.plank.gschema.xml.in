@@ -66,7 +66,7 @@
 			<description>Possible values are "none", "intelligent", "auto", "dodge-maximized", "window-dodge", and "dodge-active".</description>
 		</key>
 		<key name="icon-size" type="i">
-			<range min="24" max="128"/>
+			<range min="16" max="128"/>
 			<default>48</default>
 			<summary>Icon Size</summary>
 			<description>The size of dock items, in pixels.</description>
