@@ -1822,22 +1822,22 @@ namespace Plank {
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        struts[Struts.BOTTOM] = (VisibleDockHeight + screen_height - monitor_geo.y - monitor_geo.height) * window_scale_factor;
+        struts[Struts.BOTTOM] = (VisibleDockHeight + GapSize + screen_height - monitor_geo.y - monitor_geo.height) * window_scale_factor;
         struts[Struts.BOTTOM_START] = monitor_geo.x * window_scale_factor;
         struts[Struts.BOTTOM_END] = (monitor_geo.x + monitor_geo.width) * window_scale_factor - 1;
         break;
       case Gtk.PositionType.TOP:
-        struts[Struts.TOP] = (monitor_geo.y + VisibleDockHeight) * window_scale_factor;
+        struts[Struts.TOP] = (monitor_geo.y + VisibleDockHeight + GapSize) * window_scale_factor;
         struts[Struts.TOP_START] = monitor_geo.x * window_scale_factor;
         struts[Struts.TOP_END] = (monitor_geo.x + monitor_geo.width) * window_scale_factor - 1;
         break;
       case Gtk.PositionType.LEFT:
-        struts[Struts.LEFT] = (monitor_geo.x + VisibleDockWidth) * window_scale_factor;
+        struts[Struts.LEFT] = (monitor_geo.x + VisibleDockWidth + GapSize) * window_scale_factor;
         struts[Struts.LEFT_START] = monitor_geo.y * window_scale_factor;
         struts[Struts.LEFT_END] = (monitor_geo.y + monitor_geo.height) * window_scale_factor - 1;
         break;
       case Gtk.PositionType.RIGHT:
-        struts[Struts.RIGHT] = (VisibleDockWidth + screen_width - monitor_geo.x - monitor_geo.width) * window_scale_factor;
+        struts[Struts.RIGHT] = (VisibleDockWidth + GapSize + screen_width - monitor_geo.x - monitor_geo.width) * window_scale_factor;
         struts[Struts.RIGHT_START] = monitor_geo.y * window_scale_factor;
         struts[Struts.RIGHT_END] = (monitor_geo.y + monitor_geo.height) * window_scale_factor - 1;
         break;
