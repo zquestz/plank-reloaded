@@ -29,7 +29,7 @@ namespace Plank {
     public const int MAX_ICON_ZOOM = 400;
 
     public const int MIN_GAP_SIZE = 0;
-    public const int MAX_GAP_SIZE = 50;
+    public const int MAX_GAP_SIZE = 200;
 
     public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
     public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
