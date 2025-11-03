@@ -118,6 +118,7 @@ fi
 %changelog
 * Sun Nov 02 2025 Josh Ellithorpe <quest@mac.com> - 0.11.155-1
 - Reduce minimum icon size to 16 pixels
+- Increase maximum GapSize to 200 pixels
 - Fix struts calculation to respect GapSize
 - Fix input mask capturing events with GapSize enabled
 

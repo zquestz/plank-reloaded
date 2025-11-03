@@ -5,6 +5,7 @@
 ## 0.11.155 "Reloaded" (2025-11-02)
 
 - Reduce minimum icon size to 16 pixels
+- Increase maximum GapSize to 200 pixels
 - Fix struts calculation to respect GapSize
 - Fix input mask capturing events with GapSize enabled
 

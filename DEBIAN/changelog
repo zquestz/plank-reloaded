@@ -1,6 +1,7 @@
 plank-reloaded (0.11.155-1) unstable; urgency=medium
 
   * Reduce minimum icon size to 16 pixels
+  * Increase maximum GapSize to 200 pixels
   * Fix struts calculation to respect GapSize
   * Fix input mask capturing events with GapSize enabled
 
