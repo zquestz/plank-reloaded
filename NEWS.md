@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.155 "Reloaded" (2025-11-02)
+
+- Reduce minimum icon size to 16 pixels
+- Fix struts calculation to respect GapSize
+- Fix input mask capturing events with GapSize enabled
+
 ## 0.11.154 "Reloaded" (2025-10-30)
 
 - Refactor systemd service to work more reliably with bamf failures

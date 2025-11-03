@@ -116,5 +116,10 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Sun Nov 02 2025 Josh Ellithorpe <quest@mac.com> - 0.11.155-1
+- Reduce minimum icon size to 16 pixels
+- Fix struts calculation to respect GapSize
+- Fix input mask capturing events with GapSize enabled
+
 * Thu Oct 30 2025 Josh Ellithorpe <quest@mac.com> - 0.11.154-1
 - Refactor systemd service to work more reliably with bamf failures

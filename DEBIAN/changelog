@@ -1,3 +1,11 @@
+plank-reloaded (0.11.155-1) unstable; urgency=medium
+
+  * Reduce minimum icon size to 16 pixels
+  * Fix struts calculation to respect GapSize
+  * Fix input mask capturing events with GapSize enabled
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 02 Nov 2025 16:45:34 -1000
+
 plank-reloaded (0.11.154-1) unstable; urgency=medium
 
   * Refactor systemd service to work more reliably with bamf failures
