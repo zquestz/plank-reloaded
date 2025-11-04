@@ -28,7 +28,7 @@
                         pkgs.vala
                         pkgs.glib
                         pkgs.bamf
-                        pkgs.wrapGAppsHook  # Added for GSettings support
+                        pkgs.wrapGAppsHook3  # Added for GSettings support
                     ];
 
                     buildInputs = [
