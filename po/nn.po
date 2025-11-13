@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-11-02 16:51-1000\n"
-"PO-Revision-Date: 2025-11-13 03:31\n"
+"PO-Revision-Date: 2025-11-13 03:43\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Nynorsk\n"
 "Language: nn\n"
@@ -159,7 +159,7 @@ msgstr "Ikonstorleik:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr ""
+msgstr "Ikon Zoom:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
