@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-11-02 16:51-1000\n"
-"PO-Revision-Date: 2025-07-08 22:18\n"
+"PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Georgian\n"
 "Language: ka\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
 msgid "Still stupidly simple"
-msgstr ""
+msgstr "ისევ უბრალოდ მარტივი"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -32,6 +32,11 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloaded არის ორიგინალური Plank პროექტის გამოშვება, რომელიც "
+"უზრუნველყოფს მარტივ დოკს X11 სამუშაო მაგიდის გარემოებისთვის. მიუხედავად "
+"იმისა, რომ განვითარება დაიწყო Cinnamon-ზე ფოკუსირებით, ჩვენ ახლა აქტიურად "
+"ვუჭერთ მხარს მრავალ სამუშაო მაგიდის გარემოს, მათ შორის MATE და Xfce. Wayland "
+"ამჟამად არ არის მხარდაჭერილი."
 
 #: data/plank.appdata.xml.in:12
 msgid ""
@@ -40,46 +45,50 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"თავისი წინამორბედის მსგავსად, Plank Reloaded-ის მიზანია იყოს პლანეტაზე "
+"ყველაზე მარტივი დოკი, რომელიც უზრუნველყოფს მხოლოდ იმას, რაც დოკს სჭირდება და "
+"აბსოლუტურად არაფერი მეტი. ის ასევე რჩება ბიბლიოთეკად, რომელიც შეიძლება "
+"გაფართოვდეს უფრო მოწინავე ფუნქციებით სხვა დოკ პროგრამების შესაქმნელად."
 
 #: data/plank.appdata.xml.in:17
 msgid "dock"
-msgstr ""
+msgstr "დოკი"
 
 #: data/plank.appdata.xml.in:18
 msgid "launch"
-msgstr ""
+msgstr "გაშვება"
 
 #: data/plank.appdata.xml.in:19
 msgid "panel"
-msgstr ""
+msgstr "პანელი"
 
 #: data/plank.appdata.xml.in:20
 msgid "start"
-msgstr ""
+msgstr "დაწყება"
 
 #: data/plank.appdata.xml.in:32
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Plank Reloaded-ის შემქმნელები"
 
 #: data/plank.appdata.xml.in:117
 msgid "Dock with Matte theme"
-msgstr ""
+msgstr "დოკი Matte თემით"
 
 #: data/plank.appdata.xml.in:121
 msgid "Appearance Preferences"
-msgstr ""
+msgstr "გარეგნობის პარამეტრები"
 
 #: data/plank.appdata.xml.in:125
 msgid "Behavior Preferences"
-msgstr ""
+msgstr "ქცევის პარამეტრები"
 
 #: data/plank.appdata.xml.in:129
 msgid "Docklets Preferences"
-msgstr ""
+msgstr "დოკლეტების პარამეტრები"
 
 #: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "დოკი"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
@@ -107,11 +116,11 @@ msgstr "ბოლოში"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "აქტიურ ეკრანზე:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "აქტიური ეკრანის დეტექტირებისთვის დაყოვნების ინტერვალი წამებში"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -155,7 +164,7 @@ msgstr "ხატულის გაზრდა:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "ინტერვალის ზომა:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
@@ -167,19 +176,19 @@ msgstr "დამალვა როცა არ გჭირდება"
 
 #: data/ui/preferences.ui:457
 msgid "Autohide"
-msgstr ""
+msgstr "ავტომატური დამალვა"
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr ""
+msgstr "გაფართოებული ფანჯრის თავიდან აცილება"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr ""
+msgstr "ფანჯრის თავიდან აცილება"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr ""
+msgstr "აქტიური ფანჯრის თავიდან აცილება"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
@@ -191,329 +200,329 @@ msgstr "გადატანის დამალვა:"
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr ""
+msgstr "დოკის დამალვამდე დაყოვნება მილიწამებში"
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr ""
+msgstr "გამოჩენის დაყოვნება:"
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr ""
+msgstr "დოკის ჩვენებამდე დაყოვნება მილიწამებში"
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
-msgstr ""
+msgstr "წნევით ჩვენება:"
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr ""
+msgstr "ელემენტების მართვა"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr ""
+msgstr "მიმაგრებულის გარეშე ჩვენება:"
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
-msgstr ""
+msgstr "სამუშაო სივრცეზე შეზღუდვა:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "მინიშნებების ჩართვა:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr ""
+msgstr "ხატულების ჩაკეტვა:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "დოკლეტების ჩამაგრება:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "ფაილების ჩამაგრება:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
-msgstr ""
+msgstr "ქცევა"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr ""
+msgstr "დოკლეტები"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "პროგრამები მიუწვდომელია"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "პროგრამები"
 
 #: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
-msgstr ""
+msgstr "მენიუს რედაქტირება"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "მორგებული ხატულის არჩევა"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "ნაგულისხმევ ხატულაზე დაბრუნება"
 
 #: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
-msgstr ""
+msgstr "დიდი ხატულები"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "მორგებული ხატულის არჩევა"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
-msgstr ""
+msgstr "არჩევა"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
-msgstr ""
+msgstr "სურათის ფაილები"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "მარტივად გაუშვით თქვენი პროგრამები."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "ბატარეა არ არის"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "ბატარეები"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "ბატარეები ვერ მოიძებნა"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "შეცდომა ბატარეების ძიებისას"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "ბატარეა"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "ბატარეის ინფორმაციის ჩვენება"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "ბუფერი ამჟამად ცარიელია."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_გასუფთავება"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "თაგუნას მონიშვნების თვალყურის დევნება"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "სურათების თვალყურის დევნება"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "ბუფერის თვალყურის დევნების ჩართვა"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "მაქსიმალური ჩანაწერები"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "სურათი"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "ბუფერის ბოლო ჩანაწერების შენახვა."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "ციფ_რული საათი"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24-საათიანი _საათი"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "_თარიღის ჩვენება"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "საათი"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "რომელი საათია?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "კალენდარი"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU მონიტორი"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "თვალი ადევნეთ CPU-ს. და როდესაც იგი არასწორად მუშაობს..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "სამუშაო მაგიდის ჩვენება"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "სამუშაო მაგიდა"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "თქვენი სამუშაო მაგიდის ჩვენება."
 
 #: docklets/Notifications/NotificationsDockItem.vala:264
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
-msgstr ""
+msgstr "შეტყობინებები"
 
 #: docklets/Notifications/NotificationsDockItem.vala:996
 msgid "just now"
-msgstr ""
+msgstr "ახლახან"
 
 #: docklets/Notifications/NotificationsDockItem.vala:999
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d წუთის წინ"
+msgstr[1] "%d წუთის წინ"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1002
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d საათის წინ"
+msgstr[1] "%d საათის წინ"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1048
 msgid "Enable _Expiry"
-msgstr ""
+msgstr "ვადის _ჩართვა"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1056
 msgid "Show _Count"
-msgstr ""
+msgstr "_რაოდენობის ჩვენება"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1064
 msgid "Show _Transient"
-msgstr ""
+msgstr "_დროებითის ჩვენება"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "Clear Notifications"
-msgstr ""
+msgstr "შეტყობინებების გასუფთავება"
 
 #: docklets/Notifications/NotificationsDocklet.vala:29
 msgid "Simple notifications docklet."
-msgstr ""
+msgstr "მარტივი შეტყობინებების დოკლეტი."
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "სანაგვე ყუთში ელემენტები არ არის"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ელემენტი სანაგვე ყუთში"
+msgstr[1] "%u ელემენტი სანაგვე ყუთში"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "სანაგვე ყუთის გასუფთავება?"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "სანაგვე ყუთში არსებული ყველა ელემენტი სამუდამოდ წაიშლება."
 
 #: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
-msgstr ""
+msgstr "_გაუქმება"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "სანაგვე ყუთის _გასუფთავება"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "გადაიტანეთ სანაგვე ყუთში გადასატანად"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "სანაგვე ყუთის _გახსნა"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "სანაგვე ყუთი"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "გადახედეთ თქვენს სანაგვე ყუთს!"
 
 #: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
-msgstr ""
+msgstr "_სტილი"
 
 #: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
-msgstr ""
+msgstr "_ხაზი"
 
 #: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
-msgstr ""
+msgstr "_წერტილი"
 
 #: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
-msgstr ""
+msgstr "_სივრცე"
 
 #: docklets/Separator/SeparatorDockItem.vala:379
 #: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
-msgstr ""
+msgstr "ფერის _ინვერსია"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "გამყოფი"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "უბრალოდ გამყოფი."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -523,23 +532,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "სამუშაო სივრცეები"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:188
 #: docklets/Workspaces/WorkspacesDockItem.vala:214
 #: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "სამუშაო სივრცე %d %d-დან"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "სამუშაო სივრცე %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
-msgstr ""
+msgstr "_პირდაპირი გადახედვა"
 
 #. *
 #. * Returns the description of this docklet.
@@ -548,11 +557,11 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "გრაფიკული სამუშაო სივრცის გადამრთველი."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr ""
+msgstr "გადაიტანეთ დოკში დასამატებლად"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
@@ -564,11 +573,11 @@ msgstr ""
 #: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
-msgstr ""
+msgstr "_დოკში შენახვა"
 
 #: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close All"
-msgstr ""
+msgstr "_ყველას დახურვა"
 
 #: lib/Items/ApplicationDockItem.vala:443
 msgid "_Close"
@@ -577,103 +586,103 @@ msgstr "_დახურვა"
 #: lib/Items/ApplicationDockItem.vala:587
 #, c-format
 msgid "Drop to open with %s"
-msgstr ""
+msgstr "გადაიტანეთ %s-ით გასახსნელად"
 
 #: lib/Items/FileDockItem.vala:274
 msgid "_View Options"
-msgstr ""
+msgstr "_ჩვენების პარამეტრები"
 
 #: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
-msgstr ""
+msgstr "ფაილების ბრაუზერში _გახსნა"
 
 #: lib/Items/FileDockItem.vala:302
 msgid "View Options"
-msgstr ""
+msgstr "ჩვენების პარამეტრები"
 
 #: lib/Items/FileDockItem.vala:306
 msgid "_OK"
-msgstr ""
+msgstr "_კარგი"
 
 #: lib/Items/FileDockItem.vala:320
 msgid "Sort By:"
-msgstr ""
+msgstr "დალაგება:"
 
 #: lib/Items/FileDockItem.vala:324
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #: lib/Items/FileDockItem.vala:325
 msgid "Kind"
-msgstr ""
+msgstr "ტიპი"
 
 #: lib/Items/FileDockItem.vala:326
 msgid "Size"
-msgstr ""
+msgstr "ზომა"
 
 #: lib/Items/FileDockItem.vala:327
 msgid "Date Created"
-msgstr ""
+msgstr "შექმნის თარიღი"
 
 #: lib/Items/FileDockItem.vala:328
 msgid "Date Modified"
-msgstr ""
+msgstr "შეცვლის თარიღი"
 
 #: lib/Items/FileDockItem.vala:332
 msgid "Style:"
-msgstr ""
+msgstr "სტილი:"
 
 #: lib/Items/FileDockItem.vala:336
 msgid "Simple"
-msgstr ""
+msgstr "მარტივი"
 
 #: lib/Items/FileDockItem.vala:337
 msgid "Tile"
-msgstr ""
+msgstr "ფილა"
 
 #: lib/Items/FileDockItem.vala:341
 msgid "Large Icons:"
-msgstr ""
+msgstr "დიდი ხატულები:"
 
 #: lib/Items/FileDockItem.vala:348
 msgid "Show Hidden Files:"
-msgstr ""
+msgstr "დამალული ფაილების ჩვენება:"
 
 #: lib/Items/FileDockItem.vala:411
 msgid "_Open"
-msgstr ""
+msgstr "_გახსნა"
 
 #: lib/Items/FileDockItem.vala:415
 msgid "Open Containing _Folder"
-msgstr ""
+msgstr "შემცველი _საქაღალდის გახსნა"
 
 #: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
-msgstr ""
+msgstr "ცარიელი საქაღალდე"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr ""
+msgstr "გადაიტანეთ პროგრამები ან ფაილები აქ"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr ""
+msgstr "ონლაინ _დახმარების მიღება..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr ""
+msgstr "ამ პროგრამის _თარგმნა..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr ""
+msgstr "_პარამეტრები"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_შესახებ"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_გასვლა"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
