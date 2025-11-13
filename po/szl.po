@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "Plank Reloaded"
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
 msgid "Still stupidly simple"
@@ -33,6 +33,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"Plank Reloaded je rozwidlynie ôryginalnego projektu Plank, co dŏwŏ prostõ "
+"dokã dlŏ ôbsadzeniŏ biōrek X11. Pokõd rozwijanie zaczãło sie ze skupiyniym "
+"na Cinnamon, terŏzki aktywnie ôbsugujymy wicy ôbsadzeń biōrek, tyż MATE i "
+"Xfce. Wayland niy ma terŏzki ôbsugiwaniŏ."
 
 #: data/plank.appdata.xml.in:12
 msgid ""
@@ -41,18 +45,22 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"Jako jeji tyż poprzedniczka, Plank Reloaded mo za cyl być nojprostszõ dokõ "
+"na planecie, dŏwajõncõ ino to, co doka trza i absolutnie nic wiyncyj. Ôna "
+"tyż ôstŏwŏ biblioteką, kerõ idzie rozszerzyć, coby zrychtować ôstatnie "
+"programy doki ze wiyncyj zaawansowanymi funkcyjami."
 
 #: data/plank.appdata.xml.in:17
 msgid "dock"
-msgstr ""
+msgstr "doka"
 
 #: data/plank.appdata.xml.in:18
 msgid "launch"
-msgstr ""
+msgstr "uruchōm"
 
 #: data/plank.appdata.xml.in:19
 msgid "panel"
-msgstr ""
+msgstr "panel"
 
 #: data/plank.appdata.xml.in:20
 msgid "start"
@@ -60,27 +68,27 @@ msgstr "poczōntek"
 
 #: data/plank.appdata.xml.in:32
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "Programiści Plank Reloaded"
 
 #: data/plank.appdata.xml.in:117
 msgid "Dock with Matte theme"
-msgstr ""
+msgstr "Doka ze tymatym Matte"
 
 #: data/plank.appdata.xml.in:121
 msgid "Appearance Preferences"
-msgstr ""
+msgstr "Nasztalowania wynzdrzeniŏ"
 
 #: data/plank.appdata.xml.in:125
 msgid "Behavior Preferences"
-msgstr ""
+msgstr "Nasztalowania zachowaniŏ"
 
 #: data/plank.appdata.xml.in:129
 msgid "Docklets Preferences"
-msgstr ""
+msgstr "Nasztalowania dokletōw"
 
 #: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "Doka"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
@@ -108,11 +116,11 @@ msgstr "Spodek"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "Na aktywnym pokŏzywaczu:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "Interwał badaniŏ w sekundach dlŏ wykrywaniŏ aktywnego pokŏzywacza"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -156,7 +164,7 @@ msgstr "Powiynkszynie ikōn:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "Srogość szczeliny:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
@@ -220,7 +228,7 @@ msgstr "Ôgranicz do placu roboczego:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "Podskŏzki zaszaltowane:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
@@ -228,11 +236,11 @@ msgstr "Zablokuj ikōny:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "Przymocuj doklety:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "Przymocuj zbiory:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
@@ -244,277 +252,280 @@ msgstr "Docklety"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "Niyjne aplikacyje dostympne"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "Aplikacyje"
 
 #: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
-msgstr ""
+msgstr "Edytuj myni"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Ôbier włŏsnõ ikōnã"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "Wrōć do dōmyślnyj ikōny"
 
 #: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
-msgstr ""
+msgstr "Wiylkie ikōny"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "Ôbier włŏsnõ ikōnã"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
-msgstr ""
+msgstr "Pociep"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
-msgstr ""
+msgstr "Ôbier"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
-msgstr ""
+msgstr "Zbiory ôbrŏzkōw"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "Prosto sztartnij jakykolwiek ze swojich aplikacyji."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "Niyjnij bateryje"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "Bateryjõ"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "Niy znod żŏdnych bateryjōw"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "Feler szukaniŏ bateryjōw"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "Bateryjo"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "Pokŏzuje informacyje ô bateryjach"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "Szufladka je terŏzki prŏzdnŏ."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Wyczyść"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "Śledź zaznaczynie myszōm"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "Śledź ôbrŏzki"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "Zaszaltuj śledzyni szufladki"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "Maksymalnŏ wielość wpisōw"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "Ôbrŏzek"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "Clippy"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "Ôstŏwiŏ niydowne wpisy szufladki."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "Cy_frowy zygŏr"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24-godzinny _zygŏr"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "Pokoż _datõ"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "Zygŏr"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "Kera je godzina?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "Kalyndŏrz"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "Mōnitor CPU"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "Dowej pozōr na tyn CPU. A jak sie wybije ze ramy..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "Pokoż biōrek"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "Biōrek"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "Pokoż swōj biōrek."
 
 #: docklets/Notifications/NotificationsDockItem.vala:264
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
-msgstr ""
+msgstr "Powiadōmiynia"
 
 #: docklets/Notifications/NotificationsDockItem.vala:996
 msgid "just now"
-msgstr ""
+msgstr "terŏzki"
 
 #: docklets/Notifications/NotificationsDockItem.vala:999
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d minuta nazŏd"
+msgstr[1] "%d minuty nazŏd"
+msgstr[2] "%d minut nazŏd"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1002
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d godzina nazŏd"
+msgstr[1] "%d godziny nazŏd"
+msgstr[2] "%d godzin nazŏd"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1048
 msgid "Enable _Expiry"
-msgstr ""
+msgstr "Zaszaltuj _wygasanie"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1056
 msgid "Show _Count"
-msgstr ""
+msgstr "Pokoż _wielość"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1064
 msgid "Show _Transient"
-msgstr ""
+msgstr "Pokoż _przychodnistyczne"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "Clear Notifications"
-msgstr ""
+msgstr "Wyczyść powiadōmiynia"
 
 #: docklets/Notifications/NotificationsDocklet.vala:29
 msgid "Simple notifications docklet."
-msgstr ""
+msgstr "Prosty doklet powiadōmiyniy."
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "Niyjne elymynty w kōszu"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elymynt w kōszu"
+msgstr[1] "%u elymynty w kōszu"
+msgstr[2] "%u elymyntōw w kōszu"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Wyprŏżnić wszyjske elymynty ze kōsza?"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Wszyjske elymynty w kōszu bydōm na zawdy skasowane."
 
 #: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
-msgstr ""
+msgstr "_Pociep"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Wyprŏżnij _kōsz"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "Pusć, coby przesunōńć do kōsza"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "_Ôtwōrz kōsz"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "Kōsz"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "Ôbezdrzij swōj kōsz!"
 
 #: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
-msgstr ""
+msgstr "_Sztyl"
 
 #: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
-msgstr ""
+msgstr "_Kreska"
 
 #: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
-msgstr ""
+msgstr "_Pōnkt"
 
 #: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
-msgstr ""
+msgstr "_Plac"
 
 #: docklets/Separator/SeparatorDockItem.vala:379
 #: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
-msgstr ""
+msgstr "_Ôdwrōć farba"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "Separator"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "Ino separator."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -524,23 +535,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "Robotne placu"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:188
 #: docklets/Workspaces/WorkspacesDockItem.vala:214
 #: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "Robotny plac %d ze %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Robotny plac %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
-msgstr ""
+msgstr "_Żywe pedzejzdrzynie"
 
 #. *
 #. * Returns the description of this docklet.
@@ -549,17 +560,15 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "Graficzny przelōnczŏcz robotnych placōw."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr "Ściepnij, żeby dodać do doku"
+msgstr "Pusć, coby przidać do doki"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Grzegorz Kulik https://launchpad.net/~chlodny"
+msgstr "Tōmŏczynie na ślōnski"
 
 #: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
@@ -581,63 +590,63 @@ msgstr "Ściepnij, żeby ôtworzić ze %s"
 
 #: lib/Items/FileDockItem.vala:274
 msgid "_View Options"
-msgstr ""
+msgstr "_Ôpcyje wynzdrzeniŏ"
 
 #: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
-msgstr "Ôtwōrz we przeglōndarce zbi_orōw"
+msgstr "Ô_twōrz w przeglōndarce zbiorōw"
 
 #: lib/Items/FileDockItem.vala:302
 msgid "View Options"
-msgstr ""
+msgstr "Ôpcyje wynzdrzeniŏ"
 
 #: lib/Items/FileDockItem.vala:306
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: lib/Items/FileDockItem.vala:320
 msgid "Sort By:"
-msgstr ""
+msgstr "Zortuj podle:"
 
 #: lib/Items/FileDockItem.vala:324
 msgid "Name"
-msgstr ""
+msgstr "Miano"
 
 #: lib/Items/FileDockItem.vala:325
 msgid "Kind"
-msgstr ""
+msgstr "Zorta"
 
 #: lib/Items/FileDockItem.vala:326
 msgid "Size"
-msgstr ""
+msgstr "Srogość"
 
 #: lib/Items/FileDockItem.vala:327
 msgid "Date Created"
-msgstr ""
+msgstr "Data zrychtowaniŏ"
 
 #: lib/Items/FileDockItem.vala:328
 msgid "Date Modified"
-msgstr ""
+msgstr "Data zmiany"
 
 #: lib/Items/FileDockItem.vala:332
 msgid "Style:"
-msgstr ""
+msgstr "Sztyl:"
 
 #: lib/Items/FileDockItem.vala:336
 msgid "Simple"
-msgstr ""
+msgstr "Prosty"
 
 #: lib/Items/FileDockItem.vala:337
 msgid "Tile"
-msgstr ""
+msgstr "Kafel"
 
 #: lib/Items/FileDockItem.vala:341
 msgid "Large Icons:"
-msgstr ""
+msgstr "Wiylkie ikōny:"
 
 #: lib/Items/FileDockItem.vala:348
 msgid "Show Hidden Files:"
-msgstr ""
+msgstr "Pokoż schowane zbiory:"
 
 #: lib/Items/FileDockItem.vala:411
 msgid "_Open"
@@ -649,31 +658,31 @@ msgstr "Ôtwō_rz katalog zawiyrajōncy"
 
 #: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
-msgstr ""
+msgstr "Prŏzdny katalog"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr "Ściepnij sam programy abo zbiory"
+msgstr "Pusć tukej aplikacyje abo zbiory"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "Do_stōń pōmoc online"
+msgstr "Dostōń pōmoc ô_nline..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "Przełōź _tyn program..."
+msgstr "_Przetōmacz ta aplikacyjõ..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr "Preferyncyje"
+msgstr "_Nasztalowania"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_Ô programie"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_Wylyź"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
