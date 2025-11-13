@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-11-02 16:51-1000\n"
-"PO-Revision-Date: 2025-07-08 22:18\n"
+"PO-Revision-Date: 2025-11-13 01:56\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "بلانك ريلوديد"
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
 msgid "Still stupidly simple"
-msgstr ""
+msgstr "لا يزال بسيطاً بشكل غبي"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -33,6 +33,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"بلانك ريلوديد هو تفرع من مشروع بلانك الأصلي، يوفر حاملاً بسيطاً لبيئات سطح "
+"المكتب X11. بينما بدأ التطوير مع التركيز على سينامون، نحن ندعم الآن بشكل نشط "
+"بيئات سطح مكتب متعددة بما في ذلك MATE و Xfce. ويلاند غير مدعوم في الوقت "
+"الحالي."
 
 #: data/plank.appdata.xml.in:12
 msgid ""
@@ -41,46 +45,49 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"مثل سابقه، يهدف بلانك ريلوديد إلى أن يكون أبسط حامل على هذا الكوكب، يوفر فقط "
+"ما يحتاجه الحامل ولا شيء آخر على الإطلاق. كما أنه يبقى مكتبة يمكن توسيعها "
+"لإنشاء برامج حامل أخرى بميزات أكثر تقدماً."
 
 #: data/plank.appdata.xml.in:17
 msgid "dock"
-msgstr ""
+msgstr "حامل"
 
 #: data/plank.appdata.xml.in:18
 msgid "launch"
-msgstr ""
+msgstr "إطلاق"
 
 #: data/plank.appdata.xml.in:19
 msgid "panel"
-msgstr ""
+msgstr "لوحة"
 
 #: data/plank.appdata.xml.in:20
 msgid "start"
-msgstr ""
+msgstr "بدء"
 
 #: data/plank.appdata.xml.in:32
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "مطورو بلانك ريلوديد"
 
 #: data/plank.appdata.xml.in:117
 msgid "Dock with Matte theme"
-msgstr ""
+msgstr "حامل مع سمة مات"
 
 #: data/plank.appdata.xml.in:121
 msgid "Appearance Preferences"
-msgstr ""
+msgstr "تفضيلات المظهر"
 
 #: data/plank.appdata.xml.in:125
 msgid "Behavior Preferences"
-msgstr ""
+msgstr "تفضيلات السلوك"
 
 #: data/plank.appdata.xml.in:129
 msgid "Docklets Preferences"
-msgstr ""
+msgstr "تفضيلات الودجات"
 
 #: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "حامل"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
@@ -108,11 +115,11 @@ msgstr "أسفل"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "على الشاشة النشطة:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "الفترة الزمنية بالثواني للتحقق من كشف الشاشة النشطة"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -140,7 +147,7 @@ msgstr "على الشاشة الأساسية"
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr ""
+msgstr "الإزاحة بالنسبة المئوية من مركز حافة الشاشة"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
@@ -152,11 +159,11 @@ msgstr "حجم الأيقونات:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr ""
+msgstr "تكبير الأيقونات:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "حجم الفجوة:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
@@ -172,15 +179,15 @@ msgstr "إخفاء تلقائي"
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr ""
+msgstr "تفادي النافذة المكبرة"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr ""
+msgstr "تفادي النافذة"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr ""
+msgstr "تفادي النافذة النشطة"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
@@ -208,7 +215,7 @@ msgstr "عرض الضغط"
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr ""
+msgstr "إدارة العناصر"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
@@ -220,7 +227,7 @@ msgstr "حضر عن مساحة العمل"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "تفعيل التلميحات:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
@@ -228,11 +235,11 @@ msgstr "ربط أيقونات"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "تثبيت الودجات:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "تثبيت الملفات:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
@@ -240,293 +247,293 @@ msgstr "سلوك"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr ""
+msgstr "الودجات"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "لا توجد تطبيقات متاحة"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "التطبيقات"
 
 #: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
-msgstr ""
+msgstr "تحرير القائمة"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "اختر أيقونة مخصصة"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "إعادة تعيين إلى الأيقونة الافتراضية"
 
 #: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
-msgstr ""
+msgstr "أيقونات كبيرة"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "اختر أيقونة مخصصة"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
-msgstr ""
+msgstr "اختيار"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
-msgstr ""
+msgstr "ملفات الصور"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "ابدأ أياً من تطبيقاتك ببساطة."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "لا توجد بطارية"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "البطاريات"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "لم يتم العثور على بطاريات"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "خطأ في العثور على البطاريات"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "البطارية"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "يعرض معلومات البطارية"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "الحافظة فارغة حالياً."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_مسح"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "تتبع تحديدات الفأرة"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "تتبع الصور"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "تفعيل تتبع الحافظة"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "الإدخالات القصوى"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "صورة"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "كليبي"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "احتفظ بإدخالات الحافظة الأخيرة."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "ساعة ر_قمية"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "ساعة _24 ساعة"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "إظهار التا_ريخ"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "الساعة"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "كم الساعة؟"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "التقويم"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "مراقب المعالج"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "راقب ذلك المعالج. وعندما يخرج عن السيطرة..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "إظهار سطح المكتب"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "سطح المكتب"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "اعرض سطح المكتب الخاص بك."
 
 #: docklets/Notifications/NotificationsDockItem.vala:264
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
-msgstr ""
+msgstr "الإشعارات"
 
 #: docklets/Notifications/NotificationsDockItem.vala:996
 msgid "just now"
-msgstr ""
+msgstr "الآن"
 
 #: docklets/Notifications/NotificationsDockItem.vala:999
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "منذ 0 دقيقة"
+msgstr[1] "منذ دقيقة واحدة"
+msgstr[2] "منذ دقيقتين"
+msgstr[3] "منذ %d دقائق"
+msgstr[4] "منذ %d دقيقة"
+msgstr[5] "منذ %d دقيقة"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1002
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "منذ 0 ساعة"
+msgstr[1] "منذ ساعة واحدة"
+msgstr[2] "منذ ساعتين"
+msgstr[3] "منذ %d ساعات"
+msgstr[4] "منذ %d ساعة"
+msgstr[5] "منذ %d ساعة"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1048
 msgid "Enable _Expiry"
-msgstr ""
+msgstr "تفعيل انتهاء ال_صلاحية"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1056
 msgid "Show _Count"
-msgstr ""
+msgstr "إظهار ال_عدد"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1064
 msgid "Show _Transient"
-msgstr ""
+msgstr "إظهار الم_ؤقتة"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "Clear Notifications"
-msgstr ""
+msgstr "مسح الإشعارات"
 
 #: docklets/Notifications/NotificationsDocklet.vala:29
 msgid "Simple notifications docklet."
-msgstr ""
+msgstr "ودجة إشعارات بسيطة."
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "لا توجد عناصر في سلة المهملات"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "لا توجد عناصر في سلة المهملات"
+msgstr[1] "عنصر واحد في سلة المهملات"
+msgstr[2] "عنصران في سلة المهملات"
+msgstr[3] "%u عناصر في سلة المهملات"
+msgstr[4] "%u عنصراً في سلة المهملات"
+msgstr[5] "%u عنصر في سلة المهملات"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "إفراغ جميع العناصر من سلة المهملات؟"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "سيتم حذف جميع العناصر في سلة المهملات نهائياً."
 
 #: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
-msgstr ""
+msgstr "إل_غاء"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "إف_راغ سلة المهملات"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "أسقط للنقل إلى سلة المهملات"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "_فتح سلة المهملات"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "سلة المهملات"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "ألق نظرة على سلة المهملات!"
 
 #: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
-msgstr ""
+msgstr "ال_نمط"
 
 #: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
-msgstr ""
+msgstr "_خط"
 
 #: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
-msgstr ""
+msgstr "_نقطة"
 
 #: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
-msgstr ""
+msgstr "_مسافة"
 
 #: docklets/Separator/SeparatorDockItem.vala:379
 #: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
-msgstr ""
+msgstr "ع_كس اللون"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "فاصل"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "مجرد فاصل."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -536,23 +543,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "مساحات العمل"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:188
 #: docklets/Workspaces/WorkspacesDockItem.vala:214
 #: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "مساحة العمل %d من %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "مساحة العمل %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
-msgstr ""
+msgstr "معاينات _حية"
 
 #. *
 #. * Returns the description of this docklet.
@@ -561,11 +568,11 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "مبدل مساحات عمل رسومي."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr ""
+msgstr "أسقط للإضافة إلى الحامل"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
@@ -594,11 +601,11 @@ msgstr "أ_غلق"
 #: lib/Items/ApplicationDockItem.vala:587
 #, c-format
 msgid "Drop to open with %s"
-msgstr ""
+msgstr "أسقط للفتح باستخدام %s"
 
 #: lib/Items/FileDockItem.vala:274
 msgid "_View Options"
-msgstr ""
+msgstr "_خيارات العرض"
 
 #: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
@@ -606,55 +613,55 @@ msgstr "_فتح في متصفح الملفات"
 
 #: lib/Items/FileDockItem.vala:302
 msgid "View Options"
-msgstr ""
+msgstr "خيارات العرض"
 
 #: lib/Items/FileDockItem.vala:306
 msgid "_OK"
-msgstr ""
+msgstr "_موافق"
 
 #: lib/Items/FileDockItem.vala:320
 msgid "Sort By:"
-msgstr ""
+msgstr "ترتيب حسب:"
 
 #: lib/Items/FileDockItem.vala:324
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #: lib/Items/FileDockItem.vala:325
 msgid "Kind"
-msgstr ""
+msgstr "النوع"
 
 #: lib/Items/FileDockItem.vala:326
 msgid "Size"
-msgstr ""
+msgstr "الحجم"
 
 #: lib/Items/FileDockItem.vala:327
 msgid "Date Created"
-msgstr ""
+msgstr "تاريخ الإنشاء"
 
 #: lib/Items/FileDockItem.vala:328
 msgid "Date Modified"
-msgstr ""
+msgstr "تاريخ التعديل"
 
 #: lib/Items/FileDockItem.vala:332
 msgid "Style:"
-msgstr ""
+msgstr "النمط:"
 
 #: lib/Items/FileDockItem.vala:336
 msgid "Simple"
-msgstr ""
+msgstr "بسيط"
 
 #: lib/Items/FileDockItem.vala:337
 msgid "Tile"
-msgstr ""
+msgstr "بلاط"
 
 #: lib/Items/FileDockItem.vala:341
 msgid "Large Icons:"
-msgstr ""
+msgstr "أيقونات كبيرة:"
 
 #: lib/Items/FileDockItem.vala:348
 msgid "Show Hidden Files:"
-msgstr ""
+msgstr "إظهار الملفات المخفية:"
 
 #: lib/Items/FileDockItem.vala:411
 msgid "_Open"
@@ -666,7 +673,7 @@ msgstr "اف_تح المجلد الذي يحتوي الملف"
 
 #: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
-msgstr ""
+msgstr "مجلد فارغ"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
@@ -682,15 +689,15 @@ msgstr "ترجم هذا الت_طبيق"
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr ""
+msgstr "ال_تفضيلات"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_حول"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_خروج"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
