@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-02 16:51-1000\n"
+"POT-Creation-Date: 2025-11-13 12:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -70,19 +70,19 @@ msgstr "tosaigh"
 msgid "The Plank Reloaded Developers"
 msgstr "Forbróirí Plank Reloaded"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Dock with Matte theme"
 msgstr "Duga le téama Matte"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Appearance Preferences"
 msgstr "Sainroghanna cuma"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Behavior Preferences"
 msgstr "Sainroghanna iompair"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Docklets Preferences"
 msgstr "Sainroghanna dugán"
 

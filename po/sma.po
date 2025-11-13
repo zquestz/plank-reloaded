@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-02 16:51-1000\n"
+"POT-Creation-Date: 2025-11-13 12:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Southern Sami\n"
@@ -69,19 +69,19 @@ msgstr "aalkedh"
 msgid "The Plank Reloaded Developers"
 msgstr "Plank Reloaded buvleles"
 
-#: data/plank.appdata.xml.in:117
+#: data/plank.appdata.xml.in:118
 msgid "Dock with Matte theme"
 msgstr "Doekesysteme Matte teemajne"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:122
 msgid "Appearance Preferences"
 msgstr "Vuajnoeh aajterijste"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Behavior Preferences"
 msgstr "Darjoemasse aajterijste"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Docklets Preferences"
 msgstr "Doekesysteemh aajterijste"
 

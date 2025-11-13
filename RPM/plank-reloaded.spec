@@ -116,6 +116,11 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Thu Nov 13 2025 Josh Ellithorpe <quest@mac.com> - 0.11.156-1
+- Add 7 new language translations: Bengali, Farsi, Filipino, Marathi, Punjabi, Swahili, and Urdu
+- Complete translations for 64 existing languages
+- Now supporting 71 languages total covering over 1 billion additional speakers
+
 * Sun Nov 02 2025 Josh Ellithorpe <quest@mac.com> - 0.11.155-1
 - Reduce minimum icon size to 16 pixels
 - Increase maximum GapSize to 200 pixels

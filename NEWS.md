@@ -2,6 +2,12 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.156 "Reloaded" (2025-11-13)
+
+- Add 7 new language translations: Bengali, Farsi, Filipino, Marathi, Punjabi, Swahili, and Urdu
+- Complete translations for 64 existing languages
+- Now supporting 71 languages total covering over 1 billion additional speakers
+
 ## 0.11.155 "Reloaded" (2025-11-02)
 
 - Reduce minimum icon size to 16 pixels
