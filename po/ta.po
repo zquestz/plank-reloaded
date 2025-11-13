@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
 "POT-Creation-Date: 2025-11-02 16:51-1000\n"
-"PO-Revision-Date: 2025-07-08 22:18\n"
+"PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Tamil\n"
 "Language: ta\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
 msgid "Plank Reloaded"
-msgstr ""
+msgstr "பிளாங்க் ரீலோடெட்"
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
 msgid "Still stupidly simple"
-msgstr ""
+msgstr "இன்னும் மிக எளிமையானது"
 
 #: data/plank.appdata.xml.in:9
 msgid ""
@@ -32,6 +32,10 @@ msgid ""
 "Cinnamon, we now actively support multiple desktop environments including "
 "MATE and Xfce. Wayland is not supported at this time."
 msgstr ""
+"பிளாங்க் ரீலோடெட் என்பது அசல் பிளாங்க் திட்டத்தின் ஒரு கிளை ஆகும், இது X11 டெஸ்க்டாப் "
+"சூழல்களுக்கு எளிய டாக்கை வழங்குகிறது. சினமன் மீது கவனம் செலுத்தி வளர்ச்சி தொடங்கினாலும், "
+"நாங்கள் இப்போது MATE மற்றும் Xfce உட்பட பல டெஸ்க்டாப் சூழல்களை தீவிரமாக ஆதரிக்கிறோம். இந்த "
+"நேரத்தில் Wayland ஆதரிக்கப்படவில்லை."
 
 #: data/plank.appdata.xml.in:12
 msgid ""
@@ -40,50 +44,54 @@ msgid ""
 "also remains a library which can be extended to create other dock programs "
 "with more advanced features."
 msgstr ""
+"அதன் முன்னோடியைப் போலவே, பிளாங்க் ரீலோடெட் கிரகத்தில் மிக எளிமையான டாக்காக இருப்பதை "
+"நோக்கமாகக் கொண்டுள்ளது, ஒரு டாக்கிற்கு தேவையானதை மட்டும் வழங்குகிறது, அதற்கு மேல் "
+"எதுவும் இல்லை. இது மேலும் மேம்பட்ட அம்சங்களுடன் பிற டாக் நிரல்களை உருவாக்க "
+"விரிவாக்கக்கூடிய ஒரு நூலகமாகவும் உள்ளது."
 
 #: data/plank.appdata.xml.in:17
 msgid "dock"
-msgstr ""
+msgstr "டாக்"
 
 #: data/plank.appdata.xml.in:18
 msgid "launch"
-msgstr ""
+msgstr "தொடங்கு"
 
 #: data/plank.appdata.xml.in:19
 msgid "panel"
-msgstr ""
+msgstr "பேனல்"
 
 #: data/plank.appdata.xml.in:20
 msgid "start"
-msgstr ""
+msgstr "ஆரம்பம்"
 
 #: data/plank.appdata.xml.in:32
 msgid "The Plank Reloaded Developers"
-msgstr ""
+msgstr "பிளாங்க் ரீலோடெட் உருவாக்குநர்கள்"
 
 #: data/plank.appdata.xml.in:117
 msgid "Dock with Matte theme"
-msgstr ""
+msgstr "மேட் தீம் கொண்ட டாக்"
 
 #: data/plank.appdata.xml.in:121
 msgid "Appearance Preferences"
-msgstr ""
+msgstr "தோற்ற விருப்பத்தேர்வுகள்"
 
 #: data/plank.appdata.xml.in:125
 msgid "Behavior Preferences"
-msgstr ""
+msgstr "நடத்தை விருப்பத்தேர்வுகள்"
 
 #: data/plank.appdata.xml.in:129
 msgid "Docklets Preferences"
-msgstr ""
+msgstr "டாக்லெட்ஸ் விருப்பத்தேர்வுகள்"
 
 #: data/net.launchpad.plank.desktop.in:3
 msgid "Dock"
-msgstr ""
+msgstr "டாக்"
 
 #: data/ui/preferences.ui:93
 msgid "Theme:"
-msgstr ""
+msgstr "தீம்:"
 
 #: data/ui/preferences.ui:106
 msgid "Position:"
@@ -107,11 +115,11 @@ msgstr "கீழ்"
 
 #: data/ui/preferences.ui:153
 msgid "On Active Display:"
-msgstr ""
+msgstr "செயலில் உள்ள காட்சியில்:"
 
 #: data/ui/preferences.ui:180
 msgid "Polling interval in seconds for active display detection"
-msgstr ""
+msgstr "செயலில் உள்ள காட்சி கண்டறிதலுக்கான நொடிகளில் வாக்கெடுப்பு இடைவெளி"
 
 #: data/ui/preferences.ui:197
 msgid "Alignment:"
@@ -119,47 +127,47 @@ msgstr "சீரமைப்பு:"
 
 #: data/ui/preferences.ui:210
 msgid "Fill"
-msgstr ""
+msgstr "நிரப்பு"
 
 #: data/ui/preferences.ui:211 data/ui/preferences.ui:289
 msgid "Start"
-msgstr ""
+msgstr "தொடக்கம்"
 
 #: data/ui/preferences.ui:212 data/ui/preferences.ui:290
 msgid "End"
-msgstr ""
+msgstr "முடிவு"
 
 #: data/ui/preferences.ui:213 data/ui/preferences.ui:291
 msgid "Center"
-msgstr ""
+msgstr "மையம்"
 
 #: data/ui/preferences.ui:229
 msgid "On Primary Display:"
-msgstr ""
+msgstr "முதன்மை காட்சியில்:"
 
 #: data/ui/preferences.ui:255
 msgid "Offset in percent from the center of the screen-edge"
-msgstr ""
+msgstr "திரை விளிம்பின் மையத்திலிருந்து சதவீதத்தில் ஈடுகட்டல்"
 
 #: data/ui/preferences.ui:275
 msgid "Icon Alignment:"
-msgstr ""
+msgstr "ஐகான் சீரமைப்பு:"
 
 #: data/ui/preferences.ui:305
 msgid "Icon Size:"
-msgstr ""
+msgstr "ஐகான் அளவு:"
 
 #: data/ui/preferences.ui:371
 msgid "Icon Zoom:"
-msgstr ""
+msgstr "ஐகான் பெரிதாக்கல்:"
 
 #: data/ui/preferences.ui:385
 msgid "Gap Size:"
-msgstr ""
+msgstr "இடைவெளி அளவு:"
 
 #: data/ui/preferences.ui:436
 msgid "Appearance"
-msgstr ""
+msgstr "தோற்றம்"
 
 #: data/ui/preferences.ui:456
 msgid "Intellihide"
@@ -171,349 +179,349 @@ msgstr "தானாக மறைதல்"
 
 #: data/ui/preferences.ui:458
 msgid "Dodge maximized window"
-msgstr ""
+msgstr "பெரிதாக்கப்பட்ட சாளரத்தைத் தவிர்"
 
 #: data/ui/preferences.ui:459
 msgid "Window Dodge"
-msgstr ""
+msgstr "சாளரத்தைத் தவிர்"
 
 #: data/ui/preferences.ui:460
 msgid "Dodge active window"
-msgstr ""
+msgstr "செயலில் உள்ள சாளரத்தைத் தவிர்"
 
 #: data/ui/preferences.ui:486
 msgid "Hide Dock"
-msgstr ""
+msgstr "டாக்கை மறை"
 
 #: data/ui/preferences.ui:502
 msgid "Hide Delay:"
-msgstr ""
+msgstr "மறைக்கும் தாமதம்:"
 
 #: data/ui/preferences.ui:516
 msgid "Delay in ms before hiding the dock"
-msgstr ""
+msgstr "டாக்கை மறைப்பதற்கு முன் ms இல் தாமதம்"
 
 #: data/ui/preferences.ui:535
 msgid "Unhide Delay:"
-msgstr ""
+msgstr "காட்டும் தாமதம்:"
 
 #: data/ui/preferences.ui:549
 msgid "Delay in ms before showing the dock"
-msgstr ""
+msgstr "டாக்கை காட்டுவதற்கு முன் ms இல் தாமதம்"
 
 #: data/ui/preferences.ui:568
 msgid "Pressure Reveal:"
-msgstr ""
+msgstr "அழுத்தத்தால் வெளிப்படுத்து:"
 
 #: data/ui/preferences.ui:595
 msgid "Item Management"
-msgstr ""
+msgstr "உருப்படி மேலாண்மை"
 
 #: data/ui/preferences.ui:614
 msgid "Show Unpinned:"
-msgstr ""
+msgstr "பின் செய்யப்படாததை காட்டு:"
 
 #: data/ui/preferences.ui:641
 msgid "Restrict to Workspace:"
-msgstr ""
+msgstr "பணிப்பரப்புக்கு கட்டுப்படுத்து:"
 
 #: data/ui/preferences.ui:669
 msgid "Tooltips Enabled:"
-msgstr ""
+msgstr "கருவிக்குறிப்புகள் இயக்கப்பட்டது:"
 
 #: data/ui/preferences.ui:693
 msgid "Lock Icons:"
-msgstr ""
+msgstr "ஐகான்களை பூட்டு:"
 
 #: data/ui/preferences.ui:720
 msgid "Anchor Docklets:"
-msgstr ""
+msgstr "டாக்லெட்ஸ் நங்கூரம்:"
 
 #: data/ui/preferences.ui:747
 msgid "Anchor Files:"
-msgstr ""
+msgstr "கோப்புகள் நங்கூரம்:"
 
 #: data/ui/preferences.ui:769
 msgid "Behaviour"
-msgstr ""
+msgstr "நடத்தை"
 
 #: data/ui/preferences.ui:789
 msgid "Docklets"
-msgstr ""
+msgstr "டாக்லெட்ஸ்"
 
 #: docklets/Applications/ApplicationsDockItem.vala:33
 msgid "No applications available"
-msgstr ""
+msgstr "பயன்பாடுகள் கிடைக்கவில்லை"
 
 #: docklets/Applications/ApplicationsDockItem.vala:52
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
-msgstr ""
+msgstr "பயன்பாடுகள்"
 
 #: docklets/Applications/ApplicationsDockItem.vala:304
 msgid "Edit Menu"
-msgstr ""
+msgstr "பட்டியலைத் திருத்து"
 
 #: docklets/Applications/ApplicationsDockItem.vala:323
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "தனிப்பயன் ஐகானைத் தேர்ந்தெடு"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:331
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
-msgstr ""
+msgstr "இயல்புநிலை ஐகானுக்கு மீட்டமை"
 
 #: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Large Icons"
-msgstr ""
+msgstr "பெரிய ஐகான்கள்"
 
 #: docklets/Applications/ApplicationsDockItem.vala:354
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
-msgstr ""
+msgstr "தனிப்பயன் ஐகானைத் தேர்ந்தெடு"
 
 #: docklets/Applications/ApplicationsDockItem.vala:357
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்துசெய்"
 
 #: docklets/Applications/ApplicationsDockItem.vala:358
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
-msgstr ""
+msgstr "தேர்ந்தெடு"
 
 #: docklets/Applications/ApplicationsDockItem.vala:376
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
-msgstr ""
+msgstr "பட கோப்புகள்"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
-msgstr ""
+msgstr "உங்கள் பயன்பாடுகளில் எதையும் எளிமையாக தொடங்குங்கள்."
 
 #: docklets/Battery/BatteryDockItem.vala:28
 #: docklets/Battery/BatteryUPowerDockItem.vala:42
 msgid "No battery"
-msgstr ""
+msgstr "பேட்டரி இல்லை"
 
 #: docklets/Battery/BatteryDockItem.vala:132
 msgid "Batteries"
-msgstr ""
+msgstr "பேட்டரிகள்"
 
 #: docklets/Battery/BatteryDockItem.vala:175
 msgid "No batteries found"
-msgstr ""
+msgstr "பேட்டரிகள் கண்டறியப்படவில்லை"
 
 #: docklets/Battery/BatteryDockItem.vala:182
 msgid "Error finding batteries"
-msgstr ""
+msgstr "பேட்டரிகளைக் கண்டறிவதில் பிழை"
 
 #: docklets/Battery/BatteryDocklet.vala:29
 msgid "Battery"
-msgstr ""
+msgstr "பேட்டரி"
 
 #: docklets/Battery/BatteryDocklet.vala:31
 msgid "Displays battery information"
-msgstr ""
+msgstr "பேட்டரி தகவலை காட்டுகிறது"
 
 #: docklets/Clippy/ClippyDockItem.vala:22
 msgid "Clipboard is currently empty."
-msgstr ""
+msgstr "கிளிப்போர்டு தற்போது காலியாக உள்ளது."
 
 #: docklets/Clippy/ClippyDockItem.vala:23
 msgid "_Clear"
-msgstr ""
+msgstr "_அழி"
 
 #: docklets/Clippy/ClippyDockItem.vala:26
 msgid "Track Mouse Selections"
-msgstr ""
+msgstr "சுட்டி தேர்வுகளை கண்காணி"
 
 #: docklets/Clippy/ClippyDockItem.vala:27
 msgid "Track Images"
-msgstr ""
+msgstr "படங்களைக் கண்காணி"
 
 #: docklets/Clippy/ClippyDockItem.vala:28
 msgid "Enable Clipboard Tracking"
-msgstr ""
+msgstr "கிளிப்போர்டு கண்காணிப்பை இயக்கு"
 
 #: docklets/Clippy/ClippyDockItem.vala:29
 msgid "Maximum Entries"
-msgstr ""
+msgstr "அதிகபட்ச உள்ளீடுகள்"
 
 #: docklets/Clippy/ClippyDockItem.vala:192
 #: docklets/Clippy/ClippyClipboardItem.vala:153
 #: docklets/Clippy/ClippyClipboardItem.vala:249
 msgid "Image"
-msgstr ""
+msgstr "படம்"
 
 #: docklets/Clippy/ClippyDocklet.vala:29
 msgid "Clippy"
-msgstr ""
+msgstr "கிளிப்பி"
 
 #: docklets/Clippy/ClippyDocklet.vala:31
 msgid "Keep recent clipboard entries."
-msgstr ""
+msgstr "சமீபத்திய கிளிப்போர்டு உள்ளீடுகளை வைத்திரு."
 
 #: docklets/Clock/ClockDockItem.vala:348
 msgid "Di_gital Clock"
-msgstr ""
+msgstr "டி_ஜிட்டல் கடிகாரம்"
 
 #: docklets/Clock/ClockDockItem.vala:353
 msgid "24-Hour _Clock"
-msgstr ""
+msgstr "24-மணி _கடிகாரம்"
 
 #: docklets/Clock/ClockDockItem.vala:358
 msgid "Show _Date"
-msgstr ""
+msgstr "_தேதியைக் காட்டு"
 
 #: docklets/Clock/ClockDocklet.vala:31
 msgid "Clock"
-msgstr ""
+msgstr "கடிகாரம்"
 
 #: docklets/Clock/ClockDocklet.vala:33
 msgid "What time is it?"
-msgstr ""
+msgstr "இப்போது நேரம் என்ன?"
 
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
-msgstr ""
+msgstr "நாட்காட்டி"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
-msgstr ""
+msgstr "CPU மானிட்டர்"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:32
 msgid "Keep an eye on that CPU. And when it gets out of line..."
-msgstr ""
+msgstr "அந்த CPU ஐ கவனியுங்கள். மற்றும் அது கட்டுப்பாட்டை இழக்கும்போது..."
 
 #: docklets/Desktop/DesktopDockItem.vala:45
 msgid "Show Desktop"
-msgstr ""
+msgstr "டெஸ்க்டாப்பைக் காட்டு"
 
 #: docklets/Desktop/DesktopDocklet.vala:33
 msgid "Desktop"
-msgstr ""
+msgstr "டெஸ்க்டாப்"
 
 #: docklets/Desktop/DesktopDocklet.vala:35
 msgid "Show your Desktop."
-msgstr ""
+msgstr "உங்கள் டெஸ்க்டாப்பைக் காட்டு."
 
 #: docklets/Notifications/NotificationsDockItem.vala:264
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
-msgstr ""
+msgstr "அறிவிப்புகள்"
 
 #: docklets/Notifications/NotificationsDockItem.vala:996
 msgid "just now"
-msgstr ""
+msgstr "இப்போதுதான்"
 
 #: docklets/Notifications/NotificationsDockItem.vala:999
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d நிமிடத்திற்கு முன்"
+msgstr[1] "%d நிமிடங்களுக்கு முன்"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1002
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d மணி நேரத்திற்கு முன்"
+msgstr[1] "%d மணி நேரங்களுக்கு முன்"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1048
 msgid "Enable _Expiry"
-msgstr ""
+msgstr "_காலாவதியை இயக்கு"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1056
 msgid "Show _Count"
-msgstr ""
+msgstr "_எண்ணிக்கையைக் காட்டு"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1064
 msgid "Show _Transient"
-msgstr ""
+msgstr "_தற்காலிகமாக காட்டு"
 
 #: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "Clear Notifications"
-msgstr ""
+msgstr "அறிவிப்புகளை அழி"
 
 #: docklets/Notifications/NotificationsDocklet.vala:29
 msgid "Simple notifications docklet."
-msgstr ""
+msgstr "எளிய அறிவிப்புகள் டாக்லெட்."
 
 #: docklets/Trash/TrashDockItem.vala:100
 msgid "No items in Trash"
-msgstr ""
+msgstr "குப்பையில் உருப்படிகள் இல்லை"
 
 #: docklets/Trash/TrashDockItem.vala:101
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "குப்பையில் %u உருப்படி"
+msgstr[1] "குப்பையில் %u உருப்படிகள்"
 
 #: docklets/Trash/TrashDockItem.vala:271
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "குப்பையிலிருந்து அனைத்து உருப்படிகளையும் காலி செய்யவா?"
 
 #: docklets/Trash/TrashDockItem.vala:274
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "குப்பையில் உள்ள அனைத்து உருப்படிகளும் நிரந்தரமாக நீக்கப்படும்."
 
 #: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
-msgstr ""
+msgstr "_ரத்துசெய்"
 
 #: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_குப்பையை காலி செய்"
 
 #: docklets/Trash/TrashDockItem.vala:365
 msgid "Drop to move to Trash"
-msgstr ""
+msgstr "குப்பைக்கு நகர்த்த விடவும்"
 
 #: docklets/Trash/TrashDockItem.vala:402
 msgid "_Open Trash"
-msgstr ""
+msgstr "_குப்பையைத் திற"
 
 #: docklets/Trash/TrashDocklet.vala:29
 msgid "Trash"
-msgstr ""
+msgstr "குப்பை"
 
 #: docklets/Trash/TrashDocklet.vala:31
 msgid "Have a look at your trash!"
-msgstr ""
+msgstr "உங்கள் குப்பையைப் பாருங்கள்!"
 
 #: docklets/Separator/SeparatorDockItem.vala:341
 msgid "_Style"
-msgstr ""
+msgstr "_பாணி"
 
 #: docklets/Separator/SeparatorDockItem.vala:346
 msgid "_Line"
-msgstr ""
+msgstr "_கோடு"
 
 #: docklets/Separator/SeparatorDockItem.vala:356
 msgid "_Dot"
-msgstr ""
+msgstr "_புள்ளி"
 
 #: docklets/Separator/SeparatorDockItem.vala:366
 msgid "_Space"
-msgstr ""
+msgstr "_இடைவெளி"
 
 #: docklets/Separator/SeparatorDockItem.vala:379
 #: docklets/Workspaces/WorkspacesDockItem.vala:571
 msgid "_Invert Color"
-msgstr ""
+msgstr "_நிறத்தை மாற்று"
 
 #: docklets/Separator/SeparatorDocklet.vala:28
 msgid "Separator"
-msgstr ""
+msgstr "பிரிப்பான்"
 
 #: docklets/Separator/SeparatorDocklet.vala:29
 msgid "Just a separator."
-msgstr ""
+msgstr "வெறும் பிரிப்பான்."
 
 #. *
 #. * Returns the display name for this docklet.
@@ -523,23 +531,23 @@ msgstr ""
 #: docklets/Workspaces/WorkspacesDockItem.vala:49
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
-msgstr ""
+msgstr "பணிப்பரப்புகள்"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:188
 #: docklets/Workspaces/WorkspacesDockItem.vala:214
 #: docklets/Workspaces/WorkspacesDockItem.vala:226
 #, c-format
 msgid "Workspace %d of %d"
-msgstr ""
+msgstr "பணிப்பரப்பு %d / %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:549
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "பணிப்பரப்பு %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:578
 msgid "_Live Previews"
-msgstr ""
+msgstr "_நேரடி முன்னோட்டங்கள்"
 
 #. *
 #. * Returns the description of this docklet.
@@ -548,11 +556,11 @@ msgstr ""
 #.
 #: docklets/Workspaces/WorkspacesDocklet.vala:54
 msgid "A graphical workspace switcher."
-msgstr ""
+msgstr "ஒரு வரைகலை பணிப்பரப்பு மாற்றி."
 
 #: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
-msgstr ""
+msgstr "டாக்கில் சேர்க்க விடவும்"
 
 #: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
 msgid "translator-credits"
@@ -579,67 +587,67 @@ msgstr "மூடு (_C)"
 #: lib/Items/ApplicationDockItem.vala:587
 #, c-format
 msgid "Drop to open with %s"
-msgstr ""
+msgstr "%s உடன் திறக்க விடவும்"
 
 #: lib/Items/FileDockItem.vala:274
 msgid "_View Options"
-msgstr ""
+msgstr "_காட்சி விருப்பங்கள்"
 
 #: lib/Items/FileDockItem.vala:291 lib/Items/FileDockItem.vala:568
 msgid "_Open in File Browser"
-msgstr "கோப்பு உலாவியில் திற"
+msgstr "கோப்பு உலாவியில் _திற"
 
 #: lib/Items/FileDockItem.vala:302
 msgid "View Options"
-msgstr ""
+msgstr "காட்சி விருப்பங்கள்"
 
 #: lib/Items/FileDockItem.vala:306
 msgid "_OK"
-msgstr ""
+msgstr "_சரி"
 
 #: lib/Items/FileDockItem.vala:320
 msgid "Sort By:"
-msgstr ""
+msgstr "வரிசைப்படுத்து:"
 
 #: lib/Items/FileDockItem.vala:324
 msgid "Name"
-msgstr ""
+msgstr "பெயர்"
 
 #: lib/Items/FileDockItem.vala:325
 msgid "Kind"
-msgstr ""
+msgstr "வகை"
 
 #: lib/Items/FileDockItem.vala:326
 msgid "Size"
-msgstr ""
+msgstr "அளவு"
 
 #: lib/Items/FileDockItem.vala:327
 msgid "Date Created"
-msgstr ""
+msgstr "உருவாக்கிய தேதி"
 
 #: lib/Items/FileDockItem.vala:328
 msgid "Date Modified"
-msgstr ""
+msgstr "மாற்றிய தேதி"
 
 #: lib/Items/FileDockItem.vala:332
 msgid "Style:"
-msgstr ""
+msgstr "பாணி:"
 
 #: lib/Items/FileDockItem.vala:336
 msgid "Simple"
-msgstr ""
+msgstr "எளிமையான"
 
 #: lib/Items/FileDockItem.vala:337
 msgid "Tile"
-msgstr ""
+msgstr "டைல்"
 
 #: lib/Items/FileDockItem.vala:341
 msgid "Large Icons:"
-msgstr ""
+msgstr "பெரிய ஐகான்கள்:"
 
 #: lib/Items/FileDockItem.vala:348
 msgid "Show Hidden Files:"
-msgstr ""
+msgstr "மறைக்கப்பட்ட கோப்புகளைக் காட்டு:"
 
 #: lib/Items/FileDockItem.vala:411
 msgid "_Open"
@@ -651,31 +659,31 @@ msgstr "கோப்புள்ள அடைவை திற (_F)"
 
 #: lib/Items/FileDockItem.vala:550 lib/Items/FileDockItem.vala:552
 msgid "Empty Directory"
-msgstr ""
+msgstr "காலி அடைவு"
 
 #: lib/Items/PlaceholderDockItem.vala:37
 msgid "Drop applications or files here"
-msgstr ""
+msgstr "பயன்பாடுகள் அல்லது கோப்புகளை இங்கே விடவும்"
 
 #: lib/Items/PlankDockItem.vala:66
 msgid "Get _Help Online..."
-msgstr "இனையத்தில் உதவி பெருக"
+msgstr "ஆன்லைனில் _உதவி பெறு..."
 
 #: lib/Items/PlankDockItem.vala:70
 msgid "_Translate This Application..."
-msgstr "இதை மொழிபெயர்க்கவும்"
+msgstr "இந்த பயன்பாட்டை _மொழிபெயர்..."
 
 #: lib/Items/PlankDockItem.vala:76
 msgid "_Preferences"
-msgstr ""
+msgstr "_விருப்பத்தேர்வுகள்"
 
 #: lib/Items/PlankDockItem.vala:80
 msgid "_About"
-msgstr ""
+msgstr "_பற்றி"
 
 #: lib/Items/PlankDockItem.vala:88
 msgid "_Quit"
-msgstr ""
+msgstr "_வெளியேறு"
 
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
