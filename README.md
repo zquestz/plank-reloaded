@@ -399,6 +399,20 @@ systemctl --user restart bamfdaemon.service
 
 This 2-second delay resolves race conditions during logout/login cycles. See [issue #115](https://github.com/zquestz/plank-reloaded/issues/115) for details.
 
+### Plank sensitivity extends too far in IceWM?
+
+If you're using IceWM and experiencing issues where clicking near the dock becomes unresponsive in applications (e.g., Firefox's back button doesn't work when too close to the dock), you need to tell IceWM not to manage the Plank window.
+
+**Solution:** Add the following line to your IceWM winoptions file (typically `~/.icewm/winoptions`):
+
+```
+plank.doNotManage: 1
+```
+
+This tells IceWM not to apply window management rules to Plank, resolving the click sensitivity issues.
+
+See [issue #124](https://github.com/zquestz/plank-reloaded/issues/124) for more details.
+
 ### How can application developers show counts or progress indicators on their dock icons?
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
