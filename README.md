@@ -374,11 +374,9 @@ Check if "Restrict to Workspace" is enabled in preferences. When enabled, applic
 
 ### Running indicators not showing after login?
 
-If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by Plank starting before the display or bamfdaemon is fully ready.
+If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by bamfdaemon not starting properly with systemd.
 
-**Solution:** Add a delay of a few seconds to Plank's startup in your desktop environment's autostart settings. Most DEs allow you to configure a startup delay for autostart applications.
-
-This delay resolves race conditions during login. See [issue #115](https://github.com/zquestz/plank-reloaded/issues/115) for details.
+**Solution:** Manually add bamfdaemon to your startup applications. The path is typically `/usr/lib/x86_64-linux-gnu/bamf/bamfdaemon`.
 
 ### Plank sensitivity extends too far in IceWM?
 
