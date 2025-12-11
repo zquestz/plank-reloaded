@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.156\n"
+"Project-Id-Version: plank-reloaded 0.11.157\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-13 12:36-1000\n"
+"POT-Creation-Date: 2025-12-11 13:23-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,39 +42,19 @@ msgid ""
 "with more advanced features."
 msgstr ""
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr ""
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr ""
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr ""
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr ""
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr ""
-
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Docklets Preferences"
 msgstr ""
 

@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.157 "Reloaded" (2025-12-11)
+
+- Remove systemd service support due to unreliable behavior across desktop environments
+
 ## 0.11.156 "Reloaded" (2025-11-13)
 
 - Add 7 new language translations: Bengali, Farsi, Filipino, Marathi, Punjabi, Swahili, and Urdu

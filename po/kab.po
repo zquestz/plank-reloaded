@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-13 12:36-1000\n"
+"POT-Creation-Date: 2025-12-11 13:23-1000\n"
 "PO-Revision-Date: 2025-11-13 21:06\n"
 "Last-Translator: \n"
 "Language-Team: Kabyle\n"
@@ -49,39 +49,19 @@ msgstr ""
 "tamsalt ara izemmren ad yettusiɣzef i tmerna n yihilen-nniḍen n udukkar s "
 "tmahilin leqqayen."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "adukkar"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "senker"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "agalis"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "bdu"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Ineflayen n Plank Reloaded"
-
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Dock with Matte theme"
 msgstr "Adukkar s usentel Matte"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Appearance Preferences"
 msgstr "Ismenyifen n tirmas"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Behavior Preferences"
 msgstr "Ismenyifen n tikli"
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Docklets Preferences"
 msgstr "Ismenyifen n yidukkar imeẓyanen"
 
@@ -685,3 +665,18 @@ msgstr "_Ffeɣ"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Iγewwaren"
+
+#~ msgid "dock"
+#~ msgstr "adukkar"
+
+#~ msgid "launch"
+#~ msgstr "senker"
+
+#~ msgid "panel"
+#~ msgstr "agalis"
+
+#~ msgid "start"
+#~ msgstr "bdu"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Ineflayen n Plank Reloaded"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-13 12:36-1000\n"
+"POT-Creation-Date: 2025-12-11 13:23-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Georgian\n"
@@ -50,39 +50,19 @@ msgstr ""
 "აბსოლუტურად არაფერი მეტი. ის ასევე რჩება ბიბლიოთეკად, რომელიც შეიძლება "
 "გაფართოვდეს უფრო მოწინავე ფუნქციებით სხვა დოკ პროგრამების შესაქმნელად."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "დოკი"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "გაშვება"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "პანელი"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "დაწყება"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Plank Reloaded-ის შემქმნელები"
-
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Dock with Matte theme"
 msgstr "დოკი Matte თემით"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Appearance Preferences"
 msgstr "გარეგნობის პარამეტრები"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Behavior Preferences"
 msgstr "ქცევის პარამეტრები"
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Docklets Preferences"
 msgstr "დოკლეტების პარამეტრები"
 
@@ -687,3 +667,18 @@ msgstr "_გასვლა"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "პარამეტრები"
+
+#~ msgid "dock"
+#~ msgstr "დოკი"
+
+#~ msgid "launch"
+#~ msgstr "გაშვება"
+
+#~ msgid "panel"
+#~ msgstr "პანელი"
+
+#~ msgid "start"
+#~ msgstr "დაწყება"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Plank Reloaded-ის შემქმნელები"

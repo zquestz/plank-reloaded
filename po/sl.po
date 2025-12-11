@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-13 12:36-1000\n"
+"POT-Creation-Date: 2025-12-11 13:23-1000\n"
 "PO-Revision-Date: 2025-11-13 04:12\n"
 "Last-Translator: \n"
 "Language-Team: Slovenian\n"
@@ -50,39 +50,19 @@ msgstr ""
 "Ostaja tudi knjižnica, ki jo je mogoče razširiti za ustvarjanje drugih "
 "programov dokov z naprednejšimi funkcijami."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "dok"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "zagon"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "plošča"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "začetek"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Razvijalci Plank Reloaded"
-
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Dock with Matte theme"
 msgstr "Dok s temo Matte"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Appearance Preferences"
 msgstr "Nastavitve videza"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Behavior Preferences"
 msgstr "Nastavitve obnašanja"
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Docklets Preferences"
 msgstr "Nastavitve dokapletov"
 
@@ -694,3 +674,18 @@ msgstr "_Izhod"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Možnosti"
+
+#~ msgid "dock"
+#~ msgstr "dok"
+
+#~ msgid "launch"
+#~ msgstr "zagon"
+
+#~ msgid "panel"
+#~ msgstr "plošča"
+
+#~ msgid "start"
+#~ msgstr "začetek"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Razvijalci Plank Reloaded"

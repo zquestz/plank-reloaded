@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-11-13 12:36-1000\n"
+"POT-Creation-Date: 2025-12-11 13:23-1000\n"
 "PO-Revision-Date: 2025-11-13 21:27\n"
 "Last-Translator: \n"
 "Language-Team: Uzbek\n"
@@ -51,39 +51,19 @@ msgstr ""
 "kengaytirish orqali yanada ilg'or xususiyatlarga ega boshqa dok dasturlarini "
 "yaratish mumkin."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "dok"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "ishga tushirish"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "panel"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "boshlash"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Plank Reloaded Dasturchilari"
-
-#: data/plank.appdata.xml.in:118
+#: data/plank.appdata.xml.in:119
 msgid "Dock with Matte theme"
 msgstr "Matte mavzusidagi Dok"
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Appearance Preferences"
 msgstr "Ko'rinish Parametrlari"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Behavior Preferences"
 msgstr "Xatti-harakat Parametrlari"
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Docklets Preferences"
 msgstr "Dokletlar Parametrlari"
 
@@ -688,3 +668,18 @@ msgstr "_Chiqish"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Parametrlar"
+
+#~ msgid "dock"
+#~ msgstr "dok"
+
+#~ msgid "launch"
+#~ msgstr "ishga tushirish"
+
+#~ msgid "panel"
+#~ msgstr "panel"
+
+#~ msgid "start"
+#~ msgstr "boshlash"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Plank Reloaded Dasturchilari"
