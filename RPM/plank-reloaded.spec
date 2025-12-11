@@ -28,7 +28,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  cairo-devel
 BuildRequires:  gdk-pixbuf2-devel
 BuildRequires:  glib2-devel
-BuildRequires:  systemd-rpm-macros
 
 # Don't require specific library versions - let RPM auto-generate them
 Requires:       bamf
@@ -91,7 +90,6 @@ chmod 755 %{buildroot}%{_libdir}/libplank.so.*
 %{_datadir}/icons/hicolor/*/apps/plank-reloaded.png
 %{_mandir}/man1/plank.1.gz
 %{_datadir}/metainfo/plank.appdata.xml
-%{_userunitdir}/plank-reloaded.service
 
 %files devel
 %doc README.md

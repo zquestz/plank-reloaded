@@ -29,7 +29,6 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
   - Refreshed icons across all docklets
   - Support for third party docklets
 - Added Matte and Matte-Light themes, based on [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
-- Optional systemd user service support for automatic startup and service management
 - Added theme options to set the indicator, active item, and badge styles
 - General code cleanup and stability improvements
 
@@ -373,31 +372,13 @@ Add Plank Reloaded to your desktop environment's startup applications. The comma
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
 
-### Running indicators not showing after logout/login?
+### Running indicators not showing after login?
 
-If running indicators (the glow effect showing active applications) don't appear after logging out and back in, this is typically caused by bamfdaemon failing to restart properly.
+If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by Plank starting before the display or bamfdaemon is fully ready.
 
-**Solution:** Add a restart delay to bamfdaemon by running:
+**Solution:** Add a delay of a few seconds to Plank's startup in your desktop environment's autostart settings. Most DEs allow you to configure a startup delay for autostart applications.
 
-```bash
-systemctl --user edit bamfdaemon.service
-```
-
-Then add the following content:
-
-```ini
-[Service]
-RestartSec=2s
-```
-
-Save and exit, then reload systemd:
-
-```bash
-systemctl --user daemon-reload
-systemctl --user restart bamfdaemon.service
-```
-
-This 2-second delay resolves race conditions during logout/login cycles. See [issue #115](https://github.com/zquestz/plank-reloaded/issues/115) for details.
+This delay resolves race conditions during login. See [issue #115](https://github.com/zquestz/plank-reloaded/issues/115) for details.
 
 ### Plank sensitivity extends too far in IceWM?
 
@@ -416,41 +397,6 @@ See [issue #124](https://github.com/zquestz/plank-reloaded/issues/124) for more 
 ### How can application developers show counts or progress indicators on their dock icons?
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
-
-## Systemd Support
-
-Plank Reloaded includes an optional systemd user service for automatic startup and service management. This is an alternative to adding Plank to your desktop environment's startup applications.
-
-### Enable and Start the Service
-
-```bash
-# Enable the service to start automatically with your user session
-systemctl --user enable plank-reloaded.service
-
-# Start the service immediately
-systemctl --user start plank-reloaded.service
-```
-
-### Managing the Service
-
-```bash
-# Stop the service
-systemctl --user stop plank-reloaded.service
-
-# Disable automatic startup
-systemctl --user disable plank-reloaded.service
-
-# Check service status
-systemctl --user status plank-reloaded.service
-
-# View service logs
-journalctl --user -u plank-reloaded.service
-
-# Follow logs in real-time
-journalctl --user -u plank-reloaded.service -f
-```
-
-**Note:** The systemd service is completely optional. You can still use traditional startup methods if you prefer.
 
 ## Reporting Bugs
 

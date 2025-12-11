@@ -54,10 +54,3 @@ if enable_apport
   )
 endif
 
-systemd = dependency('systemd', required: false)
-if systemd.found()
-  install_data(
-    'systemd/plank-reloaded.service',
-    install_dir: systemd.get_variable('systemduserunitdir'),
-  )
-endif

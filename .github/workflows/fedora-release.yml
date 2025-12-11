@@ -51,8 +51,7 @@ jobs:
             gtk3-devel \
             cairo-devel \
             gdk-pixbuf2-devel \
-            glib2-devel \
-            systemd-rpm-macros
+            glib2-devel
 
       - name: Setup RPM Build Environment
         run: |
