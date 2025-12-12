@@ -376,7 +376,10 @@ Check if "Restrict to Workspace" is enabled in preferences. When enabled, applic
 
 If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by bamfdaemon not starting properly with systemd.
 
-**Solution:** Manually add bamfdaemon to your startup applications. The path is typically `/usr/lib/x86_64-linux-gnu/bamf/bamfdaemon`.
+**Solution:** Manually add bamfdaemon to your startup applications. Common paths include:
+
+- `/usr/lib/x86_64-linux-gnu/bamf/bamfdaemon`
+- `/usr/lib/bamf/bamfdaemon`
 
 ### Plank sensitivity extends too far in IceWM?
 
