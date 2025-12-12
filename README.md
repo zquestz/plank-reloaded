@@ -376,10 +376,20 @@ Check if "Restrict to Workspace" is enabled in preferences. When enabled, applic
 
 If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by bamfdaemon not starting properly with systemd.
 
-**Solution:** Manually add bamfdaemon to your startup applications. Common paths include:
+**Solution 1:** Manually add bamfdaemon to your startup applications. Common paths include:
 
 - `/usr/lib/x86_64-linux-gnu/bamf/bamfdaemon`
 - `/usr/lib/bamf/bamfdaemon`
+
+**Solution 2:** Fix the bamf systemd service using a drop-in override. The default service uses `Restart=on-failure`, which causes the service to enter a failed state on logout and not restart on the next login. Create an override to disable the restart behavior:
+
+```bash
+mkdir -p ~/.config/systemd/user/bamfdaemon.service.d/
+echo -e "[Service]\nRestart=" > ~/.config/systemd/user/bamfdaemon.service.d/override.conf
+systemctl --user daemon-reload
+```
+
+This allows dbus activation to cleanly start bamfdaemon on demand, and survives package updates.
 
 ### Plank sensitivity extends too far in IceWM?
 
