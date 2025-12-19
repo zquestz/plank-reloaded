@@ -385,7 +385,7 @@ If running indicators (the glow effect showing active applications) don't appear
 
 ```bash
 mkdir -p ~/.config/systemd/user/bamfdaemon.service.d/
-echo -e "[Service]\nRestart=" > ~/.config/systemd/user/bamfdaemon.service.d/override.conf
+echo -e "[Service]\nRestart=no" > ~/.config/systemd/user/bamfdaemon.service.d/override.conf
 systemctl --user daemon-reload
 ```
 
