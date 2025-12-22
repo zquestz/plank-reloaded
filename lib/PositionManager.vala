@@ -34,6 +34,7 @@ namespace Plank {
 
     Gdk.Rectangle monitor_geo;
     int monitor_num;
+    int last_update_monitor_num;
 
     int max_hover_height_cache = 0;
     int max_hover_width_cache = 0;
@@ -847,7 +848,9 @@ namespace Plank {
           || old_region.x != static_dock_region.x
           || old_region.y != static_dock_region.y
           || old_region.width != static_dock_region.width
-          || old_region.height != static_dock_region.height) {
+          || old_region.height != static_dock_region.height
+          || last_update_monitor_num != monitor_num) {
+        last_update_monitor_num = monitor_num;
         controller.window.update_size_and_position ();
 
 #if HAVE_BARRIERS
