@@ -202,6 +202,12 @@ namespace Plank {
       case "ZoomPercent":
         adj_zoom_percent.value = prefs.ZoomPercent;
         break;
+      case "ActiveDisplay":
+        sw_active_display.set_active (prefs.ActiveDisplay);
+        break;
+      case "ActiveDisplayPollingInterval":
+        adj_active_display_polling_interval.value = prefs.ActiveDisplayPollingInterval;
+        break;
       // Ignored settings
       case "DockItems":
         break;
