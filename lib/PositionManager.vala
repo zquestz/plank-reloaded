@@ -144,9 +144,7 @@ namespace Plank {
           active_monitor_num = i;
       }
 
-      string monitor_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (active_monitor_num);
-
-      return monitor_name;
+      return get_unique_monitor_name (display, active_monitor_num);
     }
 
     public void move_to_active_monitor () {
@@ -184,14 +182,42 @@ namespace Plank {
       }
     }
 
+    static string get_unique_monitor_name (Gdk.Display display, int monitor_index) {
+      var monitor = display.get_monitor (monitor_index);
+      string base_name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (monitor_index);
+
+      // Count how many monitors before this one have the same model name
+      int duplicate_count = 0;
+      for (int i = 0; i < monitor_index; i++) {
+        var other_monitor = display.get_monitor (i);
+        string other_name = other_monitor.get_model () ?? "PLUG_MONITOR_%i".printf (i);
+        if (other_name == base_name)
+          duplicate_count++;
+      }
+
+      // If this is a duplicate, append a suffix
+      if (duplicate_count > 0)
+        return "%s #%d".printf (base_name, duplicate_count + 1);
+
+      // Check if there are any duplicates after this monitor
+      int n_monitors = display.get_n_monitors ();
+      for (int i = monitor_index + 1; i < n_monitors; i++) {
+        var other_monitor = display.get_monitor (i);
+        string other_name = other_monitor.get_model () ?? "PLUG_MONITOR_%i".printf (i);
+        if (other_name == base_name)
+          return "%s #1".printf (base_name);
+      }
+
+      return base_name;
+    }
+
     public static string[] get_monitor_plug_names (Gdk.Screen screen) {
       var display = screen.get_display ();
       int n_monitors = display.get_n_monitors ();
       var result = new string[n_monitors];
 
       for (int i = 0; i < n_monitors; i++) {
-        var monitor = display.get_monitor (i);
-        result[i] = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (i);
+        result[i] = get_unique_monitor_name (display, i);
       }
 
       return result;
@@ -213,8 +239,7 @@ namespace Plank {
 
       int n_monitors = display.get_n_monitors ();
       for (int i = 0; i < n_monitors; i++) {
-        var monitor = display.get_monitor (i);
-        var name = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (i);
+        var name = get_unique_monitor_name (display, i);
         if (plug_name == name)
           return i;
       }
