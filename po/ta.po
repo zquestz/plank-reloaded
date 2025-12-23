@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Tamil\n"
@@ -49,19 +49,39 @@ msgstr ""
 "எதுவும் இல்லை. இது மேலும் மேம்பட்ட அம்சங்களுடன் பிற டாக் நிரல்களை உருவாக்க "
 "விரிவாக்கக்கூடிய ஒரு நூலகமாகவும் உள்ளது."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "டாக்"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "தொடங்கு"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "பேனல்"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "ஆரம்பம்"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "பிளாங்க் ரீலோடெட் உருவாக்குநர்கள்"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "மேட் தீம் கொண்ட டாக்"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "தோற்ற விருப்பத்தேர்வுகள்"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "நடத்தை விருப்பத்தேர்வுகள்"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "டாக்லெட்ஸ் விருப்பத்தேர்வுகள்"
 
@@ -668,18 +688,3 @@ msgstr "_வெளியேறு"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "முன்னுரிமைகள்"
-
-#~ msgid "dock"
-#~ msgstr "டாக்"
-
-#~ msgid "launch"
-#~ msgstr "தொடங்கு"
-
-#~ msgid "panel"
-#~ msgstr "பேனல்"
-
-#~ msgid "start"
-#~ msgstr "ஆரம்பம்"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "பிளாங்க் ரீலோடெட் உருவாக்குநர்கள்"

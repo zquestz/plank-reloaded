@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Persian\n"
@@ -49,19 +49,39 @@ msgstr ""
 "کتابخانه باقی می‌ماند که می‌تواند برای ایجاد برنامه‌های داک دیگر با ویژگی‌های "
 "پیشرفته‌تر گسترش یابد."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "داک"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "اجرا"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "پنل"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "شروع"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "توسعه‌دهندگان پلنک ریلودد"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "داک با تم مات"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "تنظیمات ظاهری"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "تنظیمات رفتاری"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "تنظیمات داکلت‌ها"
 
@@ -665,18 +685,3 @@ msgstr "_خروج"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "تنظیمات"
-
-#~ msgid "dock"
-#~ msgstr "داک"
-
-#~ msgid "launch"
-#~ msgstr "اجرا"
-
-#~ msgid "panel"
-#~ msgstr "پنل"
-
-#~ msgid "start"
-#~ msgstr "شروع"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "توسعه‌دهندگان پلنک ریلودد"

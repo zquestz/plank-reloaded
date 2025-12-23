@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Scottish Gaelic\n"
@@ -51,19 +51,39 @@ msgstr ""
 "dad eile idir. Tha e cuideachd fhathast na leabharlann a ghabhas leudachadh "
 "gus prògraman doca eile a chruthachadh le feartan adhartaiche."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "doca"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "tòisich"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panail"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "tòisich"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Luchd-leasachaidh Plank Reloaded"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "Doca le ùrlar Matte"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "Roghainnean coltas"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "Roghainnean giùlain"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "Roghainnean docalagan"
 
@@ -675,18 +695,3 @@ msgstr "_Fàg an-seo"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Roghainnean"
-
-#~ msgid "dock"
-#~ msgstr "doca"
-
-#~ msgid "launch"
-#~ msgstr "tòisich"
-
-#~ msgid "panel"
-#~ msgstr "panail"
-
-#~ msgid "start"
-#~ msgstr "tòisich"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Luchd-leasachaidh Plank Reloaded"

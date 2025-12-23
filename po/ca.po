@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Catalan\n"
@@ -49,19 +49,39 @@ msgstr ""
 "queda una llibreria que pot ser ampliada per crear altres programes "
 "d'acoblador amb funcions més avançades."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "acoblador"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "iniciar"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "plafó"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "inici"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Els desenvolupadors de Plank Reloaded"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "Acoblador amb tema Matte"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "Preferències d'aparença"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "Preferències de comportament"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "Preferències d'afegits"
 
@@ -669,18 +689,3 @@ msgstr "_Surt"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferències"
-
-#~ msgid "dock"
-#~ msgstr "acoblador"
-
-#~ msgid "launch"
-#~ msgstr "iniciar"
-
-#~ msgid "panel"
-#~ msgstr "plafó"
-
-#~ msgid "start"
-#~ msgstr "inici"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Els desenvolupadors de Plank Reloaded"

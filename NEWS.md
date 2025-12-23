@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.158 "Reloaded" (2025-12-23)
+
+- Fix dock not moving when switching between monitors with identical resolution
+- Fix ActiveDisplay preferences warning messages
+
 ## 0.11.157 "Reloaded" (2025-12-11)
 
 - Remove systemd service support due to unreliable behavior across desktop environments

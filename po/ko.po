@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -49,19 +49,39 @@ msgstr ""
 "또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브"
 "러리로 남아 있습니다."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "독"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "실행"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "패널"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "시작"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "플랭크 리로디드 개발자"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "매트 테마가 적용된 도크"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "외관 기본 설정"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "행동 환경설정"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "독릿 환경설정"
 
@@ -669,18 +689,3 @@ msgstr "나가기 (_Q)"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "기본 설정"
-
-#~ msgid "dock"
-#~ msgstr "독"
-
-#~ msgid "launch"
-#~ msgstr "실행"
-
-#~ msgid "panel"
-#~ msgstr "패널"
-
-#~ msgid "start"
-#~ msgstr "시작"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "플랭크 리로디드 개발자"

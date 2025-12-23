@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 04:12\n"
 "Last-Translator: \n"
 "Language-Team: Latvian\n"
@@ -49,19 +49,39 @@ msgstr ""
 "vairāk. Tas arī paliek bibliotēka, ko var paplašināt, lai izveidotu citas "
 "doka programmas ar progresīvākām funkcijām."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "doks"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "palaist"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panelis"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "sākt"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Plank Reloaded izstrādātāji"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "Doks ar Matte tēmu"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "Izskata iestatījumi"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "Uzvedības iestatījumi"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "Doka sīklietotņu iestatījumi"
 
@@ -671,18 +691,3 @@ msgstr "_Iziet"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Iestatījumi"
-
-#~ msgid "dock"
-#~ msgstr "doks"
-
-#~ msgid "launch"
-#~ msgstr "palaist"
-
-#~ msgid "panel"
-#~ msgstr "panelis"
-
-#~ msgid "start"
-#~ msgstr "sākt"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Plank Reloaded izstrādātāji"

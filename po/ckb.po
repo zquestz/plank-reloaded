@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Sorani (Kurdish)\n"
@@ -49,19 +49,39 @@ msgstr ""
 "کتێبخانەیەک دەمێنێتەوە کە دەتوانرێت فراوان بکرێت بۆ دروستکردنی پڕۆگرامەکانی "
 "تری دۆک بە تایبەتمەندییە پێشکەوتووتر."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "دۆک"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "کردنەوە"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "پانێل"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "ده‌ست پێكردن"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "گەشەپێدەرانی پلانک ڕیلۆدەد"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "دۆک بە ڕووکاری Matte"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "هەڵبژاردەکانی دەرکەوتن"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "هەڵبژاردەکانی ڕەفتار"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "هەڵبژاردەکانی دۆکلێت"
 
@@ -663,18 +683,3 @@ msgstr "_دەرچوون"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "ڕێکخستنەکان"
-
-#~ msgid "dock"
-#~ msgstr "دۆک"
-
-#~ msgid "launch"
-#~ msgstr "کردنەوە"
-
-#~ msgid "panel"
-#~ msgstr "پانێل"
-
-#~ msgid "start"
-#~ msgstr "ده‌ست پێكردن"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "گەشەپێدەرانی پلانک ڕیلۆدەد"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Galician\n"
@@ -50,19 +50,39 @@ msgstr ""
 "máis. Tamén permanece como unha biblioteca que pode ser estendida para crear "
 "outros programas de doca con funcións máis avanzadas."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "doca"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "iniciar"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panel"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "inicio"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Os desenvolvedores de Plank Reloaded"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "Doca co tema Matte"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "Preferencias da aparencia"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "Preferencias do comportamento"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "Preferencias dos docklets"
 
@@ -670,18 +690,3 @@ msgstr "_Saír"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferencias"
-
-#~ msgid "dock"
-#~ msgstr "doca"
-
-#~ msgid "launch"
-#~ msgstr "iniciar"
-
-#~ msgid "panel"
-#~ msgstr "panel"
-
-#~ msgid "start"
-#~ msgstr "inicio"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Os desenvolvedores de Plank Reloaded"

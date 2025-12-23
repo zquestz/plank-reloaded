@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-11 13:23-1000\n"
+"POT-Creation-Date: 2025-12-23 09:49-1000\n"
 "PO-Revision-Date: 2025-11-13 04:02\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
@@ -50,19 +50,39 @@ msgstr ""
 "daugiau. Jis taip pat lieka biblioteka, kuri gali būti išplėsta kuriant "
 "kitas doko programas su pažangesnėmis funkcijomis."
 
-#: data/plank.appdata.xml.in:119
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "dokas"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "paleisti"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "skydelis"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "pradėti"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Plank Reloaded kūrėjai"
+
+#: data/plank.appdata.xml.in:120
 msgid "Dock with Matte theme"
 msgstr "Dokas su Matte tema"
 
-#: data/plank.appdata.xml.in:123
+#: data/plank.appdata.xml.in:124
 msgid "Appearance Preferences"
 msgstr "Išvaizdos nustatymai"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Behavior Preferences"
 msgstr "Elgsenos nustatymai"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Docklets Preferences"
 msgstr "Doko įskiepių nustatymai"
 
@@ -674,18 +694,3 @@ msgstr "_Išeiti"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Nuostatos"
-
-#~ msgid "dock"
-#~ msgstr "dokas"
-
-#~ msgid "launch"
-#~ msgstr "paleisti"
-
-#~ msgid "panel"
-#~ msgstr "skydelis"
-
-#~ msgid "start"
-#~ msgstr "pradėti"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Plank Reloaded kūrėjai"
