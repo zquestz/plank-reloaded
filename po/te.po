@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Telugu\n"
@@ -47,39 +47,19 @@ msgstr ""
 "డాక్‌కు అవసరమైనది మాత్రమే అందిస్తుంది మరియు అంతకంటే ఎక్కువ ఏమీ లేదు. ఇది మరింత అధునాతన లక్షణాలతో "
 "ఇతర డాక్ ప్రోగ్రామ్‌లను సృష్టించడానికి విస్తరించగల లైబ్రరీగా కూడా మిగిలిపోయింది."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "డాక్"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "ప్రారంభించు"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "ప్యానెల్"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "మొదలు"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "ప్లాంక్ రీలోడెడ్ డెవలపర్లు"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "మాట్ థీమ్‌తో డాక్"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "రూపాన్ని ఎంపికలు"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "ప్రవర్తన ఎంపికలు"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "డాక్‌లెట్స్ ఎంపికలు"
 
@@ -684,3 +664,18 @@ msgstr "_నిష్క్రమించు"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "ప్రాధాన్యతలు"
+
+#~ msgid "dock"
+#~ msgstr "డాక్"
+
+#~ msgid "launch"
+#~ msgstr "ప్రారంభించు"
+
+#~ msgid "panel"
+#~ msgstr "ప్యానెల్"
+
+#~ msgid "start"
+#~ msgstr "మొదలు"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "ప్లాంక్ రీలోడెడ్ డెవలపర్లు"

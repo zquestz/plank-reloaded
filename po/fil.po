@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-11-13 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Filipino\n"
@@ -50,39 +50,19 @@ msgstr ""
 "pa. Ito rin ay nananatiling library na maaaring palawakin upang lumikha ng "
 "ibang dock programs na may mas advanced na features."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "dock"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "ilunsad"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "panel"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "simulan"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Ang Mga Developer ng Plank Reloaded"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "Dock na may Matte theme"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "Mga Kagustuhan sa Hitsura"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "Mga Kagustuhan sa Pag-uugali"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "Mga Kagustuhan ng Docklets"
 
@@ -686,3 +666,18 @@ msgstr "_Lumabas"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Mga Kagustuhan"
+
+#~ msgid "dock"
+#~ msgstr "dock"
+
+#~ msgid "launch"
+#~ msgstr "ilunsad"
+
+#~ msgid "panel"
+#~ msgstr "panel"
+
+#~ msgid "start"
+#~ msgstr "simulan"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Ang Mga Developer ng Plank Reloaded"

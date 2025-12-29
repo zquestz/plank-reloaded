@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
@@ -49,39 +49,19 @@ msgstr ""
 "है जिसे अधिक उन्नत सुविधाओं के साथ अन्य डॉक प्रोग्राम बनाने के लिए विस्तारित किया जा "
 "सकता है।"
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "डॉक"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "लॉन्च"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "पैनल"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "स्टार्ट"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "प्लैंक रिलोडेड डेवलपर्स"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "मैट थीम के साथ डॉक"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "उपस्थिति प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "व्यवहार प्राथमिकताएँ"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "डॉकलेट्स प्राथमिकताएँ"
 
@@ -689,3 +669,18 @@ msgstr "_बाहर जाएं"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "वरीयताएँ"
+
+#~ msgid "dock"
+#~ msgstr "डॉक"
+
+#~ msgid "launch"
+#~ msgstr "लॉन्च"
+
+#~ msgid "panel"
+#~ msgstr "पैनल"
+
+#~ msgid "start"
+#~ msgstr "स्टार्ट"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "प्लैंक रिलोडेड डेवलपर्स"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-11-13 03:12\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
@@ -48,39 +48,19 @@ msgstr ""
 "שמעגן צריך ומוחלט שום דבר יותר. הוא גם נשאר ספרייה שניתן להרחיב ליצירת "
 "תוכניות מעגן אחרות עם תכונות מתקדמות יותר."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "מעגן"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "הפעלה"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "פאנל"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "התחלה"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "מפתחי Plank Reloaded"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "מעגן עם ערכת נושא Matte"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "העדפות מראה"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "העדפות התנהגות"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "העדפות גאדג'טים"
 
@@ -696,3 +676,18 @@ msgstr "_יציאה"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "העדפות"
+
+#~ msgid "dock"
+#~ msgstr "מעגן"
+
+#~ msgid "launch"
+#~ msgstr "הפעלה"
+
+#~ msgid "panel"
+#~ msgstr "פאנל"
+
+#~ msgid "start"
+#~ msgstr "התחלה"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "מפתחי Plank Reloaded"

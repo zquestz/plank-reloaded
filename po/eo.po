@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
@@ -49,39 +49,19 @@ msgstr ""
 "pli. Ĝi ankaŭ restas biblioteko kiu povas esti etendita por krei aliajn "
 "doksistemajn programojn kun pli altnivelajn funkciojn."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "doksistemo"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "lanĉi"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "panelo"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "komenci"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "La Plank Reloaded Programistoj"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "Doksistemo kun Matte etoso"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "Aspektaj Agordoj"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "Kondutaj Agordoj"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "Doksistemaj Agordoj"
 
@@ -689,3 +669,18 @@ msgstr "_Eliri"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Agordoj"
+
+#~ msgid "dock"
+#~ msgstr "doksistemo"
+
+#~ msgid "launch"
+#~ msgstr "lanĉi"
+
+#~ msgid "panel"
+#~ msgstr "panelo"
+
+#~ msgid "start"
+#~ msgstr "komenci"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "La Plank Reloaded Programistoj"

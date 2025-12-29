@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-23 09:49-1000\n"
+"POT-Creation-Date: 2025-12-29 12:41-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
@@ -47,39 +47,19 @@ msgstr ""
 "Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
 "充來建立具有更多進階功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "停靠欄"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "啟動"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "面板"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "開始"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Plank Reloaded 開發者團隊"
-
-#: data/plank.appdata.xml.in:120
+#: data/plank.appdata.xml.in:121
 msgid "Dock with Matte theme"
 msgstr "使用霧面主題的 Dock"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Appearance Preferences"
 msgstr "外觀偏好設定"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Behavior Preferences"
 msgstr "行為偏好設定"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Docklets Preferences"
 msgstr "小工具偏好設定"
 
@@ -683,3 +663,18 @@ msgstr "_離開"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "偏好設定"
+
+#~ msgid "dock"
+#~ msgstr "停靠欄"
+
+#~ msgid "launch"
+#~ msgstr "啟動"
+
+#~ msgid "panel"
+#~ msgstr "面板"
+
+#~ msgid "start"
+#~ msgstr "開始"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Plank Reloaded 開發者團隊"
