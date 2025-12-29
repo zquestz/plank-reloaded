@@ -81,6 +81,7 @@ namespace Plank {
       case "xubuntu": result = XdgSessionDesktop.XFCE; break;
       case "ede": result = XdgSessionDesktop.EDE; break;
       case "cinnamon": result = XdgSessionDesktop.CINNAMON; break;
+      case "x-cinnamon": result = XdgSessionDesktop.CINNAMON; break;
       case "pantheon": result = XdgSessionDesktop.PANTHEON; break;
       case "dde": result = XdgSessionDesktop.DDE; break;
       case "endless": result = XdgSessionDesktop.ENDLESS; break;
