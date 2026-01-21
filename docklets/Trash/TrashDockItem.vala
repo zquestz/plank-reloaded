@@ -28,6 +28,8 @@ namespace Docky {
     private const string KDE_TRASH_URI = "trash:/";
     private const string NEMO_SCHEMA = "org.nemo.preferences";
     private const string NEMO_PATH = "/org/nemo/preferences/";
+    private const string CAJA_SCHEMA = "org.mate.caja.preferences";
+    private const string CAJA_PATH = "/org/mate/caja/preferences/";
 
     private const string STANDARD_ATTRIBUTES =
       FileAttribute.STANDARD_TYPE + ","
@@ -258,6 +260,14 @@ namespace Docky {
           return settings.get_boolean("confirm-trash");
         }
       }
+
+      if (environment_is_session_desktop(XdgSessionDesktop.MATE)) {
+        var settings = create_settings(CAJA_SCHEMA, CAJA_PATH);
+        if (settings != null) {
+          return settings.get_boolean("confirm-trash");
+        }
+      }
+
       return true;
     }
 
