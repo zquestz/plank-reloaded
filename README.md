@@ -426,7 +426,7 @@ Please search for existing bugs before reporting new ones.
 
 ### Original Plank Resources
 
-- IRC: `#plank` on FreeNode - `irc://irc.freenode.net/#plank`
+- IRC: `#plank` on Libera.Chat - `irc://irc.libera.chat/#plank`
 - Common problems and solutions: [Plank Answers](https://answers.launchpad.net/plank)
 
 ## How Can I Get Involved?

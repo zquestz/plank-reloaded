@@ -111,16 +111,16 @@ git commit -m "Descriptive message"
 
 ```bash
 git fetch upstream
-git checkout main
-git merge upstream/main
-git push origin main
+git checkout master
+git merge upstream/master
+git push origin master
 ```
 
 4. **Update your feature branch:**
 
 ```bash
 git checkout fix-issue-number
-git rebase main
+git rebase master
 ```
 
 5. **Push your changes:**
