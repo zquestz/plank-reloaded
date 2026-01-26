@@ -756,38 +756,48 @@ namespace Plank {
 #if BENCHMARK
       var start = new DateTime.now_local ();
 #endif
-      var icon_surface = get_item_surface (item, icon_size).copy ();
-      unowned Cairo.Context icon_cr = icon_surface.Context;
-
+      // Check if we need to modify the surface (overlay, lighten, or darken)
+      // Only copy if modifications are needed to avoid allocation overhead
       Surface? icon_overlay_surface = null;
       if (item.CountVisible || item.ProgressVisible)
         icon_overlay_surface = item.get_foreground_surface (icon_size, icon_size, item_buffer, (DrawDataFunc<DockItem>) draw_item_foreground);
 
-      if (icon_overlay_surface != null) {
-        icon_cr.set_source_surface (icon_overlay_surface.Internal, 0, 0);
-        icon_cr.paint ();
+      bool needs_surface_modification = (icon_overlay_surface != null || draw_value.lighten > 0 || draw_value.darken > 0);
+
+      Surface icon_surface;
+      if (needs_surface_modification) {
+        icon_surface = get_item_surface (item, icon_size).copy ();
+        unowned Cairo.Context icon_cr = icon_surface.Context;
+
+        if (icon_overlay_surface != null) {
+          icon_cr.set_source_surface (icon_overlay_surface.Internal, 0, 0);
+          icon_cr.paint ();
+        }
+
+        // lighten the icon
+        if (draw_value.lighten > 0) {
+          icon_cr.set_operator (Cairo.Operator.ADD);
+          icon_cr.paint_with_alpha (draw_value.lighten);
+          icon_cr.set_operator (Cairo.Operator.OVER);
+        }
+
+        // darken the icon
+        if (draw_value.darken > 0) {
+          icon_cr.rectangle (0, 0, icon_surface.Width, icon_surface.Height);
+          icon_cr.set_source_rgba (0, 0, 0, draw_value.darken);
+          icon_cr.set_operator (Cairo.Operator.ATOP);
+          icon_cr.fill ();
+          icon_cr.set_operator (Cairo.Operator.OVER);
+        }
+      } else {
+        // No modifications needed - use cached surface directly
+        icon_surface = get_item_surface (item, icon_size);
       }
 
 #if BENCHMARK
       var end = new DateTime.now_local ();
       benchmark.add ("	item.get_surface time - %f ms".printf (end.difference (start) / 1000.0));
 #endif
-
-      // lighten the icon
-      if (draw_value.lighten > 0) {
-        icon_cr.set_operator (Cairo.Operator.ADD);
-        icon_cr.paint_with_alpha (draw_value.lighten);
-        icon_cr.set_operator (Cairo.Operator.OVER);
-      }
-
-      // darken the icon
-      if (draw_value.darken > 0) {
-        icon_cr.rectangle (0, 0, icon_surface.Width, icon_surface.Height);
-        icon_cr.set_source_rgba (0, 0, 0, draw_value.darken);
-        icon_cr.set_operator (Cairo.Operator.ATOP);
-        icon_cr.fill ();
-        icon_cr.set_operator (Cairo.Operator.OVER);
-      }
 
       // draw active glow
       var active_time = int64.max (0LL, frame_time - item.LastActive);
