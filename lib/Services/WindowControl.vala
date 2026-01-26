@@ -47,32 +47,31 @@ namespace Plank {
      * Process a list of windows with a delayed action between each.
      * This avoids blocking the main thread with Thread.usleep.
      *
-     * @param windows the list of windows to process
+     * @param windows the array of windows to process
      * @param action the action to perform on each window
+     * @param event_time the event time for window operations
      */
     delegate void WindowAction (Wnck.Window window, uint32 event_time);
 
-    static void process_windows_delayed (GLib.List<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
-      if (windows.length () == 0)
+    static void process_windows_delayed (Gee.ArrayList<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
+      if (windows.size == 0)
         return;
 
-      var windows_copy = windows.copy ();
-      process_next_window (windows_copy, action, event_time);
+      process_next_window (windows, 0, action, event_time);
     }
 
-    static void process_next_window (GLib.List<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
-      if (windows.length () == 0)
+    static void process_next_window (Gee.ArrayList<unowned Wnck.Window> windows, int index, WindowAction action, uint32 event_time) {
+      if (index >= windows.size)
         return;
 
-      unowned Wnck.Window? window = windows.nth_data (0);
+      unowned Wnck.Window? window = windows[index];
       if (window != null)
         action (window, event_time);
 
-      windows.remove (window);
-
-      if (windows.length () > 0) {
+      var next_index = index + 1;
+      if (next_index < windows.size) {
         Gdk.threads_add_timeout (WINDOW_GROUP_DELAY, () => {
-          process_next_window (windows, action, event_time);
+          process_next_window (windows, next_index, action, event_time);
           return false;
         });
       }
@@ -469,12 +468,12 @@ namespace Plank {
     }
 
     public static void minimize (Bamf.Application app) {
-      var windows_to_minimize = new GLib.List<unowned Wnck.Window> ();
+      var windows_to_minimize = new Gee.ArrayList<unowned Wnck.Window> ();
 
       foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (!window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
-          windows_to_minimize.append (window);
+          windows_to_minimize.add (window);
         }
       }
 
@@ -485,12 +484,12 @@ namespace Plank {
       var stack = get_ordered_window_stack (app);
       stack.reverse ();
 
-      var windows_to_restore = new GLib.List<unowned Wnck.Window> ();
+      var windows_to_restore = new Gee.ArrayList<unowned Wnck.Window> ();
 
       foreach (unowned Wnck.Window window in stack) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
-          windows_to_restore.append (window);
+          windows_to_restore.add (window);
         }
       }
 
@@ -560,10 +559,10 @@ namespace Plank {
       foreach (unowned Wnck.Window window in windows) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
-          var windows_to_unminimize = new GLib.List<unowned Wnck.Window> ();
+          var windows_to_unminimize = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
             if (w.is_minimized () && w.is_in_viewport (active_workspace))
-              windows_to_unminimize.append (w);
+              windows_to_unminimize.add (w);
           process_windows_delayed (windows_to_unminimize, (w, t) => { w.unminimize (t); }, event_time);
           return;
         }
@@ -574,10 +573,10 @@ namespace Plank {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if ((window.is_active () && active_workspace != null && window.is_in_viewport (active_workspace))
             || window == window.get_screen ().get_active_window ()) {
-          var windows_to_minimize = new GLib.List<unowned Wnck.Window> ();
+          var windows_to_minimize = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
             if (!w.is_minimized () && w.is_in_viewport (active_workspace) && w.get_window_type () != Wnck.WindowType.DOCK)
-              windows_to_minimize.append (w);
+              windows_to_minimize.add (w);
           process_windows_delayed (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
           return;
         }
@@ -587,10 +586,10 @@ namespace Plank {
       foreach (unowned Wnck.Window window in windows) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (active_workspace != null && window.is_in_viewport (active_workspace)) {
-          var windows_to_focus = new GLib.List<unowned Wnck.Window> ();
+          var windows_to_focus = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
             if (w.is_in_viewport (active_workspace))
-              windows_to_focus.append (w);
+              windows_to_focus.add (w);
           process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
           return;
         }
@@ -608,21 +607,21 @@ namespace Plank {
 
       additional_windows.reverse ();
 
-      var windows_to_focus = new GLib.List<unowned Wnck.Window> ();
+      var windows_to_focus = new Gee.ArrayList<unowned Wnck.Window> ();
       foreach (unowned Wnck.Window window in additional_windows) {
         if (window == targetWindow)
           continue;
         if (!window.is_minimized () && windows_share_viewport (targetWindow, window)) {
-          windows_to_focus.append (window);
+          windows_to_focus.add (window);
         }
       }
 
       // Focus the additional windows first, then the target window
-      if (windows_to_focus.length () > 0) {
+      if (windows_to_focus.size > 0) {
         process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
 
         // Schedule target window focus after all other windows are processed
-        var delay = (uint) (windows_to_focus.length () * WINDOW_GROUP_DELAY + WINDOW_GROUP_DELAY);
+        var delay = (uint) (windows_to_focus.size * WINDOW_GROUP_DELAY + WINDOW_GROUP_DELAY);
         Gdk.threads_add_timeout (delay, () => {
           center_and_focus_window (targetWindow, event_time);
           schedule_delayed_focus (targetWindow, additional_windows, event_time);
