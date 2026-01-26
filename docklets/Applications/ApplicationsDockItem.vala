@@ -20,11 +20,11 @@ using Plank;
 namespace Docky {
   public class ApplicationsDockItem : DockletItem {
     private uint update_timer_id = 0;
-    private GMenu.Tree apps_menu;
-    private Gtk.Menu? app_menu = null;
-    private Gee.ArrayList<Gtk.MenuItem>? app_menu_items = null;
-    private Object apps_menu_lock = new Object();
-    private bool apps_loaded;
+    private GMenu.Tree menu_tree;
+    private Gtk.Menu? menu_widget = null;
+    private Gee.ArrayList<Gtk.MenuItem>? menu_items = null;
+    private bool apps_loaded = false;
+    private bool load_in_progress = false;
     private Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
 
     private const string APPLICATIONS_MENU = "applications.menu";
@@ -62,13 +62,11 @@ namespace Docky {
         break;
       }
 
-      lock (apps_menu_lock) {
-        apps_menu = new GMenu.Tree(menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
-        apps_menu.changed.connect(update_menu);
-      }
+      menu_tree = new GMenu.Tree(menu_name, GMenu.TreeFlags.SORT_DISPLAY_NAME);
+      menu_tree.changed.connect(on_apps_menu_changed);
 
-      icon_theme.changed.connect(update_menu);
-      update_menu.begin();
+      icon_theme.changed.connect(on_apps_menu_changed);
+      schedule_menu_update();
     }
 
     private void update_icon() {
@@ -86,53 +84,67 @@ namespace Docky {
         update_timer_id = 0;
       }
 
-      lock (apps_menu_lock) {
-        if (apps_menu != null) {
-          apps_menu.changed.disconnect(update_menu);
-          apps_menu = null;
-        }
+      if (menu_tree != null) {
+        menu_tree.changed.disconnect(on_apps_menu_changed);
+        menu_tree = null;
       }
 
-      if (app_menu != null) {
-        app_menu.show.disconnect(on_menu_show);
-        app_menu.hide.disconnect(on_menu_hide);
-        app_menu = null;
+      if (menu_widget != null) {
+        menu_widget.show.disconnect(on_menu_show);
+        menu_widget.hide.disconnect(on_menu_hide);
+        menu_widget = null;
       }
 
-      icon_theme.changed.disconnect(update_menu);
+      icon_theme.changed.disconnect(on_apps_menu_changed);
     }
 
-    private async void update_menu() {
+    private void on_apps_menu_changed() {
+      // Debounce rapid changes (e.g., during package installation)
+      schedule_menu_update();
+    }
+
+    private void schedule_menu_update() {
+      // Cancel any pending update
+      if (update_timer_id > 0) {
+        Source.remove(update_timer_id);
+        update_timer_id = 0;
+      }
+
+      // Schedule update with debounce to coalesce rapid changes
+      update_timer_id = Timeout.add(500, () => {
+        update_timer_id = 0;
+        do_menu_update();
+        return false;
+      });
+    }
+
+    private void do_menu_update() {
+      // Prevent re-entrancy
+      if (load_in_progress) {
+        // Schedule another update after current one completes
+        schedule_menu_update();
+        return;
+      }
+
+      if (menu_tree == null) {
+        return;
+      }
+
+      load_in_progress = true;
+
       try {
-        yield Worker.get_default().add_task_with_result<void*> (() => {
-          lock (apps_menu_lock) {
-            try {
-              apps_menu.load_sync();
-              apps_loaded = true;
-            } catch (Error e) {
-              warning("Failed to load applications (%s)", e.message);
-              apps_loaded = false;
-            }
-          }
-          return null;
-        }, TaskPriority.HIGH);
-
-        if (apps_loaded) {
-          uint old_timer_id = update_timer_id;
-
-          if (old_timer_id > 0) {
-            update_timer_id = 0;
-            Source.remove(old_timer_id);
-          }
-
-          update_timer_id = Timeout.add(2000, () => {
-            build_applications_menu();
-            update_timer_id = 0;
-            return false;
-          });
-        }
+        menu_tree.load_sync();
+        apps_loaded = true;
       } catch (Error e) {
-        warning("Error updating menu: %s", e.message);
+        warning("Failed to load applications (%s)", e.message);
+        apps_loaded = false;
+      }
+
+      load_in_progress = false;
+
+      // Build menu after successful load
+      if (apps_loaded) {
+        build_applications_menu();
       }
     }
 
@@ -181,28 +193,28 @@ namespace Docky {
         return;
       }
 
-      app_menu_items = get_applications_menu_items();
+      menu_items = get_applications_menu_items();
 
-      if (app_menu_items == null || app_menu_items.size == 0) {
+      if (menu_items == null || menu_items.size == 0) {
         return;
       }
 
-      if (app_menu == null) {
-        app_menu = new Gtk.Menu();
-        app_menu.reserve_toggle_size = false;
+      if (menu_widget == null) {
+        menu_widget = new Gtk.Menu();
+        menu_widget.reserve_toggle_size = false;
 
-        app_menu.show.connect(on_menu_show);
-        app_menu.hide.connect(on_menu_hide);
-        app_menu.attach_to_widget(controller.window, null);
+        menu_widget.show.connect(on_menu_show);
+        menu_widget.hide.connect(on_menu_hide);
+        menu_widget.attach_to_widget(controller.window, null);
       } else {
-        foreach (var w in app_menu.get_children()) {
-          app_menu.remove(w);
+        foreach (var w in menu_widget.get_children()) {
+          menu_widget.remove(w);
         }
       }
 
-      foreach (var menu_item in app_menu_items) {
-        menu_item.show();
-        app_menu.append(menu_item);
+      foreach (var item in menu_items) {
+        item.show();
+        menu_widget.append(item);
       }
     }
 
@@ -212,12 +224,12 @@ namespace Docky {
         return;
       }
 
-      if (app_menu == null || app_menu_items == null || app_menu_items.size == 0) {
+      if (menu_widget == null || menu_items == null || menu_items.size == 0) {
         return;
       }
 
       Gtk.Requisition requisition;
-      app_menu.get_preferred_size(null, out requisition);
+      menu_widget.get_preferred_size(null, out requisition);
 
       int x, y;
       controller.position_manager.get_menu_position(this, requisition, out x, out y);
@@ -248,7 +260,7 @@ namespace Docky {
         break;
       }
 
-      app_menu.popup_at_rect(
+      menu_widget.popup_at_rect(
                              controller.window.get_screen().get_root_window(),
                              Gdk.Rectangle() {
         x = x,
@@ -450,43 +462,72 @@ namespace Docky {
     private Gee.ArrayList<Gtk.MenuItem> get_applications_menu_items() {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      lock (apps_menu_lock) {
-        if (!apps_loaded) {
-          items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
-          return items;
-        }
+      // Don't try to read menu while a load is in progress
+      if (load_in_progress || !apps_loaded || menu_tree == null) {
+        items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
+        return items;
+      }
 
-        var root_dir = apps_menu.get_root_directory();
-        if (root_dir == null) {
-          items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
-          return items;
-        }
+      GMenu.TreeDirectory? root_dir = null;
+      try {
+        root_dir = menu_tree.get_root_directory();
+      } catch (Error e) {
+        warning("Failed to get root directory: %s", e.message);
+      }
 
+      if (root_dir == null) {
+        items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
+        return items;
+      }
+
+      try {
         var iter = root_dir.iter();
         GMenu.TreeItemType type;
         while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
           if (type == GMenu.TreeItemType.DIRECTORY) {
-            var submenu_item = get_submenu_item(iter.get_directory());
-            if (submenu_item != null) {
-              items.add(submenu_item);
+            var dir = iter.get_directory();
+            if (dir != null) {
+              var submenu_item = get_submenu_item(dir);
+              if (submenu_item != null) {
+                items.add(submenu_item);
+              }
             }
           }
         }
+      } catch (Error e) {
+        warning("Failed to iterate applications menu: %s", e.message);
       }
 
       return items;
     }
 
-    private Gtk.MenuItem? get_submenu_item(GMenu.TreeDirectory category) {
-      if (category == null)return null;
+    private Gtk.MenuItem? get_submenu_item(GMenu.TreeDirectory? category) {
+      if (category == null) {
+        return null;
+      }
 
-      var icon = DrawingService.get_icon_from_gicon(category.get_icon()) ?? "";
-      var item = create_applications_menu_item(category.get_name(), icon, true);
+      string icon;
+      string name;
+      try {
+        icon = DrawingService.get_icon_from_gicon(category.get_icon()) ?? "";
+        name = category.get_name() ?? _("Unknown");
+      } catch (Error e) {
+        warning("Failed to get category info: %s", e.message);
+        return null;
+      }
+
       var submenu = new Gtk.Menu();
       submenu.reserve_toggle_size = false;
 
       add_menu_items(submenu, category);
 
+      // Skip empty categories
+      if (submenu.get_children().length() == 0) {
+        submenu.destroy();
+        return null;
+      }
+
+      var item = create_applications_menu_item(name, icon, true);
       item.submenu = submenu;
       submenu.show();
       item.show();
@@ -494,36 +535,56 @@ namespace Docky {
       return item;
     }
 
-    private void add_menu_items(Gtk.Menu menu, GMenu.TreeDirectory category) {
-      if (category == null)return;
+    private void add_menu_items(Gtk.Menu menu, GMenu.TreeDirectory? category) {
+      if (category == null) {
+        return;
+      }
 
-      var iter = category.iter();
-      GMenu.TreeItemType type;
+      try {
+        var iter = category.iter();
+        GMenu.TreeItemType type;
 
-      while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
-        if (type == GMenu.TreeItemType.DIRECTORY) {
-          var submenu_item = get_submenu_item(iter.get_directory());
-          if (submenu_item != null) {
-            menu.add(submenu_item);
+        while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
+          if (type == GMenu.TreeItemType.DIRECTORY) {
+            var dir = iter.get_directory();
+            if (dir != null) {
+              var submenu_item = get_submenu_item(dir);
+              if (submenu_item != null) {
+                menu.add(submenu_item);
+              }
+            }
+          } else if (type == GMenu.TreeItemType.ENTRY) {
+            var entry = iter.get_entry();
+            if (entry == null) {
+              continue;
+            }
+
+            var info = entry.get_app_info();
+            if (info == null) {
+              continue;
+            }
+
+            var desktop_path = entry.get_desktop_file_path();
+            if (desktop_path == null) {
+              continue;
+            }
+
+            var icon = DrawingService.get_icon_from_gicon(info.get_icon()) ?? "";
+            var display_name = info.get_display_name() ?? _("Unknown");
+            var item = create_applications_menu_item(display_name, icon, true);
+
+            // Capture desktop_path by value for the closure
+            var path_copy = desktop_path;
+            item.activate.connect(() => {
+              System.get_default().launch(File.new_for_path(path_copy));
+            });
+
+            item.show();
+            menu.add(item);
           }
-        } else if (type == GMenu.TreeItemType.ENTRY) {
-          var entry = iter.get_entry();
-          if (entry == null)continue;
-
-          var info = entry.get_app_info();
-          if (info == null)continue;
-
-          var desktop_path = entry.get_desktop_file_path();
-          var icon = DrawingService.get_icon_from_gicon(info.get_icon()) ?? "";
-          var item = create_applications_menu_item(info.get_display_name(), icon, true);
-
-          item.activate.connect(() => {
-            System.get_default().launch(File.new_for_path(desktop_path));
-          });
-
-          item.show();
-          menu.add(item);
         }
+      } catch (Error e) {
+        warning("Failed to iterate category: %s", e.message);
       }
     }
   }
