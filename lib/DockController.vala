@@ -386,7 +386,10 @@ namespace Plank {
         }
       }
 
-      prefs.DockItems = item_list.to_array ();
+      var items = new string[item_list.size];
+      for (int i = 0; i < item_list.size; i++)
+        items[i] = item_list[i];
+      prefs.DockItems = items;
 
       return false;
     }
