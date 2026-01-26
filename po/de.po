@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-29 12:41-1000\n"
+"POT-Creation-Date: 2026-01-25 16:07-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
@@ -50,19 +50,39 @@ msgstr ""
 "bleibt auch eine Bibliothek, die erweitert werden kann, um andere Dock-"
 "Programme mit erweiterten Funktionen zu erstellen."
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "dock"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "starten"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panel"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "anfang"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Die Plank Reloaded Entwickler"
+
+#: data/plank.appdata.xml.in:122
 msgid "Dock with Matte theme"
 msgstr "Dock mit mattem Design"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Appearance Preferences"
 msgstr "Erscheinungsbild-Einstellungen"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Behavior Preferences"
 msgstr "Verhaltens-Einstellungen"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Docklets Preferences"
 msgstr "Docklet-Einstellungen"
 
@@ -239,44 +259,49 @@ msgstr "Keine Anwendungen verfügbar"
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:304
+#: docklets/Applications/ApplicationsDockItem.vala:316
 msgid "Edit Menu"
 msgstr "Menü bearbeiten"
 
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:335
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "Eigenes Symbol wählen"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Applications/ApplicationsDockItem.vala:343
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "Auf Standard-Symbol zurücksetzen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:341
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Large Icons"
 msgstr "Große Symbole"
 
-#: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Applications/ApplicationsDockItem.vala:366
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "Eigenes Symbol auswählen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Applications/ApplicationsDockItem.vala:369
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Applications/ApplicationsDockItem.vala:370
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "Auswählen"
 
-#: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Applications/ApplicationsDockItem.vala:388
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "Bilddateien"
+
+#: docklets/Applications/ApplicationsDockItem.vala:513
+#: docklets/Applications/ApplicationsDockItem.vala:573
+msgid "Unknown"
+msgstr ""
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -287,15 +312,15 @@ msgstr "Starten Sie einfach eine Ihrer Anwendungen."
 msgid "No battery"
 msgstr "Kein Akku"
 
-#: docklets/Battery/BatteryDockItem.vala:132
+#: docklets/Battery/BatteryDockItem.vala:150
 msgid "Batteries"
 msgstr "Akkus"
 
-#: docklets/Battery/BatteryDockItem.vala:175
+#: docklets/Battery/BatteryDockItem.vala:193
 msgid "No batteries found"
 msgstr "Keine Akkus gefunden"
 
-#: docklets/Battery/BatteryDockItem.vala:182
+#: docklets/Battery/BatteryDockItem.vala:200
 msgid "Error finding batteries"
 msgstr "Fehler beim Finden von Akkus"
 
@@ -394,37 +419,37 @@ msgstr "Zeige Ihren Desktop an."
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
-#: docklets/Notifications/NotificationsDockItem.vala:996
+#: docklets/Notifications/NotificationsDockItem.vala:998
 msgid "just now"
 msgstr "gerade eben"
 
-#: docklets/Notifications/NotificationsDockItem.vala:999
+#: docklets/Notifications/NotificationsDockItem.vala:1001
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "vor %d Minute"
 msgstr[1] "vor %d Minuten"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1002
+#: docklets/Notifications/NotificationsDockItem.vala:1004
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "vor %d Stunde"
 msgstr[1] "vor %d Stunden"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1048
+#: docklets/Notifications/NotificationsDockItem.vala:1050
 msgid "Enable _Expiry"
 msgstr "_Ablauf aktivieren"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1056
+#: docklets/Notifications/NotificationsDockItem.vala:1058
 msgid "Show _Count"
 msgstr "Anzahl an_zeigen"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1064
+#: docklets/Notifications/NotificationsDockItem.vala:1066
 msgid "Show _Transient"
 msgstr "_Flüchtige anzeigen"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "Clear Notifications"
 msgstr "Benachrichtigungen löschen"
 
@@ -432,38 +457,38 @@ msgstr "Benachrichtigungen löschen"
 msgid "Simple notifications docklet."
 msgstr "Einfaches Benachrichtigungs-Docklet."
 
-#: docklets/Trash/TrashDockItem.vala:100
+#: docklets/Trash/TrashDockItem.vala:102
 msgid "No items in Trash"
 msgstr "Keine Dateien im Papierkorb"
 
-#: docklets/Trash/TrashDockItem.vala:101
+#: docklets/Trash/TrashDockItem.vala:103
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u Datei im Papierkorb"
 msgstr[1] "%u Dateien im Papierkorb"
 
-#: docklets/Trash/TrashDockItem.vala:271
+#: docklets/Trash/TrashDockItem.vala:278
 msgid "Empty all items from Trash?"
 msgstr "Alle Dateien aus dem Papierkorb entfernen?"
 
-#: docklets/Trash/TrashDockItem.vala:274
+#: docklets/Trash/TrashDockItem.vala:281
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle Dateien im Papierkorb werden permanent gelöscht."
 
-#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
+#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
 msgid "Empty _Trash"
 msgstr "Papierkorb leeren"
 
-#: docklets/Trash/TrashDockItem.vala:365
+#: docklets/Trash/TrashDockItem.vala:372
 msgid "Drop to move to Trash"
 msgstr "Loslassen, um in den Papierkorb zu verschieben"
 
-#: docklets/Trash/TrashDockItem.vala:402
+#: docklets/Trash/TrashDockItem.vala:409
 msgid "_Open Trash"
 msgstr "Papierkorb ö_ffnen"
 
@@ -539,11 +564,11 @@ msgstr "_Live-Vorschauen"
 msgid "A graphical workspace switcher."
 msgstr "Ein grafischer Arbeitsflächen-Umschalter."
 
-#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Loslassen, um es zum Dock hinzuzufügen"
 
-#: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -559,20 +584,20 @@ msgstr ""
 "  alexisme https://launchpad.net/~alexanderc-spa\n"
 "  origpumu https://launchpad.net/~originalpumuckl-5"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "Im Dock _behalten"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close All"
 msgstr "_Alle schließen"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close"
 msgstr "_Schließen"
 
-#: lib/Items/ApplicationDockItem.vala:587
+#: lib/Items/ApplicationDockItem.vala:596
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Loslassen, um mit %s zu öffnen"
@@ -676,18 +701,3 @@ msgstr "_Beenden"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Einstellungen"
-
-#~ msgid "dock"
-#~ msgstr "dock"
-
-#~ msgid "launch"
-#~ msgstr "starten"
-
-#~ msgid "panel"
-#~ msgstr "panel"
-
-#~ msgid "start"
-#~ msgstr "anfang"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Die Plank Reloaded Entwickler"

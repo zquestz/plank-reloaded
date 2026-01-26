@@ -2,6 +2,25 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.160 "Reloaded" (2026-01-25)
+
+- Fix CPUMonitorDocklet thread-safety by marshalling UI updates to main thread
+- Fix ApplicationsDocklet crashes during package installation/removal
+- Optimize DockRenderer to avoid unnecessary Surface.copy() during animations
+- Move Battery docklet I/O to background thread
+- Cache can_accept_drop results to avoid repeated I/O during drag motion
+- Fix timer leaks, remove UI thread blocking, and document app-specific workarounds
+- Update docs: fix branch name, copyright year, and IRC reference
+- Bump GTK minimum to 3.22
+- Fix drag-and-drop to check if app accepts file arguments
+- Clean up outdated version-specific FIXMEs and TODOs
+- Fix inner stroke transparency (thanks guritso)
+- Add MATE desktop support to respect Caja's confirm-trash setting
+
+## 0.11.159 "Reloaded" (2025-12-29)
+
+- Fix Cinnamon desktop detection for X-Cinnamon XDG_CURRENT_DESKTOP value
+
 ## 0.11.158 "Reloaded" (2025-12-23)
 
 - Fix dock not moving when switching between monitors with identical resolution

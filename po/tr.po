@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-29 12:41-1000\n"
+"POT-Creation-Date: 2026-01-25 16:07-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -50,19 +50,39 @@ msgstr ""
 "programlarını oluşturmak için genişletilebilen bir kütüphane olmaya devam "
 "ediyor."
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "dock"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "başlat"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "panel"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "başlangıç"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Plank Reloaded Geliştiricileri"
+
+#: data/plank.appdata.xml.in:122
 msgid "Dock with Matte theme"
 msgstr "Mat temalı Rıhtım"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Appearance Preferences"
 msgstr "Görünüm Tercihleri"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Behavior Preferences"
 msgstr "Davranış Tercihleri"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Docklets Preferences"
 msgstr "Docklets Tercihleri"
 
@@ -239,44 +259,49 @@ msgstr "Hiçbir uygulama mevcut değil"
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: docklets/Applications/ApplicationsDockItem.vala:304
+#: docklets/Applications/ApplicationsDockItem.vala:316
 msgid "Edit Menu"
 msgstr "Menüyü Düzenle"
 
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:335
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Applications/ApplicationsDockItem.vala:343
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "Varsayılan Simgeye Sıfırla"
 
-#: docklets/Applications/ApplicationsDockItem.vala:341
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Large Icons"
 msgstr "Büyük Simgeler"
 
-#: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Applications/ApplicationsDockItem.vala:366
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "Özel Simge Seç"
 
-#: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Applications/ApplicationsDockItem.vala:369
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "İptal"
 
-#: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Applications/ApplicationsDockItem.vala:370
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "Seç"
 
-#: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Applications/ApplicationsDockItem.vala:388
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "Görüntü Dosyaları"
+
+#: docklets/Applications/ApplicationsDockItem.vala:513
+#: docklets/Applications/ApplicationsDockItem.vala:573
+msgid "Unknown"
+msgstr ""
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -287,15 +312,15 @@ msgstr "Dock üzerinden uygulamalarınızı tek tıkla başlatın."
 msgid "No battery"
 msgstr "Pil bulunamadı"
 
-#: docklets/Battery/BatteryDockItem.vala:132
+#: docklets/Battery/BatteryDockItem.vala:150
 msgid "Batteries"
 msgstr "Piller"
 
-#: docklets/Battery/BatteryDockItem.vala:175
+#: docklets/Battery/BatteryDockItem.vala:193
 msgid "No batteries found"
 msgstr "Hiçbir pil bulunamadı"
 
-#: docklets/Battery/BatteryDockItem.vala:182
+#: docklets/Battery/BatteryDockItem.vala:200
 msgid "Error finding batteries"
 msgstr "Pilleri bulma hatası"
 
@@ -394,37 +419,37 @@ msgstr "Masaüstünüzü Gösterin."
 msgid "Notifications"
 msgstr "Bildirimler"
 
-#: docklets/Notifications/NotificationsDockItem.vala:996
+#: docklets/Notifications/NotificationsDockItem.vala:998
 msgid "just now"
 msgstr "şimdi"
 
-#: docklets/Notifications/NotificationsDockItem.vala:999
+#: docklets/Notifications/NotificationsDockItem.vala:1001
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d dakika önce"
 msgstr[1] "%d dakika önce"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1002
+#: docklets/Notifications/NotificationsDockItem.vala:1004
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d saat önce"
 msgstr[1] "%d saat önce"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1048
+#: docklets/Notifications/NotificationsDockItem.vala:1050
 msgid "Enable _Expiry"
 msgstr "Süreyi Etkinleştir"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1056
+#: docklets/Notifications/NotificationsDockItem.vala:1058
 msgid "Show _Count"
 msgstr "_Sayıyı Göster"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1064
+#: docklets/Notifications/NotificationsDockItem.vala:1066
 msgid "Show _Transient"
 msgstr "_Geçicileri Göster"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "Clear Notifications"
 msgstr "Bildirimleri Temizle"
 
@@ -432,38 +457,38 @@ msgstr "Bildirimleri Temizle"
 msgid "Simple notifications docklet."
 msgstr "Basit bildirimler docklet'i."
 
-#: docklets/Trash/TrashDockItem.vala:100
+#: docklets/Trash/TrashDockItem.vala:102
 msgid "No items in Trash"
 msgstr "Çöp Kutusunda öğe yok"
 
-#: docklets/Trash/TrashDockItem.vala:101
+#: docklets/Trash/TrashDockItem.vala:103
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "Çöp Kutusunda %u öğe mevcut"
 msgstr[1] "Çöp Kutusunda %u öğe mevcut"
 
-#: docklets/Trash/TrashDockItem.vala:271
+#: docklets/Trash/TrashDockItem.vala:278
 msgid "Empty all items from Trash?"
 msgstr "Çöp Kutusu'ndaki tüm öğeler boşaltılsın mı?"
 
-#: docklets/Trash/TrashDockItem.vala:274
+#: docklets/Trash/TrashDockItem.vala:281
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Çöp Kutusu'ndaki tüm öğeler kalıcı olarak silinecek."
 
-#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Vazgeç"
 
-#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
+#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
 msgid "Empty _Trash"
 msgstr "_Çöp Kutusu Boşalt"
 
-#: docklets/Trash/TrashDockItem.vala:365
+#: docklets/Trash/TrashDockItem.vala:372
 msgid "Drop to move to Trash"
 msgstr "Çöp Kutusuna taşımak için sürükle bırak"
 
-#: docklets/Trash/TrashDockItem.vala:402
+#: docklets/Trash/TrashDockItem.vala:409
 msgid "_Open Trash"
 msgstr "_Çöp Kutusunu Aç"
 
@@ -539,11 +564,11 @@ msgstr "_Canlı Önizlemeler"
 msgid "A graphical workspace switcher."
 msgstr "Grafiksel çalışma alanı değiştirici."
 
-#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Dock'a eklemek için bırakın"
 
-#: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -560,20 +585,20 @@ msgstr ""
 "  sakir.mehmetoglu https://launchpad.net/~sakir-mehmetoglu-a\n"
 "  Özgür BASKIN https://launchpad.net/~ozgur-baskin"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Başlatıcıda tut"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close All"
 msgstr "Hepsini _Kapat"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close"
 msgstr "_Kapat"
 
-#: lib/Items/ApplicationDockItem.vala:587
+#: lib/Items/ApplicationDockItem.vala:596
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s ile açmak için üzerine bırakın"
@@ -677,18 +702,3 @@ msgstr "_Çık"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Tercihler"
-
-#~ msgid "dock"
-#~ msgstr "dock"
-
-#~ msgid "launch"
-#~ msgstr "başlat"
-
-#~ msgid "panel"
-#~ msgstr "panel"
-
-#~ msgid "start"
-#~ msgstr "başlangıç"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Plank Reloaded Geliştiricileri"

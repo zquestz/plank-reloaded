@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-29 12:41-1000\n"
+"POT-Creation-Date: 2026-01-25 16:07-1000\n"
 "PO-Revision-Date: 2025-11-13 03:56\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
@@ -50,19 +50,39 @@ msgstr ""
 "On također ostaje biblioteka koja se može proširiti za stvaranje drugih dok "
 "programa s naprednijim značajkama."
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "dok"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "pokretanje"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "ploča"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "start"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "Plank Reloaded programeri"
+
+#: data/plank.appdata.xml.in:122
 msgid "Dock with Matte theme"
 msgstr "Dok s Matte temom"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Appearance Preferences"
 msgstr "Postavke izgleda"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Behavior Preferences"
 msgstr "Postavke ponašanja"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Docklets Preferences"
 msgstr "Postavke dok-apleta"
 
@@ -239,44 +259,49 @@ msgstr "Nema dostupnih aplikacija"
 msgid "Applications"
 msgstr "Aplikacije"
 
-#: docklets/Applications/ApplicationsDockItem.vala:304
+#: docklets/Applications/ApplicationsDockItem.vala:316
 msgid "Edit Menu"
 msgstr "Uredi izbornik"
 
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:335
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "Odaberi prilagođenu ikonu"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Applications/ApplicationsDockItem.vala:343
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "Vrati na zadanu ikonu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:341
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Large Icons"
 msgstr "Velike ikone"
 
-#: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Applications/ApplicationsDockItem.vala:366
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "Odaberi prilagođenu ikonu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Applications/ApplicationsDockItem.vala:369
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "Odustani"
 
-#: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Applications/ApplicationsDockItem.vala:370
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "Odaberi"
 
-#: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Applications/ApplicationsDockItem.vala:388
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "Datoteke slika"
+
+#: docklets/Applications/ApplicationsDockItem.vala:513
+#: docklets/Applications/ApplicationsDockItem.vala:573
+msgid "Unknown"
+msgstr ""
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -287,15 +312,15 @@ msgstr "Jednostavno pokrenite bilo koju od vaših aplikacija."
 msgid "No battery"
 msgstr "Nema baterije"
 
-#: docklets/Battery/BatteryDockItem.vala:132
+#: docklets/Battery/BatteryDockItem.vala:150
 msgid "Batteries"
 msgstr "Baterije"
 
-#: docklets/Battery/BatteryDockItem.vala:175
+#: docklets/Battery/BatteryDockItem.vala:193
 msgid "No batteries found"
 msgstr "Nisu pronađene baterije"
 
-#: docklets/Battery/BatteryDockItem.vala:182
+#: docklets/Battery/BatteryDockItem.vala:200
 msgid "Error finding batteries"
 msgstr "Greška pri traženju baterija"
 
@@ -394,11 +419,11 @@ msgstr "Prikaži svoju radnu površinu."
 msgid "Notifications"
 msgstr "Obavijesti"
 
-#: docklets/Notifications/NotificationsDockItem.vala:996
+#: docklets/Notifications/NotificationsDockItem.vala:998
 msgid "just now"
 msgstr "upravo sada"
 
-#: docklets/Notifications/NotificationsDockItem.vala:999
+#: docklets/Notifications/NotificationsDockItem.vala:1001
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -406,7 +431,7 @@ msgstr[0] "prije %d minutu"
 msgstr[1] "prije %d minute"
 msgstr[2] "prije %d minuta"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1002
+#: docklets/Notifications/NotificationsDockItem.vala:1004
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -414,19 +439,19 @@ msgstr[0] "prije %d sat"
 msgstr[1] "prije %d sata"
 msgstr[2] "prije %d sati"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1048
+#: docklets/Notifications/NotificationsDockItem.vala:1050
 msgid "Enable _Expiry"
 msgstr "Omogući _istek"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1056
+#: docklets/Notifications/NotificationsDockItem.vala:1058
 msgid "Show _Count"
 msgstr "Prikaži _broj"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1064
+#: docklets/Notifications/NotificationsDockItem.vala:1066
 msgid "Show _Transient"
 msgstr "Prikaži _privremene"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "Clear Notifications"
 msgstr "Obriši obavijesti"
 
@@ -434,11 +459,11 @@ msgstr "Obriši obavijesti"
 msgid "Simple notifications docklet."
 msgstr "Jednostavan dok-aplet za obavijesti."
 
-#: docklets/Trash/TrashDockItem.vala:100
+#: docklets/Trash/TrashDockItem.vala:102
 msgid "No items in Trash"
 msgstr "Nema stavki u smeću"
 
-#: docklets/Trash/TrashDockItem.vala:101
+#: docklets/Trash/TrashDockItem.vala:103
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
@@ -446,27 +471,27 @@ msgstr[0] "%u stavka u smeću"
 msgstr[1] "%u stavke u smeću"
 msgstr[2] "%u stavki u smeću"
 
-#: docklets/Trash/TrashDockItem.vala:271
+#: docklets/Trash/TrashDockItem.vala:278
 msgid "Empty all items from Trash?"
 msgstr "Isprazniti sve stavke iz smeća?"
 
-#: docklets/Trash/TrashDockItem.vala:274
+#: docklets/Trash/TrashDockItem.vala:281
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Sve stavke u smeću bit će trajno obrisane."
 
-#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Odustani"
 
-#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
+#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
 msgid "Empty _Trash"
 msgstr "Isprazni _smeće"
 
-#: docklets/Trash/TrashDockItem.vala:365
+#: docklets/Trash/TrashDockItem.vala:372
 msgid "Drop to move to Trash"
 msgstr "Ispusti za premještanje u smeće"
 
-#: docklets/Trash/TrashDockItem.vala:402
+#: docklets/Trash/TrashDockItem.vala:409
 msgid "_Open Trash"
 msgstr "_Otvori smeće"
 
@@ -542,11 +567,11 @@ msgstr "_Uživo pregledi"
 msgid "A graphical workspace switcher."
 msgstr "Grafički prebacivač radnih prostora."
 
-#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Ispustite da biste dodali na dok"
 
-#: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -555,20 +580,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Zadrži u Docku"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close All"
 msgstr "_Zatvori sve"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: lib/Items/ApplicationDockItem.vala:587
+#: lib/Items/ApplicationDockItem.vala:596
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Ispusti za otvaranje s %s"
@@ -672,18 +697,3 @@ msgstr "_Izlaz"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Postavke"
-
-#~ msgid "dock"
-#~ msgstr "dok"
-
-#~ msgid "launch"
-#~ msgstr "pokretanje"
-
-#~ msgid "panel"
-#~ msgstr "ploča"
-
-#~ msgid "start"
-#~ msgstr "start"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "Plank Reloaded programeri"

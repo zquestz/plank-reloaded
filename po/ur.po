@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2025-12-29 12:41-1000\n"
+"POT-Creation-Date: 2026-01-25 16:07-1000\n"
 "PO-Revision-Date: 2025-11-13 22:21\n"
 "Last-Translator: \n"
 "Language-Team: Urdu (India)\n"
@@ -49,19 +49,39 @@ msgstr ""
 "لائبریری بھی رہتا ہے جسے مزید جدید خصوصیات کے ساتھ دوسرے ڈاک پروگرام بنانے "
 "کے لیے بڑھایا جا سکتا ہے۔"
 
-#: data/plank.appdata.xml.in:121
+#: data/plank.appdata.xml.in:17
+msgid "dock"
+msgstr "ڈاک"
+
+#: data/plank.appdata.xml.in:18
+msgid "launch"
+msgstr "شروع کریں"
+
+#: data/plank.appdata.xml.in:19
+msgid "panel"
+msgstr "پینل"
+
+#: data/plank.appdata.xml.in:20
+msgid "start"
+msgstr "آغاز"
+
+#: data/plank.appdata.xml.in:32
+msgid "The Plank Reloaded Developers"
+msgstr "پلینک ری لوڈڈ ڈویلپرز"
+
+#: data/plank.appdata.xml.in:122
 msgid "Dock with Matte theme"
 msgstr "میٹ تھیم کے ساتھ ڈاک"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Appearance Preferences"
 msgstr "ظاہری ترجیحات"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Behavior Preferences"
 msgstr "رویے کی ترجیحات"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Docklets Preferences"
 msgstr "ڈاکلیٹس کی ترجیحات"
 
@@ -238,44 +258,49 @@ msgstr "کوئی ایپلیکیشن دستیاب نہیں"
 msgid "Applications"
 msgstr "ایپلیکیشنز"
 
-#: docklets/Applications/ApplicationsDockItem.vala:304
+#: docklets/Applications/ApplicationsDockItem.vala:316
 msgid "Edit Menu"
 msgstr "مینو میں ترمیم کریں"
 
-#: docklets/Applications/ApplicationsDockItem.vala:323
+#: docklets/Applications/ApplicationsDockItem.vala:335
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr "حسب ضرورت آئیکن منتخب کریں"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:331
+#: docklets/Applications/ApplicationsDockItem.vala:343
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr "ڈیفالٹ آئیکن پر ری سیٹ کریں"
 
-#: docklets/Applications/ApplicationsDockItem.vala:341
+#: docklets/Applications/ApplicationsDockItem.vala:353
 msgid "Large Icons"
 msgstr "بڑے آئیکن"
 
-#: docklets/Applications/ApplicationsDockItem.vala:354
+#: docklets/Applications/ApplicationsDockItem.vala:366
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr "حسب ضرورت آئیکن منتخب کریں"
 
-#: docklets/Applications/ApplicationsDockItem.vala:357
+#: docklets/Applications/ApplicationsDockItem.vala:369
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr "منسوخ کریں"
 
-#: docklets/Applications/ApplicationsDockItem.vala:358
+#: docklets/Applications/ApplicationsDockItem.vala:370
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr "منتخب کریں"
 
-#: docklets/Applications/ApplicationsDockItem.vala:376
+#: docklets/Applications/ApplicationsDockItem.vala:388
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr "تصویری فائلیں"
+
+#: docklets/Applications/ApplicationsDockItem.vala:513
+#: docklets/Applications/ApplicationsDockItem.vala:573
+msgid "Unknown"
+msgstr ""
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -286,15 +311,15 @@ msgstr "اپنی کوئی بھی ایپلیکیشن آسانی سے شروع ک�
 msgid "No battery"
 msgstr "کوئی بیٹری نہیں"
 
-#: docklets/Battery/BatteryDockItem.vala:132
+#: docklets/Battery/BatteryDockItem.vala:150
 msgid "Batteries"
 msgstr "بیٹریاں"
 
-#: docklets/Battery/BatteryDockItem.vala:175
+#: docklets/Battery/BatteryDockItem.vala:193
 msgid "No batteries found"
 msgstr "کوئی بیٹری نہیں ملی"
 
-#: docklets/Battery/BatteryDockItem.vala:182
+#: docklets/Battery/BatteryDockItem.vala:200
 msgid "Error finding batteries"
 msgstr "بیٹریاں تلاش کرنے میں خرابی"
 
@@ -393,37 +418,37 @@ msgstr "اپنا ڈیسک ٹاپ دکھائیں۔"
 msgid "Notifications"
 msgstr "اطلاعات"
 
-#: docklets/Notifications/NotificationsDockItem.vala:996
+#: docklets/Notifications/NotificationsDockItem.vala:998
 msgid "just now"
 msgstr "ابھی ابھی"
 
-#: docklets/Notifications/NotificationsDockItem.vala:999
+#: docklets/Notifications/NotificationsDockItem.vala:1001
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d منٹ پہلے"
 msgstr[1] "%d منٹ پہلے"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1002
+#: docklets/Notifications/NotificationsDockItem.vala:1004
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d گھنٹہ پہلے"
 msgstr[1] "%d گھنٹے پہلے"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1048
+#: docklets/Notifications/NotificationsDockItem.vala:1050
 msgid "Enable _Expiry"
 msgstr "_میعاد ختم ہونا فعال کریں"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1056
+#: docklets/Notifications/NotificationsDockItem.vala:1058
 msgid "Show _Count"
 msgstr "_تعداد دکھائیں"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1064
+#: docklets/Notifications/NotificationsDockItem.vala:1066
 msgid "Show _Transient"
 msgstr "_عارضی دکھائیں"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "Clear Notifications"
 msgstr "اطلاعات صاف کریں"
 
@@ -431,38 +456,38 @@ msgstr "اطلاعات صاف کریں"
 msgid "Simple notifications docklet."
 msgstr "سادہ اطلاعات ڈاکلیٹ۔"
 
-#: docklets/Trash/TrashDockItem.vala:100
+#: docklets/Trash/TrashDockItem.vala:102
 msgid "No items in Trash"
 msgstr "ردی میں کوئی آئٹم نہیں"
 
-#: docklets/Trash/TrashDockItem.vala:101
+#: docklets/Trash/TrashDockItem.vala:103
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "ردی میں %u آئٹم"
 msgstr[1] "ردی میں %u آئٹمز"
 
-#: docklets/Trash/TrashDockItem.vala:271
+#: docklets/Trash/TrashDockItem.vala:278
 msgid "Empty all items from Trash?"
 msgstr "ردی سے تمام آئٹمز خالی کریں؟"
 
-#: docklets/Trash/TrashDockItem.vala:274
+#: docklets/Trash/TrashDockItem.vala:281
 msgid "All items in the Trash will be permanently deleted."
 msgstr "ردی میں تمام آئٹمز مستقل طور پر حذف ہو جائیں گے۔"
 
-#: docklets/Trash/TrashDockItem.vala:275 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_منسوخ کریں"
 
-#: docklets/Trash/TrashDockItem.vala:276 docklets/Trash/TrashDockItem.vala:406
+#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
 msgid "Empty _Trash"
 msgstr "ردی _خالی کریں"
 
-#: docklets/Trash/TrashDockItem.vala:365
+#: docklets/Trash/TrashDockItem.vala:372
 msgid "Drop to move to Trash"
 msgstr "ردی میں منتقل کرنے کے لیے چھوڑیں"
 
-#: docklets/Trash/TrashDockItem.vala:402
+#: docklets/Trash/TrashDockItem.vala:409
 msgid "_Open Trash"
 msgstr "ردی _کھولیں"
 
@@ -538,30 +563,30 @@ msgstr "_براہ راست پیش نظارہ"
 msgid "A graphical workspace switcher."
 msgstr "ایک گرافیکل ورک اسپیس سوئچر۔"
 
-#: lib/DragManager.vala:457 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "ڈاک میں شامل کرنے کے لیے چھوڑیں"
 
-#: lib/Factories/AbstractMain.vala:427 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "مترجم کریڈٹس:\n"
 "پلینک ری لوڈڈ ٹیم"
 
-#: lib/Items/ApplicationDockItem.vala:435 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ڈاک میں _رکھیں"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close All"
 msgstr "_سب بند کریں"
 
-#: lib/Items/ApplicationDockItem.vala:443
+#: lib/Items/ApplicationDockItem.vala:452
 msgid "_Close"
 msgstr "_بند کریں"
 
-#: lib/Items/ApplicationDockItem.vala:587
+#: lib/Items/ApplicationDockItem.vala:596
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s کے ساتھ کھولنے کے لیے چھوڑیں"
@@ -665,18 +690,3 @@ msgstr "_بند کریں"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "ترجیحات"
-
-#~ msgid "dock"
-#~ msgstr "ڈاک"
-
-#~ msgid "launch"
-#~ msgstr "شروع کریں"
-
-#~ msgid "panel"
-#~ msgstr "پینل"
-
-#~ msgid "start"
-#~ msgstr "آغاز"
-
-#~ msgid "The Plank Reloaded Developers"
-#~ msgstr "پلینک ری لوڈڈ ڈویلپرز"
