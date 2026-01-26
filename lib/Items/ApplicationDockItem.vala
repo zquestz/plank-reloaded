@@ -66,13 +66,21 @@ namespace Plank {
 #endif
 
     Bamf.Application ? app = null;
+    /**
+     * The BAMF application associated with this dock item.
+     *
+     * Note: Some applications may destroy their Bamf.Application object and
+     * create a new one, leaving our reference pointing to an invalid object.
+     * The getter defensively checks if the reference is still a valid
+     * Bamf.Application instance before returning it.
+     *
+     * Originally discovered with LibreOffice:
+     * See: https://bugs.launchpad.net/bamf/+bug/1026426
+     * See: https://bugs.launchpad.net/plank/+bug/1029555
+     */
     public Bamf.Application? App {
       internal get {
-        // Nasty hack for libreoffice as workarround
-        // closing libreoffice results in destroying its Bamf.Application object
-        // and creating a new object which renders our reference useless
-        // https://bugs.launchpad.net/bamf/+bug/1026426
-        // https://bugs.launchpad.net/plank/+bug/1029555
+        // Defensive check: ensure our reference is still valid
         warn_if_fail (app == null || (app is Bamf.Application));
         if (app != null && !(app is Bamf.Application))
           app = null;

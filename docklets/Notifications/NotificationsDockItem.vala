@@ -273,6 +273,7 @@ namespace Docky {
 
       if (update_timer_id > 0) {
         Source.remove(update_timer_id);
+        update_timer_id = 0;
       }
     }
 
@@ -579,6 +580,7 @@ namespace Docky {
     private void update_display() {
       if (update_timer_id > 0) {
         Source.remove(update_timer_id);
+        update_timer_id = 0;
       }
 
       update_timer_id = GLib.Timeout.add(100,() => {

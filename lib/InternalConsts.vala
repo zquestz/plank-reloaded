@@ -20,22 +20,36 @@
 namespace Plank
 {
 	// Collection of constansts which don't have an user-adjustable setting (yet)
-	
+
+	/**
+	 * Application-specific workarounds
+	 *
+	 * These constants identify applications that require special handling due to
+	 * bugs or quirks in their behavior with window managers or BAMF.
+	 */
+
+	/**
+	 * Steam's popup menus cause false "no active window" events which would
+	 * incorrectly show the dock. We track the last window name to detect this.
+	 * See: HideManager.update_window_intersect()
+	 */
+	public const string STEAM_WINDOW_NAME = "Steam";
+
 	// Duration of animations (in ms)
 	public const uint DOCK_ZOOM_DURATION = 200;
 	public const uint ITEM_HOVER_DURATION = 150;
 	public const uint ITEM_INVALID_DURATION = 60000;
 	public const uint ITEM_SCROLL_DURATION = 300;
-	
+
 	public const uint ITEM_SERIALIZATION_DELAY = 3000;
 
 	public const uint UNITY_UPDATE_THRESHOLD_DURATION = 32;
 	public const uint UNITY_UPDATE_THRESHOLD_FAST_COUNT = 3;
-	
+
 	public const string DOCKLET_URI_PREFIX = "docklet://";
-	
+
 	public const string SURFACE_STATS_DRAWING_TIME_EXCEEDED = "drawing-time-exceeded";
-	
+
 	public const uint FOLDER_MAX_FILE_COUNT = 512;
 	public const uint LAUNCHER_DIR_MAX_FILE_COUNT = 128;
 }

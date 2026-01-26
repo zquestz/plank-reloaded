@@ -484,8 +484,9 @@ namespace Plank {
         last_window_xid = active_window.get_xid ();
         last_window_workspace_id = active_workspace.get_number ();
       } else {
-        // Hack to prevent dock from showing up on Steam menu clicks.
-        if (last_window_name == "Steam") {
+        // Workaround to prevent dock from showing up on Steam menu clicks.
+        // See InternalConsts.STEAM_WINDOW_NAME for details.
+        if (last_window_name == STEAM_WINDOW_NAME) {
           unowned Wnck.Window? existing_window = Wnck.Window.get (last_window_xid);
 
           if (existing_window != null && last_window_workspace_id == active_workspace.get_number ()) {

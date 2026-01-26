@@ -111,6 +111,11 @@ namespace Plank {
     }
 
     ~DragManager () {
+      if (drag_hover_timer_id > 0U) {
+        GLib.Source.remove (drag_hover_timer_id);
+        drag_hover_timer_id = 0U;
+      }
+
       unowned DockWindow window = controller.window;
 
       window.drag_motion.disconnect (drag_motion);
