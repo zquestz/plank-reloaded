@@ -109,17 +109,26 @@ namespace Docky {
     }
 
     private void update_display() {
-      Text = ("CPU: %.1f%% | Mem: %.1f%%").printf(
-                                                  cpu_utilization * 100,
-                                                  memory_utilization * 100
-      );
+      var cpu = cpu_utilization;
+      var mem = memory_utilization;
+      var needs_icon_update = should_update_icon();
 
-      if (should_update_icon()) {
-        Idle.add(() => {
-          reset_icon_buffer();
+      // Update UI on main thread
+      Idle.add(() => {
+        if (disposed) {
           return false;
-        });
+        }
 
+        Text = ("CPU: %.1f%% | Mem: %.1f%%").printf(cpu * 100, mem * 100);
+
+        if (needs_icon_update) {
+          reset_icon_buffer();
+        }
+
+        return false;
+      });
+
+      if (needs_icon_update) {
         last_cpu_utilization = cpu_utilization;
         last_memory_utilization = memory_utilization;
       }
