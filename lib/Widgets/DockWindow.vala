@@ -109,7 +109,6 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool button_press_event (Gdk.EventButton event) {
-      // FIXME Needed for gtk+ 3.14+
       if (menu_is_visible ())
         return Gdk.EVENT_PROPAGATE;
 
@@ -169,7 +168,6 @@ namespace Plank {
       if (controller.drag_manager.InternalDragActive)
         return Gdk.EVENT_STOP;
 
-      // FIXME Needed for gtk+ 3.14+
       if (HoveredItem != null && ClickedItem == null && menu_is_visible ())
         menu.hide ();
 
@@ -217,7 +215,6 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool motion_notify_event (Gdk.EventMotion event) {
-      // FIXME Needed for gtk+ 3.14+
       if (menu_is_visible ())
         return Gdk.EVENT_STOP;
 

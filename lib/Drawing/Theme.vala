@@ -33,8 +33,6 @@ namespace Plank
 			Gtk.WidgetPath path;
 
 			var style = new Gtk.StyleContext ();
-			//FIXME
-			//style.set_scale (get_window_scaling_factor ());
 			style.set_parent (parent_style);
 
 			if (parent_style != null)
@@ -121,7 +119,6 @@ namespace Plank
 			var theme_name = ((Gtk.Settings) o).gtk_theme_name;
 			update_style_context (theme_name);
 			
-			//FIXME Do we want a dedicated signal here?
 			notify (new ParamSpecBoolean ("theme-changed", "theme-changed", "theme-changed", true, ParamFlags.READABLE));
 		}
 		

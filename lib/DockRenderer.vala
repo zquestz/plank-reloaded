@@ -1154,8 +1154,7 @@ namespace Plank {
       case Cairo.SurfaceType.XML: result = "XML"; break;
       case Cairo.SurfaceType.SKIA: result = "SKIA"; break;
       case Cairo.SurfaceType.SUBSURFACE: result = "SUBSURFACE"; break;
-      // FIXME Available in cairo since 1.12
-      // case Cairo.SurfaceType.COGL: result = "COGL"; break;
+      case Cairo.SurfaceType.COGL: result = "COGL"; break;
       default: result = "???"; break;
       }
 
