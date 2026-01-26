@@ -25,6 +25,7 @@ namespace Docky {
     private Gee.ArrayList<Gtk.MenuItem>? menu_items = null;
     private bool apps_loaded = false;
     private bool load_in_progress = false;
+    private bool reload_requested = false;
     private Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
 
     private const string APPLICATIONS_MENU = "applications.menu";
@@ -111,18 +112,18 @@ namespace Docky {
       }
 
       // Schedule update with debounce to coalesce rapid changes
-      update_timer_id = Timeout.add(500, () => {
+      update_timer_id = Timeout.add(2000, () => {
         update_timer_id = 0;
-        do_menu_update();
+        do_menu_update.begin();
         return false;
       });
     }
 
-    private void do_menu_update() {
-      // Prevent re-entrancy
+    private async void do_menu_update() {
+      // Prevent concurrent load_sync calls on the same GMenu.Tree
       if (load_in_progress) {
-        // Schedule another update after current one completes
-        schedule_menu_update();
+        // Mark that we need to reload when current load finishes
+        reload_requested = true;
         return;
       }
 
@@ -131,12 +132,22 @@ namespace Docky {
       }
 
       load_in_progress = true;
+      reload_requested = false;
 
       try {
-        menu_tree.load_sync();
-        apps_loaded = true;
+        // Load menu in background thread to avoid blocking UI
+        yield Worker.get_default().add_task_with_result<void*>(() => {
+          try {
+            menu_tree.load_sync();
+            apps_loaded = true;
+          } catch (Error e) {
+            warning("Failed to load applications (%s)", e.message);
+            apps_loaded = false;
+          }
+          return null;
+        }, TaskPriority.HIGH);
       } catch (Error e) {
-        warning("Failed to load applications (%s)", e.message);
+        warning("Error scheduling menu load: %s", e.message);
         apps_loaded = false;
       }
 
@@ -145,6 +156,12 @@ namespace Docky {
       // Build menu after successful load
       if (apps_loaded) {
         build_applications_menu();
+      }
+
+      // If another update was requested while we were loading, do it now
+      if (reload_requested) {
+        reload_requested = false;
+        schedule_menu_update();
       }
     }
 
@@ -468,34 +485,25 @@ namespace Docky {
         return items;
       }
 
-      GMenu.TreeDirectory? root_dir = null;
-      try {
-        root_dir = menu_tree.get_root_directory();
-      } catch (Error e) {
-        warning("Failed to get root directory: %s", e.message);
-      }
+      GMenu.TreeDirectory? root_dir = menu_tree.get_root_directory();
 
       if (root_dir == null) {
         items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
         return items;
       }
 
-      try {
-        var iter = root_dir.iter();
-        GMenu.TreeItemType type;
-        while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
-          if (type == GMenu.TreeItemType.DIRECTORY) {
-            var dir = iter.get_directory();
-            if (dir != null) {
-              var submenu_item = get_submenu_item(dir);
-              if (submenu_item != null) {
-                items.add(submenu_item);
-              }
+      var iter = root_dir.iter();
+      GMenu.TreeItemType type;
+      while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
+        if (type == GMenu.TreeItemType.DIRECTORY) {
+          var dir = iter.get_directory();
+          if (dir != null) {
+            var submenu_item = get_submenu_item(dir);
+            if (submenu_item != null) {
+              items.add(submenu_item);
             }
           }
         }
-      } catch (Error e) {
-        warning("Failed to iterate applications menu: %s", e.message);
       }
 
       return items;
@@ -506,15 +514,8 @@ namespace Docky {
         return null;
       }
 
-      string icon;
-      string name;
-      try {
-        icon = DrawingService.get_icon_from_gicon(category.get_icon()) ?? "";
-        name = category.get_name() ?? _("Unknown");
-      } catch (Error e) {
-        warning("Failed to get category info: %s", e.message);
-        return null;
-      }
+      var icon = DrawingService.get_icon_from_gicon(category.get_icon()) ?? "";
+      var name = category.get_name() ?? _("Unknown");
 
       var submenu = new Gtk.Menu();
       submenu.reserve_toggle_size = false;
@@ -540,51 +541,46 @@ namespace Docky {
         return;
       }
 
-      try {
-        var iter = category.iter();
-        GMenu.TreeItemType type;
-
-        while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
-          if (type == GMenu.TreeItemType.DIRECTORY) {
-            var dir = iter.get_directory();
-            if (dir != null) {
-              var submenu_item = get_submenu_item(dir);
-              if (submenu_item != null) {
-                menu.add(submenu_item);
-              }
+      var iter = category.iter();
+      GMenu.TreeItemType type;
+      while ((type = iter.next()) != GMenu.TreeItemType.INVALID) {
+        if (type == GMenu.TreeItemType.DIRECTORY) {
+          var dir = iter.get_directory();
+          if (dir != null) {
+            var submenu_item = get_submenu_item(dir);
+            if (submenu_item != null) {
+              menu.add(submenu_item);
             }
-          } else if (type == GMenu.TreeItemType.ENTRY) {
-            var entry = iter.get_entry();
-            if (entry == null) {
-              continue;
-            }
-
-            var info = entry.get_app_info();
-            if (info == null) {
-              continue;
-            }
-
-            var desktop_path = entry.get_desktop_file_path();
-            if (desktop_path == null) {
-              continue;
-            }
-
-            var icon = DrawingService.get_icon_from_gicon(info.get_icon()) ?? "";
-            var display_name = info.get_display_name() ?? _("Unknown");
-            var item = create_applications_menu_item(display_name, icon, true);
-
-            // Capture desktop_path by value for the closure
-            var path_copy = desktop_path;
-            item.activate.connect(() => {
-              System.get_default().launch(File.new_for_path(path_copy));
-            });
-
-            item.show();
-            menu.add(item);
           }
+        } else if (type == GMenu.TreeItemType.ENTRY) {
+          var entry = iter.get_entry();
+          if (entry == null) {
+            continue;
+          }
+
+          var info = entry.get_app_info();
+          if (info == null) {
+            continue;
+          }
+
+          var desktop_path = entry.get_desktop_file_path();
+          if (desktop_path == null) {
+            continue;
+          }
+
+          var icon = DrawingService.get_icon_from_gicon(info.get_icon()) ?? "";
+          var display_name = info.get_display_name() ?? _("Unknown");
+          var item = create_applications_menu_item(display_name, icon, true);
+
+          // Capture desktop_path by value for the closure
+          var path_copy = desktop_path;
+          item.activate.connect(() => {
+            System.get_default().launch(File.new_for_path(path_copy));
+          });
+
+          item.show();
+          menu.add(item);
         }
-      } catch (Error e) {
-        warning("Failed to iterate category: %s", e.message);
       }
     }
   }
