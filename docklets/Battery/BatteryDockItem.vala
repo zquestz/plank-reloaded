@@ -26,9 +26,9 @@ namespace Docky {
 
     private const string ICON_MISSING = "battery-missing";
     private const string NO_BATTERY_TEXT = _("No battery");
-    private const uint UPDATE_INTERVAL = 60 * 1000; // 60 seconds
+    private const uint UPDATE_INTERVAL = 60; // seconds
 
-    private uint timer_id = 0U;
+    private bool disposed = false;
 
     public BatteryDockItem.with_dockitem_file (GLib.File file)
     {
@@ -40,15 +40,21 @@ namespace Docky {
       Icon = ICON_MISSING;
       Text = NO_BATTERY_TEXT;
 
-      update ();
-      timer_id = Gdk.threads_add_timeout (UPDATE_INTERVAL, update);
+      start_update_thread ();
     }
 
     ~BatteryDockItem () {
-      if (timer_id > 0U) {
-        GLib.Source.remove (timer_id);
-        timer_id = 0U;
-      }
+      disposed = true;
+    }
+
+    private void start_update_thread () {
+      new Thread<void*> ("battery-monitor", () => {
+        while (!disposed) {
+          update_async ();
+          Thread.usleep (UPDATE_INTERVAL * 1000000);
+        }
+        return null;
+      });
     }
 
     private int get_capacity () throws GLib.FileError {
@@ -109,21 +115,33 @@ namespace Docky {
       return icon;
     }
 
-    private bool update () {
+    private void update_async () {
       try {
         var status = get_status ();
         var capacity = get_capacity ();
         var capacity_level = get_capacity_level ();
 
-        Icon = get_battery_icon (capacity_level, status);
-        Text = "%i%%".printf (capacity);
+        var icon = get_battery_icon (capacity_level, status);
+        var text = "%i%%".printf (capacity);
+
+        // Update UI on main thread
+        Idle.add (() => {
+          if (!disposed) {
+            Icon = icon;
+            Text = text;
+          }
+          return false;
+        });
       } catch (Error e) {
         warning ("Failed to update battery status: %s", e.message);
-        Icon = ICON_MISSING;
-        Text = NO_BATTERY_TEXT;
+        Idle.add (() => {
+          if (!disposed) {
+            Icon = ICON_MISSING;
+            Text = NO_BATTERY_TEXT;
+          }
+          return false;
+        });
       }
-
-      return true;
     }
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
@@ -157,7 +175,7 @@ namespace Docky {
 
             battery_item.activate.connect (() => {
               ((BatteryPreferences) Prefs).BatteryDeviceName = battery_name;
-              update ();
+              update_async ();
             });
 
             if (((BatteryPreferences) Prefs).BatteryDeviceName == battery_name) {
