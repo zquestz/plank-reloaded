@@ -43,6 +43,8 @@ namespace Plank {
           drag_data = null;
           drag_data_requested = false;
           DragNeedsCheck = true;
+          cached_drop_item = null;
+          cached_drop_result = false;
         }
       }
     }
@@ -71,6 +73,10 @@ namespace Plank {
     uint drag_hover_timer_id = 0U;
 
     Gee.ArrayList<string>? drag_data = null;
+
+    // Cache for can_accept_drop results to avoid repeated I/O during drag motion
+    unowned DockItem? cached_drop_item = null;
+    bool cached_drop_result = false;
 
     int window_scale_factor = 1;
     ulong drag_item_redraw_handler_id = 0UL;
@@ -151,7 +157,8 @@ namespace Plank {
     }
 
     /**
-     * Whether the current dragged-data is accepted by the given dock-item
+     * Whether the current dragged-data is accepted by the given dock-item.
+     * Results are cached per item to avoid repeated I/O during drag motion.
      *
      * @param item the dock-item
      */
@@ -159,7 +166,14 @@ namespace Plank {
       if (drag_data == null)
         return false;
 
-      return item.can_accept_drop (drag_data);
+      // Return cached result if same item
+      if (cached_drop_item == item)
+        return cached_drop_result;
+
+      // Query and cache
+      cached_drop_item = item;
+      cached_drop_result = item.can_accept_drop (drag_data);
+      return cached_drop_result;
     }
 
     void set_drag_icon (Gdk.DragContext context, DockItem? item, double opacity = 1.0) {
