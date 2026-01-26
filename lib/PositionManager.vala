@@ -1481,19 +1481,19 @@ namespace Plank {
       default:
       case Gtk.PositionType.BOTTOM:
         x = rect.x + (rect.width - glow_size) / 2;
-        y = DockHeight - glow_size / 2;
+        y = DockHeight + GapSize - glow_size / 2;
         break;
       case Gtk.PositionType.TOP:
         x = rect.x + (rect.width - glow_size) / 2;
-        y = -glow_size / 2;
+        y = -GapSize - glow_size / 2;
         break;
       case Gtk.PositionType.LEFT:
         y = rect.y + (rect.height - glow_size) / 2;
-        x = -glow_size / 2;
+        x = -GapSize - glow_size / 2;
         break;
       case Gtk.PositionType.RIGHT:
         y = rect.y + (rect.height - glow_size) / 2;
-        x = DockWidth - glow_size / 2;
+        x = DockWidth + GapSize - glow_size / 2;
         break;
       }
     }
