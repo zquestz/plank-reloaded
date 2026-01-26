@@ -616,11 +616,11 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool accept_drop (Gee.ArrayList<string> uris) {
-      var files = new Gee.ArrayList<File> ();
-      foreach (var uri in uris)
-        files.add (File.new_for_uri (uri));
+      var files = new File[uris.size];
+      for (int i = 0; i < uris.size; i++)
+        files[i] = File.new_for_uri (uris[i]);
 
-      System.get_default ().launch_with_files (File.new_for_uri (Prefs.Launcher), files.to_array ());
+      System.get_default ().launch_with_files (File.new_for_uri (Prefs.Launcher), files);
 
       return true;
     }
