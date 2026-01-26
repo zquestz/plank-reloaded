@@ -249,7 +249,7 @@ namespace Plank {
       if (controller.drag_manager.InternalDragActive)
         return Gdk.EVENT_STOP;
 
-      // FIXME Ignore events for ScrollDirection.SMOOTH (since gtk+ 3.4)
+      // Smooth scrolling (touchpads) is not supported
       if (event.direction >= 4)
         return Gdk.EVENT_STOP;
 

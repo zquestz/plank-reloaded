@@ -136,7 +136,6 @@ namespace Plank
 			cache_map = new Gee.HashMap<SurfaceInfo, Surface> ((Gee.HashDataFunc<SurfaceInfo>) SurfaceInfo.hash);
 			last_info = null;
 			
-			//TODO Adaptive delay depending on the access rate
 			clean_up_timer_id = Gdk.threads_add_timeout (5 * 60 * 1000, () => {
 				clean_up ();
 				return true;

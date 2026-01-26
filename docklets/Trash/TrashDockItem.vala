@@ -126,9 +126,6 @@ namespace Docky {
       }
       trash_dirs.add(primary_trash);
 
-      // TODO: Add support for per-mount-point trash directories if needed
-      // These would be in .Trash-$UID directories on mounted filesystems
-
       return trash_dirs;
     }
 

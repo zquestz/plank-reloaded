@@ -176,7 +176,7 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override void activate () {
-      // TODO Maybe let the dock hide/show for a visible feedback
+      print ("Plank is already running.\n");
     }
 
     /**

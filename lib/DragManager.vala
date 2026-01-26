@@ -332,13 +332,6 @@ namespace Plank {
             if (provider != null)
               provider.pin_item (DragItem);
           }
-        } else {
-          // Dropped onto another dockitem
-          /* TODO
-             DockItem item = controller.window.HoveredItem;
-             if (item != null && item.CanAcceptDrop (DragItem))
-                  item.AcceptDrop (DragItem);
-           */
         }
       }
 

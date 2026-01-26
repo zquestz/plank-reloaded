@@ -48,7 +48,7 @@ namespace Plank
 		 */
 		INFO,
 		/**
-		 * Messages that also show a libnotify message.
+		 * Important messages worth notifying the user about.
 		 */
 		NOTIFY,
 		/**
@@ -119,14 +119,12 @@ namespace Plank
 		}
 
 		/**
-		 * Displays a log message using libnotify.  Also displays on the console.
+		 * Displays a notification-level log message to the console.
 		 *
 		 * @param msg the log message to display
-		 * @param icon the icon to display in the notification
 		 */
-		public static void notification (string msg, string icon = "")
+		public static void notification (string msg)
 		{
-			// TODO display the message using libnotify
 			write (LogLevel.NOTIFY, format_message (msg));
 		}
 
