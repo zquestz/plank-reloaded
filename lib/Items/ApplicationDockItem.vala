@@ -104,6 +104,7 @@ namespace Plank {
     Gee.ArrayList<string> supported_mime_types;
     Gee.ArrayList<string> actions;
     Gee.HashMap<string, string> actions_map;
+    bool accepts_files;
 
     string? unity_application_uri = null;
     string? unity_dbusname = null;
@@ -594,10 +595,9 @@ namespace Plank {
       if (uris == null || is_window ())
         return false;
 
-      // if they dont specify mimes but have '%F' etc in their Exec, assume any file allowed
-      // FIXME also check if the Exec key has %F/%f/%U/%u in it
-      if (supported_mime_types.size == 0 /* && .. */)
-        return true;
+      // If no mime types specified but Exec accepts files, allow any file
+      if (supported_mime_types.size == 0)
+        return accepts_files;
 
       try {
         foreach (var uri in uris) {
@@ -635,7 +635,7 @@ namespace Plank {
       unity_update_application_uri ();
 
       string icon, text;
-      parse_launcher (Prefs.Launcher, out icon, out text, actions, actions_map, supported_mime_types);
+      parse_launcher (Prefs.Launcher, out icon, out text, actions, actions_map, supported_mime_types, out accepts_files);
       Icon = icon;
       ForcePixbuf = null;
       Text = text;
@@ -650,10 +650,12 @@ namespace Plank {
      * @param actions a list of all actions by name
      * @param actions_map a map of actions from name to exec;;icon
      * @param mimes a list of all supported mime types
+     * @param accepts_files whether the Exec key contains file/URL arguments (%F, %f, %U, %u)
      */
-    public static void parse_launcher (string launcher, out string icon, out string text, Gee.ArrayList<string>? actions = null, Gee.Map<string, string>? actions_map = null, Gee.ArrayList<string>? mimes = null) {
+    public static void parse_launcher (string launcher, out string icon, out string text, Gee.ArrayList<string>? actions = null, Gee.Map<string, string>? actions_map = null, Gee.ArrayList<string>? mimes = null, out bool accepts_files = null) {
       icon = "";
       text = "";
+      accepts_files = false;
 
       if (launcher == null || launcher == "")
         return;
@@ -678,6 +680,11 @@ namespace Plank {
         switch (type) {
         default :
         case KeyFileDesktop.TYPE_APPLICATION :
+          // Check if Exec key contains file/URL arguments
+          if (file.has_key (KeyFileDesktop.GROUP, KeyFileDesktop.KEY_EXEC)) {
+            var exec = file.get_string (KeyFileDesktop.GROUP, KeyFileDesktop.KEY_EXEC).down ();
+            accepts_files = (exec.contains ("%f") || exec.contains ("%u"));
+          }
           break;
         case KeyFileDesktop.TYPE_DIRECTORY :
           if (icon == "")
