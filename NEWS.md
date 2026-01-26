@@ -5,7 +5,7 @@
 ## 0.11.160 "Reloaded" (2026-01-25)
 
 - Fix CPUMonitorDocklet thread-safety by marshalling UI updates to main thread
-- Fix ApplicationsDocklet crashes during package installation/removal
+- Fix ApplicationsDocklet crashes during package installation/removal with re-entrancy guard
 - Optimize DockRenderer to avoid unnecessary Surface.copy() during animations
 - Move Battery docklet I/O to background thread
 - Cache can_accept_drop results to avoid repeated I/O during drag motion
