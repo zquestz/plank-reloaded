@@ -335,7 +335,12 @@ namespace Plank {
       add_window (dock.window);
     }
 
-    void remove_dock (DockController dock) {
+    /**
+     * Removes a dock from this application.
+     *
+     * @param dock the dock to remove
+     */
+    public void remove_dock (DockController dock) {
       if (docks.size == 1)
         return;
 

@@ -157,7 +157,7 @@ add_project_arguments(
 
 # Dependencies
 glib_version_required = '2.48.0'
-gtk_version_required = '3.10.0'
+gtk_version_required = '3.22.0'
 gdk_pixbuf_version_required = '2.26.0'
 bamf_version_required = '0.4.0'
 cairo_version_required = '1.13'

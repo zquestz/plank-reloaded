@@ -47,8 +47,7 @@ namespace Plank {
     /**
      * The current local cursor-position on the dock if hovered.
      */
-    [CCode (notify = false)]
-    public Gdk.Point local_cursor { get; private set; }
+    public Gdk.Point local_cursor;
 
     Surface? main_buffer = null;
     Surface? fade_buffer = null;
