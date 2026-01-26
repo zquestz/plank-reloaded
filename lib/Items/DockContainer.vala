@@ -429,8 +429,6 @@ namespace Plank {
         return false;
       }
 
-      // FIXME Logger.verbose ("DockContainer.replace_element (%s[%s, %i] > %s[%s, %i])", old_element.Text, old_element.DockItemFilename, (int)old_element, new_element.Text, new_element.DockItemFilename, (int)new_element);
-
       disconnect_element (old_element);
 
       internal_elements[index] = new_element;
@@ -439,7 +437,6 @@ namespace Plank {
 
       new_element.AddTime = old_element.AddTime;
       new_element.RemoveTime = old_element.RemoveTime;
-      // FIXME new_element.Position = old_element.Position;
       connect_element (new_element);
 
       if (visible_elements.contains (old_element))

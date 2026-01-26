@@ -252,8 +252,6 @@ namespace Plank {
      * @return a unique ID for this dock element
      */
     public virtual string unique_id () {
-      // TODO this is a unique ID, but it is not stable!
-      // do we still need stable IDs?
       return "dockelement%p".printf (this);
     }
 

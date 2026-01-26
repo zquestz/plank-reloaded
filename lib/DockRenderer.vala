@@ -228,7 +228,7 @@ namespace Plank {
 
       unowned Gee.ArrayList<unowned DockItem> new_items = controller.VisibleItems;
 
-      // FIXME This should never happen
+      // Bail out if there are no visible items to render
       if (new_items.size <= 0) {
         critical ("No items available to initialize frame");
         return;
@@ -329,7 +329,7 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override void draw (Cairo.Context cr, int64 frame_time) {
-      // FIXME This should never happen
+      // Bail out if there are no items to draw
       if (current_items.size <= 0) {
         critical ("No items available to draw frame");
         return;
@@ -471,20 +471,19 @@ namespace Plank {
       if (is_first_frame) {
         message ("Cairo.SurfaceType: %s", cairo_surface_type_to_string (cr.get_target ().get_type ()));
 
+        // Workaround for bug #1256626 - plank not appearing after login
+        // Use idle callback to ensure dock appears after initialization completes
         Gdk.threads_add_idle_full (GLib.Priority.LOW, () => {
           unowned HideManager hide_manager = controller.hide_manager;
 
-          // FIXME HideManager.initialize () -> setup_active_window ();
-          // is already taking care of updating the Hidden-state,
-          // but only if there is already an active/open window
+          // HideManager.initialize() already updates Hidden state,
+          // but only if there is an active window
           if (hide_manager.Hidden)
             return false;
 
-          // slide the dock in, if it shouldnt start hidden
+          // Slide the dock in if it shouldn't start hidden
           hide_manager.update_hovered ();
 
-          // FIXME there must be a sane way
-          // https://bugs.launchpad.net/plank/+bug/1256626
           last_hide = force_frame_time_update ();
 
           hidden_changed ();
@@ -736,7 +735,6 @@ namespace Plank {
       if (!screen_is_composited)
         return private_icon_surface;
 
-      // FIXME There is probably a nicer way to accomplish this
       // Check if the underlying cache returned a marked surface and if needed
       // request another draw with the currently assumed largest required size
       string? drawing_status;
@@ -1052,7 +1050,6 @@ namespace Plank {
      */
     protected override bool animation_needed (int64 frame_time) {
       if (zoom_changed) {
-        // FIXME reset at a better place
         zoom_changed = false;
         return true;
       }

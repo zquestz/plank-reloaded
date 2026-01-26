@@ -1079,7 +1079,6 @@ namespace Plank {
           break;
         }
 
-        // FIXME
         val.move_in (Position, bottom_offset);
 
         // let the draw-value be modified by the given function
@@ -1149,7 +1148,6 @@ namespace Plank {
       Gdk.Rectangle rect;
       var hover_region = val.hover_region;
 
-      // FIXME Do this a better way
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:

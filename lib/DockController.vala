@@ -342,11 +342,9 @@ namespace Plank {
 
       schedule_serialize_item_positions ();
 
-      // FIXME Maybe add a dedicated signal
-      if (container != this) {
-        var empty = new Gee.ArrayList<DockElement> ();
-        elements_changed (empty, empty);
-      }
+      // Re-emit signal from child containers so listeners on DockController are notified
+      if (container != this)
+        elements_changed (added, removed);
     }
 
     void handle_positions_changed (DockContainer container, Gee.List<unowned DockElement> moved_items) {

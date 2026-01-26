@@ -188,7 +188,6 @@ namespace Plank
 			var finish_time = GLib.get_monotonic_time ();
 			var time_elapsed = finish_time - access_time;
 			
-			// FIXME There is probably a nicer way to accomplish this
 			// Mark the created surface if drawing-time exceeded our limit and have
 			// an upper drawing-layer (e.g. DockRenderer) handle it
 			if (time_elapsed >= INSANE_DRAWING_TIME && flags == SurfaceCacheFlags.NONE) {
