@@ -41,39 +41,141 @@ namespace Plank {
     public const uint VIEWPORT_CHANGE_DELAY = 200U;
 
     static uint delayed_focus_timer_id = 0U;
-    static Wnck.Window? delayed_focus_window = null;
+    static ulong delayed_focus_xid = 0UL;
+
+    // Action type for pending operations
+    enum PendingActionType {
+      MINIMIZE,
+      UNMINIMIZE,
+      CENTER_AND_FOCUS,
+      SCHEDULE_DELAYED_FOCUS
+    }
+
+    // A single pending operation with its own XIDs and event time
+    class PendingOperation {
+      public PendingActionType action_type;
+      public Gee.ArrayList<ulong> xids;
+      public uint32 event_time;
+      public int index;
+      public uint window_count;  // Used by SCHEDULE_DELAYED_FOCUS
+
+      public PendingOperation (PendingActionType action_type, Gee.ArrayList<ulong> xids, uint32 event_time, uint window_count = 0) {
+        this.action_type = action_type;
+        this.xids = xids;
+        this.event_time = event_time;
+        this.index = 0;
+        this.window_count = window_count;
+      }
+    }
+
+    // Queue of pending operations
+    static Gee.ArrayQueue<PendingOperation>? pending_queue = null;
+    static uint pending_timer_id = 0U;
 
     /**
      * Process a list of windows with a delayed action between each.
-     * This avoids blocking the main thread with Thread.usleep.
+     * Operations are queued and processed in order with 10ms delays.
+     * Uses XIDs to avoid use-after-free in timeouts.
      *
-     * @param windows the array of windows to process
-     * @param action the action to perform on each window
+     * @param windows the list of windows to process
+     * @param action_type the type of action to perform
      * @param event_time the event time for window operations
      */
-    delegate void WindowAction (Wnck.Window window, uint32 event_time);
-
-    static void process_windows_delayed (Gee.ArrayList<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
+    static void process_windows (Gee.ArrayList<unowned Wnck.Window> windows, PendingActionType action_type, uint32 event_time) {
       if (windows.size == 0)
         return;
 
-      process_next_window (windows, 0, action, event_time);
-    }
+      // Convert to XIDs
+      var xids = new Gee.ArrayList<ulong> ();
+      foreach (unowned Wnck.Window window in windows) {
+        if (window != null)
+          xids.add (window.get_xid ());
+      }
 
-    static void process_next_window (Gee.ArrayList<unowned Wnck.Window> windows, int index, WindowAction action, uint32 event_time) {
-      if (index >= windows.size)
+      if (xids.size == 0)
         return;
 
-      unowned Wnck.Window? window = windows[index];
-      if (window != null)
-        action (window, event_time);
+      queue_operation (new PendingOperation (action_type, xids, event_time));
+    }
 
-      var next_index = index + 1;
-      if (next_index < windows.size) {
-        Gdk.threads_add_timeout (WINDOW_GROUP_DELAY, () => {
-          process_next_window (windows, next_index, action, event_time);
+    static void queue_operation (PendingOperation op) {
+      // Initialize queue if needed
+      if (pending_queue == null)
+        pending_queue = new Gee.ArrayQueue<PendingOperation> ();
+
+      // Add operation to queue
+      pending_queue.offer (op);
+
+      // Start processing if not already running
+      if (pending_timer_id == 0U)
+        process_pending_operations ();
+    }
+
+    static void process_pending_operations () {
+      while (true) {
+        // Get current operation from front of queue
+        if (pending_queue == null || pending_queue.is_empty) {
+          pending_queue = null;
+          pending_timer_id = 0U;
+          return;
+        }
+
+        PendingOperation? op = pending_queue.peek ();
+        if (op == null) {
+          pending_queue = null;
+          pending_timer_id = 0U;
+          return;
+        }
+
+        // Check if current operation is complete
+        if (op.index >= op.xids.size) {
+          // Remove completed operation and move to next
+          pending_queue.poll ();
+          continue;
+        }
+
+        // Handle SCHEDULE_DELAYED_FOCUS specially - single XID, calls schedule_delayed_focus
+        // No delay after this operation to match original timing
+        if (op.action_type == PendingActionType.SCHEDULE_DELAYED_FOCUS) {
+          if (op.xids.size > 0) {
+            unowned Wnck.Window? window = Wnck.Window.@get (op.xids[0]);
+            if (window != null) {
+              schedule_delayed_focus (window, op.window_count, op.event_time);
+            }
+          }
+          pending_queue.poll ();
+          // Continue immediately without delay
+          continue;
+        }
+
+        // Look up window by XID - returns null if window was closed
+        unowned Wnck.Window? window = Wnck.Window.@get (op.xids[op.index]);
+        if (window != null) {
+          switch (op.action_type) {
+          case PendingActionType.MINIMIZE:
+            window.minimize ();
+            break;
+          case PendingActionType.UNMINIMIZE:
+            window.unminimize (op.event_time);
+            break;
+          case PendingActionType.CENTER_AND_FOCUS:
+            center_and_focus_window (window, op.event_time);
+            break;
+          default:
+            // SCHEDULE_DELAYED_FOCUS handled above
+            break;
+          }
+        }
+
+        op.index++;
+
+        // Schedule next window with delay
+        pending_timer_id = Gdk.threads_add_timeout (WINDOW_GROUP_DELAY, () => {
+          pending_timer_id = 0U;
+          process_pending_operations ();
           return false;
         });
+        return;
       }
     }
 
@@ -111,10 +213,10 @@ namespace Plank {
     }
 
     static void handle_window_closed (Wnck.Window window) {
-      if (delayed_focus_timer_id > 0U && delayed_focus_window == window) {
+      if (delayed_focus_timer_id > 0U && delayed_focus_xid == window.get_xid ()) {
         GLib.Source.remove (delayed_focus_timer_id);
         delayed_focus_timer_id = 0U;
-        delayed_focus_window = null;
+        delayed_focus_xid = 0UL;
       }
     }
 
@@ -477,7 +579,7 @@ namespace Plank {
         }
       }
 
-      process_windows_delayed (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
+      process_windows (windows_to_minimize, PendingActionType.MINIMIZE, 0);
     }
 
     public static void restore (Bamf.Application app, uint32 event_time) {
@@ -493,7 +595,7 @@ namespace Plank {
         }
       }
 
-      process_windows_delayed (windows_to_restore, (w, t) => { w.unminimize (t); }, event_time);
+      process_windows (windows_to_restore, PendingActionType.UNMINIMIZE, event_time);
     }
 
     public static void maximize (Bamf.Application app) {
@@ -563,7 +665,7 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (w.is_minimized () && w.is_in_viewport (active_workspace))
               windows_to_unminimize.add (w);
-          process_windows_delayed (windows_to_unminimize, (w, t) => { w.unminimize (t); }, event_time);
+          process_windows (windows_to_unminimize, PendingActionType.UNMINIMIZE, event_time);
           return;
         }
       }
@@ -577,7 +679,7 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (!w.is_minimized () && w.is_in_viewport (active_workspace) && w.get_window_type () != Wnck.WindowType.DOCK)
               windows_to_minimize.add (w);
-          process_windows_delayed (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
+          process_windows (windows_to_minimize, PendingActionType.MINIMIZE, 0);
           return;
         }
       }
@@ -590,7 +692,7 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (w.is_in_viewport (active_workspace))
               windows_to_focus.add (w);
-          process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
+          process_windows (windows_to_focus, PendingActionType.CENTER_AND_FOCUS, event_time);
           return;
         }
       }
@@ -617,19 +719,23 @@ namespace Plank {
       }
 
       // Focus the additional windows first, then the target window
-      if (windows_to_focus.size > 0) {
-        process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
+      uint window_count = additional_windows.length ();
 
-        // Schedule target window focus after all other windows are processed
-        var delay = (uint) (windows_to_focus.size * WINDOW_GROUP_DELAY + WINDOW_GROUP_DELAY);
-        Gdk.threads_add_timeout (delay, () => {
-          center_and_focus_window (targetWindow, event_time);
-          schedule_delayed_focus (targetWindow, additional_windows, event_time);
-          return false;
-        });
+      if (windows_to_focus.size > 0) {
+        process_windows (windows_to_focus, PendingActionType.CENTER_AND_FOCUS, event_time);
+
+        // Queue target window focus after the other windows
+        var target_list = new Gee.ArrayList<unowned Wnck.Window> ();
+        target_list.add (targetWindow);
+        process_windows (target_list, PendingActionType.CENTER_AND_FOCUS, event_time);
+
+        // Queue schedule_delayed_focus to run after focus operations
+        var delayed_list = new Gee.ArrayList<ulong> ();
+        delayed_list.add (targetWindow.get_xid ());
+        queue_operation (new PendingOperation (PendingActionType.SCHEDULE_DELAYED_FOCUS, delayed_list, event_time, window_count));
       } else {
         center_and_focus_window (targetWindow, event_time);
-        schedule_delayed_focus (targetWindow, additional_windows, event_time);
+        schedule_delayed_focus (targetWindow, window_count, event_time);
       }
     }
 
@@ -641,9 +747,11 @@ namespace Plank {
      * windows are focused in quick succession. By delaying the final focus
      * activation, we give the window manager time to process the previous
      * focus changes before activating the target window again.
+     *
+     * Uses XID instead of window reference to avoid use-after-free in timeout.
      */
-    static void schedule_delayed_focus (Wnck.Window targetWindow, GLib.List<unowned Wnck.Window> additional_windows, uint32 event_time) {
-      if (additional_windows.length () <= 1)
+    static void schedule_delayed_focus (Wnck.Window targetWindow, uint window_count, uint32 event_time) {
+      if (window_count <= 1)
         return;
 
       // Cancel any pending delayed focus
@@ -652,11 +760,16 @@ namespace Plank {
         delayed_focus_timer_id = 0U;
       }
 
-      delayed_focus_window = targetWindow;
+      // Store XID instead of window reference - safe to use in timeout
+      delayed_focus_xid = targetWindow.get_xid ();
       delayed_focus_timer_id = Gdk.threads_add_timeout (VIEWPORT_CHANGE_DELAY, () => {
         delayed_focus_timer_id = 0U;
-        delayed_focus_window.activate (event_time);
-        delayed_focus_window = null;
+        // Look up window by XID - returns null if window was closed
+        unowned Wnck.Window? w = Wnck.Window.@get (delayed_focus_xid);
+        if (w != null) {
+          w.activate (event_time);
+        }
+        delayed_focus_xid = 0UL;
         return false;
       });
     }
