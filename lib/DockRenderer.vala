@@ -543,10 +543,10 @@ namespace Plank {
             y_offset += position_manager.LaunchBounceHeight * easing_bounce (click_time, max_click_time, 2);
           break;
         case AnimationType.DARKEN:
-          draw_value.darken = double.max (0, Math.sin (Math.PI * click_animation_progress)) * 0.5;
+          draw_value.darken = Math.sin (Math.PI * click_animation_progress) * 0.5;
           break;
         case AnimationType.LIGHTEN:
-          draw_value.lighten = double.max (0, Math.sin (Math.PI * click_animation_progress)) * 0.5;
+          draw_value.lighten = Math.sin (Math.PI * click_animation_progress) * 0.5;
           break;
         }
       }
@@ -562,10 +562,10 @@ namespace Plank {
         case AnimationType.NONE:
           break;
         case AnimationType.DARKEN:
-          draw_value.darken = double.max (0, Math.sin (Math.PI * scroll_animation_progress)) * 0.5;
+          draw_value.darken = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
           break;
         case AnimationType.LIGHTEN:
-          draw_value.lighten = double.max (0, Math.sin (Math.PI * scroll_animation_progress)) * 0.5;
+          draw_value.lighten = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
           break;
         }
       }
