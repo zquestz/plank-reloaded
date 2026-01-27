@@ -489,6 +489,9 @@ namespace Plank {
       benchmark.add ("background render time - %f ms".printf (end2.difference (start2) / 1000.0));
 #endif
 
+      // Cache shadow size check to avoid repeated method calls in loop
+      bool has_shadows = (controller.renderer.theme.IconShadowSize > 0);
+
       // draw each item
       foreach (unowned DockItem item in current_items) {
 #if BENCHMARK
@@ -497,7 +500,8 @@ namespace Plank {
         if (item.IsVisible && dragged_item != item) {
           var draw_value = position_manager.get_draw_value_for_item (item);
           draw_item (item_cr, item, draw_value, local_frame_time);
-          draw_item_shadow (shadow_cr, item, draw_value);
+          if (has_shadows)
+            draw_item_shadow (shadow_cr, item, draw_value);
         }
 #if BENCHMARK
         end2 = new DateTime.now_local ();
