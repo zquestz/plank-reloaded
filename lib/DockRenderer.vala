@@ -49,10 +49,10 @@ namespace Plank {
      */
     public Gdk.Point local_cursor;
 
-    Surface? main_buffer = null;
-    Surface? fade_buffer = null;
-    Surface? item_buffer = null;
-    Surface? shadow_buffer = null;
+    /**
+     * The rendering backend for buffer management.
+     */
+    RenderBackend backend;
 
     // Reusable scratch surface for icon modifications (lighten/darken/overlay)
     // Avoids per-frame allocations when drawing modified icons
@@ -61,9 +61,6 @@ namespace Plank {
 
     Surface? background_buffer = null;
     Gdk.Rectangle background_rect;
-    Surface[] indicator_buffer = new Surface[2];
-    Surface[] urgent_indicator_buffer = new Surface[2];
-    Surface? urgent_glow_buffer = null;
 
     int64 last_hide = 0LL;
     int64 last_hovered_changed = 0LL;
@@ -102,6 +99,7 @@ namespace Plank {
 #if BENCHMARK
       benchmark = new Gee.ArrayList<string> ();
 #endif
+      backend = RenderBackend.create (controller);
       controller.prefs.notify.connect (prefs_changed);
 
       load_theme ();
@@ -118,6 +116,13 @@ namespace Plank {
       controller.window.notify["HoveredItem"].connect (animated_draw);
       controller.hide_manager.notify["Hidden"].connect (hidden_changed);
       controller.hide_manager.notify["Hovered"].connect (hovered_changed);
+
+#if HAVE_CLUTTER
+      // Set up Clutter draw callback if GPU rendering is active
+      if (controller.window.gpu_rendering_active) {
+        controller.window.set_clutter_draw_func (on_clutter_draw);
+      }
+#endif
     }
 
     ~DockRenderer () {
@@ -127,6 +132,13 @@ namespace Plank {
       controller.hide_manager.notify["Hidden"].disconnect (hidden_changed);
       controller.hide_manager.notify["Hovered"].disconnect (hovered_changed);
       controller.window.notify["HoveredItem"].disconnect (animated_draw);
+
+#if HAVE_CLUTTER
+      // Clear draw callback to prevent dangling reference
+      if (controller.window.gpu_rendering_active) {
+        controller.window.set_clutter_draw_func (null);
+      }
+#endif
     }
 
     void prefs_changed (Object prefs, ParamSpec prop) {
@@ -198,19 +210,7 @@ namespace Plank {
     public void reset_buffers () {
       Logger.verbose ("DockRenderer.reset_buffers ()");
 
-      main_buffer = null;
-      fade_buffer = null;
-      item_buffer = null;
-      shadow_buffer = null;
-      scratch_surface = null;
-      scratch_surface_size = 0;
-
-      background_buffer = null;
-      indicator_buffer[0] = null;
-      indicator_buffer[1] = null;
-      urgent_indicator_buffer[0] = null;
-      urgent_indicator_buffer[1] = null;
-      urgent_glow_buffer = null;
+      backend.reset_buffers ();
 
       animated_draw ();
     }
@@ -334,60 +334,247 @@ namespace Plank {
       background_rect = position_manager.get_background_region ();
     }
 
+#if HAVE_CLUTTER
     /**
-     * {@inheritDoc}
+     * Clutter canvas draw callback for GPU rendering.
+     *
+     * Note: This is called asynchronously by Clutter's frame loop, not by GTK's
+     * draw cycle. We must update frame_time here to get accurate animation timing.
      */
-    public override void draw (Cairo.Context cr, int64 frame_time) {
-      // Bail out if there are no items to draw
-      if (current_items.size <= 0) {
+    void on_clutter_draw (Cairo.Context cr, int width, int height) {
+      // Update frame time - critical fix: Clutter calls this asynchronously,
+      // so the inherited frame_time property may be stale
+      int64 local_frame_time = force_frame_time_update ();
+
+      // Initialize frame state with fresh timing
+      initialize_frame (local_frame_time);
+
+      // Draw directly to the canvas context
+      draw_to_context (cr, local_frame_time);
+    }
+
+    /**
+     * Draws the dock directly to a Cairo context (used by Clutter canvas).
+     *
+     * Uses cached ImageSurface buffers from ClutterBackend to avoid allocating
+     * new surfaces every frame. Clutter canvas surfaces don't work well with
+     * Cairo.Surface.similar(), so we use ImageSurfaces instead.
+     */
+    void draw_to_context (Cairo.Context cr, int64 local_frame_time) {
+      if (current_items.is_empty) {
         critical ("No items available to draw frame");
         return;
       }
 
-      window_scale_factor = controller.window.get_window ().get_scale_factor ();
-      // take the previous frame values into account to decide if we
-      // can bail a full draw to not miss a finishing animation-frame
-      var no_full_draw_needed = (!is_first_frame && hide_progress == 1.0 && opacity == 1.0);
-
       unowned PositionManager position_manager = controller.position_manager;
       unowned DockItem dragged_item = controller.drag_manager.DragItem;
+      unowned ClutterBackend clutter_backend = (ClutterBackend) backend;
+
+      // Update backend state
+      backend.update_scale_factor (controller.window);
+      window_scale_factor = backend.window_scale_factor;
+      backend.begin_frame (local_frame_time, hide_progress, opacity, zoom_in_progress);
+
       var win_rect = position_manager.get_dock_window_region ();
+      var width = win_rect.width;
+      var height = win_rect.height;
 
-      if (main_buffer == null) {
-        main_buffer = new Surface.with_cairo_surface (win_rect.width, win_rect.height, cr.get_target ());
-        main_buffer.Internal.set_device_scale (window_scale_factor, window_scale_factor);
+      // Get cached ImageSurface buffers from ClutterBackend - avoids per-frame allocation
+      unowned Cairo.ImageSurface main_surface;
+      unowned Cairo.ImageSurface item_surface;
+      unowned Cairo.ImageSurface shadow_surface;
+      clutter_backend.get_clutter_surfaces (width, height, window_scale_factor, out main_surface, out item_surface, out shadow_surface);
+
+      // Get cached model surface for buffer creation (avoids per-frame allocation)
+      unowned Surface? model = clutter_backend.get_model_surface ();
+
+      // Ensure standard Surface buffers are allocated - needed for icon loading APIs
+      // and for urgent glow drawing when dock is hidden
+      if (model != null) {
+        backend.ensure_buffers (width, height, model.Internal);
+      } else {
+        // Fallback: create a temporary model surface
+        var temp_model = new Cairo.ImageSurface (Cairo.Format.ARGB32, width, height);
+        backend.ensure_buffers (width, height, temp_model);
       }
 
-      if (item_buffer == null) {
-        item_buffer = new Surface.with_cairo_surface (win_rect.width, win_rect.height, cr.get_target ());
-        item_buffer.Internal.set_device_scale (window_scale_factor, window_scale_factor);
-      }
+      // Check if we can skip full drawing (dock completely hidden)
+      var no_full_draw_needed = (!is_first_frame && hide_progress == 1.0 && opacity == 1.0);
 
-      if (shadow_buffer == null) {
-        shadow_buffer = new Surface.with_cairo_surface (win_rect.width, win_rect.height, cr.get_target ());
-        shadow_buffer.Internal.set_device_scale (window_scale_factor, window_scale_factor);
-      }
-
-      // if the dock is completely hidden and not transparently drawn
-      // only draw ugent-glow indicators and bail since there is no need
-      // for further things
-      if (no_full_draw_needed && hide_progress == 1.0 && opacity == 1.0) {
+      // If dock is completely hidden, only draw urgent glow indicators
+      if (no_full_draw_needed) {
         // we still need to clear out the previous output
         cr.save ();
         cr.set_operator (Cairo.Operator.CLEAR);
         cr.paint ();
         cr.restore ();
 
-        if (show_notifications)
+        if (show_notifications) {
           foreach (unowned DockItem item in current_items)
-            draw_urgent_glow (item, cr, frame_time);
+            draw_urgent_glow (item, cr, local_frame_time);
+        }
 
+        backend.end_frame ();
         return;
       }
 
-      if (opacity < 1.0 && fade_buffer == null) {
-        fade_buffer = new Surface.with_cairo_surface (win_rect.width, win_rect.height, cr.get_target ());
-        fade_buffer.Internal.set_device_scale (window_scale_factor, window_scale_factor);
+      // Calculate drawing offset for slide animation (when FadeOpacity == 1.0)
+      var x_offset = 0, y_offset = 0;
+      if (opacity == 1.0)
+        position_manager.get_dock_draw_position (out x_offset, out y_offset);
+
+      // Clear the cached surfaces before drawing
+      clutter_backend.clear_clutter_surfaces ();
+
+      var main_cr = new Cairo.Context (main_surface);
+      var item_cr = new Cairo.Context (item_surface);
+      var shadow_cr = new Cairo.Context (shadow_surface);
+
+      // composite dock layers and make sure to draw onto the canvas with one operation
+      main_cr.set_operator (Cairo.Operator.OVER);
+
+      // draw background-layer (model should never be null after get_clutter_surfaces, but check anyway)
+      unowned Surface? bg_buffer = (model != null) ? backend.get_background_buffer (
+        background_rect.width, background_rect.height,
+        theme, position_manager.Position, model) : null;
+
+      if (bg_buffer != null) {
+        main_cr.set_source_surface (bg_buffer.Internal,
+          background_rect.x + x_offset, background_rect.y + y_offset);
+        main_cr.paint ();
+      }
+
+      // draw each item
+      foreach (unowned DockItem item in current_items) {
+        if (item.IsVisible && dragged_item != item) {
+          var draw_value = position_manager.get_draw_value_for_item (item);
+          draw_item (item_cr, item, draw_value, local_frame_time);
+          draw_item_shadow (shadow_cr, item, draw_value);
+        }
+      }
+
+      // composite layers onto main surface
+      main_cr.set_source_surface (shadow_surface, x_offset, y_offset);
+      main_cr.paint ();
+      main_cr.set_source_surface (item_surface, x_offset, y_offset);
+      main_cr.paint ();
+
+      // paint final result to the Clutter canvas context
+      cr.set_operator (Cairo.Operator.SOURCE);
+      if (opacity < 1.0) {
+        unowned Cairo.ImageSurface? fade_surface = clutter_backend.get_clutter_fade_surface ();
+        if (fade_surface != null) {
+          var fade_cr = new Cairo.Context (fade_surface);
+          fade_cr.set_operator (Cairo.Operator.CLEAR);
+          fade_cr.paint ();
+          fade_cr.set_operator (Cairo.Operator.OVER);
+          fade_cr.set_source_surface (main_surface, 0, 0);
+          fade_cr.paint_with_alpha (opacity);
+          cr.set_source_surface (fade_surface, 0, 0);
+        } else {
+          cr.set_source_surface (main_surface, 0, 0);
+        }
+      } else {
+        cr.set_source_surface (main_surface, 0, 0);
+      }
+      cr.paint ();
+
+      // Draw urgent-glow during fade-out (when opacity < 1.0 but hide_progress == 1.0)
+      // Note: When fully hidden with opacity == 1.0, we return early above
+      if (show_notifications && hide_progress == 1.0) {
+        foreach (unowned DockItem item in current_items)
+          draw_urgent_glow (item, cr, local_frame_time);
+      }
+
+      if (is_first_frame) {
+        message ("Rendering: GPU (Clutter)");
+
+        // Workaround for bug #1256626 - plank not appearing after login
+        // Use idle callback to ensure dock appears after initialization completes
+        Gdk.threads_add_idle_full (GLib.Priority.LOW, () => {
+          unowned HideManager hide_manager = controller.hide_manager;
+
+          // HideManager.initialize() already updates Hidden state,
+          // but only if there is an active window
+          if (hide_manager.Hidden)
+            return false;
+
+          // Slide the dock in if it shouldn't start hidden
+          hide_manager.update_hovered ();
+
+          last_hide = force_frame_time_update ();
+
+          hidden_changed ();
+          return false;
+        });
+
+        is_first_frame = false;
+      }
+
+      backend.end_frame ();
+    }
+#endif
+
+    /**
+     * {@inheritDoc}
+     */
+    public override void draw (Cairo.Context cr, int64 frame_time) {
+#if HAVE_CLUTTER
+      // If GPU rendering is active, we draw via Clutter canvas callback
+      if (controller.window.gpu_rendering_active) {
+        // Update canvas size and trigger redraw
+        unowned PositionManager position_manager = controller.position_manager;
+        var win_rect = position_manager.get_dock_window_region ();
+        controller.window.update_clutter_size (win_rect.width, win_rect.height);
+        controller.window.invalidate_clutter_canvas ();
+        return;
+      }
+#endif
+      draw_internal (cr, frame_time);
+    }
+
+    /**
+     * Internal drawing method for the Cairo/CPU rendering path.
+     */
+    void draw_internal (Cairo.Context cr, int64 frame_time) {
+      // Bail out if there are no items to draw
+      if (current_items.is_empty) {
+        critical ("No items available to draw frame");
+        return;
+      }
+
+      // Update backend state
+      backend.update_scale_factor (controller.window);
+      window_scale_factor = backend.window_scale_factor;
+
+      // Begin frame with current animation state
+      backend.begin_frame (frame_time, hide_progress, opacity, zoom_in_progress);
+
+      // Check if we can skip full drawing (dock completely hidden)
+      var no_full_draw_needed = (!is_first_frame && hide_progress == 1.0 && opacity == 1.0);
+
+      unowned PositionManager position_manager = controller.position_manager;
+      unowned DockItem dragged_item = controller.drag_manager.DragItem;
+      var win_rect = position_manager.get_dock_window_region ();
+
+      // Ensure all buffers are properly allocated
+      backend.ensure_buffers (win_rect.width, win_rect.height, cr.get_target ());
+
+      // If dock is completely hidden, only draw urgent glow indicators
+      if (no_full_draw_needed) {
+        // we still need to clear out the previous output
+        cr.save ();
+        cr.set_operator (Cairo.Operator.CLEAR);
+        cr.paint ();
+        cr.restore ();
+
+        if (show_notifications) {
+          foreach (unowned DockItem item in current_items)
+            draw_urgent_glow (item, cr, frame_time);
+        }
+
+        backend.end_frame ();
+        return;
       }
 
 #if BENCHMARK
@@ -395,6 +582,10 @@ namespace Plank {
       benchmark.clear ();
       start = new DateTime.now_local ();
 #endif
+
+      unowned Surface main_buffer = backend.get_main_buffer ();
+      unowned Surface item_buffer = backend.get_item_buffer ();
+      unowned Surface shadow_buffer = backend.get_shadow_buffer ();
 
       main_buffer.clear ();
       item_buffer.clear ();
@@ -408,7 +599,6 @@ namespace Plank {
         position_manager.get_dock_draw_position (out x_offset, out y_offset);
 
       // composite dock layers and make sure to draw onto the window's context with one operation
-      main_buffer.clear ();
       unowned Cairo.Context main_cr = main_buffer.Context;
       main_cr.set_operator (Cairo.Operator.OVER);
 
@@ -454,6 +644,7 @@ namespace Plank {
       // draw the dock on the window and fade it if need be
       cr.set_operator (Cairo.Operator.SOURCE);
       if (opacity < 1.0) {
+        unowned Surface fade_buffer = backend.get_fade_buffer ();
         fade_buffer.clear ();
         unowned Cairo.Context fade_cr = fade_buffer.Context;
         fade_cr.set_operator (Cairo.Operator.OVER);
@@ -482,7 +673,8 @@ namespace Plank {
 #endif
 
       if (is_first_frame) {
-        message ("Cairo.SurfaceType: %s", cairo_surface_type_to_string (cr.get_target ().get_type ()));
+        // Note: GPU (Clutter) path handles its own first-frame in draw_to_context()
+        message ("Rendering: CPU (Cairo), SurfaceType: %s", cairo_surface_type_to_string (cr.get_target ().get_type ()));
 
         // Workaround for bug #1256626 - plank not appearing after login
         // Use idle callback to ensure dock appears after initialization completes
@@ -505,20 +697,19 @@ namespace Plank {
 
         is_first_frame = false;
       }
+
+      backend.end_frame ();
     }
 
     void draw_dock_background (Cairo.Context cr, Gdk.Rectangle background_rect, int x_offset, int y_offset) {
       unowned PositionManager position_manager = controller.position_manager;
 
-      if (background_rect.width <= 0 || background_rect.height <= 0) {
-        background_buffer = null;
-        return;
-      }
+      unowned Surface? background_buffer = backend.get_background_buffer (
+        background_rect.width, background_rect.height,
+        theme, position_manager.Position, backend.get_main_buffer ());
 
-      if (background_buffer == null || background_buffer.Width != background_rect.width
-          || background_buffer.Height != background_rect.height)
-        background_buffer = theme.create_background (background_rect.width, background_rect.height,
-                                                     position_manager.Position, main_buffer);
+      if (background_buffer == null)
+        return;
 
       if (hide_progress > 0.0 && theme.CascadeHide) {
         int x, y;
@@ -736,6 +927,7 @@ namespace Plank {
     }
 
     inline Surface get_item_surface (DockItem item, int icon_size) {
+      unowned Surface item_buffer = backend.get_item_buffer ();
       var private_icon_surface = item.get_surface (icon_size, icon_size, item_buffer);
       if (!screen_is_composited)
         return private_icon_surface;
@@ -755,6 +947,7 @@ namespace Plank {
 
     void draw_item (Cairo.Context cr, DockItem item, DockItemDrawValue draw_value, int64 frame_time) {
       unowned PositionManager position_manager = controller.position_manager;
+      unowned Surface item_buffer = backend.get_item_buffer ();
       var icon_size = (int) draw_value.icon_size * window_scale_factor;
       var position = position_manager.Position;
 
@@ -867,7 +1060,7 @@ namespace Plank {
       // load and draw the icon shadow
       Surface? icon_shadow_surface = null;
       if (shadow_size > 0)
-        icon_shadow_surface = item.get_background_surface (icon_size, icon_size, item_buffer, (DrawDataFunc<DockItem>) draw_item_background);
+        icon_shadow_surface = item.get_background_surface (icon_size, icon_size, backend.get_item_buffer (), (DrawDataFunc<DockItem>) draw_item_background);
 
       if (icon_shadow_surface != null) {
         if (window_scale_factor > 1) {
@@ -954,21 +1147,15 @@ namespace Plank {
         return;
 
       unowned PositionManager position_manager = controller.position_manager;
+      unowned Surface item_buffer = backend.get_item_buffer ();
 
-      unowned Surface indicator_surface;
-      var index = indicator_state - 1;
+      unowned Surface? indicator_surface = backend.get_indicator_buffer (
+        indicator_state, item_state,
+        position_manager.IconSize, position_manager.Position,
+        theme, item_buffer);
 
-      if ((item_state & ItemState.URGENT) == 0) {
-        if (indicator_buffer[index] == null)
-          indicator_buffer[index] = theme.create_indicator_for_state (indicator_state, ItemState.NORMAL,
-                                                                      position_manager.IconSize, position_manager.Position, item_buffer);
-        indicator_surface = indicator_buffer[index];
-      } else {
-        if (urgent_indicator_buffer[index] == null)
-          urgent_indicator_buffer[index] = theme.create_indicator_for_state (indicator_state, ItemState.URGENT,
-                                                                             position_manager.IconSize, position_manager.Position, item_buffer);
-        indicator_surface = urgent_indicator_buffer[index];
-      }
+      if (indicator_surface == null)
+        return;
 
       var x = 0.0, y = 0.0;
       switch (position_manager.Position) {
@@ -1006,18 +1193,17 @@ namespace Plank {
       unowned PositionManager position_manager = controller.position_manager;
       var x_offset = 0, y_offset = 0;
 
-      if (urgent_glow_buffer == null) {
-        var urgent_color = (theme.IndicatorStyle == IndicatorStyleType.LEGACY ? theme.get_styled_color () : theme.IndicatorColor);
-        urgent_color.add_hue (theme.UrgentHueShift);
-        urgent_color.set_sat (1.0);
-        urgent_glow_buffer = theme.create_urgent_glow (position_manager.GlowSize, urgent_color, main_buffer);
-      }
+      unowned Surface? urgent_glow_buffer = backend.get_urgent_glow_buffer (
+        position_manager.GlowSize, theme, backend.get_main_buffer ());
+
+      if (urgent_glow_buffer == null)
+        return;
 
       position_manager.get_urgent_glow_position (item, out x_offset, out y_offset);
 
       cr.set_source_surface (urgent_glow_buffer.Internal, x_offset, y_offset);
-      var opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
-      cr.paint_with_alpha (opacity);
+      var glow_opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
+      cr.paint_with_alpha (glow_opacity);
     }
 
     void hidden_changed () {

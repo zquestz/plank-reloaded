@@ -50,6 +50,14 @@ option(
 )
 
 option(
+  'enable-clutter',
+  type: 'combo',
+  choices: ['yes', 'no', 'auto'],
+  value: 'auto',
+  description: 'Enable Clutter GPU rendering backend',
+)
+
+option(
   'production-release',
   type: 'boolean',
   value: false,

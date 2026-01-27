@@ -204,6 +204,28 @@ else
   dbusmenu_gtk_dep = []
 endif
 
+# Support Clutter GPU rendering backend
+enable_clutter = get_option('enable-clutter')
+if enable_clutter != 'no'
+  want_clutter = (enable_clutter == 'yes')
+  clutter_dep = dependency('clutter-1.0', required: false)
+  clutter_gtk_dep = dependency('clutter-gtk-1.0', required: false)
+  if clutter_dep.found() and clutter_gtk_dep.found()
+    add_project_arguments(
+      '--define', 'HAVE_CLUTTER',
+      '--pkg', 'clutter-1.0',
+      '--pkg', 'clutter-gtk-1.0',
+      language: 'vala',
+    )
+    plank_base_dep += [clutter_dep, clutter_gtk_dep]
+  elif want_clutter
+    error('No Clutter support possible which was explicitly requested.')
+  endif
+else
+  clutter_dep = []
+  clutter_gtk_dep = []
+endif
+
 # Support barrier-supported unhiding using Xinput 2.3
 enable_barriers = get_option('enable-barriers')
 if enable_barriers != 'no'

@@ -18,6 +18,13 @@
 //
 
 namespace Plank {
+#if HAVE_CLUTTER
+  /**
+   * Delegate for Clutter canvas drawing.
+   */
+  public delegate void ClutterDrawFunc (Cairo.Context cr, int width, int height);
+#endif
+
   /**
    * The main window for all docks.
    */
@@ -65,6 +72,48 @@ namespace Plank {
     int window_position_retry = 0;
 
     /**
+     * Whether GPU rendering is active.
+     * Defined unconditionally so it can be checked without #if guards.
+     */
+#if HAVE_CLUTTER
+    public bool gpu_rendering_active { get; private set; default = false; }
+#else
+    public bool gpu_rendering_active { get { return false; } }
+#endif
+
+#if HAVE_CLUTTER
+    /**
+     * The GtkClutter.Embed widget for GPU rendering.
+     * This widget embeds a Clutter stage inside the GTK window.
+     */
+    GtkClutter.Embed? clutter_embed = null;
+
+    /**
+     * The Clutter stage for GPU rendering.
+     * The stage is the root of the Clutter scene graph.
+     */
+    Clutter.Actor? clutter_stage = null;
+
+    /**
+     * The main Clutter actor for dock content.
+     * This actor's content is set to a Canvas for Cairo drawing.
+     */
+    Clutter.Actor? dock_actor = null;
+
+    /**
+     * The Clutter canvas for Cairo drawing to GPU.
+     * Cairo draws to this canvas, which is then uploaded to a GPU texture.
+     */
+    Clutter.Canvas? clutter_canvas = null;
+
+    /**
+     * Draw function for Clutter canvas.
+     * This is called by DockRenderer to draw dock content.
+     */
+    unowned ClutterDrawFunc? clutter_draw_func = null;
+#endif
+
+    /**
      * Creates a new dock window.
      */
     public DockWindow (DockController controller) {
@@ -89,6 +138,13 @@ namespace Plank {
                   | Gdk.EventMask.STRUCTURE_MASK);
 
       controller.prefs.notify["HideMode"].connect (set_struts);
+
+#if HAVE_CLUTTER
+      // Initialize GPU rendering if Clutter is available
+      if (ClutterBackend.is_available ()) {
+        setup_clutter_rendering ();
+      }
+#endif
     }
 
     ~DockWindow () {
@@ -103,7 +159,155 @@ namespace Plank {
         GLib.Source.remove (hover_reposition_timer_id);
         hover_reposition_timer_id = 0U;
       }
+
+#if HAVE_CLUTTER
+      cleanup_clutter_rendering ();
+#endif
     }
+
+#if HAVE_CLUTTER
+    /**
+     * Sets up Clutter-based GPU rendering.
+     *
+     * Architecture:
+     * - GtkClutter.Embed is a GTK widget that embeds a Clutter stage
+     * - The stage contains a single actor with a Canvas as its content
+     * - The Canvas provides a Cairo context that renders to a GPU texture
+     * - DockRenderer draws to this context via the clutter_draw_func callback
+     *
+     * This is a hybrid approach: Cairo handles the actual drawing (reusing
+     * existing drawing code), while Clutter handles texture upload and
+     * GPU-accelerated compositing.
+     */
+    void setup_clutter_rendering () {
+      Logger.verbose ("DockWindow: Setting up Clutter GPU rendering");
+
+      // Create the GtkClutter.Embed widget
+      clutter_embed = new GtkClutter.Embed ();
+      clutter_embed.set_use_layout_size (false);
+
+      // Set up RGBA visual on the embed widget for transparency
+      clutter_embed.app_paintable = true;
+      unowned Gdk.Screen screen = clutter_embed.get_screen ();
+      var visual = screen.get_rgba_visual ();
+      if (visual != null) {
+        clutter_embed.set_visual (visual);
+      } else {
+        warning ("RGBA visual not available, dock transparency may not work correctly");
+      }
+
+      // Add embed as child of window
+      add (clutter_embed);
+
+      // Get the stage and configure transparency
+      clutter_stage = clutter_embed.get_stage ();
+
+      // Enable alpha channel on the stage for transparency
+      // This is required for the dock to be see-through
+      var stage = (Clutter.Stage) clutter_stage;
+      stage.use_alpha = true;
+      stage.background_color = { 0, 0, 0, 0 };  // Fully transparent
+
+      // Create the main dock actor with a canvas for Cairo drawing
+      dock_actor = new Clutter.Actor ();
+      clutter_canvas = new Clutter.Canvas ();
+      dock_actor.set_content (clutter_canvas);
+
+      // Use high-quality scaling filters for smooth rendering
+      dock_actor.set_content_scaling_filters (
+        Clutter.ScalingFilter.TRILINEAR,
+        Clutter.ScalingFilter.LINEAR
+      );
+
+      // Connect canvas draw signal - this is where DockRenderer draws
+      clutter_canvas.draw.connect (on_clutter_canvas_draw);
+
+      clutter_stage.add_child (dock_actor);
+      clutter_embed.show ();
+
+      gpu_rendering_active = true;
+    }
+
+    /**
+     * Cleans up Clutter rendering resources.
+     */
+    void cleanup_clutter_rendering () {
+      // Disconnect signal before cleanup
+      if (clutter_canvas != null) {
+        clutter_canvas.draw.disconnect (on_clutter_canvas_draw);
+      }
+
+      if (dock_actor != null) {
+        dock_actor.destroy ();
+        dock_actor = null;
+      }
+      clutter_canvas = null;
+      clutter_stage = null;
+      if (clutter_embed != null) {
+        clutter_embed.destroy ();
+        clutter_embed = null;
+      }
+      gpu_rendering_active = false;
+    }
+
+    /**
+     * Canvas draw signal handler.
+     */
+    bool on_clutter_canvas_draw (Cairo.Context cr, int width, int height) {
+      // Call the registered draw function if set
+      // Note: clutter_draw_func may be null briefly during startup before
+      // DockRenderer.initialize() is called - this is safe as the window
+      // isn't visible yet. Clearing is handled by draw_to_context which
+      // uses SOURCE operator or explicitly clears on early return paths.
+      if (clutter_draw_func != null) {
+        clutter_draw_func (cr, width, height);
+      }
+
+      return true;
+    }
+
+    /**
+     * Sets the draw function for GPU rendering.
+     *
+     * @param func the function to call when drawing
+     */
+    public void set_clutter_draw_func (ClutterDrawFunc? func) {
+      clutter_draw_func = func;
+    }
+
+    /**
+     * Updates the Clutter canvas size.
+     *
+     * @param width the new width
+     * @param height the new height
+     */
+    public void update_clutter_size (int width, int height) {
+      if (!gpu_rendering_active)
+        return;
+
+      if (clutter_canvas != null) {
+        clutter_canvas.set_size (width, height);
+      }
+      if (dock_actor != null) {
+        dock_actor.set_size (width, height);
+      }
+      if (clutter_embed != null) {
+        clutter_embed.set_size_request (width, height);
+      }
+    }
+
+    /**
+     * Invalidates the Clutter canvas to trigger a redraw.
+     */
+    public void invalidate_clutter_canvas () {
+      if (!gpu_rendering_active)
+        return;
+
+      if (clutter_canvas != null) {
+        clutter_canvas.invalidate ();
+      }
+    }
+#endif
 
     /**
      * {@inheritDoc}

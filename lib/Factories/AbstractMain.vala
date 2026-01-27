@@ -256,6 +256,16 @@ namespace Plank {
 #if HAVE_BARRIERS
       message ("+ XInput Barriers support enabled");
 #endif
+#if HAVE_CLUTTER
+      if (ClutterBackend.is_available ()) {
+        message ("+ Clutter GPU rendering available (Clutter %d.%d.%d)",
+                 Clutter.MAJOR_VERSION, Clutter.MINOR_VERSION, Clutter.MICRO_VERSION);
+      } else {
+        message ("- Clutter GPU rendering unavailable (initialization failed)");
+      }
+#else
+      message ("- Clutter GPU rendering not compiled in");
+#endif
       if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
         message ("+ RTL support enabled");
 
