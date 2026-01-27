@@ -59,7 +59,6 @@ namespace Plank {
     Surface? scratch_surface = null;
     int scratch_surface_size = 0;
 
-    Surface? background_buffer = null;
     Gdk.Rectangle background_rect;
 
     int64 last_hide = 0LL;
@@ -119,6 +118,12 @@ namespace Plank {
 
 #if HAVE_CLUTTER
       initialize_clutter ();
+
+      // Per-icon actor mode is opt-in via environment variable for testing
+      // Set PLANK_ACTOR_MODE=1 to enable GPU-accelerated icon transforms
+      if (Environment.get_variable ("PLANK_ACTOR_MODE") == "1") {
+        enable_actor_mode ();
+      }
 #endif
     }
 
@@ -349,6 +354,25 @@ namespace Plank {
       if (controller.window.gpu_rendering_active) {
         controller.window.set_clutter_draw_func (null);
       }
+
+      // Disable actor mode if enabled
+      if (controller.window.actor_mode_active) {
+        unowned ClutterBackend clutter_backend = (ClutterBackend) backend;
+        controller.window.disable_actor_mode (clutter_backend);
+      }
+    }
+
+    /**
+     * Enables per-icon actor mode for GPU-accelerated transforms.
+     * Each dock icon gets its own Clutter.Actor, allowing the GPU to handle
+     * position, scale, and opacity without requiring Cairo redraws.
+     */
+    void enable_actor_mode () {
+      if (!controller.window.gpu_rendering_active)
+        return;
+
+      unowned ClutterBackend clutter_backend = (ClutterBackend) backend;
+      controller.window.enable_actor_mode (clutter_backend);
     }
 
     /**
@@ -362,9 +386,295 @@ namespace Plank {
 
       unowned PositionManager position_manager = controller.position_manager;
       var win_rect = position_manager.get_dock_window_region ();
+
+      // Use actor mode if enabled, otherwise fall back to canvas mode
+      if (controller.window.actor_mode_active) {
+        int64 local_frame_time = force_frame_time_update ();
+        initialize_frame (local_frame_time);
+        draw_with_actors (local_frame_time);
+        return true;
+      }
+
       controller.window.update_clutter_size (win_rect.width, win_rect.height);
       controller.window.invalidate_clutter_canvas ();
       return true;
+    }
+
+    /**
+     * Renders the dock using per-icon Clutter actors.
+     * GPU handles position/scale/opacity transforms without redrawing.
+     *
+     * This method handles:
+     * - Background rendering via background actor/canvas
+     * - Per-icon actors with shadows and indicators
+     * - Lighten/darken effects via texture redraw
+     * - GPU-accelerated position, scale, and opacity transforms
+     *
+     * Current limitations compared to canvas mode:
+     * - Active glow behind icons is not rendered (would need per-icon glow actors)
+     * - Urgent glow when dock is hidden is not rendered (would need separate glow layer)
+     *
+     * To enable actor mode, set environment variable: PLANK_ACTOR_MODE=1
+     */
+    void draw_with_actors (int64 local_frame_time) {
+      if (current_items.is_empty)
+        return;
+
+      unowned PositionManager position_manager = controller.position_manager;
+      unowned DockItem dragged_item = controller.drag_manager.DragItem;
+      unowned ClutterBackend clutter_backend = (ClutterBackend) backend;
+
+      // Update backend state
+      backend.update_scale_factor (controller.window);
+      window_scale_factor = backend.window_scale_factor;
+      backend.begin_frame (local_frame_time, hide_progress, opacity, zoom_in_progress);
+
+      var win_rect = position_manager.get_dock_window_region ();
+      var icon_size = position_manager.IconSize;
+
+      // Sync icon actors with visible items
+      clutter_backend.sync_icon_actors (current_items);
+
+      // Get model surface for texture updates
+      unowned Surface? model = clutter_backend.get_model_surface ();
+      if (model == null) {
+        // Need to initialize surfaces first
+        unowned Cairo.ImageSurface main_surface;
+        unowned Cairo.ImageSurface item_surface;
+        unowned Cairo.ImageSurface shadow_surface;
+        clutter_backend.get_clutter_surfaces (win_rect.width, win_rect.height,
+                                               window_scale_factor,
+                                               out main_surface, out item_surface,
+                                               out shadow_surface);
+        model = clutter_backend.get_model_surface ();
+      }
+
+      // Ensure standard buffers are allocated for indicator/background drawing
+      if (model != null) {
+        backend.ensure_buffers (win_rect.width, win_rect.height, model.Internal);
+      }
+
+      // Check if dock is completely hidden
+      var dock_hidden = (!is_first_frame && hide_progress == 1.0 && opacity == 1.0);
+
+      // Calculate drawing offset for slide animation (when FadeOpacity == 1.0)
+      var x_offset = 0, y_offset = 0;
+      if (opacity == 1.0)
+        position_manager.get_dock_draw_position (out x_offset, out y_offset);
+
+      // Update background actor
+      if (clutter_backend.background_actor != null) {
+        if (dock_hidden) {
+          clutter_backend.background_actor.hide ();
+        } else {
+          // Set background draw callback - canvas draws at 0,0, actor position handles offset
+          clutter_backend.set_background_draw_func (draw_actor_background);
+
+          // Apply cascade hide offset to background position
+          var bg_x = background_rect.x + x_offset;
+          var bg_y = background_rect.y + y_offset;
+
+          if (hide_progress > 0.0 && theme.CascadeHide) {
+            int px, py;
+            position_manager.get_background_padding (out px, out py);
+            bg_x -= (int) (px * hide_progress);
+            bg_y -= (int) (py * hide_progress);
+          }
+
+          clutter_backend.background_actor.set_position (bg_x, bg_y);
+          clutter_backend.update_background_size (
+            background_rect.width, background_rect.height, window_scale_factor);
+          clutter_backend.invalidate_background ();
+          clutter_backend.background_actor.set_opacity ((uint8) (opacity * 255));
+          clutter_backend.background_actor.show ();
+        }
+      }
+
+      // Calculate overall dock opacity (combines hide_progress and fade opacity)
+      var dock_opacity = dock_hidden ? 0.0 : opacity;
+
+      // Get shadow size from theme
+      var scaled_icon_size = icon_size / 10.0;
+      var shadow_size = theme.IconShadowSize * scaled_icon_size;
+
+      // Update each icon actor
+      foreach (unowned DockItem item in current_items) {
+        var icon_actor = clutter_backend.get_icon_actor (item);
+
+        // Set drawing references for the actor
+        icon_actor.set_draw_references (theme, position_manager, backend, get_item_shadow_surface);
+
+        if (!item.IsVisible || item == dragged_item) {
+          icon_actor.hide ();
+          continue;
+        }
+
+        var draw_value = position_manager.get_draw_value_for_item (item);
+
+        // Apply draw value animations (modifies draw_value in place)
+        animate_draw_value_for_item (item, draw_value);
+
+        // Ensure texture is correct size (base icon size, not zoomed)
+        // Include shadow size for shadow actor
+        icon_actor.ensure_size (icon_size, window_scale_factor, shadow_size);
+
+        // Set lighten/darken effects (will trigger redraw if changed)
+        icon_actor.set_lighten (draw_value.lighten);
+        icon_actor.set_darken (draw_value.darken);
+
+        // Set indicator state
+        if (draw_value.show_indicator) {
+          icon_actor.set_indicator_state (item.Indicator, item.State);
+        } else {
+          icon_actor.set_indicator_state (IndicatorState.NONE, item.State);
+        }
+
+        // Calculate active glow opacity
+        var active_time = int64.max (0LL, local_frame_time - item.LastActive);
+        var glow_opacity = double.min (1, active_time / (double) (theme.ActiveTime * 1000));
+        if ((item.State & ItemState.ACTIVE) == 0) {
+          glow_opacity = 1 - glow_opacity;
+        }
+
+        // Set active glow state
+        if (glow_opacity > 0) {
+          var glow_color = (theme.use_average_icon_color () ? item.AverageIconColor : theme.ActiveItemColor);
+          icon_actor.set_glow_state (glow_opacity, glow_color, draw_value.background_region, background_rect);
+        } else {
+          icon_actor.set_glow_state (0, theme.ActiveItemColor, draw_value.background_region, background_rect);
+        }
+
+        // Get draw_region for positioning context (needed for indicator placement)
+        var draw_region = draw_value.draw_region;
+
+        // Calculate scale from icon_size ratio (needed for indicator positioning)
+        var scale = draw_value.icon_size / (double) icon_size;
+
+        // Set position context for indicator placement (dock buffer dimensions,
+        // container position, and scale). The indicator needs to know the dock edge
+        // position to match Cairo path behavior where indicators are at a fixed
+        // dock edge offset. Scale is needed to counteract the container scaling
+        // so the indicator stays at the dock edge during zoom animations.
+        icon_actor.set_position_context (
+          win_rect.width, win_rect.height,
+          (float) (draw_region.x + x_offset), (float) (draw_region.y + y_offset),
+          (float) scale
+        );
+
+        // Position indicator relative to dock edge (must be done before update_textures
+        // so the indicator canvas is sized before invalidation)
+        icon_actor.position_indicator ();
+
+        // Update glow position and size
+        icon_actor.update_glow ();
+
+        // Update textures if content changed
+        if (model != null) {
+          icon_actor.update_textures (model);
+        }
+
+        // Set actor transforms (GPU handles these without redraw)
+        // Note: draw_region was already computed above for indicator positioning
+        icon_actor.set_position ((float) (draw_region.x + x_offset), (float) (draw_region.y + y_offset));
+        icon_actor.set_scale (scale, scale);
+
+        // Combine item opacity with dock opacity
+        var final_opacity = draw_value.opacity * dock_opacity;
+        icon_actor.set_opacity ((uint8) (final_opacity * 255));
+
+        // Show/hide based on visibility
+        if (dock_hidden || final_opacity <= 0.0) {
+          icon_actor.hide ();
+        } else {
+          icon_actor.show ();
+        }
+      }
+
+      // Handle urgent glow - only shown when dock is hidden
+      // When dock is visible, the icon actors handle their own rendering
+      if (dock_hidden && show_notifications) {
+        bool has_urgent = false;
+        foreach (unowned DockItem item in current_items) {
+          if ((item.State & ItemState.URGENT) != 0) {
+            var urgent_diff = int64.max (0LL, local_frame_time - item.LastUrgent);
+            if (urgent_diff < theme.GlowTime * 1000) {
+              has_urgent = true;
+              break;
+            }
+          }
+        }
+
+        if (has_urgent && clutter_backend.urgent_glow_actor != null) {
+          // Set up urgent glow drawing
+          clutter_backend.set_urgent_glow_draw_func ((cr, width, height) => {
+            draw_urgent_glow_actors (cr, width, height, local_frame_time);
+          });
+          clutter_backend.update_urgent_glow (win_rect.width, win_rect.height, 0, 0);
+          clutter_backend.invalidate_urgent_glow ();
+          clutter_backend.urgent_glow_actor.show ();
+        } else if (clutter_backend.urgent_glow_actor != null) {
+          clutter_backend.urgent_glow_actor.hide ();
+        }
+      } else if (clutter_backend.urgent_glow_actor != null) {
+        // Dock is visible - hide the urgent glow actor
+        clutter_backend.urgent_glow_actor.hide ();
+      }
+
+      // Handle first frame setup
+      if (is_first_frame) {
+        message ("Rendering: GPU (Clutter Actor Mode)");
+
+        // Workaround for bug #1256626 - plank not appearing after login
+        Gdk.threads_add_idle_full (GLib.Priority.LOW, () => {
+          unowned HideManager hide_manager = controller.hide_manager;
+
+          if (hide_manager.Hidden)
+            return false;
+
+          hide_manager.update_hovered ();
+          last_hide = force_frame_time_update ();
+          hidden_changed ();
+          return false;
+        });
+
+        is_first_frame = false;
+      }
+
+      backend.end_frame ();
+    }
+
+    /**
+     * Draws the dock background for actor mode.
+     * Called via the background canvas draw callback.
+     * Canvas draws at 0,0 - actor position handles the actual screen position.
+     */
+    void draw_actor_background (Cairo.Context cr, int width, int height) {
+      unowned PositionManager position_manager = controller.position_manager;
+
+      unowned Surface? bg_buffer = backend.get_background_buffer (
+        background_rect.width, background_rect.height,
+        theme, position_manager.Position, backend.get_main_buffer ());
+
+      if (bg_buffer == null)
+        return;
+
+      // Draw background at origin - actor position handles screen placement
+      cr.set_source_surface (bg_buffer.Internal, 0, 0);
+      cr.paint ();
+    }
+
+    /**
+     * Gets the shadow surface for an item (used by ClutterIconActor).
+     * This wraps the existing draw_item_background callback.
+     *
+     * @param width the shadow surface width
+     * @param height the shadow surface height
+     * @param model the model surface
+     * @param item the dock item
+     * @return the shadow surface
+     */
+    Surface? get_item_shadow_surface (int width, int height, Surface model, DockItem item) {
+      return item.get_background_surface (width, height, model, (DrawDataFunc<DockItem>) draw_item_background);
     }
 
     /**
@@ -464,12 +774,33 @@ namespace Plank {
       // Clear the cached surfaces before drawing
       clutter_backend.clear_clutter_surfaces ();
 
-      var main_cr = new Cairo.Context (main_surface);
-      var item_cr = new Cairo.Context (item_surface);
-      var shadow_cr = new Cairo.Context (shadow_surface);
+      // Get cached Cairo.Context objects from ClutterBackend to avoid per-frame allocation
+      unowned Cairo.Context? main_cr;
+      unowned Cairo.Context? item_cr;
+      unowned Cairo.Context? shadow_cr;
+      clutter_backend.get_draw_contexts (out main_cr, out item_cr, out shadow_cr);
 
-      // composite dock layers and make sure to draw onto the canvas with one operation
+      // Fallback: create new contexts if cached ones aren't available (shouldn't happen)
+      Cairo.Context? main_cr_fallback = null;
+      Cairo.Context? item_cr_fallback = null;
+      Cairo.Context? shadow_cr_fallback = null;
+      if (main_cr == null) {
+        main_cr_fallback = new Cairo.Context (main_surface);
+        main_cr = main_cr_fallback;
+      }
+      if (item_cr == null) {
+        item_cr_fallback = new Cairo.Context (item_surface);
+        item_cr = item_cr_fallback;
+      }
+      if (shadow_cr == null) {
+        shadow_cr_fallback = new Cairo.Context (shadow_surface);
+        shadow_cr = shadow_cr_fallback;
+      }
+
+      // Reset context state for this frame (contexts are reused)
       main_cr.set_operator (Cairo.Operator.OVER);
+      item_cr.set_operator (Cairo.Operator.OVER);
+      shadow_cr.set_operator (Cairo.Operator.OVER);
 
 #if BENCHMARK
       start2 = new DateTime.now_local ();
@@ -1262,6 +1593,36 @@ namespace Plank {
       cr.set_source_surface (urgent_glow_buffer.Internal, x_offset, y_offset);
       var glow_opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
       cr.paint_with_alpha (glow_opacity);
+    }
+
+    /**
+     * Draws urgent glow for all urgent items in actor mode.
+     * Called via the urgent glow canvas draw callback.
+     */
+    void draw_urgent_glow_actors (Cairo.Context cr, int width, int height, int64 frame_time) {
+      unowned PositionManager position_manager = controller.position_manager;
+
+      foreach (unowned DockItem item in current_items) {
+        if ((item.State & ItemState.URGENT) == 0)
+          continue;
+
+        var diff = int64.max (0LL, frame_time - item.LastUrgent);
+        if (diff >= theme.GlowTime * 1000)
+          continue;
+
+        unowned Surface? urgent_glow_buffer = backend.get_urgent_glow_buffer (
+          position_manager.GlowSize, theme, backend.get_main_buffer ());
+
+        if (urgent_glow_buffer == null)
+          continue;
+
+        int x_offset, y_offset;
+        position_manager.get_urgent_glow_position (item, out x_offset, out y_offset);
+
+        cr.set_source_surface (urgent_glow_buffer.Internal, x_offset, y_offset);
+        var glow_opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
+        cr.paint_with_alpha (glow_opacity);
+      }
     }
 
     void hidden_changed () {

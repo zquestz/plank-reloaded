@@ -114,6 +114,12 @@ namespace Plank {
      * This is called by DockRenderer to draw dock content.
      */
     unowned ClutterDrawFunc? clutter_draw_func = null;
+
+    /**
+     * Whether per-icon actor mode is enabled.
+     * When true, each icon has its own Clutter.Actor for GPU transforms.
+     */
+    public bool actor_mode_active { get; private set; default = false; }
 #endif
 
     /**
@@ -231,6 +237,62 @@ namespace Plank {
       clutter_embed.show ();
 
       gpu_rendering_active = true;
+    }
+
+    /**
+     * Enables per-icon actor mode for GPU-accelerated transforms.
+     * This creates individual Clutter actors for each dock icon,
+     * allowing the GPU to handle position/scale/opacity without redrawing.
+     *
+     * @param backend the ClutterBackend to enable actor mode on
+     */
+    public void enable_actor_mode (ClutterBackend backend) {
+      if (!gpu_rendering_active || actor_mode_active)
+        return;
+
+      if (clutter_stage == null)
+        return;
+
+      // Hide the main dock actor (we'll use per-icon actors instead)
+      if (dock_actor != null) {
+        dock_actor.hide ();
+      }
+
+      // Enable actor mode on the backend
+      backend.enable_actor_mode (clutter_stage);
+      actor_mode_active = true;
+
+      Logger.verbose ("DockWindow: Per-icon actor mode enabled");
+    }
+
+    /**
+     * Disables per-icon actor mode and returns to canvas mode.
+     *
+     * @param backend the ClutterBackend to disable actor mode on
+     */
+    public void disable_actor_mode (ClutterBackend backend) {
+      if (!actor_mode_active)
+        return;
+
+      backend.disable_actor_mode ();
+
+      // Show the main dock actor again
+      if (dock_actor != null) {
+        dock_actor.show ();
+      }
+
+      actor_mode_active = false;
+
+      Logger.verbose ("DockWindow: Per-icon actor mode disabled");
+    }
+
+    /**
+     * Gets the Clutter stage for direct actor manipulation.
+     *
+     * @return the Clutter stage, or null if GPU rendering is not active
+     */
+    public unowned Clutter.Actor? get_stage () {
+      return clutter_stage;
     }
 
     /**

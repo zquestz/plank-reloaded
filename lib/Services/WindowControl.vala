@@ -44,36 +44,18 @@ namespace Plank {
     static Wnck.Window? delayed_focus_window = null;
 
     /**
-     * Process a list of windows with a delayed action between each.
-     * This avoids blocking the main thread with Thread.usleep.
+     * Process a list of windows with an action.
      *
-     * @param windows the array of windows to process
+     * @param windows the list of windows to process
      * @param action the action to perform on each window
      * @param event_time the event time for window operations
      */
     delegate void WindowAction (Wnck.Window window, uint32 event_time);
 
-    static void process_windows_delayed (Gee.ArrayList<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
-      if (windows.size == 0)
-        return;
-
-      process_next_window (windows, 0, action, event_time);
-    }
-
-    static void process_next_window (Gee.ArrayList<unowned Wnck.Window> windows, int index, WindowAction action, uint32 event_time) {
-      if (index >= windows.size)
-        return;
-
-      unowned Wnck.Window? window = windows[index];
-      if (window != null)
-        action (window, event_time);
-
-      var next_index = index + 1;
-      if (next_index < windows.size) {
-        Gdk.threads_add_timeout (WINDOW_GROUP_DELAY, () => {
-          process_next_window (windows, next_index, action, event_time);
-          return false;
-        });
+    static void process_windows (Gee.ArrayList<unowned Wnck.Window> windows, WindowAction action, uint32 event_time) {
+      foreach (unowned Wnck.Window window in windows) {
+        if (window != null)
+          action (window, event_time);
       }
     }
 
@@ -477,7 +459,7 @@ namespace Plank {
         }
       }
 
-      process_windows_delayed (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
+      process_windows (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
     }
 
     public static void restore (Bamf.Application app, uint32 event_time) {
@@ -493,7 +475,7 @@ namespace Plank {
         }
       }
 
-      process_windows_delayed (windows_to_restore, (w, t) => { w.unminimize (t); }, event_time);
+      process_windows (windows_to_restore, (w, t) => { w.unminimize (t); }, event_time);
     }
 
     public static void maximize (Bamf.Application app) {
@@ -563,7 +545,7 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (w.is_minimized () && w.is_in_viewport (active_workspace))
               windows_to_unminimize.add (w);
-          process_windows_delayed (windows_to_unminimize, (w, t) => { w.unminimize (t); }, event_time);
+          process_windows (windows_to_unminimize, (w, t) => { w.unminimize (t); }, event_time);
           return;
         }
       }
@@ -577,12 +559,13 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (!w.is_minimized () && w.is_in_viewport (active_workspace) && w.get_window_type () != Wnck.WindowType.DOCK)
               windows_to_minimize.add (w);
-          process_windows_delayed (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
+          process_windows (windows_to_minimize, (w, t) => { w.minimize (); }, 0);
           return;
         }
       }
 
       // Get all windows on the current workspace in the foreground
+      // Check if any window of this app is visible on current viewport
       foreach (unowned Wnck.Window window in windows) {
         unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
         if (active_workspace != null && window.is_in_viewport (active_workspace)) {
@@ -590,7 +573,7 @@ namespace Plank {
           foreach (unowned Wnck.Window w in windows)
             if (w.is_in_viewport (active_workspace))
               windows_to_focus.add (w);
-          process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
+          process_windows (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
           return;
         }
       }
@@ -618,15 +601,11 @@ namespace Plank {
 
       // Focus the additional windows first, then the target window
       if (windows_to_focus.size > 0) {
-        process_windows_delayed (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
+        process_windows (windows_to_focus, (w, t) => { center_and_focus_window (w, t); }, event_time);
 
-        // Schedule target window focus after all other windows are processed
-        var delay = (uint) (windows_to_focus.size * WINDOW_GROUP_DELAY + WINDOW_GROUP_DELAY);
-        Gdk.threads_add_timeout (delay, () => {
-          center_and_focus_window (targetWindow, event_time);
-          schedule_delayed_focus (targetWindow, additional_windows, event_time);
-          return false;
-        });
+        // Focus target window after processing others
+        center_and_focus_window (targetWindow, event_time);
+        schedule_delayed_focus (targetWindow, additional_windows, event_time);
       } else {
         center_and_focus_window (targetWindow, event_time);
         schedule_delayed_focus (targetWindow, additional_windows, event_time);

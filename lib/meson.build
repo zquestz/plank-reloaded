@@ -19,6 +19,7 @@ plank_lib_sources = [
   'Drawing/RenderBackend.vala',
   'Drawing/CairoBackend.vala',
   'Drawing/ClutterBackend.vala',
+  'Drawing/ClutterIconActor.vala',
   'Drawing/Renderer.vala',
   'Drawing/Surface.vala',
   'Drawing/SurfaceCache.vala',
