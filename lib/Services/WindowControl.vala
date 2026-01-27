@@ -114,6 +114,8 @@ namespace Plank {
     static void process_pending_operations () {
       while (true) {
         // Get current operation from front of queue
+        // When empty, set pending_queue to null to free memory - a new queue
+        // will be allocated on demand when the next operation is queued
         if (pending_queue == null || pending_queue.is_empty) {
           pending_queue = null;
           pending_timer_id = 0U;

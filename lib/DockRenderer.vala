@@ -309,10 +309,11 @@ namespace Plank {
               transient_items_it.remove ();
             }
           } else if (remove_time > 0) {
-            // Item is being removed - not in new_items, so skip contains() check
+            // Item is being removed
             move_time = frame_time - remove_time;
             if (move_time < move_duration) {
-              current_items.add (item);
+              if (!current_items.contains (item))
+                current_items.add (item);
             } else {
               transient_items_it.remove ();
             }
