@@ -960,6 +960,11 @@ namespace Plank {
       double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
       double zoom_icon_size = ZoomIconSize;
 
+      // Fast path: when no zoom is active (idle state), skip expensive zoom calculations
+      bool no_zoom_active = (zoom_in_percent == 1.0 && !expand_for_drop);
+      double static_center_height = icon_size / 2.0;
+      bool is_horizontal = is_horizontal_dock ();
+
       for (int idx = 0; idx < items.size; idx++) {
         unowned DockItem item = items[idx];
         unowned DockItemDrawValue val = item.draw_value;
@@ -972,75 +977,87 @@ namespace Plank {
 
         val.static_center = center;
 
-        // get us some handy doubles with fancy names
-        double cursor_position = cursor.x;
-        double center_position = center.x;
+        double center_position;
+        double zoomed_center_height;
 
-        // offset from the center of the true position, ranged between 0 and the zoom size
-        double offset = double.min (Math.fabs (cursor_position - center_position), zoom_icon_size);
-
-        double offset_percent;
-        if (expand_for_drop) {
-          double orig_offset = offset;
-          offset += offset * zoom_icon_size / icon_size;
-          offset_percent = double.min (orig_offset / zoom_icon_size, offset / (2.0 * zoom_icon_size));
+        if (no_zoom_active) {
+          // Fast path: no zoom calculations needed
+          center_position = Math.round (center.x);
+          zoomed_center_height = static_center_height;
+          val.icon_size = icon_size;
         } else {
-          offset_percent = offset / zoom_icon_size;
-        }
+          // Full zoom calculation path
+          // get us some handy doubles with fancy names
+          double cursor_position = cursor.x;
+          center_position = center.x;
 
-        if (offset_percent > 0.99)
-          offset_percent = 1.0;
+          // offset from the center of the true position, ranged between 0 and the zoom size
+          double offset = double.min (Math.fabs (cursor_position - center_position), zoom_icon_size);
 
-        // pull in our offset to make things less spaced out
-        // explaination since this is a bit tricky...
-        // we have three terms, basically offset = f(x) * h(x) * g(x)
-        // f(x) == offset identity
-        // h(x) == a number from 0 to DockPreference.ZoomPercent - 1.  This is used to get the smooth "zoom in" effect.
-        // additionally serves to "curve" the offset based on the max zoom
-        // g(x) == a term used to move the ends of the zoom inward.  Precalculated that the edges should be 66% of the current
-        // value. The center is 100%. (1 - offset_percent) == 0,1 distance from center
-        // The .66 value comes from the area under the curve.  Dont ask me to explain it too much because it's too clever for me.
-
-        if (expand_for_drop) {
-          double zoom_adjust = 1.0;
-          if (zoom_enabled) {
-            zoom_adjust = 1 + (icon_size / zoom_icon_size);
+          double offset_percent;
+          if (expand_for_drop) {
+            double orig_offset = offset;
+            offset += offset * zoom_icon_size / icon_size;
+            offset_percent = double.min (orig_offset / zoom_icon_size, offset / (2.0 * zoom_icon_size));
+          } else {
+            offset_percent = offset / zoom_icon_size;
           }
-          offset *= zoom_in_progress / zoom_adjust;
-        } else {
-          offset *= zoom_in_percent - 1.0;
+
+          if (offset_percent > 0.99)
+            offset_percent = 1.0;
+
+          // pull in our offset to make things less spaced out
+          // explaination since this is a bit tricky...
+          // we have three terms, basically offset = f(x) * h(x) * g(x)
+          // f(x) == offset identity
+          // h(x) == a number from 0 to DockPreference.ZoomPercent - 1.  This is used to get the smooth "zoom in" effect.
+          // additionally serves to "curve" the offset based on the max zoom
+          // g(x) == a term used to move the ends of the zoom inward.  Precalculated that the edges should be 66% of the current
+          // value. The center is 100%. (1 - offset_percent) == 0,1 distance from center
+          // The .66 value comes from the area under the curve.  Dont ask me to explain it too much because it's too clever for me.
+
+          if (expand_for_drop) {
+            double zoom_adjust = 1.0;
+            if (zoom_enabled) {
+              zoom_adjust = 1 + (icon_size / zoom_icon_size);
+            }
+            offset *= zoom_in_progress / zoom_adjust;
+          } else {
+            offset *= zoom_in_percent - 1.0;
+          }
+          offset *= 1.0 - offset_percent / 3.0;
+
+          if (cursor_position > center_position)
+            center_position -= offset;
+          else
+            center_position += offset;
+
+          // zoom is calculated as 1 through target_zoom (default 2).
+          // The larger your offset, the smaller your zoom
+
+          // First we get the point on our curve that defines our current zoom
+          // offset is always going to fall on a point on the curve >= 0
+          var zoom = 1.0 - Math.pow (offset_percent, 2);
+
+          // scale this to match our zoom_in_percent
+          if (item.AllowZoom) {
+            zoom = 1.0 + zoom * (zoom_in_percent - 1.0);
+          } else {
+            zoom = 1.0;
+          }
+          zoomed_center_height = (icon_size * zoom / 2.0);
+
+          if (zoom == 1.0)
+            center_position = Math.round (center_position);
+
+          val.zoom = zoom;
+          val.icon_size = Math.round (zoom * icon_size);
         }
-        offset *= 1.0 - offset_percent / 3.0;
-
-        if (cursor_position > center_position)
-          center_position -= offset;
-        else
-          center_position += offset;
-
-        // zoom is calculated as 1 through target_zoom (default 2).
-        // The larger your offset, the smaller your zoom
-
-        // First we get the point on our curve that defines our current zoom
-        // offset is always going to fall on a point on the curve >= 0
-        var zoom = 1.0 - Math.pow (offset_percent, 2);
-
-        // scale this to match our zoom_in_percent
-        if (item.AllowZoom) {
-          zoom = 1.0 + zoom * (zoom_in_percent - 1.0);
-        } else {
-          zoom = 1.0;
-        }
-        double zoomed_center_height = (icon_size * zoom / 2.0);
-
-        if (zoom == 1.0)
-          center_position = Math.round (center_position);
 
         val.center = { center_position, zoomed_center_height };
-        val.zoom = zoom;
-        val.icon_size = Math.round (zoom * icon_size);
 
         // now we undo our transforms to the point
-        if (!is_horizontal_dock ()) {
+        if (!is_horizontal) {
           double tmp = val.center.y;
           val.center.y = val.center.x;
           val.center.x = tmp;

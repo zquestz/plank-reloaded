@@ -54,6 +54,11 @@ namespace Plank {
     Surface? item_buffer = null;
     Surface? shadow_buffer = null;
 
+    // Reusable scratch surface for icon modifications (lighten/darken/overlay)
+    // Avoids per-frame allocations when drawing modified icons
+    Surface? scratch_surface = null;
+    int scratch_surface_size = 0;
+
     Surface? background_buffer = null;
     Gdk.Rectangle background_rect;
     Surface[] indicator_buffer = new Surface[2];
@@ -197,6 +202,8 @@ namespace Plank {
       fade_buffer = null;
       item_buffer = null;
       shadow_buffer = null;
+      scratch_surface = null;
+      scratch_surface_size = 0;
 
       background_buffer = null;
       indicator_buffer[0] = null;
@@ -415,6 +422,9 @@ namespace Plank {
       benchmark.add ("background render time - %f ms".printf (end2.difference (start2) / 1000.0));
 #endif
 
+      // Cache shadow size check to avoid repeated method calls in loop
+      bool has_shadows = (theme.IconShadowSize > 0);
+
       // draw each item onto the dock buffer
       foreach (unowned DockItem item in current_items) {
 #if BENCHMARK
@@ -424,7 +434,8 @@ namespace Plank {
         if (item.IsVisible && dragged_item != item) {
           var draw_value = position_manager.get_draw_value_for_item (item);
           draw_item (item_cr, item, draw_value, frame_time);
-          draw_item_shadow (shadow_cr, item, draw_value);
+          if (has_shadows)
+            draw_item_shadow (shadow_cr, item, draw_value);
         }
 #if BENCHMARK
         end2 = new DateTime.now_local ();
@@ -530,85 +541,81 @@ namespace Plank {
       var position = position_manager.Position;
       var x_offset = 0.0, y_offset = 0.0;
 
-      // check for and calculate click-animation
-      var max_click_time = item.ClickedAnimation == AnimationType.BOUNCE ? theme.LaunchBounceTime : theme.ClickTime;
-      max_click_time *= 1000;
-      var click_time = int64.max (0LL, frame_time - item.LastClicked);
-      if (click_time < max_click_time) {
-        var click_animation_progress = click_time / (double) max_click_time;
+      // Cache commonly used duration values (avoid repeated multiplications)
+      var item_move_duration = theme.ItemMoveTime * 1000;
 
-        switch (item.ClickedAnimation) {
-        default:
-        case AnimationType.NONE:
-          break;
-        case AnimationType.BOUNCE:
-          if (screen_is_composited)
-            y_offset += position_manager.LaunchBounceHeight * easing_bounce (click_time, max_click_time, 2);
-          break;
-        case AnimationType.DARKEN:
-          draw_value.darken = Math.sin (Math.PI * click_animation_progress) * 0.5;
-          break;
-        case AnimationType.LIGHTEN:
-          draw_value.lighten = Math.sin (Math.PI * click_animation_progress) * 0.5;
-          break;
+      // check for and calculate click-animation
+      // Only calculate if animation type is not NONE to avoid unnecessary work
+      if (item.ClickedAnimation != AnimationType.NONE) {
+        var max_click_time = item.ClickedAnimation == AnimationType.BOUNCE ? theme.LaunchBounceTime * 1000 : theme.ClickTime * 1000;
+        var click_time = int64.max (0LL, frame_time - item.LastClicked);
+        if (click_time < max_click_time) {
+          var click_animation_progress = click_time / (double) max_click_time;
+
+          switch (item.ClickedAnimation) {
+          case AnimationType.BOUNCE:
+            if (screen_is_composited)
+              y_offset += position_manager.LaunchBounceHeight * easing_bounce (click_time, max_click_time, 2);
+            break;
+          case AnimationType.DARKEN:
+            draw_value.darken = Math.sin (Math.PI * click_animation_progress) * 0.5;
+            break;
+          case AnimationType.LIGHTEN:
+            draw_value.lighten = Math.sin (Math.PI * click_animation_progress) * 0.5;
+            break;
+          default:
+            break;
+          }
         }
       }
 
       // check for and calculate scroll-animation
-      var max_scroll_time = ITEM_SCROLL_DURATION * 1000;
-      var scroll_time = int64.max (0LL, frame_time - item.LastScrolled);
-      if (scroll_time < max_scroll_time) {
-        var scroll_animation_progress = scroll_time / (double) max_scroll_time;
+      if (item.ScrolledAnimation != AnimationType.NONE) {
+        var max_scroll_time = ITEM_SCROLL_DURATION * 1000;
+        var scroll_time = int64.max (0LL, frame_time - item.LastScrolled);
+        if (scroll_time < max_scroll_time) {
+          var scroll_animation_progress = scroll_time / (double) max_scroll_time;
 
-        switch (item.ScrolledAnimation) {
-        default:
-        case AnimationType.NONE:
-          break;
-        case AnimationType.DARKEN:
-          draw_value.darken = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
-          break;
-        case AnimationType.LIGHTEN:
-          draw_value.lighten = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
-          break;
+          switch (item.ScrolledAnimation) {
+          case AnimationType.DARKEN:
+            draw_value.darken = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
+            break;
+          case AnimationType.LIGHTEN:
+            draw_value.lighten = Math.sin (Math.PI * scroll_animation_progress) * 0.5;
+            break;
+          default:
+            break;
+          }
         }
       }
 
       // check for and calculate hover-animation
       var max_hover_time = ITEM_HOVER_DURATION * 1000;
       var hover_time = int64.max (0LL, frame_time - item.LastHovered);
-      if (hover_time < max_hover_time) {
-        var hover_animation_progress = 0.0;
-        if (hovered_item == item) {
-          hover_animation_progress = easing_for_mode (AnimationMode.LINEAR, hover_time, max_hover_time);
-        } else {
-          hover_animation_progress = 1.0 - easing_for_mode (AnimationMode.LINEAR, hover_time, max_hover_time);
-        }
+      bool is_hovered = (hovered_item == item);
 
-        switch (item.HoveredAnimation) {
-        default:
-        case AnimationType.NONE:
-          break;
-        case AnimationType.LIGHTEN:
+      if (hover_time < max_hover_time) {
+        if (item.HoveredAnimation == AnimationType.LIGHTEN) {
+          var hover_animation_progress = is_hovered
+            ? easing_for_mode (AnimationMode.LINEAR, hover_time, max_hover_time)
+            : 1.0 - easing_for_mode (AnimationMode.LINEAR, hover_time, max_hover_time);
           draw_value.lighten = hover_animation_progress * 0.2;
-          break;
         }
-      } else if (hovered_item == item) {
-        if (item.is_separator ()) {
-          draw_value.lighten = 0.0;
-        } else {
-          draw_value.lighten = 0.2;
-        }
+      } else if (is_hovered && !item.is_separator ()) {
+        // Steady-state hover: constant lighten value
+        draw_value.lighten = 0.2;
       }
 
-      if (hovered_item == item && controller.window.menu_is_visible ())
+      // Handle menu and drag states (quick checks)
+      if (is_hovered && controller.window.menu_is_visible ())
         draw_value.darken += 0.4;
       else if (drag_manager.ExternalDragActive
                && drag_manager.DragNeedsCheck
                && !drag_manager.drop_is_accepted_by (item))
         draw_value.darken += 0.6;
 
-      // bounce icon on urgent state
-      if (screen_is_composited && show_notifications && (item.State & ItemState.URGENT) != 0) {
+      // bounce icon on urgent state - only check if state flag is set
+      if ((item.State & ItemState.URGENT) != 0 && screen_is_composited && show_notifications) {
         var urgent_duration = theme.UrgentBounceTime * 1000;
         var urgent_time = int64.max (0LL, frame_time - item.LastUrgent);
         if (urgent_time < urgent_duration)
@@ -619,48 +626,45 @@ namespace Plank {
       unowned DockContainer? container = item.Container;
       var allow_animation = (screen_is_composited && (container == null || container.AddTime < item.AddTime));
       if (allow_animation && item.AddTime > item.RemoveTime) {
-        var move_duration = theme.ItemMoveTime * 1000;
         var move_time = int64.max (0LL, frame_time - item.AddTime);
-        if (move_time < move_duration) {
-          var move_animation_progress = 1.0 - easing_for_mode (AnimationMode.LINEAR, move_time, move_duration);
-          draw_value.opacity = easing_for_mode (AnimationMode.EASE_IN_EXPO, move_time, move_duration);
+        if (move_time < item_move_duration) {
+          var move_animation_progress = 1.0 - easing_for_mode (AnimationMode.LINEAR, move_time, item_move_duration);
+          draw_value.opacity = easing_for_mode (AnimationMode.EASE_IN_EXPO, move_time, item_move_duration);
           y_offset -= move_animation_progress * (icon_size + position_manager.BottomPadding);
           draw_value.show_indicator = false;
 
           // calculate the resulting incremental dynamic-animation-offset used to animate the background-resize and icon-offset
-          move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_QUINT, move_time, move_duration);
+          move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_QUINT, move_time, item_move_duration);
           dynamic_animation_offset -= move_animation_progress * (icon_size + position_manager.ItemPadding);
           x_offset += dynamic_animation_offset;
         }
       } else if (allow_animation && item.RemoveTime > 0) {
-        var move_duration = theme.ItemMoveTime * 1000;
         var move_time = int64.max (0LL, frame_time - item.RemoveTime);
-        if (move_time < move_duration) {
-          var move_animation_progress = easing_for_mode (AnimationMode.LINEAR, move_time, move_duration);
-          draw_value.opacity = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_EXPO, move_time, move_duration);
+        if (move_time < item_move_duration) {
+          var move_animation_progress = easing_for_mode (AnimationMode.LINEAR, move_time, item_move_duration);
+          draw_value.opacity = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_EXPO, move_time, item_move_duration);
           y_offset -= move_animation_progress * (icon_size + position_manager.BottomPadding);
           draw_value.show_indicator = false;
 
           // calculate the resulting incremental dynamic-animation-offset used to animate the background-resize and icon-offset
-          move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_IN_QUINT, move_time, move_duration);
+          move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_IN_QUINT, move_time, item_move_duration);
           dynamic_animation_offset += move_animation_progress * (icon_size + position_manager.ItemPadding);
           x_offset += dynamic_animation_offset - (icon_size + position_manager.ItemPadding);
         }
       }
 
-      // animate icon movement on move state
+      // animate icon movement on move state - only check if state flag is set
       if ((item.State & ItemState.MOVE) != 0) {
-        var move_duration = theme.ItemMoveTime * 1000;
         var move_time = int64.max (0LL, frame_time - item.LastMove);
-        if (move_time < move_duration) {
+        if (move_time < item_move_duration) {
           var move_animation_progress = 0.0;
           if (transient_items.size > 0) {
             if (dynamic_animation_offset > 0)
-              move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_IN_QUINT, move_time, move_duration);
+              move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_IN_QUINT, move_time, item_move_duration);
             else
-              move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_QUINT, move_time, move_duration);
+              move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_QUINT, move_time, item_move_duration);
           } else {
-            move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_CIRC, move_time, move_duration);
+            move_animation_progress = 1.0 - easing_for_mode (AnimationMode.EASE_OUT_CIRC, move_time, item_move_duration);
           }
           var change = move_animation_progress * (icon_size + position_manager.ItemPadding);
           x_offset += (item.Position < item.LastPosition ? change : -change);
@@ -669,7 +673,7 @@ namespace Plank {
         }
       }
 
-      // animate icon on invalid state
+      // animate icon on invalid state - only check if state flag is set
       if ((item.State & ItemState.INVALID) != 0) {
         var invalid_duration = ITEM_INVALID_DURATION * 1000;
         var invalid_time = int64.max (0LL, frame_time - item.LastValid);
@@ -764,33 +768,54 @@ namespace Plank {
       if (item.CountVisible || item.ProgressVisible)
         icon_overlay_surface = item.get_foreground_surface (icon_size, icon_size, item_buffer, (DrawDataFunc<DockItem>) draw_item_foreground);
 
-      bool needs_surface_modification = (icon_overlay_surface != null || draw_value.lighten > 0 || draw_value.darken > 0);
+      // Apply threshold to skip tiny lighten/darken values that are imperceptible
+      // This avoids surface operations during animation tails
+      const double EFFECT_THRESHOLD = 0.01;
+      bool has_lighten = draw_value.lighten > EFFECT_THRESHOLD;
+      bool has_darken = draw_value.darken > EFFECT_THRESHOLD;
+      bool needs_surface_modification = (icon_overlay_surface != null || has_lighten || has_darken);
 
       Surface icon_surface;
       if (needs_surface_modification) {
-        icon_surface = get_item_surface (item, icon_size).copy ();
-        unowned Cairo.Context icon_cr = icon_surface.Context;
+        // Get the base icon surface
+        var base_surface = get_item_surface (item, icon_size);
+
+        // Reuse scratch surface if possible, otherwise create/resize it
+        if (scratch_surface == null || scratch_surface_size < icon_size) {
+          scratch_surface = new Surface.with_surface (icon_size, icon_size, base_surface);
+          scratch_surface_size = icon_size;
+        }
+
+        // Clear and copy base surface to scratch
+        scratch_surface.clear ();
+        unowned Cairo.Context scratch_cr = scratch_surface.Context;
+        scratch_cr.set_source_surface (base_surface.Internal, 0, 0);
+        scratch_cr.paint ();
 
         if (icon_overlay_surface != null) {
-          icon_cr.set_source_surface (icon_overlay_surface.Internal, 0, 0);
-          icon_cr.paint ();
+          scratch_cr.set_source_surface (icon_overlay_surface.Internal, 0, 0);
+          scratch_cr.paint ();
         }
 
         // lighten the icon
-        if (draw_value.lighten > 0) {
-          icon_cr.set_operator (Cairo.Operator.ADD);
-          icon_cr.paint_with_alpha (draw_value.lighten);
-          icon_cr.set_operator (Cairo.Operator.OVER);
+        // Note: source is already set to base_surface from the copy above,
+        // or to icon_overlay_surface if overlay was applied (matching original behavior)
+        if (has_lighten) {
+          scratch_cr.set_operator (Cairo.Operator.ADD);
+          scratch_cr.paint_with_alpha (draw_value.lighten);
+          scratch_cr.set_operator (Cairo.Operator.OVER);
         }
 
         // darken the icon
-        if (draw_value.darken > 0) {
-          icon_cr.rectangle (0, 0, icon_surface.Width, icon_surface.Height);
-          icon_cr.set_source_rgba (0, 0, 0, draw_value.darken);
-          icon_cr.set_operator (Cairo.Operator.ATOP);
-          icon_cr.fill ();
-          icon_cr.set_operator (Cairo.Operator.OVER);
+        if (has_darken) {
+          scratch_cr.rectangle (0, 0, icon_size, icon_size);
+          scratch_cr.set_source_rgba (0, 0, 0, draw_value.darken);
+          scratch_cr.set_operator (Cairo.Operator.ATOP);
+          scratch_cr.fill ();
+          scratch_cr.set_operator (Cairo.Operator.OVER);
         }
+
+        icon_surface = scratch_surface;
       } else {
         // No modifications needed - use cached surface directly
         icon_surface = get_item_surface (item, icon_size);
