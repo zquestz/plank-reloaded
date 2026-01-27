@@ -326,6 +326,10 @@ namespace Plank {
                                            (DrawValuesFunc) post_process_draw_values);
 
       background_rect = position_manager.get_background_region ();
+
+      // Update blur region property for compositor extensions
+      // (cached internally, only updates X11 property when region changes)
+      controller.window.set_blur_region ();
     }
 
 #if HAVE_CLUTTER
@@ -389,6 +393,12 @@ namespace Plank {
      * Cairo.Surface.similar(), so we use ImageSurfaces instead.
      */
     void draw_to_context (Cairo.Context cr, int64 local_frame_time) {
+#if BENCHMARK
+      DateTime start, start2, end, end2;
+      benchmark.clear ();
+      start = new DateTime.now_local ();
+#endif
+
       if (current_items.is_empty) {
         critical ("No items available to draw frame");
         return;
@@ -461,6 +471,9 @@ namespace Plank {
       // composite dock layers and make sure to draw onto the canvas with one operation
       main_cr.set_operator (Cairo.Operator.OVER);
 
+#if BENCHMARK
+      start2 = new DateTime.now_local ();
+#endif
       // draw background-layer (model should never be null after get_clutter_surfaces, but check anyway)
       unowned Surface? bg_buffer = (model != null) ? backend.get_background_buffer (
         background_rect.width, background_rect.height,
@@ -471,14 +484,25 @@ namespace Plank {
           background_rect.x + x_offset, background_rect.y + y_offset);
         main_cr.paint ();
       }
+#if BENCHMARK
+      end2 = new DateTime.now_local ();
+      benchmark.add ("background render time - %f ms".printf (end2.difference (start2) / 1000.0));
+#endif
 
       // draw each item
       foreach (unowned DockItem item in current_items) {
+#if BENCHMARK
+        start2 = new DateTime.now_local ();
+#endif
         if (item.IsVisible && dragged_item != item) {
           var draw_value = position_manager.get_draw_value_for_item (item);
           draw_item (item_cr, item, draw_value, local_frame_time);
           draw_item_shadow (shadow_cr, item, draw_value);
         }
+#if BENCHMARK
+        end2 = new DateTime.now_local ();
+        benchmark.add ("item render time - %f ms".printf (end2.difference (start2) / 1000.0));
+#endif
       }
 
       // composite layers onto main surface
@@ -513,6 +537,15 @@ namespace Plank {
         foreach (unowned DockItem item in current_items)
           draw_urgent_glow (item, cr, local_frame_time);
       }
+
+#if BENCHMARK
+      end = new DateTime.now_local ();
+      var diff = end.difference (start) / 1000.0;
+      if (diff > 5.0)
+        foreach (var s in benchmark)
+          message ("	"+ s);
+      message ("GPU render time - %f ms", diff);
+#endif
 
       if (is_first_frame) {
         message ("Rendering: GPU (Clutter)");
@@ -690,7 +723,7 @@ namespace Plank {
       if (diff > 5.0)
         foreach (var s in benchmark)
           message ("	"+ s);
-      message ("render time - %f ms", diff);
+      message ("CPU render time - %f ms", diff);
 #endif
 
       if (is_first_frame) {

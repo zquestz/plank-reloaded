@@ -67,9 +67,12 @@ namespace Plank {
     uint long_press_button = 0U;
 
     Gdk.Rectangle input_rect;
+    Gdk.Rectangle blur_region_rect = { -1, -1, -1, -1 };
+    int blur_top_radius = -1;
+    int blur_bottom_radius = -1;
     int requested_x;
     int requested_y;
-    int window_position_retry = 0;
+    int window_position_retry;
 
     /**
      * Whether GPU rendering is active.
@@ -138,6 +141,7 @@ namespace Plank {
                   | Gdk.EventMask.STRUCTURE_MASK);
 
       controller.prefs.notify["HideMode"].connect (set_struts);
+      controller.prefs.notify["HideMode"].connect (set_blur_region);
 
 #if HAVE_CLUTTER
       setup_clutter_rendering ();
@@ -151,6 +155,7 @@ namespace Plank {
       }
 
       controller.prefs.notify["HideMode"].disconnect (set_struts);
+      controller.prefs.notify["HideMode"].disconnect (set_blur_region);
 
       if (hover_reposition_timer_id > 0U) {
         GLib.Source.remove (hover_reposition_timer_id);
@@ -511,6 +516,7 @@ namespace Plank {
      */
     public override bool map_event (Gdk.EventAny event) {
       set_struts ();
+      set_blur_region ();
 
       return base.map_event (event);
     }
@@ -708,6 +714,7 @@ namespace Plank {
 
         if (!needs_reposition) {
           set_struts ();
+          set_blur_region ();
           set_hovered_provider (null);
           set_hovered (null);
         }
@@ -720,6 +727,7 @@ namespace Plank {
         move (win_rect.x, win_rect.y);
 
         set_struts ();
+        set_blur_region ();
         set_hovered_provider (null);
         set_hovered (null);
       }
@@ -957,6 +965,116 @@ namespace Plank {
     void on_menu_show () {
       controller.hover.hide ();
       controller.renderer.animated_draw ();
+    }
+
+    /**
+     * Sets the blur region property for compositor extensions.
+     *
+     * This publishes the _PLANK_BACKGROUND_BLUR_REGION X11 property containing
+     * the geometry and corner radii of the actual dock background relative to
+     * the window origin. Compositor blur extensions can read this property to
+     * apply blur only to the dock bar area, not the entire oversized window.
+     *
+     * Property format (8 CARDINAL values):
+     *   [0] x - X position relative to window
+     *   [1] y - Y position relative to window
+     *   [2] width - Width of blur region
+     *   [3] height - Height of blur region
+     *   [4] top_left_radius - Top-left corner radius
+     *   [5] top_right_radius - Top-right corner radius
+     *   [6] bottom_left_radius - Bottom-left corner radius
+     *   [7] bottom_right_radius - Bottom-right corner radius
+     *
+     * The property is only updated when the region actually changes to avoid
+     * unnecessary X11 calls.
+     */
+    public void set_blur_region () {
+      if (!get_realized ())
+        return;
+
+      // Theme may not be loaded yet during early initialization
+      unowned DockTheme? theme = controller.renderer.theme;
+      if (theme == null)
+        return;
+
+      var background_rect = controller.position_manager.get_background_region ();
+
+      // Get corner radii from theme
+      var top_radius = theme.TopRoundness;
+      var bottom_radius = theme.BottomRoundness;
+
+      // Skip update if region and radii haven't changed
+      if (background_rect.equal (blur_region_rect)
+          && top_radius == blur_top_radius
+          && bottom_radius == blur_bottom_radius)
+        return;
+
+      unowned Gdk.X11.Display gdk_display = (get_display () as Gdk.X11.Display);
+      if (gdk_display == null)
+        return;
+
+      unowned Gdk.X11.Window gdk_window = (get_window () as Gdk.X11.Window);
+      if (gdk_window == null)
+        return;
+
+      blur_region_rect = background_rect;
+      blur_top_radius = top_radius;
+      blur_bottom_radius = bottom_radius;
+
+      // Corner radii depend on dock position due to rotation
+      // For BOTTOM: top-left/top-right use TopRoundness, bottom corners use BottomRoundness
+      int top_left = 0, top_right = 0, bottom_left = 0, bottom_right = 0;
+
+      switch (controller.position_manager.Position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        top_left = top_radius;
+        top_right = top_radius;
+        bottom_left = bottom_radius;
+        bottom_right = bottom_radius;
+        break;
+      case Gtk.PositionType.TOP:
+        // Rotated 180°
+        top_left = bottom_radius;
+        top_right = bottom_radius;
+        bottom_left = top_radius;
+        bottom_right = top_radius;
+        break;
+      case Gtk.PositionType.LEFT:
+        // Rotated 90° clockwise
+        top_left = top_radius;
+        top_right = bottom_radius;
+        bottom_left = top_radius;
+        bottom_right = bottom_radius;
+        break;
+      case Gtk.PositionType.RIGHT:
+        // Rotated 90° counter-clockwise
+        top_left = bottom_radius;
+        top_right = top_radius;
+        bottom_left = bottom_radius;
+        bottom_right = top_radius;
+        break;
+      }
+
+      // Region is relative to window origin, includes corner radii
+      var region = new ulong[8];
+      region[0] = (ulong) background_rect.x;
+      region[1] = (ulong) background_rect.y;
+      region[2] = (ulong) background_rect.width;
+      region[3] = (ulong) background_rect.height;
+      region[4] = (ulong) top_left;
+      region[5] = (ulong) top_right;
+      region[6] = (ulong) bottom_left;
+      region[7] = (ulong) bottom_right;
+
+      unowned X.Display display = gdk_display.get_xdisplay ();
+      var xid = gdk_window.get_xid ();
+
+      gdk_display.error_trap_push ();
+      display.change_property (xid, display.intern_atom ("_PLANK_BACKGROUND_BLUR_REGION", false), X.XA_CARDINAL,
+                               32, X.PropMode.Replace, (uchar[]) region, region.length);
+      if (gdk_display.error_trap_pop () != X.Success)
+        warning ("Error while setting blur region property");
     }
 
     void set_input_mask () {
