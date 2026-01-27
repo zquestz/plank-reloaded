@@ -118,10 +118,7 @@ namespace Plank {
       controller.hide_manager.notify["Hovered"].connect (hovered_changed);
 
 #if HAVE_CLUTTER
-      // Set up Clutter draw callback if GPU rendering is active
-      if (controller.window.gpu_rendering_active) {
-        controller.window.set_clutter_draw_func (on_clutter_draw);
-      }
+      initialize_clutter ();
 #endif
     }
 
@@ -134,10 +131,7 @@ namespace Plank {
       controller.window.notify["HoveredItem"].disconnect (animated_draw);
 
 #if HAVE_CLUTTER
-      // Clear draw callback to prevent dangling reference
-      if (controller.window.gpu_rendering_active) {
-        controller.window.set_clutter_draw_func (null);
-      }
+      cleanup_clutter ();
 #endif
     }
 
@@ -336,6 +330,40 @@ namespace Plank {
 
 #if HAVE_CLUTTER
     /**
+     * Initializes Clutter draw callback if GPU rendering is active.
+     */
+    void initialize_clutter () {
+      if (controller.window.gpu_rendering_active) {
+        controller.window.set_clutter_draw_func (on_clutter_draw);
+      }
+    }
+
+    /**
+     * Cleans up Clutter draw callback to prevent dangling reference.
+     */
+    void cleanup_clutter () {
+      if (controller.window.gpu_rendering_active) {
+        controller.window.set_clutter_draw_func (null);
+      }
+    }
+
+    /**
+     * Triggers a Clutter canvas redraw if GPU rendering is active.
+     *
+     * @return true if GPU rendering handled the draw, false to fall back to CPU
+     */
+    bool queue_clutter_draw () {
+      if (!controller.window.gpu_rendering_active)
+        return false;
+
+      unowned PositionManager position_manager = controller.position_manager;
+      var win_rect = position_manager.get_dock_window_region ();
+      controller.window.update_clutter_size (win_rect.width, win_rect.height);
+      controller.window.invalidate_clutter_canvas ();
+      return true;
+    }
+
+    /**
      * Clutter canvas draw callback for GPU rendering.
      *
      * Note: This is called asynchronously by Clutter's frame loop, not by GTK's
@@ -520,15 +548,8 @@ namespace Plank {
      */
     public override void draw (Cairo.Context cr, int64 frame_time) {
 #if HAVE_CLUTTER
-      // If GPU rendering is active, we draw via Clutter canvas callback
-      if (controller.window.gpu_rendering_active) {
-        // Update canvas size and trigger redraw
-        unowned PositionManager position_manager = controller.position_manager;
-        var win_rect = position_manager.get_dock_window_region ();
-        controller.window.update_clutter_size (win_rect.width, win_rect.height);
-        controller.window.invalidate_clutter_canvas ();
+      if (queue_clutter_draw ())
         return;
-      }
 #endif
       draw_internal (cr, frame_time);
     }

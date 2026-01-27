@@ -140,10 +140,7 @@ namespace Plank {
       controller.prefs.notify["HideMode"].connect (set_struts);
 
 #if HAVE_CLUTTER
-      // Initialize GPU rendering if Clutter is available
-      if (ClutterBackend.is_available ()) {
-        setup_clutter_rendering ();
-      }
+      setup_clutter_rendering ();
 #endif
     }
 
@@ -180,6 +177,9 @@ namespace Plank {
      * GPU-accelerated compositing.
      */
     void setup_clutter_rendering () {
+      if (!ClutterBackend.is_available ())
+        return;
+
       Logger.verbose ("DockWindow: Setting up Clutter GPU rendering");
 
       // Create the GtkClutter.Embed widget
