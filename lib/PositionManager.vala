@@ -27,7 +27,6 @@ namespace Plank {
     public bool screen_is_composited { get; private set; }
 
     Gdk.Rectangle static_dock_region;
-    Gee.HashMap<DockElement, DockItemDrawValue> draw_values;
 
     uint active_display_timeout_id;
     uint screen_changed_timeout_id;
@@ -52,7 +51,6 @@ namespace Plank {
     construct
     {
       static_dock_region = {};
-      draw_values = new Gee.HashMap<DockElement, DockItemDrawValue> ();
     }
 
     /**
@@ -95,8 +93,6 @@ namespace Plank {
       screen.size_changed.disconnect (screen_changed);
       screen.composited_changed.disconnect (screen_composited_changed);
       controller.prefs.notify.disconnect (prefs_changed);
-
-      draw_values.clear ();
     }
 
     bool use_monitor_geometry () {
@@ -872,19 +868,8 @@ namespace Plank {
      * @param item the dock item to find the drawvalue for
      * @return the region for the dock item
      */
-    public DockItemDrawValue get_draw_value_for_item (DockItem item) {
-      if (draw_values.size == 0) {
-        debug ("Without draw_values there is trouble ahead");
-        update_draw_values (controller.VisibleItems);
-      }
-
-      var draw_value = draw_values[item];
-      if (draw_value == null) {
-        warning ("Without a draw_value there is trouble ahead for '%s'", item.Text);
-        draw_value = new DockItemDrawValue ();
-      }
-
-      return draw_value;
+    public unowned DockItemDrawValue get_draw_value_for_item (DockItem item) {
+      return item.draw_value;
     }
 
     /**
@@ -898,8 +883,6 @@ namespace Plank {
                                     DrawValuesFunc? post_func = null) {
       unowned DockPreferences prefs = controller.prefs;
       unowned DockRenderer renderer = controller.renderer;
-
-      draw_values.clear ();
 
       // first we do the math as if this is a top dock, to do this we need to set
       // up some "pretend" variables. we pretend we are a top dock because 0,0 is
@@ -979,7 +962,8 @@ namespace Plank {
 
       for (int idx = 0; idx < items.size; idx++) {
         unowned DockItem item = items[idx];
-        DockItemDrawValue val = new DockItemDrawValue ();
+        unowned DockItemDrawValue val = item.draw_value;
+        // Reset values for this frame (reusing existing object)
         val.opacity = 1.0;
         val.darken = 0.0;
         val.lighten = 0.0;
@@ -1085,8 +1069,6 @@ namespace Plank {
         if (func != null)
           func (item, val);
 
-        draw_values[item] = val;
-
         if (item.RemoveTime == 0 && idx < (items.size - 1)) {
           double padding = ItemPadding;
           if (item.is_separator ()) {
@@ -1099,23 +1081,22 @@ namespace Plank {
       }
 
       if (post_func != null)
-        post_func (draw_values);
+        post_func (items);
 
-      update_background_region (draw_values[items.first ()], draw_values[items.last ()]);
+      update_background_region (items.first ().draw_value, items.last ().draw_value);
 
       int max_hover_height = 0;
       int max_hover_width = 0;
 
-      draw_values.map_iterator ().foreach ((i, val) => {
+      foreach (unowned DockItem item in items) {
+        unowned DockItemDrawValue val = item.draw_value;
         val.draw_region = get_item_draw_region (val);
         val.hover_region = get_item_hover_region (val);
         val.background_region = get_item_background_region (val);
 
         max_hover_height = int.max (max_hover_height, val.hover_region.height);
         max_hover_width = int.max (max_hover_width, val.hover_region.width);
-
-        return true;
-      });
+      }
 
       max_hover_height_cache = max_hover_height;
       max_hover_width_cache = max_hover_width;
@@ -1298,16 +1279,12 @@ namespace Plank {
       unowned DockItem? result = null;
       double min_squared_distance = double.MAX;
 
-      var draw_values_it = draw_values.map_iterator ();
-      while (draw_values_it.next ()) {
-        var val = draw_values_it.get_value ();
-        DockItem? item = (draw_values_it.get_key () as DockItem);
-
-        if (item == null || (container != null && item.Container != container)) {
+      foreach (unowned DockItem item in controller.VisibleItems) {
+        if (container != null && item.Container != container) {
           continue;
         }
 
-        var center = val.static_center;
+        var center = item.draw_value.static_center;
         double squared_distance = (x - center.x) * (x - center.x) + (y - center.y) * (y - center.y);
 
         if (squared_distance < min_squared_distance) {

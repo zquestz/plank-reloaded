@@ -30,9 +30,9 @@ namespace Plank
 	/**
 	 * Modify all given DrawItemValues
 	 *
-	 * @param draw_values the map of dock-items with their draw-values
+	 * @param items the list of dock-items (access draw_value via item.draw_value)
 	 */
-	public delegate void DrawValuesFunc (Gee.HashMap<DockElement, DockItemDrawValue> draw_values);
+	public delegate void DrawValuesFunc (Gee.ArrayList<unowned DockItem> items);
 	
 	public struct PointD
 	{

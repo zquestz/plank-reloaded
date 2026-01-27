@@ -127,6 +127,11 @@ namespace Plank {
     SurfaceCache<DockItem> background_buffer;
     Surface? foreground_surface = null;
 
+    /**
+     * Cached draw value for this item (reused each frame to avoid allocation).
+     */
+    public DockItemDrawValue draw_value;
+
     FileMonitor? launcher_file_monitor = null;
     FileMonitor? icon_file_monitor = null;
 
@@ -142,6 +147,7 @@ namespace Plank {
 
     construct
     {
+      draw_value = new DockItemDrawValue ();
       buffer = new SurfaceCache<DockItem> (SurfaceCacheFlags.NONE);
       background_buffer = new SurfaceCache<DockItem> (SurfaceCacheFlags.ALLOW_SCALE);
 

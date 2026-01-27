@@ -293,6 +293,7 @@ namespace Plank {
           remove_time = item.RemoveTime;
 
           if (add_time > remove_time) {
+            // Item is being added - check if already in list (from new_items)
             move_time = frame_time - add_time;
             if (move_time < move_duration) {
               if (!current_items.contains (item))
@@ -301,10 +302,10 @@ namespace Plank {
               transient_items_it.remove ();
             }
           } else if (remove_time > 0) {
+            // Item is being removed - not in new_items, so skip contains() check
             move_time = frame_time - remove_time;
             if (move_time < move_duration) {
-              if (!current_items.contains (item))
-                current_items.add (item);
+              current_items.add (item);
             } else {
               transient_items_it.remove ();
             }
@@ -687,7 +688,7 @@ namespace Plank {
     }
 
     [CCode (instance_pos = -1)]
-    void post_process_draw_values (Gee.HashMap<DockElement, DockItemDrawValue?> draw_values) {
+    void post_process_draw_values (Gee.ArrayList<unowned DockItem> items) {
       if (dynamic_animation_offset == 0.0)
         return;
 
@@ -725,10 +726,9 @@ namespace Plank {
       if (x_offset == 0.0)
         return;
 
-      draw_values.map_iterator ().foreach ((i, val) => {
-        val.move_right (position, x_offset);
-        return true;
-      });
+      foreach (unowned DockItem item in items) {
+        item.draw_value.move_right (position, x_offset);
+      }
     }
 
     inline Surface get_item_surface (DockItem item, int icon_size) {
