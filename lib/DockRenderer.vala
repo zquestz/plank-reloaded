@@ -314,7 +314,9 @@ namespace Plank {
         transient_items.clear ();
       }
 
-      current_items.sort ((CompareDataFunc) compare_dock_item_position);
+      // Only sort if transient items were added - new_items is already in position order
+      if (transient_items.size > 0)
+        current_items.sort ((CompareDataFunc) compare_dock_item_position);
 
       // Calculate positions for given ordered list of items
       position_manager.update_draw_values (current_items,
