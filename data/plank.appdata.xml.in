@@ -35,6 +35,7 @@
   <launchable type="desktop-id">net.launchpad.plank.desktop</launchable>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.11.161" timestamp="1769513425" />
     <release version="0.11.160" timestamp="1769393213" />
     <release version="0.11.159" timestamp="1767048050" />
     <release version="0.11.158" timestamp="1766519298" />

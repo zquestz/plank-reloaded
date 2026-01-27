@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.160\n"
+"Project-Id-Version: plank-reloaded 0.11.161\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-01-25 16:07-1000\n"
+"POT-Creation-Date: 2026-01-27 01:30-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,19 +62,19 @@ msgstr ""
 msgid "The Plank Reloaded Developers"
 msgstr ""
 
-#: data/plank.appdata.xml.in:122
+#: data/plank.appdata.xml.in:123
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Docklets Preferences"
 msgstr ""
 
@@ -242,56 +242,56 @@ msgstr ""
 msgid "Docklets"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:33
+#: docklets/Applications/ApplicationsDockItem.vala:34
 msgid "No applications available"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:52
+#: docklets/Applications/ApplicationsDockItem.vala:53
 #: docklets/Applications/ApplicationsDocklet.vala:28
 msgid "Applications"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:316
+#: docklets/Applications/ApplicationsDockItem.vala:333
 msgid "Edit Menu"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:335
+#: docklets/Applications/ApplicationsDockItem.vala:352
 #: docklets/Separator/SeparatorDockItem.vala:325
 msgid "Choose Custom Icon"
 msgstr ""
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:343
+#: docklets/Applications/ApplicationsDockItem.vala:360
 #: docklets/Separator/SeparatorDockItem.vala:332
 msgid "Reset to Default Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:353
+#: docklets/Applications/ApplicationsDockItem.vala:370
 msgid "Large Icons"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:366
+#: docklets/Applications/ApplicationsDockItem.vala:383
 #: docklets/Separator/SeparatorDockItem.vala:258
 msgid "Select Custom Icon"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:369
+#: docklets/Applications/ApplicationsDockItem.vala:386
 #: docklets/Separator/SeparatorDockItem.vala:261
 msgid "Cancel"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:387
 #: docklets/Separator/SeparatorDockItem.vala:262
 msgid "Select"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:388
+#: docklets/Applications/ApplicationsDockItem.vala:405
 #: docklets/Separator/SeparatorDockItem.vala:280
 msgid "Image Files"
 msgstr ""
 
-#: docklets/Applications/ApplicationsDockItem.vala:513
-#: docklets/Applications/ApplicationsDockItem.vala:573
+#: docklets/Applications/ApplicationsDockItem.vala:518
+#: docklets/Applications/ApplicationsDockItem.vala:572
 msgid "Unknown"
 msgstr ""
 

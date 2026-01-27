@@ -2,6 +2,14 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.161 "Reloaded" (2026-01-27)
+
+- Fix use-after-free crash in window operations using XID-based queue
+- Fix urgent glow position when GapSize > 0
+- Optimize render loop with reusable scratch surface and early exits
+- Eliminate per-frame HashMap allocations for draw values
+- Add fast path for idle dock state (no zoom active)
+
 ## 0.11.160 "Reloaded" (2026-01-25)
 
 - Fix CPUMonitorDocklet thread-safety by marshalling UI updates to main thread

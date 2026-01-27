@@ -114,6 +114,13 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Mon Jan 27 2026 Josh Ellithorpe <quest@mac.com> - 0.11.161-1
+- Fix use-after-free crash in window operations using XID-based queue
+- Fix urgent glow position when GapSize > 0
+- Optimize render loop with reusable scratch surface and early exits
+- Eliminate per-frame HashMap allocations for draw values
+- Add fast path for idle dock state (no zoom active)
+
 * Sun Jan 25 2026 Josh Ellithorpe <quest@mac.com> - 0.11.160-1
 - Fix CPUMonitorDocklet thread-safety by marshalling UI updates to main thread
 - Fix ApplicationsDocklet crashes during package installation/removal with re-entrancy guard

@@ -1,3 +1,13 @@
+plank-reloaded (0.11.161-1) unstable; urgency=medium
+
+  * Fix use-after-free crash in window operations using XID-based queue
+  * Fix urgent glow position when GapSize > 0
+  * Optimize render loop with reusable scratch surface and early exits
+  * Eliminate per-frame HashMap allocations for draw values
+  * Add fast path for idle dock state (no zoom active)
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 27 Jan 2026 01:30:00 -1000
+
 plank-reloaded (0.11.160-1) unstable; urgency=medium
 
   * Fix CPUMonitorDocklet thread-safety by marshalling UI updates to main thread
