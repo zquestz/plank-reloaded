@@ -454,7 +454,7 @@ Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubunt
 
 ## Third Party Docklets
 
-Plank Reloaded encourages developers to write custom docklets! Right now we only have a couple custom docklets available, but we hope that changes in the future! Feel free to use Picky or Last.fm as an example for writing your own!
+Plank Reloaded encourages developers to write custom docklets! See [DOCKLETS.md](DOCKLETS.md) for a complete development guide. Here are some existing third-party docklets:
 
 - [Last.fm](https://github.com/zquestz/lastfm-docklet) - A Last.fm docklet to show recent scrobbles.
 - [Picky](https://github.com/zquestz/picky) - An advanced color picker docklet
