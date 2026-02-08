@@ -197,15 +197,28 @@ namespace Plank {
 
   static XdgSessionDesktop get_xdg_session_desktop () {
     unowned string? result;
+    XdgSessionDesktop desktop;
 
     result = Environment.get_variable ("XDG_SESSION_DESKTOP");
-    if (result == null)
-      result = Environment.get_variable ("XDG_CURRENT_DESKTOP");
-    if (result == null)
-      result = Environment.get_variable ("DESKTOP_SESSION");
+    if (result != null) {
+      desktop = XdgSessionDesktop.from_string (result);
+      if (desktop != XdgSessionDesktop.UNKNOWN)
+        return desktop;
+    }
 
-    if (result != null)
-      return XdgSessionDesktop.from_string (result);
+    result = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+    if (result != null) {
+      desktop = XdgSessionDesktop.from_string (result);
+      if (desktop != XdgSessionDesktop.UNKNOWN)
+        return desktop;
+    }
+
+    result = Environment.get_variable ("DESKTOP_SESSION");
+    if (result != null) {
+      desktop = XdgSessionDesktop.from_string (result);
+      if (desktop != XdgSessionDesktop.UNKNOWN)
+        return desktop;
+    }
 
     warning ("Neither of XDG_SESSION_DESKTOP, XDG_CURRENT_DESKTOP or DESKTOP_SESSION is set in this environment!");
 
