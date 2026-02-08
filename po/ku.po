@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-07 16:01-1000\n"
+"POT-Creation-Date: 2026-02-08 10:10-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Kurmanji (Kurdish)\n"
@@ -70,19 +70,19 @@ msgstr "destpêk"
 msgid "The Plank Reloaded Developers"
 msgstr "Pêşdebirin ên Plank Reloaded"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Dock with Matte theme"
 msgstr "Dok bi dirba Matte"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Appearance Preferences"
 msgstr "Vebijarkên xuyang"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Behavior Preferences"
 msgstr "Vebijarkên reftarê"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Docklets Preferences"
 msgstr "Vebijarkên dokletên"
 
@@ -564,7 +564,7 @@ msgstr "_Pêşdîtinên zindî"
 msgid "A graphical workspace switcher."
 msgstr "Guherkerê cihê karê yê grafîkî."
 
-#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Berîne ji bo zêdekirinê li dokê"
 

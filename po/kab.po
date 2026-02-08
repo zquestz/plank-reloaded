@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-07 16:01-1000\n"
+"POT-Creation-Date: 2026-02-08 10:10-1000\n"
 "PO-Revision-Date: 2025-11-13 21:06\n"
 "Last-Translator: \n"
 "Language-Team: Kabyle\n"
@@ -69,19 +69,19 @@ msgstr "bdu"
 msgid "The Plank Reloaded Developers"
 msgstr "Ineflayen n Plank Reloaded"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Dock with Matte theme"
 msgstr "Adukkar s usentel Matte"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Appearance Preferences"
 msgstr "Ismenyifen n tirmas"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Behavior Preferences"
 msgstr "Ismenyifen n tikli"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Docklets Preferences"
 msgstr "Ismenyifen n yidukkar imeẓyanen"
 
@@ -563,7 +563,7 @@ msgstr "_Tiskanin tazirayin"
 msgid "A graphical workspace switcher."
 msgstr "Amsenfel n tellisin n twuri s udlifen."
 
-#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Serreḥ i wakken ad tarnuḍ ar Dock"
 

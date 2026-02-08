@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-07 16:01-1000\n"
+"POT-Creation-Date: 2026-02-08 10:10-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -71,19 +71,19 @@ msgstr "iniciar"
 msgid "The Plank Reloaded Developers"
 msgstr "Los desarrolladores de Plank Recargado"
 
-#: data/plank.appdata.xml.in:125
+#: data/plank.appdata.xml.in:126
 msgid "Dock with Matte theme"
 msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:130
 msgid "Appearance Preferences"
 msgstr "Preferencias de apariencia"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Behavior Preferences"
 msgstr "Preferencias de comportamiento"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Docklets Preferences"
 msgstr "Preferencias de Docklets"
 
@@ -565,7 +565,7 @@ msgstr "_Vistas previas en vivo"
 msgid "A graphical workspace switcher."
 msgstr "Un selector gráfico de espacios de trabajo."
 
-#: lib/DragManager.vala:469 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Soltar para añadir al dock"
 

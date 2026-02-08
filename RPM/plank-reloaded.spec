@@ -114,6 +114,17 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Sun Feb 08 2026 Josh Ellithorpe <quest@mac.com> - 0.11.164-1
+- Fix drag occasionally ending prematurely
+- Fix desktop environment detection on Debian XFCE
+- Fix dock unhide with graphics tablets
+- Fix sticky and pinned windows not minimizing or focusing on non-original workspaces
+- Fix HoverWindow positioning on XFCE and KDE
+- Fix icon lookup to try all windows instead of only the first
+- Improve animation smoothness and reduce CPU usage
+- Increase poof animation framerate
+- Add docklet development guide
+
 * Fri Feb 07 2026 Josh Ellithorpe <quest@mac.com> - 0.11.163-1
 - Fix workspace switch when focusing sticky windows
 

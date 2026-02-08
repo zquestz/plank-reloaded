@@ -2,6 +2,18 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.164 "Reloaded" (2026-02-08)
+
+- Fix drag occasionally ending prematurely
+- Fix desktop environment detection on Debian XFCE
+- Fix dock unhide with graphics tablets
+- Fix sticky and pinned windows not minimizing or focusing on non-original workspaces
+- Fix HoverWindow positioning on XFCE and KDE
+- Fix icon lookup to try all windows instead of only the first
+- Improve animation smoothness and reduce CPU usage
+- Increase poof animation framerate
+- Add docklet development guide
+
 ## 0.11.163 "Reloaded" (2026-02-07)
 
 - Fix workspace switch when focusing sticky windows (Always on Visible Workspace)

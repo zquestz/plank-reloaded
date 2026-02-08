@@ -1,3 +1,17 @@
+plank-reloaded (0.11.164-1) unstable; urgency=medium
+
+  * Fix drag occasionally ending prematurely
+  * Fix desktop environment detection on Debian XFCE
+  * Fix dock unhide with graphics tablets
+  * Fix sticky and pinned windows not minimizing or focusing on non-original workspaces
+  * Fix HoverWindow positioning on XFCE and KDE
+  * Fix icon lookup to try all windows instead of only the first
+  * Improve animation smoothness and reduce CPU usage
+  * Increase poof animation framerate
+  * Add docklet development guide
+
+ -- Josh Ellithorpe <quest@mac.com>  Sun, 08 Feb 2026 10:09:00 -1000
+
 plank-reloaded (0.11.163-1) unstable; urgency=medium
 
   * Skip workspace switch when focusing sticky windows
