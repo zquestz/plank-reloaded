@@ -107,7 +107,7 @@ namespace Plank
 				if (s1 == s2)
 					return 0;
 				
-				return (2 * (s1.width - s2.width) + s2.height - s2.height);
+				return (2 * (s1.width - s2.width) + s1.height - s2.height);
 			}
 			
 			public int compare_with (uint16 width, uint16 height)

@@ -64,6 +64,9 @@ namespace Plank {
     int requested_y;
     int window_position_retry = 0;
 
+    X.Atom strut_partial_atom = X.None;
+    X.Atom strut_atom = X.None;
+
     /**
      * Creates a new dock window.
      */
@@ -791,10 +794,15 @@ namespace Plank {
       unowned X.Display display = gdk_display.get_xdisplay ();
       var xid = gdk_window.get_xid ();
 
+      if (strut_partial_atom == X.None)
+        strut_partial_atom = display.intern_atom ("_NET_WM_STRUT_PARTIAL", false);
+      if (strut_atom == X.None)
+        strut_atom = display.intern_atom ("_NET_WM_STRUT", false);
+
       gdk_display.error_trap_push ();
-      display.change_property (xid, display.intern_atom ("_NET_WM_STRUT_PARTIAL", false), X.XA_CARDINAL,
+      display.change_property (xid, strut_partial_atom, X.XA_CARDINAL,
                                32, X.PropMode.Replace, (uchar[]) struts, struts.length);
-      display.change_property (xid, display.intern_atom ("_NET_WM_STRUT", false), X.XA_CARDINAL,
+      display.change_property (xid, strut_atom, X.XA_CARDINAL,
                                32, X.PropMode.Replace, (uchar[]) first_struts, first_struts.length);
       if (gdk_display.error_trap_pop () != X.Success)
         critical ("Error while setting struts");

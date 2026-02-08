@@ -177,6 +177,7 @@ namespace Plank
 			
 			int w = surface.get_width ();
 			int h = surface.get_height ();
+			int stride = surface.get_stride ();
 			uint8 slice = (uint8) (uint8.MAX * threshold);
 			
 			int left = w;
@@ -190,7 +191,7 @@ namespace Plank
 			bool mask;
 			for (int y = 0; y < h; y++) {
 				for (int x = 0; x < w; x++) {
-					src = (y * w + x) * 4;
+					src = y * stride + x * 4;
 					
 					mask = data[src + 3] > slice;
 					
@@ -252,7 +253,11 @@ namespace Plank
 			cr.set_source_surface (Internal, 0, 0);
 			cr.paint ();
 			
-			uint8 *pixels = original.get_data ();
+			var stride = original.get_stride ();
+			uint8 *raw_pixels = original.get_data ();
+			var pixels = new uint8[w * h * channels];
+			for (var row = 0; row < h; row++)
+				Memory.copy (&pixels[row * w * channels], &raw_pixels[row * stride], w * channels);
 			var buffer = new uint8[w * h * channels];
 			
 			var vmin = new int[int.max (w, h)];
@@ -353,6 +358,9 @@ namespace Plank
 				}
 			}
 			
+			for (var row = 0; row < h; row++)
+				Memory.copy (&raw_pixels[row * stride], &pixels[row * w * channels], w * channels);
+			
 			original.mark_dirty ();
 			
 			unowned Cairo.Context target_cr = Context;
@@ -384,7 +392,11 @@ namespace Plank
 			cr.set_source_surface (Internal, 0, 0);
 			cr.paint ();
 			
-			uint8 *pixels = original.get_data ();
+			var stride = original.get_stride ();
+			uint8 *raw_pixels = original.get_data ();
+			var pixels = new uint8[width * height * 4];
+			for (var row = 0; row < height; row++)
+				Memory.copy (&pixels[row * width * 4], &raw_pixels[row * stride], width * 4);
 			
 			var th = new Thread<void*> (null, () => {
 				exponential_blur_rows (pixels, width, height, 0, height / 2, 0, width, alpha);
@@ -402,6 +414,9 @@ namespace Plank
 			
 			exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
 			th2.join ();
+			
+			for (var row = 0; row < height; row++)
+				Memory.copy (&raw_pixels[row * stride], &pixels[row * width * 4], width * 4);
 			
 			original.mark_dirty ();
 			
@@ -492,15 +507,19 @@ namespace Plank
 			cr.set_source_surface (Internal, 0, 0);
 			cr.paint ();
 			
-			uint8 *src = original.get_data ();
+			var stride = original.get_stride ();
+			uint8 *raw_src = original.get_data ();
 			
-			var size = height * original.get_stride ();
+			var tight_size = height * width * 4;
+			var src = new uint8[tight_size];
+			for (var row = 0; row < height; row++)
+				Memory.copy (&src[row * width * 4], &raw_src[row * stride], width * 4);
 			
-			var abuffer = new double[size];
-			var bbuffer = new double[size];
+			var abuffer = new double[tight_size];
+			var bbuffer = new double[tight_size];
 			
 			// Copy image to double[] for faster horizontal pass
-			for (var i = 0; i < size; i++)
+			for (var i = 0; i < tight_size; i++)
 				abuffer[i] = (double) src[i];
 			
 			// Precompute horizontal shifts
@@ -523,7 +542,7 @@ namespace Plank
 			th.join ();
 			
 			// Clear buffer
-			Posix.memset (abuffer, 0, sizeof(double) * size);
+			Posix.memset (abuffer, 0, sizeof(double) * tight_size);
 			
 			// Precompute vertical shifts
 			shiftar = new int[int.max (width, height), gaussWidth];
@@ -546,8 +565,11 @@ namespace Plank
 			th2.join ();
 			
 			// Save blurred image to original uint8[]
-			for (var i = 0; i < size; i++)
+			for (var i = 0; i < tight_size; i++)
 				src[i] = (uint8) abuffer[i];
+			
+			for (var row = 0; row < height; row++)
+				Memory.copy (&raw_src[row * stride], &src[row * width * 4], width * 4);
 			
 			original.mark_dirty ();
 			

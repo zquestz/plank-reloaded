@@ -74,7 +74,7 @@ namespace Plank {
       Gdk.Rectangle monitor;
       var monitor_at_point = display.get_monitor_at_point (x, y);
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON)) {
+      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE)) {
         monitor = monitor_at_point.get_geometry ();
       } else {
         monitor = monitor_at_point.get_workarea ();

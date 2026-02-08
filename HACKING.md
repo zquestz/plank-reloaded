@@ -47,6 +47,12 @@ sudo meson install -C build
 meson compile -C build run
 ```
 
+4. **Run Plank with verbose logging:**
+
+```bash
+meson compile -C build run-verbose
+```
+
 ## Debugging Issues
 
 For investigating crashes or memory issues, use GDB:

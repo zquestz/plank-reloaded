@@ -264,6 +264,16 @@ run_env.set('PLANK_DOCKLET_DIRS', meson.current_build_dir() / 'docklets')
 
 run_target(
   'run',
+  command: [plank_bin],
+  env: run_env,
+  depends: [
+    plank_bin,
+    plank_gschema_compile,
+  ],
+)
+
+run_target(
+  'run-verbose',
   command: [plank_bin, '-v'],
   env: run_env,
   depends: [

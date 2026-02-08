@@ -240,8 +240,6 @@ namespace Plank {
         pbuf = window.get_icon ();
         if (window.get_icon_is_fallback ())
           pbuf = null;
-
-        break;
       }
 
       if (Gdk.error_trap_pop () != 0)
