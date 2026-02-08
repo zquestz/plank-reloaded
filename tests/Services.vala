@@ -34,6 +34,27 @@ namespace PlankTests
 		Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit", helpers_truncate_middle_very_short_limit);
 		Test.add_func ("/Services/Helpers/truncate_middle_utf8", helpers_truncate_middle_utf8);
 		Test.add_func ("/Services/Helpers/truncate_middle_cjk", helpers_truncate_middle_cjk);
+		Test.add_func ("/Services/DockDrawPosition/bottom_visible", draw_position_bottom_visible);
+		Test.add_func ("/Services/DockDrawPosition/bottom_hidden", draw_position_bottom_hidden);
+		Test.add_func ("/Services/DockDrawPosition/bottom_half", draw_position_bottom_half);
+		Test.add_func ("/Services/DockDrawPosition/top_hidden", draw_position_top_hidden);
+		Test.add_func ("/Services/DockDrawPosition/left_hidden", draw_position_left_hidden);
+		Test.add_func ("/Services/DockDrawPosition/right_hidden", draw_position_right_hidden);
+		Test.add_func ("/Services/DockDrawPosition/with_hide_offset", draw_position_with_hide_offset);
+		Test.add_func ("/Services/Easing/linear_bounds", easing_linear_bounds);
+		Test.add_func ("/Services/Easing/linear_midpoint", easing_linear_midpoint);
+		Test.add_func ("/Services/Easing/all_modes_bounds", easing_all_modes_bounds);
+		Test.add_func ("/Services/DrawValue/move_in_bottom", draw_value_move_in_bottom);
+		Test.add_func ("/Services/DrawValue/move_in_top", draw_value_move_in_top);
+		Test.add_func ("/Services/DrawValue/move_right_bottom", draw_value_move_right_bottom);
+		Test.add_func ("/Services/DrawValue/move_right_left", draw_value_move_right_left);
+		Test.add_func ("/Services/Struts/single_monitor_bottom", struts_single_monitor_bottom);
+		Test.add_func ("/Services/Struts/single_monitor_top", struts_single_monitor_top);
+		Test.add_func ("/Services/Struts/single_monitor_left", struts_single_monitor_left);
+		Test.add_func ("/Services/Struts/single_monitor_right", struts_single_monitor_right);
+		Test.add_func ("/Services/Struts/multi_monitor_bottom", struts_multi_monitor_bottom);
+		Test.add_func ("/Services/Struts/scaling_2x", struts_scaling_2x);
+		Test.add_func ("/Services/Struts/with_gap", struts_with_gap);
 	}
 
 	//
@@ -183,5 +204,333 @@ namespace PlankTests
 		assert (result2.has_prefix ("日本語"));
 		// Should end with last characters
 		assert (result2.has_suffix ("字列"));
+	}
+
+	//
+	// Dock draw position tests
+	//
+
+	void draw_position_bottom_visible ()
+	{
+		int x, y;
+		// Fully visible (progress = 0) — no offset
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.BOTTOM, 0.0, 200, 48, 0);
+		assert (x == 0);
+		assert (y == 0);
+	}
+
+	void draw_position_bottom_hidden ()
+	{
+		int x, y;
+		// Fully hidden (progress = 1) — offset equals dock height
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.BOTTOM, 1.0, 200, 48, 0);
+		assert (x == 0);
+		assert (y == 48);
+	}
+
+	void draw_position_bottom_half ()
+	{
+		int x, y;
+		// Half hidden
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.BOTTOM, 0.5, 200, 48, 0);
+		assert (x == 0);
+		assert (y == 24);
+	}
+
+	void draw_position_top_hidden ()
+	{
+		int x, y;
+		// Top dock hides upward (negative y)
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.TOP, 1.0, 200, 48, 0);
+		assert (x == 0);
+		assert (y == -48);
+	}
+
+	void draw_position_left_hidden ()
+	{
+		int x, y;
+		// Left dock hides leftward (negative x)
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.LEFT, 1.0, 48, 200, 0);
+		assert (x == -48);
+		assert (y == 0);
+	}
+
+	void draw_position_right_hidden ()
+	{
+		int x, y;
+		// Right dock hides rightward (positive x)
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.RIGHT, 1.0, 48, 200, 0);
+		assert (x == 48);
+		assert (y == 0);
+	}
+
+	void draw_position_with_hide_offset ()
+	{
+		int x, y;
+		// Hide offset adds to the distance
+		PositionManager.compute_dock_draw_position (out x, out y,
+			Gtk.PositionType.BOTTOM, 1.0, 200, 48, 10);
+		assert (x == 0);
+		assert (y == 58);
+	}
+
+	//
+	// Easing function tests
+	//
+
+	void easing_linear_bounds ()
+	{
+		// Linear easing: t=0 → 0, t=d → 1
+		assert (easing_for_mode (AnimationMode.LINEAR, 0.0, 1000.0) == 0.0);
+		assert (easing_for_mode (AnimationMode.LINEAR, 1000.0, 1000.0) == 1.0);
+	}
+
+	void easing_linear_midpoint ()
+	{
+		// Linear easing: midpoint should be exactly 0.5
+		assert (easing_for_mode (AnimationMode.LINEAR, 500.0, 1000.0) == 0.5);
+	}
+
+	void easing_all_modes_bounds ()
+	{
+		// All easing modes should return 0 at t=0 and 1 at t=d
+		// and stay within the documented range of -1.0 to 2.0
+		AnimationMode[] modes = {
+			AnimationMode.LINEAR,
+			AnimationMode.EASE_IN_QUAD,
+			AnimationMode.EASE_OUT_QUAD,
+			AnimationMode.EASE_IN_OUT_QUAD,
+			AnimationMode.EASE_IN_CUBIC,
+			AnimationMode.EASE_OUT_CUBIC,
+			AnimationMode.EASE_IN_OUT_CUBIC,
+			AnimationMode.EASE_IN_QUART,
+			AnimationMode.EASE_OUT_QUART,
+			AnimationMode.EASE_IN_OUT_QUART,
+			AnimationMode.EASE_IN_QUINT,
+			AnimationMode.EASE_OUT_QUINT,
+			AnimationMode.EASE_IN_OUT_QUINT,
+			AnimationMode.EASE_IN_SINE,
+			AnimationMode.EASE_OUT_SINE,
+			AnimationMode.EASE_IN_OUT_SINE,
+			AnimationMode.EASE_IN_EXPO,
+			AnimationMode.EASE_OUT_EXPO,
+			AnimationMode.EASE_IN_OUT_EXPO,
+			AnimationMode.EASE_IN_CIRC,
+			AnimationMode.EASE_OUT_CIRC,
+			AnimationMode.EASE_IN_OUT_CIRC,
+			AnimationMode.EASE_IN_BACK,
+			AnimationMode.EASE_OUT_BACK,
+			AnimationMode.EASE_IN_OUT_BACK,
+			AnimationMode.EASE_IN_BOUNCE,
+			AnimationMode.EASE_OUT_BOUNCE,
+			AnimationMode.EASE_IN_OUT_BOUNCE,
+		};
+
+		const double EPSILON = 0.0001;
+
+		foreach (var mode in modes) {
+			var start = easing_for_mode (mode, 0.0, 1000.0);
+			var end = easing_for_mode (mode, 1000.0, 1000.0);
+
+			// All modes start at ~0 and end at ~1
+			assert (Math.fabs (start) < EPSILON);
+			assert (Math.fabs (end - 1.0) < EPSILON);
+
+			// Check 10 intermediate points stay in range
+			for (int i = 1; i < 10; i++) {
+				var val = easing_for_mode (mode, i * 100.0, 1000.0);
+				assert (val >= -1.0 && val <= 2.0);
+			}
+		}
+	}
+
+	//
+	// DockItemDrawValue movement tests
+	//
+
+	void draw_value_move_in_bottom ()
+	{
+		var val = new DockItemDrawValue ();
+		val.center = { 100.0, 200.0 };
+		val.static_center = { 100.0, 200.0 };
+		val.hover_region = { 80, 180, 40, 40 };
+		val.draw_region = { 80, 180, 40, 40 };
+
+		val.move_in (Gtk.PositionType.BOTTOM, 10.0);
+
+		// Bottom dock: move_in decreases y (moves up toward screen)
+		assert (val.center.y == 190.0);
+		assert (val.static_center.y == 190.0);
+		assert (val.hover_region.y == 170);
+		assert (val.draw_region.y == 170);
+		// x should not change
+		assert (val.center.x == 100.0);
+	}
+
+	void draw_value_move_in_top ()
+	{
+		var val = new DockItemDrawValue ();
+		val.center = { 100.0, 200.0 };
+		val.static_center = { 100.0, 200.0 };
+		val.hover_region = { 80, 180, 40, 40 };
+		val.draw_region = { 80, 180, 40, 40 };
+
+		val.move_in (Gtk.PositionType.TOP, 10.0);
+
+		// Top dock: move_in increases y (moves down toward screen)
+		assert (val.center.y == 210.0);
+		assert (val.static_center.y == 210.0);
+		assert (val.hover_region.y == 190);
+		assert (val.draw_region.y == 190);
+	}
+
+	void draw_value_move_right_bottom ()
+	{
+		var val = new DockItemDrawValue ();
+		val.center = { 100.0, 200.0 };
+		val.static_center = { 100.0, 200.0 };
+		val.hover_region = { 80, 180, 40, 40 };
+		val.draw_region = { 80, 180, 40, 40 };
+		val.background_region = { 80, 180, 40, 40 };
+
+		val.move_right (Gtk.PositionType.BOTTOM, 15.0);
+
+		// Bottom/Top dock: move_right increases x
+		assert (val.center.x == 115.0);
+		assert (val.static_center.x == 115.0);
+		assert (val.hover_region.x == 95);
+		assert (val.draw_region.x == 95);
+		assert (val.background_region.x == 95);
+		// y should not change
+		assert (val.center.y == 200.0);
+	}
+
+	void draw_value_move_right_left ()
+	{
+		var val = new DockItemDrawValue ();
+		val.center = { 100.0, 200.0 };
+		val.static_center = { 100.0, 200.0 };
+		val.hover_region = { 80, 180, 40, 40 };
+		val.draw_region = { 80, 180, 40, 40 };
+		val.background_region = { 80, 180, 40, 40 };
+
+		val.move_right (Gtk.PositionType.LEFT, 15.0);
+
+		// Left/Right dock: move_right increases y (perpendicular axis)
+		assert (val.center.y == 215.0);
+		assert (val.static_center.y == 215.0);
+		assert (val.hover_region.y == 195);
+		assert (val.draw_region.y == 195);
+		assert (val.background_region.y == 195);
+		// x should not change
+		assert (val.center.x == 100.0);
+	}
+
+	//
+	// Struts computation tests
+	//
+
+	void struts_single_monitor_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Single 1920x1080 monitor, 48px dock at bottom, no gap, 1x scale
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 1920, 1080, 1920, 48, 0, 1);
+
+		assert (struts[Struts.BOTTOM] == 48);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 1919);
+		assert (struts[Struts.TOP] == 0);
+		assert (struts[Struts.LEFT] == 0);
+		assert (struts[Struts.RIGHT] == 0);
+	}
+
+	void struts_single_monitor_top ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
+		                                monitor, 1920, 1080, 1920, 48, 0, 1);
+
+		assert (struts[Struts.TOP] == 48);
+		assert (struts[Struts.TOP_START] == 0);
+		assert (struts[Struts.TOP_END] == 1919);
+		assert (struts[Struts.BOTTOM] == 0);
+	}
+
+	void struts_single_monitor_left ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
+		                                monitor, 1920, 1080, 48, 1080, 0, 1);
+
+		assert (struts[Struts.LEFT] == 48);
+		assert (struts[Struts.LEFT_START] == 0);
+		assert (struts[Struts.LEFT_END] == 1079);
+		assert (struts[Struts.RIGHT] == 0);
+	}
+
+	void struts_single_monitor_right ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 1920, 1080, 48, 1080, 0, 1);
+
+		assert (struts[Struts.RIGHT] == 48);
+		assert (struts[Struts.RIGHT_START] == 0);
+		assert (struts[Struts.RIGHT_END] == 1079);
+		assert (struts[Struts.LEFT] == 0);
+	}
+
+	void struts_multi_monitor_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 1920x1080 monitors side by side, dock on the right monitor
+		// Full X screen is 3840x1080, right monitor at x=1920
+		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 3840, 1080, 1920, 48, 0, 1);
+
+		// BOTTOM strut = dock_height + screen_height - monitor_bottom
+		// = 48 + 1080 - 0 - 1080 = 48
+		assert (struts[Struts.BOTTOM] == 48);
+		// Strut range should cover only the right monitor
+		assert (struts[Struts.BOTTOM_START] == 1920);
+		assert (struts[Struts.BOTTOM_END] == 3839);
+	}
+
+	void struts_scaling_2x ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Single monitor with 2x scaling
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 1920, 1080, 1920, 48, 0, 2);
+
+		// All values should be doubled
+		assert (struts[Struts.BOTTOM] == 96);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 3839);
+	}
+
+	void struts_with_gap ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Single monitor with 10px gap
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 1920, 1080, 1920, 48, 10, 1);
+
+		// BOTTOM strut should include gap
+		assert (struts[Struts.BOTTOM] == 58);
 	}
 }

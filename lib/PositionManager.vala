@@ -1585,22 +1585,40 @@ namespace Plank {
 
       var progress = controller.renderer.hide_progress;
 
-      switch (Position) {
+      compute_dock_draw_position (out x, out y, Position, progress,
+                                  VisibleDockWidth, VisibleDockHeight, extra_hide_offset);
+    }
+
+    /**
+     * Pure math for dock draw position — no X11 dependencies, testable in isolation.
+     *
+     * @param x the resulting x offset
+     * @param y the resulting y offset
+     * @param position the dock position (top/bottom/left/right)
+     * @param progress hide progress (0.0 = visible, 1.0 = hidden)
+     * @param dock_width visible dock width
+     * @param dock_height visible dock height
+     * @param hide_offset extra offset for hiding
+     */
+    public static void compute_dock_draw_position (out int x, out int y,
+                                                    Gtk.PositionType position, double progress,
+                                                    int dock_width, int dock_height, int hide_offset) {
+      switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
         x = 0;
-        y = (int) ((VisibleDockHeight + extra_hide_offset) * progress);
+        y = (int) ((dock_height + hide_offset) * progress);
         break;
       case Gtk.PositionType.TOP:
         x = 0;
-        y = (int) (-(VisibleDockHeight + extra_hide_offset) * progress);
+        y = (int) (-(dock_height + hide_offset) * progress);
         break;
       case Gtk.PositionType.LEFT:
-        x = (int) (-(VisibleDockWidth + extra_hide_offset) * progress);
+        x = (int) (-(dock_width + hide_offset) * progress);
         y = 0;
         break;
       case Gtk.PositionType.RIGHT:
-        x = (int) ((VisibleDockWidth + extra_hide_offset) * progress);
+        x = (int) ((dock_width + hide_offset) * progress);
         y = 0;
         break;
       }
@@ -1808,30 +1826,51 @@ namespace Plank {
     public void get_struts (ref ulong[] struts) {
       window_scale_factor = controller.window.get_window ().get_scale_factor ();
       unowned Gdk.Screen screen = controller.window.get_screen ();
-      var screen_height = screen.get_height ();
-      var screen_width = screen.get_width ();
 
-      switch (Position) {
+      compute_struts (ref struts, Position, monitor_geo,
+                      screen.get_width (), screen.get_height (),
+                      VisibleDockWidth, VisibleDockHeight,
+                      GapSize, window_scale_factor);
+    }
+
+    /**
+     * Pure math for strut calculation — no X11 dependencies, testable in isolation.
+     *
+     * @param struts the array to contain the struts
+     * @param position the dock position (top/bottom/left/right)
+     * @param monitor the monitor geometry
+     * @param screen_width total X screen width
+     * @param screen_height total X screen height
+     * @param dock_width visible dock width
+     * @param dock_height visible dock height
+     * @param gap_size gap between dock and screen edge
+     * @param scale window scale factor
+     */
+    public static void compute_struts (ref ulong[] struts, Gtk.PositionType position,
+                                       Gdk.Rectangle monitor, int screen_width, int screen_height,
+                                       int dock_width, int dock_height,
+                                       int gap_size, int scale) {
+      switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        struts[Struts.BOTTOM] = (VisibleDockHeight + GapSize + screen_height - monitor_geo.y - monitor_geo.height) * window_scale_factor;
-        struts[Struts.BOTTOM_START] = monitor_geo.x * window_scale_factor;
-        struts[Struts.BOTTOM_END] = (monitor_geo.x + monitor_geo.width) * window_scale_factor - 1;
+        struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - monitor.y - monitor.height) * scale;
+        struts[Struts.BOTTOM_START] = monitor.x * scale;
+        struts[Struts.BOTTOM_END] = (monitor.x + monitor.width) * scale - 1;
         break;
       case Gtk.PositionType.TOP:
-        struts[Struts.TOP] = (monitor_geo.y + VisibleDockHeight + GapSize) * window_scale_factor;
-        struts[Struts.TOP_START] = monitor_geo.x * window_scale_factor;
-        struts[Struts.TOP_END] = (monitor_geo.x + monitor_geo.width) * window_scale_factor - 1;
+        struts[Struts.TOP] = (monitor.y + dock_height + gap_size) * scale;
+        struts[Struts.TOP_START] = monitor.x * scale;
+        struts[Struts.TOP_END] = (monitor.x + monitor.width) * scale - 1;
         break;
       case Gtk.PositionType.LEFT:
-        struts[Struts.LEFT] = (monitor_geo.x + VisibleDockWidth + GapSize) * window_scale_factor;
-        struts[Struts.LEFT_START] = monitor_geo.y * window_scale_factor;
-        struts[Struts.LEFT_END] = (monitor_geo.y + monitor_geo.height) * window_scale_factor - 1;
+        struts[Struts.LEFT] = (monitor.x + dock_width + gap_size) * scale;
+        struts[Struts.LEFT_START] = monitor.y * scale;
+        struts[Struts.LEFT_END] = (monitor.y + monitor.height) * scale - 1;
         break;
       case Gtk.PositionType.RIGHT:
-        struts[Struts.RIGHT] = (VisibleDockWidth + GapSize + screen_width - monitor_geo.x - monitor_geo.width) * window_scale_factor;
-        struts[Struts.RIGHT_START] = monitor_geo.y * window_scale_factor;
-        struts[Struts.RIGHT_END] = (monitor_geo.y + monitor_geo.height) * window_scale_factor - 1;
+        struts[Struts.RIGHT] = (dock_width + gap_size + screen_width - monitor.x - monitor.width) * scale;
+        struts[Struts.RIGHT_START] = monitor.y * scale;
+        struts[Struts.RIGHT_END] = (monitor.y + monitor.height) * scale - 1;
         break;
       }
     }
