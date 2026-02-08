@@ -225,21 +225,22 @@ namespace Plank {
     /**
      * The item is a separator.
      */
+    static Regex? separator_regexp = null;
+
     public bool is_separator () {
       if (DockItemFilename == null) {
         return false;
       }
 
-      try {
-        var separator_regexp = new Regex ("separator(-\\d+)?\\.dockitem");
-        if (separator_regexp.match (DockItemFilename)) {
-          return true;
+      if (separator_regexp == null) {
+        try {
+          separator_regexp = new Regex ("separator(-\\d+)?\\.dockitem");
+        } catch (RegexError e) {
+          return false;
         }
-      } catch (RegexError e) {
-        return false;
       }
 
-      return false;
+      return separator_regexp.match (DockItemFilename);
     }
 
     /**

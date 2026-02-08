@@ -4,35 +4,38 @@
 
 ## What Is Plank Reloaded?
 
-Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time.
+Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments. We actively support Cinnamon, MATE, Xfce, and KDE. Wayland is not supported at this time.
 
 Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
 
+![Plank Reloaded](screenshots/minimal.webp)
+
 ### Key Improvements in Plank Reloaded
 
-- Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, and Xfce)
-- Support for KDE when running in X11
+- Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, Xfce, and KDE)
+- Translated into 71 languages
 - Migrated to modern meson build system for easier compilation and installation
-- Added AnchorDocklets/AnchorFiles settings to anchor docklets/files to the end of the dock
+- Anchor docklets and files to the end of the dock
 - Fixed Restrict to Workspace so applications only show up on their active workspace
-- Max Zoom has been increased to 400%
-- Added GapSize to set the gap between the dock and the screen edge
-- Ability to support multiple monitors
+- Max zoom increased to 400%
+- Floating dock support with configurable gap from the screen edge
+- Multi-monitor support with active display tracking
 - Comprehensive docklet improvements:
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
   - Clock: Enhanced digital display with new pop-up calendar
   - Clippy: Image support, improved text handling and menu organization
-  - Notifications: A notification docklet for displaying system notifications
-  - Separator: A simple separator so you can setup a Mac OS X like dock experience
+  - Notifications: Displays system notifications on the dock
+  - Separator: A simple separator so you can set up a macOS-like dock experience
   - Workspaces: A graphical workspace switcher
   - Refreshed icons across all docklets
   - Support for third party docklets
-- Added Matte and Matte-Light themes, based on [Arian Plank Theme](https://github.com/arianXdev/arian-plank-theme)
+- Added Matte-Light, Minimal, and Minimal-Light themes
 - Added theme options to set the indicator, active item, and badge styles
-- General code cleanup and stability improvements
 
 ## Themes
+
+Plank Reloaded ships with six built-in themes. You can switch themes in **Preferences → Appearance → Theme**.
 
 ### Default
 
@@ -58,15 +61,30 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 
 ![Transparent Theme](screenshots/transparent.webp)
 
+### GTK Themes
+
+Plank Reloaded also supports GTK themes. To use one, install it and set it as your default theme, then select **Gtk+** as the Plank Reloaded theme in preferences.
+
+Here is a list of themes known to support Plank Reloaded:
+
+- [Celestial](https://github.com/zquestz/celestial-gtk-theme)
+- [Matcha](https://github.com/zquestz/Matcha-gtk-theme)
+- [Semabe](https://github.com/sewbej/Plank-Themes)
+- [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme)
+
 ## Installation
 
-### Arch Linux
+<details>
+<summary><b>Arch Linux</b></summary>
 
 ```bash
 yay -S plank-reloaded-git
 ```
 
-### Linux Mint / Ubuntu (Noble Numbat)
+</details>
+
+<details>
+<summary><b>Linux Mint / Ubuntu (Noble Numbat)</b></summary>
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -105,7 +123,10 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-### LMDE / Debian (Bookworm)
+</details>
+
+<details>
+<summary><b>LMDE / Debian (Bookworm)</b></summary>
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -144,13 +165,19 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-### openSUSE
+</details>
+
+<details>
+<summary><b>openSUSE</b></summary>
 
 There is a community supported openSUSE package available at:
 
 [https://build.opensuse.org/package/show/home:asdhio/plank](https://build.opensuse.org/package/show/home:asdhio/plank)
 
-### FreeBSD
+</details>
+
+<details>
+<summary><b>FreeBSD</b></summary>
 
 Plank Reloaded is available in the FreeBSD Ports Collection. You can install it using one of the following methods:
 
@@ -169,7 +196,10 @@ make install clean
 
 For more information about the port, visit [FreshPorts](https://www.freshports.org/x11/plank/).
 
-### Nix
+</details>
+
+<details>
+<summary><b>Nix</b></summary>
 
 There is a Nix flake available for Plank Reloaded located at [./flake.nix](./flake.nix).
 
@@ -280,7 +310,10 @@ Thanks to [thecreativedg](https://github.com/thecreativedg) for the initial flak
 
 [https://github.com/thecreativedg/plank-reloaded-flake](https://github.com/thecreativedg/plank-reloaded-flake)
 
-### Fedora
+</details>
+
+<details>
+<summary><b>Fedora</b></summary>
 
 Plank Reloaded works on Fedora when running in X11 mode. Wayland is not supported at this time.
 
@@ -320,6 +353,8 @@ meson compile -C build
 sudo meson install -C build
 ```
 
+</details>
+
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
 
 ## FAQ
@@ -335,6 +370,10 @@ Hold Ctrl while right-clicking on any area of the dock to open the Preferences m
 ### Can I run Plank Reloaded alongside the original Plank?
 
 No, you should completely uninstall the original Plank before installing Plank Reloaded to avoid conflicts. See the installation instructions for details.
+
+### How do I auto-start Plank Reloaded when I log in?
+
+Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
 
 ### Does Plank Reloaded work with multiple monitors?
 
@@ -364,13 +403,17 @@ The signaling feature is particularly useful when:
 - Configured as a hot corner action
 - Working with dynamic multi-monitor setups
 
-### How do I auto-start Plank Reloaded when I log in?
-
-Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
-
 ### Why can't I see certain applications in the dock?
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
+
+### Why does my dock fade instead of slide when hiding?
+
+The hide animation style is controlled by your dock theme's `FadeOpacity` setting. When `FadeOpacity` is `1`, the dock slides in and out. When it's less than `1` (e.g., `0`), the dock fades instead. The Default and Transparent themes use slide, while Matte and Matte-Light use fade. You can change this in your theme's `dock.theme` file or switch themes in **Preferences → Appearance → Theme**.
+
+### Does Plank Reloaded work with graphics tablets?
+
+Yes, but with a limitation. If you have "Pressure Reveal" enabled in preferences, the dock cannot be unhidden with a tablet pen because tablets use absolute positioning and don't generate the pressure events that mice and touchpads do. The dock will still unhide via hover for tablet input. If you use a tablet frequently, consider disabling "Pressure Reveal" in preferences.
 
 ### Running indicators not showing after login?
 
@@ -409,35 +452,6 @@ See [issue #124](https://github.com/zquestz/plank-reloaded/issues/124) for more 
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
 
-## Reporting Bugs
-
-For Plank Reloaded specific issues, please report them here:
-[Plank Reloaded Issues](https://github.com/zquestz/plank-reloaded/issues)
-
-For reference, original Plank bugs were tracked at: [Plank Launchpad](https://bugs.launchpad.net/plank)
-
-Please search for existing bugs before reporting new ones.
-
-## Where Can I Get Help?
-
-### For Plank Reloaded
-
-- GitHub Issues: [https://github.com/zquestz/plank-reloaded/issues](https://github.com/zquestz/plank-reloaded/issues)
-
-### Original Plank Resources
-
-- IRC: `#plank` on Libera.Chat - `irc://irc.libera.chat/#plank`
-- Common problems and solutions: [Plank Answers](https://answers.launchpad.net/plank)
-
-## How Can I Get Involved?
-
-- Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
-- Submit pull requests
-- Report issues
-- Contribute to development
-- Translations: [https://crowdin.com/project/plank-reloaded](https://crowdin.com/project/plank-reloaded)
-- Third party docklets
-
 ## Third Party Docklets
 
 Plank Reloaded encourages developers to write custom docklets! Right now we only have a couple custom docklets available, but we hope that changes in the future! Feel free to use Picky or Last.fm as an example for writing your own!
@@ -448,16 +462,19 @@ Plank Reloaded encourages developers to write custom docklets! Right now we only
 - [myIP](https://github.com/androlekss/ip-docklet.git) - A docklet to show public IP.
 - [Volmatic](https://github.com/androlekss/volmatic-docklet.git) - A Volmatic docklet for managing system volume.
 
-## GTK themes
+## Reporting Bugs
 
-Plank Reloaded supports GTK themes. To use a GTK theme, simply install it and set it as your default theme. Then in settings you can set the Plank Reloaded theme to Gtk+.
+Please report issues on the [GitHub Issues](https://github.com/zquestz/plank-reloaded/issues) page. Search for existing bugs before reporting new ones.
 
-Here is a list of themes known to support Plank Reloaded:
+## Getting Involved
 
-- Celestial - https://github.com/zquestz/celestial-gtk-theme
-- Matcha - https://github.com/zquestz/Matcha-gtk-theme
-- Semabe - https://github.com/sewbej/Plank-Themes
-- WhiteSur - https://github.com/vinceliuice/WhiteSur-gtk-theme
+- Visit the GitHub page: [https://github.com/zquestz/plank-reloaded](https://github.com/zquestz/plank-reloaded)
+- Submit pull requests
+- Report issues
+- Contribute to development
+- Translations: [https://crowdin.com/project/plank-reloaded](https://crowdin.com/project/plank-reloaded)
+- Third party docklets
+- Refer to [HACKING.md](HACKING.md) for development guidelines
 
 ## API Documentation
 
@@ -481,4 +498,4 @@ Need more information about Vala?
 - [Vala Project](https://wiki.gnome.org/Projects/Vala)
 - [Vala Manual](https://wiki.gnome.org/Projects/Vala/Manual)
 
-Refer to the HACKING.md file for further instructions.
+Refer to the [HACKING.md](HACKING.md) file for further instructions.

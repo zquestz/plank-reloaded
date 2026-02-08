@@ -28,19 +28,24 @@ namespace Plank {
      * @return A string not longer than max_length
      */
     public string truncate_middle (string str, int max_length) {
-      if (str.length <= max_length) {
+      var char_count = str.char_count ();
+
+      if (char_count <= max_length) {
         return str;
       }
 
       if (max_length < 5) {
-        return str.substring (0, max_length);
+        return str.substring (0, str.index_of_nth_char (max_length));
       }
 
       int half = (max_length - 1) / 2;
-      int left_size = half;
-      int right_size = max_length - left_size - 1;
+      int left_chars = half;
+      int right_chars = max_length - left_chars - 1;
 
-      return str.substring (0, left_size) + "…" + str.substring (str.length - right_size);
+      var left_end = str.index_of_nth_char (left_chars);
+      var right_start = str.index_of_nth_char (char_count - right_chars);
+
+      return str.substring (0, left_end) + "…" + str.substring (right_start);
     }
 
     public static bool current_workspace_only (DefaultApplicationDockItemProvider? provider) {
@@ -62,7 +67,8 @@ namespace Plank {
 
       if (current_workspace_only (provider)) {
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
-        window_count = WindowControl.window_on_workspace_count (app, active_workspace);
+        if (active_workspace != null)
+          window_count = WindowControl.window_on_workspace_count (app, active_workspace);
       } else {
         window_count = WindowControl.window_count (app);
       }
