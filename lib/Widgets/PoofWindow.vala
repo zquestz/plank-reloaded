@@ -103,7 +103,7 @@ namespace Plank
 			show ();
 			move (x - (poof_size / 2), y - (poof_size / 2));
 
-			animation_timer_id = Gdk.threads_add_timeout (30, () => {
+			animation_timer_id = Gdk.threads_add_timeout (16, () => {
 				frame_time = GLib.get_monotonic_time ();
 				
 				if (frame_time - start_time <= RUN_LENGTH) {
