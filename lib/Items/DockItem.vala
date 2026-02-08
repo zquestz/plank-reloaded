@@ -127,6 +127,9 @@ namespace Plank {
     SurfaceCache<DockItem> background_buffer;
     Surface? foreground_surface = null;
 
+    bool _is_separator = false;
+    bool _is_separator_cached = false;
+
     /**
      * Cached draw value for this item (reused each frame to avoid allocation).
      */
@@ -228,7 +231,13 @@ namespace Plank {
     static Regex? separator_regexp = null;
 
     public bool is_separator () {
+      if (_is_separator_cached)
+        return _is_separator;
+
+      _is_separator_cached = true;
+
       if (DockItemFilename == null) {
+        _is_separator = false;
         return false;
       }
 
@@ -236,11 +245,13 @@ namespace Plank {
         try {
           separator_regexp = new Regex ("separator(-\\d+)?\\.dockitem");
         } catch (RegexError e) {
+          _is_separator = false;
           return false;
         }
       }
 
-      return separator_regexp.match (DockItemFilename);
+      _is_separator = separator_regexp.match (DockItemFilename);
+      return _is_separator;
     }
 
     /**

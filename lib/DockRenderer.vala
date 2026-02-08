@@ -288,34 +288,36 @@ namespace Plank {
       current_items.add_all (new_items);
 
       if (screen_is_composited) {
-        var add_time = 0LL;
-        var remove_time = 0LL;
-        var move_time = 0LL;
-        var move_duration = theme.ItemMoveTime * 1000;
+        if (transient_items.size > 0) {
+          var add_time = 0LL;
+          var remove_time = 0LL;
+          var move_time = 0LL;
+          var move_duration = theme.ItemMoveTime * 1000;
 
-        var transient_items_it = transient_items.iterator ();
-        while (transient_items_it.next ()) {
-          var item = transient_items_it.get ();
-          add_time = item.AddTime;
-          remove_time = item.RemoveTime;
+          var transient_items_it = transient_items.iterator ();
+          while (transient_items_it.next ()) {
+            var item = transient_items_it.get ();
+            add_time = item.AddTime;
+            remove_time = item.RemoveTime;
 
-          if (add_time > remove_time) {
-            // Item is being added - check if already in list (from new_items)
-            move_time = frame_time - add_time;
-            if (move_time < move_duration) {
-              if (!current_items.contains (item))
-                current_items.add (item);
-            } else {
-              transient_items_it.remove ();
-            }
-          } else if (remove_time > 0) {
-            // Item is being removed
-            move_time = frame_time - remove_time;
-            if (move_time < move_duration) {
-              if (!current_items.contains (item))
-                current_items.add (item);
-            } else {
-              transient_items_it.remove ();
+            if (add_time > remove_time) {
+              // Item is being added - check if already in list (from new_items)
+              move_time = frame_time - add_time;
+              if (move_time < move_duration) {
+                if (!current_items.contains (item))
+                  current_items.add (item);
+              } else {
+                transient_items_it.remove ();
+              }
+            } else if (remove_time > 0) {
+              // Item is being removed
+              move_time = frame_time - remove_time;
+              if (move_time < move_duration) {
+                if (!current_items.contains (item))
+                  current_items.add (item);
+              } else {
+                transient_items_it.remove ();
+              }
             }
           }
         }
