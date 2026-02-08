@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.163 "Reloaded" (2026-02-07)
+
+- Fix workspace switch when focusing sticky windows (Always on Visible Workspace)
+
 ## 0.11.162 "Reloaded" (2026-02-07)
 
 - Fix struts using primary monitor dimensions instead of full screen size on multi-monitor setups

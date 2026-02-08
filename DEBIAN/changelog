@@ -1,3 +1,9 @@
+plank-reloaded (0.11.163-1) unstable; urgency=medium
+
+  * Skip workspace switch when focusing sticky windows
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 07 Feb 2026 16:00:00 -1000
+
 plank-reloaded (0.11.162-1) unstable; urgency=medium
 
   * Fix struts using primary monitor dimensions instead of full screen size on multi-monitor setups

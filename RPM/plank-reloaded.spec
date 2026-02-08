@@ -114,6 +114,9 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Fri Feb 07 2026 Josh Ellithorpe <quest@mac.com> - 0.11.163-1
+- Fix workspace switch when focusing sticky windows
+
 * Fri Feb 07 2026 Josh Ellithorpe <quest@mac.com> - 0.11.162-1
 - Fix struts using primary monitor dimensions instead of full screen size on multi-monitor setups
 - Skip workspace switch when focusing pinned windows

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-07 15:11-1000\n"
+"POT-Creation-Date: 2026-02-07 16:01-1000\n"
 "PO-Revision-Date: 2025-11-13 03:45\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
@@ -69,19 +69,19 @@ msgstr "start"
 msgid "The Plank Reloaded Developers"
 msgstr "A Plank Reloaded fejlesztői"
 
-#: data/plank.appdata.xml.in:124
+#: data/plank.appdata.xml.in:125
 msgid "Dock with Matte theme"
 msgstr "Dokk Matte témával"
 
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Appearance Preferences"
 msgstr "Megjelenési beállítások"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Behavior Preferences"
 msgstr "Viselkedési beállítások"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Docklets Preferences"
 msgstr "Dokk-kisalkalmazások beállításai"
 
