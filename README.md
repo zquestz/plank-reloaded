@@ -413,7 +413,7 @@ The hide animation style is controlled by your dock theme's `FadeOpacity` settin
 
 ### Does Plank Reloaded work with graphics tablets?
 
-Yes, but with a limitation. If you have "Pressure Reveal" enabled in preferences, the dock cannot be unhidden with a tablet pen because tablets use absolute positioning and don't generate the pressure events that mice and touchpads do. The dock will still unhide via hover for tablet input. If you use a tablet frequently, consider disabling "Pressure Reveal" in preferences.
+Yes, but with a limitation. Tablets use absolute positioning and don't generate the pressure events that mice and touchpads do, so the dock unhides via hover instead of pressure for tablet input. This works well when GapSize is 0 (dock flush with screen edge). However, when GapSize is greater than 0 (floating dock), the hover region is not available due to an X11 limitation, and the dock cannot be unhidden with a tablet pen. If you use a tablet frequently with a floating dock, consider setting GapSize to 0.
 
 ### Running indicators not showing after login?
 
