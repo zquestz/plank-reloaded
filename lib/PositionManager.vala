@@ -1496,75 +1496,109 @@ namespace Plank {
      * Caches the x and y position of the dock window.
      */
     public void update_dock_position () {
+      bool hidden = !screen_is_composited && controller.hide_manager.Hidden;
+
+      compute_dock_window_position (out win_x, out win_y, Position, Alignment,
+                                    monitor_geo, DockWidth, DockHeight, GapSize, Offset,
+                                    screen_is_composited, is_horizontal_dock (),
+                                    static_dock_region.width, static_dock_region.height,
+                                    hidden);
+    }
+
+    /**
+     * Pure math for dock window position — no X11 dependencies, testable in isolation.
+     *
+     * @param x the resulting x position
+     * @param y the resulting y position
+     * @param position the dock position (top/bottom/left/right)
+     * @param alignment the dock alignment
+     * @param monitor the monitor geometry
+     * @param dock_width the dock window width
+     * @param dock_height the dock window height
+     * @param gap_size gap between dock and screen edge
+     * @param offset position offset from center (percent)
+     * @param composited whether compositing is active
+     * @param horizontal whether the dock is horizontal
+     * @param static_width the static dock region width
+     * @param static_height the static dock region height
+     * @param hidden whether the dock is hidden (non-composited mode)
+     */
+    public static void compute_dock_window_position (out int x, out int y,
+                                                      Gtk.PositionType position, Gtk.Align alignment,
+                                                      Gdk.Rectangle monitor,
+                                                      int dock_width, int dock_height,
+                                                      int gap_size, int offset,
+                                                      bool composited, bool horizontal,
+                                                      int static_width, int static_height,
+                                                      bool hidden) {
       var xoffset = 0;
       var yoffset = 0;
 
-      if (!screen_is_composited) {
-        var offset = Offset;
-        xoffset = (monitor_geo.width - DockWidth) / 2 + (offset * (monitor_geo.width - DockWidth)) / 200;
-        yoffset = (monitor_geo.height - DockHeight) / 2 + (offset * (monitor_geo.height - DockHeight)) / 200;
+      if (!composited) {
+        xoffset = (monitor.width - dock_width) / 2 + (offset * (monitor.width - dock_width)) / 200;
+        yoffset = (monitor.height - dock_height) / 2 + (offset * (monitor.height - dock_height)) / 200;
 
-        switch (Alignment) {
+        switch (alignment) {
         default:
         case Gtk.Align.CENTER:
         case Gtk.Align.FILL:
           break;
         case Gtk.Align.START:
-          if (is_horizontal_dock ()) {
+          if (horizontal) {
             xoffset = 0;
-            yoffset = (monitor_geo.height - static_dock_region.height);
+            yoffset = (monitor.height - static_height);
           } else {
-            xoffset = (monitor_geo.width - static_dock_region.width);
+            xoffset = (monitor.width - static_width);
             yoffset = 0;
           }
           break;
         case Gtk.Align.END:
-          if (is_horizontal_dock ()) {
-            xoffset = (monitor_geo.width - static_dock_region.width);
+          if (horizontal) {
+            xoffset = (monitor.width - static_width);
             yoffset = 0;
           } else {
             xoffset = 0;
-            yoffset = (monitor_geo.height - static_dock_region.height);
+            yoffset = (monitor.height - static_height);
           }
           break;
         }
       }
 
-      switch (Position) {
+      switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        win_x = monitor_geo.x + xoffset;
-        win_y = monitor_geo.y + monitor_geo.height - DockHeight - GapSize;
+        x = monitor.x + xoffset;
+        y = monitor.y + monitor.height - dock_height - gap_size;
         break;
       case Gtk.PositionType.TOP:
-        win_x = monitor_geo.x + xoffset;
-        win_y = monitor_geo.y + GapSize;
+        x = monitor.x + xoffset;
+        y = monitor.y + gap_size;
         break;
       case Gtk.PositionType.LEFT:
-        win_y = monitor_geo.y + yoffset;
-        win_x = monitor_geo.x + GapSize;
+        y = monitor.y + yoffset;
+        x = monitor.x + gap_size;
         break;
       case Gtk.PositionType.RIGHT:
-        win_y = monitor_geo.y + yoffset;
-        win_x = monitor_geo.x + monitor_geo.width - DockWidth - GapSize;
+        y = monitor.y + yoffset;
+        x = monitor.x + monitor.width - dock_width - gap_size;
         break;
       }
 
       // Actually change the window position while hidden for non-compositing mode
-      if (!screen_is_composited && controller.hide_manager.Hidden) {
-        switch (Position) {
+      if (hidden) {
+        switch (position) {
         default:
         case Gtk.PositionType.BOTTOM:
-          win_y += DockHeight - 1;
+          y += dock_height - 1;
           break;
         case Gtk.PositionType.TOP:
-          win_y -= DockHeight - 1;
+          y -= dock_height - 1;
           break;
         case Gtk.PositionType.LEFT:
-          win_x -= DockWidth - 1;
+          x -= dock_width - 1;
           break;
         case Gtk.PositionType.RIGHT:
-          win_x += DockWidth - 1;
+          x += dock_width - 1;
           break;
         }
       }
@@ -1640,22 +1674,45 @@ namespace Plank {
      * @param y the vertical padding
      */
     public void get_background_padding (out int x, out int y) {
-      switch (Position) {
+      compute_background_padding (out x, out y, Position,
+                                  VisibleDockWidth, VisibleDockHeight,
+                                  DockBackgroundWidth, DockBackgroundHeight,
+                                  extra_hide_offset);
+    }
+
+    /**
+     * Pure math for background padding — no X11 dependencies, testable in isolation.
+     *
+     * @param x the resulting x padding
+     * @param y the resulting y padding
+     * @param position the dock position
+     * @param dock_width visible dock width
+     * @param dock_height visible dock height
+     * @param bg_width dock background width
+     * @param bg_height dock background height
+     * @param hide_offset extra offset for hiding
+     */
+    public static void compute_background_padding (out int x, out int y,
+                                                    Gtk.PositionType position,
+                                                    int dock_width, int dock_height,
+                                                    int bg_width, int bg_height,
+                                                    int hide_offset) {
+      switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
         x = 0;
-        y = VisibleDockHeight - DockBackgroundHeight + extra_hide_offset;
+        y = dock_height - bg_height + hide_offset;
         break;
       case Gtk.PositionType.TOP:
         x = 0;
-        y = -(VisibleDockHeight - DockBackgroundHeight + extra_hide_offset);
+        y = -(dock_height - bg_height + hide_offset);
         break;
       case Gtk.PositionType.LEFT:
-        x = -(VisibleDockWidth - DockBackgroundWidth + extra_hide_offset);
+        x = -(dock_width - bg_width + hide_offset);
         y = 0;
         break;
       case Gtk.PositionType.RIGHT:
-        x = VisibleDockWidth - DockBackgroundWidth + extra_hide_offset;
+        x = dock_width - bg_width + hide_offset;
         y = 0;
         break;
       }

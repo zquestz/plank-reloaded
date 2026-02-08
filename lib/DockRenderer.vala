@@ -1157,7 +1157,7 @@ namespace Plank {
       return 1;
     }
 
-    static double easing_bounce (double t, double d, double n)
+    public static double easing_bounce (double t, double d, double n)
     requires (t >= 0.0 && d > 0.0 && n >= 1.0)
     requires (t <= d)
     {
