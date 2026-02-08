@@ -1807,11 +1807,9 @@ namespace Plank {
      */
     public void get_struts (ref ulong[] struts) {
       window_scale_factor = controller.window.get_window ().get_scale_factor ();
-      var display = controller.window.get_display ();
-      var primary_monitor = display.get_primary_monitor ();
-      var monitor_geometry = primary_monitor.get_geometry ();
-      var screen_height = monitor_geometry.height;
-      var screen_width = monitor_geometry.width;
+      unowned Gdk.Screen screen = controller.window.get_screen ();
+      var screen_height = screen.get_height ();
+      var screen_width = screen.get_width ();
 
       switch (Position) {
       default:
