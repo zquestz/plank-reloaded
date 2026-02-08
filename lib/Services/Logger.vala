@@ -135,6 +135,8 @@ namespace Plank
 		 */
 		public static void verbose (string msg, ...)
 		{
+			if (LogLevel.VERBOSE < DisplayLevel)
+				return;
 			write (LogLevel.VERBOSE, format_message (msg.vprintf (va_list ())));
 		}
 
