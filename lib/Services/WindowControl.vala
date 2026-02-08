@@ -812,7 +812,7 @@ namespace Plank {
     static void center_and_focus_window (Wnck.Window w, uint32 event_time) {
       unowned Wnck.Workspace? workspace = w.get_workspace ();
 
-      if (workspace != null && workspace != w.get_screen ().get_active_workspace ())
+      if (!w.is_pinned () && workspace != null && workspace != w.get_screen ().get_active_workspace ())
         workspace.activate (event_time);
 
       if (w.is_minimized ())
