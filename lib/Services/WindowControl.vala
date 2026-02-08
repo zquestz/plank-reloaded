@@ -575,8 +575,7 @@ namespace Plank {
       var windows_to_minimize = new Gee.ArrayList<unowned Wnck.Window> ();
 
       foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if (!window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
+        if (!window.is_minimized () && window_is_on_active_viewport (window)) {
           windows_to_minimize.add (window);
         }
       }
@@ -591,8 +590,7 @@ namespace Plank {
       var windows_to_restore = new Gee.ArrayList<unowned Wnck.Window> ();
 
       foreach (unowned Wnck.Window window in stack) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if (window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
+        if (window.is_minimized () && window_is_on_active_viewport (window)) {
           windows_to_restore.add (window);
         }
       }
@@ -639,8 +637,7 @@ namespace Plank {
       var urgent = false;
 
       foreach (unowned Wnck.Window window in windows) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if (!window.is_skip_tasklist () && active_workspace != null && window.is_in_viewport (active_workspace))
+        if (!window.is_skip_tasklist () && window_is_on_active_viewport (window))
           not_in_viewport = false;
         if (window.needs_attention ())
           urgent = true;
@@ -661,11 +658,10 @@ namespace Plank {
 
       // Unminimize minimized windows if there is one or more
       foreach (unowned Wnck.Window window in windows) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if (window.is_minimized () && active_workspace != null && window.is_in_viewport (active_workspace)) {
+        if (window.is_minimized () && window_is_on_active_viewport (window)) {
           var windows_to_unminimize = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
-            if (w.is_minimized () && w.is_in_viewport (active_workspace))
+            if (w.is_minimized () && window_is_on_active_viewport (w))
               windows_to_unminimize.add (w);
           process_windows (windows_to_unminimize, PendingActionType.UNMINIMIZE, event_time);
           return;
@@ -674,12 +670,11 @@ namespace Plank {
 
       // Minimize all windows if this application owns the active window
       foreach (unowned Wnck.Window window in windows) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if ((window.is_active () && active_workspace != null && window.is_in_viewport (active_workspace))
+        if ((window.is_active () && window_is_on_active_viewport (window))
             || window == window.get_screen ().get_active_window ()) {
           var windows_to_minimize = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
-            if (!w.is_minimized () && w.is_in_viewport (active_workspace) && w.get_window_type () != Wnck.WindowType.DOCK)
+            if (!w.is_minimized () && window_is_on_active_viewport (w) && w.get_window_type () != Wnck.WindowType.DOCK)
               windows_to_minimize.add (w);
           process_windows (windows_to_minimize, PendingActionType.MINIMIZE, 0);
           return;
@@ -688,11 +683,10 @@ namespace Plank {
 
       // Get all windows on the current workspace in the foreground
       foreach (unowned Wnck.Window window in windows) {
-        unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
-        if (active_workspace != null && window.is_in_viewport (active_workspace)) {
+        if (window_is_on_active_viewport (window)) {
           var windows_to_focus = new Gee.ArrayList<unowned Wnck.Window> ();
           foreach (unowned Wnck.Window w in windows)
-            if (w.is_in_viewport (active_workspace))
+            if (window_is_on_active_viewport (w))
               windows_to_focus.add (w);
           process_windows (windows_to_focus, PendingActionType.CENTER_AND_FOCUS, event_time);
           return;
@@ -807,6 +801,13 @@ namespace Plank {
 
       Gdk.Rectangle viewpRect = { firstViewportX, firstViewportY, viewportWidth, viewportHeight };
       return viewpRect.intersect (secondGeo, null);
+    }
+
+    static bool window_is_on_active_viewport (Wnck.Window window) {
+      if (window.is_pinned () || window.is_sticky ())
+        return true;
+      unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
+      return active_workspace != null && window.is_in_viewport (active_workspace);
     }
 
     static void center_and_focus_window (Wnck.Window w, uint32 event_time) {
