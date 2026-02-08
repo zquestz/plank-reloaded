@@ -41,6 +41,7 @@ namespace PlankTests
 		register_drawing_tests ();
 		register_items_tests ();
 		register_preferences_tests ();
+		register_services_tests ();
 		register_widgets_tests ();
 
 		// further preparations needed for runtime tests

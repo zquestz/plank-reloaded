@@ -4,6 +4,7 @@ tests_bin_sources = [
   'Items.vala',
   'Main.vala',
   'Preferences.vala',
+  'Services.vala',
   'TestHelper.vala',
   'Widgets.vala',
 ]
