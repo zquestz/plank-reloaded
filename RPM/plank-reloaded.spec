@@ -116,6 +116,7 @@ fi
 %changelog
 * Fri Feb 07 2026 Josh Ellithorpe <quest@mac.com> - 0.11.162-1
 - Fix struts using primary monitor dimensions instead of full screen size on multi-monitor setups
+- Skip workspace switch when focusing pinned windows
 
 * Mon Jan 27 2026 Josh Ellithorpe <quest@mac.com> - 0.11.161-1
 - Fix use-after-free crash in window operations using XID-based queue

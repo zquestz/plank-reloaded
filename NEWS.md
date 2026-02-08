@@ -5,6 +5,7 @@
 ## 0.11.162 "Reloaded" (2026-02-07)
 
 - Fix struts using primary monitor dimensions instead of full screen size on multi-monitor setups
+- Skip workspace switch when focusing pinned windows
 
 ## 0.11.161 "Reloaded" (2026-01-27)
 
