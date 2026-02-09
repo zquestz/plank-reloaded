@@ -222,7 +222,7 @@ namespace Plank {
 
     warning ("Neither of XDG_SESSION_DESKTOP, XDG_CURRENT_DESKTOP or DESKTOP_SESSION is set in this environment!");
 
-    return XdgSessionDesktop.GNOME;
+    return XdgSessionDesktop.UNKNOWN;
   }
 
   static XdgSessionType get_xdg_session_type () {
