@@ -15,21 +15,33 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 
 Plank Reloaded ships with six built-in themes. You can switch themes in **Preferences → Appearance → Theme**.
 
-| Default | Matte | Matte Light |
-|:---:|:---:|:---:|
-| ![Default](screenshots/default.webp) | ![Matte](screenshots/matte.webp) | ![Matte Light](screenshots/matte-light.webp) |
+### Default
+![Default Theme](screenshots/default.webp)
 
-| Minimal | Minimal Light | Transparent |
-|:---:|:---:|:---:|
-| ![Minimal](screenshots/minimal.webp) | ![Minimal Light](screenshots/minimal-light.webp) | ![Transparent](screenshots/transparent.webp) |
+### Matte
+![Matte Theme](screenshots/matte.webp)
+
+### Matte Light
+![Matte Light Theme](screenshots/matte-light.webp)
+
+### Minimal
+![Minimal Theme](screenshots/minimal.webp)
+
+### Minimal Light
+![Minimal Light Theme](screenshots/minimal-light.webp)
+
+### Transparent
+![Transparent Theme](screenshots/transparent.webp)
 
 Plank Reloaded also supports GTK themes. To use one, install it and set it as your default theme, then select **Gtk+** as the Plank Reloaded theme in preferences.
 
 Known compatible GTK themes: [Celestial](https://github.com/zquestz/celestial-gtk-theme) · [Matcha](https://github.com/zquestz/Matcha-gtk-theme) · [Semabe](https://github.com/sewbej/Plank-Themes) · [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme)
 
+---
+
 ## Installation
 
-<details>
+<details markdown="1">
 <summary><strong>Arch Linux</strong></summary>
 
 ```bash
@@ -38,7 +50,7 @@ yay -S plank-reloaded-git
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Linux Mint / Ubuntu (Noble Numbat)</strong></summary>
 
 **Using the PPA (Recommended):**
@@ -69,7 +81,7 @@ sudo meson install -C build
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>LMDE / Debian (Bookworm)</strong></summary>
 
 **Using the PPA (Recommended):**
@@ -100,7 +112,7 @@ sudo meson install -C build
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Fedora</strong></summary>
 
 **Using RPM Packages (Recommended for X11 users):**
@@ -128,7 +140,7 @@ sudo meson install -C build
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>openSUSE</strong></summary>
 
 There is a community supported openSUSE package available at:
@@ -137,7 +149,7 @@ There is a community supported openSUSE package available at:
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>FreeBSD</strong></summary>
 
 **Using pkg (Binary Package):**
@@ -157,7 +169,7 @@ For more information about the port, visit [FreshPorts](https://www.freshports.o
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Nix</strong></summary>
 
 There is a Nix flake available. The quickest way to try it:
@@ -176,37 +188,39 @@ For system-wide installation with flakes, see the full instructions in the [READ
 
 </details>
 
+---
+
 ## FAQ
 
-<details>
+<details markdown="1">
 <summary><strong>Can I use Plank Reloaded on Wayland?</strong></summary>
 
 No, Plank Reloaded is designed for X11 desktop environments only. Wayland is not supported at this time.
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>How do I access Plank Reloaded preferences?</strong></summary>
 
 Hold Ctrl while right-clicking on any area of the dock to open the Preferences menu.
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Can I run Plank Reloaded alongside the original Plank?</strong></summary>
 
 No, you should completely uninstall the original Plank before installing Plank Reloaded to avoid conflicts. See the installation instructions for details.
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>How do I auto-start Plank Reloaded when I log in?</strong></summary>
 
 Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Does Plank Reloaded work with multiple monitors?</strong></summary>
 
 Yes, Plank Reloaded works with multiple monitors. To have a dock on each monitor, you need to launch multiple instances with different names:
@@ -220,14 +234,14 @@ Each instance can be configured independently. You can move docks to your active
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Why can't I see certain applications in the dock?</strong></summary>
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Running indicators not showing after login?</strong></summary>
 
 This is typically caused by bamfdaemon not starting properly with systemd.
@@ -246,6 +260,8 @@ systemctl --user daemon-reload
 
 </details>
 
+---
+
 ## Third Party Docklets
 
 Plank Reloaded supports custom docklets! See the [development guide](https://github.com/zquestz/plank-reloaded/blob/master/DOCKLETS.md) for details.
@@ -255,6 +271,8 @@ Plank Reloaded supports custom docklets! See the [development guide](https://git
 - [Quit](https://github.com/androlekss/quit.git) - Quick access to session actions
 - [myIP](https://github.com/androlekss/ip-docklet.git) - Show public IP
 - [Volmatic](https://github.com/androlekss/volmatic-docklet.git) - System volume control
+
+---
 
 ## Get Involved
 

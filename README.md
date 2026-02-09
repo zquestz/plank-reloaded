@@ -74,13 +74,17 @@ Here is a list of themes known to support Plank Reloaded:
 
 ## Installation
 
-### Arch Linux
+<details markdown="1">
+<summary><strong>Arch Linux</strong></summary>
 
 ```bash
 yay -S plank-reloaded-git
 ```
 
-### Linux Mint / Ubuntu (Noble Numbat)
+</details>
+
+<details markdown="1">
+<summary><strong>Linux Mint / Ubuntu (Noble Numbat)</strong></summary>
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -119,7 +123,10 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-### LMDE / Debian (Bookworm)
+</details>
+
+<details markdown="1">
+<summary><strong>LMDE / Debian (Bookworm)</strong></summary>
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -158,15 +165,21 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-### openSUSE
+</details>
+
+<details markdown="1">
+<summary><strong>openSUSE</strong></summary>
 
 There is a community supported openSUSE package available at:
 
 [https://build.opensuse.org/package/show/home:asdhio/plank](https://build.opensuse.org/package/show/home:asdhio/plank)
 
-### FreeBSD
+</details>
 
-Plank Reloaded is available in the FreeBSD Ports Collection. You can install it using one of the following methods:
+<details markdown="1">
+<summary><strong>FreeBSD</strong></summary>
+
+Plank Reloaded is available in the FreeBSD Ports Collection.
 
 #### Using pkg (Binary Package)
 
@@ -183,7 +196,10 @@ make install clean
 
 For more information about the port, visit [FreshPorts](https://www.freshports.org/x11/plank/).
 
-### Nix
+</details>
+
+<details markdown="1">
+<summary><strong>Nix</strong></summary>
 
 There is a Nix flake available for Plank Reloaded located at [./flake.nix](./flake.nix).
 
@@ -294,9 +310,12 @@ Thanks to [thecreativedg](https://github.com/thecreativedg) for the initial flak
 
 [https://github.com/thecreativedg/plank-reloaded-flake](https://github.com/thecreativedg/plank-reloaded-flake)
 
-### Fedora
+</details>
 
-Plank Reloaded works on Fedora when running in X11 mode. Wayland is not supported at this time.
+<details markdown="1">
+<summary><strong>Fedora</strong></summary>
+
+Plank Reloaded works on Fedora when running in X11 mode.
 
 #### Option 1: Using RPM Packages (Recommended for X11 users)
 
@@ -336,25 +355,40 @@ sudo meson install -C build
 
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
 
+</details>
+
 ## FAQ
 
-### Can I use Plank Reloaded on Wayland?
+<details markdown="1">
+<summary><strong>Can I use Plank Reloaded on Wayland?</strong></summary>
 
 No, Plank Reloaded is designed for X11 desktop environments only. Wayland is not supported at this time.
 
-### How do I access Plank Reloaded preferences?
+</details>
+
+<details markdown="1">
+<summary><strong>How do I access Plank Reloaded preferences?</strong></summary>
 
 Hold Ctrl while right-clicking on any area of the dock to open the Preferences menu.
 
-### Can I run Plank Reloaded alongside the original Plank?
+</details>
+
+<details markdown="1">
+<summary><strong>Can I run Plank Reloaded alongside the original Plank?</strong></summary>
 
 No, you should completely uninstall the original Plank before installing Plank Reloaded to avoid conflicts. See the installation instructions for details.
 
-### How do I auto-start Plank Reloaded when I log in?
+</details>
+
+<details markdown="1">
+<summary><strong>How do I auto-start Plank Reloaded when I log in?</strong></summary>
 
 Add Plank Reloaded to your desktop environment's startup applications. The command to use is simply `plank`.
 
-### Does Plank Reloaded work with multiple monitors?
+</details>
+
+<details markdown="1">
+<summary><strong>Does Plank Reloaded work with multiple monitors?</strong></summary>
 
 Yes, Plank Reloaded works with multiple monitors. To have a dock on each monitor, you need to launch multiple instances with different names:
 
@@ -382,19 +416,31 @@ The signaling feature is particularly useful when:
 - Configured as a hot corner action
 - Working with dynamic multi-monitor setups
 
-### Why can't I see certain applications in the dock?
+</details>
+
+<details markdown="1">
+<summary><strong>Why can't I see certain applications in the dock?</strong></summary>
 
 Check if "Restrict to Workspace" is enabled in preferences. When enabled, applications will only show up on the workspace they're active on.
 
-### Why does my dock fade instead of slide when hiding?
+</details>
+
+<details markdown="1">
+<summary><strong>Why does my dock fade instead of slide when hiding?</strong></summary>
 
 The hide animation style is controlled by your dock theme's `FadeOpacity` setting. When `FadeOpacity` is `1`, the dock slides in and out. When it's less than `1` (e.g., `0`), the dock fades instead. The Default and Transparent themes use slide, while Matte and Matte-Light use fade. You can change this in your theme's `dock.theme` file or switch themes in **Preferences → Appearance → Theme**.
 
-### Does Plank Reloaded work with graphics tablets?
+</details>
+
+<details markdown="1">
+<summary><strong>Does Plank Reloaded work with graphics tablets?</strong></summary>
 
 Yes, but with a limitation. Tablets use absolute positioning and don't generate the pressure events that mice and touchpads do, so the dock unhides via hover instead of pressure for tablet input. This works well when GapSize is 0 (dock flush with screen edge). However, when GapSize is greater than 0 (floating dock), the hover region is not available due to an X11 limitation, and the dock cannot be unhidden with a tablet pen. If you use a tablet frequently with a floating dock, consider setting GapSize to 0.
 
-### Running indicators not showing after login?
+</details>
+
+<details markdown="1">
+<summary><strong>Running indicators not showing after login?</strong></summary>
 
 If running indicators (the glow effect showing active applications) don't appear after logging in, this is typically caused by bamfdaemon not starting properly with systemd.
 
@@ -413,7 +459,10 @@ systemctl --user daemon-reload
 
 This allows dbus activation to cleanly start bamfdaemon on demand, and survives package updates.
 
-### Plank sensitivity extends too far in IceWM?
+</details>
+
+<details markdown="1">
+<summary><strong>Plank sensitivity extends too far in IceWM?</strong></summary>
 
 If you're using IceWM and experiencing issues where clicking near the dock becomes unresponsive in applications (e.g., Firefox's back button doesn't work when too close to the dock), you need to tell IceWM not to manage the Plank window.
 
@@ -427,9 +476,14 @@ This tells IceWM not to apply window management rules to Plank, resolving the cl
 
 See [issue #124](https://github.com/zquestz/plank-reloaded/issues/124) for more details.
 
-### How can application developers show counts or progress indicators on their dock icons?
+</details>
+
+<details markdown="1">
+<summary><strong>How can application developers show counts or progress indicators on their dock icons?</strong></summary>
 
 Plank Reloaded supports the [Unity LauncherAPI specification](https://wiki.ubuntu.com/Unity/LauncherAPI), which allows applications to display notification counts, progress bars, and other indicators on their dock icons.
+
+</details>
 
 ## Third Party Docklets
 
