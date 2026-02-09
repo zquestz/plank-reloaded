@@ -225,6 +225,7 @@ Check if "Restrict to Workspace" is enabled in preferences. When enabled, applic
 This is typically caused by bamfdaemon not starting properly with systemd.
 
 **Solution 1:** Manually add bamfdaemon to your startup applications. Common paths include:
+
 - `/usr/lib/x86_64-linux-gnu/bamf/bamfdaemon`
 - `/usr/lib/bamf/bamfdaemon`
 
