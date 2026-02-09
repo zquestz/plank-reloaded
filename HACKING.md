@@ -13,13 +13,11 @@ For Plank Reloaded specific issues and discussions:
 ## Contributing Without Coding
 
 1. **Report and Verify Issues**
-
    - Check existing issues on GitHub
    - Report new bugs with detailed information
    - Help verify and test fixes
 
 2. **Documentation**
-
    - Help improve documentation
    - Update wiki pages
    - Suggest improvements

@@ -98,6 +98,7 @@ namespace MyNamespace {
 ```
 
 Key points:
+
 - `get_id()` must return a unique identifier for your docklet.
 - `get_icon()` can return a resource URI, file path, or icon theme name.
 - `is_supported()` can check for required system capabilities and return `false` if the docklet can't run on the current system.
@@ -177,27 +178,27 @@ namespace MyNamespace {
 
 These properties control what the dock displays for your item:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `Icon` | `string` | Icon name, file path, or resource URI |
-| `ForcePixbuf` | `Gdk.Pixbuf?` | Set a pixbuf directly as the icon (overrides `Icon`) |
-| `Text` | `string` | Tooltip text shown on hover |
-| `Count` | `int64` | Badge count displayed on the icon |
-| `CountVisible` | `bool` | Whether to show the badge count |
-| `Progress` | `double` | Progress bar value (0.0 to 1.0) |
-| `ProgressVisible` | `bool` | Whether to show the progress bar |
-| `Indicator` | `IndicatorState` | Indicator dots (`NONE`, `SINGLE`, `SINGLE_PLUS`) |
+| Property          | Type             | Description                                          |
+| ----------------- | ---------------- | ---------------------------------------------------- |
+| `Icon`            | `string`         | Icon name, file path, or resource URI                |
+| `ForcePixbuf`     | `Gdk.Pixbuf?`    | Set a pixbuf directly as the icon (overrides `Icon`) |
+| `Text`            | `string`         | Tooltip text shown on hover                          |
+| `Count`           | `int64`          | Badge count displayed on the icon                    |
+| `CountVisible`    | `bool`           | Whether to show the badge count                      |
+| `Progress`        | `double`         | Progress bar value (0.0 to 1.0)                      |
+| `ProgressVisible` | `bool`           | Whether to show the progress bar                     |
+| `Indicator`       | `IndicatorState` | Indicator dots (`NONE`, `SINGLE`, `SINGLE_PLUS`)     |
 
 ### Animation Types
 
 Return these from `on_clicked` and `on_scrolled`:
 
-| Type | Effect |
-|------|--------|
-| `AnimationType.NONE` | No animation |
-| `AnimationType.BOUNCE` | Icon bounces (good for launch actions) |
-| `AnimationType.DARKEN` | Icon briefly darkens |
-| `AnimationType.LIGHTEN` | Icon briefly lightens |
+| Type                    | Effect                                 |
+| ----------------------- | -------------------------------------- |
+| `AnimationType.NONE`    | No animation                           |
+| `AnimationType.BOUNCE`  | Icon bounces (good for launch actions) |
+| `AnimationType.DARKEN`  | Icon briefly darkens                   |
+| `AnimationType.LIGHTEN` | Icon briefly lightens                  |
 
 ### Accessing the Dock Controller
 
@@ -243,6 +244,7 @@ namespace MyNamespace {
 ```
 
 Key points:
+
 - The `Description` annotation's `nick` is the key name in the `.dockitem` file.
 - `reset_properties()` must set all properties to their default values.
 - Listen for changes with `prefs.notify.connect()` to react to settings updates:

@@ -74,17 +74,13 @@ Here is a list of themes known to support Plank Reloaded:
 
 ## Installation
 
-<details>
-<summary><b>Arch Linux</b></summary>
+### Arch Linux
 
 ```bash
 yay -S plank-reloaded-git
 ```
 
-</details>
-
-<details>
-<summary><b>Linux Mint / Ubuntu (Noble Numbat)</b></summary>
+### Linux Mint / Ubuntu (Noble Numbat)
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -123,10 +119,7 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-</details>
-
-<details>
-<summary><b>LMDE / Debian (Bookworm)</b></summary>
+### LMDE / Debian (Bookworm)
 
 #### Option 1: Using the PPA (Recommended)
 
@@ -165,19 +158,13 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-</details>
-
-<details>
-<summary><b>openSUSE</b></summary>
+### openSUSE
 
 There is a community supported openSUSE package available at:
 
 [https://build.opensuse.org/package/show/home:asdhio/plank](https://build.opensuse.org/package/show/home:asdhio/plank)
 
-</details>
-
-<details>
-<summary><b>FreeBSD</b></summary>
+### FreeBSD
 
 Plank Reloaded is available in the FreeBSD Ports Collection. You can install it using one of the following methods:
 
@@ -196,10 +183,7 @@ make install clean
 
 For more information about the port, visit [FreshPorts](https://www.freshports.org/x11/plank/).
 
-</details>
-
-<details>
-<summary><b>Nix</b></summary>
+### Nix
 
 There is a Nix flake available for Plank Reloaded located at [./flake.nix](./flake.nix).
 
@@ -310,10 +294,7 @@ Thanks to [thecreativedg](https://github.com/thecreativedg) for the initial flak
 
 [https://github.com/thecreativedg/plank-reloaded-flake](https://github.com/thecreativedg/plank-reloaded-flake)
 
-</details>
-
-<details>
-<summary><b>Fedora</b></summary>
+### Fedora
 
 Plank Reloaded works on Fedora when running in X11 mode. Wayland is not supported at this time.
 
@@ -352,8 +333,6 @@ meson setup --prefix=/usr build
 meson compile -C build
 sudo meson install -C build
 ```
-
-</details>
 
 Note: For other distributions, you'll need to build from source. The build dependencies and commands may vary slightly depending on your distribution.
 
