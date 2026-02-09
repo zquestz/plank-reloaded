@@ -8,7 +8,7 @@ Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) pr
 
 Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
 
-![Plank Reloaded](screenshots/minimal.webp)
+![Plank Reloaded on Linux Mint](screenshots/plank-reloaded-mint.webp)
 
 ### Key Improvements in Plank Reloaded
 
