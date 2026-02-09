@@ -13,29 +13,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 
 ## Themes
 
-Plank Reloaded ships with six built-in themes. You can switch themes in **Preferences → Appearance → Theme**.
-
-### Default
-![Default Theme](screenshots/white-bg/default.webp)
-
-### Matte
-![Matte Theme](screenshots/white-bg/matte.webp)
-
-### Matte Light
-![Matte Light Theme](screenshots/white-bg/matte-light.webp)
-
-### Minimal
-![Minimal Theme](screenshots/white-bg/minimal.webp)
-
-### Minimal Light
-![Minimal Light Theme](screenshots/white-bg/minimal-light.webp)
-
-### Transparent
-![Transparent Theme](screenshots/white-bg/transparent.webp)
-
-Plank Reloaded also supports GTK themes. To use one, install it and set it as your default theme, then select **Gtk+** as the Plank Reloaded theme in preferences.
-
-Known compatible GTK themes: [Celestial](https://github.com/zquestz/celestial-gtk-theme) · [Matcha](https://github.com/zquestz/Matcha-gtk-theme) · [Semabe](https://github.com/sewbej/Plank-Themes) · [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme)
+Plank Reloaded ships with six built-in themes and supports GTK themes. You can switch themes in **Preferences → Appearance → Theme**. See the [full theme gallery on GitHub](https://github.com/zquestz/plank-reloaded#themes).
 
 ---
 
