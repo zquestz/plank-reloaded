@@ -16,22 +16,22 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 Plank Reloaded ships with six built-in themes. You can switch themes in **Preferences → Appearance → Theme**.
 
 ### Default
-![Default Theme](screenshots/default.webp)
+![Default Theme](screenshots/white-bg/default.webp)
 
 ### Matte
-![Matte Theme](screenshots/matte.webp)
+![Matte Theme](screenshots/white-bg/matte.webp)
 
 ### Matte Light
-![Matte Light Theme](screenshots/matte-light.webp)
+![Matte Light Theme](screenshots/white-bg/matte-light.webp)
 
 ### Minimal
-![Minimal Theme](screenshots/minimal.webp)
+![Minimal Theme](screenshots/white-bg/minimal.webp)
 
 ### Minimal Light
-![Minimal Light Theme](screenshots/minimal-light.webp)
+![Minimal Light Theme](screenshots/white-bg/minimal-light.webp)
 
 ### Transparent
-![Transparent Theme](screenshots/transparent.webp)
+![Transparent Theme](screenshots/white-bg/transparent.webp)
 
 Plank Reloaded also supports GTK themes. To use one, install it and set it as your default theme, then select **Gtk+** as the Plank Reloaded theme in preferences.
 
