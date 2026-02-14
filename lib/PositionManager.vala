@@ -1882,15 +1882,23 @@ namespace Plank {
      */
     public void get_struts (ref ulong[] struts) {
       window_scale_factor = controller.window.get_window ().get_scale_factor ();
-      unowned Gdk.Screen screen = controller.window.get_screen ();
 
-      // screen.get_width/get_height() return raw X11 device pixels.
-      // monitor_geo and dock dimensions are in GDK logical pixels.
-      // compute_struts() handles the mixed coordinate spaces: GDK logical
-      // values are scaled to X11 pixels, while screen dimensions are
-      // passed through as-is since they are already in X11 pixels.
+      // Per the _NET_WM_STRUT_PARTIAL spec, all coordinates are root window
+      // coordinates and struts are relative to the screen edge, not the
+      // monitor edge. Compute screen bounds from monitor geometries so
+      // everything is in GDK logical pixels — screen.get_width/get_height()
+      // behavior varies across GTK3 versions and distro patches.
+      var display = controller.window.get_display ();
+      int screen_width = 0;
+      int screen_height = 0;
+      for (var i = 0; i < display.get_n_monitors (); i++) {
+        var geo = display.get_monitor (i).get_geometry ();
+        screen_width = int.max (screen_width, geo.x + geo.width);
+        screen_height = int.max (screen_height, geo.y + geo.height);
+      }
+
       compute_struts (ref struts, Position, monitor_geo,
-                      screen.get_width (), screen.get_height (),
+                      screen_width, screen_height,
                       VisibleDockWidth, VisibleDockHeight,
                       GapSize, window_scale_factor);
     }
@@ -1898,16 +1906,15 @@ namespace Plank {
     /**
      * Pure math for strut calculation — no X11 dependencies, testable in isolation.
      *
-     * Struts are in X11 device pixels. monitor, dock_width, dock_height, and
-     * gap_size are in GDK logical pixels and get converted via scale.
-     * screen_width and screen_height are already in X11 device pixels
-     * (from Gdk.Screen.get_width/get_height on X11) and are used directly.
+     * All spatial inputs (monitor, screen_width, screen_height, dock_width,
+     * dock_height, gap_size) must be in GDK logical (application) pixels.
+     * The scale factor converts the result to X11 device pixels for struts.
      *
      * @param struts the array to contain the struts
      * @param position the dock position (top/bottom/left/right)
      * @param monitor the monitor geometry (GDK logical pixels)
-     * @param screen_width total X screen width (X11 device pixels)
-     * @param screen_height total X screen height (X11 device pixels)
+     * @param screen_width total screen width (GDK logical pixels)
+     * @param screen_height total screen height (GDK logical pixels)
      * @param dock_width visible dock width (GDK logical pixels)
      * @param dock_height visible dock height (GDK logical pixels)
      * @param gap_size gap between dock and screen edge (GDK logical pixels)
@@ -1920,7 +1927,7 @@ namespace Plank {
       switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        struts[Struts.BOTTOM] = (dock_height + gap_size) * scale + screen_height - (monitor.y + monitor.height) * scale;
+        struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - monitor.y - monitor.height) * scale;
         struts[Struts.BOTTOM_START] = monitor.x * scale;
         struts[Struts.BOTTOM_END] = (monitor.x + monitor.width) * scale - 1;
         break;
@@ -1935,7 +1942,7 @@ namespace Plank {
         struts[Struts.LEFT_END] = (monitor.y + monitor.height) * scale - 1;
         break;
       case Gtk.PositionType.RIGHT:
-        struts[Struts.RIGHT] = (dock_width + gap_size) * scale + screen_width - (monitor.x + monitor.width) * scale;
+        struts[Struts.RIGHT] = (dock_width + gap_size + screen_width - monitor.x - monitor.width) * scale;
         struts[Struts.RIGHT_START] = monitor.y * scale;
         struts[Struts.RIGHT_END] = (monitor.y + monitor.height) * scale - 1;
         break;
