@@ -65,6 +65,7 @@ namespace Plank {
       screen.monitors_changed.connect (screen_changed);
       screen.size_changed.connect (screen_changed);
       screen.composited_changed.connect (screen_composited_changed);
+      controller.window.notify["scale-factor"].connect (window_scale_factor_changed);
 
       var display = screen.get_display ();
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
@@ -92,6 +93,7 @@ namespace Plank {
       screen.monitors_changed.disconnect (screen_changed);
       screen.size_changed.disconnect (screen_changed);
       screen.composited_changed.disconnect (screen_composited_changed);
+      controller.window.notify["scale-factor"].disconnect (window_scale_factor_changed);
       controller.prefs.notify.disconnect (prefs_changed);
     }
 
@@ -240,6 +242,11 @@ namespace Plank {
         stop_active_display_polling ();
         start_active_display_polling ();
       }
+    }
+
+    void window_scale_factor_changed () {
+      Logger.verbose ("PositionManager.window_scale_factor_changed ()");
+      screen_changed (controller.window.get_screen ());
     }
 
     void screen_changed (Gdk.Screen screen) {
