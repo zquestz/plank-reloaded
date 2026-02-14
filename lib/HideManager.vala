@@ -60,6 +60,7 @@ namespace Plank {
 #if HAVE_BARRIERS
     const double PRESSURE_THRESHOLD = 50.0;
     const uint PRESSURE_TIMEOUT = 1000U;
+    const uint BARRIER_REVEAL_TIMEOUT = 2000U;
 #endif
 
     static int plank_pid;
@@ -733,7 +734,7 @@ namespace Plank {
 
               if (barrier_reveal_timer_id > 0U)
                 GLib.Source.remove (barrier_reveal_timer_id);
-              barrier_reveal_timer_id = Gdk.threads_add_timeout (2000, () => {
+              barrier_reveal_timer_id = Gdk.threads_add_timeout (BARRIER_REVEAL_TIMEOUT, () => {
                 barrier_reveal = false;
                 barrier_reveal_timer_id = 0U;
                 update_hovered ();
