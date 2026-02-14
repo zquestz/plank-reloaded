@@ -76,6 +76,21 @@ namespace PlankTests
 		Test.add_func ("/Services/Struts/multi_monitor_bottom", struts_multi_monitor_bottom);
 		Test.add_func ("/Services/Struts/scaling_2x", struts_scaling_2x);
 		Test.add_func ("/Services/Struts/with_gap", struts_with_gap);
+		Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_bottom", struts_multi_monitor_scaling_2x_bottom);
+		Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_right", struts_multi_monitor_scaling_2x_right);
+		Test.add_func ("/Services/Struts/xrandr_scaling_bottom", struts_xrandr_scaling_bottom);
+		Test.add_func ("/Services/Struts/xrandr_scaling_dp2_bottom", struts_xrandr_scaling_dp2_bottom);
+		Test.add_func ("/Services/Struts/xrandr_scaling_dp0_bottom", struts_xrandr_scaling_dp0_bottom);
+		Test.add_func ("/Services/Struts/xrandr_scaling_dp4_right", struts_xrandr_scaling_dp4_right);
+		Test.add_func ("/Services/Struts/xrandr_scaling_dp2_right", struts_xrandr_scaling_dp2_right);
+		Test.add_func ("/Services/Struts/xrandr_scaling_dp0_right", struts_xrandr_scaling_dp0_right);
+		Test.add_func ("/Services/Struts/mixed_dpi_dock_on_hidpi", struts_mixed_dpi_dock_on_hidpi);
+		Test.add_func ("/Services/Struts/mixed_dpi_dock_on_lodpi", struts_mixed_dpi_dock_on_lodpi);
+		Test.add_func ("/Services/Struts/gap_with_scaling_2x", struts_gap_with_scaling_2x);
+		Test.add_func ("/Services/Struts/top_multi_monitor_scaling_2x", struts_top_multi_monitor_scaling_2x);
+		Test.add_func ("/Services/Struts/left_multi_monitor_scaling_2x", struts_left_multi_monitor_scaling_2x);
+		Test.add_func ("/Services/Struts/vertical_offset_bottom", struts_vertical_offset_bottom);
+		Test.add_func ("/Services/Struts/vertical_offset_right_scaling_2x", struts_vertical_offset_right_scaling_2x);
 	}
 
 	//
@@ -778,12 +793,13 @@ namespace PlankTests
 	void struts_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single monitor with 2x scaling
+		// Single 4K monitor with 2x scaling
+		// X screen = 3840x2160, GDK logical monitor = 1920x1080
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 0, 2);
+		                                monitor, 3840, 2160, 1920, 48, 0, 2);
 
-		// All values should be doubled
+		// BOTTOM = (48 + 0) * 2 + 2160 - (0 + 1080) * 2 = 96
 		assert (struts[Struts.BOTTOM] == 96);
 		assert (struts[Struts.BOTTOM_START] == 0);
 		assert (struts[Struts.BOTTOM_END] == 3839);
@@ -799,5 +815,290 @@ namespace PlankTests
 
 		// BOTTOM strut should include gap
 		assert (struts[Struts.BOTTOM] == 58);
+	}
+
+	void struts_multi_monitor_scaling_2x_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 4K monitors side by side with 2x scaling
+		// X screen = 7680x2160, GDK logical monitors at x=0 and x=1920
+		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 7680, 2160, 1920, 48, 0, 2);
+
+		// BOTTOM = (48 + 0) * 2 + 2160 - (0 + 1080) * 2 = 96
+		assert (struts[Struts.BOTTOM] == 96);
+		// Range covers right monitor in device pixels
+		assert (struts[Struts.BOTTOM_START] == 3840);
+		assert (struts[Struts.BOTTOM_END] == 7679);
+	}
+
+	void struts_multi_monitor_scaling_2x_right ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 4K monitors stacked vertically with 2x scaling
+		// X screen = 3840x4320, GDK logical monitors at y=0 and y=1080
+		// Dock on top monitor, RIGHT position
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 3840, 4320, 48, 1080, 0, 2);
+
+		// RIGHT = (48 + 0) * 2 + 3840 - (0 + 1920) * 2 = 96
+		assert (struts[Struts.RIGHT] == 96);
+		assert (struts[Struts.RIGHT_START] == 0);
+		assert (struts[Struts.RIGHT_END] == 2159);
+	}
+
+	void struts_xrandr_scaling_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Reproduces issue #144: xrandr --scale transforms with GDK scale=2
+		// Three monitors: DP-4 6144x3456, DP-2 2160x3840, DP-0 5120x2880
+		// Total X screen = 13424x3840 (raw X11 device pixels)
+		// Primary monitor GDK logical = 3072x1728 at (0,0)
+		Gdk.Rectangle monitor = { 0, 0, 3072, 1728 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 13424, 3840, 3072, 251, 0, 2);
+
+		// BOTTOM = (251 + 0) * 2 + 3840 - (0 + 1728) * 2 = 502 + 3840 - 3456 = 886
+		assert (struts[Struts.BOTTOM] == 886);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 6143);
+	}
+
+	void struts_xrandr_scaling_dp2_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Issue #144 setup — dock on DP-2 (rotated right monitor)
+		// DP-2: 2160x3840 at X11 (6144,0), scale=2 → GDK {3072, 0, 1080, 1920}
+		// X screen = 13424x3840
+		// DP-2 extends to full screen height (3840), so no bottom offset
+		Gdk.Rectangle monitor = { 3072, 0, 1080, 1920 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 13424, 3840, 1080, 251, 0, 2);
+
+		// BOTTOM = (251 + 0) * 2 + 3840 - (0 + 1920) * 2 = 502 + 3840 - 3840 = 502
+		assert (struts[Struts.BOTTOM] == 502);
+		assert (struts[Struts.BOTTOM_START] == 6144);
+		assert (struts[Struts.BOTTOM_END] == 8303);
+	}
+
+	void struts_xrandr_scaling_dp0_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Issue #144 setup — dock on DP-0 (vertically offset monitor)
+		// DP-0: 5120x2880 at X11 (8304,505), scale=2 → GDK {4152, 252, 2560, 1440}
+		// X screen = 13424x3840
+		// DP-0 bottom in X11 = 505 + 2880 = 3385, offset from screen bottom = 455
+		// GDK rounds: (252 + 1440) * 2 = 3384, so offset = 3840 - 3384 = 456 (off by 1 from rounding)
+		Gdk.Rectangle monitor = { 4152, 252, 2560, 1440 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 13424, 3840, 2560, 251, 0, 2);
+
+		// BOTTOM = (251 + 0) * 2 + 3840 - (252 + 1440) * 2 = 502 + 3840 - 3384 = 958
+		assert (struts[Struts.BOTTOM] == 958);
+		assert (struts[Struts.BOTTOM_START] == 8304);
+		assert (struts[Struts.BOTTOM_END] == 13423);
+	}
+
+	void struts_xrandr_scaling_dp4_right ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Issue #144 setup — dock on DP-4 (primary), RIGHT position
+		// DP-4: 6144x3456 at X11 (0,0), scale=2 → GDK {0, 0, 3072, 1728}
+		// X screen = 13424x3840
+		// Space from DP-4 right edge to screen right = 13424 - 6144 = 7280
+		Gdk.Rectangle monitor = { 0, 0, 3072, 1728 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 13424, 3840, 48, 1728, 0, 2);
+
+		// RIGHT = (48 + 0) * 2 + 13424 - (0 + 3072) * 2 = 96 + 13424 - 6144 = 7376
+		assert (struts[Struts.RIGHT] == 7376);
+		assert (struts[Struts.RIGHT_START] == 0);
+		assert (struts[Struts.RIGHT_END] == 3455);
+	}
+
+	void struts_xrandr_scaling_dp2_right ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Issue #144 setup — dock on DP-2, RIGHT position
+		// DP-2: 2160x3840 at X11 (6144,0), scale=2 → GDK {3072, 0, 1080, 1920}
+		// X screen = 13424x3840
+		// Space from DP-2 right edge to screen right = 13424 - (6144+2160) = 5120
+		Gdk.Rectangle monitor = { 3072, 0, 1080, 1920 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 13424, 3840, 48, 1920, 0, 2);
+
+		// RIGHT = (48 + 0) * 2 + 13424 - (3072 + 1080) * 2 = 96 + 13424 - 8304 = 5216
+		assert (struts[Struts.RIGHT] == 5216);
+		assert (struts[Struts.RIGHT_START] == 0);
+		assert (struts[Struts.RIGHT_END] == 3839);
+	}
+
+	void struts_xrandr_scaling_dp0_right ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Issue #144 setup — dock on DP-0, RIGHT position
+		// DP-0: 5120x2880 at X11 (8304,505), scale=2 → GDK {4152, 252, 2560, 1440}
+		// X screen = 13424x3840
+		// DP-0 right in X11 = 8304 + 5120 = 13424 = screen right, so no offset
+		Gdk.Rectangle monitor = { 4152, 252, 2560, 1440 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 13424, 3840, 48, 1440, 0, 2);
+
+		// RIGHT = (48 + 0) * 2 + 13424 - (4152 + 2560) * 2 = 96 + 13424 - 13424 = 96
+		assert (struts[Struts.RIGHT] == 96);
+		assert (struts[Struts.RIGHT_START] == 504);
+		assert (struts[Struts.RIGHT_END] == 3383);
+	}
+
+	void struts_mixed_dpi_dock_on_hidpi ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Mixed DPI: 4K@2x (left) + 1080p@1x (right)
+		// Monitor A: 3840x2160 at X11 (0,0), scale=2 → GDK {0, 0, 1920, 1080}
+		// Monitor B: 1920x1080 at X11 (3840,0), scale=1 → GDK {3840, 0, 1920, 1080}
+		// X screen = 5760x2160
+		// Dock on Monitor A (scale=2), BOTTOM
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 5760, 2160, 1920, 48, 0, 2);
+
+		// BOTTOM = (48 + 0) * 2 + 2160 - (0 + 1080) * 2 = 96 + 2160 - 2160 = 96
+		assert (struts[Struts.BOTTOM] == 96);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 3839);
+	}
+
+	void struts_mixed_dpi_dock_on_lodpi ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Mixed DPI: 4K@2x (left) + 1080p@1x (right)
+		// Monitor A: 3840x2160 at X11 (0,0), scale=2 → GDK {0, 0, 1920, 1080}
+		// Monitor B: 1920x1080 at X11 (3840,0), scale=1 → GDK {3840, 0, 1920, 1080}
+		// X screen = 5760x2160
+		// Dock on Monitor B (scale=1), BOTTOM
+		// Monitor B bottom at X11 y=1080, screen bottom at 2160 → 1080px offset
+		Gdk.Rectangle monitor = { 3840, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 5760, 2160, 1920, 48, 0, 1);
+
+		// BOTTOM = (48 + 0) * 1 + 2160 - (0 + 1080) * 1 = 48 + 1080 = 1128
+		assert (struts[Struts.BOTTOM] == 1128);
+		assert (struts[Struts.BOTTOM_START] == 3840);
+		assert (struts[Struts.BOTTOM_END] == 5759);
+	}
+
+	void struts_gap_with_scaling_2x ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Single 4K monitor, 2x scaling, 10px GDK gap, BOTTOM dock
+		// X screen = 3840x2160, GDK logical = 1920x1080
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 3840, 2160, 1920, 48, 10, 2);
+
+		// BOTTOM = (48 + 10) * 2 + 2160 - (0 + 1080) * 2 = 116
+		assert (struts[Struts.BOTTOM] == 116);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 3839);
+
+		// Also test RIGHT with gap + scaling
+		var struts2 = new ulong[Struts.N_VALUES];
+		PositionManager.compute_struts (ref struts2, Gtk.PositionType.RIGHT,
+		                                monitor, 3840, 2160, 48, 1080, 10, 2);
+
+		// RIGHT = (48 + 10) * 2 + 3840 - (0 + 1920) * 2 = 116
+		assert (struts2[Struts.RIGHT] == 116);
+
+		// And TOP with gap + scaling
+		var struts3 = new ulong[Struts.N_VALUES];
+		PositionManager.compute_struts (ref struts3, Gtk.PositionType.TOP,
+		                                monitor, 3840, 2160, 1920, 48, 10, 2);
+
+		// TOP = (0 + 48 + 10) * 2 = 116
+		assert (struts3[Struts.TOP] == 116);
+
+		// And LEFT with gap + scaling
+		var struts4 = new ulong[Struts.N_VALUES];
+		PositionManager.compute_struts (ref struts4, Gtk.PositionType.LEFT,
+		                                monitor, 3840, 2160, 48, 1080, 10, 2);
+
+		// LEFT = (0 + 48 + 10) * 2 = 116
+		assert (struts4[Struts.LEFT] == 116);
+	}
+
+	void struts_top_multi_monitor_scaling_2x ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 4K monitors stacked vertically with 2x scaling
+		// Monitor A: 3840x2160 at X11 (0,0), scale=2 → GDK {0, 0, 1920, 1080}
+		// Monitor B: 3840x2160 at X11 (0,2160), scale=2 → GDK {0, 1080, 1920, 1080}
+		// X screen = 3840x4320
+		// Dock on Monitor B (lower), TOP position
+		Gdk.Rectangle monitor = { 0, 1080, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
+		                                monitor, 3840, 4320, 1920, 48, 0, 2);
+
+		// TOP = (monitor.y + dock_height + gap) * scale = (1080 + 48 + 0) * 2 = 2256
+		assert (struts[Struts.TOP] == 2256);
+		assert (struts[Struts.TOP_START] == 0);
+		assert (struts[Struts.TOP_END] == 3839);
+	}
+
+	void struts_left_multi_monitor_scaling_2x ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 4K monitors side by side with 2x scaling
+		// Monitor A: 3840x2160 at X11 (0,0), scale=2 → GDK {0, 0, 1920, 1080}
+		// Monitor B: 3840x2160 at X11 (3840,0), scale=2 → GDK {1920, 0, 1920, 1080}
+		// X screen = 7680x2160
+		// Dock on Monitor B (right), LEFT position
+		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
+		                                monitor, 7680, 2160, 48, 1080, 0, 2);
+
+		// LEFT = (monitor.x + dock_width + gap) * scale = (1920 + 48 + 0) * 2 = 3936
+		assert (struts[Struts.LEFT] == 3936);
+		assert (struts[Struts.LEFT_START] == 0);
+		assert (struts[Struts.LEFT_END] == 2159);
+	}
+
+	void struts_vertical_offset_bottom ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Common setup: 1080p + 1440p side by side, top-aligned, scale=1
+		// Monitor A: 1920x1080 at X11 (0,0)
+		// Monitor B: 2560x1440 at X11 (1920,0)
+		// X screen = 4480x1440
+		// Dock on Monitor A, BOTTOM — monitor doesn't reach screen bottom
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, 4480, 1440, 1920, 48, 0, 1);
+
+		// BOTTOM = (48 + 0) * 1 + 1440 - (0 + 1080) * 1 = 48 + 360 = 408
+		// 360px gap below Monitor A to screen bottom, plus 48px dock
+		assert (struts[Struts.BOTTOM] == 408);
+		assert (struts[Struts.BOTTOM_START] == 0);
+		assert (struts[Struts.BOTTOM_END] == 1919);
+	}
+
+	void struts_vertical_offset_right_scaling_2x ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// Two 4K monitors, right one shifted down 200px, scale=2
+		// Monitor A: 3840x2160 at X11 (0,0), scale=2 → GDK {0, 0, 1920, 1080}
+		// Monitor B: 3840x2160 at X11 (3840,200), scale=2 → GDK {1920, 100, 1920, 1080}
+		// X screen = 7680x2360
+		// Dock on Monitor A, RIGHT position
+		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+		                                monitor, 7680, 2360, 48, 1080, 0, 2);
+
+		// RIGHT = (48 + 0) * 2 + 7680 - (0 + 1920) * 2 = 96 + 7680 - 3840 = 3936
+		// 3840px from Monitor A right edge to screen right (Monitor B width), plus 96px dock
+		assert (struts[Struts.RIGHT] == 3936);
+		assert (struts[Struts.RIGHT_START] == 0);
+		assert (struts[Struts.RIGHT_END] == 2159);
 	}
 }
