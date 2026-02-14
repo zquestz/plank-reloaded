@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-13 18:37-1000\n"
+"POT-Creation-Date: 2026-02-13 20:44-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Malayalam\n"
@@ -69,19 +69,19 @@ msgstr "തുടക്കം"
 msgid "The Plank Reloaded Developers"
 msgstr "പ്ലാങ്ക് റീലോഡഡ് ഡവലപ്പർമാർ"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Dock with Matte theme"
 msgstr "മാറ്റ് തീം ഉള്ള ഡോക്ക്"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Appearance Preferences"
 msgstr "കാഴ്ച മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:136
 msgid "Behavior Preferences"
 msgstr "പെരുമാറ്റ മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Docklets Preferences"
 msgstr "ഡോക്ക്‌ലെറ്റുകളുടെ മുൻഗണനകൾ"
 

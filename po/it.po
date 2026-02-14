@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-13 18:37-1000\n"
+"POT-Creation-Date: 2026-02-13 20:44-1000\n"
 "PO-Revision-Date: 2025-11-13 01:33\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
@@ -69,19 +69,19 @@ msgstr "avvio"
 msgid "The Plank Reloaded Developers"
 msgstr "Gli sviluppatori di Plank Reloaded"
 
-#: data/plank.appdata.xml.in:127
+#: data/plank.appdata.xml.in:128
 msgid "Dock with Matte theme"
 msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Appearance Preferences"
 msgstr "Preferenze aspetto"
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:136
 msgid "Behavior Preferences"
 msgstr "Preferenze comportamento"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Docklets Preferences"
 msgstr "Preferenze docklet"
 

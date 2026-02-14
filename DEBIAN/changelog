@@ -1,3 +1,12 @@
+plank-reloaded (0.11.166-1) unstable; urgency=high
+
+  * Fix struts double-scaling on HiDPI and xrandr multi-monitor setups
+  * Fix dock rendering off-screen with xrandr scaling transforms
+  * Fix maximized windows overlapping dock on multi-monitor setups
+  * Reposition dock when window scale factor changes at runtime
+
+ -- Josh Ellithorpe <quest@mac.com>  Thu, 13 Feb 2026 20:44:00 -1000
+
 plank-reloaded (0.11.165-1) unstable; urgency=medium
 
   * Fix dock becoming unclickable when using GapSize > 0 with barrier-based reveal
