@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.165 "Reloaded" (2026-02-13)
+
+- Fix dock becoming unclickable when using GapSize > 0 with barrier-based reveal
+
 ## 0.11.164 "Reloaded" (2026-02-08)
 
 - Fix drag occasionally ending prematurely

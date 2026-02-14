@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-08 10:10-1000\n"
+"POT-Creation-Date: 2026-02-13 18:37-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Swahili\n"
@@ -69,19 +69,19 @@ msgstr "anza"
 msgid "The Plank Reloaded Developers"
 msgstr "Watengenezaji wa Plank Reloaded"
 
-#: data/plank.appdata.xml.in:126
+#: data/plank.appdata.xml.in:127
 msgid "Dock with Matte theme"
 msgstr "Dock na mandhari ya Matte"
 
-#: data/plank.appdata.xml.in:130
+#: data/plank.appdata.xml.in:131
 msgid "Appearance Preferences"
 msgstr "Mapendeleo ya Mwonekano"
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Behavior Preferences"
 msgstr "Mapendeleo ya Tabia"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Docklets Preferences"
 msgstr "Mapendeleo ya Docklets"
 

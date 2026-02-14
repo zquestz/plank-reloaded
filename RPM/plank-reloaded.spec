@@ -114,6 +114,9 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Thu Feb 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.165-1
+- Fix dock becoming unclickable when using GapSize > 0 with barrier-based reveal
+
 * Sun Feb 08 2026 Josh Ellithorpe <quest@mac.com> - 0.11.164-1
 - Fix drag occasionally ending prematurely
 - Fix desktop environment detection on Debian XFCE
