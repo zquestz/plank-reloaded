@@ -110,6 +110,8 @@ namespace Plank {
     double pressure = 0.0;
     uint pressure_timer_id = 0U;
     bool barriers_supported = false;
+    bool barrier_reveal = false;
+    uint barrier_reveal_timer_id = 0U;
 #endif
 
     /**
@@ -284,6 +286,14 @@ namespace Plank {
         return;
       }
 
+#if HAVE_BARRIERS
+      if (barrier_reveal) {
+        show ();
+        pointer_update = true;
+        return;
+      }
+#endif
+
       switch (controller.prefs.HideMode) {
       default:
       case HideType.NONE:
@@ -390,6 +400,14 @@ namespace Plank {
           && (controller.prefs.PressureReveal || controller.prefs.GapSize > 0)
           && device_supports_pressure (event.get_source_device ()))
         return Hidden;
+
+      if (barrier_reveal) {
+        barrier_reveal = false;
+        if (barrier_reveal_timer_id > 0U) {
+          GLib.Source.remove (barrier_reveal_timer_id);
+          barrier_reveal_timer_id = 0U;
+        }
+      }
 #endif
 
       if (!Hovered)
@@ -606,6 +624,14 @@ namespace Plank {
         GLib.Source.remove (unhide_timer_id);
         unhide_timer_id = 0U;
       }
+
+#if HAVE_BARRIERS
+      if (barrier_reveal_timer_id > 0U) {
+        GLib.Source.remove (barrier_reveal_timer_id);
+        barrier_reveal_timer_id = 0U;
+      }
+      barrier_reveal = false;
+#endif
     }
 
 #if HAVE_BARRIERS
@@ -701,7 +727,20 @@ namespace Plank {
 
         if (pressure_activation) {
           if (controller.prefs.GapSize > 0) {
-            show ();
+            if (Hidden && !barrier_reveal) {
+              barrier_reveal = true;
+              show ();
+
+              if (barrier_reveal_timer_id > 0U)
+                GLib.Source.remove (barrier_reveal_timer_id);
+              barrier_reveal_timer_id = Gdk.threads_add_timeout (2000, () => {
+                barrier_reveal = false;
+                barrier_reveal_timer_id = 0U;
+                update_hovered ();
+                update_hidden ();
+                return false;
+              });
+            }
           } else {
             freeze_notify ();
 
