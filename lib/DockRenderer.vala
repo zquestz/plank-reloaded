@@ -145,6 +145,7 @@ namespace Plank {
       switch (prop.name) {
       case "Alignment" :
       case "IconSize" :
+      case "ItemPadding" :
       case "ItemsAlignment" :
       case "Offset" :
       case "Position":
