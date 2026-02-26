@@ -71,6 +71,12 @@
 			<summary>Icon Size</summary>
 			<description>The size of dock items, in pixels.</description>
 		</key>
+		<key name="item-padding" type="d">
+			<range min="-1.0" max="20.0"/>
+			<default>-1.0</default>
+			<summary>Item Padding</summary>
+			<description>The padding between dock items, in tenths of a percent of IconSize. Set to -1.0 to follow theme.</description>
+		</key>
 		<key name="gap-size" type="i">
 			<range min="0" max="200"/>
 			<default>0</default>

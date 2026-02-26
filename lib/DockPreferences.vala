@@ -34,11 +34,17 @@ namespace Plank {
     public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
     public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
 
+    public const double MIN_ITEM_PADDING = 0.1;
+    public const double MAX_ITEM_PADDING = 20.0;
+
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
 
     [Description (nick = "icon-size", blurb = "The size of dock icons (in pixels).")]
     public int IconSize { get; set; }
+
+    [Description (nick = "item-padding", blurb = "The padding between dock icons (in tenths of a percent of IconSize).")]
+    public double ItemPadding { get; set; default = -1.0; }
 
     [Description (nick = "gap-size", blurb = "The size of the gap between the dock and the screen edge (in pixels).")]
     public int GapSize { get; set; }
@@ -155,9 +161,16 @@ namespace Plank {
         else if (IconSize > MAX_ICON_SIZE)
           IconSize = MAX_ICON_SIZE;
         else if (IconSize % 2 == 1)
-          IconSize -= 1;
+          IconSize--;
         break;
-
+      case "ItemPadding":
+        if (ItemPadding != -1.0) {
+          if (ItemPadding < MIN_ITEM_PADDING)
+            ItemPadding = MIN_ITEM_PADDING;
+          else if (ItemPadding > MAX_ITEM_PADDING)
+            ItemPadding = MAX_ITEM_PADDING;
+        }
+        break;
       case "GapSize":
         if (GapSize < MIN_GAP_SIZE)
           GapSize = MIN_GAP_SIZE;
