@@ -38,6 +38,12 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
     <property name="upper">200</property>
     <property name="step_increment">2</property>
   </object>
+  <object class="GtkAdjustment" id="adj_itempadding">
+    <property name="lower">0.1</property>
+    <property name="upper">20.0</property>
+    <property name="step_increment">0.1</property>
+    <property name="page_increment">1.0</property>
+  </object>
   <object class="GtkAdjustment" id="adj_offset">
     <property name="lower">-100</property>
     <property name="upper">100</property>
@@ -428,6 +434,74 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               <packing>
                 <property name="left_attach">2</property>
                 <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_itempadding">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Icon Spacing:</property>
+                <property name="justify">right</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="sp_itempadding">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">•</property>
+                <property name="adjustment">adj_itempadding</property>
+                <property name="digits">1</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale" id="s_itempadding">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">adj_itempadding</property>
+                <property name="digits">1</property>
+                <property name="draw_value">False</property>
+                <property name="value_pos">left</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">9</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_use_theme_spacing">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Use Theme Spacing:</property>
+                <property name="justify">right</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">10</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="sw_use_theme_spacing">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">10</property>
               </packing>
             </child>
           </object>

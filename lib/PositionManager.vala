@@ -518,7 +518,10 @@ namespace Plank {
       HorizPadding = (int) (theme.HorizPadding * scaled_icon_size);
       TopPadding = (int) (theme.TopPadding * scaled_icon_size);
       BottomPadding = (int) (theme.BottomPadding * scaled_icon_size);
-      ItemPadding = (int) (theme.ItemPadding * scaled_icon_size);
+      
+      var padding = (prefs.ItemPadding >= 0) ? prefs.ItemPadding : theme.ItemPadding;
+      ItemPadding = (int) (padding * scaled_icon_size);
+      
       SeparatorPadding = (int) (theme.SeparatorPadding * scaled_icon_size);
       UrgentBounceHeight = (int) (theme.UrgentBounceHeight * IconSize);
       LaunchBounceHeight = (int) (theme.LaunchBounceHeight * IconSize);
@@ -596,26 +599,41 @@ namespace Plank {
     void update_max_icon_size (DockTheme theme) {
       unowned DockPreferences prefs = controller.prefs;
 
-      // Check if the dock is oversized and doesn't fit the targeted screen-edge
-      var width = get_items_width (controller.VisibleItems) + 2 * HorizPadding + 4 * LineWidth;
-      var max_width = (is_horizontal_dock () ? monitor_geo.width : monitor_geo.height);
-      var step_size = int.max (1, (int) (Math.fabs (width - max_width) / controller.VisibleItems.size));
+      if (MaxIconSize > prefs.IconSize)
+        MaxIconSize = prefs.IconSize;
 
-      if (width > max_width && MaxIconSize > DockPreferences.MIN_ICON_SIZE) {
-        MaxIconSize -= step_size;
-      } else if (width < max_width && MaxIconSize < prefs.IconSize && step_size > 1) {
-        MaxIconSize += step_size;
-      } else {
-        // Make sure the MaxIconSize is even and restricted properly
-        MaxIconSize = int.max (DockPreferences.MIN_ICON_SIZE,
-                               int.min (DockPreferences.MAX_ICON_SIZE, (int) (MaxIconSize / 2.0) * 2));
-        Logger.verbose ("PositionManager.MaxIconSize = %i", MaxIconSize);
+      int iterations = 0;
+      const int MAX_ITERATIONS = 50;
+
+      while (iterations < MAX_ITERATIONS) {
+        var items = controller.VisibleItems;
+        if (items.size == 0)
+          break;
+
+        // Check if the dock is oversized and doesn't fit the targeted screen-edge
+        var width = get_items_width (items) + 2 * HorizPadding + 4 * LineWidth;
+        var max_width = (is_horizontal_dock () ? monitor_geo.width : monitor_geo.height);
+
+        var step_size = int.max (1, (int) (Math.fabs (width - max_width) / items.size));
+
+        if (width > max_width && MaxIconSize > DockPreferences.MIN_ICON_SIZE) {
+          MaxIconSize -= step_size;
+        } else if (width < max_width && MaxIconSize < prefs.IconSize && step_size > 1) {
+          MaxIconSize += step_size;
+        } else {
+          break;
+        }
+
         update_caches (theme);
-        return;
+        iterations++;
       }
 
+      // Make sure the MaxIconSize is even and restricted properly
+      MaxIconSize = int.max (DockPreferences.MIN_ICON_SIZE,
+                             int.min (DockPreferences.MAX_ICON_SIZE, (int) (MaxIconSize / 2.0) * 2));
       update_caches (theme);
-      update_max_icon_size (theme);
+      
+      Logger.verbose ("PositionManager.MaxIconSize settled at %i after %i iterations", MaxIconSize, iterations);
     }
 
     void update_dimensions () {
