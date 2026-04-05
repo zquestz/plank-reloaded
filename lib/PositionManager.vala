@@ -32,7 +32,7 @@ namespace Plank {
     uint screen_changed_timeout_id;
 
     Gdk.Rectangle monitor_geo;
-    int monitor_num;
+    public int monitor_num { get; private set; }
     int last_update_monitor_num;
 
     int max_hover_height_cache = 0;

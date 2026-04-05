@@ -115,6 +115,8 @@ namespace Plank {
     uint barrier_reveal_timer_id = 0U;
 #endif
 
+    uint global_polling_timer_id = 0U;
+
     /**
      * Creates a new instance of a HideManager, which handles
      * checking if a dock should hide or not.
@@ -152,6 +154,93 @@ namespace Plank {
       wnck_screen.active_workspace_changed.connect_after (handle_workspace_changed);
 
       setup_active_window (wnck_screen);
+
+      global_polling_timer_id = Gdk.threads_add_timeout (50, () => {
+          if (Disabled || controller.prefs.HideMode == HideType.NONE) return true;
+          if (barrier_reveal) return true;
+
+          int px, py;
+          controller.window.get_display ().get_default_seat ().get_pointer ().get_position (null, out px, out py);
+          unowned PositionManager pm = controller.position_manager;
+          var monitor = controller.window.get_screen ().get_display ().get_monitor (pm.monitor_num).get_geometry ();
+
+          int gap = pm.GapSize;
+
+          if (Hidden) {
+              bool touched = false;
+              int threshold = 3; // Give a generous 3 pixel hit-box for Wayland edges
+
+              switch (pm.Position) {
+              case Gtk.PositionType.BOTTOM:
+                  if (py >= monitor.y + monitor.height - threshold) touched = true;
+                  break;
+              case Gtk.PositionType.TOP:
+                  if (py <= monitor.y + threshold) touched = true;
+                  break;
+              case Gtk.PositionType.LEFT:
+                  if (px <= monitor.x + threshold) touched = true;
+                  break;
+              case Gtk.PositionType.RIGHT:
+                  if (px >= monitor.x + monitor.width - threshold) touched = true;
+                  break;
+              }
+
+              if (touched) {
+                  Hovered = true;
+                  update_hidden ();
+              }
+          } else {
+              // Mathematical bounds when visible. 
+              // We expand the horizontal bounds to infinity so sliding sideways doesn't hide it.
+              // We expand the vertical bounds to INCLUDE the gap size plus a tiny buffer.
+              var win_rect = pm.get_dock_window_region ();
+              int rel_x = px - win_rect.x;
+              int rel_y = py - win_rect.y;
+
+              int hw_scale = 1;
+              unowned Gdk.Window? gdk_window = controller.window.get_window();
+              if (gdk_window != null) {
+                  hw_scale = gdk_window.get_scale_factor();
+              }
+
+              var h_rect = pm.get_cursor_region ();
+              int buf = (gap + 5) * hw_scale;
+
+              switch (pm.Position) {
+              case Gtk.PositionType.BOTTOM:
+                  h_rect.x = -999999;
+                  h_rect.width = 1999999;
+                  h_rect.height += buf;
+                  break;
+              case Gtk.PositionType.TOP:
+                  h_rect.x = -999999;
+                  h_rect.width = 1999999;
+                  h_rect.y -= buf;
+                  h_rect.height += buf;
+                  break;
+              case Gtk.PositionType.LEFT:
+                  h_rect.y = -999999;
+                  h_rect.height = 1999999;
+                  h_rect.x -= buf;
+                  h_rect.width += buf;
+                  break;
+              case Gtk.PositionType.RIGHT:
+                  h_rect.y = -999999;
+                  h_rect.height = 1999999;
+                  h_rect.width += buf;
+                  break;
+              }
+
+              bool touched = (rel_x >= h_rect.x && rel_x < h_rect.x + h_rect.width && rel_y >= h_rect.y && rel_y < h_rect.y + h_rect.height);
+
+              if (!touched && Hovered) {
+                  Hovered = false;
+                  update_hidden ();
+              }
+          }
+
+          return true;
+      });
     }
 
     ~HideManager () {
@@ -168,6 +257,11 @@ namespace Plank {
       wnck_screen.window_closed.disconnect (schedule_update);
       wnck_screen.active_window_changed.disconnect (handle_active_window_changed);
       wnck_screen.active_workspace_changed.disconnect (handle_workspace_changed);
+
+      if (global_polling_timer_id > 0U) {
+          GLib.Source.remove (global_polling_timer_id);
+          global_polling_timer_id = 0U;
+      }
 
       stop_timers ();
 
@@ -426,9 +520,9 @@ namespace Plank {
       if ((bool) event.send_event)
         return Gdk.EVENT_PROPAGATE;
 
-      if (Hovered) {
-        update_hovered_with_coords ((int) event.x, (int) event.y, true);
-      }
+      // if (Hovered) {
+      //  update_hovered_with_coords ((int) event.x, (int) event.y, true);
+      // }
 
       return Gdk.EVENT_PROPAGATE;
     }
