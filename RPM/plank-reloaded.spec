@@ -114,6 +114,9 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Mon Apr 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.167-1
+- Decouple GapSize dock reveal from X11 barriers using edge pointer polling
+
 * Thu Feb 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.166-1
 - Fix struts double-scaling on HiDPI and xrandr multi-monitor setups
 - Fix dock positioning with xrandr scaling transforms

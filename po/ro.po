@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-13 20:44-1000\n"
+"POT-Creation-Date: 2026-04-13 12:14-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -50,39 +50,19 @@ msgstr ""
 "mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
 "dock cu funcții mai avansate."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "dock"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "lansare"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "panou"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "pornire"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Programatorii Plank Reloaded"
-
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Dock with Matte theme"
 msgstr "Dock cu tema Matte"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Appearance Preferences"
 msgstr "Preferințe de Aspect"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Behavior Preferences"
 msgstr "Preferințe Comportament"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Docklets Preferences"
 msgstr "Preferințe Docklets"
 
@@ -696,3 +676,18 @@ msgstr "_Ieșire"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Preferințe"
+
+#~ msgid "dock"
+#~ msgstr "dock"
+
+#~ msgid "launch"
+#~ msgstr "lansare"
+
+#~ msgid "panel"
+#~ msgstr "panou"
+
+#~ msgid "start"
+#~ msgstr "pornire"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Programatorii Plank Reloaded"
