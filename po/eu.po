@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-02-13 20:44-1000\n"
+"POT-Creation-Date: 2026-04-13 12:14-1000\n"
 "PO-Revision-Date: 2025-11-13 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Basque\n"
@@ -49,39 +49,19 @@ msgstr ""
 "ez eskainiz. Liburutegi bat ere bada, hedatu daitekeena atrakatzaile "
 "programa gehiago sortzeko eginbide aurreratuagoekin."
 
-#: data/plank.appdata.xml.in:17
-msgid "dock"
-msgstr "atrakatzailea"
-
-#: data/plank.appdata.xml.in:18
-msgid "launch"
-msgstr "abiarazi"
-
-#: data/plank.appdata.xml.in:19
-msgid "panel"
-msgstr "panela"
-
-#: data/plank.appdata.xml.in:20
-msgid "start"
-msgstr "hasi"
-
-#: data/plank.appdata.xml.in:32
-msgid "The Plank Reloaded Developers"
-msgstr "Plank Reloaded garatzaileak"
-
-#: data/plank.appdata.xml.in:128
+#: data/plank.appdata.xml.in:129
 msgid "Dock with Matte theme"
 msgstr "Atrakatzailea Matte gaiarekin"
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Appearance Preferences"
 msgstr "Itxuraren hobespenak"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Behavior Preferences"
 msgstr "Portaeraren hobespenak"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Docklets Preferences"
 msgstr "Atrakatzaile-txikien hobespenak"
 
@@ -695,3 +675,18 @@ msgstr "_Irten"
 #: lib/Widgets/PreferencesWindow.vala:103
 msgid "Preferences"
 msgstr "Hobespenak"
+
+#~ msgid "dock"
+#~ msgstr "atrakatzailea"
+
+#~ msgid "launch"
+#~ msgstr "abiarazi"
+
+#~ msgid "panel"
+#~ msgstr "panela"
+
+#~ msgid "start"
+#~ msgstr "hasi"
+
+#~ msgid "The Plank Reloaded Developers"
+#~ msgstr "Plank Reloaded garatzaileak"

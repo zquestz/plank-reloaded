@@ -2,6 +2,10 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.167 "Reloaded" (2026-04-13)
+
+- Decouple GapSize dock reveal from X11 barriers using edge pointer polling
+
 ## 0.11.166 "Reloaded" (2026-02-13)
 
 - Fix struts double-scaling screen dimensions on HiDPI and xrandr multi-monitor setups
