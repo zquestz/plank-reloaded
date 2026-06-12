@@ -750,11 +750,8 @@ namespace Plank {
         cursor_region.union (hover_region, out cursor_region);
       }
 
-#if HAVE_BARRIERS
+      // When GapSize is set, then we use polling for HideManager
       var min_hover_region = GapSize > 0 ? 0 : 1;
-#else
-      var min_hover_region = GapSize > 0 ? (IconSize / 2) : 1;
-#endif
 
       switch (Position) {
       default :
@@ -1752,6 +1749,10 @@ namespace Plank {
      */
     public Gdk.Rectangle get_dock_window_region () {
       return { win_x, win_y, DockWidth, DockHeight };
+    }
+
+    public Gdk.Rectangle get_monitor_geometry () {
+      return monitor_geo;
     }
 
     /**

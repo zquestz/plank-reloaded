@@ -1,4 +1,4 @@
-plank-reloaded-plus (0.12.4-1) unstable; urgency=medium
+plank-reloaded-plus (0.12.4-2) unstable; urgency=medium
 
   * Fix docks on the inner edge of a monitor incorrectly reserving work area
     space from the screen edge, making adjacent monitors unusable for window
@@ -63,6 +63,12 @@ plank-reloaded-plus (0.11.167-1) unstable; urgency=medium
     "follow active monitor" configurations
 
  -- cdmdotnet Limited <support@cdmdotnet.com>  Tue, 24 Feb 2026 00:00:00 +0000
+
+plank-reloaded (0.11.167-1) unstable; urgency=medium
+
+  * Decouple GapSize dock reveal from X11 barriers using edge pointer polling
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 13 Apr 2026 12:15:00 -1000
 
 plank-reloaded (0.11.166-1) unstable; urgency=high
 

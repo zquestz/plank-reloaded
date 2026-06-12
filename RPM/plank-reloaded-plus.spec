@@ -123,7 +123,7 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.4-1
+* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.4-2
 - Fix docks on the inner edge of a monitor incorrectly reserving work area
   space from the screen edge, making adjacent monitors unusable for window
   snapping, maximising, and resizing
@@ -167,6 +167,9 @@ fi
   the same monitor as that dock
 - Support both multi-instance (one dock per monitor) and single-instance
   "follow active monitor" configurations
+
+* Mon Apr 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.167-1
+- Decouple GapSize dock reveal from X11 barriers using edge pointer polling
 
 * Thu Feb 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.166-1
 - Fix struts double-scaling on HiDPI and xrandr multi-monitor setups

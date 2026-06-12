@@ -37,6 +37,10 @@
 - Only Active Monitor: clicking an app icon with multiple windows on this monitor shows the preview to let you choose
 - Multi-monitor window indicator dots filtered per-monitor when Only Active Monitor is enabled
 
+## 0.11.167 "Reloaded" (2026-04-13)
+
+- Decouple GapSize dock reveal from X11 barriers using edge pointer polling
+
 ## 0.11.166 "Reloaded" (2026-02-13)
 
 - Fix struts double-scaling screen dimensions on HiDPI and xrandr multi-monitor setups

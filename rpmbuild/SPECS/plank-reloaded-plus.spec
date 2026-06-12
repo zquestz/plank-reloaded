@@ -123,7 +123,7 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.4-1
+* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.4-2
 - Fix docks on the inner edge of a monitor incorrectly reserving work area
   space from the screen edge, making adjacent monitors unusable for window
   snapping, maximising, and resizing

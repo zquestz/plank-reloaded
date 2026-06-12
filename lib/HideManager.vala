@@ -60,7 +60,6 @@ namespace Plank {
 #if HAVE_BARRIERS
     const double PRESSURE_THRESHOLD = 50.0;
     const uint PRESSURE_TIMEOUT = 1000U;
-    const uint BARRIER_REVEAL_TIMEOUT = 2000U;
 #endif
 
     static int plank_pid;
@@ -87,12 +86,18 @@ namespace Plank {
      */
     public bool Hovered { get; private set; default = false; }
 
+    const uint EDGE_POLL_INTERVAL = 100U;
+    const uint EDGE_REVEAL_TIMEOUT = 2000U;
+
     uint hide_timer_id = 0U;
     uint unhide_timer_id = 0U;
     uint prefs_changed_timer_id = 0U;
     uint geometry_timer_id = 0U;
     uint window_changed_timer_id = 0U;
+    uint edge_poll_timer_id = 0U;
+    uint pending_reveal_timer_id = 0U;
 
+    bool pending_reveal = false;
     bool pointer_update = true;
     bool window_intersect = false;
     bool active_window_intersect = false;
@@ -111,8 +116,6 @@ namespace Plank {
     double pressure = 0.0;
     uint pressure_timer_id = 0U;
     bool barriers_supported = false;
-    bool barrier_reveal = false;
-    uint barrier_reveal_timer_id = 0U;
 #endif
 
     /**
@@ -128,6 +131,7 @@ namespace Plank {
     construct
     {
       controller.prefs.notify.connect (prefs_changed);
+      notify["Hidden"].connect (() => update_edge_polling ());
     }
 
     /**
@@ -152,6 +156,7 @@ namespace Plank {
       wnck_screen.active_workspace_changed.connect_after (handle_workspace_changed);
 
       setup_active_window (wnck_screen);
+      update_edge_polling ();
     }
 
     ~HideManager () {
@@ -269,15 +274,18 @@ namespace Plank {
 #if HAVE_BARRIERS
           update_barrier ();
 #endif
+          update_edge_polling ();
           prefs_changed_timer_id = 0U;
           return false;
         });
         break;
       case "PressureReveal":
-      case "GapSize":
 #if HAVE_BARRIERS
         update_barrier ();
 #endif
+        break;
+      case "GapSize":
+        update_edge_polling ();
         break;
       default:
         // Nothing important for us changed
@@ -292,13 +300,11 @@ namespace Plank {
         return;
       }
 
-#if HAVE_BARRIERS
-      if (barrier_reveal) {
+      if (pending_reveal) {
         show ();
         pointer_update = true;
         return;
       }
-#endif
 
       switch (controller.prefs.HideMode) {
       default:
@@ -396,24 +402,120 @@ namespace Plank {
       });
     }
 
+    uint compute_reveal_timeout () {
+      unowned DockTheme theme = controller.renderer.theme;
+      var anim_time = theme.FadeOpacity == 1.0 ? theme.HideTime : theme.FadeTime;
+      return (uint) anim_time + EDGE_REVEAL_TIMEOUT;
+    }
+
+    void start_pending_reveal () {
+      if (controller.prefs.GapSize == 0) {
+        freeze_notify ();
+
+        if (!Hovered) {
+          Hovered = true;
+          update_hidden ();
+        }
+
+        thaw_notify ();
+        return;
+      }
+
+      if (pending_reveal)
+        return;
+
+      pending_reveal = true;
+      show ();
+
+      if (pending_reveal_timer_id > 0U)
+        GLib.Source.remove (pending_reveal_timer_id);
+      pending_reveal_timer_id = Gdk.threads_add_timeout (compute_reveal_timeout (), () => {
+        pending_reveal = false;
+        pending_reveal_timer_id = 0U;
+        update_hovered ();
+        update_hidden ();
+        return false;
+      });
+    }
+
+    void cancel_pending_reveal () {
+      if (!pending_reveal)
+        return;
+
+      pending_reveal = false;
+      if (pending_reveal_timer_id > 0U) {
+        GLib.Source.remove (pending_reveal_timer_id);
+        pending_reveal_timer_id = 0U;
+      }
+    }
+
+    void update_edge_polling () {
+      bool need_polling = controller.prefs.GapSize > 0
+                          && controller.prefs.HideMode != HideType.NONE
+                          && Hidden;
+
+      if (need_polling && edge_poll_timer_id == 0U) {
+        edge_poll_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, edge_poll_tick);
+      } else if (!need_polling && edge_poll_timer_id > 0U) {
+        GLib.Source.remove (edge_poll_timer_id);
+        edge_poll_timer_id = 0U;
+      }
+    }
+
+    bool edge_poll_tick () {
+      unowned PositionManager position_manager = controller.position_manager;
+      unowned DockWindow window = controller.window;
+
+      int pointer_x, pointer_y;
+      window.get_display ()
+       .get_default_seat ()
+       .get_pointer ()
+       .get_position (null, out pointer_x, out pointer_y);
+
+      var monitor = position_manager.get_monitor_geometry ();
+      var dock_rect = position_manager.get_static_dock_region ();
+
+      bool at_edge = false;
+      bool within_dock_span = false;
+
+      switch (position_manager.Position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        at_edge = pointer_y >= monitor.y + monitor.height - 1;
+        within_dock_span = pointer_x >= dock_rect.x && pointer_x < dock_rect.x + dock_rect.width;
+        break;
+      case Gtk.PositionType.TOP:
+        at_edge = pointer_y <= monitor.y;
+        within_dock_span = pointer_x >= dock_rect.x && pointer_x < dock_rect.x + dock_rect.width;
+        break;
+      case Gtk.PositionType.LEFT:
+        at_edge = pointer_x <= monitor.x;
+        within_dock_span = pointer_y >= dock_rect.y && pointer_y < dock_rect.y + dock_rect.height;
+        break;
+      case Gtk.PositionType.RIGHT:
+        at_edge = pointer_x >= monitor.x + monitor.width - 1;
+        within_dock_span = pointer_y >= dock_rect.y && pointer_y < dock_rect.y + dock_rect.height;
+        break;
+      }
+
+      if (at_edge && within_dock_span && Hidden)
+        start_pending_reveal ();
+
+      return true;
+    }
+
     [CCode (instance_pos = -1)]
     bool handle_enter_notify_event (Gtk.Widget widget, Gdk.EventCrossing event) {
       if (event.detail == Gdk.NotifyType.INFERIOR)
         return Hidden;
 
+      cancel_pending_reveal ();
+
 #if HAVE_BARRIERS
       if (Hidden && barriers_supported
-          && (controller.prefs.PressureReveal || controller.prefs.GapSize > 0)
+          && controller.prefs.PressureReveal
           && device_supports_pressure (event.get_source_device ()))
         return Hidden;
-
-      if (barrier_reveal) {
-        barrier_reveal = false;
-        if (barrier_reveal_timer_id > 0U) {
-          GLib.Source.remove (barrier_reveal_timer_id);
-          barrier_reveal_timer_id = 0U;
-        }
-      }
 #endif
 
       if (!Hovered)
@@ -631,12 +733,18 @@ namespace Plank {
         unhide_timer_id = 0U;
       }
 
-#if HAVE_BARRIERS
-      if (barrier_reveal_timer_id > 0U) {
-        GLib.Source.remove (barrier_reveal_timer_id);
-        barrier_reveal_timer_id = 0U;
+      if (edge_poll_timer_id > 0U) {
+        GLib.Source.remove (edge_poll_timer_id);
+        edge_poll_timer_id = 0U;
       }
-      barrier_reveal = false;
+
+      cancel_pending_reveal ();
+
+#if HAVE_BARRIERS
+      if (pressure_timer_id > 0U) {
+        GLib.Source.remove (pressure_timer_id);
+        pressure_timer_id = 0U;
+      }
 #endif
     }
 
@@ -706,57 +814,24 @@ namespace Plank {
           break;
         }
 
-        bool pressure_activation = false;
-
-        if (controller.prefs.GapSize > 0 && !controller.prefs.PressureReveal) {
-          pressure_activation = true;
-        } else {
-          if (slide < distance) {
-            distance = Math.fmin (15.0, distance);
-            pressure += distance;
-            Logger.verbose ("HideManager (pressure = %f)", pressure);
-          }
-
-          if (pressure >= PRESSURE_THRESHOLD) {
-            Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
-
-            pressure = 0.0;
-
-            if (pressure_timer_id > 0U) {
-              GLib.Source.remove (pressure_timer_id);
-              pressure_timer_id = 0U;
-            }
-
-            pressure_activation = true;
-          }
+        if (slide < distance) {
+          distance = Math.fmin (15.0, distance);
+          pressure += distance;
+          Logger.verbose ("HideManager (pressure = %f)", pressure);
         }
 
-        if (pressure_activation) {
-          if (controller.prefs.GapSize > 0) {
-            if (Hidden && !barrier_reveal) {
-              barrier_reveal = true;
-              show ();
+        if (pressure >= PRESSURE_THRESHOLD) {
+          Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
 
-              if (barrier_reveal_timer_id > 0U)
-                GLib.Source.remove (barrier_reveal_timer_id);
-              barrier_reveal_timer_id = Gdk.threads_add_timeout (BARRIER_REVEAL_TIMEOUT, () => {
-                barrier_reveal = false;
-                barrier_reveal_timer_id = 0U;
-                update_hovered ();
-                update_hidden ();
-                return false;
-              });
-            }
-          } else {
-            freeze_notify ();
+          pressure = 0.0;
 
-            if (!Hovered) {
-              Hovered = true;
-              update_hidden ();
-            }
-
-            thaw_notify ();
+          if (pressure_timer_id > 0U) {
+            GLib.Source.remove (pressure_timer_id);
+            pressure_timer_id = 0U;
           }
+
+          if (Hidden)
+            start_pending_reveal ();
         }
         break;
       case XInput.EventType.BARRIER_LEAVE:
@@ -792,7 +867,7 @@ namespace Plank {
         barrier = 0;
       }
 
-      if (!controller.prefs.PressureReveal && controller.prefs.GapSize == 0)
+      if (!controller.prefs.PressureReveal)
         return;
 
       if (controller.prefs.HideMode == HideType.NONE)
