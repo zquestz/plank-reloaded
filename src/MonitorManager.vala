@@ -106,7 +106,7 @@ namespace Plank {
 
     void on_monitor_added (Gdk.Display display, Gdk.Monitor monitor) {
       int index = find_monitor_index (display, monitor);
-      string name = get_monitor_name (monitor, index);
+      string name = get_monitor_config_key (monitor, index);
       message ("Monitor connected: %s (index %d)", name, index);
       spawn_child_for_monitor (monitor, index);
     }
@@ -139,21 +139,27 @@ namespace Plank {
      * running for that monitor name.
      */
     void spawn_child_for_monitor (Gdk.Monitor monitor, int index) {
-      string name = get_monitor_name (monitor, index);
+      string name = get_monitor_config_key (monitor, index);
 
       if (children.has_key (name)) {
         debug ("Child already running for '%s' — skipping.", name);
         return;
       }
 
-      // -n <n>                 — dock instance name (GSettings sub-path)
-      // --assigned-monitor <n> — internal: the physical output this instance
-      //                          is assigned to; applied only if the dock's
-      //                          saved Monitor preference is still unset
+      // -n <name>              — dock instance name (GSettings sub-path and
+      //                          config directory key). Uses the full
+      //                          port+manufacturer+dimensions format so configs
+      //                          are stable across dock/hub changes.
+      // --assigned-monitor <c> — the bare connector name (e.g. DP-2-1) used
+      //                          for physical monitor selection and the Monitor
+      //                          preference. Kept as the plain connector name
+      //                          so the UI and find_monitor_number continue to
+      //                          work with human-readable port identifiers.
+      string connector = monitor.get_model () ?? "PLUG_MONITOR_%i".printf (index);
       string[] argv = {
         self_exe,
         "-n",                 name,
-        "--assigned-monitor", name,
+        "--assigned-monitor", connector,
       };
 
       Pid pid;
@@ -247,11 +253,64 @@ namespace Plank {
     // ── Helpers ────────────────────────────────────────────────────────────
 
     /**
-     * Canonical name for a monitor: GDK model string, or a stable fallback.
-     * Must match PositionManager.get_monitor_name() exactly.
+     * Canonical name for a monitor: port+manufacturer+dimensions, or a
+     * stable fallback. Used as the dock instance name (-n argument), the
+     * dconf path key, and the launchers folder name.
+     *
+     * This is intentionally separate from the bare connector name
+     * (monitor.get_model()) which is used for the --assigned-monitor argument,
+     * the Monitor preference, find_monitor_number, and the preferences UI.
      */
-    static string get_monitor_name (Gdk.Monitor monitor, int index) {
-      return monitor.get_model () ?? "PLUG_MONITOR_%i".printf (index);
+    static string sanitise_dock_name (string s) {
+      var sb = new StringBuilder ();
+      unichar c;
+      for (int i = 0; s.get_next_char (ref i, out c);) {
+        if (c.isalnum () || c == '-' || c == '.')
+          sb.append_unichar (c);
+        else
+          sb.append_c ('-');
+      }
+      string result = sb.str;
+      try {
+        var re = new Regex ("-{2,}");
+        result = re.replace (result, -1, 0, "-");
+      } catch (RegexError e) {}
+      return result._chug ()._chomp ();
+    }
+
+    /**
+     * Build the config key for a monitor — used as the dock instance name
+     * (-n argument), the dconf path segment, and the launchers folder name.
+     *
+     * Format: {connector}-{manufacturer}-{width}x{height}mm
+     * e.g.    DP-2-1-SAM-797x333mm
+     *
+     * This is distinct from the bare connector name (monitor.get_model())
+     * which is used for physical monitor selection, the Monitor preference,
+     * and the preferences UI. The config key embeds model identity so that
+     * dock settings follow the physical monitor rather than the port,
+     * allowing configs to survive dock or hub changes.
+     *
+     * Falls back to the bare connector name if manufacturer or physical
+     * dimensions are unavailable. Falls back to PLUG_MONITOR_{index} if
+     * the connector name is also absent.
+     */
+    static string get_monitor_config_key (Gdk.Monitor monitor, int index) {
+      string? connector = monitor.get_model ();
+      if (connector == null || connector == "")
+        return "PLUG_MONITOR_%i".printf (index);
+
+      string? manufacturer = monitor.get_manufacturer ();
+      int width_mm = monitor.get_width_mm ();
+      int height_mm = monitor.get_height_mm ();
+
+      if (manufacturer != null && manufacturer.strip () != ""
+          && width_mm > 0 && height_mm > 0) {
+        return sanitise_dock_name (
+          "%s-%s-%dx%dmm".printf (connector, manufacturer.strip (), width_mm, height_mm));
+      }
+
+      return sanitise_dock_name (connector);
     }
 
     /** Return the index of a monitor in the current display list. */
@@ -266,12 +325,15 @@ namespace Plank {
     /**
      * Reverse-lookup: find the children-map key for a monitor that has just
      * been removed (and is therefore no longer in the display list).
-     * We match on the Gdk.Monitor object's model string.
+     * Uses get_monitor_config_key() so the key format matches what was used when
+     * the child was spawned. Index is passed as 0 since for monitors with
+     * manufacturer+dimensions the index is not part of the name; for
+     * PLUG_MONITOR_N monitors the existing key scan below handles it.
      */
     string? name_for_removed_monitor (Gdk.Monitor monitor) {
-      string? model = monitor.get_model ();
-      if (model != null && children.has_key (model))
-        return model;
+      string name = get_monitor_config_key (monitor, 0);
+      if (children.has_key (name))
+        return name;
 
       // PLUG_MONITOR_N fallback: if exactly one such key is in the map we
       // can identify it unambiguously.

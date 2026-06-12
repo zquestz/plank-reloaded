@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.12.4 "Plus" (2026-06-12)
+
+- Fix docks positioned on the inner edge of a monitor incorrectly reserving work area space from the screen edge, making adjacent monitors unusable for window snapping, maximising, and resizing
+- Dock settings and launchers now follow the physical monitor rather than the port name, so configurations survive dock or hub changes between sessions
+
 ## 0.12.3 "Plus" (2026-03-12)
 
 - Fix monitor manager child instances starting on the wrong monitor: managed dock prefs (Monitor, ActiveDisplay) are now applied before PositionManager initialises, so the dock renders at the correct position from the first frame

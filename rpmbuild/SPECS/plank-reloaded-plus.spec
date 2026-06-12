@@ -123,6 +123,13 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.4-1
+- Fix docks on the inner edge of a monitor incorrectly reserving work area
+  space from the screen edge, making adjacent monitors unusable for window
+  snapping, maximising, and resizing
+- Dock settings and launchers now follow the physical monitor rather than
+  the port name, so configurations survive dock or hub changes between sessions
+
 * Thu Mar 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.3-1
 - Fix monitor manager child instances starting on the wrong monitor: managed
   dock prefs are now applied before PositionManager initialises so the dock

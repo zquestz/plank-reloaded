@@ -171,7 +171,8 @@ namespace Plank {
           active_monitor_num = i;
       }
 
-      return get_monitor_name (monitor, active_monitor_num);
+      return display.get_monitor (active_monitor_num).get_model ()
+             ?? "PLUG_MONITOR_%i".printf (active_monitor_num);
     }
 
     public void move_to_active_monitor () {
@@ -209,17 +210,17 @@ namespace Plank {
       }
     }
 
-    static string get_monitor_name (Gdk.Monitor monitor, int index) {
-      return monitor.get_model () ?? "PLUG_MONITOR_%i".printf (index);
-    }
-
     public static string[] get_monitor_plug_names (Gdk.Screen screen) {
       var display = screen.get_display ();
       int n_monitors = display.get_n_monitors ();
       var result = new string[n_monitors];
 
       for (int i = 0; i < n_monitors; i++) {
-        result[i] = get_monitor_name (display.get_monitor (i), i);
+        // Use the bare connector name (get_model) here, not get_monitor_name,
+        // so the preferences dropdown and the stored Monitor preference both
+        // show human-readable port identifiers (e.g. DP-2-1, eDP-1).
+        result[i] = display.get_monitor (i).get_model ()
+                    ?? "PLUG_MONITOR_%i".printf (i);
       }
 
       return result;
@@ -241,7 +242,11 @@ namespace Plank {
 
       int n_monitors = display.get_n_monitors ();
       for (int i = 0; i < n_monitors; i++) {
-        if (plug_name == get_monitor_name (display.get_monitor (i), i))
+        // Match against the bare connector name (get_model), which is what
+        // --assigned-monitor passes and what the Monitor preference stores.
+        string connector = display.get_monitor (i).get_model ()
+                           ?? "PLUG_MONITOR_%i".printf (i);
+        if (plug_name == connector)
           return i;
       }
 
@@ -2009,24 +2014,44 @@ namespace Plank {
       switch (position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - monitor.y - monitor.height) * scale;
-        struts[Struts.BOTTOM_START] = monitor.x * scale;
-        struts[Struts.BOTTOM_END] = (monitor.x + monitor.width) * scale - 1;
+        // Only reserve a bottom strut if this monitor's bottom edge is the
+        // bottom of the virtual screen. A BOTTOM strut is measured from the
+        // screen's bottom edge; setting it on a non-bottom monitor would push
+        // the work area boundary inward and exclude other monitors below it.
+        if (monitor.y + monitor.height >= screen_height) {
+          struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - monitor.y - monitor.height) * scale;
+          struts[Struts.BOTTOM_START] = monitor.x * scale;
+          struts[Struts.BOTTOM_END] = (monitor.x + monitor.width) * scale - 1;
+        }
         break;
       case Gtk.PositionType.TOP:
-        struts[Struts.TOP] = (monitor.y + dock_height + gap_size) * scale;
-        struts[Struts.TOP_START] = monitor.x * scale;
-        struts[Struts.TOP_END] = (monitor.x + monitor.width) * scale - 1;
+        // Only reserve a top strut if this monitor's top edge is at y=0.
+        if (monitor.y == 0) {
+          struts[Struts.TOP] = (dock_height + gap_size) * scale;
+          struts[Struts.TOP_START] = monitor.x * scale;
+          struts[Struts.TOP_END] = (monitor.x + monitor.width) * scale - 1;
+        }
         break;
       case Gtk.PositionType.LEFT:
-        struts[Struts.LEFT] = (monitor.x + dock_width + gap_size) * scale;
-        struts[Struts.LEFT_START] = monitor.y * scale;
-        struts[Struts.LEFT_END] = (monitor.y + monitor.height) * scale - 1;
+        // Only reserve a left strut if this monitor's left edge is at x=0.
+        // A LEFT strut is measured from the left edge of the entire virtual
+        // screen. On a middle monitor (monitor.x > 0) the value would be
+        // monitor.x + dock_width, which reserves all monitors to the left of
+        // the dock and removes them from the work area entirely.
+        if (monitor.x == 0) {
+          struts[Struts.LEFT] = (dock_width + gap_size) * scale;
+          struts[Struts.LEFT_START] = monitor.y * scale;
+          struts[Struts.LEFT_END] = (monitor.y + monitor.height) * scale - 1;
+        }
         break;
       case Gtk.PositionType.RIGHT:
-        struts[Struts.RIGHT] = (dock_width + gap_size + screen_width - monitor.x - monitor.width) * scale;
-        struts[Struts.RIGHT_START] = monitor.y * scale;
-        struts[Struts.RIGHT_END] = (monitor.y + monitor.height) * scale - 1;
+        // Only reserve a right strut if this monitor's right edge is the
+        // right edge of the virtual screen.
+        if (monitor.x + monitor.width >= screen_width) {
+          struts[Struts.RIGHT] = (dock_width + gap_size) * scale;
+          struts[Struts.RIGHT_START] = monitor.y * scale;
+          struts[Struts.RIGHT_END] = (monitor.y + monitor.height) * scale - 1;
+        }
         break;
       }
     }
