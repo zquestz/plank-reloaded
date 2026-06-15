@@ -1,3 +1,11 @@
+plank-reloaded-plus (0.12.5-1) unstable; urgency=medium
+
+  * When exactly one app instance is on the current dock and that instance is
+    the active/focused window, clicking its dock icon now minimises the window
+    instead of re-focusing it
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Tue, 16 Jun 2026 00:00:00 +0000
+
 plank-reloaded-plus (0.12.4-3) unstable; urgency=medium
 
   * Fix docks on the inner edge of a monitor incorrectly reserving work area

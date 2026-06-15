@@ -214,8 +214,15 @@ namespace Plank {
                 app_item.App, cw_only, true, monitor_geo);
 
             if (preview_wins.size == 1) {
-              // Single window on this monitor → focus it directly
-              WindowControl.focus_window (preview_wins.get (0), event.time);
+              // Single window on this monitor: if it is already the active
+              // window, minimize it; otherwise focus it.
+              Bamf.Window bamf_win = preview_wins.get (0);
+              Wnck.Window? wnck_win = Wnck.Window.@get (bamf_win.get_xid ());
+              if (wnck_win != null && (wnck_win.is_active () || wnck_win == wnck_win.get_screen ().get_active_window ())) {
+                wnck_win.minimize ();
+              } else {
+                WindowControl.focus_window (bamf_win, event.time);
+              }
               handled = true;
             }
             // >1 windows: fall through to smart_focus (preview is shown on hover, not click)
