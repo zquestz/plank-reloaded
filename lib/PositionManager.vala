@@ -1979,13 +1979,15 @@ namespace Plank {
       var display = controller.window.get_display ();
       int screen_width = 0;
       int screen_height = 0;
-      for (var i = 0; i < display.get_n_monitors (); i++) {
-        var geo = display.get_monitor (i).get_geometry ();
-        screen_width = int.max (screen_width, geo.x + geo.width);
-        screen_height = int.max (screen_height, geo.y + geo.height);
+      int n_monitors = display.get_n_monitors ();
+      var all_monitors = new Gdk.Rectangle[n_monitors];
+      for (var i = 0; i < n_monitors; i++) {
+        all_monitors[i] = display.get_monitor (i).get_geometry ();
+        screen_width = int.max (screen_width, all_monitors[i].x + all_monitors[i].width);
+        screen_height = int.max (screen_height, all_monitors[i].y + all_monitors[i].height);
       }
 
-      compute_struts (ref struts, Position, monitor_geo,
+      compute_struts (ref struts, Position, monitor_geo, all_monitors,
                       screen_width, screen_height,
                       VisibleDockWidth, VisibleDockHeight,
                       GapSize, window_scale_factor);
@@ -1998,9 +2000,22 @@ namespace Plank {
      * dock_height, gap_size) must be in GDK logical (application) pixels.
      * The scale factor converts the result to X11 device pixels for struts.
      *
+     * A strut is only set when it would not exclude another monitor from the
+     * work area. The check is: would any other monitor extend past the dock
+     * position in the relevant direction, AND overlap with this monitor in the
+     * perpendicular axis? If yes, the strut is suppressed — it would reserve
+     * space that covers that other monitor. If no other monitor does this, the
+     * strut is safe regardless of whether this monitor touches the screen edge.
+     *
+     * Example: a laptop panel (eDP-1) at x=6000 y=124 1920x1080 with a BOTTOM
+     * dock. Its bottom is at y=1204, not the screen bottom (y=1440). But the
+     * only monitors that extend below y=1204 (DP-2-1, DP-2-2) are at x=0..5999,
+     * which does not overlap with eDP-1's x=6000..7920. So the strut is safe.
+     *
      * @param struts the array to contain the struts
      * @param position the dock position (top/bottom/left/right)
      * @param monitor the monitor geometry (GDK logical pixels)
+     * @param all_monitors geometries of all connected monitors
      * @param screen_width total screen width (GDK logical pixels)
      * @param screen_height total screen height (GDK logical pixels)
      * @param dock_width visible dock width (GDK logical pixels)
@@ -2009,51 +2024,101 @@ namespace Plank {
      * @param scale window scale factor (logical to device pixel ratio)
      */
     public static void compute_struts (ref ulong[] struts, Gtk.PositionType position,
-                                       Gdk.Rectangle monitor, int screen_width, int screen_height,
+                                       Gdk.Rectangle monitor, Gdk.Rectangle[] all_monitors,
+                                       int screen_width, int screen_height,
                                        int dock_width, int dock_height,
                                        int gap_size, int scale) {
       switch (position) {
       default:
-      case Gtk.PositionType.BOTTOM:
-        // Only reserve a bottom strut if this monitor's bottom edge is the
-        // bottom of the virtual screen. A BOTTOM strut is measured from the
-        // screen's bottom edge; setting it on a non-bottom monitor would push
-        // the work area boundary inward and exclude other monitors below it.
-        if (monitor.y + monitor.height >= screen_height) {
-          struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - monitor.y - monitor.height) * scale;
+      case Gtk.PositionType.BOTTOM: {
+        // Suppress if any other monitor extends below this monitor's bottom
+        // edge AND has genuine horizontal overlap (not just adjacency) with
+        // this monitor's x-range. BOTTOM_START/END already restricts the strut
+        // to this monitor's x-range, so only monitors that share x-pixels
+        // (not merely touch at a single x coordinate) can be affected.
+        int dock_edge = monitor.y + monitor.height;
+        bool blocked = false;
+        foreach (var m in all_monitors) {
+          if (m.x == monitor.x && m.y == monitor.y &&
+              m.width == monitor.width && m.height == monitor.height)
+            continue;
+          bool h_overlap = m.x < monitor.x + monitor.width && m.x + m.width > monitor.x;
+          if (h_overlap && m.y + m.height > dock_edge) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          struts[Struts.BOTTOM] = (dock_height + gap_size + screen_height - dock_edge) * scale;
           struts[Struts.BOTTOM_START] = monitor.x * scale;
           struts[Struts.BOTTOM_END] = (monitor.x + monitor.width) * scale - 1;
         }
         break;
-      case Gtk.PositionType.TOP:
-        // Only reserve a top strut if this monitor's top edge is at y=0.
-        if (monitor.y == 0) {
-          struts[Struts.TOP] = (dock_height + gap_size) * scale;
+      }
+      case Gtk.PositionType.TOP: {
+        // Suppress if any other monitor extends above this monitor's top edge
+        // AND has genuine horizontal overlap.
+        bool blocked = false;
+        foreach (var m in all_monitors) {
+          if (m.x == monitor.x && m.y == monitor.y &&
+              m.width == monitor.width && m.height == monitor.height)
+            continue;
+          bool h_overlap = m.x < monitor.x + monitor.width && m.x + m.width > monitor.x;
+          if (h_overlap && m.y < monitor.y) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          struts[Struts.TOP] = (monitor.y + dock_height + gap_size) * scale;
           struts[Struts.TOP_START] = monitor.x * scale;
           struts[Struts.TOP_END] = (monitor.x + monitor.width) * scale - 1;
         }
         break;
-      case Gtk.PositionType.LEFT:
-        // Only reserve a left strut if this monitor's left edge is at x=0.
-        // A LEFT strut is measured from the left edge of the entire virtual
-        // screen. On a middle monitor (monitor.x > 0) the value would be
-        // monitor.x + dock_width, which reserves all monitors to the left of
-        // the dock and removes them from the work area entirely.
-        if (monitor.x == 0) {
-          struts[Struts.LEFT] = (dock_width + gap_size) * scale;
+      }
+      case Gtk.PositionType.LEFT: {
+        // Suppress if any other monitor extends to the left of this monitor's
+        // left edge AND has genuine vertical overlap.
+        bool blocked = false;
+        foreach (var m in all_monitors) {
+          if (m.x == monitor.x && m.y == monitor.y &&
+              m.width == monitor.width && m.height == monitor.height)
+            continue;
+          bool v_overlap = m.y < monitor.y + monitor.height && m.y + m.height > monitor.y;
+          if (v_overlap && m.x < monitor.x) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          struts[Struts.LEFT] = (monitor.x + dock_width + gap_size) * scale;
           struts[Struts.LEFT_START] = monitor.y * scale;
           struts[Struts.LEFT_END] = (monitor.y + monitor.height) * scale - 1;
         }
         break;
-      case Gtk.PositionType.RIGHT:
-        // Only reserve a right strut if this monitor's right edge is the
-        // right edge of the virtual screen.
-        if (monitor.x + monitor.width >= screen_width) {
-          struts[Struts.RIGHT] = (dock_width + gap_size) * scale;
+      }
+      case Gtk.PositionType.RIGHT: {
+        // Suppress if any other monitor extends to the right of this monitor's
+        // right edge AND has genuine vertical overlap.
+        int dock_edge = monitor.x + monitor.width;
+        bool blocked = false;
+        foreach (var m in all_monitors) {
+          if (m.x == monitor.x && m.y == monitor.y &&
+              m.width == monitor.width && m.height == monitor.height)
+            continue;
+          bool v_overlap = m.y < monitor.y + monitor.height && m.y + m.height > monitor.y;
+          if (v_overlap && m.x + m.width > dock_edge) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          struts[Struts.RIGHT] = (dock_width + gap_size + screen_width - dock_edge) * scale;
           struts[Struts.RIGHT_START] = monitor.y * scale;
           struts[Struts.RIGHT_END] = (monitor.y + monitor.height) * scale - 1;
         }
         break;
+      }
       }
     }
 

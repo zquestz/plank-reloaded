@@ -86,6 +86,7 @@ namespace PlankTests
 		Test.add_func ("/Services/Struts/non_primary_monitor_scaling_2x", struts_non_primary_monitor_scaling_2x);
 		Test.add_func ("/Services/Struts/ewmh_xinerama_example", struts_ewmh_xinerama_example);
 		Test.add_func ("/Services/Struts/different_height_monitors_scaling_2x", struts_different_height_monitors_scaling_2x);
+		Test.add_func ("/Services/Struts/offset_monitor_bottom_safe", struts_offset_monitor_bottom_safe);
 	}
 
 	//
@@ -718,8 +719,9 @@ namespace PlankTests
 		var struts = new ulong[Struts.N_VALUES];
 		// Single 1920x1080 monitor, 48px dock at bottom, no gap, 1x scale
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 0, 1);
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 0, 1);
 
 		assert (struts[Struts.BOTTOM] == 48);
 		assert (struts[Struts.BOTTOM_START] == 0);
@@ -733,8 +735,9 @@ namespace PlankTests
 	{
 		var struts = new ulong[Struts.N_VALUES];
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 0, 1);
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 0, 1);
 
 		assert (struts[Struts.TOP] == 48);
 		assert (struts[Struts.TOP_START] == 0);
@@ -746,8 +749,9 @@ namespace PlankTests
 	{
 		var struts = new ulong[Struts.N_VALUES];
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 1);
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 0, 1);
 
 		assert (struts[Struts.LEFT] == 48);
 		assert (struts[Struts.LEFT_START] == 0);
@@ -759,8 +763,9 @@ namespace PlankTests
 	{
 		var struts = new ulong[Struts.N_VALUES];
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 1);
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 0, 1);
 
 		assert (struts[Struts.RIGHT] == 48);
 		assert (struts[Struts.RIGHT_START] == 0);
@@ -771,15 +776,15 @@ namespace PlankTests
 	void struts_multi_monitor_bottom ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Two 1920x1080 monitors side by side, dock on the right monitor
-		// GDK logical bounding box = (3840, 1080)
+		// Two 1920x1080 monitors side by side, dock on the right monitor.
+		// Both share the same bottom edge — no monitor extends below the dock,
+		// so the strut should be set.
 		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1920, 1080 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 1);
+		                                monitor, all_monitors, 3840, 1080, 1920, 48, 0, 1);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
 		assert (struts[Struts.BOTTOM] == 48);
-		// Strut range should cover only the right monitor
 		assert (struts[Struts.BOTTOM_START] == 1920);
 		assert (struts[Struts.BOTTOM_END] == 3839);
 	}
@@ -787,14 +792,11 @@ namespace PlankTests
 	void struts_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor with 2x scaling
-		// GDK logical monitor = {0, 0, 1920, 1080}
-		// screen dims = monitor bounds = (1920, 1080)
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 0, 2);
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 0, 2);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
 		assert (struts[Struts.BOTTOM] == 96);
 		assert (struts[Struts.BOTTOM_START] == 0);
 		assert (struts[Struts.BOTTOM_END] == 3839);
@@ -803,26 +805,24 @@ namespace PlankTests
 	void struts_with_gap ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single monitor with 10px gap
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 10, 1);
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 10, 1);
 
-		// BOTTOM strut should include gap
 		assert (struts[Struts.BOTTOM] == 58);
 	}
 
 	void struts_multi_monitor_scaling_2x_bottom ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Two 4K monitors side by side with 2x scaling
-		// Right monitor GDK = {1920, 0, 1920, 1080}
-		// GDK logical bounding box = (3840, 1080)
+		// Two 4K monitors side by side with 2x scaling, same height.
+		// No monitor extends below the dock, strut should be set.
 		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1920, 1080 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 2);
+		                                monitor, all_monitors, 3840, 1080, 1920, 48, 0, 2);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
 		assert (struts[Struts.BOTTOM] == 96);
 		assert (struts[Struts.BOTTOM_START] == 3840);
 		assert (struts[Struts.BOTTOM_END] == 7679);
@@ -831,15 +831,17 @@ namespace PlankTests
 	void struts_multi_monitor_scaling_2x_right ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Two 4K monitors stacked vertically with 2x scaling
-		// Top monitor GDK = {0, 0, 1920, 1080}, bottom = {0, 1080, 1920, 1080}
-		// GDK logical bounding box = (1920, 2160)
-		// Dock on top monitor, RIGHT position
+		// Two 4K monitors stacked vertically with 2x scaling.
+		// Top: {0,0,1920,1080}  Bottom: {0,1080,1920,1080}
+		// Dock on top monitor, RIGHT position.
+		// The bottom monitor overlaps vertically AND shares the same right edge
+		// (both end at x=1920), so no monitor extends *further right* than the
+		// dock edge — strut should be set.
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor, { 0, 1080, 1920, 1080 } };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 2160, 48, 1080, 0, 2);
+		                                monitor, all_monitors, 1920, 2160, 48, 1080, 0, 2);
 
-		// RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96 (monitor right = screen right)
 		assert (struts[Struts.RIGHT] == 96);
 		assert (struts[Struts.RIGHT_START] == 0);
 		assert (struts[Struts.RIGHT_END] == 2159);
@@ -848,53 +850,39 @@ namespace PlankTests
 	void struts_gap_with_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, 10px GDK gap, BOTTOM dock
-		// GDK logical = {0, 0, 1920, 1080}
-		// GDK logical bounding box = (1920, 1080)
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 10, 2);
+		Gdk.Rectangle[] all_monitors = { monitor };
 
-		// BOTTOM = (48 + 10 + 1080 - 0 - 1080) * 2 = 116
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 10, 2);
 		assert (struts[Struts.BOTTOM] == 116);
 		assert (struts[Struts.BOTTOM_START] == 0);
 		assert (struts[Struts.BOTTOM_END] == 3839);
 
-		// Also test RIGHT with gap + scaling
 		var struts2 = new ulong[Struts.N_VALUES];
 		PositionManager.compute_struts (ref struts2, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 10, 2);
-
-		// RIGHT = (48 + 10 + 1920 - 0 - 1920) * 2 = 116
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 10, 2);
 		assert (struts2[Struts.RIGHT] == 116);
 
-		// And TOP with gap + scaling
 		var struts3 = new ulong[Struts.N_VALUES];
 		PositionManager.compute_struts (ref struts3, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 10, 2);
-
-		// TOP = (0 + 48 + 10) * 2 = 116
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 10, 2);
 		assert (struts3[Struts.TOP] == 116);
 
-		// And LEFT with gap + scaling
 		var struts4 = new ulong[Struts.N_VALUES];
 		PositionManager.compute_struts (ref struts4, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 10, 2);
-
-		// LEFT = (0 + 48 + 10) * 2 = 116
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 10, 2);
 		assert (struts4[Struts.LEFT] == 116);
 	}
 
 	void struts_top_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, TOP dock
-		// GDK logical = {0, 0, 1920, 1080}
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 0, 2);
+		                                monitor, all_monitors, 1920, 1080, 1920, 48, 0, 2);
 
-		// TOP = (0 + 48 + 0) * 2 = 96
 		assert (struts[Struts.TOP] == 96);
 		assert (struts[Struts.TOP_START] == 0);
 		assert (struts[Struts.TOP_END] == 3839);
@@ -903,13 +891,11 @@ namespace PlankTests
 	void struts_left_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, LEFT dock
-		// GDK logical = {0, 0, 1920, 1080}
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 2);
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 0, 2);
 
-		// LEFT = (0 + 48 + 0) * 2 = 96
 		assert (struts[Struts.LEFT] == 96);
 		assert (struts[Struts.LEFT_START] == 0);
 		assert (struts[Struts.LEFT_END] == 2159);
@@ -918,13 +904,11 @@ namespace PlankTests
 	void struts_right_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, RIGHT dock
-		// GDK logical = {0, 0, 1920, 1080}
 		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 2);
+		                                monitor, all_monitors, 1920, 1080, 48, 1080, 0, 2);
 
-		// RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96
 		assert (struts[Struts.RIGHT] == 96);
 		assert (struts[Struts.RIGHT_START] == 0);
 		assert (struts[Struts.RIGHT_END] == 2159);
@@ -933,15 +917,13 @@ namespace PlankTests
 	void struts_non_primary_monitor_bottom ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Dock on non-primary monitor, scale=1
-		// Monitor A (primary): 1920x1080 at (0,0)
-		// Monitor B: 1920x1080 at (1920,0) — dock is here
-		// GDK logical bounding box = (3840, 1080)
+		// Monitor A: 1920x1080 at (0,0), Monitor B: 1920x1080 at (1920,0)
+		// Same height — no monitor extends below. Strut should be set.
 		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1920, 1080 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 1);
+		                                monitor, all_monitors, 3840, 1080, 1920, 48, 0, 1);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
 		assert (struts[Struts.BOTTOM] == 48);
 		assert (struts[Struts.BOTTOM_START] == 1920);
 		assert (struts[Struts.BOTTOM_END] == 3839);
@@ -950,15 +932,12 @@ namespace PlankTests
 	void struts_non_primary_monitor_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Dock on non-primary monitor, scale=2
-		// Monitor A (primary): 3840x2160 at (0,0), GDK {0, 0, 1920, 1080}
-		// Monitor B: 3840x2160 at (3840,0), GDK {1920, 0, 1920, 1080} — dock is here
-		// GDK logical bounding box = (3840, 1080)
+		// Same as above but scale=2. Same height, strut should be set.
 		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1920, 1080 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 2);
+		                                monitor, all_monitors, 3840, 1080, 1920, 48, 0, 2);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
 		assert (struts[Struts.BOTTOM] == 96);
 		assert (struts[Struts.BOTTOM_START] == 3840);
 		assert (struts[Struts.BOTTOM_END] == 7679);
@@ -967,17 +946,19 @@ namespace PlankTests
 	void struts_ewmh_xinerama_example ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// Exact example from EWMH spec section 5.10:
-		// Two monitors: 1280x1024 (left) + 1024x768 (right), top-aligned
-		// GDK logical (scale=1): left={0,0,1280,1024}, right={1280,0,1024,768}
-		// GDK logical bounding box = (2304, 1024)
-		// Panel: 50px tall at bottom of right (shorter) monitor
-		// Spec says: bottom strut = 306, bottom_start_x = 1280, bottom_end_x = 2303
+		// Two monitors: 1280x1024 (left) + 1024x768 (right), top-aligned.
+		// Panel on the right (shorter) monitor, BOTTOM dock.
+		// With _NET_WM_STRUT_PARTIAL the WM respects the BOTTOM_START/END
+		// x-range and only reserves space in that column. The left and right
+		// monitors are adjacent (touching at x=1280) but do not share pixels,
+		// so the strut is safe to set. The value accounts for the offset from
+		// the monitor bottom to the screen bottom.
 		Gdk.Rectangle monitor = { 1280, 0, 1024, 768 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1280, 1024 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 2304, 1024, 1024, 50, 0, 1);
+		                                monitor, all_monitors, 2304, 1024, 1024, 50, 0, 1);
 
-		// BOTTOM = (50 + 0 + 1024 - 0 - 768) * 1 = 306
+		// BOTTOM = (50 + 0 + 1024 - 768) * 1 = 306
 		assert (struts[Struts.BOTTOM] == 306);
 		assert (struts[Struts.BOTTOM_START] == 1280);
 		assert (struts[Struts.BOTTOM_END] == 2303);
@@ -986,19 +967,42 @@ namespace PlankTests
 	void struts_different_height_monitors_scaling_2x ()
 	{
 		var struts = new ulong[Struts.N_VALUES];
-		// 4K (left) + 1440p (right) side by side, top-aligned, scale=2
-		// Left: 3840x2160, GDK {0, 0, 1920, 1080}
-		// Right: 2560x1440, GDK {1920, 0, 1280, 720}
-		// GDK logical bounding box = (3200, 1080)
-		// Dock on right (shorter) monitor, BOTTOM
+		// 4K (left, GDK 1920x1080) + 1440p (right, GDK 1280x720), top-aligned,
+		// scale=2. Dock on right (shorter) monitor, BOTTOM.
+		// Monitors are adjacent at x=1920, no shared pixels.
+		// Strut is safe — WM respects BOTTOM_START/END x-range.
 		Gdk.Rectangle monitor = { 1920, 0, 1280, 720 };
+		Gdk.Rectangle[] all_monitors = { { 0, 0, 1920, 1080 }, monitor };
 		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3200, 1080, 1280, 48, 0, 2);
+		                                monitor, all_monitors, 3200, 1080, 1280, 48, 0, 2);
 
-		// BOTTOM = (48 + 0 + 1080 - 0 - 720) * 2 = 408 * 2 = 816
-		// = dock(96) + offset from monitor bottom to screen bottom (720 logical = 360 X11 pixels)
+		// BOTTOM = (48 + 0 + 1080 - 720) * 2 = 816
 		assert (struts[Struts.BOTTOM] == 816);
 		assert (struts[Struts.BOTTOM_START] == 3840);
 		assert (struts[Struts.BOTTOM_END] == 6399);
+	}
+
+	void struts_offset_monitor_bottom_safe ()
+	{
+		var struts = new ulong[Struts.N_VALUES];
+		// eDP-1 style: laptop panel offset vertically from top, positioned to
+		// the right of all other monitors with no horizontal overlap.
+		// DP-2-1: {0,0,3440,1440}  DP-2-2: {3440,0,2560,1440}
+		// eDP-1:  {6000,124,1920,1080} — bottom at y=1204, screen height=1440
+		// The other monitors extend to y=1440 but are at x=0..5999, no overlap
+		// with eDP-1 at x=6000..7920. Strut should be set.
+		Gdk.Rectangle monitor = { 6000, 124, 1920, 1080 };
+		Gdk.Rectangle[] all_monitors = {
+			{ 0,    0, 3440, 1440 },
+			{ 3440, 0, 2560, 1440 },
+			monitor
+		};
+		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+		                                monitor, all_monitors, 7920, 1440, 1920, 48, 0, 1);
+
+		// Strut should be set: screen_height(1440) - monitor_bottom(1204) + dock(48) = 284
+		assert (struts[Struts.BOTTOM] == 284);
+		assert (struts[Struts.BOTTOM_START] == 6000);
+		assert (struts[Struts.BOTTOM_END] == 7919);
 	}
 }

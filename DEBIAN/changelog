@@ -1,4 +1,4 @@
-plank-reloaded-plus (0.12.4-2) unstable; urgency=medium
+plank-reloaded-plus (0.12.4-3) unstable; urgency=medium
 
   * Fix docks on the inner edge of a monitor incorrectly reserving work area
     space from the screen edge, making adjacent monitors unusable for window
