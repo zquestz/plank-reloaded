@@ -65,12 +65,22 @@ namespace Plank {
         return window_count;
       }
 
+      Gdk.Rectangle monitor_geo = Gdk.Rectangle ();
+      bool has_monitor_filter = (provider != null && provider.try_get_dock_monitor_geometry (out monitor_geo));
+
       if (current_workspace_only (provider)) {
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
-        if (active_workspace != null)
-          window_count = WindowControl.window_on_workspace_count (app, active_workspace);
+        if (active_workspace != null) {
+          if (has_monitor_filter)
+            window_count = WindowControl.window_on_workspace_and_monitor_count (app, active_workspace, monitor_geo);
+          else
+            window_count = WindowControl.window_on_workspace_count (app, active_workspace);
+        }
       } else {
-        window_count = WindowControl.window_count (app);
+        if (has_monitor_filter)
+          window_count = WindowControl.window_count_on_monitor (app, monitor_geo);
+        else
+          window_count = WindowControl.window_count (app);
       }
 
       return window_count;

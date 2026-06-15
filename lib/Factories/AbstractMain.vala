@@ -25,11 +25,25 @@ namespace Plank {
   public abstract class AbstractMain : Gtk.Application {
     /**
      * The default command-line options for the dock.
+     *
+     * Note: `--monitor-manager` is not listed here because it is intercepted
+     * in main() before GLib option parsing runs.  When passed, the process
+     * switches into monitor-manager mode: it scans connected monitors, spawns
+     * one named dock child per monitor, and then stays alive watching for
+     * hotplug events — terminating or spawning children as monitors are
+     * disconnected or connected.  Normal dock startup is skipped entirely in
+     * that case.
+     *
+     * `--assigned-monitor` is listed below but marked HIDDEN so it does not
+     * appear in `--help` output.  It is an internal argument passed by the
+     * monitor manager to each child it spawns, telling the child which
+     * physical output it is assigned to.
      */
     const OptionEntry[] options = {
       { "debug", 'd', 0, OptionArg.NONE, null, "Enable debug logging", null },
       { "verbose", 'v', 0, OptionArg.NONE, null, "Enable verbose logging", null },
       { "name", 'n', 0, OptionArg.STRING, null, "The name of this dock. Defaults to \"dock1\".", null },
+      { "assigned-monitor", 0, OptionFlags.HIDDEN, OptionArg.STRING, null, "Internal: the monitor this instance is assigned to (set by monitor manager).", null },
       { "preferences", 0, 0, OptionArg.NONE, null, "Show preferences dialog of the just started or already running instance", null },
       { "version", 'V', 0, OptionArg.NONE, null, "Show the application's version", null },
       { null }
@@ -148,6 +162,11 @@ namespace Plank {
 
     string dock_name = "";
 
+    // The physical monitor model name that this instance should target.
+    // Set from --monitor-name when launched by MonitorManager.
+    // Empty string means "use the saved preference or default to primary".
+    string assigned_monitor = "";
+
     Gtk.AboutDialog? about_dlg;
     PreferencesWindow? preferences_dlg;
     DockController? primary_dock;
@@ -203,6 +222,11 @@ namespace Plank {
         dock_name = "";
         application_id = app_dbus;
       }
+
+      // Capture the monitor name supplied by MonitorManager so create_docks()
+      // can apply it as the initial Monitor preference for this instance.
+      if (!options.lookup ("assigned-monitor", "&s", out assigned_monitor))
+        assigned_monitor = "";
 
       return -1;
     }
@@ -293,7 +317,18 @@ namespace Plank {
     protected virtual void create_docks () {
       if (dock_name != null && dock_name != "") {
         message ("Running with 1 dock ('%s')", dock_name);
-        add_dock (create_dock (dock_name));
+        var dock = create_dock_uninit (dock_name);
+        // If MonitorManager assigned this instance to a specific monitor,
+        // lock it in BEFORE initialize() so PositionManager reads the correct
+        // monitor geometry from the very first frame — avoiding an initial
+        // placement on the wrong monitor followed by a corrective re-layout.
+        if (assigned_monitor != "") {
+          dock.prefs.Monitor = assigned_monitor;
+          dock.prefs.ActiveDisplay = false;
+          dock.prefs.managed_instance = true;
+        }
+        dock.initialize ();
+        add_dock (dock);
         return;
       }
 
@@ -323,6 +358,14 @@ namespace Plank {
       dock.initialize ();
 
       return dock;
+    }
+
+    // Like create_dock() but does NOT call dock.initialize(), so the caller
+    // can apply prefs overrides (e.g. assigned monitor) before initialization.
+    DockController create_dock_uninit (string dock_name) {
+      var config_folder = Paths.AppConfigFolder.get_child (dock_name);
+      Paths.ensure_directory_exists (config_folder);
+      return new DockController (dock_name, config_folder);
     }
 
     void add_dock (DockController dock) {
@@ -413,7 +456,25 @@ namespace Plank {
 
       about_dlg.set_program_name (exec_name);
       about_dlg.set_version ("%s\n%s".printf (build_version, build_version_info));
-      about_dlg.set_logo_icon_name (app_icon);
+
+      // Try to load the logo directly from the data directory so it works
+      // both when installed and when running from a build directory.
+      var logo_set = false;
+      foreach (var size in new string[] { "128x128", "256x256", "64x64", "48x48" }) {
+        var icon_path = Path.build_filename (build_data_dir, "icons", "hicolor", size, "apps", app_icon + ".png");
+        if (FileUtils.test (icon_path, FileTest.EXISTS)) {
+          try {
+            var pixbuf = new Gdk.Pixbuf.from_file (icon_path);
+            about_dlg.set_logo (pixbuf);
+            logo_set = true;
+            break;
+          } catch (Error e) {
+            warning ("Could not load about dialog logo from %s: %s", icon_path, e.message);
+          }
+        }
+      }
+      if (!logo_set)
+        about_dlg.set_logo_icon_name (app_icon);
 
       about_dlg.set_comments ("%s. %s".printf (program_name, build_release_name));
       about_dlg.set_copyright ("Copyright © %s %s Developers".printf (app_copyright, program_name));

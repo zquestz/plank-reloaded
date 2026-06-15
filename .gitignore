@@ -31,6 +31,8 @@ test-suite.log
 *.la
 *.gcda
 *.gcno
+*.deb
+*.sh
 coverage.xml
 coverage.info
 coveragereport
@@ -87,3 +89,4 @@ data/gschemas.compiled
 data/net.launchpad.plank.gschema.valid
 data/net.launchpad.plank.gschema.xml
 data/plank.desktop
+/pkg/

@@ -1,3 +1,77 @@
+plank-reloaded-plus (0.12.5-1) unstable; urgency=medium
+
+  * When exactly one app instance is on the current dock and that instance is
+    the active/focused window, clicking its dock icon now minimises the window
+    instead of re-focusing it
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Tue, 16 Jun 2026 00:00:00 +0000
+
+plank-reloaded-plus (0.12.4-3) unstable; urgency=medium
+
+  * Fix docks on the inner edge of a monitor incorrectly reserving work area
+    space from the screen edge, making adjacent monitors unusable for window
+    snapping, maximising, and resizing
+  * Dock settings and launchers now follow the physical monitor rather than
+    the port name, so configurations survive dock or hub changes between sessions
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Thu, 12 Jun 2026 00:00:00 +0000
+
+plank-reloaded-plus (0.12.3-1) unstable; urgency=medium
+
+  * Fix monitor manager child instances starting on the wrong monitor: managed
+    dock prefs are now applied before PositionManager initialises so the dock
+    renders at the correct position from the first frame
+  * Fix DBus object path assertion failures for monitors with hyphens in their
+    names (e.g. DP-2-8): illegal characters are sanitised to underscores
+  * Fix position retry storm: raise retry ceiling to 10 with verbose logging,
+    then warn once and stop rather than spamming CRITICAL on every configure event
+  * Fix On Primary Display and Active Display controls not locked when running as
+    a monitor manager child; all three monitor controls are now insensitive
+  * Fix monitor manager not exiting when its only child dock is closed: remove
+    unreliable loop.is_running() guard from the auto-quit check
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Thu, 12 Mar 2026 00:00:00 +0000
+
+plank-reloaded-plus (0.12.2-1) unstable; urgency=medium
+
+  * Add --monitor-manager mode: automatically opens a dock on each connected
+    monitor, opens new docks when monitors are plugged in, closes docks when
+    monitors are unplugged — no script or manual per-monitor configuration needed
+  * When a monitor is unplugged its dock closes gracefully preserving settings
+  * Monitor manager exits automatically when all dock instances have been closed
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Sat, 08 Mar 2026 00:00:00 +0000
+
+plank-reloaded-plus (0.12.1-1) unstable; urgency=medium
+
+  * Add window preview popup on hover for running application icons
+  * Preview shows thumbnail cards (200x120) for each open window with title labels
+  * Left-click a preview card to focus that window; middle-click to close it
+  * Hovering a preview card outlines the corresponding live desktop window
+    with a blue border
+  * Preview popup inherits the user's active GTK tooltip theme colours
+  * Preview Windows toggle added to Behaviour preferences (on by default)
+  * Tooltips Enabled moved to last position in preferences
+  * Transparent dock-side strip ensures seamless mouse travel to preview cards
+  * Icon zoom effect stays active while the preview popup is open
+  * Only Active Monitor: clicking an app icon with a single window focuses it
+    directly; multiple windows shows the preview to choose
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Wed, 26 Feb 2026 00:00:00 +0000
+
+plank-reloaded-plus (0.11.167-1) unstable; urgency=medium
+
+  * Fork from plank-reloaded as plank-reloaded-plus
+  * Add per-monitor window indicator filtering: each dock instance tracks which
+    monitor it is running on and counts only windows present on that monitor
+    when displaying app indicators
+  * Hide unpinned apps from a dock instance when none of their windows are on
+    the same monitor as that dock
+  * Support both multi-instance (one dock per monitor) and single-instance
+    "follow active monitor" configurations
+
+ -- cdmdotnet Limited <support@cdmdotnet.com>  Tue, 24 Feb 2026 00:00:00 +0000
+
 plank-reloaded (0.11.167-1) unstable; urgency=medium
 
   * Decouple GapSize dock reveal from X11 barriers using edge pointer polling

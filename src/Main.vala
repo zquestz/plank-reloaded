@@ -25,6 +25,22 @@ namespace Plank {
     Intl.bind_textdomain_codeset (Build.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Build.GETTEXT_PACKAGE);
 
+    // Handle --monitor-manager before GTK initialises so we can hand off
+    // cleanly to MonitorManager.  MonitorManager will call Gtk.init() itself.
+    foreach (unowned string arg in argv) {
+      if (arg == "--monitor-manager") {
+        // Strip the flag from argv before passing to MonitorManager so GTK
+        // (and GLib) do not trip over an unknown option.
+        var filtered = new GLib.Array<string> ();
+        foreach (unowned string a in argv)
+          if (a != "--monitor-manager")
+            filtered.append_val (a);
+
+        var manager = new MonitorManager ();
+        return manager.run (filtered.data);
+      }
+    }
+
     var application = new Plank.Main ();
     Factory.init (application, new ItemFactory ());
     return application.run (argv);
@@ -56,7 +72,7 @@ namespace Plank {
               build_version: Build.VERSION,
               build_version_info: Build.VERSION_INFO,
 
-              program_name: "Plank Reloaded",
+              program_name: "Plank Reloaded Plus",
               exec_name: "plank",
 
               app_copyright: "2011-2026",
@@ -64,8 +80,8 @@ namespace Plank {
               app_icon: "plank-reloaded",
               app_launcher: "net.launchpad.plank.desktop",
 
-              main_url: "https://github.com/zquestz/plank-reloaded",
-              help_url: "https://github.com/zquestz/plank-reloaded/issues",
+              main_url: "https://github.com/cdmdotnet/plank-reloaded-plus",
+              help_url: "https://github.com/cdmdotnet/plank-reloaded-plus/issues",
               translate_url: "https://crowdin.com/project/plank-reloaded",
 
               about_authors: authors,

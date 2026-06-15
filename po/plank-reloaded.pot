@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Plank Reloaded Developers
+# Copyright (C) YEAR The Plank Reloaded Plus Developers
 # This file is distributed under the same license as the plank-reloaded package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: plank-reloaded 0.11.167\n"
-"Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-04-13 12:14-1000\n"
+"Project-Id-Version: plank-reloaded-plus 0.12.4\n"
+"Report-Msgid-Bugs-To: https://github.com/cdmdotnet/plank-reloaded-plus\n"
+"POT-Creation-Date: 2026-06-13 10:07+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,70 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: data/plank.appdata.xml.in:6 data/net.launchpad.plank.desktop.in:2
-msgid "Plank Reloaded"
+msgid "Plank Reloaded Plus"
 msgstr ""
 
 #: data/plank.appdata.xml.in:7 data/net.launchpad.plank.desktop.in:4
-msgid "Still stupidly simple"
+msgid "Still mildly simple"
 msgstr ""
 
 #: data/plank.appdata.xml.in:9
 msgid ""
-"Plank Reloaded is a fork of the original Plank project, providing a simple "
-"dock for X11 desktop environments. While development began with a focus on "
-"Cinnamon, we now actively support multiple desktop environments including "
-"MATE and Xfce. Wayland is not supported at this time."
+"Plank Reloaded Plus is a fork of Plank Reloaded, which itself is a fork of "
+"the original Plank project. It provides a simple dock for X11 desktop "
+"environments, actively supporting Cinnamon, MATE, Xfce, and KDE."
 msgstr ""
 
 #: data/plank.appdata.xml.in:12
 msgid ""
-"Like its predecessor, Plank Reloaded aims to be the simplest dock on the "
-"planet, providing just what a dock needs and absolutely nothing more. It "
-"also remains a library which can be extended to create other dock programs "
-"with more advanced features."
+"Building on Plank Reloaded's foundation, Plank Reloaded Plus introduces "
+enhanced multi-monitor awareness. Each dock instance tracks which monitor it "
+is running on and filters window indicators accordingly: pinned app indicators "
+only count windows present on the same monitor as the dock, and unpinned apps "
+are hidden from a dock instance when none of their windows are on that "
+monitor. This applies both when running one dock per monitor and when using "
+the single-instance "follow active monitor" mode."
 msgstr ""
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:15
+msgid ""
+"Like its predecessors, Plank Reloaded Plus aims to be a mildy simple dock on "
+"the planet, providing just what a dock needs (in my opinion) and almost nothing more."
+msgstr ""
+
+#: data/plank.appdata.xml.in:20
+msgid "dock"
+msgstr ""
+
+#: data/plank.appdata.xml.in:21
+msgid "launch"
+msgstr ""
+
+#: data/plank.appdata.xml.in:22
+msgid "panel"
+msgstr ""
+
+#: data/plank.appdata.xml.in:23
+msgid "start"
+msgstr ""
+
+#: data/plank.appdata.xml.in:35
+msgid "The Plank Reloaded Plus Developers"
+msgstr ""
+
+#: data/plank.appdata.xml.in:131
 msgid "Dock with Matte theme"
 msgstr ""
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:135
 msgid "Appearance Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:139
 msgid "Behavior Preferences"
 msgstr ""
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:143
 msgid "Docklets Preferences"
 msgstr ""
 

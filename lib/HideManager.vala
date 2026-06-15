@@ -237,6 +237,11 @@ namespace Plank {
                    && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
       }
 
+      // While the window preview popup is visible, keep the dock treated as
+      // hovered so the zoom effect stays active and the dock does not hide.
+      if (!hovered && window.is_preview_showing ())
+        hovered = true;
+
       if (Hovered != hovered) {
         Hovered = hovered;
         update_needed = true;

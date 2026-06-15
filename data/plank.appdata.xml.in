@@ -3,14 +3,17 @@
 <component type="desktop">
   <id>net.launchpad.plank.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <name>Plank Reloaded</name>
-  <summary>Still stupidly simple</summary>
+  <name>Plank Reloaded plus</name>
+  <summary>Still Mildly simple</summary>
   <description>
     <p>
-      Plank Reloaded is a fork of the original Plank project, providing a simple dock for X11 desktop environments. While development began with a focus on Cinnamon, we now actively support multiple desktop environments including MATE and Xfce. Wayland is not supported at this time.
+      Plank Reloaded Plus is a fork of Plank Reloaded, which itself is a fork of the original Plank project. It provides a simple dock for X11 desktop environments, actively supporting Cinnamon, MATE, Xfce, and KDE.
     </p>
     <p>
-      Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
+      Building on Plank Reloaded's foundation, Plank Reloaded Plus introduces enhanced multi-monitor awareness. Each dock instance tracks which monitor it is running on and filters window indicators accordingly: pinned app indicators only count windows present on the same monitor as the dock, and unpinned apps are hidden from a dock instance when none of their windows are on that monitor. This applies both when running one dock per monitor and when using the single-instance "follow active monitor" mode.
+    </p>
+    <p>
+      Like its predecessors, Plank Reloaded Plus aims to be a mildy simple dock on the planet, providing just what a dock needs (in my opinion) and almost nothing more.
     </p>
   </description>
   <keywords>
@@ -19,17 +22,17 @@
     <keyword>panel</keyword>
     <keyword>start</keyword>
   </keywords>
-  <url type="homepage">https://github.com/zquestz/plank-reloaded</url>
-  <url type="bugtracker">https://github.com/zquestz/plank-reloaded/issues</url>
-  <url type="faq">https://github.com/zquestz/plank-reloaded</url>
-  <url type="translate">https://github.com/zquestz/plank-reloaded</url>
+  <url type="homepage">https://github.com/cdmdotnet/plank-reloaded-plus</url>
+  <url type="bugtracker">https://github.com/cdmdotnet/plank-reloaded-plus/issues</url>
+  <url type="faq">https://github.com/cdmdotnet/plank-reloaded-plus</url>
+  <url type="translate">https://github.com/cdmdotnet/plank-reloaded-plus</url>
   <provides>
     <library>libplank.so.1</library>
     <binary>plank</binary>
   </provides>
   <project_license>GPL-3.0</project_license>
   <developer id="@zquestz@mastodon.social">
-    <name>The Plank Reloaded Developers</name>
+    <name>The Plank Reloaded Plus Developers</name>
   </developer>
   <update_contact>quest_at_mac_dot_com</update_contact>
   <launchable type="desktop-id">net.launchpad.plank.desktop</launchable>

@@ -49,6 +49,16 @@
 			<summary>Only show windows from the current workspace</summary>
 			<description>If true, only show unpinned windows from the current workspace in addition to pinned items.</description>
 		</key>
+		<key name="only-active-monitor" type="b">
+			<default>false</default>
+			<summary>Only show windows on the active monitor</summary>
+			<description>If true, only count and show application windows that are on the same monitor as this dock instance.</description>
+		</key>
+		<key name="preview-windows" type="b">
+			<default>true</default>
+			<summary>Show window previews on hover</summary>
+			<description>If true, show a thumbnail preview popup when hovering over a running application icon.</description>
+		</key>
 		<key name="dock-items" type="as">
 			<default>[]</default>
 			<summary>Dockitem-files Array</summary>

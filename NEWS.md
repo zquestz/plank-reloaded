@@ -1,6 +1,41 @@
-# Plank Reloaded: Still stupidly simple
+# Plank Reloaded Plus: Still mildly simple
 
 **Note:** There is no stability of ABI/API until further notice!
+
+## 0.12.4 "Plus" (2026-06-12)
+
+- Fix docks positioned on the inner edge of a monitor incorrectly reserving work area space from the screen edge, making adjacent monitors unusable for window snapping, maximising, and resizing
+- Dock settings and launchers now follow the physical monitor rather than the port name, so configurations survive dock or hub changes between sessions
+
+## 0.12.3 "Plus" (2026-03-12)
+
+- Fix monitor manager child instances starting on the wrong monitor: managed dock prefs (Monitor, ActiveDisplay) are now applied before PositionManager initialises, so the dock renders at the correct position from the first frame
+- Fix DBus object path assertion failures for monitors with hyphens in their names (e.g. DP-2-8): illegal characters are sanitised to underscores before use in the path
+- Fix position retry storm: raise retry ceiling from 3 to 10 with verbose logging, then warn once and stop fighting the WM rather than spamming CRITICAL on every configure event
+- Fix On Primary Display and Active Display preference controls not being locked when running as a monitor manager child instance; all three monitor-related controls are now insensitive when managed
+- Fix monitor manager not exiting when its only child dock is closed: remove unreliable loop.is_running() guard from the auto-quit check
+
+## 0.12.2 "Plus" (2026-03-08)
+
+- Add `--monitor-manager` mode: automatically opens a dock on each connected monitor, opens a new dock when a monitor is plugged in, and closes the dock when a monitor is unplugged — no script or manual per-monitor configuration needed
+- When a monitor is unplugged, its dock is asked to close gracefully rather than being forcibly killed, preserving any saved settings
+- Monitor manager exits automatically when all dock instances have been closed
+
+## 0.12.1 "Plus" (2026-02-26)
+
+- Add window preview popup on hover for running application icons
+- Preview shows thumbnail cards (200×120) for each open window with title labels
+- Left-click a preview card to focus that window; middle-click to close it
+- Hovering a preview card outlines the corresponding live desktop window with a blue border
+- Preview popup inherits the user's active GTK tooltip theme colours (background, border, and text)
+- Preview Windows toggle added to Behaviour preferences (on by default); Tooltips Enabled moved to last position
+- Transparent dock-side strip on the preview window ensures seamless mouse travel from dock icon to preview cards at any speed, including with icon zoom active
+- Icon zoom effect stays active while the preview popup is open; dock does not hide
+- Zoomed icon always appears visually in front of the preview popup regardless of zoom level or zoom percentage setting
+- Desktop window highlight overlay renders behind the preview popup, not in front of it
+- Only Active Monitor: when enabled, clicking an app icon with a single window on this monitor focuses it directly without smart-focus across all monitors
+- Only Active Monitor: clicking an app icon with multiple windows on this monitor shows the preview to let you choose
+- Multi-monitor window indicator dots filtered per-monitor when Only Active Monitor is enabled
 
 ## 0.11.167 "Reloaded" (2026-04-13)
 

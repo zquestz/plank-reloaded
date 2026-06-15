@@ -15,8 +15,16 @@ plank_gschema = configure_file(
   install_dir: join_paths(data_dir, 'glib-2.0', 'schemas'),
 )
 
-plank_gschema_compile = gnome.compile_schemas(
-  depend_files: plank_gschema,
+plank_gschema_compile = custom_target(
+  'gsettings-compile-data',
+  input: plank_gschema,
+  output: 'gschemas.compiled',
+  command: [
+    find_program('glib-compile-schemas'),
+    '--targetdir', meson.current_build_dir(),
+    '--schema-file', '@INPUT@',
+  ],
+  build_by_default: true,
 )
 
 i18n.merge_file(

@@ -23,16 +23,34 @@ namespace Plank {
    */
   public class DefaultApplicationDockItemProvider : ApplicationDockItemProvider {
     public DockPreferences Prefs { get; construct; }
+    public PositionManager? PositionMgr { get; construct; }
 
     bool current_workspace_only;
+
+    /**
+     * Fills geo with the screen-coordinate geometry of the monitor this dock
+     * instance is running on. Returns false (no filtering) when OnlyActiveMonitor
+     * is disabled or no PositionManager is available.
+     *
+     * @param geo output rectangle
+     * @return true if monitor filtering is active and a valid geometry is available
+     */
+    public bool try_get_dock_monitor_geometry (out Gdk.Rectangle geo) {
+      if (PositionMgr == null || !Prefs.OnlyActiveMonitor) {
+        geo = Gdk.Rectangle ();
+        return false;
+      }
+      return PositionMgr.try_get_dock_monitor_geometry (out geo);
+    }
 
     /**
      * Creates the default container for dock items.
      *
      * @param prefs the preferences of the dock which owns this provider
+     * @param position_mgr the PositionManager of the dock (used for per-monitor filtering)
      */
-    public DefaultApplicationDockItemProvider (DockPreferences prefs, File launchers_dir) {
-      Object (Prefs: prefs, LaunchersDir: launchers_dir);
+    public DefaultApplicationDockItemProvider (DockPreferences prefs, File launchers_dir, PositionManager? position_mgr = null) {
+      Object (Prefs: prefs, LaunchersDir: launchers_dir, PositionMgr: position_mgr);
       Text = "DefaultApplicationDockItemProvider";
     }
 
@@ -40,19 +58,50 @@ namespace Plank {
     {
       Prefs.notify["CurrentWorkspaceOnly"].connect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].connect (handle_pinned_only_changed);
+      Prefs.notify["OnlyActiveMonitor"].connect (handle_only_active_monitor_changed);
 
       current_workspace_only = Prefs.CurrentWorkspaceOnly;
 
       if (current_workspace_only)
         connect_wnck ();
+
+      if (PositionMgr != null) {
+        PositionMgr.dock_monitor_changed.connect (handle_dock_monitor_changed);
+        if (Prefs.OnlyActiveMonitor)
+          connect_geometry_tracking ();
+      }
     }
 
     ~DefaultApplicationDockItemProvider () {
       Prefs.notify["CurrentWorkspaceOnly"].disconnect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].disconnect (handle_pinned_only_changed);
+      Prefs.notify["OnlyActiveMonitor"].disconnect (handle_only_active_monitor_changed);
 
       if (current_workspace_only)
         disconnect_wnck ();
+
+      if (PositionMgr != null) {
+        PositionMgr.dock_monitor_changed.disconnect (handle_dock_monitor_changed);
+        if (Prefs.OnlyActiveMonitor)
+          disconnect_geometry_tracking ();
+      }
+    }
+
+    void handle_dock_monitor_changed () {
+      // Re-evaluate which items are visible and update indicators now that
+      // the dock has moved to (or its geometry changed on) a monitor.
+      if (Prefs.OnlyActiveMonitor)
+        update_visible_elements ();
+    }
+
+    void handle_only_active_monitor_changed () {
+      if (PositionMgr != null) {
+        if (Prefs.OnlyActiveMonitor)
+          connect_geometry_tracking ();
+        else
+          disconnect_geometry_tracking ();
+      }
+      update_visible_elements ();
     }
 
     public void trigger_update_visible_elements (bool update_indicator) {
@@ -62,13 +111,27 @@ namespace Plank {
     protected void internal_update_visible_elements (bool update_indicator) {
       Logger.verbose ("DefaultDockItemProvider.update_visible_items ()");
 
+      Gdk.Rectangle monitor_geo = Gdk.Rectangle ();
+      bool has_monitor_filter = try_get_dock_monitor_geometry (out monitor_geo);
+
       if (Prefs.CurrentWorkspaceOnly) {
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
         foreach (var item in internal_elements) {
           unowned TransientDockItem? transient = (item as TransientDockItem);
 
-          item.IsAttached = (transient == null || transient.App == null || active_workspace == null
-                             || WindowControl.has_window_on_workspace (transient.App, active_workspace));
+          if (transient == null || transient.App == null) {
+            // Pinned item (not transient) — always shown
+            item.IsAttached = true;
+          } else if (active_workspace == null) {
+            item.IsAttached = true;
+          } else if (has_monitor_filter) {
+            // With monitor filtering: only attach if the app has a window on this
+            // monitor AND the current workspace
+            item.IsAttached = WindowControl.window_on_workspace_and_monitor_count (
+              transient.App, active_workspace, monitor_geo) > 0;
+          } else {
+            item.IsAttached = WindowControl.has_window_on_workspace (transient.App, active_workspace);
+          }
 
           if (update_indicator && item.IsAttached) {
             unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
@@ -82,7 +145,12 @@ namespace Plank {
           unowned TransientDockItem? transient = (item as TransientDockItem);
 
           if (transient == null || transient.App == null) {
+            // Pinned item — always shown
             item.IsAttached = true;
+          } else if (has_monitor_filter) {
+            // With monitor filtering: only show unpinned (transient) apps that
+            // have at least one window on this monitor
+            item.IsAttached = WindowControl.has_window_on_monitor (transient.App, monitor_geo);
           } else {
             item.IsAttached = WindowControl.has_window (transient.App);
           }
@@ -166,6 +234,42 @@ namespace Plank {
       screen.active_workspace_changed.disconnect (handle_workspace_changed);
       screen.viewports_changed.disconnect (handle_viewports_changed);
       screen.window_closed.disconnect (handle_window_closed);
+    }
+
+    // Window geometry tracking — needed so we react when a window is dragged
+    // from one monitor to another, changing whether it should be counted for
+    // this dock instance.
+
+    void connect_geometry_tracking () {
+      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      screen.window_opened.connect_after (handle_window_opened_for_geometry);
+      screen.window_closed.connect_after (handle_window_closed_for_geometry);
+      // Also subscribe to windows already open at startup
+      foreach (unowned Wnck.Window w in screen.get_windows ())
+        w.geometry_changed.connect_after (handle_window_geometry_changed);
+    }
+
+    void disconnect_geometry_tracking () {
+      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      screen.window_opened.disconnect (handle_window_opened_for_geometry);
+      screen.window_closed.disconnect (handle_window_closed_for_geometry);
+      foreach (unowned Wnck.Window w in screen.get_windows ())
+        w.geometry_changed.disconnect (handle_window_geometry_changed);
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_window_opened_for_geometry (Wnck.Screen screen, Wnck.Window window) {
+      window.geometry_changed.connect_after (handle_window_geometry_changed);
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_window_closed_for_geometry (Wnck.Screen screen, Wnck.Window window) {
+      window.geometry_changed.disconnect (handle_window_geometry_changed);
+    }
+
+    void handle_window_geometry_changed (Wnck.Window window) {
+      // A window moved or resized — it may have crossed a monitor boundary.
+      update_visible_elements ();
     }
 
     [CCode (instance_pos = -1)]

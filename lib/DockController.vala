@@ -32,12 +32,20 @@ namespace Plank {
 
     public DockPreferences prefs { get; construct; }
 
+    /**
+     * True when this dock instance is created for and "owned" by the
+     * monitor-manager parent process. In this mode the monitor assignment
+     * is fixed to a specific plug-name and related preferences are locked.
+     */
+    public bool ManagedByMonitorManager { get; set; default = false; }
+
     public DragManager drag_manager { get; protected set; }
     public HideManager hide_manager { get; protected set; }
     public PositionManager position_manager { get; protected set; }
     public DockRenderer renderer { get; protected set; }
     public DockWindow window { get; protected set; }
     public HoverWindow hover { get; protected set; }
+    public WindowPreviewWindow window_preview { get; protected set; }
 
     public DockItemProvider? default_provider { get; private set; }
 
@@ -103,6 +111,7 @@ namespace Plank {
       hide_manager = new HideManager (this);
       window = new DockWindow (this);
       hover = new HoverWindow ();
+      window_preview = new WindowPreviewWindow ();
       renderer = new DockRenderer (this, window);
     }
 
@@ -196,7 +205,7 @@ namespace Plank {
         debug ("done.");
       }
 
-      provider = new DefaultApplicationDockItemProvider (prefs, launchers_folder);
+      provider = new DefaultApplicationDockItemProvider (prefs, launchers_folder, position_manager);
 
       return provider;
     }

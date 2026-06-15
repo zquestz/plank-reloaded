@@ -1,9 +1,9 @@
 project(
-  'plank-reloaded',
+  'plank-reloaded-plus',
   'c',
   'cpp',
   'vala',
-  version: '0.11.167',
+  version: '0.12.5',
   meson_version: '>= 0.59.0',
   license: 'GPL3',
 )
@@ -90,17 +90,17 @@ config_inc_dir = include_directories('.')
 
 conf = configuration_data()
 conf.set_quoted('PACKAGE', meson.project_name())
-conf.set_quoted('PACKAGE_BUGREPORT', 'https://github.com/zquestz/plank-reloaded/issues')
+conf.set_quoted('PACKAGE_BUGREPORT', 'https://github.com/cdmdotnet/plank-reloaded-plus/issues')
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
-conf.set_quoted('PACKAGE_STRING', 'Plank Reloaded')
+conf.set_quoted('PACKAGE_STRING', 'Plank Reloaded Plus')
 conf.set_quoted('PACKAGE_TARNAME', meson.project_name())
-conf.set_quoted('PACKAGE_URL', 'https://github.com/zquestz/plank-reloaded')
+conf.set_quoted('PACKAGE_URL', 'https://github.com/cdmdotnet/plank-reloaded-plus')
 conf.set_quoted('PACKAGE_VERSION', plank_version)
 conf.set_quoted('DATADIR', data_dir)
 conf.set_quoted('PKGDATADIR', pkgdata_dir)
 conf.set_quoted('PKGLIBDIR', pkglib_dir)
 conf.set_quoted('DOCKLETSDIR', docklets_dir)
-conf.set_quoted('RELEASE_NAME', 'Still stupidly simple.')
+conf.set_quoted('RELEASE_NAME', 'Still mildly simple.')
 conf.set_quoted('VERSION', plank_version)
 conf.set_quoted('VERSION_INFO', (production_release ? 'Release' : 'Development'))
 conf.set_quoted('BUILD_VERSION', plank_version)

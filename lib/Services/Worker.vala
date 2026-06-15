@@ -27,8 +27,6 @@ namespace Plank {
   public delegate G TaskFunc<G> () throws Error;
 
   class Task : Object {
-    // Note: The following delegate warning can be safely ignored
-    // as this implementation is known to work correctly
     private ThreadFunc<void*> func;
     public TaskPriority priority { get; private set; }
 

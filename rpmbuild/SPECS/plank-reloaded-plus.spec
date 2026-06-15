@@ -1,10 +1,10 @@
-Name:           plank-reloaded
+Name:           plank-reloaded-plus
 Version:        %{version}
 Release:        %{release}%{?dist}
-Summary:        Elegant and simple dock
+Summary:        Elegant and simple dock with per-monitor window tracking
 
 License:        GPL-3.0-or-later
-URL:            https://github.com/zquestz/plank-reloaded
+URL:            https://github.com/cdmdotnet/plank-reloaded-plus
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
@@ -41,20 +41,29 @@ Conflicts:      libplank-common
 Conflicts:      libplank1
 
 %description
-Plank Reloaded is a fork of the original Plank project, providing a simple dock
-for X11 desktop environments. While development began with a focus on Cinnamon,
-we now actively support multiple desktop environments including MATE and Xfce.
-Like its predecessor, Plank Reloaded aims to be the simplest dock on the
-planet, providing just what a dock needs and absolutely nothing more.
+Plank Reloaded Plus is a fork of Plank Reloaded, which itself is a fork of
+the original Plank project. It provides a simple dock for X11 desktop
+environments, actively supporting Cinnamon, MATE, Xfce, and KDE.
+
+Building on Plank Reloaded's foundation, Plank Reloaded Plus introduces
+enhanced multi-monitor awareness. Each dock instance tracks which monitor it
+is running on and filters window indicators accordingly: pinned app indicators
+only count windows present on the same monitor as the dock, and unpinned apps
+are hidden from a dock instance when none of their windows are on that
+monitor. This applies both when running one dock per monitor and when using
+the single-instance "follow active monitor" mode.
+
+Like its predecessors, Plank Reloaded Plus aims to be the simplest dock on
+the planet, providing just what a dock needs and absolutely nothing more.
 
 %package devel
-Summary:        Development files for plank-reloaded
+Summary:        Development files for plank-reloaded-plus
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       vala
 Requires:       pkgconfig
 
 %description devel
-This package contains the development files for plank-reloaded, including
+This package contains the development files for plank-reloaded-plus, including
 headers, libraries, and Vala bindings needed to develop applications or
 docklets that use libplank.
 
@@ -114,8 +123,50 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
-* Mon Apr 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.167-1
-- Decouple GapSize dock reveal from X11 barriers using edge pointer polling
+* Thu Jun 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.5-1
+- Fix docks on the inner edge of a monitor incorrectly reserving work area
+  space from the screen edge, making adjacent monitors unusable for window
+  snapping, maximising, and resizing
+- Dock settings and launchers now follow the physical monitor rather than
+  the port name, so configurations survive dock or hub changes between sessions
+
+* Thu Mar 12 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.3-1
+- Fix monitor manager child instances starting on the wrong monitor: managed
+  dock prefs are now applied before PositionManager initialises so the dock
+  renders at the correct position from the first frame
+- Fix DBus object path assertion failures for monitors with hyphens in their
+  names (e.g. DP-2-8): illegal characters are sanitised to underscores
+- Fix position retry storm: raise retry ceiling to 10 with verbose logging,
+  then warn once and stop rather than spamming CRITICAL on every configure event
+- Fix On Primary Display and Active Display controls not locked when running as
+  a monitor manager child; all three monitor controls are now insensitive
+- Fix monitor manager not exiting when its only child dock is closed: remove
+  unreliable loop.is_running() guard from the auto-quit check
+
+* Sat Mar 08 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.2-1
+- Add --monitor-manager mode: automatically opens a dock on each connected
+  monitor, opens new docks when monitors are plugged in, closes docks when
+  monitors are unplugged — no script or manual per-monitor configuration needed
+- When a monitor is unplugged its dock closes gracefully preserving settings
+- Monitor manager exits automatically when all dock instances have been closed
+
+* Wed Feb 26 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.12.1-1
+- Add window preview popup on hover for running application icons
+- Preview shows thumbnail cards for each open window with title labels
+- Left-click a preview card to focus that window; middle-click to close it
+- Hovering a preview card outlines the corresponding live desktop window
+- Preview popup inherits the user's active GTK tooltip theme colours
+- Preview Windows toggle added to Behaviour preferences
+
+* Tue Feb 24 2026 cdmdotnet Limited <support@cdmdotnet.com> - 0.11.167-1
+- Fork from plank-reloaded as plank-reloaded-plus
+- Add per-monitor window indicator filtering: each dock instance now tracks
+  which monitor it is running on and counts only windows present on that
+  monitor when displaying app indicators
+- Hide unpinned apps from a dock instance when none of their windows are on
+  the same monitor as that dock
+- Support both multi-instance (one dock per monitor) and single-instance
+  "follow active monitor" configurations
 
 * Thu Feb 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.166-1
 - Fix struts double-scaling on HiDPI and xrandr multi-monitor setups

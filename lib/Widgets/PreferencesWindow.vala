@@ -77,6 +77,10 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.Switch sw_workspace_only;
     [GtkChild]
+    unowned Gtk.Switch sw_only_active_monitor;
+    [GtkChild]
+    unowned Gtk.Switch sw_preview_windows;
+    [GtkChild]
     unowned Gtk.Switch sw_show_unpinned;
     [GtkChild]
     unowned Gtk.Switch sw_lock_items;
@@ -134,6 +138,12 @@ namespace Plank {
         break;
       case "CurrentWorkspaceOnly":
         sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
+        break;
+      case "OnlyActiveMonitor":
+        sw_only_active_monitor.set_active (prefs.OnlyActiveMonitor);
+        break;
+      case "PreviewWindows":
+        sw_preview_windows.set_active (prefs.PreviewWindows);
         break;
       case "IconSize":
         adj_iconsize.value = prefs.IconSize;
@@ -256,6 +266,8 @@ namespace Plank {
     }
 
     void primary_display_toggled (GLib.Object widget, ParamSpec param) {
+      if (prefs.managed_instance)
+        return;
       if (((Gtk.Switch) widget).get_active ()) {
         prefs.Monitor = "";
         cb_display_plug.sensitive = false;
@@ -271,6 +283,14 @@ namespace Plank {
 
     void workspace_only_toggled (GLib.Object widget, ParamSpec param) {
       prefs.CurrentWorkspaceOnly = ((Gtk.Switch) widget).get_active ();
+    }
+
+    void only_active_monitor_toggled (GLib.Object widget, ParamSpec param) {
+      prefs.OnlyActiveMonitor = ((Gtk.Switch) widget).get_active ();
+    }
+
+    void preview_windows_toggled (GLib.Object widget, ParamSpec param) {
+      prefs.PreviewWindows = ((Gtk.Switch) widget).get_active ();
     }
 
     void show_unpinned_toggled (GLib.Object widget, ParamSpec param) {
@@ -385,8 +405,11 @@ namespace Plank {
         sw_primary_display.set_active (true);
       }
 
-      bool should_be_sensitive = (prefs.Monitor != "" && !prefs.ActiveDisplay);
+      // When managed by monitor manager, neither control can be changed.
+      bool should_be_sensitive = (prefs.Monitor != "" && !prefs.ActiveDisplay && !prefs.managed_instance);
       cb_display_plug.sensitive = should_be_sensitive;
+      sw_active_display.sensitive = !prefs.managed_instance;
+      sw_primary_display.sensitive = !prefs.managed_instance;
 
       refreshing_display_plugs = false;
     }
@@ -412,6 +435,8 @@ namespace Plank {
       sw_active_display.notify["active"].connect (active_display_toggled);
       adj_active_display_polling_interval.value_changed.connect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].connect (workspace_only_toggled);
+      sw_only_active_monitor.notify["active"].connect (only_active_monitor_toggled);
+      sw_preview_windows.notify["active"].connect (preview_windows_toggled);
       sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
       sw_lock_items.notify["active"].connect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].connect (tooltips_enabled_toggled);
@@ -444,6 +469,8 @@ namespace Plank {
       sw_active_display.notify["active"].disconnect (active_display_toggled);
       adj_active_display_polling_interval.value_changed.disconnect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].disconnect (workspace_only_toggled);
+      sw_only_active_monitor.notify["active"].disconnect (only_active_monitor_toggled);
+      sw_preview_windows.notify["active"].disconnect (preview_windows_toggled);
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].disconnect (tooltips_enabled_toggled);
@@ -484,9 +511,16 @@ namespace Plank {
       s_zoom_percent.sensitive = prefs.ZoomEnabled;
       sw_hide.set_active (prefs.HideMode != HideType.NONE);
       sw_primary_display.set_active (prefs.Monitor == "");
+      sw_primary_display.sensitive = !prefs.managed_instance;
       sw_active_display.set_active (prefs.ActiveDisplay);
       adj_active_display_polling_interval.value = prefs.ActiveDisplayPollingInterval;
-      if (prefs.ActiveDisplay) {
+      if (prefs.managed_instance) {
+        // Managed by monitor manager — lock both controls so the user
+        // cannot override the assigned monitor or enable active display.
+        cb_display_plug.sensitive = false;
+        sw_active_display.sensitive = false;
+        s_active_display_polling_interval.sensitive = false;
+      } else if (prefs.ActiveDisplay) {
         cb_display_plug.sensitive = false;
         s_active_display_polling_interval.sensitive = true;
       } else if (prefs.Monitor == "") {
@@ -497,6 +531,8 @@ namespace Plank {
         s_active_display_polling_interval.sensitive = false;
       }
       sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
+      sw_only_active_monitor.set_active (prefs.OnlyActiveMonitor);
+      sw_preview_windows.set_active (prefs.PreviewWindows);
       sw_show_unpinned.set_active (!prefs.PinnedOnly);
       sw_lock_items.set_active (prefs.LockItems);
       sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);

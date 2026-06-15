@@ -1,76 +1,32 @@
-# Plank Reloaded
+# Plank Reloaded Plus
 
-[![GitHub Release](https://img.shields.io/github/v/release/zquestz/plank-reloaded)](https://github.com/zquestz/plank-reloaded/releases) [![Crowdin](https://badges.crowdin.net/plank-reloaded/localized.svg)](https://crowdin.com/project/plank-reloaded)
+[![GitHub Release](https://img.shields.io/github/v/release/cdmdotnet/plank-reloaded)](https://github.com/cdmdotnet/plank-reloaded-plus/releases) [![Crowdin](https://badges.crowdin.net/plank-reloaded/localized.svg)](https://crowdin.com/project/plank-reloaded)
 
-## What Is Plank Reloaded?
+## What Is Plank Reloaded Plus?
 
-Plank Reloaded is a fork of the original [Plank](https://launchpad.net/plank) project, providing a simple dock for X11 desktop environments. We actively support Cinnamon, MATE, Xfce, and KDE. Wayland is not supported at this time.
+Plank Reloaded Plus is a fork of Plank Reloaded, which itself is a fork of
+ the original Plank project. It provides a simple dock for X11 desktop
+ environments, actively supporting Cinnamon, MATE, Xfce, and KDE.
+ 
+ Building on Plank Reloaded's foundation, Plank Reloaded Plus introduces
+ enhanced multi-monitor awareness. Each dock instance tracks which monitor it
+ is running on and filters window indicators accordingly: pinned app indicators
+ only count windows present on the same monitor as the dock, and unpinned apps
+ are hidden from a dock instance when none of their windows are on that
+ monitor. This applies both when running one dock per monitor and when using
+ the single-instance "follow active monitor" mode.
+ 
+ Like its predecessors, Plank Reloaded Plus aims to be a mildy simple dock on
+ the planet, providing just what a dock needs (in my opinion) and almost nothing more.
 
-Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet, providing just what a dock needs and absolutely nothing more. It also remains a library which can be extended to create other dock programs with more advanced features.
 
 ![Plank Reloaded on Linux Mint](screenshots/plank-reloaded-mint.webp)
 
-### Key Improvements in Plank Reloaded
+### Key Improvements in Plank Reloaded Plus
 
-- Enhanced compatibility with X11 desktop environments (Cinnamon, MATE, Xfce, and KDE)
-- Translated into 71 languages
-- Migrated to modern meson build system for easier compilation and installation
-- Anchor docklets and files to the end of the dock
-- Fixed Restrict to Workspace so applications only show up on their active workspace
-- Max zoom increased to 400%
-- Floating dock support with configurable gap from the screen edge
-- Multi-monitor support with active display tracking
-- Comprehensive docklet improvements:
-  - Applications: Better reliability and fixed duplicate items issue
-  - Battery: Modern UPower integration
-  - Clock: Enhanced digital display with new pop-up calendar
-  - Clippy: Image support, improved text handling and menu organization
-  - Notifications: Displays system notifications on the dock
-  - Separator: A simple separator so you can set up a macOS-like dock experience
-  - Workspaces: A graphical workspace switcher
-  - Refreshed icons across all docklets
-  - Support for third party docklets
-- Added Matte-Light, Minimal, and Minimal-Light themes
-- Added theme options to set the indicator, active item, and badge styles
-
-## Themes
-
-Plank Reloaded ships with six built-in themes. You can switch themes in **Preferences → Appearance → Theme**.
-
-### Default
-
-![Default Theme](screenshots/default.webp)
-
-### Matte
-
-![Matte Theme](screenshots/matte.webp)
-
-### Matte Light
-
-![Matte Light Theme](screenshots/matte-light.webp)
-
-### Minimal
-
-![Minimal Theme](screenshots/minimal.webp)
-
-### Minimal Light
-
-![Minimal Light Theme](screenshots/minimal-light.webp)
-
-### Transparent
-
-![Transparent Theme](screenshots/transparent.webp)
-
-### GTK Themes
-
-Plank Reloaded also supports GTK themes. To use one, install it and set it as your default theme, then select **Gtk+** as the Plank Reloaded theme in preferences.
-
-Here is a list of themes known to support Plank Reloaded:
-
-- [Celestial](https://github.com/zquestz/celestial-gtk-theme)
-- [Matcha](https://github.com/zquestz/Matcha-gtk-theme)
-- [Semabe](https://github.com/sewbej/Plank-Themes)
-- [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme)
+- Those from Plank Reloaded
+- Each dock instance now tracks which monitor it is running on and counts only windows present on that monitor when displaying app indicators
+- Optional monitor-manager mode (`plank --monitor-manager`) that automatically runs one dock per connected monitor, using GDK monitor names instead of xrandr and keeping each dock pinned to its assigned display
 
 ## Installation
 
@@ -88,7 +44,7 @@ yay -S plank-reloaded-git
 
 #### Option 1: Using the PPA (Recommended)
 
-Plank Reloaded is available for Ubuntu through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
+Plank Reloaded Plus is available for Ubuntu through an official PPA. This is the easiest way to install and keep Plank Reloaded updated.
 
 ```bash
 # Add the repository
@@ -102,7 +58,7 @@ sudo apt install plank-reloaded
 
 #### Option 2: Manual Installation
 
-You can download the `plank-reloaded.deb` package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
+You can download the `plank-reloaded-plus.deb` package from the [Releases](https://github.com/cdmdotnet/plank-reloaded-plus/releases) page or build from source using the instructions below.
 
 ```bash
 # Completely uninstall plank
@@ -112,7 +68,7 @@ sudo apt remove plank libplank-common libplank1
 sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
 
 # Clone the repository
-git clone https://github.com/zquestz/plank-reloaded.git
+git clone https://github.com/cdmdotnet/plank-reloaded-plus.git
 
 # Enter the directory
 cd plank-reloaded
@@ -144,7 +100,7 @@ sudo apt install plank-reloaded
 
 #### Option 2: Manual Installation
 
-You can download the `plank-reloaded-debian.deb` package from the [Releases](https://github.com/zquestz/plank-reloaded/releases) page or build from source using the instructions below.
+You can download the `plank-reloaded-plus-debian.deb` package from the [Releases](https://github.com/cdmdotnet/plank-reloaded-plus/releases) page or build from source using the instructions below.
 
 ```bash
 # Completely uninstall plank
@@ -154,7 +110,7 @@ sudo apt remove plank libplank-common libplank1
 sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
 
 # Clone the repository
-git clone https://github.com/zquestz/plank-reloaded.git
+git clone https://github.com/cdmdotnet/plank-reloaded-plus.git
 
 # Enter the directory
 cd plank-reloaded
@@ -390,7 +346,9 @@ Add Plank Reloaded to your desktop environment's startup applications. The comma
 <details markdown="1">
 <summary><strong>Does Plank Reloaded work with multiple monitors?</strong></summary>
 
-Yes, Plank Reloaded works with multiple monitors. To have a dock on each monitor, you need to launch multiple instances with different names:
+Yes, Plank Reloaded works with multiple monitors.
+
+For manual setups, you can still launch multiple instances with different names:
 
 ```bash
 # Launch first dock
@@ -402,9 +360,17 @@ plank -n dock2
 
 Each instance can be configured independently.
 
+For automatic one-dock-per-monitor management, you can instead run the built-in monitor manager:
+
+```bash
+plank --monitor-manager
+```
+
+This mode uses GDK monitor plug-names (not xrandr output names) to automatically start one dock per connected monitor and stop docks when monitors are disconnected. Each child dock is pinned to the monitor it was started for, and its monitor/“On Active Display” settings are locked while under manager control.
+
 #### Moving Docks Between Monitors
 
-You can move docks to your active monitor (where your cursor is) by enabling "On Active Display" in the preferences or by sending a USR1 signal to the plank process:
+Outside of monitor-manager mode, you can move docks to your active monitor (where your cursor is) by enabling "On Active Display" in the preferences or by sending a USR1 signal to the plank process:
 
 ```bash
 killall -USR1 plank

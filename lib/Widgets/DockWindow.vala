@@ -54,6 +54,8 @@ namespace Plank {
     Gee.ArrayList<Gtk.MenuItem>? menu_items;
 
     uint hover_reposition_timer_id = 0U;
+    uint preview_show_timer_id = 0U;
+    uint preview_hide_timer_id = 0U;
 
     uint long_press_timer_id = 0U;
     bool long_press_active = false;
@@ -105,6 +107,16 @@ namespace Plank {
       if (hover_reposition_timer_id > 0U) {
         GLib.Source.remove (hover_reposition_timer_id);
         hover_reposition_timer_id = 0U;
+      }
+
+      if (preview_show_timer_id > 0U) {
+        GLib.Source.remove (preview_show_timer_id);
+        preview_show_timer_id = 0U;
+      }
+
+      if (preview_hide_timer_id > 0U) {
+        GLib.Source.remove (preview_hide_timer_id);
+        preview_hide_timer_id = 0U;
       }
     }
 
@@ -176,10 +188,49 @@ namespace Plank {
 
       // Make sure the HoveredItem is still the same since button-pressed
       if (ClickedItem != null && HoveredItem == ClickedItem && !menu_is_visible ()) {
-        // The user made a choice so hide tooltip to avoid obstructing anything
+        // The user made a choice so hide tooltip and preview
         controller.hover.hide ();
+        controller.window_preview.hide ();
 
-        HoveredItem.clicked (PopupButton.from_event_button (event), event.state, event.time);
+        // When OnlyActiveMonitor is on and exactly one window sits on this
+        // monitor, focus just that window rather than calling smart_focus
+        // (which would bring every window to the front).
+        unowned ApplicationDockItem? app_item = (HoveredItem as ApplicationDockItem);
+        unowned DefaultApplicationDockItemProvider? default_provider =
+            (app_item != null ? app_item.Container as DefaultApplicationDockItemProvider : null);
+
+        bool handled = false;
+        if (PopupButton.from_event_button (event) == PopupButton.LEFT
+            && app_item != null
+            && app_item.App != null
+            && default_provider != null) {
+
+          Gdk.Rectangle monitor_geo = Gdk.Rectangle ();
+          bool has_monitor = default_provider.try_get_dock_monitor_geometry (out monitor_geo);
+
+          if (has_monitor) {
+            bool cw_only = default_provider.Prefs.CurrentWorkspaceOnly;
+            var preview_wins = WindowControl.get_visible_windows_for_preview (
+                app_item.App, cw_only, true, monitor_geo);
+
+            if (preview_wins.size == 1) {
+              // Single window on this monitor: if it is already the active
+              // window, minimize it; otherwise focus it.
+              Bamf.Window bamf_win = preview_wins.get (0);
+              Wnck.Window? wnck_win = Wnck.Window.@get (bamf_win.get_xid ());
+              if (wnck_win != null && (wnck_win.is_active () || wnck_win == wnck_win.get_screen ().get_active_window ())) {
+                wnck_win.minimize ();
+              } else {
+                WindowControl.focus_window (bamf_win, event.time);
+              }
+              handled = true;
+            }
+            // >1 windows: fall through to smart_focus (preview is shown on hover, not click)
+          }
+        }
+
+        if (!handled)
+          HoveredItem.clicked (PopupButton.from_event_button (event), event.state, event.time);
       }
 
       ClickedItem = null;
@@ -191,6 +242,7 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool enter_notify_event (Gdk.EventCrossing event) {
+      cancel_preview_hide ();
       controller.renderer.update_local_cursor ((int) event.x, (int) event.y);
       update_hovered ((int) event.x, (int) event.y);
 
@@ -205,11 +257,22 @@ namespace Plank {
       if ((bool) event.send_event)
         return Gdk.EVENT_PROPAGATE;
 
-      if (!menu_is_visible ()) {
-        set_hovered_provider (null);
-        set_hovered (null);
-      } else
+      if (menu_is_visible ()) {
         controller.hover.hide ();
+        return Gdk.EVENT_STOP;
+      }
+
+      // If the preview is visible, give the pointer a short grace period to
+      // travel from the dock window onto the preview popup.  If pointer_entered
+      // fires on the preview within that window, the timer is cancelled and
+      // nothing is hidden.
+      if (controller.window_preview.get_visible ()) {
+        schedule_preview_hide (60);
+        return Gdk.EVENT_STOP;
+      }
+
+      set_hovered_provider (null);
+      set_hovered (null);
 
       return Gdk.EVENT_STOP;
     }
@@ -282,12 +345,15 @@ namespace Plank {
                           || win_rect.x != event.x || win_rect.y != event.y);
 
       if (needs_update) {
-        // When adjusting the position of the dock, sometimes it needs to
-        // position twice.
-        if (++window_position_retry < 3) {
+        // Retry repositioning to overcome initial WM placement correction.
+        // Cap at 10 attempts: beyond that the WM is actively overriding our
+        // position (e.g. Muffin reserving strut space) and we must accept it.
+        if (++window_position_retry <= 10) {
+          Logger.verbose ("DockWindow.configure_event: position mismatch (retry %i), re-requesting", window_position_retry);
           update_size_and_position ();
-        } else {
-          critical ("Retry #%i update_size_and_position() to force requested values!", window_position_retry);
+        } else if (window_position_retry == 11) {
+          // Log once at the give-up point; don't spam on every subsequent event.
+          warning ("DockWindow: WM overriding dock position after %i retries — accepting WM placement", window_position_retry - 1);
         }
       } else {
         window_position_retry = 0;
@@ -354,10 +420,14 @@ namespace Plank {
 
       controller.hover.hide ();
 
-      if (HoveredItem == null
-          || !controller.prefs.TooltipsEnabled
-          || controller.drag_manager.InternalDragActive)
+      if (HoveredItem == null || controller.drag_manager.InternalDragActive)
         return;
+
+      // Cancel any pending preview timer
+      if (preview_show_timer_id > 0U) {
+        Source.remove (preview_show_timer_id);
+        preview_show_timer_id = 0U;
+      }
 
       // don't be that demanding this delay is still fast enough
       hover_reposition_timer_id = Gdk.threads_add_timeout (HOVER_DELAY_TIME, () => {
@@ -372,20 +442,131 @@ namespace Plank {
           return true;
 
         hover_reposition_timer_id = 0U;
-        unowned HoverWindow hover = controller.hover;
-
-        int x, y;
-        if (HoveredItem.Text != null && HoveredItem.Text != "") {
-          hover.set_text (HoveredItem.Text);
-          controller.position_manager.get_hover_position (HoveredItem, out x, out y);
-          hover.show_at (x, y, controller.position_manager.Position);
-        }
 
         if (menu_is_visible ())
-          hover.hide ();
+          return false;
+
+        unowned HoverWindow hover = controller.hover;
+
+        // Try to show the window preview popup for any running application item.
+        // Preview is independent of TooltipsEnabled — it is a window picker, not a label.
+        unowned ApplicationDockItem? app_item = (HoveredItem as ApplicationDockItem);
+        unowned DefaultApplicationDockItemProvider? default_provider =
+            (app_item != null ? app_item.Container as DefaultApplicationDockItemProvider : null);
+
+        bool show_preview = false;
+        if (controller.prefs.PreviewWindows
+            && app_item != null && app_item.App != null && app_item.is_running ()) {
+          Gdk.Rectangle monitor_geo = Gdk.Rectangle ();
+          bool has_monitor = (default_provider != null
+              && default_provider.try_get_dock_monitor_geometry (out monitor_geo));
+          bool cw_only = (default_provider != null && default_provider.Prefs.CurrentWorkspaceOnly);
+
+          var wins = WindowControl.get_visible_windows_for_preview (
+              app_item.App, cw_only, has_monitor, monitor_geo);
+
+          if (wins.size >= 1) {
+            show_preview = true;
+            show_window_preview_with_wins (app_item, wins);
+          }
+        }
+
+        // Fall back to plain tooltip for non-app items or apps with no windows
+        if (!show_preview && controller.prefs.TooltipsEnabled) {
+          controller.window_preview.hide ();
+          if (HoveredItem.Text != null && HoveredItem.Text != "") {
+            hover.set_text (HoveredItem.Text);
+            int x, y;
+            controller.position_manager.get_hover_position (HoveredItem, out x, out y);
+            hover.show_at (x, y, controller.position_manager.Position);
+          }
+        }
 
         return false;
       });
+    }
+
+    /**
+     * Schedule hiding the preview and clearing hover state after a grace period.
+     * If the preview emits pointer_entered before the timer fires, it is cancelled.
+     */
+    void schedule_preview_hide (uint delay_ms) {
+      if (preview_hide_timer_id > 0U) {
+        Source.remove (preview_hide_timer_id);
+        preview_hide_timer_id = 0U;
+      }
+      preview_hide_timer_id = Gdk.threads_add_timeout (delay_ms, () => {
+        preview_hide_timer_id = 0U;
+        controller.window_preview.hide ();
+        // Tell HideManager to re-evaluate hover state now that preview is gone
+        controller.hide_manager.update_hovered ();
+        if (!controller.hide_manager.Hovered) {
+          set_hovered_provider (null);
+          set_hovered (null);
+        }
+        return false;
+      });
+    }
+
+    void cancel_preview_hide () {
+      if (preview_hide_timer_id > 0U) {
+        Source.remove (preview_hide_timer_id);
+        preview_hide_timer_id = 0U;
+      }
+    }
+
+    void on_preview_pointer_entered () {
+      cancel_preview_hide ();
+    }
+
+    void on_preview_pointer_left () {
+      // Grace period when leaving the preview: user may be moving back to dock
+      schedule_preview_hide (200);
+    }
+
+    /**
+     * Show the window preview popup using a pre-built window list.
+     * Wires up the window_activated signal so clicks focus the chosen window.
+     */
+    void show_window_preview_with_wins (ApplicationDockItem app_item,
+                                         Gee.ArrayList<Bamf.Window> wins) {
+      if (wins.size == 0)
+        return;
+
+      unowned WindowPreviewWindow preview = controller.window_preview;
+
+      // Disconnect any previous signal handlers (safe to call even if not connected)
+      preview.window_activated.disconnect (on_preview_window_activated);
+      preview.window_close_requested.disconnect (on_preview_window_close_requested);
+      preview.pointer_entered.disconnect (on_preview_pointer_entered);
+      preview.pointer_left.disconnect (on_preview_pointer_left);
+
+      preview.window_activated.connect (on_preview_window_activated);
+      preview.window_close_requested.connect (on_preview_window_close_requested);
+      preview.pointer_entered.connect (on_preview_pointer_entered);
+      preview.pointer_left.connect (on_preview_pointer_left);
+
+      // Use get_preview_position which anchors to the actual dock face.
+      // zoom_clearance is the extra pixels the transparent strip must span
+      // to keep the zoomed icon visually in front of the preview.
+      int x, y, zoom_clearance;
+      controller.position_manager.get_preview_position (app_item, out x, out y, out zoom_clearance);
+
+      preview.present_for (wins, x, y, controller.position_manager.Position, zoom_clearance);
+
+      // Hide the plain tooltip – only one popup at a time
+      controller.hover.hide ();
+    }
+
+    void on_preview_window_activated (Bamf.Window window) {
+      controller.window_preview.hide ();
+      WindowControl.focus_window (window, Gtk.get_current_event_time ());
+    }
+
+    void on_preview_window_close_requested (Bamf.Window window) {
+      unowned Wnck.Window? wnck = Wnck.Window.@get (window.get_xid ());
+      if (wnck != null)
+        wnck.close (Gtk.get_current_event_time ());
     }
 
     /**
@@ -563,6 +744,15 @@ namespace Plank {
      */
     public bool menu_is_visible () {
       return (menu != null && menu.get_visible ());
+    }
+
+    /**
+     * Whether the window preview popup is currently visible.
+     * Used by HideManager to keep the dock hover/zoom state active
+     * while the user is interacting with the preview.
+     */
+    public bool is_preview_showing () {
+      return controller.window_preview.get_visible ();
     }
 
     /**
@@ -755,6 +945,7 @@ namespace Plank {
      */
     void on_menu_show () {
       controller.hover.hide ();
+      controller.window_preview.hide ();
       controller.renderer.animated_draw ();
     }
 

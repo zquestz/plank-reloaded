@@ -193,8 +193,19 @@ namespace Plank
 				return;
 			}
 			
-			if (!object_path.has_suffix (controller.name))
-				object_path = "%s/%s".printf (object_path, controller.name);
+			// DBus object path components may only contain [A-Za-z0-9_].
+			// Monitor names like "DP-2-8" contain hyphens which are illegal,
+			// so sanitise by replacing every invalid character with '_'.
+			var safe_name = new GLib.StringBuilder ();
+			foreach (unichar c in controller.name.to_utf8 ()) {
+				if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+				    || (c >= '0' && c <= '9') || c == '_')
+					safe_name.append_unichar (c);
+				else
+					safe_name.append_c ('_');
+			}
+			if (!object_path.has_suffix (safe_name.str))
+				object_path = "%s/%s".printf (object_path, safe_name.str);
 			
 			// Listen for "Ping" signals coming from clients
 			try {
