@@ -177,6 +177,7 @@ bamf_dep = dependency('libbamf3', version: '>= @0@'.format(bamf_version_required
 dependency('cairo', version: '>= @0@'.format(cairo_version_required))
 wnck_x11_dep = [dependency('libwnck-3.0'), dependency('x11')]
 gnomemenu_dep = dependency('libgnome-menu-3.0')
+canberra_dep = dependency('libcanberra')
 posix_dep = vala.find_library('posix')
 m_dep = cc.find_library('m', required: false)
 

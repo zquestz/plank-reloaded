@@ -6,7 +6,7 @@ docklet_trash_sources = [
 shared_module(
   'docklet-trash',
   docklet_trash_sources,
-  dependencies: [plank_dep, plank_base_dep],
+  dependencies: [plank_dep, plank_base_dep, canberra_dep],
   install: true,
   install_dir: docklets_dir,
 )
