@@ -16,6 +16,7 @@
 //
 
 using Plank;
+using Canberra;
 
 namespace Docky {
   [DBus(name = "org.gnome.Nautilus.FileOperations")]
@@ -38,6 +39,7 @@ namespace Docky {
 
     private Gee.ArrayList<FileMonitor> trash_monitors;
     private File trash;
+    private Canberra.Context? sound_context;
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
     {
@@ -74,7 +76,7 @@ namespace Docky {
           monitor.changed.connect(trash_changed);
           trash_monitors.add(monitor);
         }
-      } catch (Error e) {
+      } catch (GLib.Error e) {
         warning("Could not start file monitor for trash: %s", e.message);
       }
     }
@@ -117,6 +119,19 @@ namespace Docky {
       }
     }
 
+    private void play_event_sound(string sound_name) {
+      if (sound_context == null) {
+        Canberra.Context.create(out sound_context);
+        sound_context.open();
+      }
+  
+      sound_context.play(
+                         0,
+        	         Canberra.PROP_EVENT_ID, sound_name,
+                         null
+      );
+    }
+    
     private Gee.ArrayList<File> get_trash_directories() {
       var trash_dirs = new Gee.ArrayList<File> ();
 
@@ -139,7 +154,7 @@ namespace Docky {
                                   0,
                                   null
           ).get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
-        } catch (Error e) {
+        } catch (GLib.Error e) {
           warning("Could not get item count from trash::item-count: %s", e.message);
         }
       }
@@ -172,7 +187,7 @@ namespace Docky {
             }
             enumerator.close(null);
           }
-        } catch (Error e) {
+        } catch (GLib.Error e) {
           warning("Could not enumerate trash directory %s: %s", trash_dir.get_path(), e.message);
         }
       }
@@ -183,7 +198,7 @@ namespace Docky {
     private bool move_to_trash(string uri) {
       try {
         return File.new_for_uri(uri).trash(null);
-      } catch (Error e) {
+      } catch (GLib.Error e) {
         warning("Could not move '%s' to trash: %s", uri, e.message);
         return false;
       }
@@ -222,8 +237,9 @@ namespace Docky {
                                                                      "/org/gnome/Nautilus"
           );
           nautilus.empty_trash();
+	  play_event_sound("trash-empty");
           return;
-        } catch (Error e) {
+        } catch (GLib.Error e) {
           warning("Could not empty trash via Nautilus: %s", e.message);
         }
       }
@@ -315,6 +331,7 @@ namespace Docky {
         foreach (var monitor in trash_monitors) {
           monitor.changed.connect(trash_changed);
         }
+	play_event_sound("trash-empty");
         update();
       });
     }
@@ -357,13 +374,13 @@ namespace Docky {
             if (info.get_attribute_boolean(FileAttribute.ACCESS_CAN_DELETE)) {
               child.delete();
             }
-          } catch (Error e) {
+          } catch (GLib.Error e) {
             warning("Could not delete trash item: %s", e.message);
           }
         }
 
         enumerator.close();
-      } catch (Error e) {
+      } catch (GLib.Error e) {
         warning("Could not enumerate trash for deletion: %s", e.message);
       }
     }
@@ -388,6 +405,7 @@ namespace Docky {
       }
 
       if (accepted) {
+        play_event_sound("file-trash");
         update();
       }
       return accepted;
