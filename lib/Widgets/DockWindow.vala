@@ -66,6 +66,8 @@ namespace Plank {
 
     X.Atom strut_partial_atom = X.None;
     X.Atom strut_atom = X.None;
+    X.Atom wm_protocols_atom = X.None;
+    X.Atom wm_take_focus_atom = X.None;
 
     /**
      * Creates a new dock window.
@@ -92,6 +94,12 @@ namespace Plank {
                   | Gdk.EventMask.STRUCTURE_MASK);
 
       controller.prefs.notify["HideMode"].connect (set_struts);
+
+      // Remove WM_TAKE_FOCUS after realization to prevent focus
+      // stealing under focus-follows-mouse / sloppy focus policies.
+      realize.connect (() => {
+        remove_take_focus ();
+      });
     }
 
     ~DockWindow () {
@@ -310,6 +318,7 @@ namespace Plank {
      */
     public override bool map_event (Gdk.EventAny event) {
       set_struts ();
+      remove_take_focus ();
 
       return base.map_event (event);
     }
@@ -807,5 +816,77 @@ namespace Plank {
       if (gdk_display.error_trap_pop () != X.Success)
         critical ("Error while setting struts");
     }
+
+    /**
+     * Remove WM_TAKE_FOCUS from WM_PROTOCOLS to prevent focus stealing.
+     *
+     * GTK3 adds WM_TAKE_FOCUS to WM_PROTOCOLS for all toplevel windows,
+     * even when accept_focus is false. Under focus-follows-mouse / sloppy
+     * focus policies, this lets the window manager send WM_TAKE_FOCUS to
+     * the dock when the pointer enters it, stealing keyboard input from
+     * the active application.
+     *
+     * Reads the current WM_PROTOCOLS, filters out only WM_TAKE_FOCUS, and
+     * writes the remainder back — preserving _NET_WM_SYNC_REQUEST and
+     * whatever else GTK legitimately set.
+     */
+    void remove_take_focus () {
+      if (!get_realized ())
+        return;
+
+      unowned Gdk.X11.Display gdk_display = (get_display () as Gdk.X11.Display);
+      if (gdk_display == null)
+        return;
+
+      unowned Gdk.X11.Window gdk_window = (get_window () as Gdk.X11.Window);
+      if (gdk_window == null)
+        return;
+
+      unowned X.Display display = gdk_display.get_xdisplay ();
+      var xid = gdk_window.get_xid ();
+
+      if (wm_protocols_atom == X.None)
+        wm_protocols_atom = display.intern_atom ("WM_PROTOCOLS", false);
+      if (wm_take_focus_atom == X.None)
+        wm_take_focus_atom = display.intern_atom ("WM_TAKE_FOCUS", false);
+
+      X.Atom actual_type;
+      int actual_format;
+      ulong nitems, bytes_after;
+      void* prop_data;
+
+      gdk_display.error_trap_push ();
+      var status = display.get_window_property (xid, wm_protocols_atom, 0,
+                                                 long.MAX / 4, false, X.XA_ATOM,
+                                                 out actual_type, out actual_format,
+                                                 out nitems, out bytes_after, out prop_data);
+
+      if (status == X.Success && prop_data != null) {
+        var current = (X.Atom*) prop_data;
+
+        // Count how many atoms aren't WM_TAKE_FOCUS
+        int out_count = 0;
+        for (ulong i = 0; i < nitems; i++) {
+          if (current[i] != wm_take_focus_atom)
+            out_count++;
+        }
+
+        // Only rewrite if WM_TAKE_FOCUS was actually present
+        if (out_count != (int) nitems) {
+          var filtered = new X.Atom[out_count];
+          int j = 0;
+          for (ulong i = 0; i < nitems; i++) {
+            if (current[i] != wm_take_focus_atom)
+              filtered[j++] = current[i];
+          }
+          display.change_property (xid, wm_protocols_atom, X.XA_ATOM,
+                                   32, X.PropMode.Replace, (uchar[]) filtered, filtered.length);
+        }
+        X.free (prop_data);
+      }
+      if (gdk_display.error_trap_pop () != X.Success)
+        warning ("Error while removing WM_TAKE_FOCUS from WM_PROTOCOLS");
+    }
+
   }
 }
