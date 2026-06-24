@@ -39,6 +39,7 @@ jobs:
             libgee-0.8-dev \
             libbamf3-dev \
             libwnck-3-dev \
+            libcanberra-dev \
             bamfdaemon \
             build-essential \
             pkg-config
