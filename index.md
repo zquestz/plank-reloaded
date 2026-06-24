@@ -49,7 +49,7 @@ Download the `plank-reloaded.deb` package from the [Releases](https://github.com
 
 ```bash
 sudo apt-get remove plank libplank-common libplank1
-sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
+sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
 git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 meson setup --prefix=/usr build
@@ -80,7 +80,7 @@ Download the `plank-reloaded-debian.deb` package from the [Releases](https://git
 
 ```bash
 sudo apt-get remove plank libplank-common libplank1
-sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
+sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
 git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 meson setup --prefix=/usr build
@@ -108,7 +108,7 @@ sudo dnf install ./plank-reloaded-*.rpm
 GDK_BACKEND=x11
 XDG_SESSION_TYPE=x11
 
-sudo dnf install git meson valac clang cmake libgnome-devel libxml2-devel gnome-menus-devel libgee libgee-devel libdbusmenu-gtk3-devel libdbusmenu-gtk3 libwnck3 libwnck3-devel bamf bamf-devel bamf-daemon
+sudo dnf install git meson valac clang cmake libgnome-devel libxml2-devel gnome-menus-devel libgee libgee-devel libdbusmenu-gtk3-devel libdbusmenu-gtk3 libwnck3 libwnck3-devel libcanberra-devel bamf bamf-devel bamf-daemon
 git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 meson setup --prefix=/usr build

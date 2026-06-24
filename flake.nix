@@ -40,6 +40,7 @@
                         pkgs.gnome-menus
                         pkgs.libgee
                         pkgs.libwnck
+                        pkgs.libcanberra
                         pkgs.pango
                         pkgs.desktop-file-utils
                     ];
