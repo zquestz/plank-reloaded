@@ -23,6 +23,7 @@ BuildRequires:  gnome-menus-devel
 BuildRequires:  libgee-devel
 BuildRequires:  libdbusmenu-gtk3-devel
 BuildRequires:  libwnck3-devel
+BuildRequires:  libcanberra-devel
 BuildRequires:  bamf-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  cairo-devel
@@ -35,6 +36,7 @@ Requires:       bamf-daemon
 Requires:       gtk3
 Requires:       cairo
 Requires:       gdk-pixbuf2
+Requires:       libcanberra
 
 Conflicts:      plank
 Conflicts:      libplank-common

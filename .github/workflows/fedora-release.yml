@@ -38,6 +38,7 @@ jobs:
             libdbusmenu-gtk3 \
             libwnck3 \
             libwnck3-devel \
+            libcanberra-devel \
             bamf \
             bamf-devel \
             bamf-daemon \
