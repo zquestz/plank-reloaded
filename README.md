@@ -109,7 +109,7 @@ You can download the `plank-reloaded.deb` package from the [Releases](https://gi
 sudo apt remove plank libplank-common libplank1
 
 # Install required dependencies
-sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
+sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git
@@ -151,7 +151,7 @@ You can download the `plank-reloaded-debian.deb` package from the [Releases](htt
 sudo apt remove plank libplank-common libplank1
 
 # Install required dependencies
-sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev bamfdaemon
+sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git
@@ -339,7 +339,7 @@ GDK_BACKEND=x11
 XDG_SESSION_TYPE=x11
 
 # Install required dependencies
-sudo dnf install git meson valac clang cmake libgnome-devel libxml2-devel gnome-menus-devel libgee libgee-devel libdbusmenu-gtk3-devel libdbusmenu-gtk3 libwnck3 libwnck3-devel bamf bamf-devel bamf-daemon
+sudo dnf install git meson valac clang cmake libgnome-devel libxml2-devel gnome-menus-devel libgee libgee-devel libdbusmenu-gtk3-devel libdbusmenu-gtk3 libwnck3 libwnck3-devel libcanberra-devel bamf bamf-devel bamf-daemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git
