@@ -43,7 +43,7 @@ namespace Docky {
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
     {
-      GLib.Object(Prefs: new DockItemPreferences.with_file(file));
+      GLib.Object(Prefs : new DockItemPreferences.with_file(file));
     }
 
     construct
@@ -124,14 +124,14 @@ namespace Docky {
         Canberra.Context.create(out sound_context);
         sound_context.open();
       }
-  
+
       sound_context.play(
                          0,
-        	         Canberra.PROP_EVENT_ID, sound_name,
+                         Canberra.PROP_EVENT_ID, sound_name,
                          null
       );
     }
-    
+
     private Gee.ArrayList<File> get_trash_directories() {
       var trash_dirs = new Gee.ArrayList<File> ();
 
@@ -237,7 +237,7 @@ namespace Docky {
                                                                      "/org/gnome/Nautilus"
           );
           nautilus.empty_trash();
-	  play_event_sound("trash-empty");
+          play_event_sound("trash-empty");
           return;
         } catch (GLib.Error e) {
           warning("Could not empty trash via Nautilus: %s", e.message);
@@ -331,7 +331,7 @@ namespace Docky {
         foreach (var monitor in trash_monitors) {
           monitor.changed.connect(trash_changed);
         }
-	play_event_sound("trash-empty");
+        play_event_sound("trash-empty");
         update();
       });
     }
