@@ -125,8 +125,11 @@ namespace Docky {
         sound_context.open();
       }
 
+      string? theme = Gtk.Settings.get_default().gtk_sound_theme_name;
+
       sound_context.play(
                          0,
+                         Canberra.PROP_CANBERRA_XDG_THEME_NAME, theme ?? "freedesktop",
                          Canberra.PROP_EVENT_ID, sound_name,
                          null
       );
