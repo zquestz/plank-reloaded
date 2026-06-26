@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-04-13 12:14-1000\n"
+"POT-Creation-Date: 2026-06-26 11:38-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
@@ -50,19 +50,19 @@ msgstr ""
 "plus. C'est également une bibliothèque qui peut être étendue pour créer "
 "d'autres programmes de dock avec des fonctionnalités plus avancées."
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:131
 msgid "Dock with Matte theme"
 msgstr "Dock avec le thème Matte"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:136
 msgid "Appearance Preferences"
 msgstr "Préférences d'apparence"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:141
 msgid "Behavior Preferences"
 msgstr "Préférences de comportement"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:146
 msgid "Docklets Preferences"
 msgstr "Préférences des docklets"
 
@@ -437,38 +437,38 @@ msgstr "Effacer les notifications"
 msgid "Simple notifications docklet."
 msgstr "Docklet de notifications."
 
-#: docklets/Trash/TrashDockItem.vala:102
+#: docklets/Trash/TrashDockItem.vala:104
 msgid "No items in Trash"
 msgstr "Aucun élément dans la corbeille"
 
-#: docklets/Trash/TrashDockItem.vala:103
+#: docklets/Trash/TrashDockItem.vala:105
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u élément dans la corbeille"
 msgstr[1] "%u éléments dans la corbeille"
 
-#: docklets/Trash/TrashDockItem.vala:278
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "Empty all items from Trash?"
 msgstr "Supprimer les éléments de la corbeille ?"
 
-#: docklets/Trash/TrashDockItem.vala:281
+#: docklets/Trash/TrashDockItem.vala:300
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tous les éléments de la corbeille seront supprimés définitivement."
 
-#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
+#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
 msgid "Empty _Trash"
 msgstr "Vider la corbeille"
 
-#: docklets/Trash/TrashDockItem.vala:372
+#: docklets/Trash/TrashDockItem.vala:392
 msgid "Drop to move to Trash"
 msgstr "Lâcher pour mettre à la corbeille"
 
-#: docklets/Trash/TrashDockItem.vala:409
+#: docklets/Trash/TrashDockItem.vala:430
 msgid "_Open Trash"
 msgstr "_Ouvrir la corbeille"
 

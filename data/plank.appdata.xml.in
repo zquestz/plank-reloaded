@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2016 Rico Tzschichholz <ricotz@ubuntu.com> -->
 <component type="desktop">
   <id>net.launchpad.plank.desktop</id>
@@ -35,6 +35,7 @@
   <launchable type="desktop-id">net.launchpad.plank.desktop</launchable>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.11.168" timestamp="1782509856" />
     <release version="0.11.167" timestamp="1776118432" />
     <release version="0.11.166" timestamp="1771051464" />
     <release version="0.11.165" timestamp="1771043806" />
@@ -125,19 +126,23 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/matte.webp</image>
+      <image
+      >https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/matte.webp</image>
       <caption>Dock with Matte theme</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-appearance.webp</image>
+      <image
+      >https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-appearance.webp</image>
       <caption>Appearance Preferences</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-behavior.webp</image>
+      <image
+      >https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-behavior.webp</image>
       <caption>Behavior Preferences</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-docklets.webp</image>
+      <image
+      >https://raw.githubusercontent.com/zquestz/plank-reloaded/refs/heads/master/screenshots/preferences-docklets.webp</image>
       <caption>Docklets Preferences</caption>
     </screenshot>
   </screenshots>

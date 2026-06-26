@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-04-13 12:14-1000\n"
+"POT-Creation-Date: 2026-06-26 11:38-1000\n"
 "PO-Revision-Date: 2025-11-13 21:26\n"
 "Last-Translator: \n"
 "Language-Team: Malay\n"
@@ -49,19 +49,19 @@ msgstr ""
 "lebih. Ia juga kekal sebagai perpustakaan yang boleh diperluaskan untuk "
 "mencipta program dok lain dengan ciri-ciri yang lebih canggih."
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:131
 msgid "Dock with Matte theme"
 msgstr "Dok dengan tema Matte"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:136
 msgid "Appearance Preferences"
 msgstr "Keutamaan Penampilan"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:141
 msgid "Behavior Preferences"
 msgstr "Keutamaan Kelakuan"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:146
 msgid "Docklets Preferences"
 msgstr "Keutamaan Docklet"
 
@@ -434,37 +434,37 @@ msgstr "Kosongkan Pemberitahuan"
 msgid "Simple notifications docklet."
 msgstr "Docklet pemberitahuan mudah."
 
-#: docklets/Trash/TrashDockItem.vala:102
+#: docklets/Trash/TrashDockItem.vala:104
 msgid "No items in Trash"
 msgstr "Tiada item dalam Tong Sampah"
 
-#: docklets/Trash/TrashDockItem.vala:103
+#: docklets/Trash/TrashDockItem.vala:105
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u item dalam Tong Sampah"
 
-#: docklets/Trash/TrashDockItem.vala:278
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "Empty all items from Trash?"
 msgstr "Kosongkan semua item dari Tong Sampah?"
 
-#: docklets/Trash/TrashDockItem.vala:281
+#: docklets/Trash/TrashDockItem.vala:300
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Semua item dalam Tong Sampah akan dipadamkan secara kekal."
 
-#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
+#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 
-#: docklets/Trash/TrashDockItem.vala:372
+#: docklets/Trash/TrashDockItem.vala:392
 msgid "Drop to move to Trash"
 msgstr "Lepas untuk alih ke Tong Sampah"
 
-#: docklets/Trash/TrashDockItem.vala:409
+#: docklets/Trash/TrashDockItem.vala:430
 msgid "_Open Trash"
 msgstr "_Buka Tong Sampah"
 

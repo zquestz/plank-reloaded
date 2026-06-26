@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.168 "Reloaded" (2026-06-26)
+
+- Add event sound support for trash-empty and file-trash in the Trash docklet
+- Prevent dock window from stealing focus under focus-follows-mouse
+
 ## 0.11.167 "Reloaded" (2026-04-13)
 
 - Decouple GapSize dock reveal from X11 barriers using edge pointer polling

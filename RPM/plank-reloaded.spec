@@ -116,6 +116,10 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Fri Jun 26 2026 Josh Ellithorpe <quest@mac.com> - 0.11.168-1
+- Add event sound support for trash-empty and file-trash in the Trash docklet
+- Prevent dock window from stealing focus under focus-follows-mouse
+
 * Mon Apr 13 2026 Josh Ellithorpe <quest@mac.com> - 0.11.167-1
 - Decouple GapSize dock reveal from X11 barriers using edge pointer polling
 

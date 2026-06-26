@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-04-13 12:14-1000\n"
+"POT-Creation-Date: 2026-06-26 11:38-1000\n"
 "PO-Revision-Date: 2025-11-13 03:45\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "mást. Továbbá egy könyvtár marad, amely bővíthető más dokk programok "
 "létrehozásához fejlettebb funkciókkal."
 
-#: data/plank.appdata.xml.in:129
+#: data/plank.appdata.xml.in:131
 msgid "Dock with Matte theme"
 msgstr "Dokk Matte témával"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:136
 msgid "Appearance Preferences"
 msgstr "Megjelenési beállítások"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:141
 msgid "Behavior Preferences"
 msgstr "Viselkedési beállítások"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:146
 msgid "Docklets Preferences"
 msgstr "Dokk-kisalkalmazások beállításai"
 
@@ -437,38 +437,38 @@ msgstr "Értesítések törlése"
 msgid "Simple notifications docklet."
 msgstr "Egyszerű értesítések kisalkalmazás."
 
-#: docklets/Trash/TrashDockItem.vala:102
+#: docklets/Trash/TrashDockItem.vala:104
 msgid "No items in Trash"
 msgstr "Nincs elem a kukában"
 
-#: docklets/Trash/TrashDockItem.vala:103
+#: docklets/Trash/TrashDockItem.vala:105
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u elem a kukában"
 msgstr[1] "%u elem a kukában"
 
-#: docklets/Trash/TrashDockItem.vala:278
+#: docklets/Trash/TrashDockItem.vala:297
 msgid "Empty all items from Trash?"
 msgstr "Összes elem eltávolítása a kukából?"
 
-#: docklets/Trash/TrashDockItem.vala:281
+#: docklets/Trash/TrashDockItem.vala:300
 msgid "All items in the Trash will be permanently deleted."
 msgstr "A kukában lévő összes elem véglegesen törlődik."
 
-#: docklets/Trash/TrashDockItem.vala:282 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: docklets/Trash/TrashDockItem.vala:283 docklets/Trash/TrashDockItem.vala:413
+#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
-#: docklets/Trash/TrashDockItem.vala:372
+#: docklets/Trash/TrashDockItem.vala:392
 msgid "Drop to move to Trash"
 msgstr "Ejtse ide a kukába helyezéshez"
 
-#: docklets/Trash/TrashDockItem.vala:409
+#: docklets/Trash/TrashDockItem.vala:430
 msgid "_Open Trash"
 msgstr "_Kuka megnyitása"
 

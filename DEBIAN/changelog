@@ -1,3 +1,10 @@
+plank-reloaded (0.11.168-1) unstable; urgency=medium
+
+  * Add event sound support for trash-empty and file-trash in the Trash docklet
+  * Prevent dock window from stealing focus under focus-follows-mouse
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 26 Jun 2026 11:37:36 -1000
+
 plank-reloaded (0.11.167-1) unstable; urgency=medium
 
   * Decouple GapSize dock reveal from X11 barriers using edge pointer polling
