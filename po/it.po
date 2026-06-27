@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-26 11:38-1000\n"
+"POT-Creation-Date: 2026-06-27 11:21-1000\n"
 "PO-Revision-Date: 2025-11-13 01:33\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "niente di più. Rimane anche una libreria che può essere estesa per creare "
 "altri programmi dock con funzionalità più avanzate."
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Dock with Matte theme"
 msgstr "Dock con tema Matte"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Appearance Preferences"
 msgstr "Preferenze aspetto"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Behavior Preferences"
 msgstr "Preferenze comportamento"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Docklets Preferences"
 msgstr "Preferenze docklet"
 
@@ -349,15 +349,15 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Mantieni le voci recenti degli appunti."
 
-#: docklets/Clock/ClockDockItem.vala:348
+#: docklets/Clock/ClockDockItem.vala:347
 msgid "Di_gital Clock"
 msgstr "Orologio di_gitale"
 
-#: docklets/Clock/ClockDockItem.vala:353
+#: docklets/Clock/ClockDockItem.vala:352
 msgid "24-Hour _Clock"
 msgstr "Orologio _24 ore"
 
-#: docklets/Clock/ClockDockItem.vala:358
+#: docklets/Clock/ClockDockItem.vala:357
 msgid "Show _Date"
 msgstr "Mostra _data"
 
@@ -436,38 +436,38 @@ msgstr "Cancella notifiche"
 msgid "Simple notifications docklet."
 msgstr "Docklet semplice per notifiche."
 
-#: docklets/Trash/TrashDockItem.vala:104
+#: docklets/Trash/TrashDockItem.vala:105
 msgid "No items in Trash"
 msgstr "Nessun elemento nel cestino"
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:106
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u elemento nel cestino"
 msgstr[1] "%u elementi nel cestino"
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:301
 msgid "Empty all items from Trash?"
 msgstr "Svuotare tutti gli elementi dal cestino?"
 
-#: docklets/Trash/TrashDockItem.vala:300
+#: docklets/Trash/TrashDockItem.vala:304
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tutti gli elementi nel cestino saranno eliminati permanentemente."
 
-#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Annulla"
 
-#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
 msgid "Empty _Trash"
 msgstr "Svuota _cestino"
 
-#: docklets/Trash/TrashDockItem.vala:392
+#: docklets/Trash/TrashDockItem.vala:396
 msgid "Drop to move to Trash"
 msgstr "Rilascia per spostare nel cestino"
 
-#: docklets/Trash/TrashDockItem.vala:430
+#: docklets/Trash/TrashDockItem.vala:434
 msgid "_Open Trash"
 msgstr "_Apri cestino"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-26 11:38-1000\n"
+"POT-Creation-Date: 2026-06-27 11:21-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
@@ -50,19 +50,19 @@ msgstr ""
 "dock cần và không cần gì thêm cả. Nó cũng vẫn là một thư viện có thể được mở "
 "rộng để tạo ra các chương trình dock khác với nhiều tính năng nâng cao hơn."
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Dock with Matte theme"
 msgstr "Thanh Dock với chủ đề Matte"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Appearance Preferences"
 msgstr "Tùy chỉnh giao diện"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Behavior Preferences"
 msgstr "Tùy chỉnh hành vi"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Docklets Preferences"
 msgstr "Tùy chỉnh thanh Dock"
 
@@ -352,15 +352,15 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Giữ các mục nhập bảng nhớ tạm gần đây."
 
-#: docklets/Clock/ClockDockItem.vala:348
+#: docklets/Clock/ClockDockItem.vala:347
 msgid "Di_gital Clock"
 msgstr "Đồng hồ k_ỹ thuật số"
 
-#: docklets/Clock/ClockDockItem.vala:353
+#: docklets/Clock/ClockDockItem.vala:352
 msgid "24-Hour _Clock"
 msgstr "Đồng hồ_ 24-Giờ"
 
-#: docklets/Clock/ClockDockItem.vala:358
+#: docklets/Clock/ClockDockItem.vala:357
 msgid "Show _Date"
 msgstr "Hiện _Ngày"
 
@@ -437,37 +437,37 @@ msgstr "Xoá thông báo"
 msgid "Simple notifications docklet."
 msgstr "Tiện ích thông báo đơn giản trên thanh Dock."
 
-#: docklets/Trash/TrashDockItem.vala:104
+#: docklets/Trash/TrashDockItem.vala:105
 msgid "No items in Trash"
 msgstr "Không có mục nào trong Thùng rác"
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:106
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u mục trong Thùng rác"
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:301
 msgid "Empty all items from Trash?"
 msgstr "Xóa tất cả các mục khỏi Thùng rác?"
 
-#: docklets/Trash/TrashDockItem.vala:300
+#: docklets/Trash/TrashDockItem.vala:304
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tất cả các mục trong Thùng rác sẽ bị xóa vĩnh viễn."
 
-#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Hủy"
 
-#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
 msgid "Empty _Trash"
 msgstr "Làm sạch _Thùng rác"
 
-#: docklets/Trash/TrashDockItem.vala:392
+#: docklets/Trash/TrashDockItem.vala:396
 msgid "Drop to move to Trash"
 msgstr "Thả để di chuyển Thùng rác"
 
-#: docklets/Trash/TrashDockItem.vala:430
+#: docklets/Trash/TrashDockItem.vala:434
 msgid "_Open Trash"
 msgstr "_Mở Thùng rác"
 

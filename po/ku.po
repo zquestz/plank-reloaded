@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-26 11:38-1000\n"
+"POT-Creation-Date: 2026-06-27 11:21-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Kurmanji (Kurdish)\n"
@@ -50,19 +50,19 @@ msgstr ""
 "wiha pirtûkxaneyek e ku dikare bê berfirehkirin ji bo afirandina bernameyên "
 "din ên dokê bi taybetmendiyên pêşketî."
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Dock with Matte theme"
 msgstr "Dok bi dirba Matte"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Appearance Preferences"
 msgstr "Vebijarkên xuyang"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Behavior Preferences"
 msgstr "Vebijarkên reftarê"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Docklets Preferences"
 msgstr "Vebijarkên dokletên"
 
@@ -350,15 +350,15 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Têketinên dawî yên panoya kopîkirinê bihêle."
 
-#: docklets/Clock/ClockDockItem.vala:348
+#: docklets/Clock/ClockDockItem.vala:347
 msgid "Di_gital Clock"
 msgstr "Demjimêra dî_jîtal"
 
-#: docklets/Clock/ClockDockItem.vala:353
+#: docklets/Clock/ClockDockItem.vala:352
 msgid "24-Hour _Clock"
 msgstr "Demjimêra 24-_demjimêrî"
 
-#: docklets/Clock/ClockDockItem.vala:358
+#: docklets/Clock/ClockDockItem.vala:357
 msgid "Show _Date"
 msgstr "_Dîrok nîşan bide"
 
@@ -437,38 +437,38 @@ msgstr "Agahdariyan paqij bike"
 msgid "Simple notifications docklet."
 msgstr "Dokleta hêsan a agahdariyan."
 
-#: docklets/Trash/TrashDockItem.vala:104
+#: docklets/Trash/TrashDockItem.vala:105
 msgid "No items in Trash"
 msgstr "Di çopê de ti tişt tune"
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:106
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u tişt di çopê de"
 msgstr[1] "%u tişt di çopê de"
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:301
 msgid "Empty all items from Trash?"
 msgstr "Hemû tiştên di çopê de vala bikin?"
 
-#: docklets/Trash/TrashDockItem.vala:300
+#: docklets/Trash/TrashDockItem.vala:304
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Hemû tiştên di çopê de dê bi temamî bêne jêbirin."
 
-#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Betal bike"
 
-#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
 msgid "Empty _Trash"
 msgstr "Çopê _vala bike"
 
-#: docklets/Trash/TrashDockItem.vala:392
+#: docklets/Trash/TrashDockItem.vala:396
 msgid "Drop to move to Trash"
 msgstr "Berîne ji bo veguhestinê bo çopê"
 
-#: docklets/Trash/TrashDockItem.vala:430
+#: docklets/Trash/TrashDockItem.vala:434
 msgid "_Open Trash"
 msgstr "Çopê _veke"
 

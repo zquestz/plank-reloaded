@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.169 "Reloaded" (2026-06-27)
+
+- Only play Trash docklet event sounds when enabled in the desktop settings
+- Fix Clock docklet calendar emitting a GTK critical warning on close
+
 ## 0.11.168 "Reloaded" (2026-06-26)
 
 - Add event sound support for trash-empty and file-trash in the Trash docklet

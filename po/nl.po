@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-26 11:38-1000\n"
+"POT-Creation-Date: 2026-06-27 11:21-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
@@ -49,19 +49,19 @@ msgstr ""
 "een zo eenvoudig mogelijk dock. Precies wat je nodig hebt en niets meer dan "
 "dat. Ook wordt een bibliotheek geboden om andere docks van te kunnen maken."
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Dock with Matte theme"
 msgstr "Dock met Matte-thema"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Appearance Preferences"
 msgstr "Voorkeuren uiterlijk"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Behavior Preferences"
 msgstr "Gedrag voorkeuren"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Docklets Preferences"
 msgstr "Docklets Voorkeuren"
 
@@ -350,15 +350,15 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Toon recente klemborditems."
 
-#: docklets/Clock/ClockDockItem.vala:348
+#: docklets/Clock/ClockDockItem.vala:347
 msgid "Di_gital Clock"
 msgstr "Di_gitale klok"
 
-#: docklets/Clock/ClockDockItem.vala:353
+#: docklets/Clock/ClockDockItem.vala:352
 msgid "24-Hour _Clock"
 msgstr "24-uurs_klok"
 
-#: docklets/Clock/ClockDockItem.vala:358
+#: docklets/Clock/ClockDockItem.vala:357
 msgid "Show _Date"
 msgstr "_Datum tonen"
 
@@ -437,38 +437,38 @@ msgstr "Meldingen wissen"
 msgid "Simple notifications docklet."
 msgstr "Eenvoudige meldingen docklet."
 
-#: docklets/Trash/TrashDockItem.vala:104
+#: docklets/Trash/TrashDockItem.vala:105
 msgid "No items in Trash"
 msgstr "De prullenbak is leeg"
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:106
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "Er is %u item in de prullenbak"
 msgstr[1] "Er zijn %u items in de prullenbak"
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:301
 msgid "Empty all items from Trash?"
 msgstr "Weet u zeker dat u de prullenbak wilt legen?"
 
-#: docklets/Trash/TrashDockItem.vala:300
+#: docklets/Trash/TrashDockItem.vala:304
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle items worden permanent verwijderd."
 
-#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
 msgid "Empty _Trash"
 msgstr "Prullenbak _legen"
 
-#: docklets/Trash/TrashDockItem.vala:392
+#: docklets/Trash/TrashDockItem.vala:396
 msgid "Drop to move to Trash"
 msgstr "Laat los om naar de prullenbak te verplaatsen"
 
-#: docklets/Trash/TrashDockItem.vala:430
+#: docklets/Trash/TrashDockItem.vala:434
 msgid "_Open Trash"
 msgstr "Prullenbak _openen"
 

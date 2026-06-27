@@ -1,3 +1,10 @@
+plank-reloaded (0.11.169-1) unstable; urgency=medium
+
+  * Only play Trash docklet event sounds when enabled in the desktop settings
+  * Fix Clock docklet calendar emitting a GTK critical warning on close
+
+ -- Josh Ellithorpe <quest@mac.com>  Sat, 27 Jun 2026 11:06:20 -1000
+
 plank-reloaded (0.11.168-1) unstable; urgency=medium
 
   * Add event sound support for trash-empty and file-trash in the Trash docklet

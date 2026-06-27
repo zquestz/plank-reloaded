@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-26 11:38-1000\n"
+"POT-Creation-Date: 2026-06-27 11:21-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -52,19 +52,19 @@ msgstr ""
 "абсолютно ничего лишнего. Он также остаётся библиотекой, которую можно "
 "расширять для создания других док-программ с более продвинутыми функциями."
 
-#: data/plank.appdata.xml.in:131
+#: data/plank.appdata.xml.in:132
 msgid "Dock with Matte theme"
 msgstr "Док с темой Матовый"
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Appearance Preferences"
 msgstr "Настройки внешнего вида"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Behavior Preferences"
 msgstr "Настройки поведения"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Docklets Preferences"
 msgstr "Настройки доклетов"
 
@@ -352,15 +352,15 @@ msgstr "Буфер обмена"
 msgid "Keep recent clipboard entries."
 msgstr "Сохранять последние записи буфера обмена."
 
-#: docklets/Clock/ClockDockItem.vala:348
+#: docklets/Clock/ClockDockItem.vala:347
 msgid "Di_gital Clock"
 msgstr "Ци_фровые часы"
 
-#: docklets/Clock/ClockDockItem.vala:353
+#: docklets/Clock/ClockDockItem.vala:352
 msgid "24-Hour _Clock"
 msgstr "24-часовой _формат"
 
-#: docklets/Clock/ClockDockItem.vala:358
+#: docklets/Clock/ClockDockItem.vala:357
 msgid "Show _Date"
 msgstr "Показать дату"
 
@@ -443,11 +443,11 @@ msgstr "Очистить уведомления"
 msgid "Simple notifications docklet."
 msgstr "Доклет простых уведомлений."
 
-#: docklets/Trash/TrashDockItem.vala:104
+#: docklets/Trash/TrashDockItem.vala:105
 msgid "No items in Trash"
 msgstr "В Корзине нет объектов"
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:106
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
@@ -456,27 +456,27 @@ msgstr[1] "%u объект в Корзине"
 msgstr[2] "%u объект в Корзине"
 msgstr[3] "%u объект в Корзине"
 
-#: docklets/Trash/TrashDockItem.vala:297
+#: docklets/Trash/TrashDockItem.vala:301
 msgid "Empty all items from Trash?"
 msgstr "Очистить корзину от всех элементов?"
 
-#: docklets/Trash/TrashDockItem.vala:300
+#: docklets/Trash/TrashDockItem.vala:304
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Все элементы в Корзине будут безвозвратно удалены."
 
-#: docklets/Trash/TrashDockItem.vala:301 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: docklets/Trash/TrashDockItem.vala:302 docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
 msgid "Empty _Trash"
 msgstr "_Очистить корзину"
 
-#: docklets/Trash/TrashDockItem.vala:392
+#: docklets/Trash/TrashDockItem.vala:396
 msgid "Drop to move to Trash"
 msgstr "Перетащите, чтобы переместить в Корзину"
 
-#: docklets/Trash/TrashDockItem.vala:430
+#: docklets/Trash/TrashDockItem.vala:434
 msgid "_Open Trash"
 msgstr "_Открыть Корзину"
 

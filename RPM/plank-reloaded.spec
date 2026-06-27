@@ -116,6 +116,10 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Sat Jun 27 2026 Josh Ellithorpe <quest@mac.com> - 0.11.169-1
+- Only play Trash docklet event sounds when enabled in the desktop settings
+- Fix Clock docklet calendar emitting a GTK critical warning on close
+
 * Fri Jun 26 2026 Josh Ellithorpe <quest@mac.com> - 0.11.168-1
 - Add event sound support for trash-empty and file-trash in the Trash docklet
 - Prevent dock window from stealing focus under focus-follows-mouse
