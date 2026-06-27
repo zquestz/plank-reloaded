@@ -72,9 +72,9 @@ namespace Docky {
 
     private void setup_icon() {
       Icon = "clock";
-      Text = "time";
 
       unowned ClockPreferences prefs = (ClockPreferences) Prefs;
+      Text = format_time_tooltip(new DateTime.now_local(), prefs.ShowMilitary);
       update_theme(prefs.ShowMilitary);
     }
 
@@ -166,7 +166,7 @@ namespace Docky {
       unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       var now = new DateTime.now_local();
 
-      Text = now.format(prefs.ShowMilitary ? "%a, %b %d %H:%M" : "%a, %b %d %I:%M %p");
+      Text = format_time_tooltip(now, prefs.ShowMilitary);
 
       var size = int.max(surface.Width, surface.Height);
       if (prefs.ShowDigital) {
@@ -197,12 +197,17 @@ namespace Docky {
       }
 
       int hour = now.get_hour() % 12;
-      if (hour == 0)hour = 12;
-      return "%d:%s %s".printf(
-                               hour,
-                               now.format("%M"),
-                               now.get_hour() >= 12 ? "ᴘᴍ" : "ᴀᴍ"
-      );
+      if (hour == 0) {
+        hour = 12;
+      }
+      return "%d:%s".printf(
+                            hour,
+                            now.format("%M %p")
+      ).strip();
+    }
+
+    private string format_time_tooltip(DateTime now, bool military) {
+      return now.format(military ? "%a, %b %d %H:%M" : "%a, %b %d %I:%M %p").strip();
     }
 
     private void render_digital_clock(Surface surface, DateTime now, int size) {
