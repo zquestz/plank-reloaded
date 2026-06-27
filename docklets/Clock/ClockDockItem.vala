@@ -154,7 +154,6 @@ namespace Docky {
 
         calendar.destroy.connect(() => {
           calendar = null;
-          Gtk.main_quit();
         });
         calendar.show_all();
       } else {
