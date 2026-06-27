@@ -120,19 +120,21 @@ namespace Docky {
     }
 
     private void play_event_sound(string sound_name) {
-      if (sound_context == null) {
-        Canberra.Context.create(out sound_context);
-        sound_context.open();
+      if (Gtk.Settings.get_default().gtk_enable_event_sounds) {
+        if (sound_context == null) {
+          Canberra.Context.create(out sound_context);
+          sound_context.open();
+        }
+
+        string? theme = Gtk.Settings.get_default().gtk_sound_theme_name;
+
+        sound_context.play(
+                           0,
+                           Canberra.PROP_CANBERRA_XDG_THEME_NAME, theme ?? "freedesktop",
+                           Canberra.PROP_EVENT_ID, sound_name,
+                           null
+        );
       }
-
-      string? theme = Gtk.Settings.get_default().gtk_sound_theme_name;
-
-      sound_context.play(
-                         0,
-                         Canberra.PROP_CANBERRA_XDG_THEME_NAME, theme ?? "freedesktop",
-                         Canberra.PROP_EVENT_ID, sound_name,
-                         null
-      );
     }
 
     private Gee.ArrayList<File> get_trash_directories() {
