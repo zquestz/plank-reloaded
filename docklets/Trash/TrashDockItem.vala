@@ -31,6 +31,7 @@ namespace Docky {
     private const string NEMO_PATH = "/org/nemo/preferences/";
     private const string CAJA_SCHEMA = "org.mate.caja.preferences";
     private const string CAJA_PATH = "/org/mate/caja/preferences/";
+    private const string DEFAULT_SOUND_THEME = "freedesktop";
 
     private const string STANDARD_ATTRIBUTES =
       FileAttribute.STANDARD_TYPE + ","
@@ -120,21 +121,22 @@ namespace Docky {
     }
 
     private void play_event_sound(string sound_name) {
-      if (Gtk.Settings.get_default().gtk_enable_event_sounds) {
-        if (sound_context == null) {
-          Canberra.Context.create(out sound_context);
-          sound_context.open();
-        }
-
-        string? theme = Gtk.Settings.get_default().gtk_sound_theme_name;
-
-        sound_context.play(
-                           0,
-                           Canberra.PROP_CANBERRA_XDG_THEME_NAME, theme ?? "freedesktop",
-                           Canberra.PROP_EVENT_ID, sound_name,
-                           null
-        );
+      unowned Gtk.Settings settings = Gtk.Settings.get_default();
+      if (!settings.gtk_enable_event_sounds) {
+        return;
       }
+
+      if (sound_context == null) {
+        Canberra.Context.create(out sound_context);
+        sound_context.open();
+      }
+
+      sound_context.play(
+                         0,
+                         Canberra.PROP_CANBERRA_XDG_THEME_NAME, settings.gtk_sound_theme_name ?? DEFAULT_SOUND_THEME,
+                         Canberra.PROP_EVENT_ID, sound_name,
+                         null
+      );
     }
 
     private Gee.ArrayList<File> get_trash_directories() {
