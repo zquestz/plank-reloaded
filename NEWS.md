@@ -6,6 +6,7 @@
 
 - Only play Trash docklet event sounds when enabled in the desktop settings
 - Fix Clock docklet calendar emitting a GTK critical warning on close
+- Localize the Clock docklet AM/PM marker for non-English locales
 
 ## 0.11.168 "Reloaded" (2026-06-26)
 

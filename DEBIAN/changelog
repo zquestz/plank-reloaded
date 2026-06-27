@@ -2,6 +2,7 @@ plank-reloaded (0.11.169-1) unstable; urgency=medium
 
   * Only play Trash docklet event sounds when enabled in the desktop settings
   * Fix Clock docklet calendar emitting a GTK critical warning on close
+  * Localize the Clock docklet AM/PM marker for non-English locales
 
  -- Josh Ellithorpe <quest@mac.com>  Sat, 27 Jun 2026 11:06:20 -1000
 
