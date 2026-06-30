@@ -49,6 +49,8 @@ jobs:
             libwnck3 \
             libwnck3-devel \
             libcanberra-devel \
+            libXi-devel \
+            libXfixes-devel \
             bamf \
             bamf-devel \
             bamf-daemon \

@@ -48,6 +48,8 @@ jobs:
             libbamf3-dev \
             libwnck-3-dev \
             libcanberra-dev \
+            libxi-dev \
+            libxfixes-dev \
             bamfdaemon \
             build-essential \
             pkg-config

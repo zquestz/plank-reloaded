@@ -109,7 +109,7 @@ You can download the `plank-reloaded.deb` package from the [Releases](https://gi
 sudo apt remove plank libplank-common libplank1
 
 # Install required dependencies
-sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
+sudo apt install build-essential pkg-config git meson ninja-build valac gettext cmake desktop-file-utils libxml2-utils libgtk-3-dev libgee-0.8-dev libgnome-menu-3-dev libbamf3-dev libwnck-3-dev libcanberra-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev libxi-dev libxfixes-dev bamfdaemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git
@@ -151,7 +151,7 @@ You can download the `plank-reloaded-debian.deb` package from the [Releases](htt
 sudo apt remove plank libplank-common libplank1
 
 # Install required dependencies
-sudo apt install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
+sudo apt install build-essential pkg-config git meson ninja-build valac gettext cmake desktop-file-utils libxml2-utils libgtk-3-dev libgee-0.8-dev libgnome-menu-3-dev libbamf3-dev libwnck-3-dev libcanberra-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev libxi-dev libxfixes-dev bamfdaemon
 
 # Clone the repository
 git clone https://github.com/zquestz/plank-reloaded.git

@@ -49,7 +49,7 @@ Download the `plank-reloaded.deb` package from the [Releases](https://github.com
 
 ```bash
 sudo apt-get remove plank libplank-common libplank1
-sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
+sudo apt-get install build-essential pkg-config git meson ninja-build valac gettext cmake desktop-file-utils libxml2-utils libgtk-3-dev libgee-0.8-dev libgnome-menu-3-dev libbamf3-dev libwnck-3-dev libcanberra-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev libxi-dev libxfixes-dev bamfdaemon
 git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 meson setup --prefix=/usr build
@@ -80,7 +80,7 @@ Download the `plank-reloaded-debian.deb` package from the [Releases](https://git
 
 ```bash
 sudo apt-get remove plank libplank-common libplank1
-sudo apt-get install git meson gettext valac libgnome-menu-3.0 libgnome-menu-3-dev libxml2-utils gtk+-3.0 gee-0.8 libbamf3-dev libwnck-3.0 libwnck-3-dev libcanberra-dev bamfdaemon
+sudo apt-get install build-essential pkg-config git meson ninja-build valac gettext cmake desktop-file-utils libxml2-utils libgtk-3-dev libgee-0.8-dev libgnome-menu-3-dev libbamf3-dev libwnck-3-dev libcanberra-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev libxi-dev libxfixes-dev bamfdaemon
 git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 meson setup --prefix=/usr build
