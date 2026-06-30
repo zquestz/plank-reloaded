@@ -1,5 +1,5 @@
 ---
-name: Build and Release - Fedora Latest
+name: Build and Release - Fedora
 
 on:
   release:
@@ -7,9 +7,19 @@ on:
 
 jobs:
   build:
-    name: Build on Fedora Latest
-    runs-on: ubuntu-latest
-    container: fedora:latest
+    name: Build on Fedora ${{ matrix.fedora }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    container: fedora:${{ matrix.fedora }}
+    strategy:
+      fail-fast: false
+      matrix:
+        fedora: [43, 44]
+        arch: [x86_64, aarch64]
+        include:
+          - arch: x86_64
+            runner: ubuntu-latest
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
 
     steps:
       - name: Checkout Code
@@ -63,8 +73,8 @@ jobs:
           VERSION=$(grep "version:" meson.build | head -1 | sed "s/.*version: '\([^']*\)'.*/\1/")
           tar --transform="s|^|plank-reloaded-${VERSION}/|" \
               --exclude='.git*' \
-              -czf ~/rpmbuild/SOURCES/plank-reloaded-${VERSION}.tar.gz \
-              *
+              -czf ~/rpmbuild/SOURCES/plank-reloaded-"${VERSION}".tar.gz \
+              -- *
 
       - name: Copy Spec File
         run: |
@@ -93,7 +103,7 @@ jobs:
           ls -la dist/
 
       - name: Upload Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: dist/*.rpm
