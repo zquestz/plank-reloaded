@@ -7,9 +7,17 @@ on:
 
 jobs:
   build:
-    name: Build on Debian Bookworm
-    runs-on: ubuntu-latest
+    name: Build on Debian Bookworm (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
     container: debian:bookworm
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-latest
+          - arch: arm64
+            runner: ubuntu-24.04-arm
 
     steps:
       - name: Checkout Code
@@ -53,35 +61,39 @@ jobs:
 
       - name: Package
         run: |
+          ARCH=$(dpkg --print-architecture)
+          MULTIARCH=$(dpkg-architecture -qDEB_HOST_MULTIARCH)
           mkdir -p dist/plank-reloaded-debian
           cp -r release_build/* dist/plank-reloaded-debian/
           cp -r DEBIAN dist/plank-reloaded-debian/
           cd dist
+          sed -i "s/^Architecture: .*/Architecture: ${ARCH}/" plank-reloaded-debian/DEBIAN/control
+          VERSION=$(sed -n "s/^Version: //p" plank-reloaded-debian/DEBIAN/control)
           mv plank-reloaded-debian/DEBIAN/changelog plank-reloaded-debian/usr/share/doc/plank-reloaded/changelog.Debian
           mv plank-reloaded-debian/DEBIAN/copyright plank-reloaded-debian/usr/share/doc/plank-reloaded/
           gzip -9n plank-reloaded-debian/usr/share/doc/plank-reloaded/changelog.Debian
           gzip -9n plank-reloaded-debian/usr/share/man/man1/plank.1
           strip --strip-unneeded plank-reloaded-debian/usr/bin/plank
-          strip --strip-unneeded plank-reloaded-debian/usr/lib/x86_64-linux-gnu/libplank.so.1.0.0
-          find plank-reloaded-debian/usr/lib/x86_64-linux-gnu/plank/docklets/ -type f -name "*.so" -exec strip --strip-unneeded {} \;
-          dpkg-deb --build plank-reloaded-debian plank-reloaded-debian.deb
+          strip --strip-unneeded "plank-reloaded-debian/usr/lib/${MULTIARCH}/libplank.so.1.0.0"
+          find "plank-reloaded-debian/usr/lib/${MULTIARCH}/plank/docklets/" -type f -name "*.so" -exec strip --strip-unneeded {} \;
+          dpkg-deb --build plank-reloaded-debian "plank-reloaded-debian_${VERSION}_${ARCH}.deb"
 
       - name: Run Lintian
         run: |
           cd dist
-          lintian plank-reloaded-debian.deb || true
+          lintian plank-reloaded-debian_*.deb || true
 
       - name: Verify Package
         run: |
           cd dist
-          dpkg --info plank-reloaded-debian.deb
-          dpkg --contents plank-reloaded-debian.deb
+          dpkg --info plank-reloaded-debian_*.deb
+          dpkg --contents plank-reloaded-debian_*.deb
 
       - name: Upload Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: dist/plank-reloaded-debian.deb
+          files: dist/plank-reloaded-debian_*.deb
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
