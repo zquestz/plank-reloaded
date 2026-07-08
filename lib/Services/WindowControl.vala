@@ -43,6 +43,9 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static ulong delayed_focus_xid = 0UL;
 
+    static GLib.Settings? global_settings = null;
+    static bool bring_window_to_current_workspace = false;
+
     // Action type for pending operations
     enum PendingActionType {
       MINIMIZE,
@@ -186,6 +189,12 @@ namespace Plank {
 
     public static void initialize () {
       Wnck.set_client_type (Wnck.ClientType.PAGER);
+
+      global_settings = create_settings ("net.launchpad.plank");
+      bring_window_to_current_workspace = global_settings.get_boolean ("bring-window-to-current-workspace");
+      global_settings.changed["bring-window-to-current-workspace"].connect (() => {
+        bring_window_to_current_workspace = global_settings.get_boolean ("bring-window-to-current-workspace");
+      });
 
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
 
@@ -810,9 +819,14 @@ namespace Plank {
 
     static void center_and_focus_window (Wnck.Window w, uint32 event_time) {
       unowned Wnck.Workspace? workspace = w.get_workspace ();
+      unowned Wnck.Workspace? active_workspace = w.get_screen ().get_active_workspace ();
 
-      if (!w.is_pinned () && !w.is_sticky () && workspace != null && workspace != w.get_screen ().get_active_workspace ())
-        workspace.activate (event_time);
+      if (!w.is_pinned () && !w.is_sticky () && workspace != null && active_workspace != null && workspace != active_workspace) {
+        if (bring_window_to_current_workspace)
+          w.move_to_workspace (active_workspace);
+        else
+          workspace.activate (event_time);
+      }
 
       if (w.is_minimized ())
         w.unminimize (event_time);

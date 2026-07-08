@@ -26,6 +26,7 @@ namespace Plank {
     public DockController controller { get; construct set; }
 
     DockPreferences prefs;
+    GLib.Settings global_settings;
 
     bool refreshing_display_plugs = false;
 
@@ -90,6 +91,8 @@ namespace Plank {
     unowned Gtk.Switch sw_pressure_reveal;
     [GtkChild]
     unowned Gtk.Switch sw_zoom_enabled;
+    [GtkChild]
+    unowned Gtk.Switch sw_bring_to_workspace;
 
     [GtkChild]
     unowned Gtk.IconView view_docklets;
@@ -103,6 +106,10 @@ namespace Plank {
       var title = _("Preferences");
 
       prefs = controller.prefs;
+
+      global_settings = create_settings ("net.launchpad.plank");
+      global_settings.bind ("bring-window-to-current-workspace", sw_bring_to_workspace,
+                            "active", SettingsBindFlags.DEFAULT);
 
       init_dock_tab ();
       init_docklets_tab ();
