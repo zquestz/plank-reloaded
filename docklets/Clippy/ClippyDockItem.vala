@@ -35,6 +35,7 @@ namespace Docky {
     private ulong regular_handler_id = 0U;
     private uint debounce_timeout_id = 0;
     private const uint DEBOUNCE_DELAY = 500;
+    private const string PASSWORD_MANAGER_HINT = "x-kde-passwordManagerHint";
 
     private ClippyPreferences prefs {
       get { return (ClippyPreferences) Prefs; }
@@ -160,15 +161,27 @@ namespace Docky {
 
       debounce_timeout_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
         debounce_timeout_id = 0;
-
-        if (prefs.TrackImages) {
-          source_clipboard.request_image(handle_image_result);
-        } else {
-          request_clipboard_text(source_clipboard);
-        }
-
+        source_clipboard.request_targets(handle_targets_result);
         return false;
       });
+    }
+
+    private void handle_targets_result(Gtk.Clipboard cb, Gdk.Atom[]? atoms) {
+      // Respect the password-manager convention: managers mark sensitive
+      // selections with this target so clipboard tools skip them
+      if (atoms != null) {
+        foreach (var atom in atoms) {
+          if (atom.name() == PASSWORD_MANAGER_HINT) {
+            return;
+          }
+        }
+      }
+
+      if (prefs.TrackImages) {
+        cb.request_image(handle_image_result);
+      } else {
+        request_clipboard_text(cb);
+      }
     }
 
     private void request_clipboard_text(Gtk.Clipboard source_clipboard) {
