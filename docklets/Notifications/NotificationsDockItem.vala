@@ -248,6 +248,7 @@ namespace Docky {
     private DBusConnection? send_connection;
     private uint message_filter_id = 0;
     private uint update_timer_id = 0;
+    private Gtk.Menu? notifications_menu = null;
     private bool close_notification_supported = true;
     private static Object notification_lock = new Object();
     private static string base_icon = NotificationsDocklet.ICON;
@@ -261,6 +262,8 @@ namespace Docky {
     }
 
     construct {
+      notify["Container"].connect(handle_container_changed);
+
       Icon = base_icon;
       Text = _("Notifications");
       notifications = new GLib.List<NotificationData> ();
@@ -275,6 +278,23 @@ namespace Docky {
       if (update_timer_id > 0) {
         Source.remove(update_timer_id);
         update_timer_id = 0;
+      }
+    }
+
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    private void removed_from_dock() {
+      destroy_menu();
+    }
+
+    private void destroy_menu() {
+      if (notifications_menu != null) {
+        notifications_menu.destroy();
+        notifications_menu = null;
       }
     }
 
@@ -687,11 +707,15 @@ namespace Docky {
         return;
       }
 
-      var menu = new Gtk.Menu();
-      menu.show.connect(on_menu_show);
-      menu.hide.connect(on_menu_hide);
+      // Reuse a single menu slot; the previous menu (and every notification
+      // its item closures pin) is destroyed here instead of leaking per click
+      destroy_menu();
 
-      menu.reserve_toggle_size = false;
+      notifications_menu = new Gtk.Menu();
+      notifications_menu.show.connect(on_menu_show);
+      notifications_menu.hide.connect(on_menu_hide);
+
+      notifications_menu.reserve_toggle_size = false;
 
       var snapshot = new GLib.List<NotificationData> ();
       lock (notification_lock) {
@@ -700,13 +724,13 @@ namespace Docky {
 
       snapshot.foreach((notification) => {
         var item = create_notification_menu_item(notification);
-        menu.append(item);
+        notifications_menu.append(item);
       });
 
-      menu.show_all();
+      notifications_menu.show_all();
 
       Gtk.Requisition requisition;
-      menu.get_preferred_size(null,out requisition);
+      notifications_menu.get_preferred_size(null,out requisition);
 
       int x,y;
       controller.position_manager.get_menu_position(this,requisition,out x,out y);
@@ -737,7 +761,7 @@ namespace Docky {
         break;
       }
 
-      menu.popup_at_rect(
+      notifications_menu.popup_at_rect(
                          controller.window.get_screen().get_root_window(),
                          Gdk.Rectangle() {
         x = x,
