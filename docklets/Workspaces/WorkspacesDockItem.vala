@@ -26,7 +26,6 @@ namespace Docky {
     private DockPreferences? dock_prefs = null;
     private uint setup_timer_id = 0;
     private uint redraw_timeout_id = 0;
-    private bool redraw_pending = false;
 
     private struct WindowPreview {
       int x;
@@ -397,21 +396,16 @@ namespace Docky {
     }
 
     private void queue_redraw () {
-      // Throttle rather than debounce: a continuous event stream (window
-      // drags with live previews) must still repaint every interval
+      // Throttle rather than debounce, and always defer the invalidation:
+      // queue_redraw can be reached from inside draw_icon (via update_cache),
+      // and clearing the surface cache there re-enters its non-recursive mutex
       if (redraw_timeout_id > 0) {
-        redraw_pending = true;
         return;
       }
 
-      reset_icon_buffer ();
-
       redraw_timeout_id = Timeout.add (100, () => {
         redraw_timeout_id = 0;
-        if (redraw_pending) {
-          redraw_pending = false;
-          queue_redraw ();
-        }
+        reset_icon_buffer ();
         return false;
       });
     }
