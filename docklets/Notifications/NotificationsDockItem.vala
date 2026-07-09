@@ -837,7 +837,17 @@ namespace Docky {
       var stripped_body = notification.body.strip();
       if (stripped_body.length > 0) {
         var body_label = new Gtk.Label(stripped_body);
-        body_label.set_markup(stripped_body);
+        // Bodies may carry the spec's minimal markup, but clients also send
+        // plain text containing & or <; only trust markup that parses
+        try {
+          Pango.AttrList attr_list;
+          string parsed_text;
+          unichar accel_char;
+          Pango.parse_markup(stripped_body, -1, (unichar) 0, out attr_list, out parsed_text, out accel_char);
+          body_label.set_markup(stripped_body);
+        } catch (Error e) {
+          body_label.set_markup(GLib.Markup.escape_text(stripped_body));
+        }
         body_label.set_line_wrap(true);
         body_label.set_max_width_chars(50);
         body_label.set_alignment(0, 0);
