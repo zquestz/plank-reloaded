@@ -344,6 +344,11 @@ namespace Docky {
     }
 
     protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time) {
+      // Guard the modulo below: a non-EWMH WM can report zero workspaces
+      if (workspace_count < 1) {
+        return AnimationType.NONE;
+      }
+
       if (button == PopupButton.LEFT) {
         int next_workspace = (current_workspace + 1) % workspace_count;
         switch_to_workspace (next_workspace);
@@ -353,6 +358,10 @@ namespace Docky {
     }
 
     protected override AnimationType on_scrolled (Gdk.ScrollDirection direction, Gdk.ModifierType mod, uint32 event_time) {
+      if (workspace_count < 1) {
+        return AnimationType.NONE;
+      }
+
       int new_workspace = current_workspace;
 
       if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT) {
