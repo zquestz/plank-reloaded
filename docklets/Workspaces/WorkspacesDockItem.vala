@@ -26,6 +26,14 @@ namespace Docky {
     private DockPreferences? dock_prefs = null;
     private uint setup_timer_id = 0;
     private uint redraw_timeout_id = 0;
+    private bool redraw_pending = false;
+
+    private struct WindowPreview {
+      int x;
+      int y;
+      int width;
+      int height;
+    }
     private Gee.HashMap<Wnck.Window, Gee.ArrayList<ulong>> window_signals =
       new Gee.HashMap<Wnck.Window, Gee.ArrayList<ulong>> ();
     private int workspace_count = 0;
@@ -389,13 +397,21 @@ namespace Docky {
     }
 
     private void queue_redraw () {
+      // Throttle rather than debounce: a continuous event stream (window
+      // drags with live previews) must still repaint every interval
       if (redraw_timeout_id > 0) {
-        Source.remove (redraw_timeout_id);
+        redraw_pending = true;
+        return;
       }
+
+      reset_icon_buffer ();
 
       redraw_timeout_id = Timeout.add (100, () => {
         redraw_timeout_id = 0;
-        reset_icon_buffer ();
+        if (redraw_pending) {
+          redraw_pending = false;
+          queue_redraw ();
+        }
         return false;
       });
     }
@@ -474,6 +490,41 @@ namespace Docky {
       int offset_x = (width - grid_width) / 2;
       int offset_y = (height - grid_height) / 2;
 
+      Gee.ArrayList<WindowPreview?>[]? window_buckets = null;
+      if (workspaces_prefs.LivePreviews) {
+        // Walk the window list once; scanning it per cell makes every
+        // repaint O(workspaces x windows)
+        window_buckets = new Gee.ArrayList<WindowPreview?>[workspace_count];
+
+        foreach (unowned Wnck.Window window in screen.get_windows ()) {
+          if (window.is_minimized () || window.get_window_type () != Wnck.WindowType.NORMAL) {
+            continue;
+          }
+
+          WindowPreview preview = {};
+          window.get_geometry (out preview.x, out preview.y, out preview.width, out preview.height);
+
+          unowned Wnck.Workspace? workspace = window.get_workspace ();
+          if (workspace != null) {
+            int num = workspace.get_number ();
+            if (num >= 0 && num < workspace_count) {
+              if (window_buckets[num] == null) {
+                window_buckets[num] = new Gee.ArrayList<WindowPreview?> ();
+              }
+              window_buckets[num].add (preview);
+            }
+          } else if (window.is_pinned () || window.is_sticky ()) {
+            // Pinned windows show on every workspace
+            for (int i = 0; i < workspace_count; i++) {
+              if (window_buckets[i] == null) {
+                window_buckets[i] = new Gee.ArrayList<WindowPreview?> ();
+              }
+              window_buckets[i].add (preview);
+            }
+          }
+        }
+      }
+
       for (int i = 0; i < workspace_count; i++) {
         int row = i / cols;
         int col = i % cols;
@@ -481,11 +532,14 @@ namespace Docky {
         int x = offset_x + col * cell_width;
         int y = offset_y + row * cell_height;
 
-        draw_workspace (cr, x, y, cell_width, cell_height, i);
+        draw_workspace (cr, x, y, cell_width, cell_height, i,
+                        window_buckets != null ? window_buckets[i] : null,
+                        screen_width, screen_height);
       }
     }
 
-    private void draw_workspace (Cairo.Context cr, int x, int y, int width, int height, int workspace_num) {
+    private void draw_workspace (Cairo.Context cr, int x, int y, int width, int height, int workspace_num,
+                                 Gee.ArrayList<WindowPreview?>? previews, int screen_width, int screen_height) {
       int padding = 1;
       int border = 1;
 
@@ -535,51 +589,39 @@ namespace Docky {
       }
       cr.fill ();
 
-      if (workspaces_prefs.LivePreviews) {
-        unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-        unowned Wnck.Workspace workspace = screen.get_workspace (workspace_num);
+      if (previews != null && screen_width > 0 && screen_height > 0) {
+        // Keep previews inside their cell: partially off-screen windows map
+        // to coordinates outside it
+        cr.rectangle (x_inner, y_inner, width_inner, height_inner);
+        cr.clip ();
 
-        if (workspace != null) {
-          foreach (unowned Wnck.Window window in screen.get_windows ()) {
-            if (window.is_on_workspace (workspace) &&
-                !window.is_minimized () &&
-                window.get_window_type () == Wnck.WindowType.NORMAL) {
-
-              int win_x, win_y, win_width, win_height;
-              window.get_geometry (out win_x, out win_y, out win_width, out win_height);
-
-              int screen_width = screen.get_width ();
-              int screen_height = screen.get_height ();
-
-              int preview_x = x_inner + (win_x * width_inner / screen_width);
-              int preview_y = y_inner + (win_y * height_inner / screen_height);
-              int preview_width = win_width * width_inner / screen_width;
-              int preview_height = win_height * height_inner / screen_height;
-
-              preview_width = int.max (preview_width, 3);
-              preview_height = int.max (preview_height, 3);
-
-              cr.rectangle (preview_x, preview_y, preview_width, preview_height);
-
-              Gdk.RGBA window_color;
-              if (use_dark) {
-                if (workspace_num == current_workspace) {
-                  window_color = { 0.35, 0.55, 0.85, 0.7 };
-                } else {
-                  window_color = { 0.75, 0.75, 0.78, 0.7 };
-                }
-              } else {
-                if (workspace_num == current_workspace) {
-                  window_color = { 0.0, 0.4, 0.8, 0.7 };
-                } else {
-                  window_color = { 0.3, 0.3, 0.33, 0.7 };
-                }
-              }
-
-              cr.set_source_rgba (window_color.red, window_color.green, window_color.blue, window_color.alpha);
-              cr.fill ();
-            }
+        Gdk.RGBA window_color;
+        if (use_dark) {
+          if (workspace_num == current_workspace) {
+            window_color = { 0.35, 0.55, 0.85, 0.7 };
+          } else {
+            window_color = { 0.75, 0.75, 0.78, 0.7 };
           }
+        } else {
+          if (workspace_num == current_workspace) {
+            window_color = { 0.0, 0.4, 0.8, 0.7 };
+          } else {
+            window_color = { 0.3, 0.3, 0.33, 0.7 };
+          }
+        }
+
+        foreach (var preview in previews) {
+          int preview_x = x_inner + (preview.x * width_inner / screen_width);
+          int preview_y = y_inner + (preview.y * height_inner / screen_height);
+          int preview_width = preview.width * width_inner / screen_width;
+          int preview_height = preview.height * height_inner / screen_height;
+
+          preview_width = int.max (preview_width, 3);
+          preview_height = int.max (preview_height, 3);
+
+          cr.rectangle (preview_x, preview_y, preview_width, preview_height);
+          cr.set_source_rgba (window_color.red, window_color.green, window_color.blue, window_color.alpha);
+          cr.fill ();
         }
       }
 
@@ -599,7 +641,7 @@ namespace Docky {
         if (i == current_workspace) {
           var label = item.get_child () as Gtk.Label;
           if (label != null) {
-            label.set_markup ("<b>" + label.get_text () + "</b>");
+            label.set_markup ("<b>%s</b>".printf (GLib.Markup.escape_text (label.get_text ())));
           }
         }
 
