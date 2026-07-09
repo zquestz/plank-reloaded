@@ -440,8 +440,11 @@ namespace Docky {
     }
 
     protected override bool can_accept_drop(Gee.ArrayList<string> uris) {
+      // No IO here: this runs on every pointer motion during an external
+      // drag, and query_exists on a remote uri is a round trip per event;
+      // the drop itself reports failures
       foreach (string uri in uris) {
-        if (File.new_for_uri(uri).query_exists()) {
+        if (uri != "") {
           return true;
         }
       }
