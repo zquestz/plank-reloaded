@@ -274,11 +274,8 @@ namespace Docky {
 
     ~NotificationsDockItem() {
       cleanup_dbus_monitoring();
-
-      if (update_timer_id > 0) {
-        Source.remove(update_timer_id);
-        update_timer_id = 0;
-      }
+      remove_update_timer();
+      cancel_all_expiry_timers();
     }
 
     private void handle_container_changed() {
@@ -287,8 +284,21 @@ namespace Docky {
       }
     }
 
+    // Teardown must not rely solely on the destructor: the D-Bus filter and
+    // the menu hold references that keep this item alive and unreachable for
+    // finalization, and pending expiry timers would fire on a dead item
     private void removed_from_dock() {
+      cleanup_dbus_monitoring();
+      remove_update_timer();
+      cancel_all_expiry_timers();
       destroy_menu();
+    }
+
+    private void remove_update_timer() {
+      if (update_timer_id > 0) {
+        Source.remove(update_timer_id);
+        update_timer_id = 0;
+      }
     }
 
     private void destroy_menu() {
