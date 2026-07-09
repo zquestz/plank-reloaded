@@ -19,7 +19,7 @@ using Plank;
 
 namespace Docky {
   public class CPUMonitorDockItem : DockletItem {
-    private const ulong UPDATE_DELAY = 1000000UL;
+    private const uint UPDATE_INTERVAL = 1; // seconds
     private const double RADIUS_PERCENT = 0.9;
     private const double CPU_THRESHOLD = 0.03;
     private const double MEM_THRESHOLD = 0.01;
@@ -27,7 +27,7 @@ namespace Docky {
     private const string PROC_STAT_PATH = "/proc/stat";
     private const string PROC_MEMINFO_PATH = "/proc/meminfo";
 
-    private bool disposed;
+    private uint timer_id = 0;
     private ulong last_usage;
     private ulong last_idle;
 
@@ -43,20 +43,39 @@ namespace Docky {
 
     construct
     {
+      notify["Container"].connect(handle_container_changed);
+
       start_monitor();
     }
 
     ~CPUMonitorDockItem() {
-      disposed = true;
+      remove_timer();
+    }
+
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    // The repeating timer holds a reference to this item, so it must be
+    // removed when the item leaves its dock or the item can never finalize
+    private void removed_from_dock() {
+      remove_timer();
+    }
+
+    private void remove_timer() {
+      if (timer_id > 0) {
+        GLib.Source.remove(timer_id);
+        timer_id = 0;
+      }
     }
 
     private void start_monitor() {
-      new Thread<void*> ("cpu-monitor", () => {
-        while (!disposed) {
-          update_stats();
-          Thread.usleep(UPDATE_DELAY);
-        }
-        return null;
+      update_stats();
+      timer_id = Timeout.add_seconds(UPDATE_INTERVAL, () => {
+        update_stats();
+        return true;
       });
     }
 
@@ -109,28 +128,14 @@ namespace Docky {
     }
 
     private void update_display() {
-      var cpu = cpu_utilization;
-      var mem = memory_utilization;
       var needs_icon_update = should_update_icon();
 
-      // Update UI on main thread
-      Idle.add(() => {
-        if (disposed) {
-          return false;
-        }
-
-        Text = ("CPU: %.1f%% | Mem: %.1f%%").printf(cpu * 100, mem * 100);
-
-        if (needs_icon_update) {
-          reset_icon_buffer();
-        }
-
-        return false;
-      });
+      Text = ("CPU: %.1f%% | Mem: %.1f%%").printf(cpu_utilization * 100, memory_utilization * 100);
 
       if (needs_icon_update) {
         last_cpu_utilization = cpu_utilization;
         last_memory_utilization = memory_utilization;
+        reset_icon_buffer();
       }
     }
 

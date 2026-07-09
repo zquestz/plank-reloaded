@@ -28,7 +28,7 @@ namespace Docky {
     private const string NO_BATTERY_TEXT = _("No battery");
     private const uint UPDATE_INTERVAL = 60; // seconds
 
-    private bool disposed = false;
+    private uint timer_id = 0;
 
     public BatteryDockItem.with_dockitem_file (GLib.File file)
     {
@@ -40,20 +40,39 @@ namespace Docky {
       Icon = ICON_MISSING;
       Text = NO_BATTERY_TEXT;
 
-      start_update_thread ();
+      notify["Container"].connect (handle_container_changed);
+
+      start_monitor ();
     }
 
     ~BatteryDockItem () {
-      disposed = true;
+      remove_timer ();
     }
 
-    private void start_update_thread () {
-      new Thread<void*> ("battery-monitor", () => {
-        while (!disposed) {
-          update_async ();
-          Thread.usleep (UPDATE_INTERVAL * 1000000);
-        }
-        return null;
+    private void handle_container_changed () {
+      if (Container == null) {
+        removed_from_dock ();
+      }
+    }
+
+    // The repeating timer holds a reference to this item, so it must be
+    // removed when the item leaves its dock or the item can never finalize
+    private void removed_from_dock () {
+      remove_timer ();
+    }
+
+    private void remove_timer () {
+      if (timer_id > 0) {
+        GLib.Source.remove (timer_id);
+        timer_id = 0;
+      }
+    }
+
+    private void start_monitor () {
+      update ();
+      timer_id = Timeout.add_seconds (UPDATE_INTERVAL, () => {
+        update ();
+        return true;
       });
     }
 
@@ -115,32 +134,18 @@ namespace Docky {
       return icon;
     }
 
-    private void update_async () {
+    private void update () {
       try {
         var status = get_status ();
         var capacity = get_capacity ();
         var capacity_level = get_capacity_level ();
 
-        var icon = get_battery_icon (capacity_level, status);
-        var text = "%i%%".printf (capacity);
-
-        // Update UI on main thread
-        Idle.add (() => {
-          if (!disposed) {
-            Icon = icon;
-            Text = text;
-          }
-          return false;
-        });
+        Icon = get_battery_icon (capacity_level, status);
+        Text = "%i%%".printf (capacity);
       } catch (Error e) {
         warning ("Failed to update battery status: %s", e.message);
-        Idle.add (() => {
-          if (!disposed) {
-            Icon = ICON_MISSING;
-            Text = NO_BATTERY_TEXT;
-          }
-          return false;
-        });
+        Icon = ICON_MISSING;
+        Text = NO_BATTERY_TEXT;
       }
     }
 
@@ -175,7 +180,7 @@ namespace Docky {
 
             battery_item.activate.connect (() => {
               ((BatteryPreferences) Prefs).BatteryDeviceName = battery_name;
-              update_async ();
+              update ();
             });
 
             if (((BatteryPreferences) Prefs).BatteryDeviceName == battery_name) {
