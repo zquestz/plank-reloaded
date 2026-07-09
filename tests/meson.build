@@ -77,12 +77,17 @@ if get_option('enable-headless-tests')
   xvfb_run = find_program('xvfb-run', required: true)
   dbus_run = find_program('dbus-run-session', required: true)
 
+  # Debian/Ubuntu's xvfb-run lacks the race-free -d/--auto-display flag, and
+  # --auto-servernum races when two instances probe for a display at once, so
+  # these tests must not run in parallel (they also share the same test HOME).
+  # If Ubuntu ships --auto-display one day: switch to -d and drop is_parallel.
+
   # Main test suite
   test(
     'plank-tests',
     xvfb_run,
     args: [
-      '-d',
+      '--auto-servernum',
       '--server-args=-screen 0 1280x1024x24',
       dbus_run.full_path(),
       tests_bin.full_path(),
@@ -92,6 +97,7 @@ if get_option('enable-headless-tests')
     depends: [clean_test_dir],
     protocol: 'tap',
     timeout: 120,
+    is_parallel: false,
   )
 
   # Dock test
@@ -99,7 +105,7 @@ if get_option('enable-headless-tests')
     'dock-test',
     xvfb_run,
     args: [
-      '-d',
+      '--auto-servernum',
       '--server-args=-screen 0 1280x1024x24',
       dbus_run.full_path(),
       dock_bin.full_path(),
@@ -110,6 +116,7 @@ if get_option('enable-headless-tests')
     depends: [clean_test_dir],
     protocol: 'exitcode',
     timeout: 60,
+    is_parallel: false,
   )
 else
   # Regular test without headless setup
