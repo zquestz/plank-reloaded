@@ -54,8 +54,15 @@ namespace Docky {
     }
 
     ~ClippyDockItem() {
-      disconnect_clipboards();
+      remove_debounce_timer();
+    }
 
+    protected override void removed_from_dock() {
+      disconnect_clipboards();
+      remove_debounce_timer();
+    }
+
+    private void remove_debounce_timer() {
       if (debounce_timeout_id > 0) {
         GLib.Source.remove(debounce_timeout_id);
         debounce_timeout_id = 0;
@@ -70,15 +77,20 @@ namespace Docky {
 
     private void connect_clipboards() {
       if (!prefs.DisableTracking) {
-        regular_handler_id = regular_clipboard.owner_change.connect((clipboard, ev) => {
-          request_clipboard_content(regular_clipboard);
-        });
+        regular_handler_id = regular_clipboard.owner_change.connect(handle_regular_owner_change);
+        primary_handler_id = primary_clipboard.owner_change.connect(handle_primary_owner_change);
+      }
+    }
 
-        primary_handler_id = primary_clipboard.owner_change.connect((clipboard, ev) => {
-          if (prefs.TrackMouseSelections) {
-            request_clipboard_content(primary_clipboard);
-          }
-        });
+    [CCode (instance_pos = -1)]
+    private void handle_regular_owner_change(Gtk.Clipboard clipboard, Gdk.EventOwnerChange event) {
+      request_clipboard_content(regular_clipboard);
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_primary_owner_change(Gtk.Clipboard clipboard, Gdk.EventOwnerChange event) {
+      if (prefs.TrackMouseSelections) {
+        request_clipboard_content(primary_clipboard);
       }
     }
 
