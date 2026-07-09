@@ -38,9 +38,15 @@ namespace Docky {
       + FileAttribute.STANDARD_NAME + ","
       + FileAttribute.ACCESS_CAN_DELETE;
 
+    private const uint UPDATE_DEBOUNCE_DELAY = 200U;
+
     private Gee.ArrayList<FileMonitor> trash_monitors;
     private File trash;
     private Canberra.Context? sound_context;
+    private uint update_timer_id = 0;
+    private bool update_in_progress = false;
+    private bool update_pending = false;
+    private uint32 last_item_count = 0;
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
     {
@@ -52,12 +58,18 @@ namespace Docky {
       trash = environment_is_session_desktop(XdgSessionDesktop.KDE) ? File.new_for_uri(KDE_TRASH_URI) : File.new_for_uri(TRASH_URI);
       trash_monitors = new Gee.ArrayList<FileMonitor> ();
 
+      Icon = "user-trash";
       setup_monitor();
       update();
     }
 
     ~TrashDockItem() {
       cleanup_monitor();
+
+      if (update_timer_id > 0) {
+        GLib.Source.remove(update_timer_id);
+        update_timer_id = 0;
+      }
     }
 
     private void setup_monitor() {
@@ -91,31 +103,82 @@ namespace Docky {
     }
 
     private void trash_changed(File f, File? other, FileMonitorEvent event) {
-      update();
+      schedule_update();
+    }
+
+    // Coalesce monitor-event bursts (a mass delete emits hundreds) into a
+    // single update shortly after the last event
+    private void schedule_update() {
+      if (update_timer_id > 0) {
+        GLib.Source.remove(update_timer_id);
+      }
+
+      update_timer_id = GLib.Timeout.add(UPDATE_DEBOUNCE_DELAY, () => {
+        update_timer_id = 0;
+        update();
+        return false;
+      });
     }
 
     private void update() {
-      uint32 item_count = get_trash_item_count();
-      update_text(item_count);
-      update_icon(item_count);
+      do_update.begin();
     }
 
-    private void update_text(uint32 item_count) {
-      Text = (item_count == 0) ?
-        _("No items in Trash") :
-        ngettext("%u item in Trash", "%u items in Trash", item_count).printf(item_count);
-    }
+    private async void do_update() {
+      if (update_in_progress) {
+        update_pending = true;
+        return;
+      }
+      update_in_progress = true;
 
-    private void update_icon(uint32 item_count) {
+      uint32 item_count = 0;
       string? icon_name = null;
 
       if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+        item_count = yield get_trash_item_count_manual();
         icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
       } else {
-        icon_name = DrawingService.get_icon_from_file(trash);
+        try {
+          var info = yield trash.query_info_async(
+                                                  FileAttribute.TRASH_ITEM_COUNT + "," + FileAttribute.STANDARD_ICON,
+                                                  0,
+                                                  Priority.DEFAULT,
+                                                  null
+          );
+          item_count = info.get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
+          icon_name = DrawingService.get_icon_from_gicon(info.get_icon());
+        } catch (GLib.Error e) {
+          warning("Could not get item count from trash::item-count: %s", e.message);
+          item_count = yield get_trash_item_count_manual();
+          icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
+        }
       }
 
-      if (icon_name != null && icon_name != "") {
+      last_item_count = item_count;
+      update_text(item_count);
+      update_icon(icon_name);
+
+      update_in_progress = false;
+      if (update_pending) {
+        update_pending = false;
+        schedule_update();
+      }
+    }
+
+    private void update_text(uint32 item_count) {
+      var new_text = (item_count == 0) ?
+        _("No items in Trash") :
+        ngettext("%u item in Trash", "%u items in Trash", item_count).printf(item_count);
+
+      if (Text != new_text) {
+        Text = new_text;
+      }
+    }
+
+    // Only assign on change: the Icon setter resets the icon buffer even for
+    // identical values
+    private void update_icon(string? icon_name) {
+      if (icon_name != null && icon_name != "" && Icon != icon_name) {
         Icon = icon_name;
       }
     }
@@ -151,25 +214,7 @@ namespace Docky {
       return trash_dirs;
     }
 
-    private uint32 get_trash_item_count() {
-      if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
-        return get_trash_item_count_manual();
-      } else {
-        try {
-          return trash.query_info(
-                                  FileAttribute.TRASH_ITEM_COUNT,
-                                  0,
-                                  null
-          ).get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
-        } catch (GLib.Error e) {
-          warning("Could not get item count from trash::item-count: %s", e.message);
-        }
-      }
-
-      return get_trash_item_count_manual();
-    }
-
-    private uint32 get_trash_item_count_manual() {
+    private async uint32 get_trash_item_count_manual() {
       uint32 count = 0;
 
       var trash_dirs = get_trash_directories();
@@ -181,19 +226,22 @@ namespace Docky {
             continue;
           }
 
-          var enumerator = files_dir.enumerate_children(
-                                                        FileAttribute.STANDARD_NAME,
-                                                        FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                                                        null
+          var enumerator = yield files_dir.enumerate_children_async(
+                                                                    FileAttribute.STANDARD_NAME,
+                                                                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                                                                    Priority.DEFAULT,
+                                                                    null
           );
 
-          if (enumerator != null) {
-            FileInfo? info = null;
-            while ((info = enumerator.next_file()) != null) {
-              count++;
+          while (true) {
+            var infos = yield enumerator.next_files_async(100, Priority.DEFAULT, null);
+            if (infos == null || infos.length() == 0) {
+              break;
             }
-            enumerator.close(null);
+            count += infos.length();
           }
+
+          yield enumerator.close_async(Priority.DEFAULT, null);
         } catch (GLib.Error e) {
           warning("Could not enumerate trash directory %s: %s", trash_dir.get_path(), e.message);
         }
@@ -427,7 +475,7 @@ namespace Docky {
 
       var empty_item = create_menu_item(_("Empty _Trash"), "gtk-clear");
       empty_item.activate.connect(empty_trash);
-      empty_item.sensitive = (get_trash_item_count() > 0);
+      empty_item.sensitive = (last_item_count > 0);
       items.add(empty_item);
 
       return items;
