@@ -127,23 +127,24 @@ namespace Docky {
         return;
       }
 
+      // Hints come from arbitrary bus clients, so never trust the value types
       var urgency_variant = hints.lookup("urgency");
-      if (urgency_variant != null) {
+      if (urgency_variant != null && urgency_variant.is_of_type(VariantType.BYTE)) {
         urgency = urgency_variant.get_byte();
       }
 
       var category_variant = hints.lookup("category");
-      if (category_variant != null) {
+      if (category_variant != null && category_variant.is_of_type(VariantType.STRING)) {
         category = category_variant.get_string();
       }
 
       var transient_variant = hints.lookup("transient");
-      if (transient_variant != null) {
+      if (transient_variant != null && transient_variant.is_of_type(VariantType.BOOLEAN)) {
         transient = transient_variant.get_boolean();
       }
 
       var resident_variant = hints.lookup("resident");
-      if (resident_variant != null) {
+      if (resident_variant != null && resident_variant.is_of_type(VariantType.BOOLEAN)) {
         resident = resident_variant.get_boolean();
       }
 
@@ -153,7 +154,7 @@ namespace Docky {
       }
 
       var image_path_variant = hints.lookup("image-path");
-      if (image_path_variant != null) {
+      if (image_path_variant != null && image_path_variant.is_of_type(VariantType.STRING)) {
         image_path = image_path_variant.get_string();
       }
 
@@ -163,7 +164,7 @@ namespace Docky {
       }
 
       var desktop_entry_variant = hints.lookup("desktop-entry");
-      if (desktop_entry_variant != null) {
+      if (desktop_entry_variant != null && desktop_entry_variant.is_of_type(VariantType.STRING)) {
         desktop_entry = desktop_entry_variant.get_string();
       }
     }
