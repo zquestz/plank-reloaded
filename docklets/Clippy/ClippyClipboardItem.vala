@@ -124,7 +124,12 @@ namespace Docky {
       if (item_type == Type.TEXT && text != null) {
         checksum.update(text.data, text.data.length);
       } else if (item_type == Type.IMAGE && image != null) {
-        unowned uint8[] pixels = image.get_pixels();
+        // get_pixels() carries no array length in the binding, so hash the
+        // sized buffer and include the geometry to keep distinct images apart
+        unowned uint8[] pixels = image.get_pixels_with_length();
+        var header = "%dx%dx%d:%d".printf(image.get_width(), image.get_height(),
+                                          image.get_n_channels(), image.get_rowstride());
+        checksum.update(header.data, header.data.length);
         checksum.update(pixels, pixels.length);
       }
 
