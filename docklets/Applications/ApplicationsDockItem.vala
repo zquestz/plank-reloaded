@@ -67,7 +67,10 @@ namespace Docky {
       menu_tree.changed.connect(on_apps_menu_changed);
 
       icon_theme.changed.connect(on_apps_menu_changed);
-      schedule_menu_update();
+
+      // Load immediately so clicks work right away; the debounce is only for
+      // coalescing menu-changed bursts (e.g. package installations)
+      do_menu_update.begin();
     }
 
     private void update_icon() {
@@ -90,6 +93,10 @@ namespace Docky {
     private void handle_container_changed() {
       if (Container == null) {
         removed_from_dock();
+      } else if (menu_widget == null && !load_in_progress) {
+        // The initial load can finish before the item is attached to a dock,
+        // in which case the menu could not be built yet; build it now
+        build_applications_menu();
       }
     }
 
@@ -181,10 +188,9 @@ namespace Docky {
 
       load_in_progress = false;
 
-      // Build menu after successful load
-      if (apps_loaded) {
-        build_applications_menu();
-      }
+      // Build even after a failed load so the placeholder item shows up
+      // instead of clicks being silently dead
+      build_applications_menu();
 
       // If another update was requested while we were loading, do it now
       if (reload_requested) {
