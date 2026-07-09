@@ -1,0 +1,56 @@
+---
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    container: ubuntu:noble
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            git \
+            cmake \
+            gettext \
+            desktop-file-utils \
+            libdbusmenu-glib-dev \
+            libdbusmenu-gtk3-dev \
+            meson \
+            ninja-build \
+            valac \
+            libgnome-menu-3-dev \
+            libxml2-utils \
+            libgtk-3-dev \
+            libgee-0.8-dev \
+            libbamf3-dev \
+            libwnck-3-dev \
+            libcanberra-dev \
+            libxi-dev \
+            libxfixes-dev \
+            bamfdaemon \
+            build-essential \
+            pkg-config \
+            xvfb \
+            dbus \
+            hicolor-icon-theme
+
+      - name: Build
+        run: |
+          meson setup build -D enable-apport=false -D enable-headless-tests=true
+          meson compile -C build
+
+      - name: Test
+        run: meson test -C build --print-errorlogs

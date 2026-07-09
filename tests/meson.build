@@ -82,7 +82,7 @@ if get_option('enable-headless-tests')
     'plank-tests',
     xvfb_run,
     args: [
-      '--auto-servernum',
+      '-d',
       '--server-args=-screen 0 1280x1024x24',
       dbus_run.full_path(),
       tests_bin.full_path(),
@@ -99,7 +99,7 @@ if get_option('enable-headless-tests')
     'dock-test',
     xvfb_run,
     args: [
-      '--auto-servernum',
+      '-d',
       '--server-args=-screen 0 1280x1024x24',
       dbus_run.full_path(),
       dock_bin.full_path(),
