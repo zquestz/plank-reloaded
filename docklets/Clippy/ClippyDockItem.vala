@@ -47,6 +47,8 @@ namespace Docky {
 
     construct
     {
+      notify["Container"].connect(handle_container_changed);
+
       Icon = ClippyDocklet.ICON;
       clips = new Gee.ArrayList<ClippyClipboardItem> ();
       initialize_clipboards();
@@ -57,7 +59,16 @@ namespace Docky {
       remove_debounce_timer();
     }
 
-    protected override void removed_from_dock() {
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    // Teardown must not rely solely on the destructor: the clipboard signal
+    // handlers keep this item alive and unreachable for finalization, so it
+    // runs when the item is removed from its dock
+    private void removed_from_dock() {
       disconnect_clipboards();
       remove_debounce_timer();
     }

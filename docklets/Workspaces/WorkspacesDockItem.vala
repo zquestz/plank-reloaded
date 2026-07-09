@@ -46,6 +46,8 @@ namespace Docky {
 
     construct
     {
+      notify["Container"].connect (handle_container_changed);
+
       Icon = WorkspacesDocklet.ICON;
       Text = _("Workspaces");
 
@@ -97,7 +99,16 @@ namespace Docky {
       remove_timers ();
     }
 
-    protected override void removed_from_dock () {
+    private void handle_container_changed () {
+      if (Container == null) {
+        removed_from_dock ();
+      }
+    }
+
+    // Teardown must not rely solely on the destructor: handlers on external
+    // objects and pending timers keep this item alive and unreachable for
+    // finalization, so it runs when the item is removed from its dock
+    private void removed_from_dock () {
       remove_timers ();
 
       if (invert_color_handler_id > 0) {

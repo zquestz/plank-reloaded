@@ -21,29 +21,6 @@ namespace Plank
 {
 	public abstract class DockletItem : DockItem
 	{
-		construct
-		{
-			notify["Container"].connect (handle_container_changed);
-		}
-
-		void handle_container_changed ()
-		{
-			if (Container == null)
-				removed_from_dock ();
-		}
-
-		/**
-		 * Called when this docklet was removed from its dock.
-		 *
-		 * Disconnect handlers connected to external objects and stop timers
-		 * or threads here. Cleanup must not rely solely on the destructor,
-		 * because such references keep this item alive and unreachable for
-		 * finalization.
-		 */
-		protected virtual void removed_from_dock ()
-		{
-		}
-
 		public override bool is_valid ()
 		{
 			return true;
