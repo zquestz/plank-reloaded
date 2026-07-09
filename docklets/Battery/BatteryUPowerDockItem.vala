@@ -48,7 +48,24 @@ namespace Docky {
 
     public static bool is_supported {
       get {
-        return DBus.is_interface_name(UPOWER_NAME);
+        try {
+          var connection = Bus.get_sync(BusType.SYSTEM);
+          // Ping the daemon (activating it if needed); a name-syntax check
+          // cannot tell whether upowerd actually exists on this system
+          connection.call_sync(
+                               UPOWER_NAME,
+                               UPOWER_PATH,
+                               "org.freedesktop.DBus.Peer",
+                               "Ping",
+                               null,
+                               null,
+                               DBusCallFlags.NONE,
+                               2000);
+          return true;
+        } catch (Error e) {
+          debug("UPower not available, falling back to sysfs: %s", e.message);
+          return false;
+        }
       }
     }
 
@@ -78,10 +95,8 @@ namespace Docky {
 
         power_device = get_display_device();
 
-        if (power_device != null) {
-          update();
-          timer_id = Gdk.threads_add_timeout(UPDATE_INTERVAL, update);
-        }
+        update();
+        timer_id = Gdk.threads_add_timeout(UPDATE_INTERVAL, update);
       } catch (Error e) {
         warning("Cannot initialize battery docklet: %s", e.message);
         cleanup();
@@ -119,11 +134,12 @@ namespace Docky {
     }
 
     private bool update() {
+      // Keep the poll alive while the device is gone (e.g. upowerd restart);
+      // on_device_changed re-resolves it when it comes back
       if (power_device == null) {
-        warning("Battery docklet not initialized");
         Icon = ICON_MISSING;
         Text = NO_BATTERY_TEXT;
-        return false;
+        return true;
       }
 
       Icon = power_device.icon_name;
