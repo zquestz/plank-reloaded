@@ -22,7 +22,6 @@ namespace Docky {
     private const string THEME_BASE_URI = "resource://" + Docky.G_RESOURCE_PATH + "/themes/";
     private const string DEFAULT_THEME = "Default";
     private const string DEFAULT_24H_THEME = "Default24";
-    private const int UPDATE_INTERVAL = 1000;
 
     private const double DATE_SIZE_RATIO = 0.75;
     private const double FONT_SIZE_RATIO = 1.0 / 3.0;
@@ -43,15 +42,39 @@ namespace Docky {
     private string current_theme;
     ClockDockCalendar calendar;
 
+    private Cairo.ImageSurface? dial_background = null;
+    private Cairo.ImageSurface? dial_overlay = null;
+    private int dial_size = 0;
+    private string dial_theme = "";
+
     public ClockDockItem.with_dockitem_file(GLib.File file) {
       GLib.Object(Prefs: new ClockPreferences.with_file(file));
     }
 
     construct {
+      notify["Container"].connect(handle_container_changed);
+
       setup_layout();
       setup_icon();
       connect_preferences();
-      start_timer();
+      schedule_next_tick();
+    }
+
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    // Teardown must not rely solely on the destructor: the re-arming timer
+    // holds a reference to this item, so it must be removed when the item
+    // leaves its dock or the item can never finalize
+    private void removed_from_dock() {
+      cleanup();
+
+      if (calendar != null) {
+        calendar.destroy();
+      }
     }
 
     ~ClockDockItem() {
@@ -85,8 +108,16 @@ namespace Docky {
       prefs.notify["ShowDigital"].connect(handle_prefs_changed);
     }
 
-    private void start_timer() {
-      timer_id = Gdk.threads_add_timeout(UPDATE_INTERVAL, update_timer);
+    private void schedule_next_tick() {
+      // Wake at the next minute boundary instead of polling every second;
+      // recomputing now() each fire keeps DST and clock changes correct
+      var now = new DateTime.now_local();
+      timer_id = Gdk.threads_add_timeout_seconds(60 - (uint) now.get_second(), () => {
+        timer_id = 0;
+        check_minute_changed();
+        schedule_next_tick();
+        return false;
+      });
     }
 
     private void cleanup() {
@@ -105,13 +136,12 @@ namespace Docky {
       current_theme = THEME_BASE_URI + (military ? DEFAULT_24H_THEME : DEFAULT_THEME);
     }
 
-    private bool update_timer() {
+    private void check_minute_changed() {
       var now = new DateTime.now_local();
       if (minute != now.get_minute()) {
         reset_icon_buffer();
         minute = now.get_minute();
       }
-      return true;
     }
 
     private void handle_prefs_changed() {
@@ -207,7 +237,13 @@ namespace Docky {
     }
 
     private string format_time_tooltip(DateTime now, bool military) {
-      return now.format(military ? "%a, %b %d %H:%M" : "%a, %b %d %I:%M %p").strip();
+      if (military) {
+        // Translators: strftime format for the 24h tooltip, e.g. "Tue, Jul 08 14:05"
+        return now.format(_("%a, %b %d %H:%M")).strip();
+      }
+
+      // Translators: strftime format for the 12h tooltip, e.g. "Tue, Jul 08 02:05 PM"
+      return now.format(_("%a, %b %d %I:%M %p")).strip();
     }
 
     private void render_digital_clock(Surface surface, DateTime now, int size) {
@@ -238,7 +274,8 @@ namespace Docky {
           var date_font = font_description.copy();
           date_font.set_absolute_size(current_size * DATE_SIZE_RATIO * Pango.SCALE);
           date_layout.set_font_description(date_font);
-          date_layout.set_text(now.format("%b %d"), -1);
+          // Translators: strftime format for the date below the digital clock, e.g. "Jul 08"
+          date_layout.set_text(now.format(_("%b %d")), -1);
         }
 
         Pango.Rectangle time_ink, time_logical;
@@ -299,11 +336,10 @@ namespace Docky {
       int center = size / 2;
       var radius = center;
 
-      // Render clock background elements
-      render_file_onto_context(cr, current_theme + SVG_DROP_SHADOW, radius * 2);
-      render_file_onto_context(cr, current_theme + SVG_FACE_SHADOW, radius * 2);
-      render_file_onto_context(cr, current_theme + SVG_FACE, radius * 2);
-      render_file_onto_context(cr, current_theme + SVG_MARKS, radius * 2);
+      ensure_dial_surfaces(radius * 2);
+
+      cr.set_source_surface(dial_background, 0, 0);
+      cr.paint();
 
       cr.translate(center, center);
 
@@ -312,9 +348,31 @@ namespace Docky {
 
       cr.translate(-center, -center);
 
-      // Render clock overlay elements
-      render_file_onto_context(cr, current_theme + SVG_GLASS, radius * 2);
-      render_file_onto_context(cr, current_theme + SVG_FRAME, radius * 2);
+      cr.set_source_surface(dial_overlay, 0, 0);
+      cr.paint();
+    }
+
+    // Only the hands change between redraws; the six SVG layers get
+    // rasterized once per size and theme instead of every minute
+    private void ensure_dial_surfaces(int size) {
+      if (dial_background != null && dial_size == size && dial_theme == current_theme) {
+        return;
+      }
+
+      dial_size = size;
+      dial_theme = current_theme;
+
+      dial_background = new Cairo.ImageSurface(Cairo.Format.ARGB32, size, size);
+      var bg_cr = new Cairo.Context(dial_background);
+      render_file_onto_context(bg_cr, current_theme + SVG_DROP_SHADOW, size);
+      render_file_onto_context(bg_cr, current_theme + SVG_FACE_SHADOW, size);
+      render_file_onto_context(bg_cr, current_theme + SVG_FACE, size);
+      render_file_onto_context(bg_cr, current_theme + SVG_MARKS, size);
+
+      dial_overlay = new Cairo.ImageSurface(Cairo.Format.ARGB32, size, size);
+      var ov_cr = new Cairo.Context(dial_overlay);
+      render_file_onto_context(ov_cr, current_theme + SVG_GLASS, size);
+      render_file_onto_context(ov_cr, current_theme + SVG_FRAME, size);
     }
 
     private void render_clock_hands(Cairo.Context cr, DateTime now, int size, int radius) {
