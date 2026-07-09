@@ -31,12 +31,6 @@
 			<summary>Array of names of active/enabled docks</summary>
 			<description>Contains the names of docks which are created and loaded on start up</description>
 		</key>
-
-		<key name="bring-window-to-current-workspace" type="b">
-			<default>false</default>
-			<summary>Bring windows to the current workspace when activated</summary>
-			<description>If true, activating a window located on another workspace moves it to the current workspace instead of switching to the window's workspace.</description>
-		</key>
 	</schema>
 
 	<schema id="net.launchpad.plank.dock.settings" gettext-domain="@GETTEXT_PACKAGE@">
@@ -49,6 +43,11 @@
 			<default>true</default>
 			<summary>Automatically pin an application if it seems useful to do</summary>
 			<description>If true, automatically pin applications when it seems useful to do.</description>
+		</key>
+		<key name="bring-to-current-workspace" type="b">
+			<default>false</default>
+			<summary>Bring windows to the current workspace when activated</summary>
+			<description>If true, activating a window located on another workspace moves it to the current workspace instead of switching to the window's workspace.</description>
 		</key>
 		<key name="current-workspace-only" type="b">
 			<default>false</default>

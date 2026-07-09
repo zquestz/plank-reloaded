@@ -58,6 +58,16 @@ namespace Plank {
       return current_workspace_only;
     }
 
+    public static bool bring_to_current_workspace (DefaultApplicationDockItemProvider? provider) {
+      bool bring_to_current_workspace = false;
+
+      if (provider != null) {
+        bring_to_current_workspace = provider.Prefs.BringToCurrentWorkspace;
+      }
+
+      return bring_to_current_workspace;
+    }
+
     public static int window_count (Bamf.Application? app, DefaultApplicationDockItemProvider? provider) {
       int window_count = 0;
 

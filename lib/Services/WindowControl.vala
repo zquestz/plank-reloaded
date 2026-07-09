@@ -43,9 +43,6 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static ulong delayed_focus_xid = 0UL;
 
-    static GLib.Settings? global_settings = null;
-    static bool bring_window_to_current_workspace = false;
-
     // Action type for pending operations
     enum PendingActionType {
       MINIMIZE,
@@ -189,12 +186,6 @@ namespace Plank {
 
     public static void initialize () {
       Wnck.set_client_type (Wnck.ClientType.PAGER);
-
-      global_settings = create_settings ("net.launchpad.plank");
-      bring_window_to_current_workspace = global_settings.get_boolean ("bring-window-to-current-workspace");
-      global_settings.changed["bring-window-to-current-workspace"].connect (() => {
-        bring_window_to_current_workspace = global_settings.get_boolean ("bring-window-to-current-workspace");
-      });
 
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
 
@@ -512,7 +503,7 @@ namespace Plank {
       }
     }
 
-    public static void focus_window (Bamf.Window window, uint32 event_time) {
+    public static void focus_window (Bamf.Window window, uint32 event_time, bool bring_to_current = false) {
       unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
 
       warn_if_fail (w != null);
@@ -520,7 +511,7 @@ namespace Plank {
       if (w == null)
         return;
 
-      center_and_focus_window (w, event_time);
+      center_and_focus_window (w, event_time, bring_to_current);
     }
 
     static void focus_window_by_xid (uint32 xid, uint32 event_time) {
@@ -637,7 +628,7 @@ namespace Plank {
       return windows;
     }
 
-    public static void smart_focus (Bamf.Application app, uint32 event_time) {
+    public static void smart_focus (Bamf.Application app, uint32 event_time, bool bring_to_current = false) {
       var windows = get_ordered_window_stack (app);
 
       var not_in_viewport = true;
@@ -657,7 +648,7 @@ namespace Plank {
             continue;
 
           if (!window.is_skip_tasklist ()) {
-            intelligent_focus_off_viewport_window (window, windows, event_time);
+            intelligent_focus_off_viewport_window (window, windows, event_time, bring_to_current);
             return;
           }
         }
@@ -701,12 +692,19 @@ namespace Plank {
       }
 
       // Focus most-top window and all others on its workspace
-      intelligent_focus_off_viewport_window (windows.nth_data (0), windows, event_time);
+      intelligent_focus_off_viewport_window (windows.nth_data (0), windows, event_time, bring_to_current);
     }
 
     static void intelligent_focus_off_viewport_window (Wnck.Window? targetWindow,
-                                                       GLib.List<unowned Wnck.Window> additional_windows, uint32 event_time) {
+                                                       GLib.List<unowned Wnck.Window> additional_windows, uint32 event_time,
+                                                       bool bring_to_current = false) {
       if (targetWindow == null) {
+        return;
+      }
+
+      // Bring only the target window to the current workspace, the others stay put
+      if (bring_to_current) {
+        center_and_focus_window (targetWindow, event_time, true);
         return;
       }
 
@@ -817,12 +815,12 @@ namespace Plank {
       return active_workspace != null && window.is_in_viewport (active_workspace);
     }
 
-    static void center_and_focus_window (Wnck.Window w, uint32 event_time) {
+    static void center_and_focus_window (Wnck.Window w, uint32 event_time, bool bring_to_current = false) {
       unowned Wnck.Workspace? workspace = w.get_workspace ();
       unowned Wnck.Workspace? active_workspace = w.get_screen ().get_active_workspace ();
 
       if (!w.is_pinned () && !w.is_sticky () && workspace != null && active_workspace != null && workspace != active_workspace) {
-        if (bring_window_to_current_workspace)
+        if (bring_to_current)
           w.move_to_workspace (active_workspace);
         else
           workspace.activate (event_time);

@@ -358,7 +358,7 @@ namespace Plank {
       }
 
       if (button == PopupButton.LEFT && App != null && Helpers.window_count (App, default_provider) > 0) {
-        WindowControl.smart_focus (App, event_time);
+        WindowControl.smart_focus (App, event_time, Helpers.bring_to_current_workspace (default_provider));
         return AnimationType.DARKEN;
       }
 
@@ -494,6 +494,7 @@ namespace Plank {
           items.add (new Gtk.SeparatorMenuItem ());
 
         bool cw_only = Helpers.current_workspace_only (default_provider);
+        bool bring_to_current = Helpers.bring_to_current_workspace (default_provider);
         unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
 
         foreach (var window in windows) {
@@ -573,7 +574,7 @@ namespace Plank {
             }
 
             if (!window.is_active ()) {
-              WindowControl.focus_window (window, event_time);
+              WindowControl.focus_window (window, event_time, bring_to_current);
             }
           });
 
