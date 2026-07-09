@@ -21,7 +21,7 @@ using Canberra;
 namespace Docky {
   [DBus(name = "org.gnome.Nautilus.FileOperations")]
   private interface NautilusFileOperations : Object {
-    public abstract void empty_trash() throws DBusError, IOError;
+    public abstract async void empty_trash() throws DBusError, IOError;
   }
 
   public class TrashDockItem : DockletItem {
@@ -285,21 +285,26 @@ namespace Docky {
                                          | XdgSessionDesktop.UNITY
                                          | XdgSessionDesktop.UBUNTU
           )) {
-        try {
-          var nautilus = Bus.get_proxy_sync<NautilusFileOperations> (
-                                                                     BusType.SESSION,
-                                                                     "org.gnome.Nautilus",
-                                                                     "/org/gnome/Nautilus"
-          );
-          nautilus.empty_trash();
-          play_event_sound("trash-empty");
-          return;
-        } catch (GLib.Error e) {
-          warning("Could not empty trash via Nautilus: %s", e.message);
-        }
+        empty_trash_via_nautilus.begin();
+        return;
       }
 
       empty_trash_internal();
+    }
+
+    private async void empty_trash_via_nautilus() {
+      try {
+        var nautilus = yield Bus.get_proxy<NautilusFileOperations> (
+                                                                    BusType.SESSION,
+                                                                    "org.gnome.Nautilus",
+                                                                    "/org/gnome/Nautilus"
+        );
+        yield nautilus.empty_trash();
+        play_event_sound("trash-empty");
+      } catch (GLib.Error e) {
+        warning("Could not empty trash via Nautilus: %s", e.message);
+        empty_trash_internal();
+      }
     }
 
     private void empty_trash_internal() {
