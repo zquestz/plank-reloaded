@@ -44,11 +44,11 @@ namespace Docky {
 
     construct
     {
+      notify["Container"].connect(handle_container_changed);
+
       update_icon();
 
-      ((ApplicationsPreferences) Prefs).notify["CustomIcon"].connect(() => {
-        update_icon();
-      });
+      ((ApplicationsPreferences) Prefs).notify["CustomIcon"].connect(handle_custom_icon_changed);
 
       Text = _("Applications");
 
@@ -79,24 +79,52 @@ namespace Docky {
       }
     }
 
+    private void handle_custom_icon_changed() {
+      update_icon();
+    }
+
     ~ApplicationsDockItem() {
-      if (update_timer_id > 0) {
-        Source.remove(update_timer_id);
-        update_timer_id = 0;
+      remove_update_timer();
+    }
+
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
       }
+    }
+
+    // Teardown must not rely solely on the destructor: the prefs handler and
+    // the menu attached to the dock window keep this item alive and
+    // unreachable for finalization, so it runs when removed from the dock
+    private void removed_from_dock() {
+      remove_update_timer();
+
+      ((ApplicationsPreferences) Prefs).notify["CustomIcon"].disconnect(handle_custom_icon_changed);
 
       if (menu_tree != null) {
         menu_tree.changed.disconnect(on_apps_menu_changed);
         menu_tree = null;
       }
 
+      icon_theme.changed.disconnect(on_apps_menu_changed);
+
+      destroy_menu();
+    }
+
+    private void remove_update_timer() {
+      if (update_timer_id > 0) {
+        Source.remove(update_timer_id);
+        update_timer_id = 0;
+      }
+    }
+
+    private void destroy_menu() {
       if (menu_widget != null) {
         menu_widget.show.disconnect(on_menu_show);
         menu_widget.hide.disconnect(on_menu_hide);
+        menu_widget.destroy();
         menu_widget = null;
       }
-
-      icon_theme.changed.disconnect(on_apps_menu_changed);
     }
 
     private void on_apps_menu_changed() {
