@@ -40,6 +40,8 @@ namespace Docky {
       get { return (ClippyPreferences) Prefs; }
     }
 
+    private Gtk.Menu? clip_menu = null;
+
     public ClippyDockItem.with_dockitem_file(GLib.File file)
     {
       GLib.Object(Prefs: new ClippyPreferences.with_file(file));
@@ -71,6 +73,14 @@ namespace Docky {
     private void removed_from_dock() {
       disconnect_clipboards();
       remove_debounce_timer();
+      destroy_menu();
+    }
+
+    private void destroy_menu() {
+      if (clip_menu != null) {
+        clip_menu.destroy();
+        clip_menu = null;
+      }
     }
 
     private void remove_debounce_timer() {
@@ -280,19 +290,23 @@ namespace Docky {
           return AnimationType.NONE;
         }
 
-        var menu = new Gtk.Menu();
-        menu.show.connect(on_menu_show);
-        menu.hide.connect(on_menu_hide);
-        menu.attach_to_widget(controller.window, null);
+        // Reuse a single menu slot; the previous menu (and everything its
+        // item closures pin) is destroyed here instead of leaking per click
+        destroy_menu();
+
+        clip_menu = new Gtk.Menu();
+        clip_menu.show.connect(on_menu_show);
+        clip_menu.hide.connect(on_menu_hide);
+        clip_menu.attach_to_widget(controller.window, null);
 
         foreach (var item in get_clipboard_menu_items()) {
-          menu.append(item);
+          clip_menu.append(item);
         }
 
-        menu.show_all();
+        clip_menu.show_all();
 
         Gtk.Requisition requisition;
-        menu.get_preferred_size(null, out requisition);
+        clip_menu.get_preferred_size(null, out requisition);
 
         int x, y;
         controller.position_manager.get_menu_position(this, requisition, out x, out y);
@@ -323,7 +337,7 @@ namespace Docky {
           break;
         }
 
-        menu.popup_at_rect(
+        clip_menu.popup_at_rect(
                            controller.window.get_screen().get_root_window(),
                            Gdk.Rectangle() {
           x = x,
