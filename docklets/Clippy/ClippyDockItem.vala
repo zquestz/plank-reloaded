@@ -33,7 +33,8 @@ namespace Docky {
     private Gee.ArrayList<ClippyClipboardItem> clips;
     private ulong primary_handler_id = 0U;
     private ulong regular_handler_id = 0U;
-    private uint debounce_timeout_id = 0;
+    private uint regular_debounce_id = 0;
+    private uint primary_debounce_id = 0;
     private const uint DEBOUNCE_DELAY = 500;
     private const string PASSWORD_MANAGER_HINT = "x-kde-passwordManagerHint";
 
@@ -59,7 +60,7 @@ namespace Docky {
     }
 
     ~ClippyDockItem() {
-      remove_debounce_timer();
+      remove_debounce_timers();
     }
 
     private void handle_container_changed() {
@@ -73,7 +74,7 @@ namespace Docky {
     // runs when the item is removed from its dock
     private void removed_from_dock() {
       disconnect_clipboards();
-      remove_debounce_timer();
+      remove_debounce_timers();
       destroy_menu();
     }
 
@@ -84,10 +85,15 @@ namespace Docky {
       }
     }
 
-    private void remove_debounce_timer() {
-      if (debounce_timeout_id > 0) {
-        GLib.Source.remove(debounce_timeout_id);
-        debounce_timeout_id = 0;
+    private void remove_debounce_timers() {
+      if (regular_debounce_id > 0) {
+        GLib.Source.remove(regular_debounce_id);
+        regular_debounce_id = 0;
+      }
+
+      if (primary_debounce_id > 0) {
+        GLib.Source.remove(primary_debounce_id);
+        primary_debounce_id = 0;
       }
     }
 
@@ -154,16 +160,29 @@ namespace Docky {
     }
 
     private void request_clipboard_content(Gtk.Clipboard source_clipboard) {
-      if (debounce_timeout_id > 0) {
-        GLib.Source.remove(debounce_timeout_id);
-        debounce_timeout_id = 0;
-      }
+      // One debounce per clipboard: activity on one selection must not
+      // cancel a pending capture from the other
+      if (source_clipboard == regular_clipboard) {
+        if (regular_debounce_id > 0) {
+          GLib.Source.remove(regular_debounce_id);
+        }
 
-      debounce_timeout_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
-        debounce_timeout_id = 0;
-        source_clipboard.request_targets(handle_targets_result);
-        return false;
-      });
+        regular_debounce_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
+          regular_debounce_id = 0;
+          source_clipboard.request_targets(handle_targets_result);
+          return false;
+        });
+      } else {
+        if (primary_debounce_id > 0) {
+          GLib.Source.remove(primary_debounce_id);
+        }
+
+        primary_debounce_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
+          primary_debounce_id = 0;
+          source_clipboard.request_targets(handle_targets_result);
+          return false;
+        });
+      }
     }
 
     private void handle_targets_result(Gtk.Clipboard cb, Gdk.Atom[]? atoms) {
