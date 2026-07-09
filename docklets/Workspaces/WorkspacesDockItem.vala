@@ -23,6 +23,7 @@ namespace Docky {
     private ulong live_previews_handler_id = 0;
     private ulong prefs_handler_id = 0;
     private ulong theme_handler_id = 0UL;
+    private DockPreferences? dock_prefs = null;
     private uint setup_timer_id = 0;
     private uint redraw_timeout_id = 0;
     private Gee.HashMap<Wnck.Window, Gee.ArrayList<ulong>> window_signals =
@@ -52,20 +53,11 @@ namespace Docky {
 
       setup_workspace_info ();
 
-      invert_color_handler_id = workspaces_prefs.notify["InvertColor"].connect (() => {
-        update_cache ();
-      });
+      invert_color_handler_id = workspaces_prefs.notify["InvertColor"].connect (handle_invert_color_changed);
 
       connect_screen_signals ();
 
-      live_previews_handler_id = workspaces_prefs.notify["LivePreviews"].connect (() => {
-        if (workspaces_prefs.LivePreviews) {
-          register_window_tracking (null);
-        } else {
-          unregister_all_window_tracking ();
-        }
-        queue_redraw ();
-      });
+      live_previews_handler_id = workspaces_prefs.notify["LivePreviews"].connect (handle_live_previews_changed);
 
       register_window_tracking (null);
 
@@ -90,16 +82,10 @@ namespace Docky {
     private void setup_theme_signals () {
       var dock = get_dock ();
       if (dock != null) {
-        prefs_handler_id = dock.prefs.notify.connect ((s, p) => {
-          if (p.name == "Theme") {
-            update_cache ();
-          }
-        });
+        dock_prefs = dock.prefs;
+        prefs_handler_id = dock_prefs.notify.connect (handle_dock_prefs_changed);
 
-        theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (
-        (s, p) => {
-          update_cache ();
-        });
+        theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (handle_gtk_theme_changed);
 
         update_cache ();
       } else {
@@ -108,10 +94,11 @@ namespace Docky {
     }
 
     ~WorkspacesDockItem () {
-      if (setup_timer_id > 0) {
-        Source.remove (setup_timer_id);
-        setup_timer_id = 0;
-      }
+      remove_timers ();
+    }
+
+    protected override void removed_from_dock () {
+      remove_timers ();
 
       if (invert_color_handler_id > 0) {
         workspaces_prefs.disconnect (invert_color_handler_id);
@@ -126,6 +113,13 @@ namespace Docky {
       disconnect_screen_signals ();
       disconnect_theme_signals ();
       unregister_all_window_tracking ();
+    }
+
+    private void remove_timers () {
+      if (setup_timer_id > 0) {
+        Source.remove (setup_timer_id);
+        setup_timer_id = 0;
+      }
 
       if (redraw_timeout_id > 0) {
         Source.remove (redraw_timeout_id);
@@ -144,18 +138,43 @@ namespace Docky {
     }
 
     private void disconnect_theme_signals () {
-      var dock = get_dock ();
-      if (dock != null) {
-        if (prefs_handler_id > 0) {
-          dock.prefs.disconnect (prefs_handler_id);
-          prefs_handler_id = 0;
-        }
-
-        if (theme_handler_id > 0UL) {
-          SignalHandler.disconnect (Gtk.Settings.get_default (), theme_handler_id);
-          theme_handler_id = 0UL;
-        }
+      if (dock_prefs != null && prefs_handler_id > 0) {
+        dock_prefs.disconnect (prefs_handler_id);
       }
+      prefs_handler_id = 0;
+      dock_prefs = null;
+
+      if (theme_handler_id > 0UL) {
+        SignalHandler.disconnect (Gtk.Settings.get_default (), theme_handler_id);
+        theme_handler_id = 0UL;
+      }
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_invert_color_changed (GLib.Object o, ParamSpec p) {
+      update_cache ();
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_live_previews_changed (GLib.Object o, ParamSpec p) {
+      if (workspaces_prefs.LivePreviews) {
+        register_window_tracking (null);
+      } else {
+        unregister_all_window_tracking ();
+      }
+      queue_redraw ();
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_dock_prefs_changed (GLib.Object o, ParamSpec p) {
+      if (p.name == "Theme") {
+        update_cache ();
+      }
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_gtk_theme_changed (GLib.Object o, ParamSpec p) {
+      update_cache ();
     }
 
     private bool update_cache () {
@@ -245,6 +264,22 @@ namespace Docky {
       queue_redraw ();
     }
 
+    [CCode (instance_pos = -1)]
+    private void handle_window_geometry_changed (Wnck.Window window) {
+      queue_redraw ();
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_window_state_changed (Wnck.Window window, Wnck.WindowState changed_mask, Wnck.WindowState new_state) {
+      Wnck.WindowState interesting_states = Wnck.WindowState.MINIMIZED
+        | Wnck.WindowState.MAXIMIZED_HORIZONTALLY
+        | Wnck.WindowState.MAXIMIZED_VERTICALLY;
+
+      if ((changed_mask & interesting_states) != 0) {
+        queue_redraw ();
+      }
+    }
+
     private void register_window_tracking (Wnck.Window? new_window) {
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
       if (!workspaces_prefs.LivePreviews) {
@@ -260,20 +295,11 @@ namespace Docky {
           }
 
           // Connect to geometry changes
-          ulong geom_handler_id = new_window.geometry_changed.connect (() => {
-            queue_redraw ();
-          });
+          ulong geom_handler_id = new_window.geometry_changed.connect (handle_window_geometry_changed);
           window_signals[new_window].add (geom_handler_id);
 
           // Connect to state changes
-          ulong state_handler_id = new_window.state_changed.connect ((changed_mask, new_state) => {
-            Wnck.WindowState interesting_states = Wnck.WindowState.MINIMIZED
-              | Wnck.WindowState.MAXIMIZED_HORIZONTALLY
-              | Wnck.WindowState.MAXIMIZED_VERTICALLY;
-            if ((changed_mask & interesting_states) != 0) {
-              queue_redraw ();
-            }
-          });
+          ulong state_handler_id = new_window.state_changed.connect (handle_window_state_changed);
           window_signals[new_window].add (state_handler_id);
         }
         return;
