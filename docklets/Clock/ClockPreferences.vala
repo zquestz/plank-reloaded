@@ -37,6 +37,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       ShowMilitary = false;
       ShowDigital = false;
       ShowDate = false;

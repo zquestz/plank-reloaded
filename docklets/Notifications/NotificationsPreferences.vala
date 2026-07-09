@@ -29,6 +29,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       EnableExpiry = false;
       ShowCount = true;
       ShowTransient = false;

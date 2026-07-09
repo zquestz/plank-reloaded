@@ -43,6 +43,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       InvertColor = false;
       Style = SeparatorStyle.LINE;
       CustomIcon = "";

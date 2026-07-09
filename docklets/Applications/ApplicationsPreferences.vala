@@ -27,6 +27,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       LargeIcons = false;
       CustomIcon = "";
     }

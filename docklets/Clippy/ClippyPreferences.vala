@@ -40,6 +40,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       MaxEntries = 15;
       TrackMouseSelections = false;
       TrackImages = true;

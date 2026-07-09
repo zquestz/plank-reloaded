@@ -30,6 +30,7 @@ namespace Docky {
     }
 
     protected override void reset_properties () {
+      base.reset_properties ();
       BatteryDeviceName = DEFAULT_BATTERY_DEVICE_NAME;
     }
   }

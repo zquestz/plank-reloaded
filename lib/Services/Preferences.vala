@@ -351,7 +351,7 @@ namespace Plank {
 
           if (!file.has_group (group_name)) {
             // Accept and handle old preferences files
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < TRANSITION_MAP.length[0]; i++)
               if (TRANSITION_MAP[i, 1] == group_name) {
                 group_name = TRANSITION_MAP[i, 0];
                 missing_keys = true;
@@ -440,7 +440,10 @@ namespace Plank {
       } catch (Error e) {
         warning ("Unable to load preferences from file '%s'", backing_file_path);
         debug (e.message);
-        deleted ();
+        // Only give up when the file is really gone; a failed parse of an
+        // in-progress external write keeps the current values instead
+        if (!backing_file.query_exists ())
+          deleted ();
       }
 
       thaw_notify ();

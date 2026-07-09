@@ -23,7 +23,7 @@
 	</enum>
 
 
-	<schema id="net.launchpad.plank" path="/net/launchpad/plank/" gettext-domain="@GETTEXT_PACKAGE@">
+	<schema id="net.launchpad.plank" path="/net/launchpad/plank/" gettext-domain="plank-reloaded">
 		<child name="docks" schema="net.launchpad.plank.dock.settings"/>
 
 		<key name="enabled-docks" type="as">
@@ -33,7 +33,7 @@
 		</key>
 	</schema>
 
-	<schema id="net.launchpad.plank.dock.settings" gettext-domain="@GETTEXT_PACKAGE@">
+	<schema id="net.launchpad.plank.dock.settings" gettext-domain="plank-reloaded">
 		<key name="alignment" enum='GtkAlignType'>
 			<default>'center'</default>
 			<summary>The alignment for the dock along the monitor's edge</summary>

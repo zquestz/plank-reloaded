@@ -85,5 +85,4 @@ tests/tests
 data/plank.appdata.xml
 data/gschemas.compiled
 data/net.launchpad.plank.gschema.valid
-data/net.launchpad.plank.gschema.xml
 data/plank.desktop

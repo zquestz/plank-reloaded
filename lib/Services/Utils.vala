@@ -32,9 +32,6 @@ namespace Plank {
    * @return a new GLib.Settings object
    */
   public static GLib.Settings create_settings (string schema_id, string? path = null) {
-    // Allow running uninstalled from build directory during development
-    Environment.set_variable ("GSETTINGS_SCHEMA_DIR", Environment.get_current_dir () + "/data", false);
-
     var schema = GLib.SettingsSchemaSource.get_default ().lookup (schema_id, true);
     if (schema == null)
       error ("GSettingsSchema '%s' not found", schema_id);

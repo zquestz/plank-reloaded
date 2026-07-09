@@ -50,9 +50,10 @@ namespace Plank {
       debug ("Bind '%s' to '%s'", class_type_name, settings.path);
 
       (unowned ParamSpec)[] properties = get_class ().list_properties ();
+      var keys = settings.settings_schema.list_keys ();
 
       // Bind available gsettings-keys to their class-properties
-      foreach (unowned string key in settings.settings_schema.list_keys ()) {
+      foreach (unowned string key in keys) {
         // Not taking a references of matched ParamSpec results in undefined behaviour
         ParamSpec? property = null;
         foreach (unowned ParamSpec p in properties)
@@ -76,6 +77,31 @@ namespace Plank {
 
         verify (name);
       }
+
+      // A property whose nick matches no schema-key would silently never persist
+      foreach (unowned ParamSpec p in properties) {
+        unowned string name = p.get_name ();
+        if (name == "settings" || name == "bind-flags")
+          continue;
+        if (!(p.get_nick () in keys))
+          warning ("No key with nick '%s' for property '%s.%s' in schema '%s'", p.get_nick (), class_type_name, name, settings.settings_schema.get_id ());
+      }
+
+      // Bindings are already in place, so the property is up to date when this runs
+      settings.changed.connect (handle_setting_changed);
+    }
+
+    ~Settings () {
+      settings.changed.disconnect (handle_setting_changed);
+    }
+
+    void handle_setting_changed (string key) {
+      (unowned ParamSpec)[] properties = get_class ().list_properties ();
+      foreach (unowned ParamSpec p in properties)
+        if (p.get_nick () == key) {
+          verify (p.get_name ());
+          break;
+        }
     }
 
     /**

@@ -7,16 +7,13 @@ plank_appdata = i18n.merge_file(
   install_dir: join_paths(data_dir, 'metainfo'),
 )
 
-plank_gschema = configure_file(
-  input: 'net.launchpad.plank.gschema.xml.in',
-  output: 'net.launchpad.plank.gschema.xml',
-  configuration: customconf,
-  install: true,
+install_data(
+  'net.launchpad.plank.gschema.xml',
   install_dir: join_paths(data_dir, 'glib-2.0', 'schemas'),
 )
 
 plank_gschema_compile = gnome.compile_schemas(
-  depend_files: plank_gschema,
+  depend_files: files('net.launchpad.plank.gschema.xml'),
 )
 
 i18n.merge_file(

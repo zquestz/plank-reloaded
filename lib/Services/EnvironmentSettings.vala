@@ -19,7 +19,7 @@
 
 namespace Plank {
   /**
-   * Summons settings of the currently running destop-session to use for improving
+   * Summons settings of the currently running desktop-session to use for improving
    * integration like appearance and behaviour
    */
   internal class EnvironmentSettings : Object {
@@ -39,7 +39,7 @@ namespace Plank {
     [Description (nick = "show-notifications")]
     public bool ShowNotifications { get; private set; default = true; }
 
-    DesktopNofications? notifications;
+    DesktopNotifications? notifications;
 
     EnvironmentSettings () {
       Object ();
@@ -75,11 +75,11 @@ namespace Plank {
     }
   }
 
-  interface DesktopNofications : Object {
+  interface DesktopNotifications : Object {
     public abstract bool ShowNotifications { get; set; }
   }
 
-  class PantheonDesktopNotifications : Plank.Settings, DesktopNofications {
+  class PantheonDesktopNotifications : Plank.Settings, DesktopNotifications {
     static PantheonDesktopNotifications? instance = null;
 
     public static unowned PantheonDesktopNotifications ? try_get_instance () {
@@ -101,7 +101,7 @@ namespace Plank {
     }
   }
 
-  class GnomeDesktopNotifications : Plank.Settings, DesktopNofications {
+  class GnomeDesktopNotifications : Plank.Settings, DesktopNotifications {
     static GnomeDesktopNotifications? instance = null;
 
     public static unowned GnomeDesktopNotifications ? try_get_instance () {

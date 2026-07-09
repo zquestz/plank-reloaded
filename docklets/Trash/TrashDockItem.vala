@@ -263,26 +263,16 @@ namespace Docky {
       show_empty_trash_dialog();
     }
 
-    private static GLib.Settings? create_settings(string schema_id, string? path = null) {
-      var schema_source = GLib.SettingsSchemaSource.get_default();
-      var schema = schema_source.lookup(schema_id, true);
-      if (schema == null) {
-        warning("GSettingsSchema '%s' not found", schema_id);
-        return null;
-      }
-      return new GLib.Settings.full(schema, null, path);
-    }
-
     private bool confirm_trash_delete() {
       if (environment_is_session_desktop(XdgSessionDesktop.CINNAMON)) {
-        var settings = create_settings(NEMO_SCHEMA, NEMO_PATH);
+        var settings = try_create_settings(NEMO_SCHEMA, NEMO_PATH);
         if (settings != null) {
           return settings.get_boolean("confirm-trash");
         }
       }
 
       if (environment_is_session_desktop(XdgSessionDesktop.MATE)) {
-        var settings = create_settings(CAJA_SCHEMA, CAJA_PATH);
+        var settings = try_create_settings(CAJA_SCHEMA, CAJA_PATH);
         if (settings != null) {
           return settings.get_boolean("confirm-trash");
         }
