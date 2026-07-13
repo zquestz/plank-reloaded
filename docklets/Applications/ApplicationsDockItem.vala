@@ -169,11 +169,15 @@ namespace Docky {
       load_in_progress = true;
       reload_requested = false;
 
+      // Hold a strong local ref so the worker keeps the tree alive even if the
+      // item is removed (menu_tree nulled) while load_sync runs on the pool thread
+      GMenu.Tree tree = menu_tree;
+
       try {
         // Load menu in background thread to avoid blocking UI
         yield Worker.get_default().add_task_with_result<void*>(() => {
           try {
-            menu_tree.load_sync();
+            tree.load_sync();
             apps_loaded = true;
           } catch (Error e) {
             warning("Failed to load applications (%s)", e.message);
@@ -187,6 +191,11 @@ namespace Docky {
       }
 
       load_in_progress = false;
+
+      // The item may have been removed from the dock during the load
+      if (menu_tree == null) {
+        return;
+      }
 
       // Build even after a failed load so the placeholder item shows up
       // instead of clicks being silently dead
