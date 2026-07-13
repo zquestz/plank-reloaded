@@ -506,6 +506,12 @@ namespace Docky {
         }
       }
 
+      // A valid menu can still yield no visible categories (all NoDisplay, or
+      // only top-level entries); show the placeholder so clicks are not dead
+      if (items.size == 0) {
+        items.add(create_applications_menu_item(NO_APPS_MESSAGE, null, false));
+      }
+
       return items;
     }
 
