@@ -58,6 +58,8 @@ namespace Docky {
       trash = environment_is_session_desktop(XdgSessionDesktop.KDE) ? File.new_for_uri(KDE_TRASH_URI) : File.new_for_uri(TRASH_URI);
       trash_monitors = new Gee.ArrayList<FileMonitor> ();
 
+      notify["Container"].connect(handle_container_changed);
+
       Icon = "user-trash";
       setup_monitor();
       update();
@@ -65,7 +67,22 @@ namespace Docky {
 
     ~TrashDockItem() {
       cleanup_monitor();
+      remove_update_timer();
+    }
 
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    // Stop watching and pending updates as soon as the item leaves its dock
+    private void removed_from_dock() {
+      cleanup_monitor();
+      remove_update_timer();
+    }
+
+    private void remove_update_timer() {
       if (update_timer_id > 0) {
         GLib.Source.remove(update_timer_id);
         update_timer_id = 0;
