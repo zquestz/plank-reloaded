@@ -40,7 +40,7 @@ namespace Docky {
     private const string UPOWER_PATH = "/org/freedesktop/UPower";
     private const string ICON_MISSING = "battery-missing";
     private const string NO_BATTERY_TEXT = _("No battery");
-    private const uint UPDATE_INTERVAL = 20 * 1000; // 20 seconds
+    private const uint UPDATE_INTERVAL = 20; // seconds
 
     private IUPower? upower;
     private IUPowerDevice? power_device;
@@ -79,10 +79,25 @@ namespace Docky {
       Icon = ICON_MISSING;
       Text = NO_BATTERY_TEXT;
 
+      notify["Container"].connect(handle_container_changed);
+
       initialize_upower();
     }
 
     ~BatteryUPowerDockItem() {
+      cleanup();
+    }
+
+    private void handle_container_changed() {
+      if (Container == null) {
+        removed_from_dock();
+      }
+    }
+
+    // Teardown must not rely solely on the destructor: the repeating timer
+    // holds a reference to this item, so it must be removed when the item
+    // leaves its dock or the item can never finalize
+    private void removed_from_dock() {
       cleanup();
     }
 
@@ -96,7 +111,7 @@ namespace Docky {
         power_device = get_display_device();
 
         update();
-        timer_id = Gdk.threads_add_timeout(UPDATE_INTERVAL, update);
+        timer_id = Timeout.add_seconds(UPDATE_INTERVAL, update);
       } catch (Error e) {
         warning("Cannot initialize battery docklet: %s", e.message);
         cleanup();
