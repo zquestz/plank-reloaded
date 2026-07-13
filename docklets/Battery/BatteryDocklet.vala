@@ -35,9 +35,7 @@ namespace Docky {
     public bool is_supported () { return true; }
 
     public Plank.DockElement make_element (string launcher, GLib.File file) {
-      return (BatteryUPowerDockItem.is_supported)
-                ? (Plank.DockElement) new BatteryUPowerDockItem.with_dockitem_file (file)
-                : (Plank.DockElement) new BatteryDockItem.with_dockitem_file (file);
+      return new BatteryUPowerDockItem.with_dockitem_file (file);
     }
   }
 }

@@ -23,7 +23,7 @@ namespace Docky {
     public abstract signal void device_added(GLib.ObjectPath obj);
     public abstract signal void device_removed(GLib.ObjectPath obj);
 
-    public abstract GLib.ObjectPath get_display_device() throws DBusError, IOError;
+    public abstract async GLib.ObjectPath get_display_device() throws DBusError, IOError;
   }
 
   [DBus(name = "org.freedesktop.UPower.Device")]
@@ -44,30 +44,11 @@ namespace Docky {
 
     private IUPower? upower;
     private IUPowerDevice? power_device;
-    private uint timer_id;
-
-    public static bool is_supported {
-      get {
-        try {
-          var connection = Bus.get_sync(BusType.SYSTEM);
-          // Ping the daemon (activating it if needed); a name-syntax check
-          // cannot tell whether upowerd actually exists on this system
-          connection.call_sync(
-                               UPOWER_NAME,
-                               UPOWER_PATH,
-                               "org.freedesktop.DBus.Peer",
-                               "Ping",
-                               null,
-                               null,
-                               DBusCallFlags.NONE,
-                               2000);
-          return true;
-        } catch (Error e) {
-          debug("UPower not available, falling back to sysfs: %s", e.message);
-          return false;
-        }
-      }
-    }
+    private Cancellable? dbus_cancellable = null;
+    private uint timer_id = 0;
+    private uint fallback_idle_id = 0;
+    private bool fallback_pending = false;
+    private bool removed = false;
 
     public BatteryUPowerDockItem.with_dockitem_file(GLib.File file)
     {
@@ -81,7 +62,7 @@ namespace Docky {
 
       notify["Container"].connect(handle_container_changed);
 
-      initialize_upower();
+      initialize_upower.begin();
     }
 
     ~BatteryUPowerDockItem() {
@@ -91,6 +72,8 @@ namespace Docky {
     private void handle_container_changed() {
       if (Container == null) {
         removed_from_dock();
+      } else if (fallback_pending) {
+        schedule_sysfs_fallback();
       }
     }
 
@@ -98,30 +81,60 @@ namespace Docky {
     // holds a reference to this item, so it must be removed when the item
     // leaves its dock or the item can never finalize
     private void removed_from_dock() {
+      removed = true;
       cleanup();
     }
 
-    private void initialize_upower() {
+    private async void initialize_upower() {
+      var cancellable = new Cancellable();
+      dbus_cancellable = cancellable;
+
       try {
-        upower = Bus.get_proxy_sync(BusType.SYSTEM, UPOWER_NAME, UPOWER_PATH);
+        var upower_proxy = yield Bus.get_proxy<IUPower> (
+                                                        BusType.SYSTEM,
+                                                        UPOWER_NAME,
+                                                        UPOWER_PATH,
+                                                        DBusProxyFlags.NONE,
+                                                        cancellable
+        );
+        var device = yield get_display_device(upower_proxy, cancellable);
+
+        if (removed || cancellable.is_cancelled()) {
+          return;
+        }
+
+        upower = upower_proxy;
+        power_device = device;
 
         upower.device_added.connect(on_device_changed);
         upower.device_removed.connect(on_device_changed);
 
-        power_device = get_display_device();
-
         update();
         timer_id = Timeout.add_seconds(UPDATE_INTERVAL, update);
       } catch (Error e) {
-        warning("Cannot initialize battery docklet: %s", e.message);
-        cleanup();
+        if (!removed && !(e is IOError.CANCELLED)) {
+          debug("UPower not available, falling back to sysfs: %s", e.message);
+          schedule_sysfs_fallback();
+        }
+      } finally {
+        if (dbus_cancellable == cancellable) {
+          dbus_cancellable = null;
+        }
       }
     }
 
     private void cleanup() {
+      dbus_cancellable?.cancel();
+      dbus_cancellable = null;
+
       if (timer_id > 0U) {
         GLib.Source.remove(timer_id);
         timer_id = 0U;
+      }
+
+      if (fallback_idle_id > 0U) {
+        GLib.Source.remove(fallback_idle_id);
+        fallback_idle_id = 0U;
       }
 
       if (upower != null) {
@@ -134,21 +147,95 @@ namespace Docky {
     }
 
     private void on_device_changed(GLib.ObjectPath obj) {
-      power_device = get_display_device();
-      update();
+      refresh_display_device.begin();
     }
 
-    private IUPowerDevice ? get_display_device() {
+    private async void refresh_display_device() {
+      if (removed || upower == null) {
+        return;
+      }
+
+      dbus_cancellable?.cancel();
+      var cancellable = new Cancellable();
+      dbus_cancellable = cancellable;
+      IUPower upower_proxy = upower;
+
       try {
-        var path = upower.get_display_device();
-        return Bus.get_proxy_sync(BusType.SYSTEM, UPOWER_NAME, path);
+        var device = yield get_display_device(upower_proxy, cancellable);
+
+        if (removed || cancellable.is_cancelled()) {
+          return;
+        }
+
+        power_device = device;
+        update();
       } catch (Error e) {
-        warning("Error getting display device: %s", e.message);
-        return null;
+        if (!removed && !(e is IOError.CANCELLED)) {
+          warning("Error getting display device: %s", e.message);
+          power_device = null;
+          update();
+        }
+      } finally {
+        if (dbus_cancellable == cancellable) {
+          dbus_cancellable = null;
+        }
       }
     }
 
+    private async IUPowerDevice? get_display_device(IUPower upower_proxy,
+                                                     Cancellable cancellable) throws Error {
+      var path = yield upower_proxy.get_display_device();
+      if (cancellable.is_cancelled()) {
+        return null;
+      }
+
+      return yield Bus.get_proxy<IUPowerDevice> (
+                                                  BusType.SYSTEM,
+                                                  UPOWER_NAME,
+                                                  path,
+                                                  DBusProxyFlags.NONE,
+                                                  cancellable
+      );
+    }
+
+    private void schedule_sysfs_fallback() {
+      if (removed) {
+        return;
+      }
+
+      fallback_pending = true;
+      if (fallback_idle_id > 0U) {
+        return;
+      }
+
+      // Replacement must wait until the item has fully joined its provider
+      fallback_idle_id = Idle.add(() => {
+        fallback_idle_id = 0U;
+
+        if (removed) {
+          return false;
+        }
+
+        var container = Container;
+        var backing_file = Prefs.get_backing_file();
+        if (container == null || backing_file == null) {
+          return false;
+        }
+
+        var replacement = new BatteryDockItem.with_dockitem_file(backing_file);
+        if (container.replace(replacement, this)) {
+          fallback_pending = false;
+        }
+
+        return false;
+      });
+    }
+
     private bool update() {
+      if (removed) {
+        return false;
+      }
+
       // Keep the poll alive while the device is gone (e.g. upowerd restart);
       // on_device_changed re-resolves it when it comes back
       if (power_device == null) {
