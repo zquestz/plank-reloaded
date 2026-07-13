@@ -261,16 +261,16 @@ namespace Docky {
       }
     }
 
-    private void copy_item_at(int index) {
-      if (index < 0 || index >= clips.size) {
+    private void copy_item(ClippyClipboardItem clip) {
+      if (!clips.contains(clip)) {
         return;
       }
 
-      var item = clips.get(index);
-      item.copy_to_clipboard(regular_clipboard);
+      clip.copy_to_clipboard(regular_clipboard);
 
-      clips.remove_at(index);
-      clips.add(item);
+      // Move to the front by identity
+      clips.remove(clip);
+      clips.add(clip);
 
       update_display();
     }
@@ -347,13 +347,14 @@ namespace Docky {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       for (int i = clips.size - 1; i >= 0; i--) {
-        var index = i;
-        var clip = clips.get(index);
+        var clip = clips.get(i);
 
         var item = clip.create_menu_item();
 
+        // Capture the entry itself, not its index: the async capture pipeline
+        // can reorder or trim clips while this menu is open
         item.activate.connect(() => {
-          copy_item_at(index);
+          copy_item(clip);
         });
         items.add(item);
       }
