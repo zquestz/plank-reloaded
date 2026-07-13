@@ -46,6 +46,10 @@ namespace Docky {
     private uint update_timer_id = 0;
     private bool update_in_progress = false;
     private bool update_pending = false;
+    private bool removed = false;
+    private Cancellable? update_cancellable = null;
+    private Cancellable? nautilus_cancellable = null;
+    private Gtk.MessageDialog? empty_trash_dialog = null;
     private uint32 last_item_count = 0;
 
     public TrashDockItem.with_dockitem_file(GLib.File file)
@@ -66,6 +70,7 @@ namespace Docky {
     }
 
     ~TrashDockItem() {
+      stop_async_operations();
       cleanup_monitor();
       remove_update_timer();
     }
@@ -78,8 +83,26 @@ namespace Docky {
 
     // Stop watching and pending updates as soon as the item leaves its dock
     private void removed_from_dock() {
+      stop_async_operations();
       cleanup_monitor();
       remove_update_timer();
+    }
+
+    private void stop_async_operations() {
+      removed = true;
+      update_pending = false;
+
+      update_cancellable?.cancel();
+      update_cancellable = null;
+
+      nautilus_cancellable?.cancel();
+      nautilus_cancellable = null;
+
+      if (empty_trash_dialog != null) {
+        var dialog = empty_trash_dialog;
+        empty_trash_dialog = null;
+        dialog.destroy();
+      }
     }
 
     private void remove_update_timer() {
@@ -128,6 +151,10 @@ namespace Docky {
     // Coalesce monitor-event bursts (a mass delete emits hundreds) into a
     // single update shortly after the last event
     private void schedule_update() {
+      if (removed) {
+        return;
+      }
+
       if (update_timer_id > 0) {
         GLib.Source.remove(update_timer_id);
       }
@@ -140,45 +167,70 @@ namespace Docky {
     }
 
     private void update() {
+      if (removed) {
+        return;
+      }
+
       do_update.begin();
     }
 
     private async void do_update() {
+      if (removed) {
+        return;
+      }
+
       if (update_in_progress) {
         update_pending = true;
         return;
       }
       update_in_progress = true;
 
+      var cancellable = new Cancellable();
+      update_cancellable = cancellable;
+
       uint32 item_count = 0;
       string? icon_name = null;
 
-      if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
-        item_count = yield get_trash_item_count_manual();
-        icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
-      } else {
-        try {
-          var info = yield trash.query_info_async(
-                                                  FileAttribute.TRASH_ITEM_COUNT + "," + FileAttribute.STANDARD_ICON,
-                                                  0,
-                                                  Priority.DEFAULT,
-                                                  null
-          );
-          item_count = info.get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
-          icon_name = DrawingService.get_icon_from_gicon(info.get_icon());
-        } catch (GLib.Error e) {
-          warning("Could not get item count from trash::item-count: %s", e.message);
-          item_count = yield get_trash_item_count_manual();
+      try {
+        if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
+          item_count = yield get_trash_item_count_manual(cancellable);
           icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
+        } else {
+          try {
+            var info = yield trash.query_info_async(
+                                                    FileAttribute.TRASH_ITEM_COUNT + "," + FileAttribute.STANDARD_ICON,
+                                                    0,
+                                                    Priority.DEFAULT,
+                                                    cancellable
+            );
+            item_count = info.get_attribute_uint32(FileAttribute.TRASH_ITEM_COUNT);
+            icon_name = DrawingService.get_icon_from_gicon(info.get_icon());
+          } catch (GLib.Error e) {
+            if (removed || e is IOError.CANCELLED) {
+              return;
+            }
+
+            warning("Could not get item count from trash::item-count: %s", e.message);
+            item_count = yield get_trash_item_count_manual(cancellable);
+            icon_name = item_count > 0 ? "user-trash-full" : "user-trash";
+          }
         }
+
+        if (removed || cancellable.is_cancelled()) {
+          return;
+        }
+
+        last_item_count = item_count;
+        update_text(item_count);
+        update_icon(icon_name);
+      } finally {
+        if (update_cancellable == cancellable) {
+          update_cancellable = null;
+        }
+        update_in_progress = false;
       }
 
-      last_item_count = item_count;
-      update_text(item_count);
-      update_icon(icon_name);
-
-      update_in_progress = false;
-      if (update_pending) {
+      if (!removed && update_pending) {
         update_pending = false;
         schedule_update();
       }
@@ -233,12 +285,16 @@ namespace Docky {
       return trash_dirs;
     }
 
-    private async uint32 get_trash_item_count_manual() {
+    private async uint32 get_trash_item_count_manual(Cancellable cancellable) {
       uint32 count = 0;
 
       var trash_dirs = get_trash_directories();
 
       foreach (var trash_dir in trash_dirs) {
+        if (cancellable.is_cancelled()) {
+          return count;
+        }
+
         try {
           var files_dir = trash_dir.get_child("files");
           if (!files_dir.query_exists()) {
@@ -249,19 +305,23 @@ namespace Docky {
                                                                     FileAttribute.STANDARD_NAME,
                                                                     FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
                                                                     Priority.DEFAULT,
-                                                                    null
+                                                                    cancellable
           );
 
           while (true) {
-            var infos = yield enumerator.next_files_async(100, Priority.DEFAULT, null);
+            var infos = yield enumerator.next_files_async(100, Priority.DEFAULT, cancellable);
             if (infos == null || infos.length() == 0) {
               break;
             }
             count += infos.length();
           }
 
-          yield enumerator.close_async(Priority.DEFAULT, null);
+          yield enumerator.close_async(Priority.DEFAULT, cancellable);
         } catch (GLib.Error e) {
+          if (e is IOError.CANCELLED) {
+            return count;
+          }
+
           warning("Could not enumerate trash directory %s: %s", trash_dir.get_path(), e.message);
         }
       }
@@ -299,6 +359,10 @@ namespace Docky {
     }
 
     private void empty_trash() {
+      if (removed) {
+        return;
+      }
+
       if (environment_is_session_desktop(
                                          XdgSessionDesktop.GNOME
                                          | XdgSessionDesktop.UNITY
@@ -312,21 +376,48 @@ namespace Docky {
     }
 
     private async void empty_trash_via_nautilus() {
+      var cancellable = new Cancellable();
+      nautilus_cancellable = cancellable;
+
       try {
         var nautilus = yield Bus.get_proxy<NautilusFileOperations> (
                                                                     BusType.SESSION,
                                                                     "org.gnome.Nautilus",
-                                                                    "/org/gnome/Nautilus"
+                                                                    "/org/gnome/Nautilus",
+                                                                    DBusProxyFlags.NONE,
+                                                                    cancellable
         );
+
+        if (removed || cancellable.is_cancelled()) {
+          return;
+        }
+
         yield nautilus.empty_trash();
+
+        if (removed || cancellable.is_cancelled()) {
+          return;
+        }
+
         play_event_sound("trash-empty");
       } catch (GLib.Error e) {
+        if (removed || e is IOError.CANCELLED) {
+          return;
+        }
+
         warning("Could not empty trash via Nautilus: %s", e.message);
         empty_trash_internal();
+      } finally {
+        if (nautilus_cancellable == cancellable) {
+          nautilus_cancellable = null;
+        }
       }
     }
 
     private void empty_trash_internal() {
+      if (removed) {
+        return;
+      }
+
       if (!confirm_trash_delete()) {
         perform_empty_trash();
         return;
@@ -354,6 +445,10 @@ namespace Docky {
     }
 
     private void show_empty_trash_dialog() {
+      if (removed || empty_trash_dialog != null) {
+        return;
+      }
+
       var dialog = new Gtk.MessageDialog(
                                          null,
                                          0,
@@ -362,6 +457,7 @@ namespace Docky {
                                          "%s",
                                          _("Empty all items from Trash?")
       );
+      empty_trash_dialog = dialog;
 
       dialog.secondary_text = _("All items in the Trash will be permanently deleted.");
       dialog.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL);
@@ -380,11 +476,20 @@ namespace Docky {
         }
         dialog.destroy();
       });
+      dialog.destroy.connect(() => {
+        if (empty_trash_dialog == dialog) {
+          empty_trash_dialog = null;
+        }
+      });
 
       dialog.show();
     }
 
     private void perform_empty_trash() {
+      if (removed) {
+        return;
+      }
+
       foreach (var monitor in trash_monitors) {
         monitor.changed.disconnect(trash_changed);
       }
@@ -397,6 +502,10 @@ namespace Docky {
         }
         return null;
       }, TaskPriority.HIGH, () => {
+        if (removed) {
+          return;
+        }
+
         foreach (var monitor in trash_monitors) {
           monitor.changed.connect(trash_changed);
         }
