@@ -35,6 +35,7 @@ namespace Docky {
     private ulong regular_handler_id = 0U;
     private uint regular_debounce_id = 0;
     private uint primary_debounce_id = 0;
+    private bool removed = false;
     private const uint DEBOUNCE_DELAY = 500;
     private const string PASSWORD_MANAGER_HINT = "x-kde-passwordManagerHint";
 
@@ -73,6 +74,11 @@ namespace Docky {
     // handlers keep this item alive and unreachable for finalization, so it
     // runs when the item is removed from its dock
     private void removed_from_dock() {
+      if (removed) {
+        return;
+      }
+
+      removed = true;
       disconnect_clipboards();
       remove_debounce_timers();
       destroy_menu();
@@ -160,6 +166,10 @@ namespace Docky {
     }
 
     private void request_clipboard_content(Gtk.Clipboard source_clipboard) {
+      if (removed) {
+        return;
+      }
+
       // One debounce per clipboard: activity on one selection must not
       // cancel a pending capture from the other
       if (source_clipboard == regular_clipboard) {
@@ -169,6 +179,10 @@ namespace Docky {
 
         regular_debounce_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
           regular_debounce_id = 0;
+          if (removed) {
+            return false;
+          }
+
           source_clipboard.request_targets(handle_targets_result);
           return false;
         });
@@ -179,6 +193,10 @@ namespace Docky {
 
         primary_debounce_id = GLib.Timeout.add(DEBOUNCE_DELAY, () => {
           primary_debounce_id = 0;
+          if (removed) {
+            return false;
+          }
+
           source_clipboard.request_targets(handle_targets_result);
           return false;
         });
@@ -186,6 +204,10 @@ namespace Docky {
     }
 
     private void handle_targets_result(Gtk.Clipboard cb, Gdk.Atom[]? atoms) {
+      if (removed) {
+        return;
+      }
+
       // Respect the password-manager convention: managers mark sensitive
       // selections with this target so clipboard tools skip them
       if (atoms != null) {
@@ -204,10 +226,18 @@ namespace Docky {
     }
 
     private void request_clipboard_text(Gtk.Clipboard source_clipboard) {
+      if (removed) {
+        return;
+      }
+
       source_clipboard.request_text(handle_text_result);
     }
 
     private void handle_text_result(Gtk.Clipboard cb, string? text) {
+      if (removed) {
+        return;
+      }
+
       if (text != null && text != "") {
         var item = new ClippyClipboardItem.with_text(text);
         process_clipboard_item(item);
@@ -215,6 +245,10 @@ namespace Docky {
     }
 
     private void handle_image_result(Gtk.Clipboard cb, Gdk.Pixbuf? pixbuf) {
+      if (removed) {
+        return;
+      }
+
       if (pixbuf != null && pixbuf.get_width() > 0 && pixbuf.get_height() > 0) {
         var item = new ClippyClipboardItem.with_image(pixbuf);
         process_clipboard_item(item);
