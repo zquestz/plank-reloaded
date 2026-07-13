@@ -2,6 +2,19 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.170 "Reloaded" (2026-07-12)
+
+- Add a per-dock option to bring activated applications to the current workspace
+- Make Trash counting and emptying asynchronous and improve KDE trash monitoring
+- Improve Battery UPower detection, recovery, teardown, and sysfs fallback
+- Improve Workspaces live previews and guard workspace switching edge cases
+- Improve Applications menu loading, error handling, and teardown
+- Improve Clippy image tracking, sensitive-content handling, and teardown
+- Cache Clock rendering and update it on minute boundaries
+- Harden Notifications parsing, memory use, timer synchronization, and teardown
+- Preserve third-party docklet ABI while fixing docklet removal lifecycle leaks
+- Add headless test coverage and ARM64 Debian, Ubuntu, and Fedora release builds
+
 ## 0.11.169 "Reloaded" (2026-06-27)
 
 - Only play Trash docklet event sounds when enabled in the desktop settings

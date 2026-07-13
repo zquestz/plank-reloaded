@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-27 11:21-1000\n"
+"POT-Creation-Date: 2026-07-12 18:09-1000\n"
 "PO-Revision-Date: 2025-11-13 04:30\n"
 "Last-Translator: \n"
 "Language-Team: Serbian (Cyrillic)\n"
@@ -50,19 +50,19 @@ msgstr ""
 "остаје библиотека која се може проширити за креирање других док програма са "
 "напреднијим могућностима."
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Dock with Matte theme"
 msgstr "Док са Matte темом"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Appearance Preferences"
 msgstr "Подешавања изгледа"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Behavior Preferences"
 msgstr "Подешавања понашања"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Docklets Preferences"
 msgstr "Подешавања доклета"
 
@@ -222,11 +222,22 @@ msgstr "Усидрени доклети:"
 msgid "Anchor Files:"
 msgstr "Усидрени фајлови:"
 
-#: data/ui/preferences.ui:769
+#: data/ui/preferences.ui:774
+#, fuzzy
+msgid "Bring to Workspace:"
+msgstr "Ограничи на радни простор:"
+
+#: data/ui/preferences.ui:791
+msgid ""
+"When activating a window located on another workspace, move it to the "
+"current workspace instead of switching to the window's workspace."
+msgstr ""
+
+#: data/ui/preferences.ui:801
 msgid "Behaviour"
 msgstr "Понашање"
 
-#: data/ui/preferences.ui:789
+#: data/ui/preferences.ui:821
 msgid "Docklets"
 msgstr "Справице"
 
@@ -244,13 +255,13 @@ msgid "Edit Menu"
 msgstr "Уреди мени"
 
 #: docklets/Applications/ApplicationsDockItem.vala:352
-#: docklets/Separator/SeparatorDockItem.vala:325
+#: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Изабери прилагођену икону"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:360
-#: docklets/Separator/SeparatorDockItem.vala:332
+#: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Врати на подразумевану икону"
 
@@ -259,27 +270,27 @@ msgid "Large Icons"
 msgstr "Велике иконе"
 
 #: docklets/Applications/ApplicationsDockItem.vala:383
-#: docklets/Separator/SeparatorDockItem.vala:258
+#: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Изабери прилагођену икону"
 
 #: docklets/Applications/ApplicationsDockItem.vala:386
-#: docklets/Separator/SeparatorDockItem.vala:261
+#: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Откажи"
 
 #: docklets/Applications/ApplicationsDockItem.vala:387
-#: docklets/Separator/SeparatorDockItem.vala:262
+#: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Изабери"
 
 #: docklets/Applications/ApplicationsDockItem.vala:405
-#: docklets/Separator/SeparatorDockItem.vala:280
+#: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Фајлови слика"
 
-#: docklets/Applications/ApplicationsDockItem.vala:518
-#: docklets/Applications/ApplicationsDockItem.vala:572
+#: docklets/Applications/ApplicationsDockItem.vala:524
+#: docklets/Applications/ApplicationsDockItem.vala:578
 msgid "Unknown"
 msgstr ""
 
@@ -292,15 +303,15 @@ msgstr "Једноставно покрените било коју од ваш�
 msgid "No battery"
 msgstr "Нема батерије"
 
-#: docklets/Battery/BatteryDockItem.vala:150
+#: docklets/Battery/BatteryDockItem.vala:199
 msgid "Batteries"
 msgstr "Батерије"
 
-#: docklets/Battery/BatteryDockItem.vala:193
+#: docklets/Battery/BatteryDockItem.vala:242
 msgid "No batteries found"
 msgstr "Батерије нису пронађене"
 
-#: docklets/Battery/BatteryDockItem.vala:200
+#: docklets/Battery/BatteryDockItem.vala:249
 msgid "Error finding batteries"
 msgstr "Грешка при проналажењу батерија"
 
@@ -336,9 +347,8 @@ msgstr "Омогући праћење клипборда"
 msgid "Maximum Entries"
 msgstr "Максималан број уноса"
 
-#: docklets/Clippy/ClippyDockItem.vala:192
-#: docklets/Clippy/ClippyClipboardItem.vala:153
-#: docklets/Clippy/ClippyClipboardItem.vala:249
+#: docklets/Clippy/ClippyDockItem.vala:291
+#: docklets/Clippy/ClippyClipboardItem.vala:158
 msgid "Image"
 msgstr "Слика"
 
@@ -350,15 +360,36 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Чува недавне уносе клипборда."
 
-#: docklets/Clock/ClockDockItem.vala:347
+#: docklets/Clippy/ClippyClipboardItem.vala:254
+#, fuzzy, c-format
+msgid "Image (%s)"
+msgstr "Фајлови слика"
+
+#. Translators: strftime format for the 24h tooltip, e.g. "Tue, Jul 08 14:05"
+#: docklets/Clock/ClockDockItem.vala:241
+msgid "%a, %b %d %H:%M"
+msgstr ""
+
+#. Translators: strftime format for the 12h tooltip, e.g. "Tue, Jul 08 02:05 PM"
+#: docklets/Clock/ClockDockItem.vala:245
+msgid "%a, %b %d %I:%M %p"
+msgstr ""
+
+#. Translators: strftime format for the date below the digital clock, e.g. "Jul 08"
+#: docklets/Clock/ClockDockItem.vala:276
+#, c-format
+msgid "%b %d"
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:407
 msgid "Di_gital Clock"
 msgstr "Ди_гитални сат"
 
-#: docklets/Clock/ClockDockItem.vala:352
+#: docklets/Clock/ClockDockItem.vala:412
 msgid "24-Hour _Clock"
 msgstr "24-часовни _сат"
 
-#: docklets/Clock/ClockDockItem.vala:357
+#: docklets/Clock/ClockDockItem.vala:417
 msgid "Show _Date"
 msgstr "Прикажи _датум"
 
@@ -373,6 +404,11 @@ msgstr "Колико је сати?"
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
 msgstr "Календар"
+
+#: docklets/CPUMonitor/CPUMonitorDockItem.vala:133
+#, c-format
+msgid "CPU: %.1f%% | Mem: %.1f%%"
+msgstr ""
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
@@ -394,16 +430,16 @@ msgstr "Радна површина"
 msgid "Show your Desktop."
 msgstr "Приказује вашу радну површину."
 
-#: docklets/Notifications/NotificationsDockItem.vala:264
+#: docklets/Notifications/NotificationsDockItem.vala:313
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
 msgstr "Обавештења"
 
-#: docklets/Notifications/NotificationsDockItem.vala:998
+#: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "just now"
 msgstr "управо сада"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1001
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -411,7 +447,7 @@ msgstr[0] "пре %d минута"
 msgstr[1] "пре %d минута"
 msgstr[2] "пре %d минута"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1004
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -419,19 +455,19 @@ msgstr[0] "пре %d сат"
 msgstr[1] "пре %d сата"
 msgstr[2] "пре %d сати"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1050
+#: docklets/Notifications/NotificationsDockItem.vala:1132
 msgid "Enable _Expiry"
 msgstr "Омогући _истицање"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1058
+#: docklets/Notifications/NotificationsDockItem.vala:1140
 msgid "Show _Count"
 msgstr "Прикажи _број"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1066
+#: docklets/Notifications/NotificationsDockItem.vala:1148
 msgid "Show _Transient"
 msgstr "Прикажи _пролазна"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1164
 msgid "Clear Notifications"
 msgstr "Обриши обавештења"
 
@@ -439,11 +475,11 @@ msgstr "Обриши обавештења"
 msgid "Simple notifications docklet."
 msgstr "Једноставан доклет за обавештења."
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:241
 msgid "No items in Trash"
 msgstr "Нема ставки у корпи"
 
-#: docklets/Trash/TrashDockItem.vala:106
+#: docklets/Trash/TrashDockItem.vala:242
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
@@ -451,27 +487,27 @@ msgstr[0] "%u ставка у корпи"
 msgstr[1] "%u ставке у корпи"
 msgstr[2] "%u ставки у корпи"
 
-#: docklets/Trash/TrashDockItem.vala:301
+#: docklets/Trash/TrashDockItem.vala:458
 msgid "Empty all items from Trash?"
 msgstr "Испразнити све ставке из корпе?"
 
-#: docklets/Trash/TrashDockItem.vala:304
+#: docklets/Trash/TrashDockItem.vala:462
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Све ставке у корпи ће бити трајно обрисане."
 
-#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:463 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Откажи"
 
-#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
+#: docklets/Trash/TrashDockItem.vala:464 docklets/Trash/TrashDockItem.vala:612
 msgid "Empty _Trash"
 msgstr "Испразни _корпу"
 
-#: docklets/Trash/TrashDockItem.vala:396
+#: docklets/Trash/TrashDockItem.vala:567
 msgid "Drop to move to Trash"
 msgstr "Пустите да преместите у корпу"
 
-#: docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:608
 msgid "_Open Trash"
 msgstr "_Отвори корпу"
 
@@ -483,24 +519,24 @@ msgstr "Корпа"
 msgid "Have a look at your trash!"
 msgstr "Погледајте вашу корпу!"
 
-#: docklets/Separator/SeparatorDockItem.vala:341
+#: docklets/Separator/SeparatorDockItem.vala:367
 msgid "_Style"
 msgstr "_Стил"
 
-#: docklets/Separator/SeparatorDockItem.vala:346
+#: docklets/Separator/SeparatorDockItem.vala:372
 msgid "_Line"
 msgstr "_Линија"
 
-#: docklets/Separator/SeparatorDockItem.vala:356
+#: docklets/Separator/SeparatorDockItem.vala:382
 msgid "_Dot"
 msgstr "_Тачка"
 
-#: docklets/Separator/SeparatorDockItem.vala:366
+#: docklets/Separator/SeparatorDockItem.vala:392
 msgid "_Space"
 msgstr "_Размак"
 
-#: docklets/Separator/SeparatorDockItem.vala:379
-#: docklets/Workspaces/WorkspacesDockItem.vala:571
+#: docklets/Separator/SeparatorDockItem.vala:405
+#: docklets/Workspaces/WorkspacesDockItem.vala:653
 msgid "_Invert Color"
 msgstr "_Инвертуј боју"
 
@@ -517,24 +553,24 @@ msgstr "Само раздвајач."
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:49
+#: docklets/Workspaces/WorkspacesDockItem.vala:59
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "Радни простори"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:188
-#: docklets/Workspaces/WorkspacesDockItem.vala:214
-#: docklets/Workspaces/WorkspacesDockItem.vala:226
+#: docklets/Workspaces/WorkspacesDockItem.vala:225
+#: docklets/Workspaces/WorkspacesDockItem.vala:251
+#: docklets/Workspaces/WorkspacesDockItem.vala:263
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "Радни простор %d од %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:549
+#: docklets/Workspaces/WorkspacesDockItem.vala:631
 #, c-format
 msgid "Workspace %d"
 msgstr "Радни простор %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:578
+#: docklets/Workspaces/WorkspacesDockItem.vala:660
 msgid "_Live Previews"
 msgstr "_Преглед уживо"
 
@@ -573,7 +609,7 @@ msgstr "Затвори _све"
 msgid "_Close"
 msgstr "_Затвори"
 
-#: lib/Items/ApplicationDockItem.vala:596
+#: lib/Items/ApplicationDockItem.vala:597
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Превуците мишем да отворите програмом %s"
@@ -674,7 +710,7 @@ msgstr "_О програму"
 msgid "_Quit"
 msgstr "_Изађи"
 
-#: lib/Widgets/PreferencesWindow.vala:103
+#: lib/Widgets/PreferencesWindow.vala:105
 msgid "Preferences"
 msgstr "Поставке"
 

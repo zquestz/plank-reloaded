@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-27 11:21-1000\n"
+"POT-Creation-Date: 2026-07-12 18:09-1000\n"
 "PO-Revision-Date: 2025-11-13 03:31\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
@@ -49,19 +49,19 @@ msgstr ""
 "Den forblir også et bibliotek som kan utvides for å lage andre "
 "dokkprogrammer med mer avanserte funksjoner."
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Dock with Matte theme"
 msgstr "Dokk med Matte-tema"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Appearance Preferences"
 msgstr "Utseendeinnstillinger"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Behavior Preferences"
 msgstr "Oppførselsinnstillinger"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Docklets Preferences"
 msgstr "Dokk-modulinnstillinger"
 
@@ -221,11 +221,22 @@ msgstr "Anker dokk-moduler:"
 msgid "Anchor Files:"
 msgstr "Anker filer:"
 
-#: data/ui/preferences.ui:769
+#: data/ui/preferences.ui:774
+#, fuzzy
+msgid "Bring to Workspace:"
+msgstr "Begrens til arbeidsområde:"
+
+#: data/ui/preferences.ui:791
+msgid ""
+"When activating a window located on another workspace, move it to the "
+"current workspace instead of switching to the window's workspace."
+msgstr ""
+
+#: data/ui/preferences.ui:801
 msgid "Behaviour"
 msgstr "Oppførsel"
 
-#: data/ui/preferences.ui:789
+#: data/ui/preferences.ui:821
 msgid "Docklets"
 msgstr "Dokkprogrammer"
 
@@ -243,13 +254,13 @@ msgid "Edit Menu"
 msgstr "Rediger meny"
 
 #: docklets/Applications/ApplicationsDockItem.vala:352
-#: docklets/Separator/SeparatorDockItem.vala:325
+#: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Velg tilpasset ikon"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:360
-#: docklets/Separator/SeparatorDockItem.vala:332
+#: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Tilbakestill til standardikon"
 
@@ -258,27 +269,27 @@ msgid "Large Icons"
 msgstr "Store ikoner"
 
 #: docklets/Applications/ApplicationsDockItem.vala:383
-#: docklets/Separator/SeparatorDockItem.vala:258
+#: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Velg tilpasset ikon"
 
 #: docklets/Applications/ApplicationsDockItem.vala:386
-#: docklets/Separator/SeparatorDockItem.vala:261
+#: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: docklets/Applications/ApplicationsDockItem.vala:387
-#: docklets/Separator/SeparatorDockItem.vala:262
+#: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Velg"
 
 #: docklets/Applications/ApplicationsDockItem.vala:405
-#: docklets/Separator/SeparatorDockItem.vala:280
+#: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Bildefiler"
 
-#: docklets/Applications/ApplicationsDockItem.vala:518
-#: docklets/Applications/ApplicationsDockItem.vala:572
+#: docklets/Applications/ApplicationsDockItem.vala:524
+#: docklets/Applications/ApplicationsDockItem.vala:578
 msgid "Unknown"
 msgstr ""
 
@@ -291,15 +302,15 @@ msgstr "Start enkelt hvilket som helst av programmene dine."
 msgid "No battery"
 msgstr "Intet batteri"
 
-#: docklets/Battery/BatteryDockItem.vala:150
+#: docklets/Battery/BatteryDockItem.vala:199
 msgid "Batteries"
 msgstr "Batterier"
 
-#: docklets/Battery/BatteryDockItem.vala:193
+#: docklets/Battery/BatteryDockItem.vala:242
 msgid "No batteries found"
 msgstr "Ingen batterier funnet"
 
-#: docklets/Battery/BatteryDockItem.vala:200
+#: docklets/Battery/BatteryDockItem.vala:249
 msgid "Error finding batteries"
 msgstr "Feil ved søk etter batterier"
 
@@ -335,9 +346,8 @@ msgstr "Aktiver utklippssporing"
 msgid "Maximum Entries"
 msgstr "Maksimalt antall oppføringer"
 
-#: docklets/Clippy/ClippyDockItem.vala:192
-#: docklets/Clippy/ClippyClipboardItem.vala:153
-#: docklets/Clippy/ClippyClipboardItem.vala:249
+#: docklets/Clippy/ClippyDockItem.vala:291
+#: docklets/Clippy/ClippyClipboardItem.vala:158
 msgid "Image"
 msgstr "Bilde"
 
@@ -349,15 +359,36 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Behold nylige utklippsoppføringer."
 
-#: docklets/Clock/ClockDockItem.vala:347
+#: docklets/Clippy/ClippyClipboardItem.vala:254
+#, fuzzy, c-format
+msgid "Image (%s)"
+msgstr "Bildefiler"
+
+#. Translators: strftime format for the 24h tooltip, e.g. "Tue, Jul 08 14:05"
+#: docklets/Clock/ClockDockItem.vala:241
+msgid "%a, %b %d %H:%M"
+msgstr ""
+
+#. Translators: strftime format for the 12h tooltip, e.g. "Tue, Jul 08 02:05 PM"
+#: docklets/Clock/ClockDockItem.vala:245
+msgid "%a, %b %d %I:%M %p"
+msgstr ""
+
+#. Translators: strftime format for the date below the digital clock, e.g. "Jul 08"
+#: docklets/Clock/ClockDockItem.vala:276
+#, c-format
+msgid "%b %d"
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:407
 msgid "Di_gital Clock"
 msgstr "Di_gital klokke"
 
-#: docklets/Clock/ClockDockItem.vala:352
+#: docklets/Clock/ClockDockItem.vala:412
 msgid "24-Hour _Clock"
 msgstr "24-timers _klokke"
 
-#: docklets/Clock/ClockDockItem.vala:357
+#: docklets/Clock/ClockDockItem.vala:417
 msgid "Show _Date"
 msgstr "Vis _dato"
 
@@ -372,6 +403,11 @@ msgstr "Hva er klokken?"
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
 msgstr "Kalender"
+
+#: docklets/CPUMonitor/CPUMonitorDockItem.vala:133
+#, c-format
+msgid "CPU: %.1f%% | Mem: %.1f%%"
+msgstr ""
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
@@ -393,42 +429,42 @@ msgstr "Skrivebord"
 msgid "Show your Desktop."
 msgstr "Vis skrivebordet ditt."
 
-#: docklets/Notifications/NotificationsDockItem.vala:264
+#: docklets/Notifications/NotificationsDockItem.vala:313
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
 msgstr "Varsler"
 
-#: docklets/Notifications/NotificationsDockItem.vala:998
+#: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "just now"
 msgstr "akkurat nå"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1001
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d minutt siden"
 msgstr[1] "%d minutter siden"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1004
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d time siden"
 msgstr[1] "%d timer siden"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1050
+#: docklets/Notifications/NotificationsDockItem.vala:1132
 msgid "Enable _Expiry"
 msgstr "Aktiver _utløp"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1058
+#: docklets/Notifications/NotificationsDockItem.vala:1140
 msgid "Show _Count"
 msgstr "Vis _antall"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1066
+#: docklets/Notifications/NotificationsDockItem.vala:1148
 msgid "Show _Transient"
 msgstr "Vis _forbigående"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1164
 msgid "Clear Notifications"
 msgstr "Tøm varsler"
 
@@ -436,38 +472,38 @@ msgstr "Tøm varsler"
 msgid "Simple notifications docklet."
 msgstr "Enkel varsel-modul."
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:241
 msgid "No items in Trash"
 msgstr "Ingen elementer i papirkurven"
 
-#: docklets/Trash/TrashDockItem.vala:106
+#: docklets/Trash/TrashDockItem.vala:242
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
 msgstr[0] "%u element i papirkurven"
 msgstr[1] "%u elementer i papirkurven"
 
-#: docklets/Trash/TrashDockItem.vala:301
+#: docklets/Trash/TrashDockItem.vala:458
 msgid "Empty all items from Trash?"
 msgstr "Tøm alle elementer fra papirkurven?"
 
-#: docklets/Trash/TrashDockItem.vala:304
+#: docklets/Trash/TrashDockItem.vala:462
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle elementer i papirkurven vil bli permanent slettet."
 
-#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:463 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
+#: docklets/Trash/TrashDockItem.vala:464 docklets/Trash/TrashDockItem.vala:612
 msgid "Empty _Trash"
 msgstr "Tøm _papirkurv"
 
-#: docklets/Trash/TrashDockItem.vala:396
+#: docklets/Trash/TrashDockItem.vala:567
 msgid "Drop to move to Trash"
 msgstr "Slipp for å flytte til papirkurv"
 
-#: docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:608
 msgid "_Open Trash"
 msgstr "_Åpne papirkurv"
 
@@ -479,24 +515,24 @@ msgstr "Papirkurv"
 msgid "Have a look at your trash!"
 msgstr "Ta en titt på papirkurven din!"
 
-#: docklets/Separator/SeparatorDockItem.vala:341
+#: docklets/Separator/SeparatorDockItem.vala:367
 msgid "_Style"
 msgstr "_Stil"
 
-#: docklets/Separator/SeparatorDockItem.vala:346
+#: docklets/Separator/SeparatorDockItem.vala:372
 msgid "_Line"
 msgstr "_Linje"
 
-#: docklets/Separator/SeparatorDockItem.vala:356
+#: docklets/Separator/SeparatorDockItem.vala:382
 msgid "_Dot"
 msgstr "_Prikk"
 
-#: docklets/Separator/SeparatorDockItem.vala:366
+#: docklets/Separator/SeparatorDockItem.vala:392
 msgid "_Space"
 msgstr "_Mellomrom"
 
-#: docklets/Separator/SeparatorDockItem.vala:379
-#: docklets/Workspaces/WorkspacesDockItem.vala:571
+#: docklets/Separator/SeparatorDockItem.vala:405
+#: docklets/Workspaces/WorkspacesDockItem.vala:653
 msgid "_Invert Color"
 msgstr "_Inverter farge"
 
@@ -513,24 +549,24 @@ msgstr "Bare en separator."
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:49
+#: docklets/Workspaces/WorkspacesDockItem.vala:59
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "Arbeidsområder"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:188
-#: docklets/Workspaces/WorkspacesDockItem.vala:214
-#: docklets/Workspaces/WorkspacesDockItem.vala:226
+#: docklets/Workspaces/WorkspacesDockItem.vala:225
+#: docklets/Workspaces/WorkspacesDockItem.vala:251
+#: docklets/Workspaces/WorkspacesDockItem.vala:263
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "Arbeidsområde %d av %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:549
+#: docklets/Workspaces/WorkspacesDockItem.vala:631
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:578
+#: docklets/Workspaces/WorkspacesDockItem.vala:660
 msgid "_Live Previews"
 msgstr "_Levende forhåndsvisninger"
 
@@ -572,7 +608,7 @@ msgstr "_Lukk alle"
 msgid "_Close"
 msgstr "_Lukk"
 
-#: lib/Items/ApplicationDockItem.vala:596
+#: lib/Items/ApplicationDockItem.vala:597
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Slipp for å åpne med %s"
@@ -673,7 +709,7 @@ msgstr "_Om"
 msgid "_Quit"
 msgstr "_Avslutt"
 
-#: lib/Widgets/PreferencesWindow.vala:103
+#: lib/Widgets/PreferencesWindow.vala:105
 msgid "Preferences"
 msgstr "Innstillinger"
 

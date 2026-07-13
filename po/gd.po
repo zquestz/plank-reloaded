@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-06-27 11:21-1000\n"
+"POT-Creation-Date: 2026-07-12 18:09-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Scottish Gaelic\n"
@@ -51,19 +51,19 @@ msgstr ""
 "dad eile idir. Tha e cuideachd fhathast na leabharlann a ghabhas leudachadh "
 "gus prògraman doca eile a chruthachadh le feartan adhartaiche."
 
-#: data/plank.appdata.xml.in:132
+#: data/plank.appdata.xml.in:133
 msgid "Dock with Matte theme"
 msgstr "Doca le ùrlar Matte"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Appearance Preferences"
 msgstr "Roghainnean coltas"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Behavior Preferences"
 msgstr "Roghainnean giùlain"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Docklets Preferences"
 msgstr "Roghainnean docalagan"
 
@@ -224,11 +224,22 @@ msgstr "Acraich docalagan:"
 msgid "Anchor Files:"
 msgstr "Acraich faidhlichean:"
 
-#: data/ui/preferences.ui:769
+#: data/ui/preferences.ui:774
+#, fuzzy
+msgid "Bring to Workspace:"
+msgstr "Cuingich air an rum-obrach:"
+
+#: data/ui/preferences.ui:791
+msgid ""
+"When activating a window located on another workspace, move it to the "
+"current workspace instead of switching to the window's workspace."
+msgstr ""
+
+#: data/ui/preferences.ui:801
 msgid "Behaviour"
 msgstr "Giùlan"
 
-#: data/ui/preferences.ui:789
+#: data/ui/preferences.ui:821
 msgid "Docklets"
 msgstr "Docalagan"
 
@@ -246,13 +257,13 @@ msgid "Edit Menu"
 msgstr "Deasaich an clàr-taice"
 
 #: docklets/Applications/ApplicationsDockItem.vala:352
-#: docklets/Separator/SeparatorDockItem.vala:325
+#: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Tagh ìomhaigheag ghnàthaichte"
 
 #. If custom icon is set, add option to reset to default
 #: docklets/Applications/ApplicationsDockItem.vala:360
-#: docklets/Separator/SeparatorDockItem.vala:332
+#: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Ath-shuidhich gu ìomhaigheag bhunaiteach"
 
@@ -261,27 +272,27 @@ msgid "Large Icons"
 msgstr "Ìomhaigheagan mòra"
 
 #: docklets/Applications/ApplicationsDockItem.vala:383
-#: docklets/Separator/SeparatorDockItem.vala:258
+#: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Tagh ìomhaigheag ghnàthaichte"
 
 #: docklets/Applications/ApplicationsDockItem.vala:386
-#: docklets/Separator/SeparatorDockItem.vala:261
+#: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Sguir dheth"
 
 #: docklets/Applications/ApplicationsDockItem.vala:387
-#: docklets/Separator/SeparatorDockItem.vala:262
+#: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Tagh"
 
 #: docklets/Applications/ApplicationsDockItem.vala:405
-#: docklets/Separator/SeparatorDockItem.vala:280
+#: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Faidhlichean deilbh"
 
-#: docklets/Applications/ApplicationsDockItem.vala:518
-#: docklets/Applications/ApplicationsDockItem.vala:572
+#: docklets/Applications/ApplicationsDockItem.vala:524
+#: docklets/Applications/ApplicationsDockItem.vala:578
 msgid "Unknown"
 msgstr ""
 
@@ -294,15 +305,15 @@ msgstr "Dìreach tòisich gin de na h-aplacaidean agad."
 msgid "No battery"
 msgstr "Gun bhataraidh"
 
-#: docklets/Battery/BatteryDockItem.vala:150
+#: docklets/Battery/BatteryDockItem.vala:199
 msgid "Batteries"
 msgstr "Bataraidhean"
 
-#: docklets/Battery/BatteryDockItem.vala:193
+#: docklets/Battery/BatteryDockItem.vala:242
 msgid "No batteries found"
 msgstr "Cha deach bataraidh a lorg"
 
-#: docklets/Battery/BatteryDockItem.vala:200
+#: docklets/Battery/BatteryDockItem.vala:249
 msgid "Error finding batteries"
 msgstr "Mearachd a' lorg bhataraidhean"
 
@@ -338,9 +349,8 @@ msgstr "Cuir an comas leantainn an stòir-bhùird"
 msgid "Maximum Entries"
 msgstr "Inntrigidhean as motha"
 
-#: docklets/Clippy/ClippyDockItem.vala:192
-#: docklets/Clippy/ClippyClipboardItem.vala:153
-#: docklets/Clippy/ClippyClipboardItem.vala:249
+#: docklets/Clippy/ClippyDockItem.vala:291
+#: docklets/Clippy/ClippyClipboardItem.vala:158
 msgid "Image"
 msgstr "Dealbh"
 
@@ -352,15 +362,36 @@ msgstr "Clippy"
 msgid "Keep recent clipboard entries."
 msgstr "Glèidh inntrigidhean ùr an stòir-bhùird."
 
-#: docklets/Clock/ClockDockItem.vala:347
+#: docklets/Clippy/ClippyClipboardItem.vala:254
+#, fuzzy, c-format
+msgid "Image (%s)"
+msgstr "Faidhlichean deilbh"
+
+#. Translators: strftime format for the 24h tooltip, e.g. "Tue, Jul 08 14:05"
+#: docklets/Clock/ClockDockItem.vala:241
+msgid "%a, %b %d %H:%M"
+msgstr ""
+
+#. Translators: strftime format for the 12h tooltip, e.g. "Tue, Jul 08 02:05 PM"
+#: docklets/Clock/ClockDockItem.vala:245
+msgid "%a, %b %d %I:%M %p"
+msgstr ""
+
+#. Translators: strftime format for the date below the digital clock, e.g. "Jul 08"
+#: docklets/Clock/ClockDockItem.vala:276
+#, c-format
+msgid "%b %d"
+msgstr ""
+
+#: docklets/Clock/ClockDockItem.vala:407
 msgid "Di_gital Clock"
 msgstr "Gleoc di_giteach"
 
-#: docklets/Clock/ClockDockItem.vala:352
+#: docklets/Clock/ClockDockItem.vala:412
 msgid "24-Hour _Clock"
 msgstr "_Gleoc 24-uair"
 
-#: docklets/Clock/ClockDockItem.vala:357
+#: docklets/Clock/ClockDockItem.vala:417
 msgid "Show _Date"
 msgstr "Seall an _ceann-là"
 
@@ -375,6 +406,11 @@ msgstr "Dè an uair a tha e?"
 #: docklets/Clock/ClockDockCalendar.vala:9
 msgid "Calendar"
 msgstr "Mìosachan"
+
+#: docklets/CPUMonitor/CPUMonitorDockItem.vala:133
+#, c-format
+msgid "CPU: %.1f%% | Mem: %.1f%%"
+msgstr ""
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
@@ -396,16 +432,16 @@ msgstr "Deasg"
 msgid "Show your Desktop."
 msgstr "Seall an deasg agad."
 
-#: docklets/Notifications/NotificationsDockItem.vala:264
+#: docklets/Notifications/NotificationsDockItem.vala:313
 #: docklets/Notifications/NotificationsDocklet.vala:28
 msgid "Notifications"
 msgstr "Brathan"
 
-#: docklets/Notifications/NotificationsDockItem.vala:998
+#: docklets/Notifications/NotificationsDockItem.vala:1080
 msgid "just now"
 msgstr "an-dràsta fhèin"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1001
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -414,7 +450,7 @@ msgstr[1] "o chionn %d mhionaid"
 msgstr[2] "o chionn %d mionaidean"
 msgstr[3] "o chionn %d mionaid"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1004
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -423,19 +459,19 @@ msgstr[1] "o chionn %d uair"
 msgstr[2] "o chionn %d uairean"
 msgstr[3] "o chionn %d uair"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1050
+#: docklets/Notifications/NotificationsDockItem.vala:1132
 msgid "Enable _Expiry"
 msgstr "Cuir an comas _dol à bith"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1058
+#: docklets/Notifications/NotificationsDockItem.vala:1140
 msgid "Show _Count"
 msgstr "Seall an _cunntadh"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1066
+#: docklets/Notifications/NotificationsDockItem.vala:1148
 msgid "Show _Transient"
 msgstr "Seall _sealadach"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1164
 msgid "Clear Notifications"
 msgstr "Falamhaich brathan"
 
@@ -443,11 +479,11 @@ msgstr "Falamhaich brathan"
 msgid "Simple notifications docklet."
 msgstr "Docalag shimple bhrathan."
 
-#: docklets/Trash/TrashDockItem.vala:105
+#: docklets/Trash/TrashDockItem.vala:241
 msgid "No items in Trash"
 msgstr "Chan eil nì san sgudal"
 
-#: docklets/Trash/TrashDockItem.vala:106
+#: docklets/Trash/TrashDockItem.vala:242
 #, c-format
 msgid "%u item in Trash"
 msgid_plural "%u items in Trash"
@@ -456,27 +492,27 @@ msgstr[1] "%u nì san sgudal"
 msgstr[2] "%u nithean san sgudal"
 msgstr[3] "%u nì san sgudal"
 
-#: docklets/Trash/TrashDockItem.vala:301
+#: docklets/Trash/TrashDockItem.vala:458
 msgid "Empty all items from Trash?"
 msgstr "A bheil thu airson na nithean uile fhalamhachadh às an sgudal?"
 
-#: docklets/Trash/TrashDockItem.vala:304
+#: docklets/Trash/TrashDockItem.vala:462
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Thèid na nithean uile san sgudal a sguabadh às gu buan."
 
-#: docklets/Trash/TrashDockItem.vala:305 lib/Items/FileDockItem.vala:305
+#: docklets/Trash/TrashDockItem.vala:463 lib/Items/FileDockItem.vala:305
 msgid "_Cancel"
 msgstr "_Sguir dheth"
 
-#: docklets/Trash/TrashDockItem.vala:306 docklets/Trash/TrashDockItem.vala:438
+#: docklets/Trash/TrashDockItem.vala:464 docklets/Trash/TrashDockItem.vala:612
 msgid "Empty _Trash"
 msgstr "Falamhaich an s_gudal"
 
-#: docklets/Trash/TrashDockItem.vala:396
+#: docklets/Trash/TrashDockItem.vala:567
 msgid "Drop to move to Trash"
 msgstr "Leig às airson gluasad dhan sgudal"
 
-#: docklets/Trash/TrashDockItem.vala:434
+#: docklets/Trash/TrashDockItem.vala:608
 msgid "_Open Trash"
 msgstr "_Fosgail an sgudal"
 
@@ -488,24 +524,24 @@ msgstr "Sgudal"
 msgid "Have a look at your trash!"
 msgstr "Thoir sùil air an sgudal agad!"
 
-#: docklets/Separator/SeparatorDockItem.vala:341
+#: docklets/Separator/SeparatorDockItem.vala:367
 msgid "_Style"
 msgstr "_Stoidhle"
 
-#: docklets/Separator/SeparatorDockItem.vala:346
+#: docklets/Separator/SeparatorDockItem.vala:372
 msgid "_Line"
 msgstr "_Loidhne"
 
-#: docklets/Separator/SeparatorDockItem.vala:356
+#: docklets/Separator/SeparatorDockItem.vala:382
 msgid "_Dot"
 msgstr "_Dotag"
 
-#: docklets/Separator/SeparatorDockItem.vala:366
+#: docklets/Separator/SeparatorDockItem.vala:392
 msgid "_Space"
 msgstr "À_ite bàn"
 
-#: docklets/Separator/SeparatorDockItem.vala:379
-#: docklets/Workspaces/WorkspacesDockItem.vala:571
+#: docklets/Separator/SeparatorDockItem.vala:405
+#: docklets/Workspaces/WorkspacesDockItem.vala:653
 msgid "_Invert Color"
 msgstr "_Ais-thionndaidh an dath"
 
@@ -522,24 +558,24 @@ msgstr "Dìreach sgaradair."
 #. *
 #. * @return the docklet's name
 #.
-#: docklets/Workspaces/WorkspacesDockItem.vala:49
+#: docklets/Workspaces/WorkspacesDockItem.vala:59
 #: docklets/Workspaces/WorkspacesDocklet.vala:47
 msgid "Workspaces"
 msgstr "Rum-obrach"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:188
-#: docklets/Workspaces/WorkspacesDockItem.vala:214
-#: docklets/Workspaces/WorkspacesDockItem.vala:226
+#: docklets/Workspaces/WorkspacesDockItem.vala:225
+#: docklets/Workspaces/WorkspacesDockItem.vala:251
+#: docklets/Workspaces/WorkspacesDockItem.vala:263
 #, c-format
 msgid "Workspace %d of %d"
 msgstr "Rum-obrach %d à %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:549
+#: docklets/Workspaces/WorkspacesDockItem.vala:631
 #, c-format
 msgid "Workspace %d"
 msgstr "Rum-obrach %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:578
+#: docklets/Workspaces/WorkspacesDockItem.vala:660
 msgid "_Live Previews"
 msgstr "Ro-sheallaidhean _beò"
 
@@ -576,7 +612,7 @@ msgstr "_Dùin na h-uile"
 msgid "_Close"
 msgstr "_Dùin"
 
-#: lib/Items/ApplicationDockItem.vala:596
+#: lib/Items/ApplicationDockItem.vala:597
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Leig às airson fhosgladh le %s"
@@ -677,7 +713,7 @@ msgstr "_Mu dhèidhinn"
 msgid "_Quit"
 msgstr "_Fàg an-seo"
 
-#: lib/Widgets/PreferencesWindow.vala:103
+#: lib/Widgets/PreferencesWindow.vala:105
 msgid "Preferences"
 msgstr "Roghainnean"
 

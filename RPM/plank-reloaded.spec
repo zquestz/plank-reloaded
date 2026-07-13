@@ -116,6 +116,15 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Sun Jul 12 2026 Josh Ellithorpe <quest@mac.com> - 0.11.170-1
+- Add a per-dock option to bring activated applications to the current workspace
+- Make Trash counting and emptying asynchronous and improve KDE monitoring
+- Improve Battery UPower handling and retain the sysfs fallback
+- Improve Workspaces previews and Applications menu loading
+- Improve Clippy, Clock, and Notifications behavior and teardown
+- Preserve third-party docklet ABI while fixing removal lifecycle leaks
+- Add headless test coverage and ARM64 release builds
+
 * Sat Jun 27 2026 Josh Ellithorpe <quest@mac.com> - 0.11.169-1
 - Only play Trash docklet event sounds when enabled in the desktop settings
 - Fix Clock docklet calendar emitting a GTK critical warning on close
