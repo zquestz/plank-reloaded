@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:09-1000\n"
+"POT-Creation-Date: 2026-07-12 18:11-1000\n"
 "PO-Revision-Date: 2025-11-13 04:12\n"
 "Last-Translator: \n"
 "Language-Team: Slovenian\n"
@@ -223,15 +223,16 @@ msgid "Anchor Files:"
 msgstr "Zasidraj Datoteke:"
 
 #: data/ui/preferences.ui:774
-#, fuzzy
 msgid "Bring to Workspace:"
-msgstr "Omeji na delovno površino:"
+msgstr "Premakni na delovno površino:"
 
 #: data/ui/preferences.ui:791
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
 msgstr ""
+"Ob aktiviranju okna na drugi delovni površini ga premakni na trenutno "
+"delovno površino namesto preklopa na delovno površino okna."
 
 #: data/ui/preferences.ui:801
 msgid "Behaviour"
@@ -292,7 +293,7 @@ msgstr "Slikovne datoteke"
 #: docklets/Applications/ApplicationsDockItem.vala:524
 #: docklets/Applications/ApplicationsDockItem.vala:578
 msgid "Unknown"
-msgstr ""
+msgstr "Neznano"
 
 #: docklets/Applications/ApplicationsDocklet.vala:29
 msgid "Simply start any of your applications."
@@ -361,25 +362,25 @@ msgid "Keep recent clipboard entries."
 msgstr "Ohrani nedavne vnose odložišča."
 
 #: docklets/Clippy/ClippyClipboardItem.vala:254
-#, fuzzy, c-format
+#, c-format
 msgid "Image (%s)"
-msgstr "Slikovne datoteke"
+msgstr "Slika (%s)"
 
 #. Translators: strftime format for the 24h tooltip, e.g. "Tue, Jul 08 14:05"
 #: docklets/Clock/ClockDockItem.vala:241
 msgid "%a, %b %d %H:%M"
-msgstr ""
+msgstr "%a, %d %b %H:%M"
 
 #. Translators: strftime format for the 12h tooltip, e.g. "Tue, Jul 08 02:05 PM"
 #: docklets/Clock/ClockDockItem.vala:245
 msgid "%a, %b %d %I:%M %p"
-msgstr ""
+msgstr "%a, %d %b %I:%M %p"
 
 #. Translators: strftime format for the date below the digital clock, e.g. "Jul 08"
 #: docklets/Clock/ClockDockItem.vala:276
 #, c-format
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: docklets/Clock/ClockDockItem.vala:407
 msgid "Di_gital Clock"
@@ -408,7 +409,7 @@ msgstr "Koledar"
 #: docklets/CPUMonitor/CPUMonitorDockItem.vala:133
 #, c-format
 msgid "CPU: %.1f%% | Mem: %.1f%%"
-msgstr ""
+msgstr "CPE: %.1f%% | Pomnilnik: %.1f%%"
 
 #: docklets/CPUMonitor/CPUMonitorDocklet.vala:29
 msgid "CPU Monitor"
