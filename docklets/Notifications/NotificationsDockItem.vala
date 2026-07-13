@@ -872,6 +872,8 @@ namespace Docky {
         return null;
       }
 
+      // Let the pixbuf own and free its copy of the pixel buffer (the default
+      // destroy_fn); passing null here leaks the duplicated bytes per render
       var pixbuf = new Gdk.Pixbuf.from_data(
                                             image_data.data,
                                             Gdk.Colorspace.RGB,
@@ -879,8 +881,7 @@ namespace Docky {
                                             image_data.bits_per_sample,
                                             image_data.width,
                                             image_data.height,
-                                            image_data.rowstride,
-                                            null
+                                            image_data.rowstride
       );
 
       if (image_data.width != target_size || image_data.height != target_size) {
