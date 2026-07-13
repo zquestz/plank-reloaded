@@ -62,7 +62,17 @@ namespace Docky {
       if (Container == null) {
         removed_from_dock ();
       } else if (position_handler_id == 0) {
-        setup_signals ();
+        // At startup the item is attached to its provider before the provider
+        // joins the controller, so get_dock() is still null here; retry from
+        // an idle once the container chain is complete
+        if (!setup_signals ()) {
+          Idle.add (() => {
+            if (Container != null && position_handler_id == 0) {
+              setup_signals ();
+            }
+            return false;
+          });
+        }
       }
     }
 
@@ -126,10 +136,10 @@ namespace Docky {
       return custom_icon != null && custom_icon != "";
     }
 
-    private void setup_signals () {
+    private bool setup_signals () {
       var dock = get_dock ();
       if (dock == null) {
-        return;
+        return false;
       }
 
       connected_position_manager = dock.position_manager;
@@ -139,6 +149,8 @@ namespace Docky {
       prefs_handler_id = connected_dock_prefs.notify.connect (handle_dock_prefs_changed);
 
       update_cache (true, true);
+
+      return true;
     }
 
     private void disconnect_signals () {
