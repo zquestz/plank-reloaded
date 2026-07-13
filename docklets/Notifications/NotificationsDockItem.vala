@@ -182,6 +182,13 @@ namespace Docky {
       int bits_per_sample = variant.get_child_value(4).get_int32();
       int channels = variant.get_child_value(5).get_int32();
 
+      // Dimensions come from an untrusted client; reject non-positive values
+      // so the 64-bit size check below cannot be fooled by overflow
+      if (width <= 0 || height <= 0 || rowstride <= 0) {
+        warning("Invalid image dimensions: %dx%d stride %d", width, height, rowstride);
+        return null;
+      }
+
       var data_variant = variant.get_child_value(6);
 
       // Read the byte array in one shot; per-byte get_child_value allocates
@@ -203,9 +210,11 @@ namespace Docky {
         return null;
       }
 
-      if (data.length < height * rowstride) {
-        warning("Image data too small: %d bytes, expected %d",
-                data.length, height * rowstride);
+      // 64-bit multiply so a crafted height * rowstride cannot overflow int
+      // and slip past the bounds check into an out-of-bounds pixbuf read
+      if (data.length < (int64) height * rowstride) {
+        warning("Image data too small: %d bytes, expected %" + int64.FORMAT,
+                data.length, (int64) height * rowstride);
         return null;
       }
 
@@ -440,6 +449,13 @@ namespace Docky {
     private void parse_notification_message(owned GLib.DBusMessage message) {
       var body = message.get_body();
       if (body == null) {
+        return;
+      }
+
+      // Validate the full Notify signature up front; any bus client can send
+      // a malformed body, and the get_string calls below would NULL-deref
+      if (!body.is_of_type(new VariantType("(susssasa{sv}i)"))) {
+        warning("Unexpected Notify body signature: %s", body.get_type_string());
         return;
       }
 
