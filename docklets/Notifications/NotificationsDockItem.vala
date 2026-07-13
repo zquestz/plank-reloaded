@@ -19,6 +19,9 @@ using Plank;
 
 namespace Docky {
   public class NotificationData {
+    private const int MAX_IMAGE_DIMENSION = 1024;
+    private const int64 MAX_IMAGE_DATA_BYTES = 4 * 1024 * 1024;
+
     public uint32 id { get; set; }
     public string app_name { get; set; }
     public string app_icon { get; set; }
@@ -29,7 +32,6 @@ namespace Docky {
     public string summary { get; set; }
     public string body { get; set; }
     public string[] actions { get; set; }
-    public GLib.HashTable<string, GLib.Variant> hints { get; set; }
     public int expire_timeout { get; set; }
     public DateTime timestamp { get; set; }
     public uint8 urgency { get; set; default = 1; }
@@ -49,13 +51,12 @@ namespace Docky {
       this.summary = summary;
       this.body = body;
       this.actions = actions;
-      this.hints = hints;
       this.expire_timeout = expire_timeout;
       this.serial = serial;
       this.timestamp = new DateTime.now_local();
       this.sender = sender;
 
-      parse_hints();
+      parse_hints(hints);
     }
 
     public void setup_expiry_timer(NotificationsDockItem dock_item) {
@@ -122,7 +123,7 @@ namespace Docky {
       return age > (expire_timeout * TimeSpan.MILLISECOND);
     }
 
-    private void parse_hints() {
+    private void parse_hints(GLib.HashTable<string, GLib.Variant> hints) {
       if (hints == null) {
         return;
       }
@@ -189,6 +190,11 @@ namespace Docky {
         return null;
       }
 
+      if (width > MAX_IMAGE_DIMENSION || height > MAX_IMAGE_DIMENSION) {
+        warning("Notification image dimensions exceed limit: %dx%d", width, height);
+        return null;
+      }
+
       if (bits_per_sample != 8) {
         warning("Unsupported bits_per_sample: %d", bits_per_sample);
         return null;
@@ -212,6 +218,15 @@ namespace Docky {
       }
 
       var data_variant = variant.get_child_value(6);
+      int64 required_size = (int64) height * rowstride;
+
+      // Check the serialized byte-array size before materializing a copy.
+      if (required_size > MAX_IMAGE_DATA_BYTES ||
+          data_variant.get_size() > MAX_IMAGE_DATA_BYTES) {
+        warning("Notification image data exceeds %" + int64.FORMAT + " byte limit",
+                MAX_IMAGE_DATA_BYTES);
+        return null;
+      }
 
       // Read the byte array in one shot; per-byte get_child_value allocates
       // a temporary variant for every pixel byte
@@ -219,9 +234,9 @@ namespace Docky {
 
       // 64-bit multiply so a crafted height * rowstride cannot overflow int
       // and slip past the bounds check into an out-of-bounds pixbuf read
-      if (data.length < (int64) height * rowstride) {
+      if (data.length < required_size) {
         warning("Image data too small: %d bytes, expected %" + int64.FORMAT,
-                data.length, (int64) height * rowstride);
+                data.length, required_size);
         return null;
       }
 
