@@ -605,7 +605,7 @@ namespace Docky {
                                  null,
                                  (obj,res) => {
         try {
-          send_connection.call.end(res);
+          ((DBusConnection) obj).call.end(res);
         } catch (Error e) {
           if (e is DBusError.UNKNOWN_METHOD) {
             close_notification_supported = false;
