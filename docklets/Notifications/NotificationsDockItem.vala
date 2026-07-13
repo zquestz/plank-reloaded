@@ -607,22 +607,25 @@ namespace Docky {
     }
 
     private void update_display() {
-      if (update_timer_id > 0) {
-        Source.remove(update_timer_id);
-        update_timer_id = 0;
-      }
-
-      update_timer_id = GLib.Timeout.add(100,() => {
-        // The id is also written from DBus-thread callers of update_display,
-        // always under the (recursive) lock
-        lock (notification_lock) {
+      // update_timer_id is touched from both the DBus worker thread and the
+      // main loop, so guard every access; the lock is recursive, so callers
+      // that already hold it do not deadlock
+      lock (notification_lock) {
+        if (update_timer_id > 0) {
+          Source.remove(update_timer_id);
           update_timer_id = 0;
         }
 
-        do_update_display();
+        update_timer_id = GLib.Timeout.add(100,() => {
+          lock (notification_lock) {
+            update_timer_id = 0;
+          }
 
-        return false;
-      });
+          do_update_display();
+
+          return false;
+        });
+      }
     }
 
     private void do_update_display() {
