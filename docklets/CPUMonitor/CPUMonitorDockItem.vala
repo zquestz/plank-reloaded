@@ -130,7 +130,7 @@ namespace Docky {
     private void update_display() {
       var needs_icon_update = should_update_icon();
 
-      Text = ("CPU: %.1f%% | Mem: %.1f%%").printf(cpu_utilization * 100, memory_utilization * 100);
+      Text = _("CPU: %.1f%% | Mem: %.1f%%").printf(cpu_utilization * 100, memory_utilization * 100);
 
       if (needs_icon_update) {
         last_cpu_utilization = cpu_utilization;

@@ -251,7 +251,7 @@ namespace Docky {
         int width = image.get_width();
         int height = image.get_height();
         var size_str = "%dx%d".printf(width, height);
-        var label = new Gtk.Label(_("Image") + " (" + size_str + ")");
+        var label = new Gtk.Label(_("Image (%s)").printf(size_str));
         label.halign = Gtk.Align.START;
         box.pack_start(label, true, true, 0);
       } else {

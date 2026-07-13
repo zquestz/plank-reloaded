@@ -29,6 +29,7 @@ namespace Docky {
     private const uint UPDATE_INTERVAL = 60; // seconds
 
     private uint timer_id = 0;
+    private string? fallback_device = null;
 
     public BatteryDockItem.with_dockitem_file (GLib.File file)
     {
@@ -76,24 +77,64 @@ namespace Docky {
       });
     }
 
-    private int get_capacity () throws GLib.FileError {
-      string contents;
+    // The configured device stays authoritative and untouched; when it is
+    // absent (e.g. hardware exposes only BAT1), fall back at runtime to the
+    // first device with the expected attributes
+    private string active_device () {
       unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
-      FileUtils.get_contents (BAT_CAPACITY.printf (prefs.BatteryDeviceName), out contents);
+
+      if (FileUtils.test (BAT_CAPACITY.printf (prefs.BatteryDeviceName), FileTest.EXISTS)) {
+        fallback_device = null;
+        return prefs.BatteryDeviceName;
+      }
+
+      if (fallback_device != null && FileUtils.test (BAT_CAPACITY.printf (fallback_device), FileTest.EXISTS)) {
+        return fallback_device;
+      }
+
+      fallback_device = null;
+
+      try {
+        var dir = File.new_for_path (BAT_BASE_PATH);
+        var enumerator = dir.enumerate_children ("standard::*", FileQueryInfoFlags.NONE);
+
+        FileInfo info;
+        while ((info = enumerator.next_file ()) != null) {
+          string battery_name = info.get_name ();
+
+          if (info.get_file_type () != FileType.DIRECTORY) {
+            continue;
+          }
+
+          if (FileUtils.test (BAT_CAPACITY.printf (battery_name), FileTest.EXISTS) &&
+              FileUtils.test (BAT_CAPACITY_LEVEL.printf (battery_name), FileTest.EXISTS) &&
+              FileUtils.test (BAT_STATUS.printf (battery_name), FileTest.EXISTS)) {
+            fallback_device = battery_name;
+            break;
+          }
+        }
+      } catch (Error e) {
+        debug ("Could not enumerate batteries: %s", e.message);
+      }
+
+      return fallback_device ?? prefs.BatteryDeviceName;
+    }
+
+    private int get_capacity (string device) throws GLib.FileError {
+      string contents;
+      FileUtils.get_contents (BAT_CAPACITY.printf (device), out contents);
       return int.parse (contents);
     }
 
-    private string get_capacity_level () throws GLib.FileError {
+    private string get_capacity_level (string device) throws GLib.FileError {
       string contents;
-      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
-      FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (prefs.BatteryDeviceName), out contents);
+      FileUtils.get_contents (BAT_CAPACITY_LEVEL.printf (device), out contents);
       return contents.strip ();
     }
 
-    private string get_status () throws GLib.FileError {
+    private string get_status (string device) throws GLib.FileError {
       string contents;
-      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
-      FileUtils.get_contents (BAT_STATUS.printf (prefs.BatteryDeviceName), out contents);
+      FileUtils.get_contents (BAT_STATUS.printf (device), out contents);
       return contents.strip ();
     }
 
@@ -136,9 +177,10 @@ namespace Docky {
 
     private void update () {
       try {
-        var status = get_status ();
-        var capacity = get_capacity ();
-        var capacity_level = get_capacity_level ();
+        var device = active_device ();
+        var status = get_status (device);
+        var capacity = get_capacity (device);
+        var capacity_level = get_capacity_level (device);
 
         Icon = get_battery_icon (capacity_level, status);
         Text = "%i%%".printf (capacity);
