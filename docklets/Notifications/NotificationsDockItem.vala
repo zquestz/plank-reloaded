@@ -420,6 +420,11 @@ namespace Docky {
         return;
       }
 
+      if (!body.is_of_type(new VariantType("(uu)"))) {
+        warning("Unexpected NotificationClosed body signature: %s", body.get_type_string());
+        return;
+      }
+
       var id = body.get_child_value(0).get_uint32();
       remove_notification(id);
     }
