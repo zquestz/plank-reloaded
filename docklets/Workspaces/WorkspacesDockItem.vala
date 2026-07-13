@@ -42,7 +42,7 @@ namespace Docky {
     private bool is_light_theme;
     private bool needs_update = true;
 
-    private WorkspacesPreferences workspaces_prefs {
+    private WorkspacesPreferences prefs {
       get { return (WorkspacesPreferences) Prefs; }
     }
 
@@ -62,11 +62,11 @@ namespace Docky {
 
       setup_workspace_info ();
 
-      invert_color_handler_id = workspaces_prefs.notify["InvertColor"].connect (handle_invert_color_changed);
+      invert_color_handler_id = prefs.notify["InvertColor"].connect (handle_invert_color_changed);
 
       connect_screen_signals ();
 
-      live_previews_handler_id = workspaces_prefs.notify["LivePreviews"].connect (handle_live_previews_changed);
+      live_previews_handler_id = prefs.notify["LivePreviews"].connect (handle_live_previews_changed);
 
       register_window_tracking (null);
 
@@ -119,12 +119,12 @@ namespace Docky {
       remove_timers ();
 
       if (invert_color_handler_id > 0) {
-        workspaces_prefs.disconnect (invert_color_handler_id);
+        prefs.disconnect (invert_color_handler_id);
         invert_color_handler_id = 0;
       }
 
       if (live_previews_handler_id > 0) {
-        workspaces_prefs.disconnect (live_previews_handler_id);
+        prefs.disconnect (live_previews_handler_id);
         live_previews_handler_id = 0;
       }
 
@@ -175,7 +175,7 @@ namespace Docky {
 
     [CCode (instance_pos = -1)]
     private void handle_live_previews_changed (GLib.Object o, ParamSpec p) {
-      if (workspaces_prefs.LivePreviews) {
+      if (prefs.LivePreviews) {
         register_window_tracking (null);
       } else {
         unregister_all_window_tracking ();
@@ -300,7 +300,7 @@ namespace Docky {
 
     private void register_window_tracking (Wnck.Window? new_window) {
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
-      if (!workspaces_prefs.LivePreviews) {
+      if (!prefs.LivePreviews) {
         return;
       }
 
@@ -485,7 +485,7 @@ namespace Docky {
       int offset_y = (height - grid_height) / 2;
 
       Gee.ArrayList<WindowPreview?>[]? window_buckets = null;
-      if (workspaces_prefs.LivePreviews) {
+      if (prefs.LivePreviews) {
         // Walk the window list once; scanning it per cell makes every
         // repaint O(workspaces x windows)
         window_buckets = new Gee.ArrayList<WindowPreview?>[workspace_count];
@@ -549,7 +549,7 @@ namespace Docky {
       cr.set_operator (Cairo.Operator.OVER);
 
       bool use_dark = !is_light_theme;
-      if (workspaces_prefs.InvertColor) {
+      if (prefs.InvertColor) {
         use_dark = !use_dark;
       }
 
@@ -651,16 +651,16 @@ namespace Docky {
       items.add (separator_item);
 
       var invert_item = new Gtk.CheckMenuItem.with_mnemonic (_("_Invert Color"));
-      invert_item.active = workspaces_prefs.InvertColor;
+      invert_item.active = prefs.InvertColor;
       invert_item.activate.connect (() => {
-        workspaces_prefs.InvertColor = !workspaces_prefs.InvertColor;
+        prefs.InvertColor = !prefs.InvertColor;
       });
       items.add (invert_item);
 
       var live_previews_item = new Gtk.CheckMenuItem.with_mnemonic (_("_Live Previews"));
-      live_previews_item.active = workspaces_prefs.LivePreviews;
+      live_previews_item.active = prefs.LivePreviews;
       live_previews_item.activate.connect (() => {
-        workspaces_prefs.LivePreviews = !workspaces_prefs.LivePreviews;
+        prefs.LivePreviews = !prefs.LivePreviews;
       });
       items.add (live_previews_item);
 

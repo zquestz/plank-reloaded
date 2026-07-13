@@ -31,7 +31,7 @@ namespace Docky {
     private Gdk.RGBA cached_color;
     private bool needs_update = true;
 
-    private SeparatorPreferences separator_prefs {
+    private SeparatorPreferences prefs {
       get { return (SeparatorPreferences) Prefs; }
     }
 
@@ -50,7 +50,7 @@ namespace Docky {
       is_light_theme = false;
       cached_color = { 1.0, 1.0, 1.0, 0.4 };
 
-      separator_prefs_handler_id = separator_prefs.notify.connect (handle_separator_prefs_changed);
+      separator_prefs_handler_id = prefs.notify.connect (handle_separator_prefs_changed);
 
       theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (handle_gtk_theme_changed);
 
@@ -70,7 +70,7 @@ namespace Docky {
     // objects keep this item alive and unreachable for finalization
     private void removed_from_dock () {
       if (separator_prefs_handler_id > 0) {
-        separator_prefs.disconnect (separator_prefs_handler_id);
+        prefs.disconnect (separator_prefs_handler_id);
         separator_prefs_handler_id = 0;
       }
 
@@ -110,7 +110,7 @@ namespace Docky {
 
     private void update_icon () {
       if (has_custom_icon ()) {
-        Icon = separator_prefs.CustomIcon;
+        Icon = prefs.CustomIcon;
       } else {
         Icon = "";
       }
@@ -122,7 +122,7 @@ namespace Docky {
     }
 
     private bool has_custom_icon () {
-      string custom_icon = separator_prefs.CustomIcon;
+      string custom_icon = prefs.CustomIcon;
       return custom_icon != null && custom_icon != "";
     }
 
@@ -172,7 +172,7 @@ namespace Docky {
         is_light_theme = brightness > 0.5;
 
         bool use_dark = is_light_theme;
-        if (separator_prefs.InvertColor) {
+        if (prefs.InvertColor) {
           use_dark = !use_dark;
         }
 
@@ -224,7 +224,7 @@ namespace Docky {
     }
 
     private void draw_separator (Cairo.Context cr, int size) {
-      switch (separator_prefs.Style) {
+      switch (prefs.Style) {
       case SeparatorStyle.LINE:
         draw_line_separator (cr, size);
         break;
@@ -327,7 +327,7 @@ namespace Docky {
 
       if (file_chooser.run () == Gtk.ResponseType.ACCEPT) {
         string uri = file_chooser.get_uri ();
-        separator_prefs.CustomIcon = uri;
+        prefs.CustomIcon = uri;
       }
 
       file_chooser.destroy ();
@@ -345,7 +345,7 @@ namespace Docky {
       if (has_custom_icon ()) {
         var reset_icon_item = new Gtk.MenuItem.with_mnemonic (_("Reset to Default Icon"));
         reset_icon_item.activate.connect (() => {
-          separator_prefs.CustomIcon = "";
+          prefs.CustomIcon = "";
         });
         items.add (reset_icon_item);
       }
@@ -358,31 +358,31 @@ namespace Docky {
       style_item.sensitive = !has_custom_icon ();
 
       var line_item = new Gtk.RadioMenuItem.with_mnemonic (null, _("_Line"));
-      line_item.active = (separator_prefs.Style == SeparatorStyle.LINE);
+      line_item.active = (prefs.Style == SeparatorStyle.LINE);
       line_item.sensitive = !has_custom_icon ();
       line_item.activate.connect (() => {
         if (line_item.active && !has_custom_icon ()) {
-          separator_prefs.Style = SeparatorStyle.LINE;
+          prefs.Style = SeparatorStyle.LINE;
         }
       });
       style_menu.add (line_item);
 
       var dot_item = new Gtk.RadioMenuItem.with_mnemonic_from_widget (line_item, _("_Dot"));
-      dot_item.active = (separator_prefs.Style == SeparatorStyle.DOT);
+      dot_item.active = (prefs.Style == SeparatorStyle.DOT);
       dot_item.sensitive = !has_custom_icon ();
       dot_item.activate.connect (() => {
         if (dot_item.active && !has_custom_icon ()) {
-          separator_prefs.Style = SeparatorStyle.DOT;
+          prefs.Style = SeparatorStyle.DOT;
         }
       });
       style_menu.add (dot_item);
 
       var space_item = new Gtk.RadioMenuItem.with_mnemonic_from_widget (line_item, _("_Space"));
-      space_item.active = (separator_prefs.Style == SeparatorStyle.SPACE);
+      space_item.active = (prefs.Style == SeparatorStyle.SPACE);
       space_item.sensitive = !has_custom_icon ();
       space_item.activate.connect (() => {
         if (space_item.active && !has_custom_icon ()) {
-          separator_prefs.Style = SeparatorStyle.SPACE;
+          prefs.Style = SeparatorStyle.SPACE;
         }
       });
       style_menu.add (space_item);
@@ -391,11 +391,11 @@ namespace Docky {
       style_item.show_all ();
 
       var invert_item = new Gtk.CheckMenuItem.with_mnemonic (_("_Invert Color"));
-      invert_item.active = separator_prefs.InvertColor;
+      invert_item.active = prefs.InvertColor;
       invert_item.sensitive = !has_custom_icon ();
       invert_item.activate.connect (() => {
         if (!has_custom_icon ()) {
-          separator_prefs.InvertColor = !separator_prefs.InvertColor;
+          prefs.InvertColor = !prefs.InvertColor;
         }
       });
       items.add (invert_item);

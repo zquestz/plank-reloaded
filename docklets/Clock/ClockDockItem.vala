@@ -47,6 +47,10 @@ namespace Docky {
     private int dial_size = 0;
     private string dial_theme = "";
 
+    private ClockPreferences prefs {
+      get { return (ClockPreferences) Prefs; }
+    }
+
     public ClockDockItem.with_dockitem_file(GLib.File file) {
       GLib.Object(Prefs: new ClockPreferences.with_file(file));
     }
@@ -96,13 +100,11 @@ namespace Docky {
     private void setup_icon() {
       Icon = "clock";
 
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       Text = format_time_tooltip(new DateTime.now_local(), prefs.ShowMilitary);
       update_theme(prefs.ShowMilitary);
     }
 
     private void connect_preferences() {
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       prefs.notify["ShowMilitary"].connect(handle_prefs_changed);
       prefs.notify["ShowDate"].connect(handle_prefs_changed);
       prefs.notify["ShowDigital"].connect(handle_prefs_changed);
@@ -126,7 +128,6 @@ namespace Docky {
         timer_id = 0U;
       }
 
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       prefs.notify["ShowMilitary"].disconnect(handle_prefs_changed);
       prefs.notify["ShowDate"].disconnect(handle_prefs_changed);
       prefs.notify["ShowDigital"].disconnect(handle_prefs_changed);
@@ -145,7 +146,6 @@ namespace Docky {
     }
 
     private void handle_prefs_changed() {
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       update_theme(prefs.ShowMilitary);
       reset_icon_buffer();
     }
@@ -193,7 +193,6 @@ namespace Docky {
     }
 
     protected override void draw_icon(Surface surface) {
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       var now = new DateTime.now_local();
 
       Text = format_time_tooltip(now, prefs.ShowMilitary);
@@ -247,7 +246,6 @@ namespace Docky {
     }
 
     private void render_digital_clock(Surface surface, DateTime now, int size) {
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       unowned Cairo.Context cr = surface.Context;
 
       int text_size = (int) (surface.Width * FONT_SIZE_RATIO);
@@ -404,7 +402,6 @@ namespace Docky {
     }
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items() {
-      unowned ClockPreferences prefs = (ClockPreferences) Prefs;
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       add_menu_item(items, _("Di_gital Clock"), prefs.ShowDigital, () => {

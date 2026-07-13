@@ -31,6 +31,10 @@ namespace Docky {
     private uint timer_id = 0;
     private string? fallback_device = null;
 
+    private BatteryPreferences prefs {
+      get { return (BatteryPreferences) Prefs; }
+    }
+
     public BatteryDockItem.with_dockitem_file (GLib.File file)
     {
       GLib.Object (Prefs: new BatteryPreferences.with_file (file));
@@ -81,8 +85,6 @@ namespace Docky {
     // absent (e.g. hardware exposes only BAT1), fall back at runtime to the
     // first device with the expected attributes
     private string active_device () {
-      unowned BatteryPreferences prefs = (BatteryPreferences) Prefs;
-
       if (FileUtils.test (BAT_CAPACITY.printf (prefs.BatteryDeviceName), FileTest.EXISTS)) {
         fallback_device = null;
         return prefs.BatteryDeviceName;
@@ -221,11 +223,11 @@ namespace Docky {
             var battery_item = new Gtk.MenuItem.with_label (battery_name);
 
             battery_item.activate.connect (() => {
-              ((BatteryPreferences) Prefs).BatteryDeviceName = battery_name;
+              prefs.BatteryDeviceName = battery_name;
               update ();
             });
 
-            if (((BatteryPreferences) Prefs).BatteryDeviceName == battery_name) {
+            if (prefs.BatteryDeviceName == battery_name) {
               var label = battery_item.get_child () as Gtk.Label;
               if (label != null) {
                 label.set_markup ("<b>" + label.get_text () + "</b>");

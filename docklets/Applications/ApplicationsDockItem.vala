@@ -48,7 +48,7 @@ namespace Docky {
 
       update_icon();
 
-      ((ApplicationsPreferences) Prefs).notify["CustomIcon"].connect(handle_custom_icon_changed);
+      prefs.notify["CustomIcon"].connect(handle_custom_icon_changed);
 
       Text = _("Applications");
 
@@ -106,7 +106,7 @@ namespace Docky {
     private void removed_from_dock() {
       remove_update_timer();
 
-      ((ApplicationsPreferences) Prefs).notify["CustomIcon"].disconnect(handle_custom_icon_changed);
+      prefs.notify["CustomIcon"].disconnect(handle_custom_icon_changed);
 
       if (menu_tree != null) {
         menu_tree.changed.disconnect(on_apps_menu_changed);
