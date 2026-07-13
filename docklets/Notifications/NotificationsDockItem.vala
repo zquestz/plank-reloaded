@@ -184,12 +184,9 @@ namespace Docky {
 
       var data_variant = variant.get_child_value(6);
 
-      size_t array_size = data_variant.n_children();
-      uint8[] data = new uint8[array_size];
-
-      for (size_t i = 0; i < array_size; i++) {
-        data[i] = data_variant.get_child_value(i).get_byte();
-      }
+      // Read the byte array in one shot; per-byte get_child_value allocates
+      // a temporary variant for every pixel byte
+      uint8[] data = GLib.Bytes.unref_to_data(data_variant.get_data_as_bytes());
 
       if (bits_per_sample != 8) {
         warning("Unsupported bits_per_sample: %d", bits_per_sample);
@@ -427,14 +424,14 @@ namespace Docky {
       var destination = message.get_destination();
 
       lock (notification_lock) {
-        notifications.foreach((notification) => {
-          if (notification == null || notification.id_assigned) { return; }
+        foreach (unowned NotificationData? notification in notifications) {
+          if (notification == null || notification.id_assigned) { continue; }
 
           if (notification.sender == destination && notification.serial == reply_serial) {
             notification.id = notification_id;
             notification.id_assigned = true;
           }
-        });
+        }
 
         update_display();
       }
@@ -526,13 +523,14 @@ namespace Docky {
 
         NotificationData? to_remove = null;
 
-        notifications.foreach((notification) => {
-          if (notification == null) { return; }
+        foreach (unowned NotificationData? notification in notifications) {
+          if (notification == null) { continue; }
 
           if (notification.id == id) {
             to_remove = notification;
+            break;
           }
-        });
+        }
 
         if (to_remove != null) {
           to_remove.cancel_expiry_timer();
@@ -592,20 +590,20 @@ namespace Docky {
       var snapshot = new GLib.List<NotificationData> ();
 
       lock (notification_lock) {
-        notifications.foreach((n) => {
+        foreach (unowned NotificationData n in notifications) {
           n.cancel_expiry_timer();
           snapshot.append(n);
-        });
+        }
 
         notifications = new GLib.List<NotificationData> ();
         update_display();
       }
 
-      snapshot.foreach((notification) => {
+      foreach (unowned NotificationData notification in snapshot) {
         if (notification.id_assigned) {
           close_notification(notification.id,2);
         }
-      });
+      }
     }
 
     private void update_display() {
@@ -615,7 +613,11 @@ namespace Docky {
       }
 
       update_timer_id = GLib.Timeout.add(100,() => {
-        update_timer_id = 0;
+        // The id is also written from DBus-thread callers of update_display,
+        // always under the (recursive) lock
+        lock (notification_lock) {
+          update_timer_id = 0;
+        }
 
         do_update_display();
 
@@ -652,20 +654,22 @@ namespace Docky {
 
     private void update_transient_items() {
       if (prefs.ShowTransient) {
-        update_display();
+        lock (notification_lock) {
+          update_display();
+        }
       } else {
         lock (notification_lock) {
           var to_remove = new GLib.List<NotificationData> ();
 
-          notifications.foreach((notification) => {
-            if (notification == null || !notification.transient) { return; }
+          foreach (unowned NotificationData? notification in notifications) {
+            if (notification == null || !notification.transient) { continue; }
 
             to_remove.append(notification);
-          });
+          }
 
-          to_remove.foreach((notification) => {
+          foreach (unowned NotificationData notification in to_remove) {
             notifications.remove(notification);
-          });
+          }
         }
       }
     }
@@ -729,13 +733,15 @@ namespace Docky {
 
       var snapshot = new GLib.List<NotificationData> ();
       lock (notification_lock) {
-        notifications.foreach((n) => snapshot.append(n));
+        foreach (unowned NotificationData n in notifications) {
+          snapshot.append(n);
+        }
       }
 
-      snapshot.foreach((notification) => {
+      foreach (unowned NotificationData notification in snapshot) {
         var item = create_notification_menu_item(notification);
         notifications_menu.append(item);
-      });
+      }
 
       notifications_menu.show_all();
 
@@ -1065,14 +1071,14 @@ namespace Docky {
         var active_notifications = new GLib.List<NotificationData> ();
         bool changed = false;
 
-        notifications.foreach((n) => {
+        foreach (unowned NotificationData n in notifications) {
           if (n.is_expired()) {
             changed = true;
           } else {
             active_notifications.append(n);
             n.setup_expiry_timer(this);
           }
-        });
+        }
 
         if (changed) {
           notifications = (owned) active_notifications;
@@ -1083,9 +1089,9 @@ namespace Docky {
 
     private void cancel_all_expiry_timers() {
       lock (notification_lock) {
-        notifications.foreach((n) => {
+        foreach (unowned NotificationData n in notifications) {
           n.cancel_expiry_timer();
-        });
+        }
       }
     }
 
