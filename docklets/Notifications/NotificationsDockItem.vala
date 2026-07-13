@@ -263,6 +263,7 @@ namespace Docky {
     private uint update_timer_id = 0;
     private Gtk.Menu? notifications_menu = null;
     private bool close_notification_supported = true;
+    private bool display_updates_stopped = false;
     private static Object notification_lock = new Object();
     private static string base_icon = NotificationsDocklet.ICON;
     private Bamf.Matcher bamf_matcher = Bamf.Matcher.get_default();
@@ -286,8 +287,8 @@ namespace Docky {
     }
 
     ~NotificationsDockItem() {
+      stop_display_updates();
       cleanup_dbus_monitoring();
-      remove_update_timer();
       cancel_all_expiry_timers();
     }
 
@@ -301,16 +302,20 @@ namespace Docky {
     // the menu hold references that keep this item alive and unreachable for
     // finalization, and pending expiry timers would fire on a dead item
     private void removed_from_dock() {
+      stop_display_updates();
       cleanup_dbus_monitoring();
-      remove_update_timer();
       cancel_all_expiry_timers();
       destroy_menu();
     }
 
-    private void remove_update_timer() {
-      if (update_timer_id > 0) {
-        Source.remove(update_timer_id);
-        update_timer_id = 0;
+    private void stop_display_updates() {
+      lock (notification_lock) {
+        display_updates_stopped = true;
+
+        if (update_timer_id > 0) {
+          Source.remove(update_timer_id);
+          update_timer_id = 0;
+        }
       }
     }
 
@@ -639,6 +644,10 @@ namespace Docky {
       // main loop, so guard every access; the lock is recursive, so callers
       // that already hold it do not deadlock
       lock (notification_lock) {
+        if (display_updates_stopped) {
+          return;
+        }
+
         if (update_timer_id > 0) {
           Source.remove(update_timer_id);
           update_timer_id = 0;
@@ -647,6 +656,10 @@ namespace Docky {
         update_timer_id = GLib.Timeout.add(100,() => {
           lock (notification_lock) {
             update_timer_id = 0;
+
+            if (display_updates_stopped) {
+              return false;
+            }
           }
 
           do_update_display();
