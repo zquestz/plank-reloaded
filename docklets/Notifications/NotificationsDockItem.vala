@@ -41,6 +41,7 @@ namespace Docky {
     public uint32 serial { get; set; }
     public bool id_assigned { get; set; default = false; }
     public string sender { get; set; default = ""; }
+    private Mutex expiry_timer_lock;
     private uint expiry_timer_id = 0;
     private weak NotificationsDockItem? parent_dock_item = null;
 
@@ -64,18 +65,12 @@ namespace Docky {
         return;
       }
 
-      if (expiry_timer_id > 0) {
-        return;
-      }
-
-      parent_dock_item = dock_item;
-
       var age = new DateTime.now_local().difference(timestamp);
       var total_timeout = expire_timeout * TimeSpan.MILLISECOND;
       var remaining = total_timeout - age;
 
       if (remaining <= 0) {
-        parent_dock_item?.notification_expired(this);
+        dock_item.notification_expired(this);
 
         return;
       }
@@ -85,19 +80,40 @@ namespace Docky {
         safe_timeout = uint.MAX - 1000;
       }
 
-      expiry_timer_id = GLib.Timeout.add(safe_timeout, () => {
-        expiry_timer_id = 0;
+      expiry_timer_lock.lock();
+      if (expiry_timer_id > 0) {
+        expiry_timer_lock.unlock();
+        return;
+      }
 
-        parent_dock_item?.notification_expired(this);
+      parent_dock_item = dock_item;
+      expiry_timer_id = GLib.Timeout.add(safe_timeout, () => {
+        NotificationsDockItem? expiry_target;
+
+        expiry_timer_lock.lock();
+        expiry_timer_id = 0;
+        expiry_target = parent_dock_item;
+        parent_dock_item = null;
+        expiry_timer_lock.unlock();
+
+        expiry_target?.notification_expired(this);
 
         return false;
       });
+      expiry_timer_lock.unlock();
     }
 
     public void cancel_expiry_timer() {
-      if (expiry_timer_id > 0) {
-        Source.remove(expiry_timer_id);
-        expiry_timer_id = 0;
+      uint timer_id;
+
+      expiry_timer_lock.lock();
+      timer_id = expiry_timer_id;
+      expiry_timer_id = 0;
+      parent_dock_item = null;
+      expiry_timer_lock.unlock();
+
+      if (timer_id > 0) {
+        Source.remove(timer_id);
       }
     }
 
