@@ -189,12 +189,6 @@ namespace Docky {
         return null;
       }
 
-      var data_variant = variant.get_child_value(6);
-
-      // Read the byte array in one shot; per-byte get_child_value allocates
-      // a temporary variant for every pixel byte
-      uint8[] data = GLib.Bytes.unref_to_data(data_variant.get_data_as_bytes());
-
       if (bits_per_sample != 8) {
         warning("Unsupported bits_per_sample: %d", bits_per_sample);
         return null;
@@ -209,6 +203,19 @@ namespace Docky {
         warning("Invalid channels for RGB image: %d", channels);
         return null;
       }
+
+      int64 minimum_rowstride = (int64) width * channels;
+      if ((int64) rowstride < minimum_rowstride) {
+        warning("Image rowstride too small: %d bytes, expected at least %" + int64.FORMAT,
+                rowstride, minimum_rowstride);
+        return null;
+      }
+
+      var data_variant = variant.get_child_value(6);
+
+      // Read the byte array in one shot; per-byte get_child_value allocates
+      // a temporary variant for every pixel byte
+      uint8[] data = GLib.Bytes.unref_to_data(data_variant.get_data_as_bytes());
 
       // 64-bit multiply so a crafted height * rowstride cannot overflow int
       // and slip past the bounds check into an out-of-bounds pixbuf read
