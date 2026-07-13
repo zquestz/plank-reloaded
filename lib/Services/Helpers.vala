@@ -68,6 +68,62 @@ namespace Plank {
       return bring_to_current_workspace;
     }
 
+    /**
+     * Positions and pops up a docklet-built menu next to its dock item.
+     *
+     * @param controller The dock the item lives on
+     * @param item The dock item to position the menu against
+     * @param menu The menu to show
+     */
+    public static void popup_docklet_menu (DockController controller, DockItem item, Gtk.Menu menu) {
+      menu.show_all ();
+
+      Gtk.Requisition requisition;
+      menu.get_preferred_size (null, out requisition);
+
+      int x, y;
+      controller.position_manager.get_menu_position (item, requisition, out x, out y);
+
+      Gdk.Gravity gravity;
+      Gdk.Gravity flipped_gravity;
+
+      switch (controller.position_manager.Position) {
+      case Gtk.PositionType.BOTTOM:
+        gravity = Gdk.Gravity.NORTH;
+        flipped_gravity = Gdk.Gravity.SOUTH;
+        break;
+      case Gtk.PositionType.TOP:
+        gravity = Gdk.Gravity.SOUTH;
+        flipped_gravity = Gdk.Gravity.NORTH;
+        break;
+      case Gtk.PositionType.LEFT:
+        gravity = Gdk.Gravity.EAST;
+        flipped_gravity = Gdk.Gravity.WEST;
+        break;
+      case Gtk.PositionType.RIGHT:
+        gravity = Gdk.Gravity.WEST;
+        flipped_gravity = Gdk.Gravity.EAST;
+        break;
+      default:
+        gravity = Gdk.Gravity.NORTH;
+        flipped_gravity = Gdk.Gravity.SOUTH;
+        break;
+      }
+
+      menu.popup_at_rect (
+                          controller.window.get_screen ().get_root_window (),
+                          Gdk.Rectangle () {
+        x = x,
+        y = y,
+        width = 1,
+        height = 1,
+      },
+                          gravity,
+                          flipped_gravity,
+                          null
+      );
+    }
+
     public static int window_count (Bamf.Application? app, DefaultApplicationDockItemProvider? provider) {
       int window_count = 0;
 

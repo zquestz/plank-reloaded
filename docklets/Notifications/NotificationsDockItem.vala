@@ -743,52 +743,7 @@ namespace Docky {
         notifications_menu.append(item);
       }
 
-      notifications_menu.show_all();
-
-      Gtk.Requisition requisition;
-      notifications_menu.get_preferred_size(null,out requisition);
-
-      int x,y;
-      controller.position_manager.get_menu_position(this,requisition,out x,out y);
-
-      Gdk.Gravity gravity;
-      Gdk.Gravity flipped_gravity;
-
-      switch (controller.position_manager.Position) {
-      case Gtk.PositionType.BOTTOM :
-        gravity = Gdk.Gravity.NORTH;
-        flipped_gravity = Gdk.Gravity.SOUTH;
-        break;
-      case Gtk.PositionType.TOP :
-        gravity = Gdk.Gravity.SOUTH;
-        flipped_gravity = Gdk.Gravity.NORTH;
-        break;
-      case Gtk.PositionType.LEFT :
-        gravity = Gdk.Gravity.EAST;
-        flipped_gravity = Gdk.Gravity.WEST;
-        break;
-      case Gtk.PositionType.RIGHT :
-        gravity = Gdk.Gravity.WEST;
-        flipped_gravity = Gdk.Gravity.EAST;
-        break;
-        default :
-        gravity = Gdk.Gravity.NORTH;
-        flipped_gravity = Gdk.Gravity.SOUTH;
-        break;
-      }
-
-      notifications_menu.popup_at_rect(
-                         controller.window.get_screen().get_root_window(),
-                         Gdk.Rectangle() {
-        x = x,
-        y = y,
-        width = 1,
-        height = 1,
-      },
-                         gravity,
-                         flipped_gravity,
-                         null
-      );
+      Helpers.popup_docklet_menu(controller, this, notifications_menu);
     }
 
     private Gtk.MenuItem create_notification_menu_item(NotificationData notification) {
