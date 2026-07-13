@@ -22,8 +22,9 @@ namespace Docky {
     private ulong position_handler_id = 0;
     private ulong prefs_handler_id = 0;
     private ulong separator_prefs_handler_id = 0;
-    private uint setup_timer_id = 0;
     private ulong theme_handler_id = 0UL;
+    private PositionManager? connected_position_manager = null;
+    private DockPreferences? connected_dock_prefs = null;
 
     private Gtk.PositionType cached_position;
     private bool is_light_theme;
@@ -49,33 +50,25 @@ namespace Docky {
       is_light_theme = false;
       cached_color = { 1.0, 1.0, 1.0, 0.4 };
 
-      separator_prefs_handler_id = separator_prefs.notify.connect ((s, p) => {
-        if (p.name == "InvertColor" || p.name == "Style") {
-          update_cache (false, true);
-        } else if (p.name == "CustomIcon") {
-          update_icon ();
-        }
-      });
+      separator_prefs_handler_id = separator_prefs.notify.connect (handle_separator_prefs_changed);
 
-      theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (
-      (s, p) => {
-        update_cache (false, true);
-      });
+      theme_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (handle_gtk_theme_changed);
 
-      // Setup theme detection with a slight delay to ensure dock is ready
-      setup_timer_id = Timeout.add (2000, () => {
-        setup_signals ();
-        setup_timer_id = 0;
-        return false;
-      });
+      // Dock signals connect once the item is attached to its container
+      notify["Container"].connect (handle_container_changed);
     }
 
-    ~SeparatorDockItem () {
-      if (setup_timer_id > 0) {
-        Source.remove (setup_timer_id);
-        setup_timer_id = 0;
+    private void handle_container_changed () {
+      if (Container == null) {
+        removed_from_dock ();
+      } else if (position_handler_id == 0) {
+        setup_signals ();
       }
+    }
 
+    // Teardown must not rely solely on the destructor: handlers on external
+    // objects keep this item alive and unreachable for finalization
+    private void removed_from_dock () {
       if (separator_prefs_handler_id > 0) {
         separator_prefs.disconnect (separator_prefs_handler_id);
         separator_prefs_handler_id = 0;
@@ -87,6 +80,32 @@ namespace Docky {
       }
 
       disconnect_signals ();
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_separator_prefs_changed (GLib.Object o, ParamSpec p) {
+      if (p.name == "InvertColor" || p.name == "Style") {
+        update_cache (false, true);
+      } else if (p.name == "CustomIcon") {
+        update_icon ();
+      }
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_gtk_theme_changed (GLib.Object o, ParamSpec p) {
+      update_cache (false, true);
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_position_changed (GLib.Object o, ParamSpec p) {
+      update_cache (true, false);
+    }
+
+    [CCode (instance_pos = -1)]
+    private void handle_dock_prefs_changed (GLib.Object o, ParamSpec p) {
+      if (p.name == "Theme") {
+        update_cache (false, true);
+      }
     }
 
     private void update_icon () {
@@ -109,36 +128,31 @@ namespace Docky {
 
     private void setup_signals () {
       var dock = get_dock ();
-      if (dock != null) {
-        position_handler_id = dock.position_manager.notify["Position"].connect (() => {
-          update_cache (true, false);
-        });
-
-        prefs_handler_id = dock.prefs.notify.connect ((s, p) => {
-          if (p.name == "Theme") {
-            update_cache (false, true);
-          }
-        });
-
-        update_cache (true, true);
-      } else {
-        warning ("SeparatorDockItem: dock controller still null after timer");
+      if (dock == null) {
+        return;
       }
+
+      connected_position_manager = dock.position_manager;
+      position_handler_id = connected_position_manager.notify["Position"].connect (handle_position_changed);
+
+      connected_dock_prefs = dock.prefs;
+      prefs_handler_id = connected_dock_prefs.notify.connect (handle_dock_prefs_changed);
+
+      update_cache (true, true);
     }
 
     private void disconnect_signals () {
-      var dock = get_dock ();
-      if (dock != null) {
-        if (position_handler_id > 0) {
-          dock.position_manager.disconnect (position_handler_id);
-          position_handler_id = 0;
-        }
-
-        if (prefs_handler_id > 0) {
-          dock.prefs.disconnect (prefs_handler_id);
-          prefs_handler_id = 0;
-        }
+      if (connected_position_manager != null && position_handler_id > 0) {
+        connected_position_manager.disconnect (position_handler_id);
       }
+      position_handler_id = 0;
+      connected_position_manager = null;
+
+      if (connected_dock_prefs != null && prefs_handler_id > 0) {
+        connected_dock_prefs.disconnect (prefs_handler_id);
+      }
+      prefs_handler_id = 0;
+      connected_dock_prefs = null;
     }
 
     private bool update_cache (bool update_position, bool update_theme) {
