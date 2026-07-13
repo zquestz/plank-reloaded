@@ -94,10 +94,12 @@ namespace Docky {
         if (environment_is_session_desktop(XdgSessionDesktop.KDE)) {
           var trash_dirs = get_trash_directories();
           foreach (var trash_dir in trash_dirs) {
-            // Monitor even when files/ does not exist yet (GIO watches for
-            // creation), so the first trashed file on a fresh profile counts
+            // Explicitly a directory monitor: files/ may not exist yet, and a
+            // plain monitor() would arm a file monitor that reports the dir's
+            // creation but never changes to its children; monitor_directory
+            // watches for children once the dir appears
             var files_dir = trash_dir.get_child("files");
-            var monitor = files_dir.monitor(0);
+            var monitor = files_dir.monitor_directory(0);
             monitor.changed.connect(trash_changed);
             trash_monitors.add(monitor);
           }
