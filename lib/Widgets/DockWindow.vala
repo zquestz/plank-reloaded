@@ -783,6 +783,36 @@ namespace Plank {
       if (!get_realized ())
         return;
 
+      var struts = new ulong[Struts.N_VALUES];
+
+      if (controller.prefs.HideMode == HideType.NONE)
+        controller.position_manager.get_struts (ref struts);
+      else
+        controller.position_manager.clear_applied_strut ();
+
+      write_struts (struts);
+    }
+
+    /**
+     * Re-asserts the dock's struts for its current state.
+     */
+    public void update_struts () {
+      set_struts ();
+    }
+
+    /**
+     * Removes the dock's struts so the work area can be read without our
+     * own reservation folded into it.
+     */
+    public void clear_struts () {
+      controller.position_manager.clear_applied_strut ();
+      write_struts (new ulong[Struts.N_VALUES]);
+    }
+
+    void write_struts (ulong[] struts) {
+      if (!get_realized ())
+        return;
+
       unowned Gdk.X11.Display gdk_display = (get_display () as Gdk.X11.Display);
       if (gdk_display == null)
         return;
@@ -790,11 +820,6 @@ namespace Plank {
       unowned Gdk.X11.Window gdk_window = (get_window () as Gdk.X11.Window);
       if (gdk_window == null)
         return;
-
-      var struts = new ulong[Struts.N_VALUES];
-
-      if (controller.prefs.HideMode == HideType.NONE)
-        controller.position_manager.get_struts (ref struts);
 
       var first_struts = new ulong[Struts.BOTTOM + 1];
       for (var i = 0; i < first_struts.length; i++)

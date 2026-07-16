@@ -51,6 +51,22 @@ namespace Plank {
     int monitor_num;
     int last_update_monitor_num;
 
+    // Work-area mode state: external panel margins around the raw monitor
+    // geometry, and the monitor-relative extent of the strut we currently
+    // have applied on the dock's edge, used to recognize our own echo in
+    // the work area (struts on the same edge combine by max, so our own
+    // reservation shadows smaller panels there)
+    const int64 STRUT_SETTLE_TIME = TimeSpan.SECOND;
+    int area_margin_top = 0;
+    int area_margin_bottom = 0;
+    int area_margin_left = 0;
+    int area_margin_right = 0;
+    int applied_strut = 0;
+    int64 strut_written_at = 0;
+    uint area_recheck_timeout_id = 0;
+    bool workarea_filter_installed = false;
+    X.Atom workarea_atom = X.None;
+
     int max_hover_height_cache = 0;
     int max_hover_width_cache = 0;
     int window_scale_factor = 1;
@@ -87,11 +103,8 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (use_monitor_geometry ()) {
-        monitor_geo = monitor.get_geometry ();
-      } else {
-        monitor_geo = monitor.get_workarea ();
-      }
+      update_monitor_geo (monitor);
+      watch_workarea ();
 
       screen_is_composited = screen.is_composited ();
 
@@ -103,6 +116,8 @@ namespace Plank {
     ~PositionManager () {
       stop_active_display_polling ();
       stop_screen_changed_timeout ();
+      stop_area_recheck_timeout ();
+      unwatch_workarea ();
 
       unowned Gdk.Screen screen = controller.window.get_screen ();
 
@@ -299,11 +314,7 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (use_monitor_geometry ()) {
-        monitor_geo = monitor.get_geometry ();
-      } else {
-        monitor_geo = monitor.get_workarea ();
-      }
+      update_monitor_geo (monitor);
 
       if (old_monitor_num == monitor_num
           && old_monitor_geo.x == monitor_geo.x
@@ -327,6 +338,11 @@ namespace Plank {
 
       update_dimensions ();
       update_regions ();
+
+      // A margin change can shift the monitor area without changing the
+      // window-relative dock region, which update_regions' guard skips;
+      // reposition explicitly (a no-op when already in place)
+      controller.window.update_size_and_position ();
 
 #if HAVE_BARRIERS
       controller.hide_manager.update_barrier ();
@@ -1956,6 +1972,30 @@ namespace Plank {
                       screen_width, screen_height,
                       VisibleDockWidth, VisibleDockHeight,
                       GapSize, window_scale_factor);
+
+      // Remember the monitor-relative extent of our reservation so
+      // work-area readings can recognize our own echo on this edge
+      int own_extent = 0;
+      switch (Position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        own_extent = area_margin_bottom + VisibleDockHeight + GapSize;
+        break;
+      case Gtk.PositionType.TOP:
+        own_extent = area_margin_top + VisibleDockHeight + GapSize;
+        break;
+      case Gtk.PositionType.LEFT:
+        own_extent = area_margin_left + VisibleDockWidth + GapSize;
+        break;
+      case Gtk.PositionType.RIGHT:
+        own_extent = area_margin_right + VisibleDockWidth + GapSize;
+        break;
+      }
+
+      if (applied_strut != own_extent) {
+        applied_strut = own_extent;
+        strut_written_at = GLib.get_monotonic_time ();
+      }
     }
 
     /**
