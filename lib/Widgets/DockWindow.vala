@@ -797,8 +797,10 @@ namespace Plank {
       // and must stay that way until release_struts ends it. Skipping the
       // write also keeps our own no-op property writes from echoing back
       // as work-area events and resetting the episode.
-      if (struts_withheld)
+      if (struts_withheld) {
+        debug ("DockWindow.update_struts () skipped, struts withheld");
         return;
+      }
 
       var struts = new ulong[Struts.N_VALUES];
 
@@ -813,6 +815,7 @@ namespace Plank {
      * can be measured without our own reservation folded into it.
      */
     public void clear_struts () {
+      debug ("DockWindow.clear_struts ()");
       struts_withheld = true;
       write_struts (new ulong[Struts.N_VALUES]);
     }
@@ -827,6 +830,7 @@ namespace Plank {
       if (!struts_withheld)
         return;
 
+      debug ("DockWindow.release_struts ()");
       struts_withheld = false;
       update_struts ();
     }
@@ -871,6 +875,9 @@ namespace Plank {
         }
       }
       struts_asserted = asserted;
+
+      debug ("DockWindow.write_struts (left = %lu, right = %lu, top = %lu, bottom = %lu)",
+             struts[Struts.LEFT], struts[Struts.RIGHT], struts[Struts.TOP], struts[Struts.BOTTOM]);
     }
 
     /**
