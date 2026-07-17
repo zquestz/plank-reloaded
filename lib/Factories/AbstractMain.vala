@@ -235,9 +235,6 @@ namespace Plank {
 
       base.startup ();
 
-      if (!Thread.supported ())
-        critical ("Problem initializing thread support.");
-
       message ("%s version: %s", program_name, build_version);
       message ("Kernel version: %s", Posix.utsname ().release);
       message ("GLib version: %u.%u.%u (%u.%u.%u)",
