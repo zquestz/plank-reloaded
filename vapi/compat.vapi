@@ -24,7 +24,7 @@ namespace Plank
 
 	[CCode (cheader_filename = "gdk/gdk.h", cname = "gdk_window_add_filter", instance_pos = 1.9)]
 	public void gdk_window_add_filter (Gdk.Window? window, Gdk.FilterFunc function);
-	[CCode (cheader_filename = "gdk/gdk.h", cname = "gdk_window_add_filter", instance_pos = 1.9)]
+	[CCode (cheader_filename = "gdk/gdk.h", cname = "gdk_window_remove_filter", instance_pos = 1.9)]
 	public void gdk_window_remove_filter (Gdk.Window? window, Gdk.FilterFunc function);
 
 #if HAVE_SYS_PRCTL_H
