@@ -141,7 +141,7 @@ namespace Plank {
     requires (controller.window != null)
     {
       unowned DockWindow window = controller.window;
-      unowned Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen wnck_screen = WindowControl.get_wnck_screen ();
 
 #if HAVE_BARRIERS
       initialize_barriers_support ();
@@ -162,7 +162,7 @@ namespace Plank {
     ~HideManager () {
       unowned DockWindow window = controller.window;
       unowned DragManager drag_manager = controller.drag_manager;
-      unowned Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen wnck_screen = WindowControl.get_wnck_screen ();
 
       controller.prefs.notify.disconnect (prefs_changed);
 
@@ -560,7 +560,7 @@ namespace Plank {
       var new_active_window_intersect = false;
       var active_maximized_intersect = false;
       var ignore_update = false;
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
       unowned Wnck.Window? active_window = screen.get_active_window ();
       unowned Wnck.Workspace? active_workspace = screen.get_active_workspace ();
 
@@ -606,7 +606,7 @@ namespace Plank {
         // Workaround to prevent dock from showing up on Steam menu clicks.
         // See InternalConsts.STEAM_WINDOW_NAME for details.
         if (last_window_name == STEAM_WINDOW_NAME) {
-          unowned Wnck.Window? existing_window = Wnck.Window.get (last_window_xid);
+          unowned Wnck.Window? existing_window = WindowControl.get_wnck_window (last_window_xid);
 
           if (existing_window != null && last_window_workspace_id == active_workspace.get_number ()) {
             ignore_update = true;

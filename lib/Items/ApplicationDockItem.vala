@@ -495,7 +495,7 @@ namespace Plank {
 
         bool cw_only = Helpers.current_workspace_only (default_provider);
         bool bring_to_current = Helpers.bring_to_current_workspace (default_provider);
-        unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+        unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
 
         foreach (var window in windows) {
           if (window == null || window.get_transient () != null || !window.is_user_visible ()) {

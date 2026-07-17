@@ -66,7 +66,7 @@ namespace Docky {
      * @return true if workspaces are supported, false otherwise
      */
     public bool is_supported () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       int workspace_count = screen.get_workspace_count ();
 
       return workspace_count > 0;

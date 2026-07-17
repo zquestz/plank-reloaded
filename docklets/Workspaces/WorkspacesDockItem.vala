@@ -79,7 +79,7 @@ namespace Docky {
     }
 
     private void connect_screen_signals () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       screen.active_workspace_changed.connect_after (handle_workspace_changed);
       screen.workspace_created.connect_after (handle_workspace_count_changed);
       screen.workspace_destroyed.connect_after (handle_workspace_count_changed);
@@ -146,7 +146,7 @@ namespace Docky {
     }
 
     private void disconnect_screen_signals () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       screen.active_workspace_changed.disconnect (handle_workspace_changed);
       screen.workspace_created.disconnect (handle_workspace_count_changed);
       screen.workspace_destroyed.disconnect (handle_workspace_count_changed);
@@ -217,7 +217,7 @@ namespace Docky {
     }
 
     private void setup_workspace_info () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
 
       current_workspace = screen.get_active_workspace () ? .get_number () ?? 0;
       workspace_count = screen.get_workspace_count ();
@@ -299,7 +299,7 @@ namespace Docky {
     }
 
     private void register_window_tracking (Wnck.Window? new_window) {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       if (!prefs.LivePreviews) {
         return;
       }
@@ -387,7 +387,7 @@ namespace Docky {
         return;
       }
 
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       unowned Wnck.Workspace? workspace = screen.get_workspace (workspace_num);
 
       if (workspace != null) {
@@ -447,7 +447,7 @@ namespace Docky {
         rows = (int) Math.ceil ((double) workspace_count / cols);
       }
 
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
       int screen_width = screen.get_width ();
       int screen_height = screen.get_height ();
       bool is_horizontal = screen_width >= screen_height;
@@ -624,7 +624,7 @@ namespace Docky {
 
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = Plank.get_wnck_screen ();
 
       for (int i = 0; i < workspace_count; i++) {
         unowned Wnck.Workspace? workspace = screen.get_workspace (i);

@@ -57,3 +57,16 @@ namespace X
 	[CCode (cname = "XFreeEventData")]
 	public static bool free_event_data (X.Display display, X.GenericEventCookie* event_cookie);
 }
+
+// WnckHandle bindings (libwnck >= 40), missing from the libwnck-3.0 vapi
+namespace Wnck
+{
+	[CCode (cheader_filename = "libwnck/libwnck.h", type_id = "wnck_handle_get_type ()")]
+	public class Handle : GLib.Object
+	{
+		[CCode (has_construct_function = false)]
+		public Handle (Wnck.ClientType client_type);
+		public unowned Wnck.Screen? get_default_screen ();
+		public unowned Wnck.Window? get_window (ulong xwindow);
+	}
+}

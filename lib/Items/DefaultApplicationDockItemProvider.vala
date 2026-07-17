@@ -63,7 +63,7 @@ namespace Plank {
       Logger.verbose ("DefaultDockItemProvider.update_visible_items ()");
 
       if (Prefs.CurrentWorkspaceOnly) {
-        unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+        unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
         foreach (var item in internal_elements) {
           unowned TransientDockItem? transient = (item as TransientDockItem);
 
@@ -151,7 +151,7 @@ namespace Plank {
     }
 
     void connect_wnck () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
 
       screen.active_window_changed.connect_after (handle_window_changed);
       screen.active_workspace_changed.connect_after (handle_workspace_changed);
@@ -160,7 +160,7 @@ namespace Plank {
     }
 
     void disconnect_wnck () {
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
 
       screen.active_window_changed.disconnect (handle_window_changed);
       screen.active_workspace_changed.disconnect (handle_workspace_changed);

@@ -140,7 +140,7 @@ namespace Plank {
         // No delay after this operation to match original timing
         if (op.action_type == PendingActionType.SCHEDULE_DELAYED_FOCUS) {
           if (op.xids.size > 0) {
-            unowned Wnck.Window? window = Wnck.Window.@get (op.xids[0]);
+            unowned Wnck.Window? window = get_wnck_window (op.xids[0]);
             if (window != null) {
               schedule_delayed_focus (window, op.window_count, op.event_time);
             }
@@ -151,7 +151,7 @@ namespace Plank {
         }
 
         // Look up window by XID - returns null if window was closed
-        unowned Wnck.Window? window = Wnck.Window.@get (op.xids[op.index]);
+        unowned Wnck.Window? window = get_wnck_window (op.xids[op.index]);
         if (window != null) {
           switch (op.action_type) {
           case PendingActionType.MINIMIZE:
@@ -184,6 +184,22 @@ namespace Plank {
     WindowControl () {
     }
 
+    static Wnck.Handle? wnck_handle = null;
+
+    static unowned Wnck.Handle get_handle () {
+      if (wnck_handle == null)
+        wnck_handle = new Wnck.Handle (Wnck.ClientType.PAGER);
+      return wnck_handle;
+    }
+
+    public static unowned Wnck.Screen get_wnck_screen () {
+      return get_handle ().get_default_screen ();
+    }
+
+    public static unowned Wnck.Window? get_wnck_window (ulong xid) {
+      return get_handle ().get_window (xid);
+    }
+
     // X error traps on the default display, replacing the deprecated
     // global Gdk.error_trap_push/pop
     static void error_trap_push () {
@@ -200,9 +216,7 @@ namespace Plank {
     }
 
     public static void initialize () {
-      Wnck.set_client_type (Wnck.ClientType.PAGER);
-
-      unowned Wnck.Screen screen = Wnck.Screen.get_default ();
+      unowned Wnck.Screen screen = get_wnck_screen ();
 
       // Make sure internal window-list of Wnck is most up to date
       error_trap_push ();
@@ -248,7 +262,7 @@ namespace Plank {
       error_trap_push ();
 
       for (var i = 0; xids != null && i < xids.length && pbuf == null; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window == null)
           continue;
 
@@ -265,7 +279,7 @@ namespace Plank {
 
     public static unowned Gdk.Pixbuf? get_window_icon (Bamf.Window window)
     {
-      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Window w = get_wnck_window (window.get_xid ());
       unowned Gdk.Pixbuf? pbuf = null;
 
       warn_if_fail (w != null);
@@ -287,7 +301,7 @@ namespace Plank {
 
     public static Gdk.Pixbuf? get_window_thumbnail (Bamf.Window window)
     {
-      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Window w = get_wnck_window (window.get_xid ());
 
       warn_if_fail (w != null);
 
@@ -325,7 +339,7 @@ namespace Plank {
 
     public static unowned Wnck.Workspace? get_window_workspace (Bamf.Window window)
     {
-      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Window w = get_wnck_window (window.get_xid ());
       unowned Wnck.Workspace? workspace = null;
 
       warn_if_fail (w != null);
@@ -349,7 +363,7 @@ namespace Plank {
       warn_if_fail (xids != null);
 
       for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null && window.is_maximized ())
           return true;
       }
@@ -363,7 +377,7 @@ namespace Plank {
       warn_if_fail (xids != null);
 
       for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null && window.is_minimized ())
           return true;
       }
@@ -439,7 +453,7 @@ namespace Plank {
     public static Array<uint32> get_app_xids_on_workspace (Bamf.Application? app) {
       Array<uint32> xids = new Array<uint32> ();
 
-      unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+      unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
       Array<uint32> app_xids = app.get_xids ();
 
       if (active_workspace == null) {
@@ -449,7 +463,7 @@ namespace Plank {
       var is_virtual = active_workspace.is_virtual ();
 
       foreach (uint32 xid in app_xids) {
-        unowned Wnck.Window window = Wnck.Window.@get (xid);
+        unowned Wnck.Window window = get_wnck_window (xid);
 
         if (!is_virtual) {
           if (window.is_on_workspace (active_workspace)) {
@@ -471,14 +485,14 @@ namespace Plank {
       warn_if_fail (xids != null);
 
       for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null)
           window.set_icon_geometry (rect.x, rect.y, rect.width, rect.height);
       }
     }
 
     public static void close_window (Bamf.Window window, uint32 event_time) {
-      unowned Wnck.Window wnck_window = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Window wnck_window = get_wnck_window (window.get_xid ());
       wnck_window.close (event_time);
     }
 
@@ -488,7 +502,7 @@ namespace Plank {
       warn_if_fail (xids != null);
 
       for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null && !window.is_skip_tasklist ())
           window.close (event_time);
       }
@@ -499,11 +513,11 @@ namespace Plank {
 
       warn_if_fail (xids != null);
 
-      unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+      unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
       var is_virtual = active_workspace.is_virtual ();
 
       for (var i = 0; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null && !window.is_skip_tasklist () && active_workspace != null) {
           if (!is_virtual) {
             if (window.is_on_workspace (active_workspace)) {
@@ -519,7 +533,7 @@ namespace Plank {
     }
 
     public static void focus_window (Bamf.Window window, uint32 event_time, bool bring_to_current = false) {
-      unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
+      unowned Wnck.Window w = get_wnck_window (window.get_xid ());
 
       warn_if_fail (w != null);
 
@@ -530,7 +544,7 @@ namespace Plank {
     }
 
     static void focus_window_by_xid (uint32 xid, uint32 event_time) {
-      unowned Wnck.Window w = Wnck.Window.@get (xid);
+      unowned Wnck.Window w = get_wnck_window (xid);
 
       warn_if_fail (w != null);
 
@@ -543,7 +557,7 @@ namespace Plank {
     static int find_active_xid_index (Array<uint32>? xids) {
       var i = 0;
       for ( ; xids != null && i < xids.length; i++) {
-        unowned Wnck.Window? window = Wnck.Window.@get (xids.index (i));
+        unowned Wnck.Window? window = get_wnck_window (xids.index (i));
         if (window != null && window.is_active ())
           break;
       }
@@ -633,7 +647,7 @@ namespace Plank {
         return windows;
       }
 
-      unowned GLib.List<Wnck.Window> stack = Wnck.Screen.get_default ().get_windows_stacked ();
+      unowned GLib.List<Wnck.Window> stack = get_wnck_screen ().get_windows_stacked ();
 
       foreach (unowned Wnck.Window window in stack)
         for (var j = 0; j < xids.length; j++)
@@ -781,7 +795,7 @@ namespace Plank {
       delayed_focus_timer_id = Gdk.threads_add_timeout (VIEWPORT_CHANGE_DELAY, () => {
         delayed_focus_timer_id = 0U;
         // Look up window by XID - returns null if window was closed
-        unowned Wnck.Window? w = Wnck.Window.@get (delayed_focus_xid);
+        unowned Wnck.Window? w = get_wnck_window (delayed_focus_xid);
         if (w != null) {
           w.activate (event_time);
         }

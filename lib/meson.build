@@ -142,7 +142,12 @@ plank_lib = shared_library(
 
 install_data('plank.deps', install_dir: join_paths(get_option('datadir'), 'vala', 'vapi'))
 
-plank_dep = declare_dependency(link_with: [plank_lib], include_directories: include_directories('.'))
+# The public API references Wnck.Screen, so consumers need libwnck
+plank_dep = declare_dependency(
+  link_with: [plank_lib],
+  include_directories: include_directories('.'),
+  dependencies: [wnck_dep],
+)
 
 configure_file(
   input: 'plank.pc.in',

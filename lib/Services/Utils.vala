@@ -130,4 +130,15 @@ namespace Plank {
 
     return result;
   }
+
+  /**
+   * The Wnck.Screen of the default display, obtained through plank's
+   * shared Wnck.Handle. Use this instead of the deprecated
+   * Wnck.Screen.get_default () so all consumers share one screen instance.
+   *
+   * @return the shared Wnck.Screen
+   */
+  public static unowned Wnck.Screen get_wnck_screen () {
+    return WindowControl.get_wnck_screen ();
+  }
 }

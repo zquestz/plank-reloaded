@@ -46,7 +46,7 @@ namespace Docky {
     }
 
     private void initialize_wnck() {
-      screen = Wnck.Screen.get_default();
+      screen = Plank.get_wnck_screen();
     }
 
     protected override AnimationType on_clicked(PopupButton button,

@@ -132,7 +132,7 @@ namespace Plank {
       }
 
       if (current_workspace_only (provider)) {
-        unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
+        unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
         if (active_workspace != null)
           window_count = WindowControl.window_on_workspace_count (app, active_workspace);
       } else {
