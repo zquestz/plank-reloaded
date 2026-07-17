@@ -52,10 +52,9 @@ namespace Plank {
     // Interval between measurement samples once an evaluation has begun
     const uint SCREEN_UPDATE_SAMPLE_TIME = 500U;
 
-    // Consecutive agreeing samples required in work-area mode before the
-    // transition counts as over and the strut is re-asserted. Kept long
-    // (2.5s), since a shrinking screen legitimately reports no panel
-    // margins while the panel is off-screen being re-anchored.
+    // Consecutive agreeing samples required before an episode ends; in
+    // monitor mode this only bounds the wait for geometry that lags its
+    // trigger, since a changed sample completes the episode immediately
     const uint SCREEN_UPDATE_STABLE_SAMPLES = 5;
 
     uint active_display_timeout_id;
@@ -72,13 +71,21 @@ namespace Plank {
     // be measured while our strut is not asserted (same-edge struts combine
     // by max), so it holds its last clean value in between. Strut-free
     // docks track work-area changes live; asserted docks re-measure through
-    // the withdraw-and-settle path on screen or preference changes.
+    // the withdraw-and-settle path on screen or preference changes only.
     int area_margin_top = 0;
     int area_margin_bottom = 0;
     int area_margin_left = 0;
     int area_margin_right = 0;
     bool workarea_filter_installed = false;
     X.Atom workarea_atom = X.None;
+    X.Atom gtk_workareas_atom = X.None;
+    X.Atom current_desktop_atom = X.None;
+
+    // Raw monitor geometry from the last measurement, and whether the
+    // current update episode has seen it move: during geometry
+    // transitions margin decreases are held (see held_margin)
+    Gdk.Rectangle last_raw_geo;
+    bool geometry_change_in_flight = false;
 
     int max_hover_height_cache = 0;
     int max_hover_width_cache = 0;
@@ -159,13 +166,28 @@ namespace Plank {
       area_margin_right = 0;
     }
 
-    void update_monitor_geo (Gdk.Monitor monitor) {
+    bool update_monitor_geo (Gdk.Monitor monitor) {
       var geo = monitor.get_geometry ();
+
+      // Hotplug transients can report empty geometry; keep the previous
+      // state and report the measurement unusable, so sampling neither
+      // trusts nor stabilizes on it
+      if (geo.width <= 0 || geo.height <= 0)
+        return false;
+
+      // The first measurement only seeds the reference: it runs outside
+      // any update episode, so a flag set here would never be cleared
+      if (last_raw_geo.width != 0
+          && (geo.x != last_raw_geo.x || geo.y != last_raw_geo.y
+              || geo.width != last_raw_geo.width || geo.height != last_raw_geo.height))
+        geometry_change_in_flight = true;
+
+      last_raw_geo = geo;
 
       if (use_monitor_geometry ()) {
         reset_area_margins ();
         monitor_geo = geo;
-        return;
+        return true;
       }
 
       update_area_margins (monitor, geo);
@@ -176,25 +198,43 @@ namespace Plank {
       available.width -= area_margin_left + area_margin_right;
       available.height -= area_margin_top + area_margin_bottom;
 
-      // Never let a bogus work area collapse the dock's space
+      // Never let a bogus work area collapse the dock's space. The margin
+      // fields keep their measured values: transient absurd readings
+      // correct themselves at the next sample, and a held own edge must
+      // survive the turbulence.
       if (available.width < geo.width / 2 || available.height < geo.height / 2) {
         warning ("Work area margins look bogus (%i,%i,%i,%i), using monitor geometry",
                  area_margin_top, area_margin_bottom, area_margin_left, area_margin_right);
-        reset_area_margins ();
         monitor_geo = geo;
-        return;
+        return true;
       }
 
       monitor_geo = available;
+      return true;
+    }
+
+    static int sane_margin (int margin, int dimension) {
+      // A margin claiming more than half the monitor is never a real
+      // panel, only a transiently stale reading; treat it as empty rather
+      // than storing it (where a held own edge could keep it alive)
+      return (margin > dimension / 2 ? 0 : margin);
     }
 
     void update_area_margins (Gdk.Monitor monitor, Gdk.Rectangle geo) {
       var workarea = monitor.get_workarea ();
 
-      var top = (workarea.y - geo.y).clamp (0, geo.height);
-      var left = (workarea.x - geo.x).clamp (0, geo.width);
-      var bottom = ((geo.y + geo.height) - (workarea.y + workarea.height)).clamp (0, geo.height);
-      var right = ((geo.x + geo.width) - (workarea.x + workarea.width)).clamp (0, geo.width);
+      // Stored margins may predate a dimension change: drop any that are
+      // impossible under the current geometry, so a held value that was
+      // legal on the old size cannot trip the bogus-geometry fallback
+      area_margin_top = sane_margin (area_margin_top, geo.height);
+      area_margin_bottom = sane_margin (area_margin_bottom, geo.height);
+      area_margin_left = sane_margin (area_margin_left, geo.width);
+      area_margin_right = sane_margin (area_margin_right, geo.width);
+
+      var top = sane_margin ((workarea.y - geo.y).clamp (0, geo.height), geo.height);
+      var left = sane_margin ((workarea.x - geo.x).clamp (0, geo.width), geo.width);
+      var bottom = sane_margin (((geo.y + geo.height) - (workarea.y + workarea.height)).clamp (0, geo.height), geo.height);
+      var right = sane_margin (((geo.x + geo.width) - (workarea.x + workarea.width)).clamp (0, geo.width), geo.width);
 
       // The dock's own edge folds our strut into the work area whenever it
       // is asserted (same-edge struts combine by max), so it only refreshes
@@ -204,34 +244,57 @@ namespace Plank {
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
-        area_margin_top = top;
-        area_margin_left = left;
-        area_margin_right = right;
+        area_margin_top = held_margin (top, area_margin_top);
+        area_margin_left = held_margin (left, area_margin_left);
+        area_margin_right = held_margin (right, area_margin_right);
         if (own_edge_measurable)
-          area_margin_bottom = bottom;
+          area_margin_bottom = held_margin (bottom, area_margin_bottom);
         break;
       case Gtk.PositionType.TOP:
-        area_margin_bottom = bottom;
-        area_margin_left = left;
-        area_margin_right = right;
+        area_margin_bottom = held_margin (bottom, area_margin_bottom);
+        area_margin_left = held_margin (left, area_margin_left);
+        area_margin_right = held_margin (right, area_margin_right);
         if (own_edge_measurable)
-          area_margin_top = top;
+          area_margin_top = held_margin (top, area_margin_top);
         break;
       case Gtk.PositionType.LEFT:
-        area_margin_top = top;
-        area_margin_bottom = bottom;
-        area_margin_right = right;
+        area_margin_top = held_margin (top, area_margin_top);
+        area_margin_bottom = held_margin (bottom, area_margin_bottom);
+        area_margin_right = held_margin (right, area_margin_right);
         if (own_edge_measurable)
-          area_margin_left = left;
+          area_margin_left = held_margin (left, area_margin_left);
         break;
       case Gtk.PositionType.RIGHT:
-        area_margin_top = top;
-        area_margin_bottom = bottom;
-        area_margin_left = left;
+        area_margin_top = held_margin (top, area_margin_top);
+        area_margin_bottom = held_margin (bottom, area_margin_bottom);
+        area_margin_left = held_margin (left, area_margin_left);
         if (own_edge_measurable)
-          area_margin_right = right;
+          area_margin_right = held_margin (right, area_margin_right);
         break;
       }
+    }
+
+    int held_margin (int measured, int held) {
+      // Outside geometry transitions the work area is trustworthy in both
+      // directions: a real panel removal arrives as a work-area change
+      // with unchanged geometry and must be tracked live
+      if (!geometry_change_in_flight)
+        return measured;
+
+      // While the monitor geometry is moving, the WM can publish a work
+      // area missing a panel's reservation for the entire measurement
+      // window (the panel is placed visually, but its strut only lands
+      // once something re-runs the WM's region update), and a withdrawn
+      // sibling dock's reservation is equally absent. The last measured
+      // values are the only surviving copy of the truth, so decreases are
+      // held for the rest of the episode; monitor switches and
+      // AreaMode/Position changes reset them.
+      if (measured < held) {
+        debug ("PositionManager.held_margin () holding %i over measured %i", held, measured);
+        return held;
+      }
+
+      return measured;
     }
 
     void watch_workarea () {
@@ -242,6 +305,14 @@ namespace Plank {
       // on demand from root window properties), so listen for
       // _NET_WORKAREA changes ourselves
       workarea_atom = Gdk.X11.get_xatom_by_name ("_NET_WORKAREA");
+
+      // Mutter-family WMs also publish per-monitor work areas, which can
+      // change without the global value moving (e.g. a panel switching
+      // monitors on the same edge). Measurements read the current
+      // workspace's property, so that is the one to watch, following the
+      // user across workspace switches.
+      current_desktop_atom = Gdk.X11.get_xatom_by_name ("_NET_CURRENT_DESKTOP");
+      update_gtk_workareas_atom ();
 
       unowned Gdk.Window root = controller.window.get_screen ().get_root_window ();
       root.set_events (root.get_events () | Gdk.EventMask.PROPERTY_CHANGE_MASK);
@@ -258,15 +329,34 @@ namespace Plank {
       workarea_filter_installed = false;
     }
 
+    void update_gtk_workareas_atom () {
+      unowned Gdk.X11.Screen? screen = controller.window.get_screen () as Gdk.X11.Screen;
+      var desktop = (screen != null ? screen.get_current_desktop () : 0);
+      gtk_workareas_atom = Gdk.X11.get_xatom_by_name ("_GTK_WORKAREAS_D%u".printf (desktop));
+    }
+
     [CCode (instance_pos = -1)]
     Gdk.FilterReturn workarea_xevent_filter (Gdk.XEvent gdk_xevent, Gdk.Event gdk_event) {
       X.Event* xevent = (X.Event*) gdk_xevent;
 
-      if (xevent.type == X.EventType.PropertyNotify && xevent.xproperty.atom == workarea_atom) {
-        // Only strut-free docks track the work area live: while our strut
-        // is asserted these events include our own reservation, and
-        // reacting to our own re-assertion would loop the withdraw cycle
-        if (!use_monitor_geometry () && !controller.window.struts_asserted)
+      // Keep the watched per-desktop atom following the user's workspace
+      if (xevent.type == X.EventType.PropertyNotify && xevent.xproperty.atom == current_desktop_atom)
+        update_gtk_workareas_atom ();
+
+      if (xevent.type == X.EventType.PropertyNotify
+          && (xevent.xproperty.atom == workarea_atom || xevent.xproperty.atom == gtk_workareas_atom)
+          && !use_monitor_geometry ()) {
+        // Only strut-free docks track the work area live. While our strut
+        // is asserted, events cannot be attributed safely: the own edge
+        // only echoes our own reservation, and other docks (possibly in
+        // other processes) produce transitions indistinguishable from
+        // panels, so reacting could make two docks churn each other
+        // without ever settling. Screen and preference triggers
+        // re-measure instead.
+        var accepted = !controller.window.struts_asserted;
+        debug ("PositionManager.workarea_changed (accepted = %s)", accepted.to_string ());
+
+        if (accepted)
           schedule_screen_update (controller.window.get_screen ());
       }
 
@@ -289,10 +379,18 @@ namespace Plank {
         break;
       case "AreaMode":
       case "Position":
-        // Both change where the dock's area comes from: re-measure through
-        // the withdraw-and-settle path, so an asserted strut cannot pollute
-        // the fresh measurement. This also makes flipping the mode the
-        // manual refresh for held margins.
+        // Both change where the dock's area comes from: drop any held
+        // margins so everything is re-measured from scratch (this makes
+        // flipping the mode the manual refresh for a stale hold), then
+        // re-measure through the withdraw-and-settle path so an asserted
+        // strut cannot pollute the fresh measurement
+        reset_area_margins ();
+
+        // Entering monitor mode needs no clean measurement: end any
+        // inherited episode right away instead of waiting out sampling
+        if (use_monitor_geometry ())
+          end_screen_update_episode ();
+
         schedule_screen_update (controller.window.get_screen ());
         break;
       case "ZoomPercent":
@@ -434,10 +532,11 @@ namespace Plank {
     }
 
     void schedule_screen_update (Gdk.Screen screen) {
-      // Withdraw an asserted strut so the evaluation measures the work
-      // area without our own reservation folded in; the strut returns
-      // once the measurements stabilize
-      if (!use_monitor_geometry () && controller.window.struts_asserted)
+      // Withhold struts for the whole episode, so the measurement stays
+      // free of our own reservation even if HideMode flips to NONE
+      // mid-episode; the evaluation exits re-apply whatever the state
+      // then calls for
+      if (!use_monitor_geometry ())
         controller.window.clear_struts ();
 
       // Every trigger resets the whole episode: the quiet period starts
@@ -459,6 +558,11 @@ namespace Plank {
       });
     }
 
+    void end_screen_update_episode () {
+      geometry_change_in_flight = false;
+      controller.window.release_struts ();
+    }
+
     void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
       var old_monitor_geo = monitor_geo;
       var old_monitor_num = monitor_num;
@@ -467,7 +571,23 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      update_monitor_geo (monitor);
+      // A different monitor starts from scratch: margins are per-monitor
+      // facts, and a held own-edge value must not carry across
+      if (old_monitor_num != monitor_num)
+        reset_area_margins ();
+
+      if (!update_monitor_geo (monitor)) {
+        // Nothing usable was measured: the retained state must neither be
+        // applied as a change nor counted towards stability
+        if (sample + 1 < SCREEN_UPDATE_MAX_SAMPLES) {
+          schedule_screen_sample (screen, sample + 1, 0);
+          return;
+        }
+
+        debug ("PositionManager.do_screen_update () gave up, no valid geometry");
+        end_screen_update_episode ();
+        return;
+      }
 
       if (old_monitor_num == monitor_num
           && old_monitor_geo.x == monitor_geo.x
@@ -479,16 +599,18 @@ namespace Plank {
         // Enough consecutive agreeing samples: the transition is over
         // (or the trigger was spurious and nothing ever arrived)
         if (stable >= SCREEN_UPDATE_STABLE_SAMPLES) {
-          controller.window.release_struts ();
+          debug ("PositionManager.do_screen_update () settled after %u samples", sample + 1);
+          end_screen_update_episode ();
           return;
         }
 
-        if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
+        if (sample + 1 < SCREEN_UPDATE_MAX_SAMPLES) {
           schedule_screen_sample (screen, sample + 1, stable);
           return;
         }
 
-        controller.window.release_struts ();
+        debug ("PositionManager.do_screen_update () gave up waiting for a change");
+        end_screen_update_episode ();
         return;
       }
 
@@ -511,23 +633,25 @@ namespace Plank {
 
       thaw_notify ();
 
-      // Monitor geometry needs no stability verification: only work-area
-      // margins can transiently read wrong mid-transition, so the update
-      // is complete as soon as a change lands
+      // Monitor geometry needs no stability verification: invalid readings
+      // never get this far, and only work-area margins can look plausible
+      // yet wrong mid-transition, so the update is complete as soon as a
+      // change lands
       if (use_monitor_geometry ()) {
-        controller.window.release_struts ();
+        end_screen_update_episode ();
         return;
       }
 
       // The measurement moved: keep the strut withheld and restart the
       // stability count, so late changes (like a panel re-anchoring after
       // a screen shrink) are caught instead of locked out
-      if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
+      if (sample + 1 < SCREEN_UPDATE_MAX_SAMPLES) {
         schedule_screen_sample (screen, sample + 1, 0);
         return;
       }
 
-      controller.window.release_struts ();
+      debug ("PositionManager.do_screen_update () gave up, measurements still changing");
+      end_screen_update_episode ();
     }
 
     void screen_composited_changed (Gdk.Screen screen) {
@@ -2131,7 +2255,41 @@ namespace Plank {
      * @param struts the array to contain the struts
      */
     public void get_struts (ref ulong[] struts) {
-      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+      // Reservations must describe current reality: re-resolve the
+      // selected monitor and require its raw geometry to match the last
+      // valid measurement, so hotplug windows and mid-transition mode
+      // flips can never reassert retained geometry (a removed monitor's
+      // rectangle could even wrap the depth arithmetic once the root
+      // shrinks)
+      unowned Gdk.Screen screen = controller.window.get_screen ();
+      if (find_monitor_number (screen, controller.prefs.Monitor) != monitor_num)
+        return;
+
+      var raw_geo = screen.get_display ().get_monitor (monitor_num).get_geometry ();
+
+      // A positive live reading is required first: without it, a transient
+      // zero geometry at startup would compare equal to the zero-seeded
+      // reference despite no valid measurement ever having occurred
+      if (raw_geo.width <= 0 || raw_geo.height <= 0)
+        return;
+
+      if (raw_geo.x != last_raw_geo.x || raw_geo.y != last_raw_geo.y
+          || raw_geo.width != last_raw_geo.width || raw_geo.height != last_raw_geo.height)
+        return;
+
+      // In monitor mode the applied rectangle must be the raw geometry
+      // itself; right after a flip away from the work area it can still
+      // be margin-shrunk until the scheduled episode measures
+      if (use_monitor_geometry ()
+          && (monitor_geo.x != raw_geo.x || monitor_geo.y != raw_geo.y
+              || monitor_geo.width != raw_geo.width || monitor_geo.height != raw_geo.height))
+        return;
+
+      // Before the window is realized there is no Gdk.Window to read the
+      // scale factor from; keep the last-known value
+      unowned Gdk.Window? window = controller.window.get_window ();
+      if (window != null)
+        window_scale_factor = window.get_scale_factor ();
 
       // Per the _NET_WM_STRUT_PARTIAL spec, all coordinates are root window
       // coordinates and struts are relative to the screen edge, not the
@@ -2203,7 +2361,11 @@ namespace Plank {
     public Gdk.Rectangle get_barrier () {
       Gdk.Rectangle barrier = {};
 
-      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+      // Before the window is realized there is no Gdk.Window to read the
+      // scale factor from; keep the last-known value
+      unowned Gdk.Window? window = controller.window.get_window ();
+      if (window != null)
+        window_scale_factor = window.get_scale_factor ();
 
       switch (Position) {
       default:
