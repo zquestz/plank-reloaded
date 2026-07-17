@@ -41,6 +41,11 @@ namespace Plank {
      */
     public DockItemProvider? HoveredItemProvider { get; private set; }
 
+    /**
+     * Whether a non-empty strut is currently applied on our window.
+     */
+    public bool struts_asserted { get; private set; default = false; }
+
 
     /**
      * The item which "received" the button-pressed signal (if any).
@@ -93,7 +98,7 @@ namespace Plank {
                   | Gdk.EventMask.SCROLL_MASK
                   | Gdk.EventMask.STRUCTURE_MASK);
 
-      controller.prefs.notify["HideMode"].connect (set_struts);
+      controller.prefs.notify["HideMode"].connect (update_struts);
 
       // Remove WM_TAKE_FOCUS after realization to prevent focus
       // stealing under focus-follows-mouse / sloppy focus policies.
@@ -108,7 +113,7 @@ namespace Plank {
         menu.hide.disconnect (on_menu_hide);
       }
 
-      controller.prefs.notify["HideMode"].disconnect (set_struts);
+      controller.prefs.notify["HideMode"].disconnect (update_struts);
 
       if (hover_reposition_timer_id > 0U) {
         GLib.Source.remove (hover_reposition_timer_id);
@@ -317,7 +322,7 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool map_event (Gdk.EventAny event) {
-      set_struts ();
+      update_struts ();
       remove_take_focus ();
 
       return base.map_event (event);
@@ -515,7 +520,7 @@ namespace Plank {
         controller.renderer.reset_buffers ();
 
         if (!needs_reposition) {
-          set_struts ();
+          update_struts ();
           set_hovered_provider (null);
           set_hovered (null);
         }
@@ -527,7 +532,7 @@ namespace Plank {
         requested_y = win_rect.y;
         move (win_rect.x, win_rect.y);
 
-        set_struts ();
+        update_struts ();
         set_hovered_provider (null);
         set_hovered (null);
       }
@@ -779,7 +784,27 @@ namespace Plank {
       }
     }
 
-    void set_struts () {
+    /**
+     * (Re)applies the dock's struts for its current state.
+     */
+    public void update_struts () {
+      var struts = new ulong[Struts.N_VALUES];
+
+      if (controller.prefs.HideMode == HideType.NONE)
+        controller.position_manager.get_struts (ref struts);
+
+      write_struts (struts);
+    }
+
+    /**
+     * Removes the dock's struts, so the work area can be measured without
+     * our own reservation folded into it.
+     */
+    public void clear_struts () {
+      write_struts (new ulong[Struts.N_VALUES]);
+    }
+
+    void write_struts (ulong[] struts) {
       if (!get_realized ())
         return;
 
@@ -790,11 +815,6 @@ namespace Plank {
       unowned Gdk.X11.Window gdk_window = (get_window () as Gdk.X11.Window);
       if (gdk_window == null)
         return;
-
-      var struts = new ulong[Struts.N_VALUES];
-
-      if (controller.prefs.HideMode == HideType.NONE)
-        controller.position_manager.get_struts (ref struts);
 
       var first_struts = new ulong[Struts.BOTTOM + 1];
       for (var i = 0; i < first_struts.length; i++)
@@ -815,6 +835,15 @@ namespace Plank {
                                32, X.PropMode.Replace, (uchar[]) first_struts, first_struts.length);
       if (gdk_display.error_trap_pop () != X.Success)
         critical ("Error while setting struts");
+
+      var asserted = false;
+      foreach (var strut in struts) {
+        if (strut > 0UL) {
+          asserted = true;
+          break;
+        }
+      }
+      struts_asserted = asserted;
     }
 
     /**

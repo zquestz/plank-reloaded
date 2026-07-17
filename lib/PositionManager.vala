@@ -40,16 +40,35 @@ namespace Plank {
 
     Gdk.Rectangle static_dock_region;
 
-    // Retries for screen changes whose new geometry lags the signal;
+    // Retries for screen updates whose new geometry lags the signal;
     // passing this as the retry argument runs a single evaluation
-    const uint SCREEN_CHANGED_MAX_RETRIES = 6;
+    const uint SCREEN_UPDATE_MAX_RETRIES = 6;
+
+    // Debounce for screen updates. Doubles as the settle window
+    // after a strut withdrawal: accepted work-area events keep re-arming
+    // it, so the evaluation only runs once the work area has gone quiet.
+    const uint SCREEN_UPDATE_DEBOUNCE_TIME = 1000U;
 
     uint active_display_timeout_id;
-    uint screen_changed_timeout_id;
+    uint screen_update_timeout_id;
 
     Gdk.Rectangle monitor_geo;
     int monitor_num;
     int last_update_monitor_num;
+
+    // Work-area mode state: external panel margins around the raw monitor
+    // geometry, measured from the per-monitor work area. The three edges we
+    // reserve nothing on always measure clean; the dock's own edge can only
+    // be measured while our strut is not asserted (same-edge struts combine
+    // by max), so it holds its last clean value in between. Strut-free
+    // docks track work-area changes live; asserted docks re-measure through
+    // the withdraw-and-settle path on screen or preference changes.
+    int area_margin_top = 0;
+    int area_margin_bottom = 0;
+    int area_margin_left = 0;
+    int area_margin_right = 0;
+    bool workarea_filter_installed = false;
+    X.Atom workarea_atom = X.None;
 
     int max_hover_height_cache = 0;
     int max_hover_width_cache = 0;
@@ -78,8 +97,8 @@ namespace Plank {
       unowned Gdk.Screen screen = controller.window.get_screen ();
 
       controller.prefs.notify.connect (prefs_changed);
-      screen.monitors_changed.connect (screen_changed);
-      screen.size_changed.connect (screen_changed);
+      screen.monitors_changed.connect (schedule_screen_update);
+      screen.size_changed.connect (schedule_screen_update);
       screen.composited_changed.connect (screen_composited_changed);
       controller.window.notify["scale-factor"].connect (window_scale_factor_changed);
 
@@ -87,11 +106,8 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (use_monitor_geometry ()) {
-        monitor_geo = monitor.get_geometry ();
-      } else {
-        monitor_geo = monitor.get_workarea ();
-      }
+      update_monitor_geo (monitor);
+      watch_workarea ();
 
       screen_is_composited = screen.is_composited ();
 
@@ -102,12 +118,13 @@ namespace Plank {
 
     ~PositionManager () {
       stop_active_display_polling ();
-      stop_screen_changed_timeout ();
+      stop_screen_update_timeout ();
+      unwatch_workarea ();
 
       unowned Gdk.Screen screen = controller.window.get_screen ();
 
-      screen.monitors_changed.disconnect (screen_changed);
-      screen.size_changed.disconnect (screen_changed);
+      screen.monitors_changed.disconnect (schedule_screen_update);
+      screen.size_changed.disconnect (schedule_screen_update);
       screen.composited_changed.disconnect (screen_composited_changed);
       controller.window.notify["scale-factor"].disconnect (window_scale_factor_changed);
       controller.prefs.notify.disconnect (prefs_changed);
@@ -125,6 +142,127 @@ namespace Plank {
       }
     }
 
+    void reset_area_margins () {
+      area_margin_top = 0;
+      area_margin_bottom = 0;
+      area_margin_left = 0;
+      area_margin_right = 0;
+    }
+
+    void update_monitor_geo (Gdk.Monitor monitor) {
+      var geo = monitor.get_geometry ();
+
+      if (use_monitor_geometry ()) {
+        reset_area_margins ();
+        monitor_geo = geo;
+        return;
+      }
+
+      update_area_margins (monitor, geo);
+
+      Gdk.Rectangle available = geo;
+      available.x += area_margin_left;
+      available.y += area_margin_top;
+      available.width -= area_margin_left + area_margin_right;
+      available.height -= area_margin_top + area_margin_bottom;
+
+      // Never let a bogus work area collapse the dock's space
+      if (available.width < geo.width / 2 || available.height < geo.height / 2) {
+        warning ("Work area margins look bogus (%i,%i,%i,%i), using monitor geometry",
+                 area_margin_top, area_margin_bottom, area_margin_left, area_margin_right);
+        reset_area_margins ();
+        monitor_geo = geo;
+        return;
+      }
+
+      monitor_geo = available;
+    }
+
+    void update_area_margins (Gdk.Monitor monitor, Gdk.Rectangle geo) {
+      var workarea = monitor.get_workarea ();
+
+      var top = (workarea.y - geo.y).clamp (0, geo.height);
+      var left = (workarea.x - geo.x).clamp (0, geo.width);
+      var bottom = ((geo.y + geo.height) - (workarea.y + workarea.height)).clamp (0, geo.height);
+      var right = ((geo.x + geo.width) - (workarea.x + workarea.width)).clamp (0, geo.width);
+
+      // The dock's own edge folds our strut into the work area whenever it
+      // is asserted (same-edge struts combine by max), so it only refreshes
+      // while measurable and holds its last clean value otherwise
+      var own_edge_measurable = !controller.window.struts_asserted;
+
+      switch (Position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        area_margin_top = top;
+        area_margin_left = left;
+        area_margin_right = right;
+        if (own_edge_measurable)
+          area_margin_bottom = bottom;
+        break;
+      case Gtk.PositionType.TOP:
+        area_margin_bottom = bottom;
+        area_margin_left = left;
+        area_margin_right = right;
+        if (own_edge_measurable)
+          area_margin_top = top;
+        break;
+      case Gtk.PositionType.LEFT:
+        area_margin_top = top;
+        area_margin_bottom = bottom;
+        area_margin_right = right;
+        if (own_edge_measurable)
+          area_margin_left = left;
+        break;
+      case Gtk.PositionType.RIGHT:
+        area_margin_top = top;
+        area_margin_bottom = bottom;
+        area_margin_left = left;
+        if (own_edge_measurable)
+          area_margin_right = right;
+        break;
+      }
+    }
+
+    void watch_workarea () {
+      if (workarea_filter_installed)
+        return;
+
+      // GTK3 never emits notify for Gdk.Monitor.workarea (it is computed
+      // on demand from root window properties), so listen for
+      // _NET_WORKAREA changes ourselves
+      workarea_atom = Gdk.X11.get_xatom_by_name ("_NET_WORKAREA");
+
+      unowned Gdk.Window root = controller.window.get_screen ().get_root_window ();
+      root.set_events (root.get_events () | Gdk.EventMask.PROPERTY_CHANGE_MASK);
+      gdk_window_add_filter (root, (Gdk.FilterFunc) workarea_xevent_filter);
+      workarea_filter_installed = true;
+    }
+
+    void unwatch_workarea () {
+      if (!workarea_filter_installed)
+        return;
+
+      unowned Gdk.Window root = controller.window.get_screen ().get_root_window ();
+      gdk_window_remove_filter (root, (Gdk.FilterFunc) workarea_xevent_filter);
+      workarea_filter_installed = false;
+    }
+
+    [CCode (instance_pos = -1)]
+    Gdk.FilterReturn workarea_xevent_filter (Gdk.XEvent gdk_xevent, Gdk.Event gdk_event) {
+      X.Event* xevent = (X.Event*) gdk_xevent;
+
+      if (xevent.type == X.EventType.PropertyNotify && xevent.xproperty.atom == workarea_atom) {
+        // Only strut-free docks track the work area live: while our strut
+        // is asserted these events include our own reservation, and
+        // reacting to our own re-assertion would loop the withdraw cycle
+        if (!use_monitor_geometry () && !controller.window.struts_asserted)
+          schedule_screen_update (controller.window.get_screen ());
+      }
+
+      return Gdk.FilterReturn.CONTINUE;
+    }
+
     void prefs_changed (Object prefs, ParamSpec prop) {
       switch (prop.name) {
       case "Monitor":
@@ -140,7 +278,12 @@ namespace Plank {
         prefs_gap_size_changed ();
         break;
       case "AreaMode":
-        prefs_area_mode_changed ();
+      case "Position":
+        // Both change where the dock's area comes from: re-measure through
+        // the withdraw-and-settle path, so an asserted strut cannot pollute
+        // the fresh measurement. This also makes flipping the mode the
+        // manual refresh for held margins.
+        schedule_screen_update (controller.window.get_screen ());
         break;
       case "ZoomPercent":
       case "ZoomEnabled":
@@ -152,9 +295,12 @@ namespace Plank {
       }
     }
 
-    void prefs_area_mode_changed () {
-      // Re-evaluate the screen area immediately with the new mode
-      do_screen_changed (controller.window.get_screen (), SCREEN_CHANGED_MAX_RETRIES);
+    void reassert_struts () {
+      // Put a withdrawn strut back once an evaluation is over. Gated so
+      // strut-free docks never rewrite their (empty) struts: the resulting
+      // work-area events would be accepted right back and loop.
+      if (controller.prefs.HideMode == HideType.NONE && !controller.window.struts_asserted)
+        controller.window.update_struts ();
     }
 
     public string active_monitor () {
@@ -206,10 +352,10 @@ namespace Plank {
       }
     }
 
-    void stop_screen_changed_timeout () {
-      if (screen_changed_timeout_id > 0) {
-        GLib.Source.remove (screen_changed_timeout_id);
-        screen_changed_timeout_id = 0;
+    void stop_screen_update_timeout () {
+      if (screen_update_timeout_id > 0) {
+        GLib.Source.remove (screen_update_timeout_id);
+        screen_update_timeout_id = 0;
       }
     }
 
@@ -258,7 +404,7 @@ namespace Plank {
     }
 
     void prefs_monitor_changed () {
-      screen_changed (controller.window.get_screen ());
+      schedule_screen_update (controller.window.get_screen ());
     }
 
     void prefs_active_display_changed () {
@@ -278,20 +424,26 @@ namespace Plank {
 
     void window_scale_factor_changed () {
       Logger.verbose ("PositionManager.window_scale_factor_changed ()");
-      screen_changed (controller.window.get_screen ());
+      schedule_screen_update (controller.window.get_screen ());
     }
 
-    void screen_changed (Gdk.Screen screen) {
-      stop_screen_changed_timeout ();
+    void schedule_screen_update (Gdk.Screen screen) {
+      // Withdraw an asserted strut so the debounced evaluation measures
+      // the work area without our own reservation folded in; evaluation
+      // exits re-assert it
+      if (!use_monitor_geometry () && controller.window.struts_asserted)
+        controller.window.clear_struts ();
 
-      screen_changed_timeout_id = GLib.Timeout.add (500, () => {
-        do_screen_changed (screen, 0);
-        screen_changed_timeout_id = 0;
+      stop_screen_update_timeout ();
+
+      screen_update_timeout_id = GLib.Timeout.add (SCREEN_UPDATE_DEBOUNCE_TIME, () => {
+        do_screen_update (screen, 0);
+        screen_update_timeout_id = 0;
         return GLib.Source.REMOVE;
       });
     }
 
-    void do_screen_changed (Gdk.Screen screen, uint retry) {
+    void do_screen_update (Gdk.Screen screen, uint retry) {
       var old_monitor_geo = monitor_geo;
       var old_monitor_num = monitor_num;
 
@@ -299,24 +451,22 @@ namespace Plank {
       monitor_num = find_monitor_number (screen, controller.prefs.Monitor);
       var monitor = display.get_monitor (monitor_num);
 
-      if (use_monitor_geometry ()) {
-        monitor_geo = monitor.get_geometry ();
-      } else {
-        monitor_geo = monitor.get_workarea ();
-      }
+      update_monitor_geo (monitor);
 
       if (old_monitor_num == monitor_num
           && old_monitor_geo.x == monitor_geo.x
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
           && old_monitor_geo.height == monitor_geo.height) {
-        if (retry < SCREEN_CHANGED_MAX_RETRIES) {
+        if (retry < SCREEN_UPDATE_MAX_RETRIES) {
           GLib.Timeout.add (500, () => {
-            do_screen_changed (screen, retry + 1);
+            do_screen_update (screen, retry + 1);
             return GLib.Source.REMOVE;
           });
           return;
         }
+
+        reassert_struts ();
         return;
       }
 
@@ -327,6 +477,13 @@ namespace Plank {
 
       update_dimensions ();
       update_regions ();
+
+      // A margin change can shift the monitor area without changing the
+      // window-relative dock region, which update_regions' guard skips;
+      // reposition explicitly (a no-op when already in place)
+      controller.window.update_size_and_position ();
+
+      reassert_struts ();
 
 #if HAVE_BARRIERS
       controller.hide_manager.update_barrier ();
