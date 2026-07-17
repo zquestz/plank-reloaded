@@ -40,19 +40,23 @@ namespace Plank {
 
     Gdk.Rectangle static_dock_region;
 
-    // Cap on consecutive measurement samples per episode, covering both
-    // waiting for a change that lags its trigger and confirming stability
-    // once one arrived
-    const uint SCREEN_UPDATE_MAX_SAMPLES = 6;
+    // Runaway backstop: total samples per episode before giving up on a
+    // measurement that never stabilizes
+    const uint SCREEN_UPDATE_MAX_SAMPLES = 20;
 
     // Debounce for screen updates. Doubles as the settle window
     // after a strut withdrawal: accepted work-area events keep re-arming
     // it, so the evaluation only runs once the work area has gone quiet.
     const uint SCREEN_UPDATE_DEBOUNCE_TIME = 1000U;
 
-    // Interval between measurement samples once an evaluation has begun;
-    // sampling continues until two consecutive samples agree
+    // Interval between measurement samples once an evaluation has begun
     const uint SCREEN_UPDATE_SAMPLE_TIME = 500U;
+
+    // Consecutive agreeing samples required in work-area mode before the
+    // transition counts as over and the strut is re-asserted. Kept long
+    // (2.5s), since a shrinking screen legitimately reports no panel
+    // margins while the panel is off-screen being re-anchored.
+    const uint SCREEN_UPDATE_STABLE_SAMPLES = 5;
 
     uint active_display_timeout_id;
     uint screen_update_timeout_id;
@@ -442,20 +446,20 @@ namespace Plank {
 
       screen_update_timeout_id = GLib.Timeout.add (SCREEN_UPDATE_DEBOUNCE_TIME, () => {
         screen_update_timeout_id = 0;
-        do_screen_update (screen, 0, false);
+        do_screen_update (screen, 0, 0);
         return GLib.Source.REMOVE;
       });
     }
 
-    void schedule_screen_sample (Gdk.Screen screen, uint sample, bool changed_before) {
+    void schedule_screen_sample (Gdk.Screen screen, uint sample, uint stable) {
       screen_sample_timeout_id = GLib.Timeout.add (SCREEN_UPDATE_SAMPLE_TIME, () => {
         screen_sample_timeout_id = 0;
-        do_screen_update (screen, sample, changed_before);
+        do_screen_update (screen, sample, stable);
         return GLib.Source.REMOVE;
       });
     }
 
-    void do_screen_update (Gdk.Screen screen, uint sample, bool changed_before) {
+    void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
       var old_monitor_geo = monitor_geo;
       var old_monitor_num = monitor_num;
 
@@ -470,16 +474,17 @@ namespace Plank {
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
           && old_monitor_geo.height == monitor_geo.height) {
-        // Two consecutive samples agree: the transition is over
-        if (changed_before) {
+        stable++;
+
+        // Enough consecutive agreeing samples: the transition is over
+        // (or the trigger was spurious and nothing ever arrived)
+        if (stable >= SCREEN_UPDATE_STABLE_SAMPLES) {
           controller.window.release_struts ();
           return;
         }
 
-        // Nothing has arrived (yet): keep sampling for changes that lag
-        // their trigger, then give up
         if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
-          schedule_screen_sample (screen, sample + 1, false);
+          schedule_screen_sample (screen, sample + 1, stable);
           return;
         }
 
@@ -506,11 +511,19 @@ namespace Plank {
 
       thaw_notify ();
 
-      // The measurement moved: keep the strut withheld and sample again,
-      // so late changes (like a panel re-anchoring after a resize) are
-      // caught instead of locked out
+      // Monitor geometry needs no stability verification: only work-area
+      // margins can transiently read wrong mid-transition, so the update
+      // is complete as soon as a change lands
+      if (use_monitor_geometry ()) {
+        controller.window.release_struts ();
+        return;
+      }
+
+      // The measurement moved: keep the strut withheld and restart the
+      // stability count, so late changes (like a panel re-anchoring after
+      // a screen shrink) are caught instead of locked out
       if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
-        schedule_screen_sample (screen, sample + 1, true);
+        schedule_screen_sample (screen, sample + 1, 0);
         return;
       }
 
