@@ -44,11 +44,11 @@ namespace Plank {
     /**
      * Whether a non-empty strut is currently applied on our window.
      */
-    public bool struts_asserted { get; private set; default = false; }
+    internal bool struts_asserted { get; private set; default = false; }
 
-    // While set, update_struts keeps writing empty struts, so a
-    // measurement episode stays unpolluted by our own reservation until
-    // release_struts ends it
+    // While set, update_struts writes nothing at all: the struts were
+    // already emptied by clear_struts and must stay that way until
+    // release_struts ends the measurement episode
     bool struts_withheld = false;
 
 
@@ -792,7 +792,7 @@ namespace Plank {
     /**
      * (Re)applies the dock's struts for its current state.
      */
-    public void update_struts () {
+    internal void update_struts () {
       // A measurement episode is in flight: the struts are already empty
       // and must stay that way until release_struts ends it. Skipping the
       // write also keeps our own no-op property writes from echoing back
@@ -811,28 +811,33 @@ namespace Plank {
     }
 
     /**
-     * Removes the dock's struts and keeps them withheld, so the work area
-     * can be measured without our own reservation folded into it.
+     * Withholds the dock's struts for a measurement episode, so the work
+     * area can be measured without our own reservation folded into it.
+     * Zeros only need writing when a strut is actually up.
      */
-    public void clear_struts () {
+    internal void clear_struts () {
       debug ("DockWindow.clear_struts ()");
       struts_withheld = true;
-      write_struts (new ulong[Struts.N_VALUES]);
+
+      if (struts_asserted)
+        write_struts (new ulong[Struts.N_VALUES]);
     }
 
     /**
-     * Ends a clear_struts measurement episode and reapplies the struts.
-     * Does nothing unless struts are actually withheld, so strut-free
-     * docks never rewrite their (empty) struts: the resulting work-area
-     * events would be accepted right back and loop.
+     * Ends a clear_struts measurement episode, reapplying the struts if
+     * the current state calls for any. Writes happen only when a real
+     * strut is due: a no-op zeros rewrite would echo back as a work-area
+     * event and needlessly reset the episode machinery.
      */
-    public void release_struts () {
+    internal void release_struts () {
       if (!struts_withheld)
         return;
 
       debug ("DockWindow.release_struts ()");
       struts_withheld = false;
-      update_struts ();
+
+      if (controller.prefs.HideMode == HideType.NONE)
+        update_struts ();
     }
 
     void write_struts (ulong[] struts) {
