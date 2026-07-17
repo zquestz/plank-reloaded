@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Bengali\n"
@@ -145,87 +145,111 @@ msgstr "আইকন জুম:"
 msgid "Gap Size:"
 msgstr "ফাঁক আকার:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "স্ক্রিন এলাকা:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"মনিটর পুরো ডিসপ্লে ব্যবহার করে। কাজের এলাকা অন্যান্য প্যানেলের জন্য জায়গা রাখে। "
+"স্বয়ংক্রিয় আপনার ডেস্কটপ অনুযায়ী বেছে নেয়।"
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "স্বয়ংক্রিয়"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "মনিটর"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "কাজের এলাকা"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "চেহারা"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "বুদ্ধিমান লুকানো"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "স্বয়ংক্রিয়ভাবে লুকান"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "সর্বাধিক উইন্ডো এড়ান"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "উইন্ডো এড়ান"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "সক্রিয় উইন্ডো এড়ান"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "ডক লুকান"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "লুকানোর বিলম্ব:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "ডক লুকানোর আগে ms-এ বিলম্ব"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "প্রদর্শনের বিলম্ব:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "ডক দেখানোর আগে ms-এ বিলম্ব"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "চাপে প্রকাশ:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "আইটেম ব্যবস্থাপনা"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "পিন না করা দেখান:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "কর্মস্থানে সীমাবদ্ধ:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "টুলটিপস সক্রিয়:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "আইকন লক করুন:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "ডকলেট নোঙর:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "ফাইল নোঙর:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "কর্মক্ষেত্রে আনুন:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -233,11 +257,11 @@ msgstr ""
 "অন্য কর্মক্ষেত্রে থাকা কোনো উইন্ডো সক্রিয় করার সময়, উইন্ডোটির কর্মক্ষেত্রে যাওয়ার "
 "পরিবর্তে সেটিকে বর্তমান কর্মক্ষেত্রে নিয়ে আসুন।"
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "আচরণ"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "ডকলেট"
 
@@ -435,37 +459,37 @@ msgstr "আপনার ডেস্কটপ দেখান।"
 msgid "Notifications"
 msgstr "বিজ্ঞপ্তি"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "এই মাত্র"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d মিনিট আগে"
 msgstr[1] "%d মিনিট আগে"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d ঘণ্টা আগে"
 msgstr[1] "%d ঘণ্টা আগে"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "_মেয়াদ সক্ষম করুন"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "_সংখ্যা দেখান"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "_ক্ষণস্থায়ী দেখান"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "বিজ্ঞপ্তি সাফ করুন"
 
@@ -584,7 +608,7 @@ msgstr "একটি গ্রাফিক্যাল কর্মস্থা�
 msgid "Drop to add to dock"
 msgstr "ডকে যোগ করতে ড্রপ করুন"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr "Plank Reloaded Team"
 
@@ -702,7 +726,7 @@ msgstr "_সম্পর্কে"
 msgid "_Quit"
 msgstr "_প্রস্থান"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "পছন্দসমূহ"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 04:12\n"
 "Last-Translator: \n"
 "Language-Team: Slovenian\n"
@@ -146,87 +146,111 @@ msgstr "Povečava ikon:"
 msgid "Gap Size:"
 msgstr "Velikost razmika:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Območje zaslona:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Zaslon uporabi celotno površino zaslona. Delovna površina pusti prostor za "
+"druge pulte. Samodejno izbere glede na namizje."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Samodejno"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Zaslon"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Delovna površina"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Videz"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Inteligentno skrivanje"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Samodejno skrivanje"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Izogni se razprtemu oknu"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Izogibanje oknom"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Izogni se aktivnemu oknu"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Skrij dok"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Zakasnitev skrivanja:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Zakasnitev v ms pred skrivanjem doka"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Zakasnitev prikaza:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Zakasnitev v ms pred prikazom doka"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Pritisk za razkritje:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Upravljanje predmetov"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Prikaži nepripete:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Omeji na delovno površino:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Namigi orodij omogočeni:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Zakleni ikone:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Zasidraj:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Zasidraj Datoteke:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Premakni na delovno površino:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -234,11 +258,11 @@ msgstr ""
 "Ob aktiviranju okna na drugi delovni površini ga premakni na trenutno "
 "delovno površino namesto preklopa na delovno površino okna."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Obnašanje"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Sidrišča"
 
@@ -436,11 +460,11 @@ msgstr "Prikaže vaše namizje."
 msgid "Notifications"
 msgstr "Obvestila"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "pravkar"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -449,7 +473,7 @@ msgstr[1] "pred %d minutama"
 msgstr[2] "pred %d minutami"
 msgstr[3] "pred %d minutami"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -458,19 +482,19 @@ msgstr[1] "pred %d urama"
 msgstr[2] "pred %d urami"
 msgstr[3] "pred %d urami"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Omogoči _potek"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Prikaži _število"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Prikaži _prehodno"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Počisti obvestila"
 
@@ -591,7 +615,7 @@ msgstr "Grafični preklopnik delovnih površin."
 msgid "Drop to add to dock"
 msgstr "Spustite za dodajanje na sidrišče"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -713,7 +737,7 @@ msgstr "_O programu"
 msgid "_Quit"
 msgstr "_Izhod"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Možnosti"
 

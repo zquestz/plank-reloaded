@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded 0.11.170\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,97 +138,119 @@ msgstr ""
 msgid "Gap Size:"
 msgstr ""
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr ""
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr ""
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr ""
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr ""
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr ""
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr ""
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr ""
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr ""
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr ""
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr ""
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr ""
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr ""
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr ""
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr ""
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr ""
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr ""
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr ""
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr ""
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr ""
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr ""
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr ""
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr ""
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr ""
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr ""
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
 msgstr ""
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr ""
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr ""
 
@@ -426,37 +448,37 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr ""
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr ""
 
@@ -575,7 +597,7 @@ msgstr ""
 msgid "Drop to add to dock"
 msgstr ""
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 
@@ -693,6 +715,6 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr ""

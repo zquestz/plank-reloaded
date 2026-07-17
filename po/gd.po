@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Scottish Gaelic\n"
@@ -148,87 +148,111 @@ msgstr "Sùm ìomhaigheag:"
 msgid "Gap Size:"
 msgstr "Meud a' bheàirn:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Raon na sgrìn:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Cleachdaidh Monatair an sgrìn air fad. Fàgaidh Raon-obrach àite airson "
+"phanailean eile. Taghaidh Fèin-obrachail a rèir an deasg."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Fèin-obrachail"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Monatair"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Raon-obrach"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Coltas"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Falach tapaidh"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Fèin-fhalaich"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Sioft fo uinneagan làn-mheudaichte"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Sioft uinneagan"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Seachain uinneag ghnìomhach"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Falaich an doca"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Dàil an fhalaich:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Dàil ann am ms mus dèid an doca fhalach"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Dàil an neo-fhalaich:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Dàil ann am ms mus dèid an doca a shealltainn"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Foillseachadh brùthaidh:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Stiùireadh nan ìomhaigheagan"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Seall neo-phrìnichte:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Cuingich air an rum-obrach:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Gliocasan-sgrìn an comas:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Glais na h-ìomhaigheagan:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Acraich docalagan:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Acraich faidhlichean:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Gluais dhan rum-obrach:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -236,11 +260,11 @@ msgstr ""
 "Nuair a chuireas tu uinneag air rum-obrach eile an gnìomh, gluais i dhan rum-"
 "obrach làithreach an àite leum gu rum-obrach na h-uinneige."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Giùlan"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Docalagan"
 
@@ -438,11 +462,11 @@ msgstr "Seall an deasg agad."
 msgid "Notifications"
 msgstr "Brathan"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "an-dràsta fhèin"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -451,7 +475,7 @@ msgstr[1] "o chionn %d mhionaid"
 msgstr[2] "o chionn %d mionaidean"
 msgstr[3] "o chionn %d mionaid"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -460,19 +484,19 @@ msgstr[1] "o chionn %d uair"
 msgstr[2] "o chionn %d uairean"
 msgstr[3] "o chionn %d uair"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Cuir an comas _dol à bith"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Seall an _cunntadh"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Seall _sealadach"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Falamhaich brathan"
 
@@ -593,7 +617,7 @@ msgstr "Suidsear grafaigeach rum-obrach."
 msgid "Drop to add to dock"
 msgstr "Leig às airson a chur ris an doca"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Creideasan eadar-theangachaidhLaunchpad Contributions:\n"
@@ -714,7 +738,7 @@ msgstr "_Mu dhèidhinn"
 msgid "_Quit"
 msgstr "_Fàg an-seo"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Roghainnean"
 

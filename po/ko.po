@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -145,87 +145,111 @@ msgstr "아이콘 줌:"
 msgid "Gap Size:"
 msgstr "간격 크기:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "화면 영역:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"모니터는 전체 화면을 사용합니다. 작업 영역은 다른 패널을 위한 공간을 남깁니"
+"다. 자동은 데스크톱 환경에 따라 선택합니다."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "자동"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "모니터"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "작업 영역"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "모양"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "똑똑하게 숨기기"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "자동으로 숨기기"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "최대화된 창은 피하기"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "창은 무조건 피하기"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "사용 중인 창은 피하기"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "플랭크 숨기기"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "숨김 지연 시간:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "플랭크를 숨기기 전 지연 시간 (ms)"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "숨김 해제 지연 시간:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "플랭크를 보이기 전 지연 시간 (ms)"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "압력 표시:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "아이콘 관리"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "고정되지 않은 아이콘 보이기:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "작업공간으로 제한하기:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "툴팁 활성화:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "아이콘 고정:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "독크릿 고정:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "고정 파일:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "작업공간으로 가져오기:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -233,11 +257,11 @@ msgstr ""
 "다른 작업공간에 있는 창을 활성화할 때 창의 작업공간으로 전환하지 않고 현재 작"
 "업공간으로 이동합니다."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "동작"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "독크릿"
 
@@ -435,35 +459,35 @@ msgstr "바탕화면을 표시합니다."
 msgid "Notifications"
 msgstr "알림"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "방금 전"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d분 전"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d 시간 전"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "_유효 기간 활성화"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "_개수 표시"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "_임시 알림 표시"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "알림 지우기"
 
@@ -581,7 +605,7 @@ msgstr "그래픽 작업 공간 전환기."
 msgid "Drop to add to dock"
 msgstr "플랭크에 올리기"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -708,7 +732,7 @@ msgstr "정보 (_A)"
 msgid "_Quit"
 msgstr "나가기 (_Q)"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "기본 설정"
 

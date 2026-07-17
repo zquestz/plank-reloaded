@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
@@ -148,87 +148,111 @@ msgstr "Phóng to biểu tượng:"
 msgid "Gap Size:"
 msgstr "Kích cỡ khoảng cách:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Vùng màn hình:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Màn hình sử dụng toàn bộ hiển thị. Vùng làm việc chừa chỗ cho các bảng điều "
+"khiển khác. Tự động chọn theo môi trường của bạn."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Tự động"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Màn hình"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Vùng làm việc"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Diện mạo"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Ẩn thông minh"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Tự động ẩn"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Tránh cửa sổ tối đa hóa"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Né cửa sổ"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Tránh cửa sổ đang hoạt động"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Ẩn thanh Dock"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Thời gian trễ trước khi ẩn:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Thời gian trễ trước khi ẩn"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Thời gian trễ để hiện:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Thời gian trễ để hiện"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Làm nổi bật khi nhấn:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Quản lí biểu tượng"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Hiển thị các mục chưa được ghim:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Giới hạn vùng làm việc:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Bật chú giải công cụ:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Khóa biểu tượng:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Ghim Docklets:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Tập tin được ghim:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Đưa đến vùng làm việc:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -236,11 +260,11 @@ msgstr ""
 "Khi kích hoạt một cửa sổ nằm trên vùng làm việc khác, hãy di chuyển cửa sổ "
 "đó đến vùng làm việc hiện tại thay vì chuyển sang vùng làm việc của cửa sổ."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Hành động"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Tiện ích"
 
@@ -438,35 +462,35 @@ msgstr "Hiển thị Màn hình chính của bạn."
 msgid "Notifications"
 msgstr "Thông báo"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "mới đây"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d phút trước"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d giờ trước"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Bật _Thời gian hết hạn"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Hiển thị _Số lượng"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Hiển thị _Tạm thời"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Xoá thông báo"
 
@@ -584,7 +608,7 @@ msgstr "Một trình chuyển đổi không gian làm việc."
 msgid "Drop to add to dock"
 msgstr "Kéo để thêm vào thanh dock"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad contributions:\n"
@@ -712,7 +736,7 @@ msgstr "_Giới thiệu"
 msgid "_Quit"
 msgstr "_Thoát"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Tùy chỉnh"
 

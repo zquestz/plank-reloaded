@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2020-02-25 01:57+0000\n"
 "Last-Translator: Grzegorz Kulik <Unknown>\n"
 "Language-Team: Silesian <szl@li.org>\n"
@@ -148,87 +148,111 @@ msgstr "Powiynkszynie ikōn:"
 msgid "Gap Size:"
 msgstr "Srogość szczeliny:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Ôbszar ekranu:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Mōnitor używo cołkigo ekranu. Ôbszar roboczy ôstawio plac na inksze panele. "
+"Autōmatycznie wybiyro podle twojigo desktopu."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Autōmatycznie"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Mōnitor"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Ôbszar roboczy"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Wyglōnd"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Intelikrycie"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Autokrycie"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Unikej zmaksymalizowanego ôkna"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Unikej ôkna"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Unikej aktywnego ôkna"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Kryj dok"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Ôpōźniynie krycio:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Ôpōźniynie krycio doku we ms"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Ôpōźniynie pokazowanio:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Ôpōźniynie pokazowanio doku we ms"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Ciśniynie pokazowanio:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Zarzōndzanie elymyntami"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Pokoż niyprzipniynte:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Ôgranicz do placu roboczego:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Podskŏzki zaszaltowane:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Zablokuj ikōny:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Przymocuj doklety:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Przymocuj zbiory:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Przeniyś na plac roboczy:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -236,11 +260,11 @@ msgstr ""
 "Przi aktywowaniu ôkna, kere je na inkszym placu roboczym, przeniyś je na "
 "teroźny plac roboczy zamiast przełōnczać sie na plac roboczy ôkna."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Zachowanie"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Docklety"
 
@@ -438,11 +462,11 @@ msgstr "Pokoż swōj biōrek."
 msgid "Notifications"
 msgstr "Powiadōmiynia"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "terŏzki"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -450,7 +474,7 @@ msgstr[0] "%d minuta nazŏd"
 msgstr[1] "%d minuty nazŏd"
 msgstr[2] "%d minut nazŏd"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -458,19 +482,19 @@ msgstr[0] "%d godzina nazŏd"
 msgstr[1] "%d godziny nazŏd"
 msgstr[2] "%d godzin nazŏd"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Zaszaltuj _wygasanie"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Pokoż _wielość"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Pokoż _przychodnistyczne"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Wyczyść powiadōmiynia"
 
@@ -590,7 +614,7 @@ msgstr "Graficzny przelōnczŏcz robotnych placōw."
 msgid "Drop to add to dock"
 msgstr "Pusć, coby przidać do doki"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr "Tōmŏczynie na ślōnski"
 
@@ -708,7 +732,7 @@ msgstr "_Ô programie"
 msgid "_Quit"
 msgstr "_Wylyź"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Preferyncyje"
 

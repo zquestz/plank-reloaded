@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Nepali\n"
@@ -144,87 +144,111 @@ msgstr "प्रतिमा जुम:"
 msgid "Gap Size:"
 msgstr "खाली ठाउँ आकार:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "स्क्रिन क्षेत्र:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"मनिटरले पूरै डिस्प्ले प्रयोग गर्छ। कार्य क्षेत्रले अन्य प्यानलहरूका लागि ठाउँ छोड्छ। स्वचालितले "
+"तपाईंको डेस्कटप अनुसार छनोट गर्छ।"
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "स्वचालित"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "मनिटर"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "कार्य क्षेत्र"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "देखावट"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "बुद्धिमानी लुकाउनुहोस्"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "आँफै लुक्ने"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "अधिकतम सञ्झ्यालबाट बच्नुहोस्"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "सञ्झ्यालबाट बच्नुहोस्"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "सक्रिय सञ्झ्यालबाट बच्नुहोस्"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "डक लुकाउनुहोस्"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "लुकाउने ढिलाइ:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "डक लुकाउनु अघि ms मा ढिलाइ"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "देखाउने ढिलाइ:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "डक देखाउनु अघि ms मा ढिलाइ"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "दबाब प्रकट:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "वस्तु व्यवस्थापन"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "अनपिन गरिएको देखाउनुहोस्:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "कार्यस्थानमा सीमित:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "उपकरण सुझावहरू सक्षम:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "प्रतिमाहरू लक गर्नुहोस्:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "डकलेट एन्कर:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "फाइलहरू एन्कर:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "कार्यस्थानमा ल्याउनुहोस्:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -232,11 +256,11 @@ msgstr ""
 "अर्को कार्यस्थानमा रहेको सञ्झ्याल सक्रिय गर्दा, सञ्झ्यालको कार्यस्थानमा स्विच गर्नुको सट्टा "
 "यसलाई हालको कार्यस्थानमा सार्नुहोस्।"
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "व्यवहार"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "डकलेटहरू"
 
@@ -434,37 +458,37 @@ msgstr "तपाईंको डेस्कटप देखाउनुहो�
 msgid "Notifications"
 msgstr "सूचनाहरू"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "भर्खरै"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d मिनेट पहिले"
 msgstr[1] "%d मिनेट पहिले"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d घण्टा पहिले"
 msgstr[1] "%d घण्टा पहिले"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "_म्याद सक्षम गर्नुहोस्"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "_गणना देखाउनुहोस्"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "_अस्थायी देखाउनुहोस्"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "सूचनाहरू खाली गर्नुहोस्"
 
@@ -583,7 +607,7 @@ msgstr "एक ग्राफिकल कार्यस्थान स्व
 msgid "Drop to add to dock"
 msgstr "डकमा थप्न छोड्नुहोस्"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -704,7 +728,7 @@ msgstr "_बारेमा"
 msgid "_Quit"
 msgstr "_बाहिर निस्कनुहोस्"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "प्राथमिकताहरू"
 

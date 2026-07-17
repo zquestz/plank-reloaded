@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 04:12\n"
 "Last-Translator: \n"
 "Language-Team: Latvian\n"
@@ -145,87 +145,111 @@ msgstr "Ikonu palielinājums:"
 msgid "Gap Size:"
 msgstr "Atstarpes izmērs:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Ekrāna apgabals:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Monitors izmanto visu displeju. Darba apgabals atstāj vietu citiem paneļiem. "
+"Automātiski izvēlas atbilstoši jūsu darbvirsmai."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Automātiski"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Monitors"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Darba apgabals"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Attēlojums"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Viedpaslēpšana"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Automātiskā paslēpšana"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Izvairīties no pilnekrāna logiem"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Izvairīšanās no logiem"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Izvairīties no aktīvā loga"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Paslēpt paneli"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Paslēpšanas laiks:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Laiks milisekundēs, pirms paneļa paslēpšanas"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Laiks pirms parādīšanās:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Laiks milisekundēs pirms paneļa parādīšanas"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Spiediena atklāšana:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Priekšmetu pārvaldīšana"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Rādīt nepiespraustos:"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Norobežot uz darbavirsmas:"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Rīku uzgaļi iespējoti:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Iesaldēt ikonas:"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Enkurot sīklietotnes:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Enkurot failus:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Pārvietot uz darbvirsmu:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -233,11 +257,11 @@ msgstr ""
 "Aktivizējot logu, kas atrodas citā darbvirsmā, pārvietot to uz pašreizējo "
 "darbvirsmu, nevis pārslēgties uz loga darbvirsmu."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Darbība"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Sīklietotnes"
 
@@ -435,11 +459,11 @@ msgstr "Rādīt jūsu darbvirsmu."
 msgid "Notifications"
 msgstr "Paziņojumi"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "tikko"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -447,7 +471,7 @@ msgstr[0] "pirms %d minūtes"
 msgstr[1] "pirms %d minūtēm"
 msgstr[2] "pirms %d minūtēm"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -455,19 +479,19 @@ msgstr[0] "pirms %d stundas"
 msgstr[1] "pirms %d stundām"
 msgstr[2] "pirms %d stundām"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Iespējot _derīguma termiņu"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Rādīt _skaitu"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Rādīt _pārejošos"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Notīrīt paziņojumus"
 
@@ -587,7 +611,7 @@ msgstr "Grafisks darbvietu pārslēdzējs."
 msgid "Drop to add to dock"
 msgstr "Uzmetiet lai pievienotu dokam"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -710,7 +734,7 @@ msgstr "_Par"
 msgid "_Quit"
 msgstr "_Iziet"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Iestatījumi"
 

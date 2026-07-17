@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-12 18:11-1000\n"
+"POT-Creation-Date: 2026-07-16 16:53-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -147,87 +147,111 @@ msgstr "Zúmáil na nDeilbhíní:"
 msgid "Gap Size:"
 msgstr "Méid Bearna:"
 
-#: data/ui/preferences.ui:436
+#: data/ui/preferences.ui:426
+msgid "Screen Area:"
+msgstr "Limistéar an scáileáin:"
+
+#: data/ui/preferences.ui:442
+msgid ""
+"Monitor uses the full display. Work Area leaves room for other panels. Auto "
+"chooses based on your desktop."
+msgstr ""
+"Úsáideann Monatóir an scáileán iomlán. Fágann Limistéar oibre spás do "
+"phainéil eile. Roghnaíonn Uathoibríoch de réir na deisce."
+
+#: data/ui/preferences.ui:444
+msgid "Auto"
+msgstr "Uathoibríoch"
+
+#: data/ui/preferences.ui:445
+msgid "Monitor"
+msgstr "Monatóir"
+
+#: data/ui/preferences.ui:446
+msgid "Work Area"
+msgstr "Limistéar oibre"
+
+#: data/ui/preferences.ui:470
 msgid "Appearance"
 msgstr "Cuma"
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:490
 msgid "Intellihide"
 msgstr "Glicfholú"
 
-#: data/ui/preferences.ui:457
+#: data/ui/preferences.ui:491
 msgid "Autohide"
 msgstr "Uathfholú"
 
-#: data/ui/preferences.ui:458
+#: data/ui/preferences.ui:492
 msgid "Dodge maximized window"
 msgstr "Seachain Fuinneoga Uasmhéadaithe"
 
-#: data/ui/preferences.ui:459
+#: data/ui/preferences.ui:493
 msgid "Window Dodge"
 msgstr "Seachain Fuinneoga"
 
-#: data/ui/preferences.ui:460
+#: data/ui/preferences.ui:494
 msgid "Dodge active window"
 msgstr "Seachain Fuinneog Ghníomhach"
 
-#: data/ui/preferences.ui:486
+#: data/ui/preferences.ui:520
 msgid "Hide Dock"
 msgstr "Folú an Duga"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:536
 msgid "Hide Delay:"
 msgstr "Moill Folaithe:"
 
-#: data/ui/preferences.ui:516
+#: data/ui/preferences.ui:550
 msgid "Delay in ms before hiding the dock"
 msgstr "Moill i milleasoicindí roimh fholú an duga"
 
-#: data/ui/preferences.ui:535
+#: data/ui/preferences.ui:569
 msgid "Unhide Delay:"
 msgstr "Moill Nochta:"
 
-#: data/ui/preferences.ui:549
+#: data/ui/preferences.ui:583
 msgid "Delay in ms before showing the dock"
 msgstr "Moill i milleasoicindí roimh nochtadh an duga"
 
-#: data/ui/preferences.ui:568
+#: data/ui/preferences.ui:602
 msgid "Pressure Reveal:"
 msgstr "Nocht le Brú:"
 
-#: data/ui/preferences.ui:595
+#: data/ui/preferences.ui:629
 msgid "Item Management"
 msgstr "Bainistiú Míreanna"
 
-#: data/ui/preferences.ui:614
+#: data/ui/preferences.ui:648
 msgid "Show Unpinned:"
 msgstr "Taispeáin Míreanna Neamhghreamaithe"
 
-#: data/ui/preferences.ui:641
+#: data/ui/preferences.ui:675
 msgid "Restrict to Workspace:"
 msgstr "Srianta don Spás Oibre"
 
-#: data/ui/preferences.ui:669
+#: data/ui/preferences.ui:703
 msgid "Tooltips Enabled:"
 msgstr "Leideanna Uirlisí Cumasaithe:"
 
-#: data/ui/preferences.ui:693
+#: data/ui/preferences.ui:727
 msgid "Lock Icons:"
 msgstr "Glasáil Deilbhíní"
 
-#: data/ui/preferences.ui:720
+#: data/ui/preferences.ui:754
 msgid "Anchor Docklets:"
 msgstr "Ancaire Dugáin:"
 
-#: data/ui/preferences.ui:747
+#: data/ui/preferences.ui:781
 msgid "Anchor Files:"
 msgstr "Ancaire Comhaid:"
 
-#: data/ui/preferences.ui:774
+#: data/ui/preferences.ui:808
 msgid "Bring to Workspace:"
 msgstr "Tabhair chuig Spás Oibre:"
 
-#: data/ui/preferences.ui:791
+#: data/ui/preferences.ui:825
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -235,11 +259,11 @@ msgstr ""
 "Agus fuinneog atá suite ar spás oibre eile á gníomhachtú, bog í chuig an "
 "spás oibre reatha in ionad athrú chuig spás oibre na fuinneoige."
 
-#: data/ui/preferences.ui:801
+#: data/ui/preferences.ui:835
 msgid "Behaviour"
 msgstr "Iompraíocht"
 
-#: data/ui/preferences.ui:821
+#: data/ui/preferences.ui:855
 msgid "Docklets"
 msgstr "Dugaíní"
 
@@ -437,11 +461,11 @@ msgstr "Taispeáin do Dheasc."
 msgid "Notifications"
 msgstr "Fógraí"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1080
+#: docklets/Notifications/NotificationsDockItem.vala:1082
 msgid "just now"
 msgstr "anois díreach"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1083
+#: docklets/Notifications/NotificationsDockItem.vala:1085
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -451,7 +475,7 @@ msgstr[2] "%d nóiméad ó shin"
 msgstr[3] "%d nóiméad ó shin"
 msgstr[4] "%d nóiméad ó shin"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1086
+#: docklets/Notifications/NotificationsDockItem.vala:1088
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -461,19 +485,19 @@ msgstr[2] "%d uair ó shin"
 msgstr[3] "%d uair ó shin"
 msgstr[4] "%d uair ó shin"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1132
+#: docklets/Notifications/NotificationsDockItem.vala:1134
 msgid "Enable _Expiry"
 msgstr "Cumasaigh _Éag"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1140
+#: docklets/Notifications/NotificationsDockItem.vala:1142
 msgid "Show _Count"
 msgstr "Taispeáin _Líon"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1148
+#: docklets/Notifications/NotificationsDockItem.vala:1150
 msgid "Show _Transient"
 msgstr "Taispeáin _Sealadach"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1164
+#: docklets/Notifications/NotificationsDockItem.vala:1166
 msgid "Clear Notifications"
 msgstr "Glan Fógraí"
 
@@ -595,7 +619,7 @@ msgstr "Athraitheoir spás oibre grafach."
 msgid "Drop to add to dock"
 msgstr "Scaoil chun cur leis an duga"
 
-#: lib/Factories/AbstractMain.vala:432 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Creidmheasanna aistritheoiríLaunchpad Contributions:\n"
@@ -716,7 +740,7 @@ msgstr "_Maidir Le"
 msgid "_Quit"
 msgstr "_Scoir"
 
-#: lib/Widgets/PreferencesWindow.vala:105
+#: lib/Widgets/PreferencesWindow.vala:107
 msgid "Preferences"
 msgstr "Sainroghanna"
 
