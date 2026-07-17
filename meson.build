@@ -129,7 +129,7 @@ pkgconf.set('includedir', '${prefix}/@0@'.format(get_option('includedir')))
 
 add_project_arguments(
   [
-    '--target-glib=2.48',
+    '--target-glib=2.70',
     '--hide-internal',
     '--enable-deprecated',
     '--vapidir=' + join_paths(meson.project_source_root(), 'vapi'),
@@ -147,16 +147,21 @@ add_project_arguments(
     '-DGMENU_I_KNOW_THIS_IS_UNSTABLE',
     '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
 
-    '-DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48',
-    '-DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48',
-    '-DGDK_VERSION_MIN_REQUIRED=GDK_VERSION_3_10',
-    '-DGDK_VERSION_MAX_ALLOWED=GDK_VERSION_3_10',
+    '-DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_70',
+    '-DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_70',
+    '-DGDK_VERSION_MIN_REQUIRED=GDK_VERSION_3_22',
+    '-DGDK_VERSION_MAX_ALLOWED=GDK_VERSION_3_22',
+
+    # Disable valac's diagnostic pragma which re-enables
+    # -Wincompatible-pointer-types on GCC 14+, defeating the
+    # -Wno-incompatible-pointer-types above.
+    '-DVALA_STRICT_C',
   ],
   language: 'c',
 )
 
 # Dependencies
-glib_version_required = '2.48.0'
+glib_version_required = '2.70.0'
 gtk_version_required = '3.22.0'
 gdk_pixbuf_version_required = '2.26.0'
 bamf_version_required = '0.4.0'
