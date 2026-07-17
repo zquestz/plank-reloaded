@@ -62,8 +62,6 @@ plank_internal_lib_sources = [
   'Services/Matcher.vala',
   'Services/WindowControl.vala',
   'Widgets/DockletViewModel.vala',
-  'gtk-compat.c',
-  'gtk-compat.h',
 ]
 
 plank_version_sources = configure_file(

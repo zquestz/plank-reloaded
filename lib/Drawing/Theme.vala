@@ -43,7 +43,7 @@ namespace Plank
 			path.append_type (widget_type);
 
 			if (object_name != null)
-				PlankCompat.gtk_widget_path_iter_set_object_name (path, -1, object_name);
+				path.iter_set_object_name (-1, object_name);
 
 			path.iter_add_class (-1, first_class);
 			var name_list = va_list ();

@@ -28,7 +28,7 @@ namespace Plank {
     static construct
     {
       set_accessible_role (Atk.Role.TOOL_TIP);
-      PlankCompat.gtk_widget_class_set_css_name ((GLib.ObjectClass) typeof (HoverWindow).class_ref (), "tooltip");
+      set_css_name ("tooltip");
     }
 
     Gtk.Box box;

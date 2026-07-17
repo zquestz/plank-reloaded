@@ -29,7 +29,7 @@ namespace Plank {
     static construct
     {
       set_accessible_role (Atk.Role.SEPARATOR);
-      PlankCompat.gtk_widget_class_set_css_name ((GLib.ObjectClass) typeof (TitledSeparatorMenuItem).class_ref (), "menuitem");
+      set_css_name ("menuitem");
     }
 
     bool draw_line = true;
