@@ -184,17 +184,32 @@ namespace Plank {
     WindowControl () {
     }
 
+    // X error traps on the default display, replacing the deprecated
+    // global Gdk.error_trap_push/pop
+    static void error_trap_push () {
+      unowned Gdk.X11.Display? display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (display != null)
+        display.error_trap_push ();
+    }
+
+    static int error_trap_pop () {
+      unowned Gdk.X11.Display? display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (display == null)
+        return 0;
+      return display.error_trap_pop ();
+    }
+
     public static void initialize () {
       Wnck.set_client_type (Wnck.ClientType.PAGER);
 
       unowned Wnck.Screen screen = Wnck.Screen.get_default ();
 
       // Make sure internal window-list of Wnck is most up to date
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       screen.force_update ();
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         critical ("Wnck.Screen.force_update() caused a XError");
 
       screen.window_manager_changed.connect_after (window_manager_changed);
@@ -204,11 +219,11 @@ namespace Plank {
     }
 
     static void window_manager_changed (Wnck.Screen screen) {
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       screen.force_update ();
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         critical ("Wnck.Screen.force_update() caused a XError");
 
       warning ("Window-manager changed: %s", screen.get_window_manager_name ());
@@ -230,7 +245,7 @@ namespace Plank {
 
       warn_if_fail (xids != null);
 
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       for (var i = 0; xids != null && i < xids.length && pbuf == null; i++) {
         unowned Wnck.Window window = Wnck.Window.@get (xids.index (i));
@@ -242,7 +257,7 @@ namespace Plank {
           pbuf = null;
       }
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         critical ("get_app_icon() for '%s' caused a XError", app.get_name ());
 
       return pbuf;
@@ -258,13 +273,13 @@ namespace Plank {
       if (w == null)
         return null;
 
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       pbuf = w.get_icon ();
       if (w.get_icon_is_fallback ())
         pbuf = null;
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         critical ("get_window_icon() for '%s' caused a XError", window.get_name ());
 
       return pbuf;
@@ -279,7 +294,7 @@ namespace Plank {
       if (w == null)
         return null;
 
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       Gdk.Pixbuf? thumbnail = null;
 
@@ -301,7 +316,7 @@ namespace Plank {
         thumbnail = Gdk.pixbuf_get_from_window (gdk_window, 0, 0, win_width, win_height);
       }
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         warning ("get_window_thumbnail() for '%s' caused a XError", window.get_name ());
 
       return thumbnail;
@@ -318,11 +333,11 @@ namespace Plank {
       if (w == null)
         return null;
 
-      Gdk.error_trap_push ();
+      error_trap_push ();
 
       workspace = w.get_workspace ();
 
-      if (Gdk.error_trap_pop () != 0)
+      if (error_trap_pop () != 0)
         critical ("get_window_workspace() for '%s' caused a XError", window.get_name ());
 
       return workspace;
