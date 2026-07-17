@@ -118,8 +118,6 @@ namespace Plank
 		{
 			var theme_name = ((Gtk.Settings) o).gtk_theme_name;
 			update_style_context (theme_name);
-			
-			notify (new ParamSpecBoolean ("theme-changed", "theme-changed", "theme-changed", true, ParamFlags.READABLE));
 		}
 		
 		public unowned Gtk.StyleContext get_style_context ()
