@@ -8,6 +8,12 @@
 		<value nick="dodge-active" value="5"/>
 	</enum>
 
+	<enum id="PlankAreaType">
+		<value nick="auto" value="0"/>
+		<value nick="monitor" value="1"/>
+		<value nick="work-area" value="2"/>
+	</enum>
+
 	<enum id="GtkAlignType">
 		<value nick="fill" value="0"/>
 		<value nick="start" value="1"/>
@@ -38,6 +44,11 @@
 			<default>'center'</default>
 			<summary>The alignment for the dock along the monitor's edge</summary>
 			<description>Possible values are "fill", "start", "end", and "center".</description>
+		</key>
+		<key name="area-mode" enum='PlankAreaType'>
+			<default>'auto'</default>
+			<summary>The screen area the dock is positioned within</summary>
+			<description>Possible values are "auto", "monitor", and "work-area". Auto picks based on the desktop environment, monitor uses the full monitor, and work-area avoids space reserved by panels.</description>
 		</key>
 		<key name="auto-pinning" type="b">
 			<default>true</default>

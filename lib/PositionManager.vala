@@ -19,6 +19,18 @@
 
 namespace Plank {
   /**
+   * What screen area the dock is positioned within.
+   * If AUTO, the area is chosen based on the desktop environment.
+   * If MONITOR, the full monitor geometry is used.
+   * If WORK_AREA, space reserved by other panels is avoided.
+   */
+  public enum AreaType {
+    AUTO,
+    MONITOR,
+    WORK_AREA
+  }
+
+  /**
    * Handles computing any size/position information for the dock.
    */
   public class PositionManager : GLib.Object {
@@ -27,6 +39,10 @@ namespace Plank {
     public bool screen_is_composited { get; private set; }
 
     Gdk.Rectangle static_dock_region;
+
+    // Retries for screen changes whose new geometry lags the signal;
+    // passing this as the retry argument runs a single evaluation
+    const uint SCREEN_CHANGED_MAX_RETRIES = 6;
 
     uint active_display_timeout_id;
     uint screen_changed_timeout_id;
@@ -98,7 +114,15 @@ namespace Plank {
     }
 
     bool use_monitor_geometry () {
-      return environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE);
+      switch (controller.prefs.AreaMode) {
+      case AreaType.MONITOR:
+        return true;
+      case AreaType.WORK_AREA:
+        return false;
+      default:
+      case AreaType.AUTO:
+        return environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE);
+      }
     }
 
     void prefs_changed (Object prefs, ParamSpec prop) {
@@ -115,6 +139,9 @@ namespace Plank {
       case "GapSize":
         prefs_gap_size_changed ();
         break;
+      case "AreaMode":
+        prefs_area_mode_changed ();
+        break;
       case "ZoomPercent":
       case "ZoomEnabled":
         prefs_zoom_changed ();
@@ -123,6 +150,11 @@ namespace Plank {
         // Nothing important for us changed
         break;
       }
+    }
+
+    void prefs_area_mode_changed () {
+      // Re-evaluate the screen area immediately with the new mode
+      do_screen_changed (controller.window.get_screen (), SCREEN_CHANGED_MAX_RETRIES);
     }
 
     public string active_monitor () {
@@ -278,7 +310,7 @@ namespace Plank {
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
           && old_monitor_geo.height == monitor_geo.height) {
-        if (retry < 6) {
+        if (retry < SCREEN_CHANGED_MAX_RETRIES) {
           GLib.Timeout.add (500, () => {
             do_screen_changed (screen, retry + 1);
             return GLib.Source.REMOVE;

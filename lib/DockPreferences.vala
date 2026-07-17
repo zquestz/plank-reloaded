@@ -49,6 +49,9 @@ namespace Plank {
     [Description (nick = "hide-mode", blurb = "If 0, the dock won't hide.  If 1, the dock intelligently hides.  If 2, the dock auto-hides. If 3, the dock dodges active maximized windows. If 4, the dock dodges every window.")]
     public HideType HideMode { get; set; }
 
+    [Description (nick = "area-mode", blurb = "The screen area the dock is positioned within.  If 0, chosen based on the desktop environment.  If 1, the full monitor.  If 2, the area avoiding space reserved by panels.")]
+    public AreaType AreaMode { get; set; }
+
     [Description (nick = "unhide-delay", blurb = "Time (in ms) to wait before unhiding the dock.")]
     public uint UnhideDelay { get; set; }
 

@@ -38,6 +38,8 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.ComboBoxText cb_position;
     [GtkChild]
+    unowned Gtk.ComboBoxText cb_area_mode;
+    [GtkChild]
     unowned Gtk.ComboBoxText cb_alignment;
     [GtkChild]
     unowned Gtk.ComboBoxText cb_items_alignment;
@@ -184,6 +186,9 @@ namespace Plank {
       case "Position":
         cb_position.active_id = ((int) prefs.Position).to_string ();
         break;
+      case "AreaMode":
+        cb_area_mode.active_id = ((int) prefs.AreaMode).to_string ();
+        break;
       case "PressureReveal":
         sw_pressure_reveal.set_active (prefs.PressureReveal);
         break;
@@ -232,6 +237,10 @@ namespace Plank {
 
     void position_changed (Gtk.ComboBox widget) {
       prefs.Position = (Gtk.PositionType) int.parse (widget.get_active_id ());
+    }
+
+    void area_mode_changed (Gtk.ComboBox widget) {
+      prefs.AreaMode = (AreaType) int.parse (widget.get_active_id ());
     }
 
     void alignment_changed (Gtk.ComboBox widget) {
@@ -409,6 +418,7 @@ namespace Plank {
       cb_theme.changed.connect (theme_changed);
       cb_hidemode.changed.connect (hidemode_changed);
       cb_position.changed.connect (position_changed);
+      cb_area_mode.changed.connect (area_mode_changed);
       adj_hide_delay.value_changed.connect (hide_delay_changed);
       adj_unhide_delay.value_changed.connect (unhide_delay_changed);
       cb_display_plug.changed.connect (monitor_changed);
@@ -442,6 +452,7 @@ namespace Plank {
       cb_theme.changed.disconnect (theme_changed);
       cb_hidemode.changed.disconnect (hidemode_changed);
       cb_position.changed.disconnect (position_changed);
+      cb_area_mode.changed.disconnect (area_mode_changed);
       adj_hide_delay.value_changed.disconnect (hide_delay_changed);
       adj_unhide_delay.value_changed.disconnect (unhide_delay_changed);
       cb_display_plug.changed.disconnect (monitor_changed);
@@ -479,6 +490,7 @@ namespace Plank {
       cb_hidemode.active_id = ((int) prefs.HideMode).to_string ();
       cb_hidemode.sensitive = (prefs.HideMode != HideType.NONE);
       cb_position.active_id = ((int) prefs.Position).to_string ();
+      cb_area_mode.active_id = ((int) prefs.AreaMode).to_string ();
       adj_hide_delay.value = prefs.HideDelay;
       adj_unhide_delay.value = prefs.UnhideDelay;
 
