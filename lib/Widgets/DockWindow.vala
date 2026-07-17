@@ -46,6 +46,11 @@ namespace Plank {
      */
     public bool struts_asserted { get; private set; default = false; }
 
+    // While set, update_struts keeps writing empty struts, so a
+    // measurement episode stays unpolluted by our own reservation until
+    // release_struts ends it
+    bool struts_withheld = false;
+
 
     /**
      * The item which "received" the button-pressed signal (if any).
@@ -788,6 +793,13 @@ namespace Plank {
      * (Re)applies the dock's struts for its current state.
      */
     public void update_struts () {
+      // A measurement episode is in flight: the struts are already empty
+      // and must stay that way until release_struts ends it. Skipping the
+      // write also keeps our own no-op property writes from echoing back
+      // as work-area events and resetting the episode.
+      if (struts_withheld)
+        return;
+
       var struts = new ulong[Struts.N_VALUES];
 
       if (controller.prefs.HideMode == HideType.NONE)
@@ -797,11 +809,26 @@ namespace Plank {
     }
 
     /**
-     * Removes the dock's struts, so the work area can be measured without
-     * our own reservation folded into it.
+     * Removes the dock's struts and keeps them withheld, so the work area
+     * can be measured without our own reservation folded into it.
      */
     public void clear_struts () {
+      struts_withheld = true;
       write_struts (new ulong[Struts.N_VALUES]);
+    }
+
+    /**
+     * Ends a clear_struts measurement episode and reapplies the struts.
+     * Does nothing unless struts are actually withheld, so strut-free
+     * docks never rewrite their (empty) struts: the resulting work-area
+     * events would be accepted right back and loop.
+     */
+    public void release_struts () {
+      if (!struts_withheld)
+        return;
+
+      struts_withheld = false;
+      update_struts ();
     }
 
     void write_struts (ulong[] struts) {

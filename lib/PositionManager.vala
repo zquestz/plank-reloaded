@@ -40,17 +40,23 @@ namespace Plank {
 
     Gdk.Rectangle static_dock_region;
 
-    // Retries for screen updates whose new geometry lags the signal;
-    // passing this as the retry argument runs a single evaluation
-    const uint SCREEN_UPDATE_MAX_RETRIES = 6;
+    // Cap on consecutive measurement samples per episode, covering both
+    // waiting for a change that lags its trigger and confirming stability
+    // once one arrived
+    const uint SCREEN_UPDATE_MAX_SAMPLES = 6;
 
     // Debounce for screen updates. Doubles as the settle window
     // after a strut withdrawal: accepted work-area events keep re-arming
     // it, so the evaluation only runs once the work area has gone quiet.
     const uint SCREEN_UPDATE_DEBOUNCE_TIME = 1000U;
 
+    // Interval between measurement samples once an evaluation has begun;
+    // sampling continues until two consecutive samples agree
+    const uint SCREEN_UPDATE_SAMPLE_TIME = 500U;
+
     uint active_display_timeout_id;
     uint screen_update_timeout_id;
+    uint screen_sample_timeout_id;
 
     Gdk.Rectangle monitor_geo;
     int monitor_num;
@@ -295,14 +301,6 @@ namespace Plank {
       }
     }
 
-    void reassert_struts () {
-      // Put a withdrawn strut back once an evaluation is over. Gated so
-      // strut-free docks never rewrite their (empty) struts: the resulting
-      // work-area events would be accepted right back and loop.
-      if (controller.prefs.HideMode == HideType.NONE && !controller.window.struts_asserted)
-        controller.window.update_struts ();
-    }
-
     public string active_monitor () {
       var screen = controller.window.get_screen ();
       var display = screen.get_display ();
@@ -356,6 +354,10 @@ namespace Plank {
       if (screen_update_timeout_id > 0) {
         GLib.Source.remove (screen_update_timeout_id);
         screen_update_timeout_id = 0;
+      }
+      if (screen_sample_timeout_id > 0) {
+        GLib.Source.remove (screen_sample_timeout_id);
+        screen_sample_timeout_id = 0;
       }
     }
 
@@ -428,22 +430,32 @@ namespace Plank {
     }
 
     void schedule_screen_update (Gdk.Screen screen) {
-      // Withdraw an asserted strut so the debounced evaluation measures
-      // the work area without our own reservation folded in; evaluation
-      // exits re-assert it
+      // Withdraw an asserted strut so the evaluation measures the work
+      // area without our own reservation folded in; the strut returns
+      // once the measurements stabilize
       if (!use_monitor_geometry () && controller.window.struts_asserted)
         controller.window.clear_struts ();
 
+      // Every trigger resets the whole episode: the quiet period starts
+      // over and any sampling in progress is abandoned
       stop_screen_update_timeout ();
 
       screen_update_timeout_id = GLib.Timeout.add (SCREEN_UPDATE_DEBOUNCE_TIME, () => {
-        do_screen_update (screen, 0);
         screen_update_timeout_id = 0;
+        do_screen_update (screen, 0, false);
         return GLib.Source.REMOVE;
       });
     }
 
-    void do_screen_update (Gdk.Screen screen, uint retry) {
+    void schedule_screen_sample (Gdk.Screen screen, uint sample, bool changed_before) {
+      screen_sample_timeout_id = GLib.Timeout.add (SCREEN_UPDATE_SAMPLE_TIME, () => {
+        screen_sample_timeout_id = 0;
+        do_screen_update (screen, sample, changed_before);
+        return GLib.Source.REMOVE;
+      });
+    }
+
+    void do_screen_update (Gdk.Screen screen, uint sample, bool changed_before) {
       var old_monitor_geo = monitor_geo;
       var old_monitor_num = monitor_num;
 
@@ -458,15 +470,20 @@ namespace Plank {
           && old_monitor_geo.y == monitor_geo.y
           && old_monitor_geo.width == monitor_geo.width
           && old_monitor_geo.height == monitor_geo.height) {
-        if (retry < SCREEN_UPDATE_MAX_RETRIES) {
-          GLib.Timeout.add (500, () => {
-            do_screen_update (screen, retry + 1);
-            return GLib.Source.REMOVE;
-          });
+        // Two consecutive samples agree: the transition is over
+        if (changed_before) {
+          controller.window.release_struts ();
           return;
         }
 
-        reassert_struts ();
+        // Nothing has arrived (yet): keep sampling for changes that lag
+        // their trigger, then give up
+        if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
+          schedule_screen_sample (screen, sample + 1, false);
+          return;
+        }
+
+        controller.window.release_struts ();
         return;
       }
 
@@ -483,13 +500,21 @@ namespace Plank {
       // reposition explicitly (a no-op when already in place)
       controller.window.update_size_and_position ();
 
-      reassert_struts ();
-
 #if HAVE_BARRIERS
       controller.hide_manager.update_barrier ();
 #endif
 
       thaw_notify ();
+
+      // The measurement moved: keep the strut withheld and sample again,
+      // so late changes (like a panel re-anchoring after a resize) are
+      // caught instead of locked out
+      if (sample < SCREEN_UPDATE_MAX_SAMPLES) {
+        schedule_screen_sample (screen, sample + 1, true);
+        return;
+      }
+
+      controller.window.release_struts ();
     }
 
     void screen_composited_changed (Gdk.Screen screen) {
