@@ -867,7 +867,8 @@ namespace Docky {
       summary_label.set_markup("<b>%s</b>".printf(GLib.Markup.escape_text(stripped_summary)));
       summary_label.set_line_wrap(true);
       summary_label.set_max_width_chars(50);
-      summary_label.set_alignment(0, 0);
+      summary_label.xalign = 0;
+      summary_label.yalign = 0;
       vbox.pack_start(summary_label, false, false, 0);
 
       var stripped_body = notification.body.strip();
@@ -886,7 +887,8 @@ namespace Docky {
         }
         body_label.set_line_wrap(true);
         body_label.set_max_width_chars(50);
-        body_label.set_alignment(0, 0);
+        body_label.xalign = 0;
+        body_label.yalign = 0;
         body_label.get_style_context().add_class("body-text");
         body_label.margin_top = 10;
         vbox.pack_start(body_label, false, false, 0);
