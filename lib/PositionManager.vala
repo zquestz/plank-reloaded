@@ -964,6 +964,21 @@ namespace Plank {
       double zoom_in_percent = (zoom_enabled ? 1.0 + (ZoomPercent - 1.0) * zoom_in_progress : 1.0);
       double zoom_icon_size = ZoomIconSize;
 
+      // With FILL alignment the dock spans the whole screen edge, so the
+      // cursor can hover empty space far away from the items. Fade the zoom
+      // out with the distance to the items area and anchor it to the nearest
+      // end of the items area, so approaching icons magnify progressively
+      // instead of being pushed away by a bump over empty space.
+      if (Alignment == Gtk.Align.FILL && zoom_in_percent > 1.0 && !expand_for_drop) {
+        double items_begin = center.x - icon_size / 2.0;
+        double items_end = items_begin + items_width;
+        double outside = double.max (items_begin - cursor.x, cursor.x - items_end);
+        if (outside > 0.0) {
+          zoom_in_percent = 1.0 + (zoom_in_percent - 1.0) * double.max (0.0, 1.0 - outside / zoom_icon_size);
+          cursor.x = (int) (cursor.x < items_begin ? items_begin : items_end);
+        }
+      }
+
       // Fast path: when no zoom is active (idle state), skip expensive zoom calculations
       bool no_zoom_active = (zoom_in_percent == 1.0 && !expand_for_drop);
       double static_center_height = icon_size / 2.0;
