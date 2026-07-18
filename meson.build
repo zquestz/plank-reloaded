@@ -180,7 +180,7 @@ dependency('gdk-pixbuf-2.0', version: '>= @0@'.format(gdk_pixbuf_version_require
 gee_dep = dependency('gee-0.8')
 bamf_dep = dependency('libbamf3', version: '>= @0@'.format(bamf_version_required))
 dependency('cairo', version: '>= @0@'.format(cairo_version_required))
-wnck_dep = dependency('libwnck-3.0', version: '>= 40')
+wnck_dep = dependency('libwnck-3.0', version: '>= 43')
 wnck_x11_dep = [wnck_dep, dependency('x11')]
 gnomemenu_dep = dependency('libgnome-menu-3.0')
 canberra_dep = dependency('libcanberra')

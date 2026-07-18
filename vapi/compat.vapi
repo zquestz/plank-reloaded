@@ -58,7 +58,8 @@ namespace X
 	public static bool free_event_data (X.Display display, X.GenericEventCookie* event_cookie);
 }
 
-// WnckHandle bindings (libwnck >= 40), missing from the libwnck-3.0 vapi
+// WnckHandle bindings (public API since libwnck 43), missing from the
+// libwnck-3.0 vapi
 namespace Wnck
 {
 	[CCode (cheader_filename = "libwnck/libwnck.h", type_id = "wnck_handle_get_type ()")]
