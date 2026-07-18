@@ -8,9 +8,15 @@ on:
 
 jobs:
   test:
-    name: Build and Test
+    name: Build and Test (${{ matrix.container }})
     runs-on: ubuntu-latest
-    container: ubuntu:noble
+    container: ${{ matrix.container }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # noble exercises the WnckHandle path (libwnck 43), jammy the
+        # pre-43 fallback entry points (libwnck 40.1)
+        container: ['ubuntu:noble', 'ubuntu:jammy']
 
     steps:
       - name: Checkout Code

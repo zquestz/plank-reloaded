@@ -59,7 +59,7 @@ namespace X
 }
 
 // WnckHandle bindings (public API since libwnck 43), missing from the
-// libwnck-3.0 vapi
+// libwnck-3.0 vapi; only referenced when built with HAVE_WNCK_HANDLE
 namespace Wnck
 {
 	[CCode (cheader_filename = "libwnck/libwnck.h", type_id = "wnck_handle_get_type ()")]

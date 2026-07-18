@@ -180,8 +180,14 @@ dependency('gdk-pixbuf-2.0', version: '>= @0@'.format(gdk_pixbuf_version_require
 gee_dep = dependency('gee-0.8')
 bamf_dep = dependency('libbamf3', version: '>= @0@'.format(bamf_version_required))
 dependency('cairo', version: '>= @0@'.format(cairo_version_required))
-wnck_dep = dependency('libwnck-3.0', version: '>= 43')
+wnck_dep = dependency('libwnck-3.0', version: '>= 3.36')
 wnck_x11_dep = [wnck_dep, dependency('x11')]
+
+# WnckHandle is public API since libwnck 43; older versions fall back to
+# the deprecated global entry points (see WindowControl)
+if wnck_dep.version().version_compare('>= 43')
+  add_project_arguments('--define', 'HAVE_WNCK_HANDLE', language: 'vala')
+endif
 gnomemenu_dep = dependency('libgnome-menu-3.0')
 canberra_dep = dependency('libcanberra')
 posix_dep = vala.find_library('posix')

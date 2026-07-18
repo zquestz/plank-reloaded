@@ -184,6 +184,7 @@ namespace Plank {
     WindowControl () {
     }
 
+#if HAVE_WNCK_HANDLE
     static Wnck.Handle? wnck_handle = null;
 
     static unowned Wnck.Handle get_handle () {
@@ -191,13 +192,26 @@ namespace Plank {
         wnck_handle = new Wnck.Handle (Wnck.ClientType.PAGER);
       return wnck_handle;
     }
+#endif
 
+    // All wnck entry points funnel through these two accessors. Built
+    // against libwnck >= 43 they use our own WnckHandle; older libwnck
+    // (3.36/40) predates the public handle API, so they fall back to the
+    // library-global entry points (only deprecated from 43 onward).
     public static unowned Wnck.Screen get_wnck_screen () {
+#if HAVE_WNCK_HANDLE
       return get_handle ().get_default_screen ();
+#else
+      return Wnck.Screen.get_default ();
+#endif
     }
 
     public static unowned Wnck.Window? get_wnck_window (ulong xid) {
+#if HAVE_WNCK_HANDLE
       return get_handle ().get_window (xid);
+#else
+      return Wnck.Window.@get (xid);
+#endif
     }
 
     // X error traps on the default display, replacing the deprecated
@@ -216,6 +230,12 @@ namespace Plank {
     }
 
     public static void initialize () {
+#if !HAVE_WNCK_HANDLE
+      // Pre-43 libwnck: the client type applies to the library-global
+      // default handle and must be set before its first use
+      Wnck.set_client_type (Wnck.ClientType.PAGER);
+#endif
+
       unowned Wnck.Screen screen = get_wnck_screen ();
 
       // Make sure internal window-list of Wnck is most up to date
