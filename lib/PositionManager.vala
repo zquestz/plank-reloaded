@@ -2251,7 +2251,11 @@ namespace Plank {
       if (monitor_geo.width <= 0 || monitor_geo.height <= 0)
         return;
 
-      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+      // Before the window is realized there is no Gdk.Window to read the
+      // scale factor from; keep the last-known value
+      unowned Gdk.Window? window = controller.window.get_window ();
+      if (window != null)
+        window_scale_factor = window.get_scale_factor ();
 
       // Per the _NET_WM_STRUT_PARTIAL spec, all coordinates are root window
       // coordinates and struts are relative to the screen edge, not the
@@ -2330,7 +2334,11 @@ namespace Plank {
     public Gdk.Rectangle get_barrier () {
       Gdk.Rectangle barrier = {};
 
-      window_scale_factor = controller.window.get_window ().get_scale_factor ();
+      // Before the window is realized there is no Gdk.Window to read the
+      // scale factor from; keep the last-known value
+      unowned Gdk.Window? window = controller.window.get_window ();
+      if (window != null)
+        window_scale_factor = window.get_scale_factor ();
 
       switch (Position) {
       default:

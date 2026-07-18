@@ -802,6 +802,11 @@ namespace Plank {
         return;
       }
 
+      // Struts cannot exist before the window does; guard before computing
+      // them, since get_struts reads window properties
+      if (!get_realized ())
+        return;
+
       var struts = new ulong[Struts.N_VALUES];
 
       if (controller.prefs.HideMode == HideType.NONE)
