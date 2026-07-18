@@ -846,6 +846,15 @@ namespace Plank {
     }
 
     void write_struts (ulong[] struts) {
+      var desired_asserted = struts[Struts.LEFT] > 0UL || struts[Struts.RIGHT] > 0UL
+                             || struts[Struts.TOP] > 0UL || struts[Struts.BOTTOM] > 0UL;
+
+      // An empty-to-empty write carries no information, and on a WM that
+      // republishes work-area hints for value-unchanged strut writes it
+      // would echo back as an accepted event and loop the update machinery
+      if (!desired_asserted && !struts_asserted)
+        return;
+
       if (!get_realized ())
         return;
 
@@ -877,14 +886,7 @@ namespace Plank {
       if (gdk_display.error_trap_pop () != X.Success)
         critical ("Error while setting struts");
 
-      var asserted = false;
-      foreach (var strut in struts) {
-        if (strut > 0UL) {
-          asserted = true;
-          break;
-        }
-      }
-      struts_asserted = asserted;
+      struts_asserted = desired_asserted;
 
       debug ("DockWindow.write_struts (left = %lu, right = %lu, top = %lu, bottom = %lu)",
              struts[Struts.LEFT], struts[Struts.RIGHT], struts[Struts.TOP], struts[Struts.BOTTOM]);

@@ -62,6 +62,10 @@ namespace Plank {
     uint screen_sample_timeout_id;
 
     Gdk.Rectangle monitor_geo;
+    // Whether monitor_geo holds a valid measurement of the currently
+    // selected monitor (false across hotplug transients, so retained
+    // geometry from a removed monitor never produces reservations)
+    bool monitor_geo_valid = false;
     int monitor_num;
     int last_update_monitor_num;
 
@@ -172,8 +176,12 @@ namespace Plank {
       // Hotplug transients can report empty geometry; keep the previous
       // state and report the measurement unusable, so sampling neither
       // trusts nor stabilizes on it
-      if (geo.width <= 0 || geo.height <= 0)
+      if (geo.width <= 0 || geo.height <= 0) {
+        monitor_geo_valid = false;
         return false;
+      }
+
+      monitor_geo_valid = true;
 
       // The first measurement only seeds the reference: it runs outside
       // any update episode, so a flag set here would never be cleared
@@ -222,6 +230,14 @@ namespace Plank {
 
     void update_area_margins (Gdk.Monitor monitor, Gdk.Rectangle geo) {
       var workarea = monitor.get_workarea ();
+
+      // Stored margins may predate a dimension change: drop any that are
+      // impossible under the current geometry, so a held value that was
+      // legal on the old size cannot trip the bogus-geometry fallback
+      area_margin_top = sane_margin (area_margin_top, geo.height);
+      area_margin_bottom = sane_margin (area_margin_bottom, geo.height);
+      area_margin_left = sane_margin (area_margin_left, geo.width);
+      area_margin_right = sane_margin (area_margin_right, geo.width);
 
       var top = sane_margin ((workarea.y - geo.y).clamp (0, geo.height), geo.height);
       var left = sane_margin ((workarea.x - geo.x).clamp (0, geo.width), geo.width);
@@ -2247,8 +2263,10 @@ namespace Plank {
      * @param struts the array to contain the struts
      */
     public void get_struts (ref ulong[] struts) {
-      // Never derive a reservation from an invalid geometry
-      if (monitor_geo.width <= 0 || monitor_geo.height <= 0)
+      // Only reserve space from a valid measurement of the currently
+      // selected monitor: hotplug transients and geometry retained from a
+      // removed monitor must not produce reservations
+      if (!monitor_geo_valid)
         return;
 
       // Before the window is realized there is no Gdk.Window to read the
@@ -2270,13 +2288,6 @@ namespace Plank {
         screen_width = int.max (screen_width, geo.x + geo.width);
         screen_height = int.max (screen_height, geo.y + geo.height);
       }
-
-      // A geometry retained from a just-removed monitor no longer fits the
-      // screen and would compute a nonsense reservation; emit none until a
-      // valid measurement replaces it
-      if (monitor_geo.x + monitor_geo.width > screen_width
-          || monitor_geo.y + monitor_geo.height > screen_height)
-        return;
 
       compute_struts (ref struts, Position, monitor_geo,
                       screen_width, screen_height,
