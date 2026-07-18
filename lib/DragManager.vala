@@ -236,23 +236,9 @@ namespace Plank {
         set_drag_icon (context, DragItem, 0.8);
       });
 
-      Gdk.Event? current_event = Gtk.get_current_event ();
-      if (current_event != null) {
-        unowned Gdk.Device? device = current_event.get_device ();
-        if (device != null) {
-          unowned Gdk.Seat? seat = device.get_seat ();
-          if (seat != null) {
-            var status = seat.grab (window.get_window (),
-                                    Gdk.SeatCapabilities.ALL_POINTING,
-                                    true,
-                                    null,
-                                    current_event,
-                                    null);
-            if (status != Gdk.GrabStatus.SUCCESS)
-              warning ("Seat grab failed during drag begin: %d", status);
-          }
-        }
-      }
+      // No explicit seat grab: GTK's drag-and-drop machinery already holds
+      // the pointer grab for the whole drag, so an extra grab here always
+      // failed with INVALID_TIME anyway
     }
 
     [CCode (instance_pos = -1)]
@@ -365,17 +351,6 @@ namespace Plank {
 
       InternalDragActive = false;
       DragItem = null;
-      controller.window.get_display ().get_default_seat ().ungrab ();
-      // Also ungrab the device's seat in case it differs from the default
-      Gdk.Event? end_event = Gtk.get_current_event ();
-      if (end_event != null) {
-        unowned Gdk.Device? device = end_event.get_device ();
-        if (device != null) {
-          unowned Gdk.Seat? seat = device.get_seat ();
-          if (seat != null)
-            seat.ungrab ();
-        }
-      }
 
       controller.window.notify["HoveredItem"].disconnect (hovered_item_changed);
 
