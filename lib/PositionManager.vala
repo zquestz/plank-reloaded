@@ -62,10 +62,6 @@ namespace Plank {
     uint screen_sample_timeout_id;
 
     Gdk.Rectangle monitor_geo;
-    // Whether monitor_geo holds a valid measurement of the currently
-    // selected monitor (false across hotplug transients, so retained
-    // geometry from a removed monitor never produces reservations)
-    bool monitor_geo_valid = false;
     int monitor_num;
     int last_update_monitor_num;
 
@@ -176,12 +172,8 @@ namespace Plank {
       // Hotplug transients can report empty geometry; keep the previous
       // state and report the measurement unusable, so sampling neither
       // trusts nor stabilizes on it
-      if (geo.width <= 0 || geo.height <= 0) {
-        monitor_geo_valid = false;
+      if (geo.width <= 0 || geo.height <= 0)
         return false;
-      }
-
-      monitor_geo_valid = true;
 
       // The first measurement only seeds the reference: it runs outside
       // any update episode, so a flag set here would never be cleared
@@ -2263,10 +2255,27 @@ namespace Plank {
      * @param struts the array to contain the struts
      */
     public void get_struts (ref ulong[] struts) {
-      // Only reserve space from a valid measurement of the currently
-      // selected monitor: hotplug transients and geometry retained from a
-      // removed monitor must not produce reservations
-      if (!monitor_geo_valid)
+      // Reservations must describe current reality: re-resolve the
+      // selected monitor and require its raw geometry to match the last
+      // valid measurement, so hotplug windows and mid-transition mode
+      // flips can never reassert retained geometry (a removed monitor's
+      // rectangle could even wrap the depth arithmetic once the root
+      // shrinks)
+      unowned Gdk.Screen screen = controller.window.get_screen ();
+      if (find_monitor_number (screen, controller.prefs.Monitor) != monitor_num)
+        return;
+
+      var raw_geo = screen.get_display ().get_monitor (monitor_num).get_geometry ();
+      if (raw_geo.x != last_raw_geo.x || raw_geo.y != last_raw_geo.y
+          || raw_geo.width != last_raw_geo.width || raw_geo.height != last_raw_geo.height)
+        return;
+
+      // In monitor mode the applied rectangle must be the raw geometry
+      // itself; right after a flip away from the work area it can still
+      // be margin-shrunk until the scheduled episode measures
+      if (use_monitor_geometry ()
+          && (monitor_geo.x != raw_geo.x || monitor_geo.y != raw_geo.y
+              || monitor_geo.width != raw_geo.width || monitor_geo.height != raw_geo.height))
         return;
 
       // Before the window is realized there is no Gdk.Window to read the
