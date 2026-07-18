@@ -585,6 +585,14 @@ namespace Plank {
         }
 
         debug ("PositionManager.do_screen_update () gave up, no valid geometry");
+
+        // Monitor mode never withdrew, so an asserted strut could keep
+        // reserving a removed monitor's edge indefinitely: clear it here.
+        // Elsewhere this is a no-op (work-area episodes already withdrew,
+        // strut-free docks have nothing to clear), and the release below
+        // cannot re-assert while the geometry stays invalid.
+        controller.window.clear_struts ();
+
         end_screen_update_episode ();
         return;
       }
