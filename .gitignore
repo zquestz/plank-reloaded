@@ -58,8 +58,6 @@ lib/*-abi
 !lib/abicheck.sh
 lib/*.c
 lib/*.h
-!lib/gtk-compat.c
-!lib/gtk-compat.h
 lib/*.deps
 !lib/plank.deps
 lib/*.vapi
