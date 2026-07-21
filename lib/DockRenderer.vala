@@ -104,6 +104,8 @@ namespace Plank {
 #endif
       controller.prefs.notify.connect (prefs_changed);
 
+      gtk_theme_name_changed_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (gtk_theme_name_changed);
+
       load_theme ();
     }
 
@@ -123,6 +125,11 @@ namespace Plank {
     ~DockRenderer () {
       controller.prefs.notify.disconnect (prefs_changed);
       theme.notify.disconnect (theme_changed);
+
+      if (gtk_theme_name_changed_handler_id > 0UL) {
+        SignalHandler.disconnect (Gtk.Settings.get_default (), gtk_theme_name_changed_handler_id);
+        gtk_theme_name_changed_handler_id = 0UL;
+      }
 
       controller.hide_manager.notify["Hidden"].disconnect (hidden_changed);
       controller.hide_manager.notify["Hovered"].disconnect (hovered_changed);
@@ -151,6 +158,18 @@ namespace Plank {
       reset_position_manager ();
     }
 
+    void gtk_theme_name_changed () {
+      // The Gtk+ dock theme derives all its drawing from the GTK theme:
+      // reload it outright. Every other theme consumes the GTK theme only
+      // through the style context (indicator dots, urgent glow, badge
+      // color and font), which Theme refreshes on this same signal;
+      // rebaking the cached buffers is enough to pick that up.
+      if (controller.prefs.Theme == Theme.GTK_THEME_NAME)
+        load_theme ();
+      else
+        reset_position_manager ();
+    }
+
     void reset_position_manager () {
       // Don't perform an update immediately and summon further
       // update-requests, wait at least 50ms after the last request
@@ -176,14 +195,6 @@ namespace Plank {
         theme.notify.disconnect (theme_changed);
 
       unowned string name = controller.prefs.Theme;
-      if (name == Theme.GTK_THEME_NAME) {
-        if (gtk_theme_name_changed_handler_id == 0UL)
-          gtk_theme_name_changed_handler_id = Gtk.Settings.get_default ().notify["gtk-theme-name"].connect (load_theme);
-      } else if (gtk_theme_name_changed_handler_id > 0UL) {
-        SignalHandler.disconnect (Gtk.Settings.get_default (), gtk_theme_name_changed_handler_id);
-        gtk_theme_name_changed_handler_id = 0UL;
-      }
-
       theme = new DockTheme (name);
       theme.load ("dock");
       theme.notify.connect (theme_changed);
