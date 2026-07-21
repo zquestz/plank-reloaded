@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
@@ -47,19 +47,19 @@ msgstr ""
 "Dock 所需的功能，不多一分不少一分。它同時也保持作為一個函式庫的特性，可以被擴"
 "充來建立具有更多進階功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "使用霧面主題的 Dock"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "外觀偏好設定"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "行為偏好設定"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "小工具偏好設定"
 
@@ -598,7 +598,7 @@ msgstr "_即時預覽"
 msgid "A graphical workspace switcher."
 msgstr "圖形化工作區切換器。"
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "拖曳以加入至 dock"
 

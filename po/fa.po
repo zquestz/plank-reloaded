@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Persian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "کتابخانه باقی می‌ماند که می‌تواند برای ایجاد برنامه‌های داک دیگر با ویژگی‌های "
 "پیشرفته‌تر گسترش یابد."
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "داک با تم مات"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "تنظیمات ظاهری"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "تنظیمات رفتاری"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "تنظیمات داکلت‌ها"
 
@@ -604,7 +604,7 @@ msgstr "پیش‌نمایش‌های _زنده"
 msgid "A graphical workspace switcher."
 msgstr "یک تعویض‌کننده فضای کاری گرافیکی."
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "رها کنید تا به داک اضافه شود"
 

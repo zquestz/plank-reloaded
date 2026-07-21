@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2020-02-25 01:57+0000\n"
 "Last-Translator: Grzegorz Kulik <Unknown>\n"
 "Language-Team: Silesian <szl@li.org>\n"
@@ -52,19 +52,19 @@ msgstr ""
 "tyż ôstŏwŏ biblioteką, kerõ idzie rozszerzyć, coby zrychtować ôstatnie "
 "programy doki ze wiyncyj zaawansowanymi funkcyjami."
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "Doka ze tymatym Matte"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "Nasztalowania wynzdrzeniŏ"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "Nasztalowania zachowaniŏ"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "Nasztalowania dokletōw"
 
@@ -610,7 +610,7 @@ msgstr "_Żywe pedzejzdrzynie"
 msgid "A graphical workspace switcher."
 msgstr "Graficzny przelōnczŏcz robotnych placōw."
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Pusć, coby przidać do doki"
 

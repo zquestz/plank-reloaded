@@ -116,6 +116,17 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Mon Jul 20 2026 Josh Ellithorpe <quest@mac.com> - 0.11.171-1
+- Add a Screen Area setting choosing automatic, monitor, or work area placement
+- Make Work Area placement panel-aware with settled re-measurement on screen changes
+- Fix the dock shifting when hovering empty space with Fill alignment and zoom
+- Migrate from deprecated libwnck globals to a shared WnckHandle exposed to docklets
+- Support source builds against libwnck back to 3.36 for older distributions
+- Remove an obsolete drag grab that logged warnings when moving dock icons
+- Stop rewriting the dock theme file on every GTK theme change
+- Clear stale struts when a disappearing monitor never yields valid geometry
+- Modernize deprecated GTK and GLib usage, cutting compile warnings from 132 to 3
+
 * Sun Jul 12 2026 Josh Ellithorpe <quest@mac.com> - 0.11.170-1
 - Add a per-dock option to bring activated applications to the current workspace
 - Make Trash counting and emptying asynchronous and improve KDE monitoring

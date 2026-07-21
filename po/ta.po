@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Tamil\n"
@@ -49,19 +49,19 @@ msgstr ""
 "எதுவும் இல்லை. இது மேலும் மேம்பட்ட அம்சங்களுடன் பிற டாக் நிரல்களை உருவாக்க "
 "விரிவாக்கக்கூடிய ஒரு நூலகமாகவும் உள்ளது."
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "மேட் தீம் கொண்ட டாக்"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "தோற்ற விருப்பத்தேர்வுகள்"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "நடத்தை விருப்பத்தேர்வுகள்"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "டாக்லெட்ஸ் விருப்பத்தேர்வுகள்"
 
@@ -604,7 +604,7 @@ msgstr "_நேரடி முன்னோட்டங்கள்"
 msgid "A graphical workspace switcher."
 msgstr "ஒரு வரைகலை பணிப்பரப்பு மாற்றி."
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "டாக்கில் சேர்க்க விடவும்"
 

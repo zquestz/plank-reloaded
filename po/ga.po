@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -50,19 +50,19 @@ msgstr ""
 "dhuga agus faic eile. Fanann sé ina leabharlann freisin ar féidir é a "
 "leathnú chun cláir duga eile a chruthú le gnéithe níos forbartha."
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "Duga le téama Matte"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "Sainroghanna cuma"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "Sainroghanna iompair"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "Sainroghanna dugán"
 
@@ -615,7 +615,7 @@ msgstr "Réamhamhairc _Bheo"
 msgid "A graphical workspace switcher."
 msgstr "Athraitheoir spás oibre grafach."
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Scaoil chun cur leis an duga"
 

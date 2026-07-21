@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-16 16:53-1000\n"
+"POT-Creation-Date: 2026-07-20 14:27-1000\n"
 "PO-Revision-Date: 2025-11-13 04:02\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "daugiau. Jis taip pat lieka biblioteka, kuri gali būti išplėsta kuriant "
 "kitas doko programas su pažangesnėmis funkcijomis."
 
-#: data/plank.appdata.xml.in:133
+#: data/plank.appdata.xml.in:134
 msgid "Dock with Matte theme"
 msgstr "Dokas su Matte tema"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Appearance Preferences"
 msgstr "Išvaizdos nustatymai"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Behavior Preferences"
 msgstr "Elgsenos nustatymai"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Docklets Preferences"
 msgstr "Doko įskiepių nustatymai"
 
@@ -611,7 +611,7 @@ msgstr "_Tiesioginės peržiūros"
 msgid "A graphical workspace switcher."
 msgstr "Grafinis darbo sričių perjungiklis."
 
-#: lib/DragManager.vala:488 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Paleiskite, kad įdėtumėte į skydelį"
 
