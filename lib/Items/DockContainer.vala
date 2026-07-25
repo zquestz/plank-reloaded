@@ -118,12 +118,12 @@ namespace Plank {
      */
     public bool add (DockElement element, DockElement? target = null) {
       if (internal_elements.contains (element)) {
-        critical ("Element '%s' already exists in this DockContainer.", element.Text);
+        critical ("Element '%s' already exists in this DockContainer.", element.describe ());
         return false;
       }
 
       if (element.Container != null) {
-        critical ("Element '%s' should be removed from its old DockContainer first.", element.Text);
+        critical ("Element '%s' should be removed from its old DockContainer first.", element.describe ());
         return false;
       }
 
@@ -145,12 +145,12 @@ namespace Plank {
      */
     public void prepend (DockElement element) {
       if (internal_elements.contains (element)) {
-        critical ("Element '%s' already exists in this DockContainer.", element.Text);
+        critical ("Element '%s' already exists in this DockContainer.", element.describe ());
         return;
       }
 
       if (element.Container != null) {
-        critical ("Element '%s' should be removed from its old DockContainer first.", element.Text);
+        critical ("Element '%s' should be removed from its old DockContainer first.", element.describe ());
         return;
       }
 
@@ -180,13 +180,13 @@ namespace Plank {
 
       foreach (var element in elements) {
         if (internal_elements.contains (element)) {
-          critical ("Element '%s' already exists in this DockContainer.", element.Text);
+          critical ("Element '%s' already exists in this DockContainer.", element.describe ());
           result = false;
           continue;
         }
 
         if (element.Container != null) {
-          critical ("Element '%s' should be removed from its old DockContainer first.", element.Text);
+          critical ("Element '%s' should be removed from its old DockContainer first.", element.describe ());
           result = false;
           continue;
         }
@@ -207,7 +207,7 @@ namespace Plank {
      */
     public bool remove (DockElement element) {
       if (!internal_elements.contains (element)) {
-        critical ("Element '%s' does not exist in this DockContainer.", element.Text);
+        critical ("Element '%s' does not exist in this DockContainer.", element.describe ());
         return false;
       }
 
@@ -229,7 +229,7 @@ namespace Plank {
 
       foreach (var element in elements) {
         if (!internal_elements.contains (element)) {
-          critical ("Element '%s' does not exist in this DockContainer.", element.Text);
+          critical ("Element '%s' does not exist in this DockContainer.", element.describe ());
           result = false;
           continue;
         }
@@ -302,12 +302,12 @@ namespace Plank {
       int index_move, index_target;
 
       if ((index_move = internal_elements.index_of (move)) < 0) {
-        critical ("Element '%s' does not exist in this DockContainer.", move.Text);
+        critical ("Element '%s' does not exist in this DockContainer.", move.describe ());
         return false;
       }
 
       if ((index_target = internal_elements.index_of (target)) < 0) {
-        critical ("Element '%s' does not exist in this DockContainer.", target.Text);
+        critical ("Element '%s' does not exist in this DockContainer.", target.describe ());
         return false;
       }
 
@@ -384,14 +384,14 @@ namespace Plank {
               break;
             }
           }
-          debug ("Inserting unpinned item %s at position %d (before docklets)", element.Text, insert_pos);
+          debug ("Inserting unpinned item '%s' at position %d (before docklets)", element.describe (), insert_pos);
           internal_elements.insert (insert_pos, element);
         } else {
-          debug ("Adding pinned item %s at end of dock", element.Text);
+          debug ("Adding pinned item '%s' at end of dock", element.describe ());
           internal_elements.add (element);
         }
       } else {
-        debug ("Adding %s at end of dock", element.Text);
+        debug ("Adding '%s' at end of dock", element.describe ());
         internal_elements.add (element);
       }
 
@@ -415,17 +415,17 @@ namespace Plank {
       int index;
 
       if ((index = internal_elements.index_of (old_element)) < 0) {
-        critical ("Element '%s' does not exist in this DockContainer.", old_element.Text);
+        critical ("Element '%s' does not exist in this DockContainer.", old_element.describe ());
         return false;
       }
 
       if (internal_elements.contains (new_element)) {
-        critical ("Element '%s' already exists in this DockContainer.", new_element.Text);
+        critical ("Element '%s' already exists in this DockContainer.", new_element.describe ());
         return false;
       }
 
       if (new_element.Container != null) {
-        critical ("Element '%s' should be removed from its old DockContainer first.", new_element.Text);
+        critical ("Element '%s' should be removed from its old DockContainer first.", new_element.describe ());
         return false;
       }
 

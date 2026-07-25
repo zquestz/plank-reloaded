@@ -570,7 +570,7 @@ namespace Plank {
       if (!appitem.is_running ())
         return;
 
-      Logger.verbose ("DockWindow.update_icon_region ('%s')", appitem.Text);
+      Logger.verbose ("DockWindow.update_icon_region ('%s')", appitem.describe ());
 
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
       var region = controller.position_manager.get_icon_geometry (appitem, use_hidden_region);

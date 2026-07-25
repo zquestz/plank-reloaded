@@ -265,6 +265,23 @@ namespace Plank {
     }
 
     /**
+     * Returns a human-readable description of this element for log messages,
+     * falling back to the launcher or type name when no text is set.
+     *
+     * @return a non-empty description of this dock element
+     */
+    internal unowned string describe () {
+      if (Text != null && Text != "")
+        return Text;
+
+      unowned DockItem? item = this as DockItem;
+      if (item != null && item.Launcher != null && item.Launcher != "")
+        return item.Launcher;
+
+      return get_type ().name ();
+    }
+
+    /**
      * Resets the buffers for this element.
      */
     public abstract void reset_buffers ();

@@ -120,7 +120,7 @@ namespace Plank {
         return false;
 
       if (target != null && target != placeholder_item && !internal_elements.contains (target)) {
-        critical ("Item '%s' does not exist in this DockItemProvider.", target.Text);
+        critical ("Item '%s' does not exist in this DockItemProvider.", target.describe ());
         return false;
       }
 
