@@ -265,16 +265,22 @@ namespace Plank {
     }
 
     /**
-     * Returns a human-readable description of this element for log messages,
-     * falling back to the launcher or type name when no text is set.
+     * Returns a human-readable description of this element for log messages.
+     * Docklets are identified by their launcher URI, other elements by their
+     * text, falling back to the launcher or type name when no text is set.
      *
      * @return a non-empty description of this dock element
      */
     internal unowned string describe () {
+      unowned DockItem? item = this as DockItem;
+
+      // Docklet text reflects runtime state, so identify docklets by URI
+      if (item is DockletItem && item.Launcher != null && item.Launcher != "")
+        return item.Launcher;
+
       if (Text != null && Text != "")
         return Text;
 
-      unowned DockItem? item = this as DockItem;
       if (item != null && item.Launcher != null && item.Launcher != "")
         return item.Launcher;
 
