@@ -506,6 +506,10 @@ namespace Plank {
             continue;
           }
 
+          // get_windows () returns unowned elements, so closures which outlive
+          // this loop must hold a strong reference to keep the window alive
+          Bamf.Window win = window;
+
           var window_name = window.get_name ();
           window_name = shorten_window_name (window_name);
           window_name = Helpers.truncate_middle (window_name, MAX_WINDOW_NAME_LENGTH);
@@ -561,7 +565,7 @@ namespace Plank {
                   event.y <= close_y + close_allocation.height) {
 
                 was_close_click = true;
-                WindowControl.close_window (window, event_time);
+                WindowControl.close_window (win, event_time);
               }
             }
 
@@ -573,8 +577,8 @@ namespace Plank {
               return;
             }
 
-            if (!window.is_active ()) {
-              WindowControl.focus_window (window, event_time, bring_to_current);
+            if (!win.is_active ()) {
+              WindowControl.focus_window (win, event_time, bring_to_current);
             }
           });
 
