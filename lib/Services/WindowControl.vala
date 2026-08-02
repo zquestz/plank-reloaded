@@ -512,7 +512,13 @@ namespace Plank {
     }
 
     public static void close_window (Bamf.Window window, uint32 event_time) {
-      unowned Wnck.Window wnck_window = get_wnck_window (window.get_xid ());
+      unowned Wnck.Window? wnck_window = get_wnck_window (window.get_xid ());
+
+      warn_if_fail (wnck_window != null);
+
+      if (wnck_window == null)
+        return;
+
       wnck_window.close (event_time);
     }
 
