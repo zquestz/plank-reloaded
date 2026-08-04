@@ -180,9 +180,13 @@ namespace Plank {
       gdk_window_remove_filter (null, (Gdk.FilterFunc) xevent_filter);
 
       if (barrier != 0) {
-        unowned Gdk.X11.Display gdk_display = (controller.window.get_display () as Gdk.X11.Display);
-        unowned X.Display display = gdk_display.get_xdisplay ();
-        XFixes.destroy_pointer_barrier (display, barrier);
+        unowned Gdk.X11.Display? gdk_display = (controller.window.get_display () as Gdk.X11.Display);
+        if (gdk_display != null) {
+          unowned X.Display display = gdk_display.get_xdisplay ();
+          gdk_display.error_trap_push ();
+          XFixes.destroy_pointer_barrier (display, barrier);
+          gdk_display.error_trap_pop_ignored ();
+        }
         barrier = 0;
       }
 #endif
@@ -745,7 +749,12 @@ namespace Plank {
 
 #if HAVE_BARRIERS
     void initialize_barriers_support () {
-      unowned Gdk.X11.Display gdk_display = (controller.window.get_display () as Gdk.X11.Display);
+      unowned Gdk.X11.Display? gdk_display = (controller.window.get_display () as Gdk.X11.Display);
+      if (gdk_display == null) {
+        debug ("Barriers disabled (not an X11 display)");
+        barriers_supported = false;
+        return;
+      }
       unowned X.Display display = gdk_display.get_xdisplay ();
       int error_base, first_event_return;
 
@@ -841,10 +850,17 @@ namespace Plank {
         break;
       }
 
+      unowned Gdk.X11.Display? gdk_display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (gdk_display != null)
+        gdk_display.error_trap_push ();
+
       XInput.barrier_release_pointer (display, barrier_event.deviceid,
                                       barrier, barrier_event.eventid);
 
       display.flush ();
+
+      if (gdk_display != null)
+        gdk_display.error_trap_pop_ignored ();
 
       X.free_event_data (display, xcookie);
       return Gdk.FilterReturn.REMOVE;
@@ -854,11 +870,15 @@ namespace Plank {
       if (!barriers_supported || !controller.window.get_realized ())
         return;
 
-      unowned Gdk.X11.Display gdk_display = (controller.window.get_display () as Gdk.X11.Display);
+      unowned Gdk.X11.Display? gdk_display = (controller.window.get_display () as Gdk.X11.Display);
+      if (gdk_display == null)
+        return;
       unowned X.Display display = gdk_display.get_xdisplay ();
 
       if (barrier > 0) {
+        gdk_display.error_trap_push ();
         XFixes.destroy_pointer_barrier (display, barrier);
+        gdk_display.error_trap_pop_ignored ();
         barrier = 0;
       }
 

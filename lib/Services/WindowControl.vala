@@ -229,6 +229,13 @@ namespace Plank {
       return display.error_trap_pop ();
     }
 
+    // For hot paths: skips the display roundtrip that error_trap_pop performs
+    static void error_trap_pop_ignored () {
+      unowned Gdk.X11.Display? display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (display != null)
+        display.error_trap_pop_ignored ();
+    }
+
     public static void initialize () {
 #if !HAVE_WNCK_HANDLE
       // Pre-43 libwnck: the client type applies to the library-global
@@ -513,11 +520,17 @@ namespace Plank {
 
       warn_if_fail (xids != null);
 
+      // BAMF xids can lag the server, and pre-43 libwnck does not trap
+      // set_icon_geometry internally, so guard the whole loop
+      error_trap_push ();
+
       for (var i = 0; xids != null && i < xids.length; i++) {
         unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null)
           window.set_icon_geometry (rect.x, rect.y, rect.width, rect.height);
       }
+
+      error_trap_pop_ignored ();
     }
 
     public static void close_window (Bamf.Window window, uint32 event_time) {
