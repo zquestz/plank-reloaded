@@ -188,9 +188,11 @@ namespace Docky {
       } catch (Error e) {
         warning("Error scheduling menu load: %s", e.message);
         apps_loaded = false;
+      } finally {
+        // Never leave this latched: a stuck true permanently disables the
+        // docklet ("No applications available")
+        load_in_progress = false;
       }
-
-      load_in_progress = false;
 
       // The item may have been removed from the dock during the load
       if (menu_tree == null) {
