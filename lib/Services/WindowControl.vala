@@ -328,26 +328,27 @@ namespace Plank {
       if (w == null)
         return null;
 
-      error_trap_push ();
-
-      Gdk.Pixbuf? thumbnail = null;
-
-      var xwindow = w.get_xid ();
       var x11_display = Gdk.Display.get_default () as Gdk.X11.Display;
       if (x11_display == null) {
         return null;
       }
 
+      // No early returns between push and pop: a leaked trap silently
+      // swallows every subsequent X error process-wide
+      error_trap_push ();
+
+      Gdk.Pixbuf? thumbnail = null;
+
+      var xwindow = w.get_xid ();
       var gdk_window = new Gdk.X11.Window.foreign_for_display (x11_display, xwindow);
 
       if (gdk_window != null) {
         int win_width = gdk_window.get_width ();
         int win_height = gdk_window.get_height ();
 
-        if (win_width < 48 || win_height < 48)
-          return null;
-
-        thumbnail = Gdk.pixbuf_get_from_window (gdk_window, 0, 0, win_width, win_height);
+        if (win_width >= 48 && win_height >= 48) {
+          thumbnail = Gdk.pixbuf_get_from_window (gdk_window, 0, 0, win_width, win_height);
+        }
       }
 
       if (error_trap_pop () != 0)
