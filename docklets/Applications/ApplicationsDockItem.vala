@@ -169,6 +169,12 @@ namespace Docky {
       load_in_progress = true;
       reload_requested = false;
 
+      // Thread notes: the worker's strong tree ref makes teardown safe
+      // mid-load, and the tree's file monitors dispatch on the main loop
+      // (verified), so all signal traffic stays on the main thread. The one
+      // unguarded window is a monitor event landing during an active
+      // load_sync; fixing that would need a separate load-only tree.
+      //
       // Hold a strong local ref so the worker keeps the tree alive even if the
       // item is removed (menu_tree nulled) while load_sync runs on the pool thread
       GMenu.Tree tree = menu_tree;
