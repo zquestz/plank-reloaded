@@ -123,6 +123,11 @@ namespace Plank {
     }
 
     ~DockRenderer () {
+      if (reset_position_manager_timer_id > 0U) {
+        GLib.Source.remove (reset_position_manager_timer_id);
+        reset_position_manager_timer_id = 0U;
+      }
+
       controller.prefs.notify.disconnect (prefs_changed);
       theme.notify.disconnect (theme_changed);
 
