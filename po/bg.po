@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-20 14:27-1000\n"
+"POT-Creation-Date: 2026-08-03 15:45-1000\n"
 "PO-Revision-Date: 2025-11-13 03:56\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "нищо повече. Той също остава библиотека, която може да бъде разширена за "
 "създаване на други док програми с по-напреднали функции."
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Dock with Matte theme"
 msgstr "Док с Matte тема"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Appearance Preferences"
 msgstr "Настройки на външния вид"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Behavior Preferences"
 msgstr "Настройки на поведението"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Docklets Preferences"
 msgstr "Настройки на док-аплетите"
 
@@ -275,47 +275,47 @@ msgstr "Няма налични приложения"
 msgid "Applications"
 msgstr "Приложения"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Edit Menu"
 msgstr "Редактиране на менюто"
 
-#: docklets/Applications/ApplicationsDockItem.vala:352
+#: docklets/Applications/ApplicationsDockItem.vala:360
 #: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Избор на персонализирана икона"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:360
+#: docklets/Applications/ApplicationsDockItem.vala:368
 #: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Възстановяване на стандартна икона"
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:378
 msgid "Large Icons"
 msgstr "Големи икони"
 
-#: docklets/Applications/ApplicationsDockItem.vala:383
+#: docklets/Applications/ApplicationsDockItem.vala:391
 #: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Избор на персонализирана икона"
 
-#: docklets/Applications/ApplicationsDockItem.vala:386
+#: docklets/Applications/ApplicationsDockItem.vala:394
 #: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Отказ"
 
-#: docklets/Applications/ApplicationsDockItem.vala:387
+#: docklets/Applications/ApplicationsDockItem.vala:395
 #: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Избор"
 
-#: docklets/Applications/ApplicationsDockItem.vala:405
+#: docklets/Applications/ApplicationsDockItem.vala:413
 #: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Файлове с изображения"
 
-#: docklets/Applications/ApplicationsDockItem.vala:524
-#: docklets/Applications/ApplicationsDockItem.vala:578
+#: docklets/Applications/ApplicationsDockItem.vala:532
+#: docklets/Applications/ApplicationsDockItem.vala:586
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -460,37 +460,37 @@ msgstr "Покажете вашия работен плот."
 msgid "Notifications"
 msgstr "Известия"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 msgid "just now"
 msgstr "току-що"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1085
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "преди %d минута"
 msgstr[1] "преди %d минути"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1088
+#: docklets/Notifications/NotificationsDockItem.vala:1089
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "преди %d час"
 msgstr[1] "преди %d часа"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1134
+#: docklets/Notifications/NotificationsDockItem.vala:1136
 msgid "Enable _Expiry"
 msgstr "Активиране на _изтичане"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1142
+#: docklets/Notifications/NotificationsDockItem.vala:1144
 msgid "Show _Count"
 msgstr "Показване на _броя"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1150
+#: docklets/Notifications/NotificationsDockItem.vala:1152
 msgid "Show _Transient"
 msgstr "Показване на _временни"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1166
+#: docklets/Notifications/NotificationsDockItem.vala:1168
 msgid "Clear Notifications"
 msgstr "Изчистване на известията"
 
@@ -605,7 +605,7 @@ msgstr "_Живи предварителни прегледи"
 msgid "A graphical workspace switcher."
 msgstr "Графичен превключвател на работни пространства."
 
-#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:474 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Отпуснете за да добавите към док"
 
@@ -632,7 +632,7 @@ msgstr "_Затваряне на всички"
 msgid "_Close"
 msgstr "Зат_варяне"
 
-#: lib/Items/ApplicationDockItem.vala:597
+#: lib/Items/ApplicationDockItem.vala:601
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Пуснете за отваряне с %s"

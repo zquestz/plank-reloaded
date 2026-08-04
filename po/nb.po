@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-20 14:27-1000\n"
+"POT-Creation-Date: 2026-08-03 15:45-1000\n"
 "PO-Revision-Date: 2025-11-13 03:31\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
@@ -49,19 +49,19 @@ msgstr ""
 "Den forblir også et bibliotek som kan utvides for å lage andre "
 "dokkprogrammer med mer avanserte funksjoner."
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Dock with Matte theme"
 msgstr "Dokk med Matte-tema"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Appearance Preferences"
 msgstr "Utseendeinnstillinger"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Behavior Preferences"
 msgstr "Oppførselsinnstillinger"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Docklets Preferences"
 msgstr "Dokk-modulinnstillinger"
 
@@ -274,47 +274,47 @@ msgstr "Ingen programmer tilgjengelige"
 msgid "Applications"
 msgstr "Programmer"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Edit Menu"
 msgstr "Rediger meny"
 
-#: docklets/Applications/ApplicationsDockItem.vala:352
+#: docklets/Applications/ApplicationsDockItem.vala:360
 #: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Velg tilpasset ikon"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:360
+#: docklets/Applications/ApplicationsDockItem.vala:368
 #: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Tilbakestill til standardikon"
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:378
 msgid "Large Icons"
 msgstr "Store ikoner"
 
-#: docklets/Applications/ApplicationsDockItem.vala:383
+#: docklets/Applications/ApplicationsDockItem.vala:391
 #: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Velg tilpasset ikon"
 
-#: docklets/Applications/ApplicationsDockItem.vala:386
+#: docklets/Applications/ApplicationsDockItem.vala:394
 #: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: docklets/Applications/ApplicationsDockItem.vala:387
+#: docklets/Applications/ApplicationsDockItem.vala:395
 #: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Velg"
 
-#: docklets/Applications/ApplicationsDockItem.vala:405
+#: docklets/Applications/ApplicationsDockItem.vala:413
 #: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Bildefiler"
 
-#: docklets/Applications/ApplicationsDockItem.vala:524
-#: docklets/Applications/ApplicationsDockItem.vala:578
+#: docklets/Applications/ApplicationsDockItem.vala:532
+#: docklets/Applications/ApplicationsDockItem.vala:586
 msgid "Unknown"
 msgstr "Ukjent"
 
@@ -459,37 +459,37 @@ msgstr "Vis skrivebordet ditt."
 msgid "Notifications"
 msgstr "Varsler"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 msgid "just now"
 msgstr "akkurat nå"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1085
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "%d minutt siden"
 msgstr[1] "%d minutter siden"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1088
+#: docklets/Notifications/NotificationsDockItem.vala:1089
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d time siden"
 msgstr[1] "%d timer siden"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1134
+#: docklets/Notifications/NotificationsDockItem.vala:1136
 msgid "Enable _Expiry"
 msgstr "Aktiver _utløp"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1142
+#: docklets/Notifications/NotificationsDockItem.vala:1144
 msgid "Show _Count"
 msgstr "Vis _antall"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1150
+#: docklets/Notifications/NotificationsDockItem.vala:1152
 msgid "Show _Transient"
 msgstr "Vis _forbigående"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1166
+#: docklets/Notifications/NotificationsDockItem.vala:1168
 msgid "Clear Notifications"
 msgstr "Tøm varsler"
 
@@ -604,7 +604,7 @@ msgstr "_Levende forhåndsvisninger"
 msgid "A graphical workspace switcher."
 msgstr "En grafisk arbeidsområdebytter."
 
-#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:474 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Slipp for å legge til en dokk"
 
@@ -633,7 +633,7 @@ msgstr "_Lukk alle"
 msgid "_Close"
 msgstr "_Lukk"
 
-#: lib/Items/ApplicationDockItem.vala:597
+#: lib/Items/ApplicationDockItem.vala:601
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Slipp for å åpne med %s"

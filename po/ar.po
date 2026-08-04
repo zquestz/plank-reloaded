@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-20 14:27-1000\n"
+"POT-Creation-Date: 2026-08-03 15:45-1000\n"
 "PO-Revision-Date: 2025-11-13 01:56\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
@@ -49,19 +49,19 @@ msgstr ""
 "ما يحتاجه الحامل ولا شيء آخر على الإطلاق. كما أنه يبقى مكتبة يمكن توسيعها "
 "لإنشاء برامج حامل أخرى بميزات أكثر تقدماً."
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Dock with Matte theme"
 msgstr "حامل مع سمة مات"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Appearance Preferences"
 msgstr "تفضيلات المظهر"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Behavior Preferences"
 msgstr "تفضيلات السلوك"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Docklets Preferences"
 msgstr "تفضيلات الودجات"
 
@@ -274,47 +274,47 @@ msgstr "لا توجد تطبيقات متاحة"
 msgid "Applications"
 msgstr "التطبيقات"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Edit Menu"
 msgstr "تحرير القائمة"
 
-#: docklets/Applications/ApplicationsDockItem.vala:352
+#: docklets/Applications/ApplicationsDockItem.vala:360
 #: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "اختر أيقونة مخصصة"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:360
+#: docklets/Applications/ApplicationsDockItem.vala:368
 #: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "إعادة تعيين إلى الأيقونة الافتراضية"
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:378
 msgid "Large Icons"
 msgstr "أيقونات كبيرة"
 
-#: docklets/Applications/ApplicationsDockItem.vala:383
+#: docklets/Applications/ApplicationsDockItem.vala:391
 #: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "اختر أيقونة مخصصة"
 
-#: docklets/Applications/ApplicationsDockItem.vala:386
+#: docklets/Applications/ApplicationsDockItem.vala:394
 #: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: docklets/Applications/ApplicationsDockItem.vala:387
+#: docklets/Applications/ApplicationsDockItem.vala:395
 #: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "اختيار"
 
-#: docklets/Applications/ApplicationsDockItem.vala:405
+#: docklets/Applications/ApplicationsDockItem.vala:413
 #: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "ملفات الصور"
 
-#: docklets/Applications/ApplicationsDockItem.vala:524
-#: docklets/Applications/ApplicationsDockItem.vala:578
+#: docklets/Applications/ApplicationsDockItem.vala:532
+#: docklets/Applications/ApplicationsDockItem.vala:586
 msgid "Unknown"
 msgstr "غير معروف"
 
@@ -459,11 +459,11 @@ msgstr "اعرض سطح المكتب الخاص بك."
 msgid "Notifications"
 msgstr "الإشعارات"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 msgid "just now"
 msgstr "الآن"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1085
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -474,7 +474,7 @@ msgstr[3] "منذ %d دقائق"
 msgstr[4] "منذ %d دقيقة"
 msgstr[5] "منذ %d دقيقة"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1088
+#: docklets/Notifications/NotificationsDockItem.vala:1089
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -485,19 +485,19 @@ msgstr[3] "منذ %d ساعات"
 msgstr[4] "منذ %d ساعة"
 msgstr[5] "منذ %d ساعة"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1134
+#: docklets/Notifications/NotificationsDockItem.vala:1136
 msgid "Enable _Expiry"
 msgstr "تفعيل انتهاء ال_صلاحية"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1142
+#: docklets/Notifications/NotificationsDockItem.vala:1144
 msgid "Show _Count"
 msgstr "إظهار ال_عدد"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1150
+#: docklets/Notifications/NotificationsDockItem.vala:1152
 msgid "Show _Transient"
 msgstr "إظهار الم_ؤقتة"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1166
+#: docklets/Notifications/NotificationsDockItem.vala:1168
 msgid "Clear Notifications"
 msgstr "مسح الإشعارات"
 
@@ -616,7 +616,7 @@ msgstr "معاينات _حية"
 msgid "A graphical workspace switcher."
 msgstr "مبدل مساحات عمل رسومي."
 
-#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:474 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "أسقط للإضافة إلى الحامل"
 
@@ -644,7 +644,7 @@ msgstr "أ_غلق الكلّ"
 msgid "_Close"
 msgstr "أ_غلق"
 
-#: lib/Items/ApplicationDockItem.vala:597
+#: lib/Items/ApplicationDockItem.vala:601
 #, c-format
 msgid "Drop to open with %s"
 msgstr "أسقط للفتح باستخدام %s"

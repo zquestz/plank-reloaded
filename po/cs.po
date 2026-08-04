@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-07-20 14:27-1000\n"
+"POT-Creation-Date: 2026-08-03 15:45-1000\n"
 "PO-Revision-Date: 2025-11-13 03:12\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
@@ -49,19 +49,19 @@ msgstr ""
 "absolutně nic víc. Zároveň zůstává knihovnou, která může být rozšířena pro "
 "vytvoření jiných dokovacích programů s pokročilejšími funkcemi."
 
-#: data/plank.appdata.xml.in:134
+#: data/plank.appdata.xml.in:135
 msgid "Dock with Matte theme"
 msgstr "Dok s motivem Matte"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Appearance Preferences"
 msgstr "Předvolby vzhledu"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Behavior Preferences"
 msgstr "Předvolby chování"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Docklets Preferences"
 msgstr "Předvolby doplňků"
 
@@ -274,47 +274,47 @@ msgstr "Žádné aplikace k dispozici"
 msgid "Applications"
 msgstr "Aplikace"
 
-#: docklets/Applications/ApplicationsDockItem.vala:333
+#: docklets/Applications/ApplicationsDockItem.vala:341
 msgid "Edit Menu"
 msgstr "Upravit menu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:352
+#: docklets/Applications/ApplicationsDockItem.vala:360
 #: docklets/Separator/SeparatorDockItem.vala:351
 msgid "Choose Custom Icon"
 msgstr "Vybrat vlastní ikonu"
 
 #. If custom icon is set, add option to reset to default
-#: docklets/Applications/ApplicationsDockItem.vala:360
+#: docklets/Applications/ApplicationsDockItem.vala:368
 #: docklets/Separator/SeparatorDockItem.vala:358
 msgid "Reset to Default Icon"
 msgstr "Obnovit výchozí ikonu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:370
+#: docklets/Applications/ApplicationsDockItem.vala:378
 msgid "Large Icons"
 msgstr "Velké ikony"
 
-#: docklets/Applications/ApplicationsDockItem.vala:383
+#: docklets/Applications/ApplicationsDockItem.vala:391
 #: docklets/Separator/SeparatorDockItem.vala:284
 msgid "Select Custom Icon"
 msgstr "Vybrat vlastní ikonu"
 
-#: docklets/Applications/ApplicationsDockItem.vala:386
+#: docklets/Applications/ApplicationsDockItem.vala:394
 #: docklets/Separator/SeparatorDockItem.vala:287
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: docklets/Applications/ApplicationsDockItem.vala:387
+#: docklets/Applications/ApplicationsDockItem.vala:395
 #: docklets/Separator/SeparatorDockItem.vala:288
 msgid "Select"
 msgstr "Vybrat"
 
-#: docklets/Applications/ApplicationsDockItem.vala:405
+#: docklets/Applications/ApplicationsDockItem.vala:413
 #: docklets/Separator/SeparatorDockItem.vala:306
 msgid "Image Files"
 msgstr "Obrázkové soubory"
 
-#: docklets/Applications/ApplicationsDockItem.vala:524
-#: docklets/Applications/ApplicationsDockItem.vala:578
+#: docklets/Applications/ApplicationsDockItem.vala:532
+#: docklets/Applications/ApplicationsDockItem.vala:586
 msgid "Unknown"
 msgstr "Neznámé"
 
@@ -459,11 +459,11 @@ msgstr "Zobrazí vaši plochu."
 msgid "Notifications"
 msgstr "Oznámení"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1082
+#: docklets/Notifications/NotificationsDockItem.vala:1083
 msgid "just now"
 msgstr "právě teď"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1085
+#: docklets/Notifications/NotificationsDockItem.vala:1086
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -472,7 +472,7 @@ msgstr[1] "před %d minutami"
 msgstr[2] "před %d minutami"
 msgstr[3] "před %d minutami"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1088
+#: docklets/Notifications/NotificationsDockItem.vala:1089
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -481,19 +481,19 @@ msgstr[1] "před %d hodinami"
 msgstr[2] "před %d hodinami"
 msgstr[3] "před %d hodinami"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1134
+#: docklets/Notifications/NotificationsDockItem.vala:1136
 msgid "Enable _Expiry"
 msgstr "Povolit _vypršení"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1142
+#: docklets/Notifications/NotificationsDockItem.vala:1144
 msgid "Show _Count"
 msgstr "Zobrazit _počet"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1150
+#: docklets/Notifications/NotificationsDockItem.vala:1152
 msgid "Show _Transient"
 msgstr "Zobrazit _přechodné"
 
-#: docklets/Notifications/NotificationsDockItem.vala:1166
+#: docklets/Notifications/NotificationsDockItem.vala:1168
 msgid "Clear Notifications"
 msgstr "Vymazat oznámení"
 
@@ -610,7 +610,7 @@ msgstr "_Živé náhledy"
 msgid "A graphical workspace switcher."
 msgstr "Grafický přepínač ploch."
 
-#: lib/DragManager.vala:463 lib/Items/PlaceholderDockItem.vala:51
+#: lib/DragManager.vala:474 lib/Items/PlaceholderDockItem.vala:51
 msgid "Drop to add to dock"
 msgstr "Upustit pro přidání do panelu"
 
@@ -639,7 +639,7 @@ msgstr "_Zavřít vše"
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: lib/Items/ApplicationDockItem.vala:597
+#: lib/Items/ApplicationDockItem.vala:601
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Upuštěním otevřít s %s"

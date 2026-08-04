@@ -116,6 +116,18 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Mon Aug 03 2026 Josh Ellithorpe <quest@mac.com> - 0.11.172-1
+- Fix a crash when activating a window menu entry after that window closed
+- Fix a crash from notification expiry timers outliving a removed docklet
+- Fix shutdown crashes by cancelling renderer, dock window, and drag timers on teardown
+- Fix menu memory leaks by destroying dock menus on rebuild and teardown
+- Fix a leaked X error trap when generating previews of very small windows
+- Trap X errors around icon geometry updates and pointer barrier teardown
+- Keep docklets working when the worker pool cannot spawn a thread
+- Guard workspace and window lookups against windows closing mid-operation
+- Identify docklets by launcher URI in debug logs
+- Update the graphics tablet FAQ and docklet development guide
+
 * Mon Jul 20 2026 Josh Ellithorpe <quest@mac.com> - 0.11.171-1
 - Add a Screen Area setting choosing automatic, monitor, or work area placement
 - Make Work Area placement panel-aware with settled re-measurement on screen changes

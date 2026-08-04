@@ -1,3 +1,18 @@
+plank-reloaded (0.11.172-1) unstable; urgency=medium
+
+  * Fix a crash when activating a window menu entry after that window closed
+  * Fix a crash from notification expiry timers outliving a removed docklet
+  * Fix shutdown crashes by cancelling renderer, dock window, and drag timers on teardown
+  * Fix menu memory leaks by destroying dock menus on rebuild and teardown
+  * Fix a leaked X error trap when generating previews of very small windows
+  * Trap X errors around icon geometry updates and pointer barrier teardown
+  * Keep docklets working when the worker pool cannot spawn a thread
+  * Guard workspace and window lookups against windows closing mid-operation
+  * Identify docklets by launcher URI in debug logs
+  * Update the graphics tablet FAQ and docklet development guide
+
+ -- Josh Ellithorpe <quest@mac.com>  Mon, 03 Aug 2026 15:45:15 -1000
+
 plank-reloaded (0.11.171-1) unstable; urgency=medium
 
   * Add a Screen Area setting choosing automatic, monitor, or work area placement

@@ -2,6 +2,19 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.172 "Reloaded" (2026-08-03)
+
+- Fix a crash when activating a window menu entry after that window closed
+- Fix a crash from notification expiry timers outliving a removed docklet
+- Fix shutdown crashes by cancelling renderer, dock window, and drag timers on teardown
+- Fix menu memory leaks by destroying dock menus on rebuild and teardown
+- Fix a leaked X error trap when generating previews of very small windows
+- Trap X errors around icon geometry updates and pointer barrier teardown
+- Keep docklets working when the worker pool cannot spawn a thread
+- Guard workspace and window lookups against windows closing mid-operation
+- Identify docklets by launcher URI in debug logs
+- Update the graphics tablet FAQ and docklet development guide
+
 ## 0.11.171 "Reloaded" (2026-07-20)
 
 - Add a Screen Area setting choosing automatic, monitor, or work area placement
