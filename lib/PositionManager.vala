@@ -434,6 +434,11 @@ namespace Plank {
     }
 
     void start_active_display_polling () {
+      // A double start would orphan the previous source id, leaving a timer
+      // that can never be stopped
+      if (active_display_timeout_id > 0)
+        return;
+
       active_display_timeout_id = GLib.Timeout.add_seconds (controller.prefs.ActiveDisplayPollingInterval, () => {
         if (controller.prefs.ActiveDisplay) {
           move_to_active_monitor ();
