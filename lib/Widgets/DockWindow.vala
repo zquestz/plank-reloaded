@@ -124,6 +124,11 @@ namespace Plank {
         GLib.Source.remove (hover_reposition_timer_id);
         hover_reposition_timer_id = 0U;
       }
+
+      if (long_press_timer_id > 0U) {
+        GLib.Source.remove (long_press_timer_id);
+        long_press_timer_id = 0U;
+      }
     }
 
     /**
