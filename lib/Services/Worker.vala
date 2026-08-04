@@ -125,7 +125,18 @@ namespace Plank {
         };
         pool.add (new Task ((owned) tfunc, priority));
       } catch (ThreadError e) {
+        // Thread spawn failed and the queued closure will never run, so run
+        // the task inline; otherwise this coroutine suspends forever and
+        // pins its caller
         warning (e.message);
+
+        try {
+          result = func ();
+        } catch (Error task_error) {
+          err = task_error;
+        }
+
+        Idle.add ((owned) resume, GLib.Priority.HIGH_IDLE);
       }
 
       yield;
