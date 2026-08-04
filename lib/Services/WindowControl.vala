@@ -473,6 +473,11 @@ namespace Plank {
     public static Array<uint32> get_app_xids_on_workspace (Bamf.Application? app) {
       Array<uint32> xids = new Array<uint32> ();
 
+      warn_if_fail (app != null);
+
+      if (app == null)
+        return xids;
+
       unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
       Array<uint32> app_xids = app.get_xids ();
 
@@ -483,7 +488,10 @@ namespace Plank {
       var is_virtual = active_workspace.is_virtual ();
 
       foreach (uint32 xid in app_xids) {
-        unowned Wnck.Window window = get_wnck_window (xid);
+        unowned Wnck.Window? window = get_wnck_window (xid);
+
+        if (window == null)
+          continue;
 
         if (!is_virtual) {
           if (window.is_on_workspace (active_workspace)) {
@@ -540,6 +548,12 @@ namespace Plank {
       warn_if_fail (xids != null);
 
       unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
+
+      warn_if_fail (active_workspace != null);
+
+      if (active_workspace == null)
+        return;
+
       var is_virtual = active_workspace.is_virtual ();
 
       for (var i = 0; xids != null && i < xids.length; i++) {
