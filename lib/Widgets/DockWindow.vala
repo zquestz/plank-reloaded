@@ -116,6 +116,7 @@ namespace Plank {
       if (menu != null) {
         menu.show.disconnect (on_menu_show);
         menu.hide.disconnect (on_menu_hide);
+        menu.destroy ();
       }
 
       controller.prefs.notify["HideMode"].disconnect (update_struts);
@@ -597,12 +598,13 @@ namespace Plank {
      */
     bool show_menu (DockItem? item, Gdk.EventButton event) {
       if (menu != null) {
-        foreach (var w in menu.get_children ())
-          menu.remove (w);
-
         menu.show.disconnect (on_menu_show);
         menu.hide.disconnect (on_menu_hide);
         menu.detach ();
+        // Destroy the menu and its items rather than just dropping them:
+        // items whose closures capture the item itself survive a plain
+        // remove as immortal reference cycles
+        menu.destroy ();
         menu = null;
       }
 
