@@ -71,6 +71,7 @@ namespace Plank {
     bool drag_data_requested = false;
     uint marker = 0U;
     uint drag_hover_timer_id = 0U;
+    uint external_drag_idle_id = 0U;
 
     Gee.ArrayList<string>? drag_data = null;
 
@@ -120,6 +121,11 @@ namespace Plank {
       if (drag_hover_timer_id > 0U) {
         GLib.Source.remove (drag_hover_timer_id);
         drag_hover_timer_id = 0U;
+      }
+
+      if (external_drag_idle_id > 0U) {
+        GLib.Source.remove (external_drag_idle_id);
+        external_drag_idle_id = 0U;
       }
 
       unowned DockWindow window = controller.window;
@@ -379,7 +385,12 @@ namespace Plank {
         // Make sure ExternalDragActive gets set to false to reactivate HideManager.
         // This is needed while getting a leave event without followed by a drop.
         // Delay it to preserve functionality in drag_drop.
-        Gdk.threads_add_idle (() => {
+        if (external_drag_idle_id > 0U)
+          GLib.Source.remove (external_drag_idle_id);
+
+        external_drag_idle_id = Gdk.threads_add_idle (() => {
+          external_drag_idle_id = 0U;
+
           ExternalDragActive = false;
 
           controller.hover.hide ();
