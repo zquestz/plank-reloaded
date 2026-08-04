@@ -13,10 +13,10 @@ These live in the `docklets/` directory of the Plank Reloaded source tree:
 - **Desktop** — The simplest possible docklet. Just a click handler that toggles show-desktop. Start here to understand the basic pattern.
 - **Separator** — A minimal docklet with custom preferences and icon drawing.
 - **Trash** — File monitoring, desktop-environment-specific behavior, and D-Bus integration.
-- **Battery** — Background I/O on a worker thread with UPower integration.
+- **Battery** — UPower integration over async D-Bus with a sysfs fallback, updated by main-loop timers.
 - **Clock** — Custom icon rendering with Cairo, a popup calendar widget, and timer-based updates.
 - **Clippy** — Clipboard monitoring, image handling, and a scrollable menu.
-- **CPUMonitor** — Background thread with main-thread marshalling for UI updates.
+- **CPUMonitor** — Main-loop timer sampling of /proc with custom gauge rendering.
 - **Notifications** — D-Bus service integration for system notifications.
 - **Workspaces** — Wnck workspace management with graphical previews.
 - **Applications** — The most complex built-in docklet, with menu tree parsing and app launching.
@@ -356,6 +356,7 @@ After installing, the docklet appears in the dock's right-click menu under **Add
 - **Thread safety**: If you use background threads, use `GLib.Mutex` to protect shared state and `Idle.add()` to marshal UI updates back to the main thread.
 - **Timer cleanup**: Always remove timers (`GLib.Source.remove()`) in your destructor to prevent callbacks firing after your object is freed.
 - **Icon updates**: Call `reset_icon_buffer()` after changing `ForcePixbuf` or after custom drawing changes to force a redraw.
+- **Never invalidate from `draw_icon`**: The dock calls `draw_icon` while holding a non-recursive surface-cache lock. Calling `reset_icon_buffer()`, or setting `Icon`/`ForcePixbuf` from inside `draw_icon`, deadlocks the dock. Defer invalidation with `Idle.add()` or a timer; see the Workspaces docklet's `queue_redraw()` for the pattern.
 - **Custom menus**: For complex popup menus (beyond `get_menu_items`), see the Last.fm docklet's `show_tracks_menu()` for an example of manually positioning and displaying a `Gtk.Menu`.
 - **Translations**: Use `_()` for translatable strings and set up a `po/` directory with a `meson.build` that calls `i18n.gettext()`.
 

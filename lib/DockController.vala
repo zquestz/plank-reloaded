@@ -32,6 +32,9 @@ namespace Plank {
 
     public DockPreferences prefs { get; construct; }
 
+    // Each manager holds a strong controller back-reference, so this graph is
+    // a reference cycle: a removed dock is never finalized and the managers'
+    // destructors only run at process teardown
     public DragManager drag_manager { get; protected set; }
     public HideManager hide_manager { get; protected set; }
     public PositionManager position_manager { get; protected set; }
