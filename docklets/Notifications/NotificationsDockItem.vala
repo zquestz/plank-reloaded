@@ -743,6 +743,7 @@ namespace Docky {
           }
 
           foreach (unowned NotificationData notification in to_remove) {
+            notification.cancel_expiry_timer();
             notifications.remove(notification);
           }
         }
@@ -1106,6 +1107,7 @@ namespace Docky {
 
         foreach (unowned NotificationData n in notifications) {
           if (n.is_expired()) {
+            n.cancel_expiry_timer();
             changed = true;
           } else {
             active_notifications.append(n);
