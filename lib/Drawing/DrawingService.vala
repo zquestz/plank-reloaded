@@ -297,29 +297,53 @@ namespace Plank {
     static Cairo.Surface? load_surface (string icon, int size, int scale)
     {
       Cairo.Surface? surface = null;
-      Gtk.IconInfo? info = null;
       unowned Gtk.IconTheme icon_theme = get_icon_theme ();
 
       icon_theme_mutex.lock ();
 
-      try {
-        info = icon_theme.lookup_icon_for_scale (icon, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-        if (info != null)
-          surface = info.load_surface (null);
-      } catch {}
-
-      try {
-        if (surface == null && icon.contains (".")) {
-          var parts = icon.split (".");
-          info = icon_theme.lookup_icon_for_scale (parts[0], size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-          if (info != null)
-            surface = info.load_surface (null);
-        }
-      } catch {}
+      surface = load_themed_surface (icon_theme, icon, size, scale);
+      if (surface == null && icon.contains (".")) {
+        var parts = icon.split (".");
+        surface = load_themed_surface (icon_theme, parts[0], size, scale);
+      }
 
       icon_theme_mutex.unlock ();
 
       return surface;
+    }
+
+    static Cairo.Surface? load_themed_surface (Gtk.IconTheme icon_theme, string icon, int size, int scale)
+    {
+      var info = icon_theme.lookup_icon_for_scale (icon, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+      if (info == null)
+        return null;
+
+      // GTK ranks theme directories by device pixels, so an exact match in a
+      // denser directory beats every regular one: a 1x lookup at 44px returns
+      // places/22@2x, art drawn for 22px (monochrome in Breeze). A lookup one
+      // pixel larger is no longer exact there and prefers downscaling from a
+      // regular directory, so draw that file at the requested size instead.
+      if (info.get_base_scale () > scale) {
+        var regular = icon_theme.lookup_icon_for_scale (icon, size + 1, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+        unowned string? filename = null;
+        if (regular != null && regular.get_base_scale () <= scale)
+          filename = regular.get_filename ();
+
+        if (filename != null && FileUtils.test (filename, FileTest.IS_REGULAR)) {
+          var file_icon = new FileIcon (File.new_for_path (filename));
+          var file_info = icon_theme.lookup_by_gicon_for_scale (file_icon, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+          try {
+            if (file_info != null)
+              return file_info.load_surface (null);
+          } catch {}
+        }
+      }
+
+      try {
+        return info.load_surface (null);
+      } catch {
+        return null;
+      }
     }
 
     /**
