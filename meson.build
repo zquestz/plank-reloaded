@@ -1,7 +1,6 @@
 project(
   'plank-reloaded',
   'c',
-  'cpp',
   'vala',
   version: '0.11.172',
   meson_version: '>= 0.59.0',
@@ -18,12 +17,14 @@ if git.found() and run_command(git, 'rev-parse', '--git-dir', check: false).retu
     command: [
       'sh',
       '-c', '''if test -d "@0@/.git"; then
-           @0@/build-aux/gitlog-to-changelog --format='%s%n%n%b%n' --no-cluster --strip-tab --strip-cherry-pick | fmt --split-only --width=80 > @OUTPUT@
+           (cd "@0@" && build-aux/gitlog-to-changelog --format='%s%n%n%b%n' --no-cluster --strip-tab --strip-cherry-pick) | fmt --split-only --width=80 > @OUTPUT@
          else
            echo "Git checkout required to generate ChangeLog" > @OUTPUT@
          fi'''.format(meson.project_source_root()),
     ],
     build_by_default: true,
+    # Regenerate on every build so new commits show up
+    build_always_stale: true,
   )
 endif
 
@@ -53,7 +54,6 @@ gnome.post_install(
 )
 i18n = import('i18n')
 cc = meson.get_compiler('c')
-cpp = meson.get_compiler('cpp')
 
 vala_version_required = '0.34.0'
 vala = meson.get_compiler('vala')
@@ -176,12 +176,14 @@ m_dep = cc.find_library('m', required: false)
 plank_base_dep = [gio_dep, gee_dep, gtk_dep, bamf_dep]
 
 # Support dynamic quicklists provided with dbusmenu
+have_dbusmenu = false
 enable_dbusmenu = get_option('enable-dbusmenu')
 if enable_dbusmenu != 'no'
   want_dbusmenu = (enable_dbusmenu == 'yes')
   dbusmenu_glib_dep = dependency('dbusmenu-glib-0.4', required: false)
   dbusmenu_gtk_dep = dependency('dbusmenu-gtk3-0.4', required: false)
   if dbusmenu_glib_dep.found() and dbusmenu_gtk_dep.found()
+    have_dbusmenu = true
     add_project_arguments(
       '--define', 'HAVE_DBUSMENU',
       '--pkg', 'dbusmenu-glib-0.4',
@@ -198,12 +200,14 @@ else
 endif
 
 # Support barrier-supported unhiding using Xinput 2.3
+have_barriers = false
 enable_barriers = get_option('enable-barriers')
 if enable_barriers != 'no'
   want_barriers = (enable_barriers == 'yes')
   xinput_dep = dependency('xi', required: false)
   xfixes_dep = dependency('xfixes', required: false)
   if cc.has_function('XIBarrierReleasePointer', dependencies: xinput_dep) and cc.has_function('XFixesDestroyPointerBarrier', dependencies: xfixes_dep)
+    have_barriers = true
     add_project_arguments(
       '--define', 'HAVE_BARRIERS',
       '--pkg', 'xi',
@@ -229,10 +233,9 @@ if enable_benchmark
   add_project_arguments('--define', 'BENCHMARK', language: 'vala')
 endif
 
-# Google Mock support
+# Google Mock support, the only C++ code in the project
 if get_option('enable-gmock')
-  gmock_dep = dependency('gmock', required: true)
-  gtest_dep = dependency('gtest', required: true)
+  add_languages('cpp', native: false, required: true)
   add_project_arguments(
     '--pkg', 'gtest',
     '--pkg', 'gmock',

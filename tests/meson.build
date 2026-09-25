@@ -62,6 +62,9 @@ if get_option('enable-gmock')
   gmock_test = executable(
     'gmock-tests',
     'gmock/main.cpp',
+    'gmock/color.cpp',
+    # plank.h includes libwnck, which requires this opt-in in C++ too
+    cpp_args: ['-DWNCK_I_KNOW_THIS_IS_UNSTABLE'],
     dependencies: [gtest_dep, gmock_dep, plank_dep, plank_base_dep],
     include_directories: [include_directories('../lib'), include_directories('../src')],
   )

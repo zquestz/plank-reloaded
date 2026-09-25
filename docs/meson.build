@@ -43,26 +43,15 @@ if get_option('enable-docs')
     '--define', 'HAVE_SYS_PRCTL_H',
   ]
 
-  # Optional: dbusmenu support
-  enable_dbusmenu = get_option('enable-dbusmenu')
-  if enable_dbusmenu != 'no'
-    dbusmenu_glib_dep = dependency('dbusmenu-glib-0.4', required: false)
-    dbusmenu_gtk_dep = dependency('dbusmenu-gtk3-0.4', required: false)
-    if dbusmenu_glib_dep.found() and dbusmenu_gtk_dep.found()
-      vala_pkgs += ['--pkg', 'dbusmenu-glib-0.4', '--pkg', 'dbusmenu-gtk3-0.4']
-      vala_defines += ['--define', 'HAVE_DBUSMENU']
-    endif
+  # Optional features, as detected for the build in the top-level meson.build
+  if have_dbusmenu
+    vala_pkgs += ['--pkg', 'dbusmenu-glib-0.4', '--pkg', 'dbusmenu-gtk3-0.4']
+    vala_defines += ['--define', 'HAVE_DBUSMENU']
   endif
 
-  # Optional: barriers support
-  enable_barriers = get_option('enable-barriers')
-  if enable_barriers != 'no'
-    xinput_dep = dependency('xi', required: false)
-    xfixes_dep = dependency('xfixes', required: false)
-    if cc.has_function('XIBarrierReleasePointer', dependencies: xinput_dep) and cc.has_function('XFixesDestroyPointerBarrier', dependencies: xfixes_dep)
-      vala_pkgs += ['--pkg', 'xi', '--pkg', 'xfixes']
-      vala_defines += ['--define', 'HAVE_BARRIERS']
-    endif
+  if have_barriers
+    vala_pkgs += ['--pkg', 'xi', '--pkg', 'xfixes']
+    vala_defines += ['--define', 'HAVE_BARRIERS']
   endif
 
   # Get source files
