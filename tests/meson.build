@@ -47,6 +47,10 @@ dock_bin = executable(
 
 test_env = environment()
 test_env.set('HOME', test_home)
+test_env.set('XDG_DATA_HOME', test_home / '.local' / 'share')
+test_env.set('XDG_CONFIG_HOME', test_home / '.config')
+test_env.set('XDG_CACHE_HOME', test_home / '.cache')
+test_env.set('GSETTINGS_BACKEND', 'memory')
 test_env.set('GSETTINGS_SCHEMA_DIR', meson.current_build_dir() / '../data')
 test_env.set('PLANK_DOCKLET_DIRS', meson.current_build_dir() / '../docklets')
 
