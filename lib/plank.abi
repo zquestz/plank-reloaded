@@ -1,0 +1,1142 @@
+# valac 0.56
+callback typedef PlankSurface* (*PlankDrawDataFunc) (gint width, gint height, PlankSurface* model, gconstpointer data, gpointer user_data);
+callback typedef PlankSurface* (*PlankDrawFunc) (gint width, gint height, PlankSurface* model, PlankDrawDataFunc draw_data_func, gpointer draw_data_func_target, gpointer user_data);
+callback typedef gpointer (*PlankTaskFunc) (gpointer user_data, GError** error);
+callback typedef void (*PlankDockletInitFunc) (PlankDockletManager* manager, gpointer user_data);
+callback typedef void (*PlankDrawValueFunc) (PlankDockItem* item, PlankDockItemDrawValue* draw_value, gpointer user_data);
+callback typedef void (*PlankDrawValuesFunc) (GeeArrayList* items, gpointer user_data);
+enum PlankActiveItemStyleType 001 PLANK_ACTIVE_ITEM_STYLE_TYPE_LEGACY
+enum PlankActiveItemStyleType 002 PLANK_ACTIVE_ITEM_STYLE_TYPE_COLOR_GRADIENT
+enum PlankActiveItemStyleType 003 PLANK_ACTIVE_ITEM_STYLE_TYPE_SOLID
+enum PlankActiveItemStyleType 004 PLANK_ACTIVE_ITEM_STYLE_TYPE_COLOR_SOLID
+enum PlankActiveItemStyleType 005 PLANK_ACTIVE_ITEM_STYLE_TYPE_CENTER_GRADIENT
+enum PlankActiveItemStyleType 006 PLANK_ACTIVE_ITEM_STYLE_TYPE_COLOR_CENTER_GRADIENT
+enum PlankAnimationMode 001 PLANK_ANIMATION_MODE_CUSTOM = 0
+enum PlankAnimationMode 002 PLANK_ANIMATION_MODE_LINEAR
+enum PlankAnimationMode 003 PLANK_ANIMATION_MODE_EASE_IN_QUAD
+enum PlankAnimationMode 004 PLANK_ANIMATION_MODE_EASE_OUT_QUAD
+enum PlankAnimationMode 005 PLANK_ANIMATION_MODE_EASE_IN_OUT_QUAD
+enum PlankAnimationMode 006 PLANK_ANIMATION_MODE_EASE_IN_CUBIC
+enum PlankAnimationMode 007 PLANK_ANIMATION_MODE_EASE_OUT_CUBIC
+enum PlankAnimationMode 008 PLANK_ANIMATION_MODE_EASE_IN_OUT_CUBIC
+enum PlankAnimationMode 009 PLANK_ANIMATION_MODE_EASE_IN_QUART
+enum PlankAnimationMode 010 PLANK_ANIMATION_MODE_EASE_OUT_QUART
+enum PlankAnimationMode 011 PLANK_ANIMATION_MODE_EASE_IN_OUT_QUART
+enum PlankAnimationMode 012 PLANK_ANIMATION_MODE_EASE_IN_QUINT
+enum PlankAnimationMode 013 PLANK_ANIMATION_MODE_EASE_OUT_QUINT
+enum PlankAnimationMode 014 PLANK_ANIMATION_MODE_EASE_IN_OUT_QUINT
+enum PlankAnimationMode 015 PLANK_ANIMATION_MODE_EASE_IN_SINE
+enum PlankAnimationMode 016 PLANK_ANIMATION_MODE_EASE_OUT_SINE
+enum PlankAnimationMode 017 PLANK_ANIMATION_MODE_EASE_IN_OUT_SINE
+enum PlankAnimationMode 018 PLANK_ANIMATION_MODE_EASE_IN_EXPO
+enum PlankAnimationMode 019 PLANK_ANIMATION_MODE_EASE_OUT_EXPO
+enum PlankAnimationMode 020 PLANK_ANIMATION_MODE_EASE_IN_OUT_EXPO
+enum PlankAnimationMode 021 PLANK_ANIMATION_MODE_EASE_IN_CIRC
+enum PlankAnimationMode 022 PLANK_ANIMATION_MODE_EASE_OUT_CIRC
+enum PlankAnimationMode 023 PLANK_ANIMATION_MODE_EASE_IN_OUT_CIRC
+enum PlankAnimationMode 024 PLANK_ANIMATION_MODE_EASE_IN_ELASTIC
+enum PlankAnimationMode 025 PLANK_ANIMATION_MODE_EASE_OUT_ELASTIC
+enum PlankAnimationMode 026 PLANK_ANIMATION_MODE_EASE_IN_OUT_ELASTIC
+enum PlankAnimationMode 027 PLANK_ANIMATION_MODE_EASE_IN_BACK
+enum PlankAnimationMode 028 PLANK_ANIMATION_MODE_EASE_OUT_BACK
+enum PlankAnimationMode 029 PLANK_ANIMATION_MODE_EASE_IN_OUT_BACK
+enum PlankAnimationMode 030 PLANK_ANIMATION_MODE_EASE_IN_BOUNCE
+enum PlankAnimationMode 031 PLANK_ANIMATION_MODE_EASE_OUT_BOUNCE
+enum PlankAnimationMode 032 PLANK_ANIMATION_MODE_EASE_IN_OUT_BOUNCE
+enum PlankAnimationMode 033 PLANK_ANIMATION_MODE_LAST
+enum PlankAnimationType 001 PLANK_ANIMATION_TYPE_NONE
+enum PlankAnimationType 002 PLANK_ANIMATION_TYPE_BOUNCE
+enum PlankAnimationType 003 PLANK_ANIMATION_TYPE_DARKEN
+enum PlankAnimationType 004 PLANK_ANIMATION_TYPE_LIGHTEN
+enum PlankAreaType 001 PLANK_AREA_TYPE_AUTO
+enum PlankAreaType 002 PLANK_AREA_TYPE_MONITOR
+enum PlankAreaType 003 PLANK_AREA_TYPE_WORK_AREA
+enum PlankBadgeStyleType 001 PLANK_BADGE_STYLE_TYPE_LEGACY
+enum PlankBadgeStyleType 002 PLANK_BADGE_STYLE_TYPE_SOLID
+enum PlankDirStyle 001 PLANK_DIR_STYLE_SIMPLE
+enum PlankDirStyle 002 PLANK_DIR_STYLE_TILE
+enum PlankHideType 001 PLANK_HIDE_TYPE_NONE
+enum PlankHideType 002 PLANK_HIDE_TYPE_INTELLIGENT
+enum PlankHideType 003 PLANK_HIDE_TYPE_AUTO
+enum PlankHideType 004 PLANK_HIDE_TYPE_DODGE_MAXIMIZED
+enum PlankHideType 005 PLANK_HIDE_TYPE_WINDOW_DODGE
+enum PlankHideType 006 PLANK_HIDE_TYPE_DODGE_ACTIVE
+enum PlankIndicatorState 001 PLANK_INDICATOR_STATE_NONE
+enum PlankIndicatorState 002 PLANK_INDICATOR_STATE_SINGLE
+enum PlankIndicatorState 003 PLANK_INDICATOR_STATE_SINGLE_PLUS
+enum PlankIndicatorStyleType 001 PLANK_INDICATOR_STYLE_TYPE_LEGACY
+enum PlankIndicatorStyleType 002 PLANK_INDICATOR_STYLE_TYPE_GLOW
+enum PlankIndicatorStyleType 003 PLANK_INDICATOR_STYLE_TYPE_CIRCLE
+enum PlankIndicatorStyleType 004 PLANK_INDICATOR_STYLE_TYPE_LINE
+enum PlankItemState 001 PLANK_ITEM_STATE_NORMAL = 1 << 0
+enum PlankItemState 002 PLANK_ITEM_STATE_ACTIVE = 1 << 1
+enum PlankItemState 003 PLANK_ITEM_STATE_URGENT = 1 << 2
+enum PlankItemState 004 PLANK_ITEM_STATE_MOVE = 1 << 3
+enum PlankItemState 005 PLANK_ITEM_STATE_INVALID = 1 << 4
+enum PlankLogLevel 001 PLANK_LOG_LEVEL_VERBOSE
+enum PlankLogLevel 002 PLANK_LOG_LEVEL_DEBUG
+enum PlankLogLevel 003 PLANK_LOG_LEVEL_INFO
+enum PlankLogLevel 004 PLANK_LOG_LEVEL_NOTIFY
+enum PlankLogLevel 005 PLANK_LOG_LEVEL_WARN
+enum PlankLogLevel 006 PLANK_LOG_LEVEL_CRITICAL
+enum PlankLogLevel 007 PLANK_LOG_LEVEL_ERROR
+enum PlankPopupButton 001 PLANK_POPUP_BUTTON_NONE = 1 << 0
+enum PlankPopupButton 002 PLANK_POPUP_BUTTON_LEFT = 1 << 1
+enum PlankPopupButton 003 PLANK_POPUP_BUTTON_MIDDLE = 1 << 2
+enum PlankPopupButton 004 PLANK_POPUP_BUTTON_RIGHT = 1 << 3
+enum PlankSurfaceCacheFlags 001 PLANK_SURFACE_CACHE_FLAGS_NONE = 0
+enum PlankSurfaceCacheFlags 002 PLANK_SURFACE_CACHE_FLAGS_ALLOW_DOWNSCALE = 1 << 0
+enum PlankSurfaceCacheFlags 003 PLANK_SURFACE_CACHE_FLAGS_ALLOW_UPSCALE = 1 << 1
+enum PlankSurfaceCacheFlags 004 PLANK_SURFACE_CACHE_FLAGS_ALLOW_SCALE = PLANK_SURFACE_CACHE_FLAGS_ALLOW_UPSCALE | PLANK_SURFACE_CACHE_FLAGS_ALLOW_DOWNSCALE
+enum PlankSurfaceCacheFlags 005 PLANK_SURFACE_CACHE_FLAGS_ADAPTIVE_SCALE = 1 << 2
+enum PlankTaskPriority 001 PLANK_TASK_PRIORITY_LOW
+enum PlankTaskPriority 002 PLANK_TASK_PRIORITY_DEFAULT
+enum PlankTaskPriority 003 PLANK_TASK_PRIORITY_HIGH
+enum PlankUpdateIndicatorEvent 001 PLANK_UPDATE_INDICATOR_EVENT_INITIALIZE
+enum PlankUpdateIndicatorEvent 002 PLANK_UPDATE_INDICATOR_EVENT_WINDOW_ADDED
+enum PlankUpdateIndicatorEvent 003 PLANK_UPDATE_INDICATOR_EVENT_WINDOW_REMOVED
+enum PlankUpdateIndicatorEvent 004 PLANK_UPDATE_INDICATOR_EVENT_RUNNING_CHANGED
+enum PlankUpdateIndicatorEvent 005 PLANK_UPDATE_INDICATOR_EVENT_EXTERNAL
+enum PlankXdgSessionClass 001 PLANK_XDG_SESSION_CLASS_USER
+enum PlankXdgSessionClass 002 PLANK_XDG_SESSION_CLASS_GREETER
+enum PlankXdgSessionClass 003 PLANK_XDG_SESSION_CLASS_LOCK_SCREEN
+enum PlankXdgSessionClass 004 PLANK_XDG_SESSION_CLASS_BACKGROUND
+enum PlankXdgSessionDesktop 001 PLANK_XDG_SESSION_DESKTOP_UNKNOWN = 0
+enum PlankXdgSessionDesktop 002 PLANK_XDG_SESSION_DESKTOP_GNOME = 1 << 0
+enum PlankXdgSessionDesktop 003 PLANK_XDG_SESSION_DESKTOP_KDE = 1 << 1
+enum PlankXdgSessionDesktop 004 PLANK_XDG_SESSION_DESKTOP_LXDE = 1 << 2
+enum PlankXdgSessionDesktop 005 PLANK_XDG_SESSION_DESKTOP_MATE = 1 << 3
+enum PlankXdgSessionDesktop 006 PLANK_XDG_SESSION_DESKTOP_RAZOR = 1 << 4
+enum PlankXdgSessionDesktop 007 PLANK_XDG_SESSION_DESKTOP_ROX = 1 << 5
+enum PlankXdgSessionDesktop 008 PLANK_XDG_SESSION_DESKTOP_TDE = 1 << 6
+enum PlankXdgSessionDesktop 009 PLANK_XDG_SESSION_DESKTOP_UNITY = 1 << 7
+enum PlankXdgSessionDesktop 010 PLANK_XDG_SESSION_DESKTOP_XFCE = 1 << 8
+enum PlankXdgSessionDesktop 011 PLANK_XDG_SESSION_DESKTOP_EDE = 1 << 9
+enum PlankXdgSessionDesktop 012 PLANK_XDG_SESSION_DESKTOP_CINNAMON = 1 << 10
+enum PlankXdgSessionDesktop 013 PLANK_XDG_SESSION_DESKTOP_PANTHEON = 1 << 11
+enum PlankXdgSessionDesktop 014 PLANK_XDG_SESSION_DESKTOP_DDE = 1 << 12
+enum PlankXdgSessionDesktop 015 PLANK_XDG_SESSION_DESKTOP_ENDLESS = 1 << 13
+enum PlankXdgSessionDesktop 016 PLANK_XDG_SESSION_DESKTOP_OLD = 1 << 24
+enum PlankXdgSessionDesktop 017 PLANK_XDG_SESSION_DESKTOP_UBUNTU = 1 << 25
+enum PlankXdgSessionType 001 PLANK_XDG_SESSION_TYPE_UNSPECIFIED
+enum PlankXdgSessionType 002 PLANK_XDG_SESSION_TYPE_TTY
+enum PlankXdgSessionType 003 PLANK_XDG_SESSION_TYPE_X11
+enum PlankXdgSessionType 004 PLANK_XDG_SESSION_TYPE_WAYLAND
+enum PlankXdgSessionType 005 PLANK_XDG_SESSION_TYPE_MIR
+function plank_abstract_main_construct PlankAbstractMain* plank_abstract_main_construct (GType object_type)
+function plank_abstract_main_create_actions void plank_abstract_main_create_actions (PlankAbstractMain* self)
+function plank_abstract_main_create_docks void plank_abstract_main_create_docks (PlankAbstractMain* self)
+function plank_abstract_main_get_about_artists gchar** plank_abstract_main_get_about_artists (PlankAbstractMain* self, gint* result_length1)
+function plank_abstract_main_get_about_authors gchar** plank_abstract_main_get_about_authors (PlankAbstractMain* self, gint* result_length1)
+function plank_abstract_main_get_about_documenters gchar** plank_abstract_main_get_about_documenters (PlankAbstractMain* self, gint* result_length1)
+function plank_abstract_main_get_about_license_type GtkLicense plank_abstract_main_get_about_license_type (PlankAbstractMain* self)
+function plank_abstract_main_get_about_translators const gchar* plank_abstract_main_get_about_translators (PlankAbstractMain* self)
+function plank_abstract_main_get_app_copyright const gchar* plank_abstract_main_get_app_copyright (PlankAbstractMain* self)
+function plank_abstract_main_get_app_dbus const gchar* plank_abstract_main_get_app_dbus (PlankAbstractMain* self)
+function plank_abstract_main_get_app_icon const gchar* plank_abstract_main_get_app_icon (PlankAbstractMain* self)
+function plank_abstract_main_get_app_launcher const gchar* plank_abstract_main_get_app_launcher (PlankAbstractMain* self)
+function plank_abstract_main_get_build_data_dir const gchar* plank_abstract_main_get_build_data_dir (PlankAbstractMain* self)
+function plank_abstract_main_get_build_pkg_data_dir const gchar* plank_abstract_main_get_build_pkg_data_dir (PlankAbstractMain* self)
+function plank_abstract_main_get_build_release_name const gchar* plank_abstract_main_get_build_release_name (PlankAbstractMain* self)
+function plank_abstract_main_get_build_version const gchar* plank_abstract_main_get_build_version (PlankAbstractMain* self)
+function plank_abstract_main_get_build_version_info const gchar* plank_abstract_main_get_build_version_info (PlankAbstractMain* self)
+function plank_abstract_main_get_exec_name const gchar* plank_abstract_main_get_exec_name (PlankAbstractMain* self)
+function plank_abstract_main_get_help_url const gchar* plank_abstract_main_get_help_url (PlankAbstractMain* self)
+function plank_abstract_main_get_main_url const gchar* plank_abstract_main_get_main_url (PlankAbstractMain* self)
+function plank_abstract_main_get_program_name const gchar* plank_abstract_main_get_program_name (PlankAbstractMain* self)
+function plank_abstract_main_get_translate_url const gchar* plank_abstract_main_get_translate_url (PlankAbstractMain* self)
+function plank_abstract_main_get_type GType plank_abstract_main_get_type (void)
+function plank_abstract_main_initialize void plank_abstract_main_initialize (PlankAbstractMain* self)
+function plank_abstract_main_is_launcher_for_dock gboolean plank_abstract_main_is_launcher_for_dock (PlankAbstractMain* self, const gchar* launcher)
+function plank_abstract_main_remove_dock void plank_abstract_main_remove_dock (PlankAbstractMain* self, PlankDockController* dock)
+function plank_abstract_main_set_about_artists void plank_abstract_main_set_about_artists (PlankAbstractMain* self, gchar** value, gint value_length1)
+function plank_abstract_main_set_about_authors void plank_abstract_main_set_about_authors (PlankAbstractMain* self, gchar** value, gint value_length1)
+function plank_abstract_main_set_about_documenters void plank_abstract_main_set_about_documenters (PlankAbstractMain* self, gchar** value, gint value_length1)
+function plank_abstract_main_set_about_license_type void plank_abstract_main_set_about_license_type (PlankAbstractMain* self, GtkLicense value)
+function plank_abstract_main_set_about_translators void plank_abstract_main_set_about_translators (PlankAbstractMain* self, const gchar* value)
+function plank_abstract_main_set_help_url void plank_abstract_main_set_help_url (PlankAbstractMain* self, const gchar* value)
+function plank_abstract_main_set_main_url void plank_abstract_main_set_main_url (PlankAbstractMain* self, const gchar* value)
+function plank_abstract_main_set_translate_url void plank_abstract_main_set_translate_url (PlankAbstractMain* self, const gchar* value)
+function plank_active_item_style_type_get_type GType plank_active_item_style_type_get_type (void)
+function plank_animation_mode_get_type GType plank_animation_mode_get_type (void)
+function plank_animation_type_get_type GType plank_animation_type_get_type (void)
+function plank_application_dock_item_construct PlankApplicationDockItem* plank_application_dock_item_construct (GType object_type)
+function plank_application_dock_item_construct_with_dockitem_file PlankApplicationDockItem* plank_application_dock_item_construct_with_dockitem_file (GType object_type, GFile* file)
+function plank_application_dock_item_construct_with_dockitem_filename PlankApplicationDockItem* plank_application_dock_item_construct_with_dockitem_filename (GType object_type, const gchar* filename)
+function plank_application_dock_item_external_update_indicator void plank_application_dock_item_external_update_indicator (PlankApplicationDockItem* self)
+function plank_application_dock_item_get_type GType plank_application_dock_item_get_type (void)
+function plank_application_dock_item_get_unity_application_uri const gchar* plank_application_dock_item_get_unity_application_uri (PlankApplicationDockItem* self)
+function plank_application_dock_item_get_unity_dbusname const gchar* plank_application_dock_item_get_unity_dbusname (PlankApplicationDockItem* self)
+function plank_application_dock_item_has_unity_info gboolean plank_application_dock_item_has_unity_info (PlankApplicationDockItem* self)
+function plank_application_dock_item_is_running gboolean plank_application_dock_item_is_running (PlankApplicationDockItem* self)
+function plank_application_dock_item_is_window gboolean plank_application_dock_item_is_window (PlankApplicationDockItem* self)
+function plank_application_dock_item_new PlankApplicationDockItem* plank_application_dock_item_new (void)
+function plank_application_dock_item_new_with_dockitem_file PlankApplicationDockItem* plank_application_dock_item_new_with_dockitem_file (GFile* file)
+function plank_application_dock_item_new_with_dockitem_filename PlankApplicationDockItem* plank_application_dock_item_new_with_dockitem_filename (const gchar* filename)
+function plank_application_dock_item_parse_launcher void plank_application_dock_item_parse_launcher (const gchar* launcher, gchar** icon, gchar** text, GeeArrayList* actions, GeeMap* actions_map, GeeArrayList* mimes, gboolean* accepts_files)
+function plank_application_dock_item_provider_app_opened void plank_application_dock_item_provider_app_opened (PlankApplicationDockItemProvider* self, BamfApplication* app)
+function plank_application_dock_item_provider_construct PlankApplicationDockItemProvider* plank_application_dock_item_provider_construct (GType object_type, GFile* launchers_dir)
+function plank_application_dock_item_provider_delay_items_monitor void plank_application_dock_item_provider_delay_items_monitor (PlankApplicationDockItemProvider* self)
+function plank_application_dock_item_provider_get_LaunchersDir GFile* plank_application_dock_item_provider_get_LaunchersDir (PlankApplicationDockItemProvider* self)
+function plank_application_dock_item_provider_get_type GType plank_application_dock_item_provider_get_type (void)
+function plank_application_dock_item_provider_item_for_application PlankApplicationDockItem* plank_application_dock_item_provider_item_for_application (PlankApplicationDockItemProvider* self, BamfApplication* app)
+function plank_application_dock_item_provider_new PlankApplicationDockItemProvider* plank_application_dock_item_provider_new (GFile* launchers_dir)
+function plank_application_dock_item_provider_resume_items_monitor void plank_application_dock_item_provider_resume_items_monitor (PlankApplicationDockItemProvider* self)
+function plank_application_dock_item_set_urgent void plank_application_dock_item_set_urgent (PlankApplicationDockItem* self, gboolean is_urgent)
+function plank_application_dock_item_unity_reset void plank_application_dock_item_unity_reset (PlankApplicationDockItem* self)
+function plank_application_dock_item_unity_update void plank_application_dock_item_unity_update (PlankApplicationDockItem* self, const gchar* sender_name, GVariantIter* prop_iter)
+function plank_area_type_get_type GType plank_area_type_get_type (void)
+function plank_badge_style_type_get_type GType plank_badge_style_type_get_type (void)
+function plank_check_version const gchar* plank_check_version (guint required_major, guint required_minor, guint required_micro)
+function plank_color_add_hue void plank_color_add_hue (PlankColor *self, gdouble val)
+function plank_color_brighten_val void plank_color_brighten_val (PlankColor *self, gdouble amount)
+function plank_color_darken_by_sat void plank_color_darken_by_sat (PlankColor *self, gdouble amount)
+function plank_color_darken_val void plank_color_darken_val (PlankColor *self, gdouble amount)
+function plank_color_dup PlankColor* plank_color_dup (const PlankColor* self)
+function plank_color_free void plank_color_free (PlankColor* self)
+function plank_color_from_hsl void plank_color_from_hsl (gdouble h, gdouble s, gdouble l, PlankColor* result)
+function plank_color_from_hsv void plank_color_from_hsv (gdouble h, gdouble s, gdouble v, PlankColor* result)
+function plank_color_from_prefs_string void plank_color_from_prefs_string (const gchar* s, PlankColor* result)
+function plank_color_get_hsl void plank_color_get_hsl (PlankColor *self, gdouble* h, gdouble* s, gdouble* l)
+function plank_color_get_hsv void plank_color_get_hsv (PlankColor *self, gdouble* h, gdouble* s, gdouble* v)
+function plank_color_get_hue gdouble plank_color_get_hue (PlankColor *self)
+function plank_color_get_sat gdouble plank_color_get_sat (PlankColor *self)
+function plank_color_get_type GType plank_color_get_type (void)
+function plank_color_get_val gdouble plank_color_get_val (PlankColor *self)
+function plank_color_multiply_sat void plank_color_multiply_sat (PlankColor *self, gdouble amount)
+function plank_color_set_hsl void plank_color_set_hsl (PlankColor *self, gdouble h, gdouble s, gdouble v)
+function plank_color_set_hsv void plank_color_set_hsv (PlankColor *self, gdouble h, gdouble s, gdouble v)
+function plank_color_set_hue void plank_color_set_hue (PlankColor *self, gdouble hue)
+function plank_color_set_max_sat void plank_color_set_max_sat (PlankColor *self, gdouble sat)
+function plank_color_set_max_val void plank_color_set_max_val (PlankColor *self, gdouble val)
+function plank_color_set_min_sat void plank_color_set_min_sat (PlankColor *self, gdouble sat)
+function plank_color_set_min_val void plank_color_set_min_val (PlankColor *self, gdouble val)
+function plank_color_set_sat void plank_color_set_sat (PlankColor *self, gdouble sat)
+function plank_color_set_val void plank_color_set_val (PlankColor *self, gdouble val)
+function plank_color_to_prefs_string gchar* plank_color_to_prefs_string (PlankColor *self)
+function plank_composited_window_construct PlankCompositedWindow* plank_composited_window_construct (GType object_type)
+function plank_composited_window_construct_with_type PlankCompositedWindow* plank_composited_window_construct_with_type (GType object_type, GtkWindowType window_type)
+function plank_composited_window_get_type GType plank_composited_window_get_type (void)
+function plank_composited_window_new PlankCompositedWindow* plank_composited_window_new (void)
+function plank_composited_window_new_with_type PlankCompositedWindow* plank_composited_window_new_with_type (GtkWindowType window_type)
+function plank_create_settings GSettings* plank_create_settings (const gchar* schema_id, const gchar* path)
+function plank_dbus_client_add_item gboolean plank_dbus_client_add_item (PlankDBusClient* self, const gchar* uri)
+function plank_dbus_client_get_hover_position gboolean plank_dbus_client_get_hover_position (PlankDBusClient* self, const gchar* uri, gint* x, gint* y, GtkPositionType* dock_position)
+function plank_dbus_client_get_instance PlankDBusClient* plank_dbus_client_get_instance (void)
+function plank_dbus_client_get_is_connected gboolean plank_dbus_client_get_is_connected (PlankDBusClient* self)
+function plank_dbus_client_get_items_count gint plank_dbus_client_get_items_count (PlankDBusClient* self)
+function plank_dbus_client_get_persistent_applications gchar** plank_dbus_client_get_persistent_applications (PlankDBusClient* self, gint* result_length1)
+function plank_dbus_client_get_transient_applications gchar** plank_dbus_client_get_transient_applications (PlankDBusClient* self, gint* result_length1)
+function plank_dbus_client_get_type GType plank_dbus_client_get_type (void)
+function plank_dbus_client_remove_item gboolean plank_dbus_client_remove_item (PlankDBusClient* self, const gchar* uri)
+function plank_dbus_manager_construct PlankDBusManager* plank_dbus_manager_construct (GType object_type, PlankDockController* controller)
+function plank_dbus_manager_get_type GType plank_dbus_manager_get_type (void)
+function plank_dbus_manager_new PlankDBusManager* plank_dbus_manager_new (PlankDockController* controller)
+function plank_default_application_dock_item_provider_construct PlankDefaultApplicationDockItemProvider* plank_default_application_dock_item_provider_construct (GType object_type, PlankDockPreferences* prefs, GFile* launchers_dir)
+function plank_default_application_dock_item_provider_get_Prefs PlankDockPreferences* plank_default_application_dock_item_provider_get_Prefs (PlankDefaultApplicationDockItemProvider* self)
+function plank_default_application_dock_item_provider_get_type GType plank_default_application_dock_item_provider_get_type (void)
+function plank_default_application_dock_item_provider_internal_update_visible_elements void plank_default_application_dock_item_provider_internal_update_visible_elements (PlankDefaultApplicationDockItemProvider* self, gboolean update_indicator)
+function plank_default_application_dock_item_provider_new PlankDefaultApplicationDockItemProvider* plank_default_application_dock_item_provider_new (PlankDockPreferences* prefs, GFile* launchers_dir)
+function plank_default_application_dock_item_provider_pin_item void plank_default_application_dock_item_provider_pin_item (PlankDefaultApplicationDockItemProvider* self, PlankDockItem* item)
+function plank_default_application_dock_item_provider_trigger_update_visible_elements void plank_default_application_dock_item_provider_trigger_update_visible_elements (PlankDefaultApplicationDockItemProvider* self, gboolean update_indicator)
+function plank_dir_style_get_type GType plank_dir_style_get_type (void)
+function plank_dock_container_add gboolean plank_dock_container_add (PlankDockContainer* self, PlankDockElement* element, PlankDockElement* target)
+function plank_dock_container_add_all gboolean plank_dock_container_add_all (PlankDockContainer* self, GeeArrayList* elements)
+function plank_dock_container_clear gboolean plank_dock_container_clear (PlankDockContainer* self)
+function plank_dock_container_connect_element void plank_dock_container_connect_element (PlankDockContainer* self, PlankDockElement* element)
+function plank_dock_container_construct PlankDockContainer* plank_dock_container_construct (GType object_type)
+function plank_dock_container_disconnect_element void plank_dock_container_disconnect_element (PlankDockContainer* self, PlankDockElement* element)
+function plank_dock_container_get_Elements GeeArrayList* plank_dock_container_get_Elements (PlankDockContainer* self)
+function plank_dock_container_get_VisibleElements GeeArrayList* plank_dock_container_get_VisibleElements (PlankDockContainer* self)
+function plank_dock_container_get_type GType plank_dock_container_get_type (void)
+function plank_dock_container_move_element void plank_dock_container_move_element (GeeList* elements, gint from, gint to, GeeList* moved)
+function plank_dock_container_move_to gboolean plank_dock_container_move_to (PlankDockContainer* self, PlankDockElement* move, PlankDockElement* target)
+function plank_dock_container_prepare void plank_dock_container_prepare (PlankDockContainer* self)
+function plank_dock_container_prepend void plank_dock_container_prepend (PlankDockContainer* self, PlankDockElement* element)
+function plank_dock_container_remove gboolean plank_dock_container_remove (PlankDockContainer* self, PlankDockElement* element)
+function plank_dock_container_remove_all gboolean plank_dock_container_remove_all (PlankDockContainer* self, GeeArrayList* elements)
+function plank_dock_container_replace gboolean plank_dock_container_replace (PlankDockContainer* self, PlankDockElement* new_element, PlankDockElement* old_element)
+function plank_dock_container_update_visible_elements void plank_dock_container_update_visible_elements (PlankDockContainer* self)
+function plank_dock_controller_add_default_provider void plank_dock_controller_add_default_provider (PlankDockController* self)
+function plank_dock_controller_construct PlankDockController* plank_dock_controller_construct (GType object_type, const gchar* dock_name, GFile* config_folder)
+function plank_dock_controller_get_Items GeeArrayList* plank_dock_controller_get_Items (PlankDockController* self)
+function plank_dock_controller_get_VisibleItems GeeArrayList* plank_dock_controller_get_VisibleItems (PlankDockController* self)
+function plank_dock_controller_get_config_folder GFile* plank_dock_controller_get_config_folder (PlankDockController* self)
+function plank_dock_controller_get_default_provider PlankDockItemProvider* plank_dock_controller_get_default_provider (PlankDockController* self)
+function plank_dock_controller_get_drag_manager PlankDragManager* plank_dock_controller_get_drag_manager (PlankDockController* self)
+function plank_dock_controller_get_hide_manager PlankHideManager* plank_dock_controller_get_hide_manager (PlankDockController* self)
+function plank_dock_controller_get_hover PlankHoverWindow* plank_dock_controller_get_hover (PlankDockController* self)
+function plank_dock_controller_get_launchers_folder GFile* plank_dock_controller_get_launchers_folder (PlankDockController* self)
+function plank_dock_controller_get_name const gchar* plank_dock_controller_get_name (PlankDockController* self)
+function plank_dock_controller_get_position_manager PlankPositionManager* plank_dock_controller_get_position_manager (PlankDockController* self)
+function plank_dock_controller_get_prefs PlankDockPreferences* plank_dock_controller_get_prefs (PlankDockController* self)
+function plank_dock_controller_get_renderer PlankDockRenderer* plank_dock_controller_get_renderer (PlankDockController* self)
+function plank_dock_controller_get_type GType plank_dock_controller_get_type (void)
+function plank_dock_controller_get_window PlankDockWindow* plank_dock_controller_get_window (PlankDockController* self)
+function plank_dock_controller_initialize void plank_dock_controller_initialize (PlankDockController* self)
+function plank_dock_controller_new PlankDockController* plank_dock_controller_new (const gchar* dock_name, GFile* config_folder)
+function plank_dock_controller_set_drag_manager void plank_dock_controller_set_drag_manager (PlankDockController* self, PlankDragManager* value)
+function plank_dock_controller_set_hide_manager void plank_dock_controller_set_hide_manager (PlankDockController* self, PlankHideManager* value)
+function plank_dock_controller_set_hover void plank_dock_controller_set_hover (PlankDockController* self, PlankHoverWindow* value)
+function plank_dock_controller_set_position_manager void plank_dock_controller_set_position_manager (PlankDockController* self, PlankPositionManager* value)
+function plank_dock_controller_set_renderer void plank_dock_controller_set_renderer (PlankDockController* self, PlankDockRenderer* value)
+function plank_dock_controller_set_window void plank_dock_controller_set_window (PlankDockController* self, PlankDockWindow* value)
+function plank_dock_element_accept_drop gboolean plank_dock_element_accept_drop (PlankDockElement* self, GeeArrayList* uris)
+function plank_dock_element_as_uri gchar* plank_dock_element_as_uri (PlankDockElement* self)
+function plank_dock_element_can_accept_drop gboolean plank_dock_element_can_accept_drop (PlankDockElement* self, GeeArrayList* uris)
+function plank_dock_element_can_be_removed gboolean plank_dock_element_can_be_removed (PlankDockElement* self)
+function plank_dock_element_clicked void plank_dock_element_clicked (PlankDockElement* self, PlankPopupButton button, GdkModifierType mod, guint32 event_time)
+function plank_dock_element_construct PlankDockElement* plank_dock_element_construct (GType object_type)
+function plank_dock_element_create_literal_menu_item GtkMenuItem* plank_dock_element_create_literal_menu_item (const gchar* title, const gchar* icon, gboolean force_show_icon)
+function plank_dock_element_create_literal_menu_item_with_pixbuf GtkMenuItem* plank_dock_element_create_literal_menu_item_with_pixbuf (const gchar* title, GdkPixbuf* pixbuf, gboolean force_show_icon)
+function plank_dock_element_create_menu_item GtkMenuItem* plank_dock_element_create_menu_item (const gchar* title, const gchar* icon, gboolean force_show_icon)
+function plank_dock_element_create_menu_item_with_pixbuf GtkMenuItem* plank_dock_element_create_menu_item_with_pixbuf (const gchar* title, GdkPixbuf* pixbuf, gboolean force_show_icon)
+function plank_dock_element_get_AddTime gint64 plank_dock_element_get_AddTime (PlankDockElement* self)
+function plank_dock_element_get_Button PlankPopupButton plank_dock_element_get_Button (PlankDockElement* self)
+function plank_dock_element_get_ClickedAnimation PlankAnimationType plank_dock_element_get_ClickedAnimation (PlankDockElement* self)
+function plank_dock_element_get_Container PlankDockContainer* plank_dock_element_get_Container (PlankDockElement* self)
+function plank_dock_element_get_HoveredAnimation PlankAnimationType plank_dock_element_get_HoveredAnimation (PlankDockElement* self)
+function plank_dock_element_get_IsAttached gboolean plank_dock_element_get_IsAttached (PlankDockElement* self)
+function plank_dock_element_get_IsVisible gboolean plank_dock_element_get_IsVisible (PlankDockElement* self)
+function plank_dock_element_get_LastActive gint64 plank_dock_element_get_LastActive (PlankDockElement* self)
+function plank_dock_element_get_LastClicked gint64 plank_dock_element_get_LastClicked (PlankDockElement* self)
+function plank_dock_element_get_LastHovered gint64 plank_dock_element_get_LastHovered (PlankDockElement* self)
+function plank_dock_element_get_LastMove gint64 plank_dock_element_get_LastMove (PlankDockElement* self)
+function plank_dock_element_get_LastScrolled gint64 plank_dock_element_get_LastScrolled (PlankDockElement* self)
+function plank_dock_element_get_LastUrgent gint64 plank_dock_element_get_LastUrgent (PlankDockElement* self)
+function plank_dock_element_get_LastValid gint64 plank_dock_element_get_LastValid (PlankDockElement* self)
+function plank_dock_element_get_RemoveTime gint64 plank_dock_element_get_RemoveTime (PlankDockElement* self)
+function plank_dock_element_get_ScrolledAnimation PlankAnimationType plank_dock_element_get_ScrolledAnimation (PlankDockElement* self)
+function plank_dock_element_get_Text const gchar* plank_dock_element_get_Text (PlankDockElement* self)
+function plank_dock_element_get_dock PlankDockController* plank_dock_element_get_dock (PlankDockElement* self)
+function plank_dock_element_get_drop_text gchar* plank_dock_element_get_drop_text (PlankDockElement* self)
+function plank_dock_element_get_menu_items GeeArrayList* plank_dock_element_get_menu_items (PlankDockElement* self)
+function plank_dock_element_get_type GType plank_dock_element_get_type (void)
+function plank_dock_element_hovered void plank_dock_element_hovered (PlankDockElement* self)
+function plank_dock_element_on_clicked PlankAnimationType plank_dock_element_on_clicked (PlankDockElement* self, PlankPopupButton button, GdkModifierType mod, guint32 event_time)
+function plank_dock_element_on_hovered PlankAnimationType plank_dock_element_on_hovered (PlankDockElement* self)
+function plank_dock_element_on_scrolled PlankAnimationType plank_dock_element_on_scrolled (PlankDockElement* self, GdkScrollDirection direction, GdkModifierType mod, guint32 event_time)
+function plank_dock_element_reset_buffers void plank_dock_element_reset_buffers (PlankDockElement* self)
+function plank_dock_element_scrolled void plank_dock_element_scrolled (PlankDockElement* self, GdkScrollDirection direction, GdkModifierType mod, guint32 event_time)
+function plank_dock_element_set_AddTime void plank_dock_element_set_AddTime (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_Button void plank_dock_element_set_Button (PlankDockElement* self, PlankPopupButton value)
+function plank_dock_element_set_ClickedAnimation void plank_dock_element_set_ClickedAnimation (PlankDockElement* self, PlankAnimationType value)
+function plank_dock_element_set_Container void plank_dock_element_set_Container (PlankDockElement* self, PlankDockContainer* value)
+function plank_dock_element_set_HoveredAnimation void plank_dock_element_set_HoveredAnimation (PlankDockElement* self, PlankAnimationType value)
+function plank_dock_element_set_IsAttached void plank_dock_element_set_IsAttached (PlankDockElement* self, gboolean value)
+function plank_dock_element_set_IsVisible void plank_dock_element_set_IsVisible (PlankDockElement* self, gboolean value)
+function plank_dock_element_set_LastActive void plank_dock_element_set_LastActive (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastClicked void plank_dock_element_set_LastClicked (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastHovered void plank_dock_element_set_LastHovered (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastMove void plank_dock_element_set_LastMove (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastScrolled void plank_dock_element_set_LastScrolled (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastUrgent void plank_dock_element_set_LastUrgent (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_LastValid void plank_dock_element_set_LastValid (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_RemoveTime void plank_dock_element_set_RemoveTime (PlankDockElement* self, gint64 value)
+function plank_dock_element_set_ScrolledAnimation void plank_dock_element_set_ScrolledAnimation (PlankDockElement* self, PlankAnimationType value)
+function plank_dock_element_set_Text void plank_dock_element_set_Text (PlankDockElement* self, const gchar* value)
+function plank_dock_element_unique_id gchar* plank_dock_element_unique_id (PlankDockElement* self)
+function plank_dock_item_construct PlankDockItem* plank_dock_item_construct (GType object_type)
+function plank_dock_item_copy_values_to void plank_dock_item_copy_values_to (PlankDockItem* self, PlankDockItem* target)
+function plank_dock_item_delete void plank_dock_item_delete (PlankDockItem* self)
+function plank_dock_item_draw_icon void plank_dock_item_draw_icon (PlankDockItem* self, PlankSurface* surface)
+function plank_dock_item_draw_icon_fast void plank_dock_item_draw_icon_fast (PlankDockItem* self, PlankSurface* surface)
+function plank_dock_item_draw_value_construct PlankDockItemDrawValue* plank_dock_item_draw_value_construct (GType object_type)
+function plank_dock_item_draw_value_get_type GType plank_dock_item_draw_value_get_type (void)
+function plank_dock_item_draw_value_move_in void plank_dock_item_draw_value_move_in (PlankDockItemDrawValue* self, GtkPositionType position, gdouble damount)
+function plank_dock_item_draw_value_move_right void plank_dock_item_draw_value_move_right (PlankDockItemDrawValue* self, GtkPositionType position, gdouble damount)
+function plank_dock_item_draw_value_new PlankDockItemDrawValue* plank_dock_item_draw_value_new (void)
+function plank_dock_item_draw_value_ref gpointer plank_dock_item_draw_value_ref (gpointer instance)
+function plank_dock_item_draw_value_unref void plank_dock_item_draw_value_unref (gpointer instance)
+function plank_dock_item_get_AllowZoom gboolean plank_dock_item_get_AllowZoom (PlankDockItem* self)
+function plank_dock_item_get_AverageIconColor void plank_dock_item_get_AverageIconColor (PlankDockItem* self, PlankColor * result)
+function plank_dock_item_get_Count gint64 plank_dock_item_get_Count (PlankDockItem* self)
+function plank_dock_item_get_CountVisible gboolean plank_dock_item_get_CountVisible (PlankDockItem* self)
+function plank_dock_item_get_DockItemFilename gchar* plank_dock_item_get_DockItemFilename (PlankDockItem* self)
+function plank_dock_item_get_ForcePixbuf GdkPixbuf* plank_dock_item_get_ForcePixbuf (PlankDockItem* self)
+function plank_dock_item_get_Icon const gchar* plank_dock_item_get_Icon (PlankDockItem* self)
+function plank_dock_item_get_Indicator PlankIndicatorState plank_dock_item_get_Indicator (PlankDockItem* self)
+function plank_dock_item_get_LastPosition gint plank_dock_item_get_LastPosition (PlankDockItem* self)
+function plank_dock_item_get_Launcher const gchar* plank_dock_item_get_Launcher (PlankDockItem* self)
+function plank_dock_item_get_Position gint plank_dock_item_get_Position (PlankDockItem* self)
+function plank_dock_item_get_Prefs PlankDockItemPreferences* plank_dock_item_get_Prefs (PlankDockItem* self)
+function plank_dock_item_get_Progress gdouble plank_dock_item_get_Progress (PlankDockItem* self)
+function plank_dock_item_get_ProgressVisible gboolean plank_dock_item_get_ProgressVisible (PlankDockItem* self)
+function plank_dock_item_get_State PlankItemState plank_dock_item_get_State (PlankDockItem* self)
+function plank_dock_item_get_background_surface PlankSurface* plank_dock_item_get_background_surface (PlankDockItem* self, gint width, gint height, PlankSurface* model, PlankDrawDataFunc draw_data_func, gpointer draw_data_func_target)
+function plank_dock_item_get_foreground_surface PlankSurface* plank_dock_item_get_foreground_surface (PlankDockItem* self, gint width, gint height, PlankSurface* model, PlankDrawDataFunc draw_data_func, gpointer draw_data_func_target)
+function plank_dock_item_get_surface PlankSurface* plank_dock_item_get_surface (PlankDockItem* self, gint width, gint height, PlankSurface* model)
+function plank_dock_item_get_surface_copy PlankSurface* plank_dock_item_get_surface_copy (PlankDockItem* self, gint width, gint height, PlankSurface* model)
+function plank_dock_item_get_type GType plank_dock_item_get_type (void)
+function plank_dock_item_is_separator gboolean plank_dock_item_is_separator (PlankDockItem* self)
+function plank_dock_item_is_valid gboolean plank_dock_item_is_valid (PlankDockItem* self)
+function plank_dock_item_load_from_launcher void plank_dock_item_load_from_launcher (PlankDockItem* self)
+function plank_dock_item_preferences_construct PlankDockItemPreferences* plank_dock_item_preferences_construct (GType object_type)
+function plank_dock_item_preferences_construct_with_file PlankDockItemPreferences* plank_dock_item_preferences_construct_with_file (GType object_type, GFile* file)
+function plank_dock_item_preferences_construct_with_filename PlankDockItemPreferences* plank_dock_item_preferences_construct_with_filename (GType object_type, const gchar* filename)
+function plank_dock_item_preferences_construct_with_launcher PlankDockItemPreferences* plank_dock_item_preferences_construct_with_launcher (GType object_type, const gchar* launcher)
+function plank_dock_item_preferences_get_DirectoryStyle PlankDirStyle plank_dock_item_preferences_get_DirectoryStyle (PlankDockItemPreferences* self)
+function plank_dock_item_preferences_get_LargeIcons gboolean plank_dock_item_preferences_get_LargeIcons (PlankDockItemPreferences* self)
+function plank_dock_item_preferences_get_Launcher const gchar* plank_dock_item_preferences_get_Launcher (PlankDockItemPreferences* self)
+function plank_dock_item_preferences_get_ShowHiddenFiles gboolean plank_dock_item_preferences_get_ShowHiddenFiles (PlankDockItemPreferences* self)
+function plank_dock_item_preferences_get_SortBy const gchar* plank_dock_item_preferences_get_SortBy (PlankDockItemPreferences* self)
+function plank_dock_item_preferences_get_type GType plank_dock_item_preferences_get_type (void)
+function plank_dock_item_preferences_new PlankDockItemPreferences* plank_dock_item_preferences_new (void)
+function plank_dock_item_preferences_new_with_file PlankDockItemPreferences* plank_dock_item_preferences_new_with_file (GFile* file)
+function plank_dock_item_preferences_new_with_filename PlankDockItemPreferences* plank_dock_item_preferences_new_with_filename (const gchar* filename)
+function plank_dock_item_preferences_new_with_launcher PlankDockItemPreferences* plank_dock_item_preferences_new_with_launcher (const gchar* launcher)
+function plank_dock_item_preferences_set_DirectoryStyle void plank_dock_item_preferences_set_DirectoryStyle (PlankDockItemPreferences* self, PlankDirStyle value)
+function plank_dock_item_preferences_set_LargeIcons void plank_dock_item_preferences_set_LargeIcons (PlankDockItemPreferences* self, gboolean value)
+function plank_dock_item_preferences_set_Launcher void plank_dock_item_preferences_set_Launcher (PlankDockItemPreferences* self, const gchar* value)
+function plank_dock_item_preferences_set_ShowHiddenFiles void plank_dock_item_preferences_set_ShowHiddenFiles (PlankDockItemPreferences* self, gboolean value)
+function plank_dock_item_preferences_set_SortBy void plank_dock_item_preferences_set_SortBy (PlankDockItemPreferences* self, const gchar* value)
+function plank_dock_item_provider_add_item_with_uri gboolean plank_dock_item_provider_add_item_with_uri (PlankDockItemProvider* self, const gchar* uri, PlankDockItem* target)
+function plank_dock_item_provider_allow_duplicate_item gboolean plank_dock_item_provider_allow_duplicate_item (PlankDockItemProvider* self, const gchar* uri)
+function plank_dock_item_provider_construct PlankDockItemProvider* plank_dock_item_provider_construct (GType object_type)
+function plank_dock_item_provider_get_dockitem_filenames gchar** plank_dock_item_provider_get_dockitem_filenames (PlankDockItemProvider* self, gint* result_length1)
+function plank_dock_item_provider_get_type GType plank_dock_item_provider_get_type (void)
+function plank_dock_item_provider_handle_item_deleted void plank_dock_item_provider_handle_item_deleted (PlankDockItemProvider* self, PlankDockItem* item)
+function plank_dock_item_provider_item_exists_for_uri gboolean plank_dock_item_provider_item_exists_for_uri (PlankDockItemProvider* self, const gchar* uri)
+function plank_dock_item_provider_item_for_uri PlankDockItem* plank_dock_item_provider_item_for_uri (PlankDockItemProvider* self, const gchar* uri)
+function plank_dock_item_provider_new PlankDockItemProvider* plank_dock_item_provider_new (void)
+function plank_dock_item_reset_icon_buffer void plank_dock_item_reset_icon_buffer (PlankDockItem* self)
+function plank_dock_item_set_AllowZoom void plank_dock_item_set_AllowZoom (PlankDockItem* self, gboolean value)
+function plank_dock_item_set_AverageIconColor void plank_dock_item_set_AverageIconColor (PlankDockItem* self, PlankColor * value)
+function plank_dock_item_set_Count void plank_dock_item_set_Count (PlankDockItem* self, gint64 value)
+function plank_dock_item_set_CountVisible void plank_dock_item_set_CountVisible (PlankDockItem* self, gboolean value)
+function plank_dock_item_set_ForcePixbuf void plank_dock_item_set_ForcePixbuf (PlankDockItem* self, GdkPixbuf* value)
+function plank_dock_item_set_Icon void plank_dock_item_set_Icon (PlankDockItem* self, const gchar* value)
+function plank_dock_item_set_Indicator void plank_dock_item_set_Indicator (PlankDockItem* self, PlankIndicatorState value)
+function plank_dock_item_set_LastPosition void plank_dock_item_set_LastPosition (PlankDockItem* self, gint value)
+function plank_dock_item_set_Position void plank_dock_item_set_Position (PlankDockItem* self, gint value)
+function plank_dock_item_set_Progress void plank_dock_item_set_Progress (PlankDockItem* self, gdouble value)
+function plank_dock_item_set_ProgressVisible void plank_dock_item_set_ProgressVisible (PlankDockItem* self, gboolean value)
+function plank_dock_item_set_State void plank_dock_item_set_State (PlankDockItem* self, PlankItemState value)
+function plank_dock_item_unset_move_state void plank_dock_item_unset_move_state (PlankDockItem* self)
+function plank_dock_preferences_construct PlankDockPreferences* plank_dock_preferences_construct (GType object_type, const gchar* name)
+function plank_dock_preferences_decrease_icon_size void plank_dock_preferences_decrease_icon_size (PlankDockPreferences* self)
+function plank_dock_preferences_get_ActiveDisplay gboolean plank_dock_preferences_get_ActiveDisplay (PlankDockPreferences* self)
+function plank_dock_preferences_get_ActiveDisplayPollingInterval guint plank_dock_preferences_get_ActiveDisplayPollingInterval (PlankDockPreferences* self)
+function plank_dock_preferences_get_Alignment GtkAlign plank_dock_preferences_get_Alignment (PlankDockPreferences* self)
+function plank_dock_preferences_get_AnchorDocklets gboolean plank_dock_preferences_get_AnchorDocklets (PlankDockPreferences* self)
+function plank_dock_preferences_get_AnchorFiles gboolean plank_dock_preferences_get_AnchorFiles (PlankDockPreferences* self)
+function plank_dock_preferences_get_AreaMode PlankAreaType plank_dock_preferences_get_AreaMode (PlankDockPreferences* self)
+function plank_dock_preferences_get_AutoPinning gboolean plank_dock_preferences_get_AutoPinning (PlankDockPreferences* self)
+function plank_dock_preferences_get_BringToCurrentWorkspace gboolean plank_dock_preferences_get_BringToCurrentWorkspace (PlankDockPreferences* self)
+function plank_dock_preferences_get_CurrentWorkspaceOnly gboolean plank_dock_preferences_get_CurrentWorkspaceOnly (PlankDockPreferences* self)
+function plank_dock_preferences_get_DockItems gchar** plank_dock_preferences_get_DockItems (PlankDockPreferences* self, gint* result_length1)
+function plank_dock_preferences_get_GapSize gint plank_dock_preferences_get_GapSize (PlankDockPreferences* self)
+function plank_dock_preferences_get_HideDelay guint plank_dock_preferences_get_HideDelay (PlankDockPreferences* self)
+function plank_dock_preferences_get_HideMode PlankHideType plank_dock_preferences_get_HideMode (PlankDockPreferences* self)
+function plank_dock_preferences_get_IconSize gint plank_dock_preferences_get_IconSize (PlankDockPreferences* self)
+function plank_dock_preferences_get_ItemsAlignment GtkAlign plank_dock_preferences_get_ItemsAlignment (PlankDockPreferences* self)
+function plank_dock_preferences_get_LockItems gboolean plank_dock_preferences_get_LockItems (PlankDockPreferences* self)
+function plank_dock_preferences_get_Monitor const gchar* plank_dock_preferences_get_Monitor (PlankDockPreferences* self)
+function plank_dock_preferences_get_Offset gint plank_dock_preferences_get_Offset (PlankDockPreferences* self)
+function plank_dock_preferences_get_PinnedOnly gboolean plank_dock_preferences_get_PinnedOnly (PlankDockPreferences* self)
+function plank_dock_preferences_get_Position GtkPositionType plank_dock_preferences_get_Position (PlankDockPreferences* self)
+function plank_dock_preferences_get_PressureReveal gboolean plank_dock_preferences_get_PressureReveal (PlankDockPreferences* self)
+function plank_dock_preferences_get_ShowDockItem gboolean plank_dock_preferences_get_ShowDockItem (PlankDockPreferences* self)
+function plank_dock_preferences_get_Theme const gchar* plank_dock_preferences_get_Theme (PlankDockPreferences* self)
+function plank_dock_preferences_get_TooltipsEnabled gboolean plank_dock_preferences_get_TooltipsEnabled (PlankDockPreferences* self)
+function plank_dock_preferences_get_UnhideDelay guint plank_dock_preferences_get_UnhideDelay (PlankDockPreferences* self)
+function plank_dock_preferences_get_ZoomEnabled gboolean plank_dock_preferences_get_ZoomEnabled (PlankDockPreferences* self)
+function plank_dock_preferences_get_ZoomPercent guint plank_dock_preferences_get_ZoomPercent (PlankDockPreferences* self)
+function plank_dock_preferences_get_type GType plank_dock_preferences_get_type (void)
+function plank_dock_preferences_increase_icon_size void plank_dock_preferences_increase_icon_size (PlankDockPreferences* self)
+function plank_dock_preferences_is_horizontal_dock gboolean plank_dock_preferences_is_horizontal_dock (PlankDockPreferences* self)
+function plank_dock_preferences_new PlankDockPreferences* plank_dock_preferences_new (const gchar* name)
+function plank_dock_preferences_set_ActiveDisplay void plank_dock_preferences_set_ActiveDisplay (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_ActiveDisplayPollingInterval void plank_dock_preferences_set_ActiveDisplayPollingInterval (PlankDockPreferences* self, guint value)
+function plank_dock_preferences_set_Alignment void plank_dock_preferences_set_Alignment (PlankDockPreferences* self, GtkAlign value)
+function plank_dock_preferences_set_AnchorDocklets void plank_dock_preferences_set_AnchorDocklets (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_AnchorFiles void plank_dock_preferences_set_AnchorFiles (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_AreaMode void plank_dock_preferences_set_AreaMode (PlankDockPreferences* self, PlankAreaType value)
+function plank_dock_preferences_set_AutoPinning void plank_dock_preferences_set_AutoPinning (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_BringToCurrentWorkspace void plank_dock_preferences_set_BringToCurrentWorkspace (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_CurrentWorkspaceOnly void plank_dock_preferences_set_CurrentWorkspaceOnly (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_DockItems void plank_dock_preferences_set_DockItems (PlankDockPreferences* self, gchar** value, gint value_length1)
+function plank_dock_preferences_set_GapSize void plank_dock_preferences_set_GapSize (PlankDockPreferences* self, gint value)
+function plank_dock_preferences_set_HideDelay void plank_dock_preferences_set_HideDelay (PlankDockPreferences* self, guint value)
+function plank_dock_preferences_set_HideMode void plank_dock_preferences_set_HideMode (PlankDockPreferences* self, PlankHideType value)
+function plank_dock_preferences_set_IconSize void plank_dock_preferences_set_IconSize (PlankDockPreferences* self, gint value)
+function plank_dock_preferences_set_ItemsAlignment void plank_dock_preferences_set_ItemsAlignment (PlankDockPreferences* self, GtkAlign value)
+function plank_dock_preferences_set_LockItems void plank_dock_preferences_set_LockItems (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_Monitor void plank_dock_preferences_set_Monitor (PlankDockPreferences* self, const gchar* value)
+function plank_dock_preferences_set_Offset void plank_dock_preferences_set_Offset (PlankDockPreferences* self, gint value)
+function plank_dock_preferences_set_PinnedOnly void plank_dock_preferences_set_PinnedOnly (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_Position void plank_dock_preferences_set_Position (PlankDockPreferences* self, GtkPositionType value)
+function plank_dock_preferences_set_PressureReveal void plank_dock_preferences_set_PressureReveal (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_ShowDockItem void plank_dock_preferences_set_ShowDockItem (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_Theme void plank_dock_preferences_set_Theme (PlankDockPreferences* self, const gchar* value)
+function plank_dock_preferences_set_TooltipsEnabled void plank_dock_preferences_set_TooltipsEnabled (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_UnhideDelay void plank_dock_preferences_set_UnhideDelay (PlankDockPreferences* self, guint value)
+function plank_dock_preferences_set_ZoomEnabled void plank_dock_preferences_set_ZoomEnabled (PlankDockPreferences* self, gboolean value)
+function plank_dock_preferences_set_ZoomPercent void plank_dock_preferences_set_ZoomPercent (PlankDockPreferences* self, guint value)
+function plank_dock_renderer_animate_items void plank_dock_renderer_animate_items (PlankDockRenderer* self, GeeList* elements)
+function plank_dock_renderer_construct PlankDockRenderer* plank_dock_renderer_construct (GType object_type, PlankDockController* controller, GtkWindow* window)
+function plank_dock_renderer_easing_bounce gdouble plank_dock_renderer_easing_bounce (gdouble t, gdouble d, gdouble n)
+function plank_dock_renderer_get_hide_progress gdouble plank_dock_renderer_get_hide_progress (PlankDockRenderer* self)
+function plank_dock_renderer_get_theme PlankDockTheme* plank_dock_renderer_get_theme (PlankDockRenderer* self)
+function plank_dock_renderer_get_type GType plank_dock_renderer_get_type (void)
+function plank_dock_renderer_get_zoom_in_progress gdouble plank_dock_renderer_get_zoom_in_progress (PlankDockRenderer* self)
+function plank_dock_renderer_initialize void plank_dock_renderer_initialize (PlankDockRenderer* self)
+function plank_dock_renderer_new PlankDockRenderer* plank_dock_renderer_new (PlankDockController* controller, GtkWindow* window)
+function plank_dock_renderer_reset_buffers void plank_dock_renderer_reset_buffers (PlankDockRenderer* self)
+function plank_dock_renderer_update_local_cursor void plank_dock_renderer_update_local_cursor (PlankDockRenderer* self, gint x, gint y)
+function plank_dock_theme_construct PlankDockTheme* plank_dock_theme_construct (GType object_type, const gchar* name)
+function plank_dock_theme_create_background PlankSurface* plank_dock_theme_create_background (PlankDockTheme* self, gint width, gint height, GtkPositionType position, PlankSurface* model)
+function plank_dock_theme_create_indicator PlankSurface* plank_dock_theme_create_indicator (PlankDockTheme* self, gint size, PlankColor* color, PlankSurface* model)
+function plank_dock_theme_create_indicator_for_state PlankSurface* plank_dock_theme_create_indicator_for_state (PlankDockTheme* self, PlankIndicatorState indicator_state, PlankItemState item_state, gint icon_size, GtkPositionType position, PlankSurface* model)
+function plank_dock_theme_create_urgent_glow PlankSurface* plank_dock_theme_create_urgent_glow (PlankDockTheme* self, gint size, PlankColor* color, PlankSurface* model)
+function plank_dock_theme_draw_active_glow void plank_dock_theme_draw_active_glow (PlankDockTheme* self, PlankSurface* surface, GdkRectangle* clip_rect, GdkRectangle* rect, PlankColor* color, gdouble opacity, GtkPositionType pos)
+function plank_dock_theme_draw_item_count void plank_dock_theme_draw_item_count (PlankDockTheme* self, PlankSurface* surface, gint icon_size, PlankColor* color, gint64 count)
+function plank_dock_theme_draw_item_progress void plank_dock_theme_draw_item_progress (PlankDockTheme* self, PlankSurface* surface, gint icon_size, PlankColor* color, gdouble progress)
+function plank_dock_theme_get_ActiveItemColor void plank_dock_theme_get_ActiveItemColor (PlankDockTheme* self, PlankColor * result)
+function plank_dock_theme_get_ActiveItemStyle PlankActiveItemStyleType plank_dock_theme_get_ActiveItemStyle (PlankDockTheme* self)
+function plank_dock_theme_get_ActiveTime gint plank_dock_theme_get_ActiveTime (PlankDockTheme* self)
+function plank_dock_theme_get_BadgeColor void plank_dock_theme_get_BadgeColor (PlankDockTheme* self, PlankColor * result)
+function plank_dock_theme_get_BadgeStyle PlankBadgeStyleType plank_dock_theme_get_BadgeStyle (PlankDockTheme* self)
+function plank_dock_theme_get_BadgeTextColor void plank_dock_theme_get_BadgeTextColor (PlankDockTheme* self, PlankColor * result)
+function plank_dock_theme_get_BottomPadding gdouble plank_dock_theme_get_BottomPadding (PlankDockTheme* self)
+function plank_dock_theme_get_CascadeHide gboolean plank_dock_theme_get_CascadeHide (PlankDockTheme* self)
+function plank_dock_theme_get_ClickTime gint plank_dock_theme_get_ClickTime (PlankDockTheme* self)
+function plank_dock_theme_get_FadeOpacity gdouble plank_dock_theme_get_FadeOpacity (PlankDockTheme* self)
+function plank_dock_theme_get_FadeTime gint plank_dock_theme_get_FadeTime (PlankDockTheme* self)
+function plank_dock_theme_get_GlowPulseTime gint plank_dock_theme_get_GlowPulseTime (PlankDockTheme* self)
+function plank_dock_theme_get_GlowSize gint plank_dock_theme_get_GlowSize (PlankDockTheme* self)
+function plank_dock_theme_get_GlowTime gint plank_dock_theme_get_GlowTime (PlankDockTheme* self)
+function plank_dock_theme_get_HideTime gint plank_dock_theme_get_HideTime (PlankDockTheme* self)
+function plank_dock_theme_get_HorizPadding gdouble plank_dock_theme_get_HorizPadding (PlankDockTheme* self)
+function plank_dock_theme_get_IconShadowSize gdouble plank_dock_theme_get_IconShadowSize (PlankDockTheme* self)
+function plank_dock_theme_get_IndicatorColor void plank_dock_theme_get_IndicatorColor (PlankDockTheme* self, PlankColor * result)
+function plank_dock_theme_get_IndicatorSize gdouble plank_dock_theme_get_IndicatorSize (PlankDockTheme* self)
+function plank_dock_theme_get_IndicatorStyle PlankIndicatorStyleType plank_dock_theme_get_IndicatorStyle (PlankDockTheme* self)
+function plank_dock_theme_get_ItemMoveTime gint plank_dock_theme_get_ItemMoveTime (PlankDockTheme* self)
+function plank_dock_theme_get_ItemPadding gdouble plank_dock_theme_get_ItemPadding (PlankDockTheme* self)
+function plank_dock_theme_get_LaunchBounceHeight gdouble plank_dock_theme_get_LaunchBounceHeight (PlankDockTheme* self)
+function plank_dock_theme_get_LaunchBounceTime gint plank_dock_theme_get_LaunchBounceTime (PlankDockTheme* self)
+function plank_dock_theme_get_SeparatorPadding gdouble plank_dock_theme_get_SeparatorPadding (PlankDockTheme* self)
+function plank_dock_theme_get_SlideTime gint plank_dock_theme_get_SlideTime (PlankDockTheme* self)
+function plank_dock_theme_get_TopPadding gdouble plank_dock_theme_get_TopPadding (PlankDockTheme* self)
+function plank_dock_theme_get_UrgentBounceHeight gdouble plank_dock_theme_get_UrgentBounceHeight (PlankDockTheme* self)
+function plank_dock_theme_get_UrgentBounceTime gint plank_dock_theme_get_UrgentBounceTime (PlankDockTheme* self)
+function plank_dock_theme_get_UrgentHueShift gint plank_dock_theme_get_UrgentHueShift (PlankDockTheme* self)
+function plank_dock_theme_get_styled_color void plank_dock_theme_get_styled_color (PlankDockTheme* self, PlankColor* result)
+function plank_dock_theme_get_type GType plank_dock_theme_get_type (void)
+function plank_dock_theme_new PlankDockTheme* plank_dock_theme_new (const gchar* name)
+function plank_dock_theme_set_ActiveItemColor void plank_dock_theme_set_ActiveItemColor (PlankDockTheme* self, PlankColor * value)
+function plank_dock_theme_set_ActiveItemStyle void plank_dock_theme_set_ActiveItemStyle (PlankDockTheme* self, PlankActiveItemStyleType value)
+function plank_dock_theme_set_ActiveTime void plank_dock_theme_set_ActiveTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_BadgeColor void plank_dock_theme_set_BadgeColor (PlankDockTheme* self, PlankColor * value)
+function plank_dock_theme_set_BadgeStyle void plank_dock_theme_set_BadgeStyle (PlankDockTheme* self, PlankBadgeStyleType value)
+function plank_dock_theme_set_BadgeTextColor void plank_dock_theme_set_BadgeTextColor (PlankDockTheme* self, PlankColor * value)
+function plank_dock_theme_set_BottomPadding void plank_dock_theme_set_BottomPadding (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_CascadeHide void plank_dock_theme_set_CascadeHide (PlankDockTheme* self, gboolean value)
+function plank_dock_theme_set_ClickTime void plank_dock_theme_set_ClickTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_FadeOpacity void plank_dock_theme_set_FadeOpacity (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_FadeTime void plank_dock_theme_set_FadeTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_GlowPulseTime void plank_dock_theme_set_GlowPulseTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_GlowSize void plank_dock_theme_set_GlowSize (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_GlowTime void plank_dock_theme_set_GlowTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_HideTime void plank_dock_theme_set_HideTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_HorizPadding void plank_dock_theme_set_HorizPadding (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_IconShadowSize void plank_dock_theme_set_IconShadowSize (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_IndicatorColor void plank_dock_theme_set_IndicatorColor (PlankDockTheme* self, PlankColor * value)
+function plank_dock_theme_set_IndicatorSize void plank_dock_theme_set_IndicatorSize (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_IndicatorStyle void plank_dock_theme_set_IndicatorStyle (PlankDockTheme* self, PlankIndicatorStyleType value)
+function plank_dock_theme_set_ItemMoveTime void plank_dock_theme_set_ItemMoveTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_ItemPadding void plank_dock_theme_set_ItemPadding (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_LaunchBounceHeight void plank_dock_theme_set_LaunchBounceHeight (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_LaunchBounceTime void plank_dock_theme_set_LaunchBounceTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_SeparatorPadding void plank_dock_theme_set_SeparatorPadding (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_SlideTime void plank_dock_theme_set_SlideTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_TopPadding void plank_dock_theme_set_TopPadding (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_UrgentBounceHeight void plank_dock_theme_set_UrgentBounceHeight (PlankDockTheme* self, gdouble value)
+function plank_dock_theme_set_UrgentBounceTime void plank_dock_theme_set_UrgentBounceTime (PlankDockTheme* self, gint value)
+function plank_dock_theme_set_UrgentHueShift void plank_dock_theme_set_UrgentHueShift (PlankDockTheme* self, gint value)
+function plank_dock_theme_use_average_icon_color gboolean plank_dock_theme_use_average_icon_color (PlankDockTheme* self)
+function plank_dock_window_construct PlankDockWindow* plank_dock_window_construct (GType object_type, PlankDockController* controller)
+function plank_dock_window_get_HoveredItem PlankDockItem* plank_dock_window_get_HoveredItem (PlankDockWindow* self)
+function plank_dock_window_get_HoveredItemProvider PlankDockItemProvider* plank_dock_window_get_HoveredItemProvider (PlankDockWindow* self)
+function plank_dock_window_get_type GType plank_dock_window_get_type (void)
+function plank_dock_window_menu_is_visible gboolean plank_dock_window_menu_is_visible (PlankDockWindow* self)
+function plank_dock_window_new PlankDockWindow* plank_dock_window_new (PlankDockController* controller)
+function plank_dock_window_update_hovered gboolean plank_dock_window_update_hovered (PlankDockWindow* self, gint x, gint y)
+function plank_dock_window_update_icon_region void plank_dock_window_update_icon_region (PlankDockWindow* self, PlankApplicationDockItem* appitem)
+function plank_dock_window_update_icon_regions void plank_dock_window_update_icon_regions (PlankDockWindow* self)
+function plank_dock_window_update_size_and_position void plank_dock_window_update_size_and_position (PlankDockWindow* self)
+function plank_docklet_get_description const gchar* plank_docklet_get_description (PlankDocklet* self)
+function plank_docklet_get_icon const gchar* plank_docklet_get_icon (PlankDocklet* self)
+function plank_docklet_get_id const gchar* plank_docklet_get_id (PlankDocklet* self)
+function plank_docklet_get_name const gchar* plank_docklet_get_name (PlankDocklet* self)
+function plank_docklet_get_type GType plank_docklet_get_type (void)
+function plank_docklet_is_supported gboolean plank_docklet_is_supported (PlankDocklet* self)
+function plank_docklet_item_construct PlankDockletItem* plank_docklet_item_construct (GType object_type)
+function plank_docklet_item_get_type GType plank_docklet_item_get_type (void)
+function plank_docklet_make_element PlankDockElement* plank_docklet_make_element (PlankDocklet* self, const gchar* launcher, GFile* file)
+function plank_docklet_manager_get_default PlankDockletManager* plank_docklet_manager_get_default (void)
+function plank_docklet_manager_get_docklet_by_id PlankDocklet* plank_docklet_manager_get_docklet_by_id (PlankDockletManager* self, const gchar* id)
+function plank_docklet_manager_get_docklet_by_uri PlankDocklet* plank_docklet_manager_get_docklet_by_uri (PlankDockletManager* self, const gchar* uri)
+function plank_docklet_manager_get_type GType plank_docklet_manager_get_type (void)
+function plank_docklet_manager_list_docklets GeeCollection* plank_docklet_manager_list_docklets (PlankDockletManager* self)
+function plank_docklet_manager_load_docklets void plank_docklet_manager_load_docklets (PlankDockletManager* self)
+function plank_docklet_manager_register_docklet void plank_docklet_manager_register_docklet (PlankDockletManager* self, GType type)
+function plank_drag_manager_construct PlankDragManager* plank_drag_manager_construct (GType object_type, PlankDockController* controller)
+function plank_drag_manager_drop_is_accepted_by gboolean plank_drag_manager_drop_is_accepted_by (PlankDragManager* self, PlankDockItem* item)
+function plank_drag_manager_ensure_proxy void plank_drag_manager_ensure_proxy (PlankDragManager* self)
+function plank_drag_manager_get_DragItem PlankDockItem* plank_drag_manager_get_DragItem (PlankDragManager* self)
+function plank_drag_manager_get_DragNeedsCheck gboolean plank_drag_manager_get_DragNeedsCheck (PlankDragManager* self)
+function plank_drag_manager_get_ExternalDragActive gboolean plank_drag_manager_get_ExternalDragActive (PlankDragManager* self)
+function plank_drag_manager_get_InternalDragActive gboolean plank_drag_manager_get_InternalDragActive (PlankDragManager* self)
+function plank_drag_manager_get_RepositionMode gboolean plank_drag_manager_get_RepositionMode (PlankDragManager* self)
+function plank_drag_manager_get_type GType plank_drag_manager_get_type (void)
+function plank_drag_manager_initialize void plank_drag_manager_initialize (PlankDragManager* self)
+function plank_drag_manager_new PlankDragManager* plank_drag_manager_new (PlankDockController* controller)
+function plank_drawing_service_ar_scale GdkPixbuf* plank_drawing_service_ar_scale (GdkPixbuf* source, gint width, gint height)
+function plank_drawing_service_average_color void plank_drawing_service_average_color (GdkPixbuf* source, PlankColor* result)
+function plank_drawing_service_get_icon_from_file gchar* plank_drawing_service_get_icon_from_file (GFile* file)
+function plank_drawing_service_get_icon_from_gicon gchar* plank_drawing_service_get_icon_from_gicon (GIcon* icon)
+function plank_drawing_service_get_icon_theme GtkIconTheme* plank_drawing_service_get_icon_theme (void)
+function plank_drawing_service_get_type GType plank_drawing_service_get_type (void)
+function plank_drawing_service_load_icon GdkPixbuf* plank_drawing_service_load_icon (const gchar* names, gint width, gint height)
+function plank_drawing_service_load_icon_for_scale cairo_surface_t* plank_drawing_service_load_icon_for_scale (const gchar* names, gint width, gint height, gint scale)
+function plank_drawing_service_try_get_icon_file GFile* plank_drawing_service_try_get_icon_file (const gchar* name)
+function plank_easing_for_mode gdouble plank_easing_for_mode (PlankAnimationMode mode, gdouble t, gdouble d)
+function plank_environment_initialize void plank_environment_initialize (void)
+function plank_environment_is_session_class gboolean plank_environment_is_session_class (PlankXdgSessionClass type)
+function plank_environment_is_session_desktop gboolean plank_environment_is_session_desktop (PlankXdgSessionDesktop type)
+function plank_environment_is_session_type gboolean plank_environment_is_session_type (PlankXdgSessionType type)
+function plank_environment_session_class PlankXdgSessionClass plank_environment_session_class (void)
+function plank_environment_session_desktop PlankXdgSessionDesktop plank_environment_session_desktop (void)
+function plank_environment_session_type PlankXdgSessionType plank_environment_session_type (void)
+function plank_factory_construct PlankFactory* plank_factory_construct (GType object_type)
+function plank_factory_get_type GType plank_factory_get_type (void)
+function plank_factory_init void plank_factory_init (PlankAbstractMain* main_class, PlankItemFactory* item)
+function plank_factory_new PlankFactory* plank_factory_new (void)
+function plank_file_dock_item_construct PlankFileDockItem* plank_file_dock_item_construct (GType object_type)
+function plank_file_dock_item_construct_with_dockitem_file PlankFileDockItem* plank_file_dock_item_construct_with_dockitem_file (GType object_type, GFile* file)
+function plank_file_dock_item_construct_with_dockitem_filename PlankFileDockItem* plank_file_dock_item_construct_with_dockitem_filename (GType object_type, const gchar* filename)
+function plank_file_dock_item_construct_with_file PlankFileDockItem* plank_file_dock_item_construct_with_file (GType object_type, GFile* file)
+function plank_file_dock_item_file_sort_data_construct PlankFileDockItemFileSortData* plank_file_dock_item_file_sort_data_construct (GType object_type, const gchar* creation_date, const gchar* modified_date, const gchar* display_name, const gchar* content_type, gint64 size, GtkMenuItem* menu_item)
+function plank_file_dock_item_file_sort_data_get_content_type const gchar* plank_file_dock_item_file_sort_data_get_content_type (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_creation_date const gchar* plank_file_dock_item_file_sort_data_get_creation_date (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_display_name const gchar* plank_file_dock_item_file_sort_data_get_display_name (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_menu_item GtkMenuItem* plank_file_dock_item_file_sort_data_get_menu_item (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_modified_date const gchar* plank_file_dock_item_file_sort_data_get_modified_date (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_size gint64 plank_file_dock_item_file_sort_data_get_size (PlankFileDockItemFileSortData* self)
+function plank_file_dock_item_file_sort_data_get_type GType plank_file_dock_item_file_sort_data_get_type (void)
+function plank_file_dock_item_file_sort_data_new PlankFileDockItemFileSortData* plank_file_dock_item_file_sort_data_new (const gchar* creation_date, const gchar* modified_date, const gchar* display_name, const gchar* content_type, gint64 size, GtkMenuItem* menu_item)
+function plank_file_dock_item_file_sort_data_ref gpointer plank_file_dock_item_file_sort_data_ref (gpointer instance)
+function plank_file_dock_item_file_sort_data_unref void plank_file_dock_item_file_sort_data_unref (gpointer instance)
+function plank_file_dock_item_get_OwnedFile GFile* plank_file_dock_item_get_OwnedFile (PlankFileDockItem* self)
+function plank_file_dock_item_get_type GType plank_file_dock_item_get_type (void)
+function plank_file_dock_item_new PlankFileDockItem* plank_file_dock_item_new (void)
+function plank_file_dock_item_new_with_dockitem_file PlankFileDockItem* plank_file_dock_item_new_with_dockitem_file (GFile* file)
+function plank_file_dock_item_new_with_dockitem_filename PlankFileDockItem* plank_file_dock_item_new_with_dockitem_filename (const gchar* filename)
+function plank_file_dock_item_new_with_file PlankFileDockItem* plank_file_dock_item_new_with_file (GFile* file)
+function plank_file_dock_item_param_spec_file_sort_data GParamSpec* plank_file_dock_item_param_spec_file_sort_data (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags)
+function plank_file_dock_item_set_OwnedFile void plank_file_dock_item_set_OwnedFile (PlankFileDockItem* self, GFile* value)
+function plank_file_dock_item_value_get_file_sort_data gpointer plank_file_dock_item_value_get_file_sort_data (const GValue* value)
+function plank_file_dock_item_value_set_file_sort_data void plank_file_dock_item_value_set_file_sort_data (GValue* value, gpointer v_object)
+function plank_file_dock_item_value_take_file_sort_data void plank_file_dock_item_value_take_file_sort_data (GValue* value, gpointer v_object)
+function plank_file_is_dockitem gboolean plank_file_is_dockitem (GFile* file)
+function plank_get_major_version guint plank_get_major_version (void)
+function plank_get_micro_version guint plank_get_micro_version (void)
+function plank_get_minor_version guint plank_get_minor_version (void)
+function plank_get_nano_version guint plank_get_nano_version (void)
+function plank_get_wnck_screen WnckScreen* plank_get_wnck_screen (void)
+function plank_helpers_bring_to_current_workspace gboolean plank_helpers_bring_to_current_workspace (PlankDefaultApplicationDockItemProvider* provider)
+function plank_helpers_current_workspace_only gboolean plank_helpers_current_workspace_only (PlankDefaultApplicationDockItemProvider* provider)
+function plank_helpers_popup_docklet_menu void plank_helpers_popup_docklet_menu (PlankDockController* controller, PlankDockItem* item, GtkMenu* menu)
+function plank_helpers_truncate_middle gchar* plank_helpers_truncate_middle (const gchar* str, gint max_length)
+function plank_helpers_window_count gint plank_helpers_window_count (BamfApplication* app, PlankDefaultApplicationDockItemProvider* provider)
+function plank_hide_manager_construct PlankHideManager* plank_hide_manager_construct (GType object_type, PlankDockController* controller)
+function plank_hide_manager_get_Disabled gboolean plank_hide_manager_get_Disabled (PlankHideManager* self)
+function plank_hide_manager_get_Hidden gboolean plank_hide_manager_get_Hidden (PlankHideManager* self)
+function plank_hide_manager_get_Hovered gboolean plank_hide_manager_get_Hovered (PlankHideManager* self)
+function plank_hide_manager_get_type GType plank_hide_manager_get_type (void)
+function plank_hide_manager_initialize void plank_hide_manager_initialize (PlankHideManager* self)
+function plank_hide_manager_new PlankHideManager* plank_hide_manager_new (PlankDockController* controller)
+function plank_hide_manager_update_barrier void plank_hide_manager_update_barrier (PlankHideManager* self)
+function plank_hide_manager_update_hovered void plank_hide_manager_update_hovered (PlankHideManager* self)
+function plank_hide_manager_update_hovered_with_coords void plank_hide_manager_update_hovered_with_coords (PlankHideManager* self, gint x, gint y, gboolean force_unhovered)
+function plank_hide_type_get_type GType plank_hide_type_get_type (void)
+function plank_hover_window_construct PlankHoverWindow* plank_hover_window_construct (GType object_type)
+function plank_hover_window_get_type GType plank_hover_window_get_type (void)
+function plank_hover_window_new PlankHoverWindow* plank_hover_window_new (void)
+function plank_hover_window_set_text void plank_hover_window_set_text (PlankHoverWindow* self, const gchar* text)
+function plank_hover_window_show_at void plank_hover_window_show_at (PlankHoverWindow* self, gint x, gint y, GtkPositionType position)
+function plank_indicator_state_get_type GType plank_indicator_state_get_type (void)
+function plank_indicator_style_type_get_type GType plank_indicator_style_type_get_type (void)
+function plank_item_factory_construct PlankItemFactory* plank_item_factory_construct (GType object_type)
+function plank_item_factory_default_make_element PlankDockElement* plank_item_factory_default_make_element (PlankItemFactory* self, GFile* file, const gchar* launcher)
+function plank_item_factory_get_item_for_dock PlankDockItem* plank_item_factory_get_item_for_dock (PlankItemFactory* self)
+function plank_item_factory_get_launcher_from_dockitem gchar* plank_item_factory_get_launcher_from_dockitem (PlankItemFactory* self, GFile* file)
+function plank_item_factory_get_type GType plank_item_factory_get_type (void)
+function plank_item_factory_load_elements GeeArrayList* plank_item_factory_load_elements (PlankItemFactory* self, GFile* source_dir, gchar** ordering, gint ordering_length1)
+function plank_item_factory_make_default_items void plank_item_factory_make_default_items (PlankItemFactory* self)
+function plank_item_factory_make_dock_item GFile* plank_item_factory_make_dock_item (PlankItemFactory* self, const gchar* uri, GFile* target_dir)
+function plank_item_factory_make_element PlankDockElement* plank_item_factory_make_element (PlankItemFactory* self, GFile* file)
+function plank_item_factory_new PlankItemFactory* plank_item_factory_new (void)
+function plank_item_state_get_type GType plank_item_state_get_type (void)
+function plank_log_level_get_type GType plank_log_level_get_type (void)
+function plank_logger_get_DisplayLevel PlankLogLevel plank_logger_get_DisplayLevel (void)
+function plank_logger_get_type GType plank_logger_get_type (void)
+function plank_logger_initialize void plank_logger_initialize (const gchar* app_name)
+function plank_logger_notification void plank_logger_notification (const gchar* msg)
+function plank_logger_set_DisplayLevel void plank_logger_set_DisplayLevel (PlankLogLevel value)
+function plank_logger_verbose void plank_logger_verbose (const gchar* msg, ...)
+function plank_nround gdouble plank_nround (gdouble d, guint n)
+function plank_param_spec_dock_item_draw_value GParamSpec* plank_param_spec_dock_item_draw_value (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags)
+function plank_paths_ensure_directory_exists gboolean plank_paths_ensure_directory_exists (GFile* dir)
+function plank_paths_get_AppCacheFolder GFile* plank_paths_get_AppCacheFolder (void)
+function plank_paths_get_AppConfigFolder GFile* plank_paths_get_AppConfigFolder (void)
+function plank_paths_get_AppDataFolder GFile* plank_paths_get_AppDataFolder (void)
+function plank_paths_get_AppName const gchar* plank_paths_get_AppName (void)
+function plank_paths_get_AppThemeFolder GFile* plank_paths_get_AppThemeFolder (void)
+function plank_paths_get_CacheHomeFolder GFile* plank_paths_get_CacheHomeFolder (void)
+function plank_paths_get_ConfigHomeFolder GFile* plank_paths_get_ConfigHomeFolder (void)
+function plank_paths_get_DataDirFolders GeeArrayList* plank_paths_get_DataDirFolders (void)
+function plank_paths_get_DataFolder GFile* plank_paths_get_DataFolder (void)
+function plank_paths_get_DataHomeFolder GFile* plank_paths_get_DataHomeFolder (void)
+function plank_paths_get_HomeFolder GFile* plank_paths_get_HomeFolder (void)
+function plank_paths_get_ThemeFolder GFile* plank_paths_get_ThemeFolder (void)
+function plank_paths_get_type GType plank_paths_get_type (void)
+function plank_paths_initialize void plank_paths_initialize (const gchar* app_name, const gchar* data_folder)
+function plank_paths_set_AppCacheFolder void plank_paths_set_AppCacheFolder (GFile* value)
+function plank_paths_set_AppConfigFolder void plank_paths_set_AppConfigFolder (GFile* value)
+function plank_paths_set_AppDataFolder void plank_paths_set_AppDataFolder (GFile* value)
+function plank_paths_set_AppName void plank_paths_set_AppName (const gchar* value)
+function plank_paths_set_AppThemeFolder void plank_paths_set_AppThemeFolder (GFile* value)
+function plank_paths_set_CacheHomeFolder void plank_paths_set_CacheHomeFolder (GFile* value)
+function plank_paths_set_ConfigHomeFolder void plank_paths_set_ConfigHomeFolder (GFile* value)
+function plank_paths_set_DataDirFolders void plank_paths_set_DataDirFolders (GeeArrayList* value)
+function plank_paths_set_DataFolder void plank_paths_set_DataFolder (GFile* value)
+function plank_paths_set_DataHomeFolder void plank_paths_set_DataHomeFolder (GFile* value)
+function plank_paths_set_HomeFolder void plank_paths_set_HomeFolder (GFile* value)
+function plank_paths_set_ThemeFolder void plank_paths_set_ThemeFolder (GFile* value)
+function plank_placeholder_dock_item_construct PlankPlaceholderDockItem* plank_placeholder_dock_item_construct (GType object_type)
+function plank_placeholder_dock_item_get_type GType plank_placeholder_dock_item_get_type (void)
+function plank_placeholder_dock_item_new PlankPlaceholderDockItem* plank_placeholder_dock_item_new (void)
+function plank_plank_dock_item_get_instance PlankPlankDockItem* plank_plank_dock_item_get_instance (void)
+function plank_plank_dock_item_get_type GType plank_plank_dock_item_get_type (void)
+function plank_point_d_dup PlankPointD* plank_point_d_dup (const PlankPointD* self)
+function plank_point_d_free void plank_point_d_free (PlankPointD* self)
+function plank_point_d_get_type GType plank_point_d_get_type (void)
+function plank_poof_window_construct PlankPoofWindow* plank_poof_window_construct (GType object_type)
+function plank_poof_window_get_default PlankPoofWindow* plank_poof_window_get_default (void)
+function plank_poof_window_get_type GType plank_poof_window_get_type (void)
+function plank_poof_window_new PlankPoofWindow* plank_poof_window_new (void)
+function plank_poof_window_show_at void plank_poof_window_show_at (PlankPoofWindow* self, gint x, gint y)
+function plank_popup_button_from_event_button PlankPopupButton plank_popup_button_from_event_button (GdkEventButton* event)
+function plank_popup_button_get_type GType plank_popup_button_get_type (void)
+function plank_position_manager_active_monitor gchar* plank_position_manager_active_monitor (PlankPositionManager* self)
+function plank_position_manager_compute_background_padding void plank_position_manager_compute_background_padding (gint* x, gint* y, GtkPositionType position, gint dock_width, gint dock_height, gint bg_width, gint bg_height, gint hide_offset)
+function plank_position_manager_compute_dock_draw_position void plank_position_manager_compute_dock_draw_position (gint* x, gint* y, GtkPositionType position, gdouble progress, gint dock_width, gint dock_height, gint hide_offset)
+function plank_position_manager_compute_dock_window_position void plank_position_manager_compute_dock_window_position (gint* x, gint* y, GtkPositionType position, GtkAlign alignment, GdkRectangle* monitor, gint dock_width, gint dock_height, gint gap_size, gint offset, gboolean composited, gboolean horizontal, gint static_width, gint static_height, gboolean hidden)
+function plank_position_manager_compute_struts void plank_position_manager_compute_struts (gulong** struts, gint* struts_length1, GtkPositionType position, GdkRectangle* monitor, gint screen_width, gint screen_height, gint dock_width, gint dock_height, gint gap_size, gint scale)
+function plank_position_manager_construct PlankPositionManager* plank_position_manager_construct (GType object_type, PlankDockController* controller)
+function plank_position_manager_get_Alignment GtkAlign plank_position_manager_get_Alignment (PlankPositionManager* self)
+function plank_position_manager_get_BottomPadding gint plank_position_manager_get_BottomPadding (PlankPositionManager* self)
+function plank_position_manager_get_GapSize gint plank_position_manager_get_GapSize (PlankPositionManager* self)
+function plank_position_manager_get_GlowSize gint plank_position_manager_get_GlowSize (PlankPositionManager* self)
+function plank_position_manager_get_HorizPadding gint plank_position_manager_get_HorizPadding (PlankPositionManager* self)
+function plank_position_manager_get_IconShadowSize gint plank_position_manager_get_IconShadowSize (PlankPositionManager* self)
+function plank_position_manager_get_IconSize gint plank_position_manager_get_IconSize (PlankPositionManager* self)
+function plank_position_manager_get_IndicatorSize gint plank_position_manager_get_IndicatorSize (PlankPositionManager* self)
+function plank_position_manager_get_ItemPadding gint plank_position_manager_get_ItemPadding (PlankPositionManager* self)
+function plank_position_manager_get_ItemsAlignment GtkAlign plank_position_manager_get_ItemsAlignment (PlankPositionManager* self)
+function plank_position_manager_get_LaunchBounceHeight gint plank_position_manager_get_LaunchBounceHeight (PlankPositionManager* self)
+function plank_position_manager_get_LineWidth gint plank_position_manager_get_LineWidth (PlankPositionManager* self)
+function plank_position_manager_get_MaxItemCount gint plank_position_manager_get_MaxItemCount (PlankPositionManager* self)
+function plank_position_manager_get_Offset gint plank_position_manager_get_Offset (PlankPositionManager* self)
+function plank_position_manager_get_Position GtkPositionType plank_position_manager_get_Position (PlankPositionManager* self)
+function plank_position_manager_get_SeparatorPadding gint plank_position_manager_get_SeparatorPadding (PlankPositionManager* self)
+function plank_position_manager_get_TopPadding gint plank_position_manager_get_TopPadding (PlankPositionManager* self)
+function plank_position_manager_get_UrgentBounceHeight gint plank_position_manager_get_UrgentBounceHeight (PlankPositionManager* self)
+function plank_position_manager_get_ZoomIconSize gint plank_position_manager_get_ZoomIconSize (PlankPositionManager* self)
+function plank_position_manager_get_background_padding void plank_position_manager_get_background_padding (PlankPositionManager* self, gint* x, gint* y)
+function plank_position_manager_get_background_region void plank_position_manager_get_background_region (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_barrier void plank_position_manager_get_barrier (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_current_target_item PlankDockItem* plank_position_manager_get_current_target_item (PlankPositionManager* self, PlankDockContainer* container)
+function plank_position_manager_get_cursor_region void plank_position_manager_get_cursor_region (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_dock_draw_position void plank_position_manager_get_dock_draw_position (PlankPositionManager* self, gint* x, gint* y)
+function plank_position_manager_get_dock_window_region void plank_position_manager_get_dock_window_region (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_draw_value_for_item PlankDockItemDrawValue* plank_position_manager_get_draw_value_for_item (PlankPositionManager* self, PlankDockItem* item)
+function plank_position_manager_get_hover_position void plank_position_manager_get_hover_position (PlankPositionManager* self, PlankDockItem* hovered, gint* x, gint* y)
+function plank_position_manager_get_hover_position_at void plank_position_manager_get_hover_position_at (PlankPositionManager* self, gint* x, gint* y)
+function plank_position_manager_get_hover_region_for_element void plank_position_manager_get_hover_region_for_element (PlankPositionManager* self, PlankDockElement* element, GdkRectangle* result)
+function plank_position_manager_get_icon_geometry void plank_position_manager_get_icon_geometry (PlankPositionManager* self, PlankApplicationDockItem* item, gboolean for_hidden, GdkRectangle* result)
+function plank_position_manager_get_menu_position void plank_position_manager_get_menu_position (PlankPositionManager* self, PlankDockItem* hovered, GtkRequisition* requisition, gint* x, gint* y)
+function plank_position_manager_get_monitor_geometry void plank_position_manager_get_monitor_geometry (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_monitor_plug_names gchar** plank_position_manager_get_monitor_plug_names (GdkScreen* screen, gint* result_length1)
+function plank_position_manager_get_nearest_item_at PlankDockItem* plank_position_manager_get_nearest_item_at (PlankPositionManager* self, gint x, gint y, PlankDockContainer* container)
+function plank_position_manager_get_screen_is_composited gboolean plank_position_manager_get_screen_is_composited (PlankPositionManager* self)
+function plank_position_manager_get_static_dock_region void plank_position_manager_get_static_dock_region (PlankPositionManager* self, GdkRectangle* result)
+function plank_position_manager_get_struts void plank_position_manager_get_struts (PlankPositionManager* self, gulong** struts, gint* struts_length1)
+function plank_position_manager_get_type GType plank_position_manager_get_type (void)
+function plank_position_manager_get_urgent_glow_position void plank_position_manager_get_urgent_glow_position (PlankPositionManager* self, PlankDockItem* item, gint* x, gint* y)
+function plank_position_manager_initialize void plank_position_manager_initialize (PlankPositionManager* self)
+function plank_position_manager_is_horizontal_dock gboolean plank_position_manager_is_horizontal_dock (PlankPositionManager* self)
+function plank_position_manager_move_to_active_monitor void plank_position_manager_move_to_active_monitor (PlankPositionManager* self)
+function plank_position_manager_new PlankPositionManager* plank_position_manager_new (PlankDockController* controller)
+function plank_position_manager_update void plank_position_manager_update (PlankPositionManager* self, PlankDockTheme* theme)
+function plank_position_manager_update_dock_position void plank_position_manager_update_dock_position (PlankPositionManager* self)
+function plank_position_manager_update_draw_values void plank_position_manager_update_draw_values (PlankPositionManager* self, GeeArrayList* items, PlankDrawValueFunc func, gpointer func_target, PlankDrawValuesFunc post_func, gpointer post_func_target)
+function plank_position_manager_update_regions void plank_position_manager_update_regions (PlankPositionManager* self)
+function plank_preferences_apply void plank_preferences_apply (PlankPreferences* self)
+function plank_preferences_construct PlankPreferences* plank_preferences_construct (GType object_type)
+function plank_preferences_construct_with_file PlankPreferences* plank_preferences_construct_with_file (GType object_type, GFile* file)
+function plank_preferences_construct_with_filename PlankPreferences* plank_preferences_construct_with_filename (GType object_type, const gchar* filename)
+function plank_preferences_delay void plank_preferences_delay (PlankPreferences* self)
+function plank_preferences_delete void plank_preferences_delete (PlankPreferences* self)
+function plank_preferences_get_backing_file GFile* plank_preferences_get_backing_file (PlankPreferences* self)
+function plank_preferences_get_filename gchar* plank_preferences_get_filename (PlankPreferences* self)
+function plank_preferences_get_type GType plank_preferences_get_type (void)
+function plank_preferences_init_from_file void plank_preferences_init_from_file (PlankPreferences* self, GFile* file)
+function plank_preferences_init_from_filename void plank_preferences_init_from_filename (PlankPreferences* self, const gchar* filename)
+function plank_preferences_reset_properties void plank_preferences_reset_properties (PlankPreferences* self)
+function plank_preferences_verify void plank_preferences_verify (PlankPreferences* self, const gchar* prop)
+function plank_preferences_window_construct PlankPreferencesWindow* plank_preferences_window_construct (GType object_type, PlankDockController* controller)
+function plank_preferences_window_get_controller PlankDockController* plank_preferences_window_get_controller (PlankPreferencesWindow* self)
+function plank_preferences_window_get_type GType plank_preferences_window_get_type (void)
+function plank_preferences_window_new PlankPreferencesWindow* plank_preferences_window_new (PlankDockController* controller)
+function plank_preferences_window_set_controller void plank_preferences_window_set_controller (PlankPreferencesWindow* self, PlankDockController* value)
+function plank_renderer_animated_draw void plank_renderer_animated_draw (PlankRenderer* self)
+function plank_renderer_animation_needed gboolean plank_renderer_animation_needed (PlankRenderer* self, gint64 frame_time)
+function plank_renderer_construct PlankRenderer* plank_renderer_construct (GType object_type, GtkWidget* widget)
+function plank_renderer_draw void plank_renderer_draw (PlankRenderer* self, cairo_t* cr, gint64 frame_time)
+function plank_renderer_force_frame_time_update gint64 plank_renderer_force_frame_time_update (PlankRenderer* self)
+function plank_renderer_get_frame_time gint64 plank_renderer_get_frame_time (PlankRenderer* self)
+function plank_renderer_get_type GType plank_renderer_get_type (void)
+function plank_renderer_get_widget GtkWidget* plank_renderer_get_widget (PlankRenderer* self)
+function plank_renderer_initialize_frame void plank_renderer_initialize_frame (PlankRenderer* self, gint64 frame_time)
+function plank_serializable_deserialize void plank_serializable_deserialize (PlankSerializable* self, const gchar* s)
+function plank_serializable_get_type GType plank_serializable_get_type (void)
+function plank_serializable_serialize gchar* plank_serializable_serialize (PlankSerializable* self)
+function plank_settings_apply void plank_settings_apply (PlankSettings* self)
+function plank_settings_construct PlankSettings* plank_settings_construct (GType object_type, const gchar* schema)
+function plank_settings_construct_with_path PlankSettings* plank_settings_construct_with_path (GType object_type, const gchar* schema, const gchar* path)
+function plank_settings_delay void plank_settings_delay (PlankSettings* self)
+function plank_settings_get_bind_flags GSettingsBindFlags plank_settings_get_bind_flags (PlankSettings* self)
+function plank_settings_get_settings GSettings* plank_settings_get_settings (PlankSettings* self)
+function plank_settings_get_type GType plank_settings_get_type (void)
+function plank_settings_reset_all void plank_settings_reset_all (PlankSettings* self)
+function plank_settings_verify void plank_settings_verify (PlankSettings* self, const gchar* name)
+function plank_string_split_combine gchar** plank_string_split_combine (const gchar* s, const gchar* delimiter, gint* result_length1)
+function plank_surface_average_color void plank_surface_average_color (PlankSurface* self, PlankColor* result)
+function plank_surface_cache_clear void plank_surface_cache_clear (PlankSurfaceCache* self)
+function plank_surface_cache_construct PlankSurfaceCache* plank_surface_cache_construct (GType object_type, GType g_type, GBoxedCopyFunc g_dup_func, GDestroyNotify g_destroy_func, PlankSurfaceCacheFlags flags)
+function plank_surface_cache_flags_get_type GType plank_surface_cache_flags_get_type (void)
+function plank_surface_cache_get_flags PlankSurfaceCacheFlags plank_surface_cache_get_flags (PlankSurfaceCache* self)
+function plank_surface_cache_get_surface PlankSurface* plank_surface_cache_get_surface (PlankSurfaceCache* self, GType g_type, GBoxedCopyFunc g_dup_func, GDestroyNotify g_destroy_func, gint width, gint height, PlankSurface* model, PlankDrawFunc draw_func, gpointer draw_func_target, PlankDrawDataFunc draw_data_func, gpointer draw_data_func_target)
+function plank_surface_cache_get_type GType plank_surface_cache_get_type (void)
+function plank_surface_cache_new PlankSurfaceCache* plank_surface_cache_new (GType g_type, GBoxedCopyFunc g_dup_func, GDestroyNotify g_destroy_func, PlankSurfaceCacheFlags flags)
+function plank_surface_cache_set_flags void plank_surface_cache_set_flags (PlankSurfaceCache* self, PlankSurfaceCacheFlags value)
+function plank_surface_clear void plank_surface_clear (PlankSurface* self)
+function plank_surface_construct PlankSurface* plank_surface_construct (GType object_type, gint width, gint height)
+function plank_surface_construct_with_cairo_surface PlankSurface* plank_surface_construct_with_cairo_surface (GType object_type, gint width, gint height, cairo_surface_t* model)
+function plank_surface_construct_with_internal PlankSurface* plank_surface_construct_with_internal (GType object_type, cairo_surface_t* image)
+function plank_surface_construct_with_surface PlankSurface* plank_surface_construct_with_surface (GType object_type, gint width, gint height, PlankSurface* model)
+function plank_surface_copy PlankSurface* plank_surface_copy (PlankSurface* self)
+function plank_surface_create_mask PlankSurface* plank_surface_create_mask (PlankSurface* self, gdouble threshold, GdkRectangle* extent)
+function plank_surface_exponential_blur void plank_surface_exponential_blur (PlankSurface* self, gint radius)
+function plank_surface_fast_blur void plank_surface_fast_blur (PlankSurface* self, gint radius, gint process_count)
+function plank_surface_gaussian_blur void plank_surface_gaussian_blur (PlankSurface* self, gint radius)
+function plank_surface_get_Context cairo_t* plank_surface_get_Context (PlankSurface* self)
+function plank_surface_get_Height gint plank_surface_get_Height (PlankSurface* self)
+function plank_surface_get_Internal cairo_surface_t* plank_surface_get_Internal (PlankSurface* self)
+function plank_surface_get_Width gint plank_surface_get_Width (PlankSurface* self)
+function plank_surface_get_type GType plank_surface_get_type (void)
+function plank_surface_new PlankSurface* plank_surface_new (gint width, gint height)
+function plank_surface_new_with_cairo_surface PlankSurface* plank_surface_new_with_cairo_surface (gint width, gint height, cairo_surface_t* model)
+function plank_surface_new_with_internal PlankSurface* plank_surface_new_with_internal (cairo_surface_t* image)
+function plank_surface_new_with_surface PlankSurface* plank_surface_new_with_surface (gint width, gint height, PlankSurface* model)
+function plank_surface_scaled_copy PlankSurface* plank_surface_scaled_copy (PlankSurface* self, gint width, gint height)
+function plank_surface_to_pixbuf GdkPixbuf* plank_surface_to_pixbuf (PlankSurface* self)
+function plank_system_construct PlankSystem* plank_system_construct (GType object_type, GAppLaunchContext* context)
+function plank_system_get_context GAppLaunchContext* plank_system_get_context (PlankSystem* self)
+function plank_system_get_default PlankSystem* plank_system_get_default (void)
+function plank_system_get_type GType plank_system_get_type (void)
+function plank_system_launch void plank_system_launch (PlankSystem* self, GFile* app)
+function plank_system_launch_with_files void plank_system_launch_with_files (PlankSystem* self, GFile* app, GFile** files, gint files_length1)
+function plank_system_new PlankSystem* plank_system_new (GAppLaunchContext* context)
+function plank_system_open void plank_system_open (PlankSystem* self, GFile* file)
+function plank_system_open_files void plank_system_open_files (PlankSystem* self, GFile** files, gint files_length1)
+function plank_system_open_uri void plank_system_open_uri (PlankSystem* self, const gchar* uri)
+function plank_task_priority_get_type GType plank_task_priority_get_type (void)
+function plank_theme_construct PlankTheme* plank_theme_construct (GType object_type)
+function plank_theme_construct_with_name PlankTheme* plank_theme_construct_with_name (GType object_type, const gchar* name)
+function plank_theme_create_style_context GtkStyleContext* plank_theme_create_style_context (GType widget_type, GtkStyleContext* parent_style, GtkCssProvider* provider, const gchar* object_name, const gchar* first_class, ...)
+function plank_theme_draw_background void plank_theme_draw_background (PlankTheme* self, PlankSurface* surface)
+function plank_theme_draw_inner_rect void plank_theme_draw_inner_rect (PlankTheme* self, cairo_t* cr, gint width, gint height)
+function plank_theme_draw_rounded_line void plank_theme_draw_rounded_line (cairo_t* cr, gdouble x, gdouble y, gdouble width, gdouble height, gboolean is_round_left, gboolean is_round_right, cairo_pattern_t* stroke, cairo_pattern_t* fill)
+function plank_theme_draw_rounded_rect void plank_theme_draw_rounded_rect (cairo_t* cr, gdouble x, gdouble y, gdouble width, gdouble height, gdouble top_radius, gdouble bottom_radius, gdouble line_width)
+function plank_theme_get_BottomRoundness gint plank_theme_get_BottomRoundness (PlankTheme* self)
+function plank_theme_get_FillEndColor void plank_theme_get_FillEndColor (PlankTheme* self, PlankColor * result)
+function plank_theme_get_FillStartColor void plank_theme_get_FillStartColor (PlankTheme* self, PlankColor * result)
+function plank_theme_get_InnerStrokeColor void plank_theme_get_InnerStrokeColor (PlankTheme* self, PlankColor * result)
+function plank_theme_get_LineWidth gint plank_theme_get_LineWidth (PlankTheme* self)
+function plank_theme_get_OuterStrokeColor void plank_theme_get_OuterStrokeColor (PlankTheme* self, PlankColor * result)
+function plank_theme_get_TopRoundness gint plank_theme_get_TopRoundness (PlankTheme* self)
+function plank_theme_get_bottom_offset gint plank_theme_get_bottom_offset (PlankTheme* self)
+function plank_theme_get_style_context GtkStyleContext* plank_theme_get_style_context (PlankTheme* self)
+function plank_theme_get_theme_folder GFile* plank_theme_get_theme_folder (const gchar* name)
+function plank_theme_get_theme_list gchar** plank_theme_get_theme_list (gint* result_length1)
+function plank_theme_get_top_offset gint plank_theme_get_top_offset (PlankTheme* self)
+function plank_theme_get_type GType plank_theme_get_type (void)
+function plank_theme_load void plank_theme_load (PlankTheme* self, const gchar* type)
+function plank_theme_set_BottomRoundness void plank_theme_set_BottomRoundness (PlankTheme* self, gint value)
+function plank_theme_set_FillEndColor void plank_theme_set_FillEndColor (PlankTheme* self, PlankColor * value)
+function plank_theme_set_FillStartColor void plank_theme_set_FillStartColor (PlankTheme* self, PlankColor * value)
+function plank_theme_set_InnerStrokeColor void plank_theme_set_InnerStrokeColor (PlankTheme* self, PlankColor * value)
+function plank_theme_set_LineWidth void plank_theme_set_LineWidth (PlankTheme* self, gint value)
+function plank_theme_set_OuterStrokeColor void plank_theme_set_OuterStrokeColor (PlankTheme* self, PlankColor * value)
+function plank_theme_set_TopRoundness void plank_theme_set_TopRoundness (PlankTheme* self, gint value)
+function plank_titled_separator_menu_item_construct PlankTitledSeparatorMenuItem* plank_titled_separator_menu_item_construct (GType object_type, const gchar* text)
+function plank_titled_separator_menu_item_construct_no_line PlankTitledSeparatorMenuItem* plank_titled_separator_menu_item_construct_no_line (GType object_type, const gchar* text)
+function plank_titled_separator_menu_item_get_type GType plank_titled_separator_menu_item_get_type (void)
+function plank_titled_separator_menu_item_new PlankTitledSeparatorMenuItem* plank_titled_separator_menu_item_new (const gchar* text)
+function plank_titled_separator_menu_item_new_no_line PlankTitledSeparatorMenuItem* plank_titled_separator_menu_item_new_no_line (const gchar* text)
+function plank_transient_dock_item_construct PlankTransientDockItem* plank_transient_dock_item_construct (GType object_type)
+function plank_transient_dock_item_construct_with_launcher PlankTransientDockItem* plank_transient_dock_item_construct_with_launcher (GType object_type, const gchar* launcher_uri)
+function plank_transient_dock_item_get_type GType plank_transient_dock_item_get_type (void)
+function plank_transient_dock_item_new PlankTransientDockItem* plank_transient_dock_item_new (void)
+function plank_transient_dock_item_new_with_launcher PlankTransientDockItem* plank_transient_dock_item_new_with_launcher (const gchar* launcher_uri)
+function plank_try_create_settings GSettings* plank_try_create_settings (const gchar* schema_id, const gchar* path)
+function plank_unity_add_client void plank_unity_add_client (PlankUnity* self, PlankUnityClient* client)
+function plank_unity_client_get_type GType plank_unity_client_get_type (void)
+function plank_unity_client_remove_launcher_entry void plank_unity_client_remove_launcher_entry (PlankUnityClient* self, const gchar* sender_name)
+function plank_unity_client_update_launcher_entry void plank_unity_client_update_launcher_entry (PlankUnityClient* self, const gchar* sender_name, GVariant* parameters, gboolean is_retry)
+function plank_unity_get_default PlankUnity* plank_unity_get_default (void)
+function plank_unity_get_type GType plank_unity_get_type (void)
+function plank_unity_remove_client void plank_unity_remove_client (PlankUnity* self, PlankUnityClient* client)
+function plank_update_indicator_event_get_type GType plank_update_indicator_event_get_type (void)
+function plank_value_get_dock_item_draw_value gpointer plank_value_get_dock_item_draw_value (const GValue* value)
+function plank_value_set_dock_item_draw_value void plank_value_set_dock_item_draw_value (GValue* value, gpointer v_object)
+function plank_value_take_dock_item_draw_value void plank_value_take_dock_item_draw_value (GValue* value, gpointer v_object)
+function plank_worker_add_task void plank_worker_add_task (PlankWorker* self, GThreadFunc func, gpointer func_target, PlankTaskPriority priority)
+function plank_worker_add_task_with_result void plank_worker_add_task_with_result (PlankWorker* self, GType g_type, GBoxedCopyFunc g_dup_func, GDestroyNotify g_destroy_func, PlankTaskFunc func, gpointer func_target, GDestroyNotify func_target_destroy_notify, PlankTaskPriority priority, GAsyncReadyCallback _callback_, gpointer _user_data_)
+function plank_worker_add_task_with_result_finish gpointer plank_worker_add_task_with_result_finish (PlankWorker* self, GAsyncResult* _res_, GError** error)
+function plank_worker_get_default PlankWorker* plank_worker_get_default (void)
+function plank_worker_get_type GType plank_worker_get_type (void)
+function plank_xdg_session_class_from_string PlankXdgSessionClass plank_xdg_session_class_from_string (const gchar* s)
+function plank_xdg_session_class_get_type GType plank_xdg_session_class_get_type (void)
+function plank_xdg_session_desktop_from_string PlankXdgSessionDesktop plank_xdg_session_desktop_from_string (const gchar* s)
+function plank_xdg_session_desktop_get_type GType plank_xdg_session_desktop_get_type (void)
+function plank_xdg_session_type_from_string PlankXdgSessionType plank_xdg_session_type_from_string (const gchar* s)
+function plank_xdg_session_type_get_type GType plank_xdg_session_type_get_type (void)
+struct _PlankAbstractMain 001 GtkApplication parent_instance
+struct _PlankAbstractMain 002 PlankAbstractMainPrivate * priv
+struct _PlankAbstractMainClass 001 GtkApplicationClass parent_class
+struct _PlankAbstractMainClass 002 void (*initialize) (PlankAbstractMain* self)
+struct _PlankAbstractMainClass 003 void (*create_docks) (PlankAbstractMain* self)
+struct _PlankAbstractMainClass 004 void (*create_actions) (PlankAbstractMain* self)
+struct _PlankApplicationDockItem 001 PlankDockItem parent_instance
+struct _PlankApplicationDockItem 002 PlankApplicationDockItemPrivate * priv
+struct _PlankApplicationDockItemClass 001 PlankDockItemClass parent_class
+struct _PlankApplicationDockItemProvider 001 PlankDockItemProvider parent_instance
+struct _PlankApplicationDockItemProvider 002 PlankApplicationDockItemProviderPrivate * priv
+struct _PlankApplicationDockItemProviderClass 001 PlankDockItemProviderClass parent_class
+struct _PlankApplicationDockItemProviderClass 002 void (*app_opened) (PlankApplicationDockItemProvider* self, BamfApplication* app)
+struct _PlankCompositedWindow 001 GtkWindow parent_instance
+struct _PlankCompositedWindow 002 PlankCompositedWindowPrivate * priv
+struct _PlankCompositedWindowClass 001 GtkWindowClass parent_class
+struct _PlankDBusClient 001 GObject parent_instance
+struct _PlankDBusClient 002 PlankDBusClientPrivate * priv
+struct _PlankDBusClientClass 001 GObjectClass parent_class
+struct _PlankDBusManager 001 GObject parent_instance
+struct _PlankDBusManager 002 PlankDBusManagerPrivate * priv
+struct _PlankDBusManagerClass 001 GObjectClass parent_class
+struct _PlankDefaultApplicationDockItemProvider 001 PlankApplicationDockItemProvider parent_instance
+struct _PlankDefaultApplicationDockItemProvider 002 PlankDefaultApplicationDockItemProviderPrivate * priv
+struct _PlankDefaultApplicationDockItemProviderClass 001 PlankApplicationDockItemProviderClass parent_class
+struct _PlankDockContainer 001 PlankDockElement parent_instance
+struct _PlankDockContainer 002 PlankDockContainerPrivate * priv
+struct _PlankDockContainer 003 GeeArrayList* visible_elements
+struct _PlankDockContainer 004 GeeArrayList* internal_elements
+struct _PlankDockContainerClass 001 PlankDockElementClass parent_class
+struct _PlankDockContainerClass 002 void (*prepare) (PlankDockContainer* self)
+struct _PlankDockContainerClass 003 void (*update_visible_elements) (PlankDockContainer* self)
+struct _PlankDockContainerClass 004 gboolean (*move_to) (PlankDockContainer* self, PlankDockElement* move, PlankDockElement* target)
+struct _PlankDockContainerClass 005 gboolean (*replace) (PlankDockContainer* self, PlankDockElement* new_element, PlankDockElement* old_element)
+struct _PlankDockContainerClass 006 void (*connect_element) (PlankDockContainer* self, PlankDockElement* element)
+struct _PlankDockContainerClass 007 void (*disconnect_element) (PlankDockContainer* self, PlankDockElement* element)
+struct _PlankDockController 001 PlankDockContainer parent_instance
+struct _PlankDockController 002 PlankDockControllerPrivate * priv
+struct _PlankDockControllerClass 001 PlankDockContainerClass parent_class
+struct _PlankDockElement 001 GObject parent_instance
+struct _PlankDockElement 002 PlankDockElementPrivate * priv
+struct _PlankDockElementClass 001 GObjectClass parent_class
+struct _PlankDockElementClass 002 PlankAnimationType (*on_clicked) (PlankDockElement* self, PlankPopupButton button, GdkModifierType mod, guint32 event_time)
+struct _PlankDockElementClass 003 PlankAnimationType (*on_hovered) (PlankDockElement* self)
+struct _PlankDockElementClass 004 PlankAnimationType (*on_scrolled) (PlankDockElement* self, GdkScrollDirection direction, GdkModifierType mod, guint32 event_time)
+struct _PlankDockElementClass 005 GeeArrayList* (*get_menu_items) (PlankDockElement* self)
+struct _PlankDockElementClass 006 gchar* (*get_drop_text) (PlankDockElement* self)
+struct _PlankDockElementClass 007 gboolean (*can_be_removed) (PlankDockElement* self)
+struct _PlankDockElementClass 008 gboolean (*can_accept_drop) (PlankDockElement* self, GeeArrayList* uris)
+struct _PlankDockElementClass 009 gboolean (*accept_drop) (PlankDockElement* self, GeeArrayList* uris)
+struct _PlankDockElementClass 010 gchar* (*unique_id) (PlankDockElement* self)
+struct _PlankDockElementClass 011 void (*reset_buffers) (PlankDockElement* self)
+struct _PlankDockItem 001 PlankDockElement parent_instance
+struct _PlankDockItem 002 PlankDockItemPrivate * priv
+struct _PlankDockItem 003 PlankDockItemDrawValue* draw_value
+struct _PlankDockItemClass 001 PlankDockElementClass parent_class
+struct _PlankDockItemClass 002 void (*load_from_launcher) (PlankDockItem* self)
+struct _PlankDockItemClass 003 void (*draw_icon) (PlankDockItem* self, PlankSurface* surface)
+struct _PlankDockItemClass 004 void (*draw_icon_fast) (PlankDockItem* self, PlankSurface* surface)
+struct _PlankDockItemClass 005 gboolean (*is_valid) (PlankDockItem* self)
+struct _PlankDockItemDrawValue 001 GTypeInstance parent_instance
+struct _PlankDockItemDrawValue 002 volatile int ref_count
+struct _PlankDockItemDrawValue 003 PlankDockItemDrawValuePrivate * priv
+struct _PlankDockItemDrawValue 004 PlankPointD center
+struct _PlankDockItemDrawValue 005 PlankPointD static_center
+struct _PlankDockItemDrawValue 006 gdouble icon_size
+struct _PlankDockItemDrawValue 007 GdkRectangle hover_region
+struct _PlankDockItemDrawValue 008 GdkRectangle draw_region
+struct _PlankDockItemDrawValue 009 GdkRectangle background_region
+struct _PlankDockItemDrawValue 010 gdouble zoom
+struct _PlankDockItemDrawValue 011 gdouble opacity
+struct _PlankDockItemDrawValue 012 gdouble darken
+struct _PlankDockItemDrawValue 013 gdouble lighten
+struct _PlankDockItemDrawValue 014 gboolean show_indicator
+struct _PlankDockItemDrawValueClass 001 GTypeClass parent_class
+struct _PlankDockItemDrawValueClass 002 void (*finalize) (PlankDockItemDrawValue *self)
+struct _PlankDockItemPreferences 001 PlankPreferences parent_instance
+struct _PlankDockItemPreferences 002 PlankDockItemPreferencesPrivate * priv
+struct _PlankDockItemPreferencesClass 001 PlankPreferencesClass parent_class
+struct _PlankDockItemProvider 001 PlankDockContainer parent_instance
+struct _PlankDockItemProvider 002 PlankDockItemProviderPrivate * priv
+struct _PlankDockItemProviderClass 001 PlankDockContainerClass parent_class
+struct _PlankDockItemProviderClass 002 gboolean (*item_exists_for_uri) (PlankDockItemProvider* self, const gchar* uri)
+struct _PlankDockItemProviderClass 003 PlankDockItem* (*item_for_uri) (PlankDockItemProvider* self, const gchar* uri)
+struct _PlankDockItemProviderClass 004 gboolean (*add_item_with_uri) (PlankDockItemProvider* self, const gchar* uri, PlankDockItem* target)
+struct _PlankDockItemProviderClass 005 void (*handle_item_deleted) (PlankDockItemProvider* self, PlankDockItem* item)
+struct _PlankDockItemProviderClass 006 gchar** (*get_dockitem_filenames) (PlankDockItemProvider* self, gint* result_length1)
+struct _PlankDockPreferences 001 PlankSettings parent_instance
+struct _PlankDockPreferences 002 PlankDockPreferencesPrivate * priv
+struct _PlankDockPreferencesClass 001 PlankSettingsClass parent_class
+struct _PlankDockRenderer 001 PlankRenderer parent_instance
+struct _PlankDockRenderer 002 PlankDockRendererPrivate * priv
+struct _PlankDockRenderer 003 GdkPoint local_cursor
+struct _PlankDockRendererClass 001 PlankRendererClass parent_class
+struct _PlankDockTheme 001 PlankTheme parent_instance
+struct _PlankDockTheme 002 PlankDockThemePrivate * priv
+struct _PlankDockThemeClass 001 PlankThemeClass parent_class
+struct _PlankDockWindow 001 PlankCompositedWindow parent_instance
+struct _PlankDockWindow 002 PlankDockWindowPrivate * priv
+struct _PlankDockWindowClass 001 PlankCompositedWindowClass parent_class
+struct _PlankDockletIface 001 GTypeInterface parent_iface
+struct _PlankDockletIface 002 const gchar* (*get_id) (PlankDocklet* self)
+struct _PlankDockletIface 003 const gchar* (*get_name) (PlankDocklet* self)
+struct _PlankDockletIface 004 const gchar* (*get_description) (PlankDocklet* self)
+struct _PlankDockletIface 005 const gchar* (*get_icon) (PlankDocklet* self)
+struct _PlankDockletIface 006 gboolean (*is_supported) (PlankDocklet* self)
+struct _PlankDockletIface 007 PlankDockElement* (*make_element) (PlankDocklet* self, const gchar* launcher, GFile* file)
+struct _PlankDockletItem 001 PlankDockItem parent_instance
+struct _PlankDockletItem 002 PlankDockletItemPrivate * priv
+struct _PlankDockletItemClass 001 PlankDockItemClass parent_class
+struct _PlankDockletManager 001 GObject parent_instance
+struct _PlankDockletManager 002 PlankDockletManagerPrivate * priv
+struct _PlankDockletManagerClass 001 GObjectClass parent_class
+struct _PlankDragManager 001 GObject parent_instance
+struct _PlankDragManager 002 PlankDragManagerPrivate * priv
+struct _PlankDragManagerClass 001 GObjectClass parent_class
+struct _PlankDrawingService 001 GObject parent_instance
+struct _PlankDrawingService 002 PlankDrawingServicePrivate * priv
+struct _PlankDrawingServiceClass 001 GObjectClass parent_class
+struct _PlankFactory 001 GObject parent_instance
+struct _PlankFactory 002 PlankFactoryPrivate * priv
+struct _PlankFactoryClass 001 GObjectClass parent_class
+struct _PlankFileDockItem 001 PlankDockItem parent_instance
+struct _PlankFileDockItem 002 PlankFileDockItemPrivate * priv
+struct _PlankFileDockItemClass 001 PlankDockItemClass parent_class
+struct _PlankFileDockItemFileSortData 001 GTypeInstance parent_instance
+struct _PlankFileDockItemFileSortData 002 volatile int ref_count
+struct _PlankFileDockItemFileSortData 003 PlankFileDockItemFileSortDataPrivate * priv
+struct _PlankFileDockItemFileSortDataClass 001 GTypeClass parent_class
+struct _PlankFileDockItemFileSortDataClass 002 void (*finalize) (PlankFileDockItemFileSortData *self)
+struct _PlankHideManager 001 GObject parent_instance
+struct _PlankHideManager 002 PlankHideManagerPrivate * priv
+struct _PlankHideManagerClass 001 GObjectClass parent_class
+struct _PlankHoverWindow 001 GtkWindow parent_instance
+struct _PlankHoverWindow 002 PlankHoverWindowPrivate * priv
+struct _PlankHoverWindowClass 001 GtkWindowClass parent_class
+struct _PlankItemFactory 001 GObject parent_instance
+struct _PlankItemFactory 002 PlankItemFactoryPrivate * priv
+struct _PlankItemFactory 003 GFile* launchers_dir
+struct _PlankItemFactoryClass 001 GObjectClass parent_class
+struct _PlankItemFactoryClass 002 PlankDockElement* (*make_element) (PlankItemFactory* self, GFile* file)
+struct _PlankItemFactoryClass 003 PlankDockItem* (*get_item_for_dock) (PlankItemFactory* self)
+struct _PlankLogger 001 GObject parent_instance
+struct _PlankLogger 002 PlankLoggerPrivate * priv
+struct _PlankLoggerClass 001 GObjectClass parent_class
+struct _PlankPaths 001 GObject parent_instance
+struct _PlankPaths 002 PlankPathsPrivate * priv
+struct _PlankPathsClass 001 GObjectClass parent_class
+struct _PlankPlaceholderDockItem 001 PlankDockItem parent_instance
+struct _PlankPlaceholderDockItem 002 PlankPlaceholderDockItemPrivate * priv
+struct _PlankPlaceholderDockItemClass 001 PlankDockItemClass parent_class
+struct _PlankPlankDockItem 001 PlankDockItem parent_instance
+struct _PlankPlankDockItem 002 PlankPlankDockItemPrivate * priv
+struct _PlankPlankDockItemClass 001 PlankDockItemClass parent_class
+struct _PlankPointD 001 gdouble x
+struct _PlankPointD 002 gdouble y
+struct _PlankPoofWindow 001 PlankCompositedWindow parent_instance
+struct _PlankPoofWindow 002 PlankPoofWindowPrivate * priv
+struct _PlankPoofWindowClass 001 PlankCompositedWindowClass parent_class
+struct _PlankPositionManager 001 GObject parent_instance
+struct _PlankPositionManager 002 PlankPositionManagerPrivate * priv
+struct _PlankPositionManagerClass 001 GObjectClass parent_class
+struct _PlankPreferences 001 GObject parent_instance
+struct _PlankPreferences 002 PlankPreferencesPrivate * priv
+struct _PlankPreferencesClass 001 GObjectClass parent_class
+struct _PlankPreferencesClass 002 void (*verify) (PlankPreferences* self, const gchar* prop)
+struct _PlankPreferencesClass 003 void (*reset_properties) (PlankPreferences* self)
+struct _PlankPreferencesWindow 001 GtkWindow parent_instance
+struct _PlankPreferencesWindow 002 PlankPreferencesWindowPrivate * priv
+struct _PlankPreferencesWindowClass 001 GtkWindowClass parent_class
+struct _PlankRenderer 001 GObject parent_instance
+struct _PlankRenderer 002 PlankRendererPrivate * priv
+struct _PlankRendererClass 001 GObjectClass parent_class
+struct _PlankRendererClass 002 gboolean (*animation_needed) (PlankRenderer* self, gint64 frame_time)
+struct _PlankRendererClass 003 void (*initialize_frame) (PlankRenderer* self, gint64 frame_time)
+struct _PlankRendererClass 004 void (*draw) (PlankRenderer* self, cairo_t* cr, gint64 frame_time)
+struct _PlankSerializableIface 001 GTypeInterface parent_iface
+struct _PlankSerializableIface 002 gchar* (*serialize) (PlankSerializable* self)
+struct _PlankSerializableIface 003 void (*deserialize) (PlankSerializable* self, const gchar* s)
+struct _PlankSettings 001 GObject parent_instance
+struct _PlankSettings 002 PlankSettingsPrivate * priv
+struct _PlankSettingsClass 001 GObjectClass parent_class
+struct _PlankSettingsClass 002 void (*verify) (PlankSettings* self, const gchar* name)
+struct _PlankSurface 001 GObject parent_instance
+struct _PlankSurface 002 PlankSurfacePrivate * priv
+struct _PlankSurfaceCache 001 GObject parent_instance
+struct _PlankSurfaceCache 002 PlankSurfaceCachePrivate * priv
+struct _PlankSurfaceCacheClass 001 GObjectClass parent_class
+struct _PlankSurfaceClass 001 GObjectClass parent_class
+struct _PlankSystem 001 GObject parent_instance
+struct _PlankSystem 002 PlankSystemPrivate * priv
+struct _PlankSystemClass 001 GObjectClass parent_class
+struct _PlankTheme 001 PlankPreferences parent_instance
+struct _PlankTheme 002 PlankThemePrivate * priv
+struct _PlankThemeClass 001 PlankPreferencesClass parent_class
+struct _PlankTitledSeparatorMenuItem 001 GtkSeparatorMenuItem parent_instance
+struct _PlankTitledSeparatorMenuItem 002 PlankTitledSeparatorMenuItemPrivate * priv
+struct _PlankTitledSeparatorMenuItemClass 001 GtkSeparatorMenuItemClass parent_class
+struct _PlankTransientDockItem 001 PlankApplicationDockItem parent_instance
+struct _PlankTransientDockItem 002 PlankTransientDockItemPrivate * priv
+struct _PlankTransientDockItemClass 001 PlankApplicationDockItemClass parent_class
+struct _PlankUnity 001 GObject parent_instance
+struct _PlankUnity 002 PlankUnityPrivate * priv
+struct _PlankUnityClass 001 GObjectClass parent_class
+struct _PlankUnityClientIface 001 GTypeInterface parent_iface
+struct _PlankUnityClientIface 002 void (*update_launcher_entry) (PlankUnityClient* self, const gchar* sender_name, GVariant* parameters, gboolean is_retry)
+struct _PlankUnityClientIface 003 void (*remove_launcher_entry) (PlankUnityClient* self, const gchar* sender_name)
+struct _PlankWorker 001 GObject parent_instance
+struct _PlankWorker 002 PlankWorkerPrivate * priv
+struct _PlankWorkerClass 001 GObjectClass parent_class
+variable plank_dock_container_placeholder_item PlankPlaceholderDockItem* plank_dock_container_placeholder_item
+variable plank_factory_item_factory PlankItemFactory* plank_factory_item_factory
+variable plank_factory_main PlankAbstractMain* plank_factory_main

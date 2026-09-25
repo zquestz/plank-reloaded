@@ -107,12 +107,8 @@ symbols_file = custom_target(
   ],
 )
 
-plank_lib = shared_library(
-  'plank',
-  plank_lib_sources,
-  plank_resources,
-  plank_version_sources,
-  dependencies: [
+plank_lib_kwargs = {
+  'dependencies': [
     plank_internal_dep,
     plank_base_dep,
     gmodule_dep,
@@ -122,23 +118,48 @@ plank_lib = shared_library(
     xinput_dep,
     xfixes_dep,
   ],
-  include_directories: config_inc_dir,
-  install: true,
-  install_dir: [true, join_paths(get_option('includedir'), 'plank'), true],
-  link_args: ['-Wl,--version-script=' + meson.current_build_dir() / 'libplank.symbols'],
-  link_depends: [symbols_file],
-  install_mode: ['rw-r--r--', 'root', 'root'],
-  soversion: lib_soversion,
-  version: lib_version,
-  vala_vapi: 'plank.vapi',
-  vala_header: 'plank.h',
-  vala_args: [
+  'include_directories': config_inc_dir,
+  'install': true,
+  'link_args': ['-Wl,--version-script=' + meson.current_build_dir() / 'libplank.symbols'],
+  'link_depends': [symbols_file],
+  'install_mode': ['rw-r--r--', 'root', 'root'],
+  'soversion': lib_soversion,
+  'version': lib_version,
+  'vala_vapi': 'plank.vapi',
+  'vala_header': 'plank.h',
+  'vala_args': [
     '--gresources='
     + join_paths(meson.project_source_root(), 'data', 'plank.gresource.xml'),
     '--pkg', 'config',
     '--pkg', 'compat',
   ],
-)
+}
+
+plank_header_install_dir = join_paths(get_option('includedir'), 'plank')
+
+# meson 1.11 replaced the three-value install_dir (library, header, vapi)
+# with install_vala_*. Each call stays inside its branch because meson only
+# checks features against the guarded version within the if block.
+if meson.version().version_compare('>= 1.11.0')
+  plank_lib = shared_library(
+    'plank',
+    plank_lib_sources,
+    plank_resources,
+    plank_version_sources,
+    install_vala_header: plank_header_install_dir,
+    install_vala_vapi: true,
+    kwargs: plank_lib_kwargs,
+  )
+else
+  plank_lib = shared_library(
+    'plank',
+    plank_lib_sources,
+    plank_resources,
+    plank_version_sources,
+    install_dir: [true, plank_header_install_dir, true],
+    kwargs: plank_lib_kwargs,
+  )
+endif
 
 install_data('plank.deps', install_dir: join_paths(get_option('datadir'), 'vala', 'vapi'))
 
@@ -154,4 +175,29 @@ configure_file(
   output: 'plank.pc',
   configuration: pkgconf,
   install_dir: join_paths(get_option('libdir'), 'pkgconfig'),
+)
+
+# The public ABI is a contract with prebuilt third-party docklets, so any
+# change to the structs, enums, callbacks, function prototypes or variables
+# in plank.h fails abi-check against the committed baseline. After an
+# intended change, regenerate the baseline with abi-update.
+sh = find_program('sh')
+abicheck = files('abicheck.sh')
+abicheck_args = [
+  meson.current_build_dir() / 'plank.h',
+  meson.current_source_dir() / 'plank.abi',
+  vala.version(),
+]
+
+test(
+  'abi-check',
+  sh,
+  args: [abicheck] + abicheck_args,
+  depends: plank_lib,
+)
+
+run_target(
+  'abi-update',
+  command: [sh, abicheck, '--update'] + abicheck_args,
+  depends: plank_lib,
 )
