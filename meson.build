@@ -35,35 +35,15 @@ lib_version = '@0@.@1@.@2@'.format(lt_current, lt_revision, lt_age)
 lib_soversion = lt_current
 
 production_release = get_option('production-release')
+plank_version = meson.project_version()
 if not production_release
   git_version = run_command('git', 'describe', '--tags', check: false).stdout().strip()
   if git_version != ''
-    version_parts = git_version.split('-')
-    if version_parts.length() > 1
-      plank_version = version_parts[0]
-      git_revision = version_parts[2] # Store git hash separately
-    else
-      plank_version = git_version
-      git_revision = ''
-    endif
-  else
-    plank_version = meson.project_version()
-    git_revision = ''
+    plank_version = git_version.split('-')[0]
   endif
-else
-  plank_version = meson.project_version()
 endif
 
 version_array = plank_version.split('.')
-
-# Generate version file for dist
-custom_target(
-  '.version',
-  output: '.version',
-  command: ['echo', plank_version],
-  capture: true,
-  build_by_default: true,
-)
 
 gnome = import('gnome')
 gnome.post_install(

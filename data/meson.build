@@ -1,4 +1,4 @@
-plank_appdata = i18n.merge_file(
+i18n.merge_file(
   input: 'plank.appdata.xml.in',
   output: 'plank.appdata.xml',
   po_dir: '../po',
