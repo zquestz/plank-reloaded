@@ -26,6 +26,7 @@ namespace PlankTests
 		Test.add_func ("/Items/DockItem/basics", items_dockitem);
 		Test.add_func ("/Items/FileDockItem/basics", items_filedockitem);
 		Test.add_func ("/Items/ApplicationDockItem/basics", items_applicationdockitem);
+		Test.add_func ("/Items/ApplicationDockItem/actions", items_applicationdockitem_actions);
 		Test.add_func ("/Items/TransientDockItem/basics", items_transientdockitem);
 
 		Test.add_func ("/Items/DockItemProvider/basics", items_dockitemprovider);
@@ -114,6 +115,47 @@ namespace PlankTests
 		assert (item.Icon == icon);
 		assert (item.Text == text);
 		assert (item.get_unity_application_uri () == "application://test.desktop");
+	}
+
+	void items_applicationdockitem_actions ()
+	{
+		var file = Paths.AppConfigFolder.get_child ("test_actions.desktop");
+
+		try {
+			FileUtils.set_contents (file.get_path (), """[Desktop Entry]
+Type=Application
+Name=Test
+Exec=true
+Actions=new-window;legacy;missing;
+X-Ayatana-Desktop-Shortcuts=Unity;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=true --new-window
+
+[legacy Shortcut Group]
+Name=Legacy
+Exec=true --legacy
+
+[Unity Shortcut Group]
+Name=Unity Shortcut
+Exec=true --unity
+""");
+		} catch (FileError e) {
+			assert_not_reached ();
+		}
+
+		var actions = new Gee.ArrayList<string> ();
+		var actions_map = new Gee.HashMap<string, string> ();
+		string icon, text;
+		ApplicationDockItem.parse_launcher (file.get_uri (), out icon, out text, actions, actions_map);
+
+		// A standard action keeps its id, Unity-style groups have none (even
+		// when listed in Actions=), and an action without a group is skipped
+		assert (actions.size == 3);
+		assert (actions_map["New Window"] == "true --new-window;;;;new-window");
+		assert (actions_map["Legacy"] == "true --legacy;;;;");
+		assert (actions_map["Unity Shortcut"] == "true --unity;;;;");
 	}
 
 	void items_transientdockitem ()

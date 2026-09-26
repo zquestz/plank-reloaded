@@ -342,6 +342,30 @@ namespace Plank {
       System.get_default ().launch (File.new_for_uri (Prefs.Launcher));
     }
 
+    void launch_action (string exec, string action_id) {
+      unowned AppLaunchContext context = System.get_default ().context;
+
+      // GLib activates D-Bus applications and honors Terminal and Path;
+      // Unity shortcuts and launchers it can't load fall back to the command line
+      if (action_id != "") {
+        try {
+          var info = new DesktopAppInfo.from_filename (Filename.from_uri (Prefs.Launcher));
+          if (info != null) {
+            info.launch_action (action_id, context);
+            return;
+          }
+        } catch (ConvertError e) {
+          warning (e.message);
+        }
+      }
+
+      try {
+        AppInfo.create_from_commandline (exec, null, AppInfoCreateFlags.NONE).launch (null, context);
+      } catch (Error e) {
+        warning (e.message);
+      }
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -480,11 +504,7 @@ namespace Plank {
           var values = actions_map.get (s).split (";;");
 
           var item = create_menu_item (s, values[1], true);
-          item.activate.connect (() => {
-            try {
-              AppInfo.create_from_commandline (values[0], null, AppInfoCreateFlags.NONE).launch (null, null);
-            } catch {}
-          });
+          item.activate.connect (() => launch_action (values[0], values[2]));
           items.add (item);
         }
       }
@@ -661,7 +681,7 @@ namespace Plank {
      * @param icon the icon key from the launcher
      * @param text the text key from the launcher
      * @param actions a list of all actions by name
-     * @param actions_map a map of actions from name to exec;;icon
+     * @param actions_map a map of actions from name to exec;;icon;;id, where id is empty for Unity shortcuts
      * @param mimes a list of all supported mime types
      * @param accepts_files whether the Exec key contains file/URL arguments (%F, %f, %U, %u)
      */
@@ -742,8 +762,12 @@ namespace Plank {
               continue;
 
             foreach (unowned string action in file.get_string_list (KeyFileDesktop.GROUP, key)) {
+              // Only actions listed in Actions= with a Desktop Action group can
+              // be launched by id, Unity shortcuts only have a command line
+              var action_id = (key == DESKTOP_ACTION_KEY ? action : "");
               var group = DESKTOP_ACTION_GROUP_NAME.printf (action);
               if (!file.has_group (group)) {
+                action_id = "";
                 group = UNITY_QUICKLISTS_SHORTCUT_GROUP_NAME.printf (action);
                 if (!file.has_group (group))
                   continue;
@@ -799,7 +823,7 @@ namespace Plank {
                 action_name = GLib.dgettext (textdomain, action_name).dup ();
 
               actions.add (action_name);
-              actions_map.set (action_name, "%s;;%s".printf (action_exec, action_icon));
+              actions_map.set (action_name, "%s;;%s;;%s".printf (action_exec, action_icon, action_id));
             }
           }
         }
