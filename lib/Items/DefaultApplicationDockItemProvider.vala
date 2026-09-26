@@ -107,9 +107,8 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override void prepare () {
-      if (!Prefs.PinnedOnly)
-        add_transient_items ();
-
+      // Register the pinned launchers as BAMF favorites in one call;
+      // launchers pinned later are registered in connect_element ()
       var favs = new Gee.ArrayList<string> ();
 
       foreach (var element in internal_elements) {
@@ -119,6 +118,9 @@ namespace Plank {
       }
 
       Matcher.get_default ().set_favorites (favs);
+
+      if (!Prefs.PinnedOnly)
+        add_transient_items ();
     }
 
     protected override void app_opened (Bamf.Application app) {
@@ -252,6 +254,13 @@ namespace Plank {
       if (appitem != null) {
         appitem.app_closed.connect (app_closed);
         appitem.pin_launcher.connect (pin_item);
+
+        // Launchers loaded at startup were registered together in prepare ()
+        if (Container != null && !(appitem is TransientDockItem)) {
+          var favs = new Gee.ArrayList<string> ();
+          favs.add (appitem.Launcher);
+          Matcher.get_default ().set_favorites (favs);
+        }
       }
     }
 

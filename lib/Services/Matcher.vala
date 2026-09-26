@@ -148,14 +148,27 @@ namespace Plank
 			return app;
 		}
 		
+		/**
+		 * Registers launchers as BAMF favorites. Each call adds to BAMF's
+		 * list and never replaces it, and already registered ones are skipped.
+		 *
+		 * @param favs the launcher URIs of .desktop files
+		 */
 		public void set_favorites (Gee.ArrayList<string> favs)
 		{
-			var paths = new string[favs.size];
-			
-			for (var i = 0; i < favs.size; i++)
-				paths [i] = favs.get (i);
-			
-			bamf_matcher.register_favorites (paths);
+			// BAMF expects desktop file paths, while dock items store launcher URIs
+			string[] paths = {};
+
+			foreach (var fav in favs) {
+				try {
+					paths += Filename.from_uri (fav);
+				} catch (ConvertError e) {
+					warning (e.message);
+				}
+			}
+
+			if (paths.length > 0)
+				bamf_matcher.register_favorites (paths);
 		}
 	}
 }
