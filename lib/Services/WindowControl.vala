@@ -623,7 +623,7 @@ namespace Plank {
 
       warn_if_fail (xids != null);
 
-      if (xids == null)
+      if (xids == null || xids.length == 0)
         return;
 
       var i = find_active_xid_index (xids);
@@ -640,7 +640,7 @@ namespace Plank {
 
       warn_if_fail (xids != null);
 
-      if (xids == null)
+      if (xids == null || xids.length == 0)
         return;
 
       var i = find_active_xid_index (xids);
