@@ -791,10 +791,13 @@ namespace Plank {
         return;
       }
 
-      additional_windows.reverse ();
+      // Reverse a copy: reversing the caller's list in place would leave it
+      // pointing at a single node, leaking the rest when it is freed
+      var stack = additional_windows.copy ();
+      stack.reverse ();
 
       var windows_to_focus = new Gee.ArrayList<unowned Wnck.Window> ();
-      foreach (unowned Wnck.Window window in additional_windows) {
+      foreach (unowned Wnck.Window window in stack) {
         if (window == targetWindow)
           continue;
         if (!window.is_minimized () && windows_share_viewport (targetWindow, window)) {
