@@ -53,6 +53,9 @@ test_env.set('XDG_CACHE_HOME', test_home / '.cache')
 test_env.set('GSETTINGS_BACKEND', 'memory')
 test_env.set('GSETTINGS_SCHEMA_DIR', meson.current_build_dir() / '../data')
 test_env.set('PLANK_DOCKLET_DIRS', meson.current_build_dir() / '../docklets')
+# Keep GTK from starting the accessibility bus and AT-SPI registry under
+# dbus-run-session, whose log lines would otherwise corrupt the TAP output
+test_env.set('NO_AT_BRIDGE', '1')
 
 # GMock tests setup
 if get_option('enable-gmock')
