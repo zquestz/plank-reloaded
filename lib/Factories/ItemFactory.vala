@@ -228,12 +228,7 @@ namespace Plank {
           if (item == null)
             continue;
 
-          unowned DockItem? dupe;
-          if ((dupe = find_item_for_uri (result, item.Launcher)) != null) {
-            warning ("The launcher '%s' in dock item '%s' is already managed by dock item '%s'. Removing '%s'.",
-                     item.Launcher, file.get_path (), dupe.DockItemFilename, item.DockItemFilename);
-            item.delete ();
-          } else if (!item.is_valid ()) {
+          if (!item.is_valid ()) {
             warning ("The launcher '%s' in dock item '%s' does not exist. Removing '%s'.", item.Launcher, file.get_path (), item.DockItemFilename);
             item.delete ();
           } else {
@@ -244,18 +239,37 @@ namespace Plank {
         critical ("Error loading dock elements from '%s'. (%s)", source_dir.get_path () ?? "", e.message);
       }
 
+      // Duplicates are resolved while building the ordered result, so the
+      // item that comes first in the dock's ordering is the one kept
       if (ordering != null)
         foreach (unowned string dockitem in ordering) {
           DockElement? element;
           elements.unset (dockitem, out element);
           if (element != null)
-            result.add (element);
+            add_unless_duplicate (result, element);
         }
 
-      result.add_all (elements.values);
+      foreach (var element in elements.values)
+        add_unless_duplicate (result, element);
       elements.clear ();
 
       return result;
+    }
+
+    void add_unless_duplicate (Gee.ArrayList<DockElement> result, DockElement element) {
+      unowned DockItem? item = (element as DockItem);
+      unowned DockItem? dupe = null;
+
+      // Separators may repeat, matching DockItemProvider.allow_duplicate_item ()
+      if (item != null && item.Launcher != "docklet://separator"
+          && (dupe = find_item_for_uri (result, item.Launcher)) != null) {
+        warning ("The launcher '%s' in dock item '%s' is already managed by dock item '%s'. Removing it.",
+                 item.Launcher, item.DockItemFilename, dupe.DockItemFilename);
+        item.delete ();
+        return;
+      }
+
+      result.add (element);
     }
 
     unowned DockItem ? find_item_for_uri (Gee.ArrayList<DockElement> elements, string uri) {

@@ -30,6 +30,8 @@ namespace PlankTests
 
 		Test.add_func ("/Items/DockItemProvider/basics", items_dockitemprovider);
 		Test.add_func ("/Items/DockItemProvider/signals", items_dockitemprovider_signals);
+
+		Test.add_func ("/Items/ItemFactory/duplicates", items_itemfactory_duplicates);
 	}
 
 	void items_dockitem ()
@@ -223,5 +225,61 @@ namespace PlankTests
 	void itemprovider_state_cb ()
 	{
 		items_triggered = true;
+	}
+
+	// Stands in for the separator docklet, so the test does not load the
+	// installed docklet modules
+	class TestSeparatorItem : DockItem
+	{
+		public TestSeparatorItem (File file)
+		{
+			Object (Prefs: new DockItemPreferences.with_file (file));
+		}
+
+		public override bool is_valid ()
+		{
+			return true;
+		}
+	}
+
+	class TestSeparatorDocklet : Object, Docklet
+	{
+		public unowned string get_id () { return "separator"; }
+		public unowned string get_name () { return "Separator"; }
+		public unowned string get_description () { return ""; }
+		public unowned string get_icon () { return ""; }
+		public bool is_supported () { return true; }
+
+		public DockElement make_element (string launcher, File file)
+		{
+			return new TestSeparatorItem (file);
+		}
+	}
+
+	void items_itemfactory_duplicates ()
+	{
+		var dir = Paths.AppConfigFolder.get_child ("test_itemfactory_duplicates");
+		Paths.ensure_directory_exists (dir);
+
+		DockletManager.get_default ().register_docklet (typeof (TestSeparatorDocklet));
+
+		var factory = new ItemFactory ();
+		var app_uri = File.new_for_path (Config.DATA_DIR + "/test.desktop").get_uri ();
+
+		// Two dock items for the same application, as when a launcher was
+		// pinned twice, and two separators, which may repeat
+		var app = factory.make_dock_item (app_uri, dir);
+		var app_again = factory.make_dock_item (app_uri, dir);
+		var separator = factory.make_dock_item ("docklet://separator", dir);
+		var separator_again = factory.make_dock_item ("docklet://separator", dir);
+
+		// The ordering lists the second application item first, so that one is kept
+		var elements = factory.load_elements (dir, { app_again.get_basename (), separator.get_basename (), separator_again.get_basename () });
+
+		assert (elements.size == 3);
+		assert (((DockItem) elements[0]).DockItemFilename == app_again.get_basename ());
+		assert (((DockItem) elements[1]).DockItemFilename == separator.get_basename ());
+		assert (((DockItem) elements[2]).DockItemFilename == separator_again.get_basename ());
+		assert (!app.query_exists ());
 	}
 }
