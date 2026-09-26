@@ -307,13 +307,12 @@ namespace Plank {
 
       if (item is TransientDockItem) {
         var dockitem_file = Factory.item_factory.make_dock_item (item.Launcher, LaunchersDir);
-        if (dockitem_file == null)
-          return;
+        if (dockitem_file != null) {
+          var new_item = new ApplicationDockItem.with_dockitem_file (dockitem_file);
+          item.copy_values_to (new_item);
 
-        var new_item = new ApplicationDockItem.with_dockitem_file (dockitem_file);
-        item.copy_values_to (new_item);
-
-        replace (new_item, item);
+          replace (new_item, item);
+        }
       } else {
         if (!(app_item.is_running () || app_item.has_unity_info ()))
           remove (item);
