@@ -95,21 +95,13 @@ namespace Plank {
     }
 
     static File ? desktop_file_for_application_uri (string app_uri) {
-      foreach (var folder in Paths.DataDirFolders) {
-        var applications_folder = folder.get_child ("applications");
-        if (!applications_folder.query_exists ())
-          continue;
+      // DesktopAppInfo does the full XDG lookup, including the user's data
+      // folder and desktop IDs that map to subfolders
+      var app_info = new DesktopAppInfo (app_uri.replace ("application://", ""));
+      if (app_info == null || app_info.get_filename () == null)
+        return null;
 
-        var desktop_file = applications_folder.get_child (app_uri.replace ("application://", ""));
-        if (!desktop_file.query_exists ())
-          continue;
-
-        return desktop_file;
-      }
-
-      debug ("Matching application for '%s' not found or not installed!", app_uri);
-
-      return null;
+      return File.new_for_path (app_info.get_filename ());
     }
 
     /**
