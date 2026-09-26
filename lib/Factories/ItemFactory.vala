@@ -359,7 +359,7 @@ namespace Plank {
         }
       }
 
-      GLib.File? video = null;;
+      GLib.File? video = null;
       foreach (unowned string uri in DEFAULT_APP_VIDEO) {
         video = make_dock_item (uri);
         if (video != null) {
@@ -420,7 +420,7 @@ namespace Plank {
       string basename;
       if (uri.has_prefix (DOCKLET_URI_PREFIX)) {
         is_valid = true;
-        basename = uri.substring (10);
+        basename = uri.substring (DOCKLET_URI_PREFIX.length);
       } else {
         var launcher_file = File.new_for_uri (uri);
         is_valid = launcher_file.query_exists ();
@@ -452,7 +452,9 @@ namespace Plank {
 
           debug ("Created dock item '%s' for launcher '%s'", dockitem_file.get_path (), uri);
           return dockitem_file;
-        } catch {}
+        } catch (Error e) {
+          warning ("Unable to create a dock item for '%s': %s", uri, e.message);
+        }
       }
 
       return null;
