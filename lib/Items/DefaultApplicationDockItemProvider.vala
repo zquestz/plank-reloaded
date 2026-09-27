@@ -119,8 +119,7 @@ namespace Plank {
 
       Matcher.get_default ().set_favorites (favs);
 
-      if (!Prefs.PinnedOnly)
-        add_transient_items ();
+      match_running_applications ();
     }
 
     protected override void app_opened (Bamf.Application app) {
@@ -216,13 +215,14 @@ namespace Plank {
       if (Prefs.PinnedOnly)
         remove_transient_items ();
       else
-        add_transient_items ();
+        match_running_applications ();
     }
 
-    void add_transient_items () {
+    void match_running_applications () {
       var transient_items = new Gee.ArrayList<DockElement> ();
 
-      // Match running applications to their available dock-items
+      // Match running applications to their available dock-items, and add
+      // items for the others unless only pinned items are shown
       foreach (var app in Matcher.get_default ().active_launchers ()) {
         unowned ApplicationDockItem? found = item_for_application (app);
         if (found != null) {
@@ -230,7 +230,8 @@ namespace Plank {
           continue;
         }
 
-        transient_items.add (new TransientDockItem.with_application (app));
+        if (!Prefs.PinnedOnly)
+          transient_items.add (new TransientDockItem.with_application (app));
       }
 
       add_all (transient_items);

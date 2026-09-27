@@ -189,11 +189,8 @@ namespace Plank {
     }
 
     public bool is_window () {
-      if (App == null)
-        return false;
-
-      unowned string? desktop_file = App.get_desktop_file ();
-      return (desktop_file == null || desktop_file == "");
+      // Without a launcher the item only stands for the running windows
+      return (Prefs.Launcher == "");
     }
 
     void handle_user_visible_changed (bool user_visible) {
@@ -223,7 +220,7 @@ namespace Plank {
 
     void handle_name_changed (string old_name, string new_name) {
       // do nothing if name and icon are coming from the desktop-file
-      if (this is TransientDockItem)
+      if (Prefs.Launcher == "")
         Text = new_name;
     }
 
@@ -836,15 +833,17 @@ namespace Plank {
     void unity_update_application_uri () {
       unity_application_uri = null;
 
-      unowned string? desktop_file = (App != null ? App.get_desktop_file () : Launcher);
-      if (desktop_file == null || desktop_file == "")
+      // The launcher is the item's .desktop file, even when BAMF has none, and
+      // badge updates name it by its plain (unescaped) filename
+      unowned string launcher = Launcher;
+      if (launcher == "")
         return;
 
-      var p = desktop_file.split ("/");
-      if (p.length == 0)
+      var basename = File.new_for_uri (launcher).get_basename ();
+      if (basename == null || basename == "")
         return;
 
-      unity_application_uri = "application://%s".printf (p[p.length - 1]);
+      unity_application_uri = "application://%s".printf (basename);
     }
 
     /**

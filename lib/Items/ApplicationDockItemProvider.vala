@@ -69,25 +69,33 @@ namespace Plank {
     }
 
     protected unowned ApplicationDockItem ? item_for_application (Bamf.Application app) {
-      var app_desktop_file = app.get_desktop_file ();
-      if (app_desktop_file != null && app_desktop_file.has_prefix ("/"))
+      // An item already tracking this application always wins
+      foreach (var item in internal_elements) {
+        unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
+        if (appitem != null && appitem.App == app)
+          return appitem;
+      }
+
+      var app_desktop_file = Matcher.desktop_file_for_application (app);
+      if (app_desktop_file == null)
+        return null;
+
+      if (app_desktop_file.has_prefix ("/"))
         try {
           app_desktop_file = Filename.to_uri (app_desktop_file);
         } catch (ConvertError e) {
           warning (e.message);
         }
 
+      // Only a file from BAMF may take an item that already tracks another
+      // running application, not one found from the window class
+      unowned string? bamf_desktop_file = app.get_desktop_file ();
+      var from_bamf = (bamf_desktop_file != null && bamf_desktop_file != "");
+
       foreach (var item in internal_elements) {
         unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
-        if (appitem == null)
-          continue;
-
-        unowned Bamf.Application? item_app = appitem.App;
-        if (item_app != null && item_app == app)
-          return appitem;
-
-        unowned string launcher = appitem.Launcher;
-        if (launcher != "" && app_desktop_file != null && launcher == app_desktop_file)
+        if (appitem != null && appitem.Launcher == app_desktop_file
+            && (from_bamf || appitem.App == null))
           return appitem;
       }
 

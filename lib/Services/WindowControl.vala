@@ -57,7 +57,7 @@ namespace Plank {
       public Gee.ArrayList<ulong> xids;
       public uint32 event_time;
       public int index;
-      public uint window_count;  // Used by SCHEDULE_DELAYED_FOCUS
+      public uint window_count; // Used by SCHEDULE_DELAYED_FOCUS
 
       public PendingOperation (PendingActionType action_type, Gee.ArrayList<ulong> xids, uint32 event_time, uint window_count = 0) {
         this.action_type = action_type;
@@ -324,6 +324,30 @@ namespace Plank {
         critical ("get_window_icon() for '%s' caused a XError", window.get_name ());
 
       return pbuf;
+    }
+
+    /**
+     * Gets the WM_CLASS instance and class names of a window, or null for
+     * both if the window is unknown.
+     */
+    public static void get_window_class (Bamf.Window window, out string? instance_name, out string? class_name) {
+      var xid = window.get_xid ();
+      unowned Wnck.Window? w = get_wnck_window (xid) ?? get_wnck_window_after_update (xid);
+
+      instance_name = (w != null ? w.get_class_instance_name () : null);
+      class_name = (w != null ? w.get_class_group_name () : null);
+    }
+
+    // Wnck may not yet know about a window BAMF just reported
+    static unowned Wnck.Window? get_wnck_window_after_update (ulong xid) {
+      error_trap_push ();
+
+      get_wnck_screen ().force_update ();
+
+      if (error_trap_pop () != 0)
+        critical ("Wnck.Screen.force_update() caused a XError");
+
+      return get_wnck_window (xid);
     }
 
     public static Gdk.Pixbuf? get_window_thumbnail (Bamf.Window window)
