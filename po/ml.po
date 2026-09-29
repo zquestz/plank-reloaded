@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-29 11:35-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Malayalam\n"
@@ -49,19 +49,19 @@ msgstr ""
 "സവിശേഷതകളുള്ള മറ്റ് ഡോക്ക് പ്രോഗ്രാമുകൾ സൃഷ്ടിക്കുന്നതിന് വിപുലീകരിക്കാവുന്ന ഒരു ലൈബ്രറിയായി ഇത് "
 "തുടരുന്നു."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:136
 msgid "Dock with Matte theme"
 msgstr "മാറ്റ് തീം ഉള്ള ഡോക്ക്"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Appearance Preferences"
 msgstr "കാഴ്ച മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Behavior Preferences"
 msgstr "പെരുമാറ്റ മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Docklets Preferences"
 msgstr "ഡോക്ക്‌ലെറ്റുകളുടെ മുൻഗണനകൾ"
 
@@ -617,20 +617,20 @@ msgstr ""
 "  ST Alfas https://launchpad.net/~alfasst\n"
 "  muhammed shameem https://launchpad.net/~shameempk"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ഡോക്കില്‍ _സൂക്ഷിക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "എല്ലാം _അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "_അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s കൊണ്ട് തുറക്കാൻ ഇടുക"

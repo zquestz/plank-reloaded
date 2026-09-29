@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-29 11:35-1000\n"
 "PO-Revision-Date: 2025-11-13 03:49\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "teegiks, mida saab laiendada teiste dokiprogrammide loomiseks arenenud "
 "funktsioonidega."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:136
 msgid "Dock with Matte theme"
 msgstr "Dokk Matte teemaga"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Appearance Preferences"
 msgstr "Välimuse eelistused"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Behavior Preferences"
 msgstr "Käitumise eelistused"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Docklets Preferences"
 msgstr "Dokiapletite eelistused"
 
@@ -617,20 +617,20 @@ msgstr ""
 "  Mihkel Tõnnov https://launchpad.net/~v6lur\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "Dokil _hoidmine"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "_Sulge"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "Sul_ge"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Lohista, et avada rakendusega %s"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-29 11:35-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -50,19 +50,19 @@ msgstr ""
 "dhuga agus faic eile. Fanann sé ina leabharlann freisin ar féidir é a "
 "leathnú chun cláir duga eile a chruthú le gnéithe níos forbartha."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:136
 msgid "Dock with Matte theme"
 msgstr "Duga le téama Matte"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Appearance Preferences"
 msgstr "Sainroghanna cuma"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Behavior Preferences"
 msgstr "Sainroghanna iompair"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Docklets Preferences"
 msgstr "Sainroghanna dugán"
 
@@ -626,20 +626,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  Seán Ó Séaghdha https://launchpad.net/~seanos"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Coinnigh sa Duga"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "_Dún Gach Rud"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "_Dún"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Scaoil chun é a oscailt le %s"

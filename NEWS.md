@@ -2,6 +2,20 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.173 "Reloaded" (2026-09-29)
+
+- Match apps to launchers by window class when BAMF cannot, fixing duplicate icons
+- Keep one icon per launcher that counts every window of apps BAMF splits apart
+- Attach pinned launchers to already running apps at startup in Pinned Only mode
+- Register pinned launchers as BAMF favorites so app matching prefers them
+- Launch desktop actions through GLib, supporting D-Bus activation, Terminal, and Path
+- Show badges and progress for apps in the user's data folder, subfolders, or with spaces in names
+- Remove duplicate dock items for the same launcher at startup
+- Stop dock icons using art drawn for half their size from @2x theme folders
+- Fix a crash cycling an empty window list, a window stack leak, and a stalled launcher monitor
+- Add an abi-check test guarding the docklet ABI, with isolated and rerunnable tests
+- Configure without git and without deprecation warnings on meson 1.11
+
 ## 0.11.172 "Reloaded" (2026-08-03)
 
 - Fix a crash when activating a window menu entry after that window closed
