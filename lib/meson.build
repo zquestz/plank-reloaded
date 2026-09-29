@@ -146,6 +146,9 @@ if meson.version().version_compare('>= 1.11.0')
     plank_lib_sources,
     plank_resources,
     plank_version_sources,
+    # meson 1.11.x only honors a directory given to install_vala_header when
+    # install_dir is also set, and otherwise silently skips the header
+    install_dir: get_option('libdir'),
     install_vala_header: plank_header_install_dir,
     install_vala_vapi: true,
     kwargs: plank_lib_kwargs,
