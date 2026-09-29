@@ -129,6 +129,15 @@ namespace Plank {
         return;
       }
 
+      // An item with this launcher already tracks another running application,
+      // and takes this one's windows too
+      var launcher = launcher_for_application (app);
+      unowned ApplicationDockItem? owner = (launcher != null ? (item_for_uri (launcher) as ApplicationDockItem) : null);
+      if (owner != null) {
+        owner.merge_application (app);
+        return;
+      }
+
       if (Prefs.PinnedOnly)
         return;
 
@@ -220,9 +229,11 @@ namespace Plank {
 
     void match_running_applications () {
       var transient_items = new Gee.ArrayList<DockElement> ();
+      var transient_launchers = new Gee.HashMap<string, TransientDockItem> ();
 
       // Match running applications to their available dock-items, and add
-      // items for the others unless only pinned items are shown
+      // items for the others unless only pinned items are shown. A launcher
+      // gets one item, which takes the windows of every application sharing it
       foreach (var app in Matcher.get_default ().active_launchers ()) {
         unowned ApplicationDockItem? found = item_for_application (app);
         if (found != null) {
@@ -230,8 +241,26 @@ namespace Plank {
           continue;
         }
 
-        if (!Prefs.PinnedOnly)
-          transient_items.add (new TransientDockItem.with_application (app));
+        var launcher = launcher_for_application (app);
+        if (launcher != null) {
+          ApplicationDockItem? owner = (item_for_uri (launcher) as ApplicationDockItem);
+          if (owner == null)
+            owner = transient_launchers[launcher];
+
+          if (owner != null) {
+            owner.merge_application (app);
+            continue;
+          }
+        }
+
+        if (Prefs.PinnedOnly)
+          continue;
+
+        var new_item = new TransientDockItem.with_application (app);
+        if (launcher != null)
+          transient_launchers[launcher] = new_item;
+
+        transient_items.add (new_item);
       }
 
       add_all (transient_items);
@@ -287,6 +316,7 @@ namespace Plank {
 
       var new_item = new TransientDockItem.with_application (app);
       item.copy_values_to (new_item);
+      ((ApplicationDockItem) item).move_merged_applications_to (new_item);
 
       replace (new_item, item);
     }
@@ -311,6 +341,7 @@ namespace Plank {
         if (dockitem_file != null) {
           var new_item = new ApplicationDockItem.with_dockitem_file (dockitem_file);
           item.copy_values_to (new_item);
+          app_item.move_merged_applications_to (new_item);
 
           replace (new_item, item);
         }

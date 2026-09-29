@@ -304,7 +304,9 @@ Exec=true --unity
   }
 
   void items_itemfactory_duplicates () {
-    var dir = Paths.AppConfigFolder.get_child ("test_itemfactory_duplicates");
+    // A new folder on every run, since the test expects it empty and only
+    // meson's clean step wipes the test home
+    var dir = Paths.AppConfigFolder.get_child ("test_itemfactory_duplicates-" + GLib.get_real_time ().to_string ());
     Paths.ensure_directory_exists (dir);
 
     DockletManager.get_default ().register_docklet (typeof (TestSeparatorDocklet));

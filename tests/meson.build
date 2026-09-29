@@ -17,7 +17,7 @@ clean_test_dir = custom_target(
   output: 'clean_test_dir_stamp',
   command: [
     'sh',
-    '-c', 'rm -rf "@0@" && mkdir -p "@0@" && touch @OUTPUT@'.format(test_home),
+    '-c', 'rm -rf "@0@" && mkdir -p "@0@/.local/share" && cp -R "@1@" "@0@/.local/share/" && touch @OUTPUT@'.format(test_home, meson.current_source_dir() / 'data' / 'applications'),
   ],
   build_always_stale: true,
 )
@@ -129,10 +129,26 @@ if get_option('enable-headless-tests')
     is_parallel: false,
   )
 else
-  # Regular test without headless setup
+  # Regular tests use the real display, but a private session bus when
+  # dbus-run-session is available, so services the dock talks to (like BAMF,
+  # which it registers favorites with) stay out of the user's own session
+  dbus_run = find_program('dbus-run-session', required: false)
+  if dbus_run.found()
+    tests_exe = dbus_run
+    tests_args = [tests_bin.full_path()]
+    dock_exe = dbus_run
+    dock_args = [dock_bin.full_path(), '-n', 'test1']
+  else
+    tests_exe = tests_bin
+    tests_args = []
+    dock_exe = dock_bin
+    dock_args = ['-n', 'test1']
+  endif
+
   test(
     'plank-tests',
-    tests_bin,
+    tests_exe,
+    args: tests_args,
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [clean_test_dir],
@@ -141,8 +157,8 @@ else
 
   test(
     'dock-test',
-    dock_bin,
-    args: ['-n', 'test1'],
+    dock_exe,
+    args: dock_args,
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [clean_test_dir],

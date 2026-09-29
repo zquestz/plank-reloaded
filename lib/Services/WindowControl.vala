@@ -43,6 +43,10 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static ulong delayed_focus_xid = 0UL;
 
+    // Applications whose windows count as those of another application, one
+    // list for each dock's item tracking it
+    static Gee.HashMap<Bamf.Application, Gee.ArrayList<Gee.List<Bamf.Application>>>? merged_applications = null;
+
     // Action type for pending operations
     enum PendingActionType {
       MINIMIZE,
@@ -278,11 +282,89 @@ namespace Plank {
       }
     }
 
+    /**
+     * Adds a list of applications whose windows count as those of an
+     * application, as when BAMF splits the windows of one program across
+     * applications without a desktop file. Each dock's item tracking the
+     * application adds its own list, which is kept so later changes apply.
+     *
+     * @param app the application
+     * @param merged the applications merged into it
+     */
+    public static void add_merged_applications (Bamf.Application app, Gee.List<Bamf.Application> merged) {
+      if (merged_applications == null)
+        merged_applications = new Gee.HashMap<Bamf.Application, Gee.ArrayList<Gee.List<Bamf.Application>>> ();
+
+      var lists = merged_applications[app];
+      if (lists == null) {
+        lists = new Gee.ArrayList<Gee.List<Bamf.Application>> ();
+        merged_applications[app] = lists;
+      }
+
+      if (!lists.contains (merged))
+        lists.add (merged);
+    }
+
+    /**
+     * Removes a list added with {@link add_merged_applications}, leaving the
+     * lists of other docks' items.
+     *
+     * @param app the application
+     * @param merged the list that was added for it
+     */
+    public static void remove_merged_applications (Bamf.Application app, Gee.List<Bamf.Application> merged) {
+      var lists = (merged_applications != null ? merged_applications[app] : null);
+      if (lists == null)
+        return;
+
+      lists.remove (merged);
+      if (lists.is_empty)
+        merged_applications.unset (app);
+    }
+
+    // The windows of an application and of the applications merged into it,
+    // counting each application once when several docks merged the same one
+    static Array<uint32>? get_xids (Bamf.Application app) {
+      Array<uint32>? xids = app.get_xids ();
+
+      var lists = (merged_applications != null ? merged_applications[app] : null);
+      if (lists == null)
+        return xids;
+
+      // Created for the first merged application only, as this runs for every
+      // item on each frame while the dock animates
+      Gee.HashSet<Bamf.Application>? counted = null;
+
+      foreach (var merged in lists) {
+        foreach (var other in merged) {
+          if (counted == null) {
+            counted = new Gee.HashSet<Bamf.Application> ();
+            counted.add (app);
+          }
+
+          if (!counted.add (other))
+            continue;
+
+          Array<uint32>? other_xids = other.get_xids ();
+          if (other_xids == null)
+            continue;
+
+          if (xids == null)
+            xids = new Array<uint32> ();
+
+          foreach (uint32 xid in other_xids)
+            xids.append_val (xid);
+        }
+      }
+
+      return xids;
+    }
+
     public static unowned Gdk.Pixbuf? get_app_icon (Bamf.Application app)
     {
       unowned Gdk.Pixbuf? pbuf = null;
 
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -410,7 +492,7 @@ namespace Plank {
     }
 
     public static bool has_maximized_window (Bamf.Application app) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -424,7 +506,7 @@ namespace Plank {
     }
 
     public static bool has_minimized_window (Bamf.Application app) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -511,7 +593,7 @@ namespace Plank {
         return xids;
 
       unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
-      Array<uint32> app_xids = app.get_xids ();
+      Array<uint32> app_xids = get_xids (app);
 
       if (active_workspace == null) {
         return app_xids;
@@ -540,7 +622,7 @@ namespace Plank {
     }
 
     public static void update_icon_regions (Bamf.Application app, Gdk.Rectangle rect) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -569,7 +651,7 @@ namespace Plank {
     }
 
     public static void close_all (Bamf.Application app, uint32 event_time) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -581,7 +663,7 @@ namespace Plank {
     }
 
     public static void close_all_in_workspace (Bamf.Application app, uint32 event_time) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -643,7 +725,7 @@ namespace Plank {
     }
 
     public static void focus_previous (Bamf.Application app, uint32 event_time, bool focus_workspace) {
-      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -660,7 +742,7 @@ namespace Plank {
     }
 
     public static void focus_next (Bamf.Application app, uint32 event_time, bool focus_workspace) {
-      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -718,7 +800,7 @@ namespace Plank {
     public static GLib.List<unowned Wnck.Window> get_ordered_window_stack (Bamf.Application app) {
       var windows = new GLib.List<unowned Wnck.Window> ();
 
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       if (xids == null) {
         debug ("Failed to get xids for %s", app.get_name ());

@@ -76,30 +76,35 @@ namespace Plank {
           return appitem;
       }
 
-      var app_desktop_file = Matcher.desktop_file_for_application (app);
+      var app_desktop_file = launcher_for_application (app);
       if (app_desktop_file == null)
         return null;
 
-      if (app_desktop_file.has_prefix ("/"))
-        try {
-          app_desktop_file = Filename.to_uri (app_desktop_file);
-        } catch (ConvertError e) {
-          warning (e.message);
-        }
-
-      // Only a file from BAMF may take an item that already tracks another
-      // running application, not one found from the window class
-      unowned string? bamf_desktop_file = app.get_desktop_file ();
-      var from_bamf = (bamf_desktop_file != null && bamf_desktop_file != "");
-
+      // Take an item only if its application isn't running. BAMF opens a
+      // windowless application when a launch starts, and the window may then
+      // arrive in a different one
       foreach (var item in internal_elements) {
         unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
         if (appitem != null && appitem.Launcher == app_desktop_file
-            && (from_bamf || appitem.App == null))
+            && !appitem.is_running ())
           return appitem;
       }
 
       return null;
+    }
+
+    // The launcher uri of an application, from BAMF or its window class
+    internal static string ? launcher_for_application (Bamf.Application app) {
+      var launcher = Matcher.desktop_file_for_application (app);
+
+      if (launcher != null && launcher.has_prefix ("/"))
+        try {
+          launcher = Filename.to_uri (launcher);
+        } catch (ConvertError e) {
+          warning (e.message);
+        }
+
+      return launcher;
     }
 
     static File ? desktop_file_for_application_uri (string app_uri) {

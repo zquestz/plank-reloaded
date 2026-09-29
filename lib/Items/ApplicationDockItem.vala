@@ -91,23 +91,49 @@ namespace Plank {
         if (app == value)
           return;
 
-        if (app != null)
+        if (app != null) {
           app_signals_disconnect (app);
+          WindowControl.remove_merged_applications (app, merged_apps);
+        }
+
+        // A merged application that takes over is no longer merged, and an
+        // item without an application keeps none
+        if (value == null)
+          clear_merged_applications ();
+        else if (merged_apps.remove (value))
+          merged_signals_disconnect (value);
+
+        // An application replaced before it closes stays merged, as its
+        // window may still arrive
+        if (app != null && value != null && !app.is_closed ()) {
+          merged_apps.add (app);
+          merged_signals_connect (app);
+        }
 
         app = value;
 
         if (app != null) {
           app_signals_connect (app);
+          WindowControl.add_merged_applications (app, merged_apps);
           initialize_states ();
           if (app.is_running () && app.is_user_visible ())
             app_window_added ();
         } else {
           reset_application_status ();
         }
-
-        unity_update_application_uri ();
       }
     }
+
+    // Other running applications for this launcher, when BAMF splits the
+    // windows of one program across applications without a desktop file.
+    // Created here, as App can be set before construct runs
+    Gee.ArrayList<Bamf.Application> merged_apps = new Gee.ArrayList<Bamf.Application> ();
+
+    // Focus moving between merged applications reports one inactive just
+    // before the other active, so the item waits this long (ms) to go inactive
+    const uint MERGED_INACTIVE_DELAY = 100U;
+
+    uint merged_inactive_timer_id = 0U;
 
     Gee.ArrayList<string> supported_mime_types;
     Gee.ArrayList<string> actions;
@@ -147,6 +173,11 @@ namespace Plank {
       actions = null;
       actions_map = null;
 
+      if (merged_inactive_timer_id > 0U) {
+        Source.remove (merged_inactive_timer_id);
+        merged_inactive_timer_id = 0U;
+      }
+
       App = null;
 #if HAVE_DBUSMENU
       Quicklist = null;
@@ -175,6 +206,29 @@ namespace Plank {
       app.closed.disconnect (handle_closed);
     }
 
+    void merged_signals_connect (Bamf.Application app) {
+      app.active_changed.connect_after (handle_active_changed);
+      app.urgent_changed.connect_after (handle_urgent_changed);
+      app.child_added.connect_after (handle_window_added);
+      app.child_removed.connect_after (handle_window_removed);
+      app.closed.connect_after (handle_merged_closed);
+    }
+
+    void merged_signals_disconnect (Bamf.Application app) {
+      app.active_changed.disconnect (handle_active_changed);
+      app.urgent_changed.disconnect (handle_urgent_changed);
+      app.child_added.disconnect (handle_window_added);
+      app.child_removed.disconnect (handle_window_removed);
+      app.closed.disconnect (handle_merged_closed);
+    }
+
+    void clear_merged_applications () {
+      foreach (var merged in merged_apps)
+        merged_signals_disconnect (merged);
+
+      merged_apps.clear ();
+    }
+
     void initialize_states ()
     requires (App != null)
     {
@@ -182,6 +236,38 @@ namespace Plank {
       handle_urgent_changed (App.is_urgent ());
 
       update_indicator (UpdateIndicatorEvent.INITIALIZE);
+    }
+
+    /**
+     * Merges another running application for this item's launcher, so that
+     * its windows count as the item's.
+     *
+     * @param app the application to merge
+     */
+    internal void merge_application (Bamf.Application app) {
+      if (app == App || merged_apps.contains (app))
+        return;
+
+      merged_apps.add (app);
+      merged_signals_connect (app);
+
+      handle_active_changed (app.is_active ());
+      handle_urgent_changed (app.is_urgent ());
+      update_indicator (UpdateIndicatorEvent.WINDOW_ADDED);
+
+      app_window_added ();
+    }
+
+    /**
+     * Moves the merged applications to an item that replaces this one.
+     *
+     * @param target the item replacing this one
+     */
+    internal void move_merged_applications_to (ApplicationDockItem target) {
+      foreach (var merged in merged_apps)
+        target.merge_application (merged);
+
+      clear_merged_applications ();
     }
 
     public bool is_running () {
@@ -201,13 +287,63 @@ namespace Plank {
     }
 
     void handle_closed () {
+      // A merged application takes over, preferring a running one to one
+      // that is still starting, whose window may yet arrive
+      Bamf.Application? next = null;
+      foreach (var merged in merged_apps) {
+        if (merged.is_closed ())
+          continue;
+
+        if (merged.is_running ()) {
+          next = merged;
+          break;
+        }
+
+        if (next == null)
+          next = merged;
+      }
+
+      if (next != null) {
+        App = next;
+        return;
+      }
+
       App = null;
 
       app_closed ();
     }
 
+    void handle_merged_closed (Bamf.View view) {
+      unowned Bamf.Application merged = (Bamf.Application) view;
+
+      merged_signals_disconnect (merged);
+      merged_apps.remove (merged);
+
+      // Recompute from the applications left. The window count too, as libbamf
+      // closes views without removing their windows when the daemon goes away
+      handle_active_changed (false);
+      handle_urgent_changed (false);
+      update_indicator (UpdateIndicatorEvent.WINDOW_REMOVED);
+    }
+
     void handle_active_changed (bool is_active) {
+      // The item is active while any of its applications is
+      is_active = is_active || (App != null && App.is_active ());
+      foreach (var merged in merged_apps)
+        is_active = is_active || merged.is_active ();
+
       var was_active = (State & ItemState.ACTIVE) == ItemState.ACTIVE;
+
+      // Recheck shortly before going inactive while applications are merged;
+      // the recheck runs with the timer still set, so it applies the result
+      if (!is_active && was_active && !merged_apps.is_empty && merged_inactive_timer_id == 0U) {
+        merged_inactive_timer_id = Gdk.threads_add_timeout (MERGED_INACTIVE_DELAY, () => {
+          handle_active_changed (false);
+          merged_inactive_timer_id = 0U;
+          return false;
+        });
+        return;
+      }
 
       if (is_active && !was_active) {
         LastActive = GLib.get_monotonic_time ();
@@ -240,6 +376,11 @@ namespace Plank {
     }
 
     void handle_urgent_changed (bool is_urgent) {
+      // The item is urgent while any of its applications is
+      is_urgent = is_urgent || (App != null && App.is_urgent ());
+      foreach (var merged in merged_apps)
+        is_urgent = is_urgent || merged.is_urgent ();
+
       var was_urgent = (State & ItemState.URGENT) == ItemState.URGENT;
 
       if (is_urgent && !was_urgent) {
@@ -450,8 +591,11 @@ namespace Plank {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       GLib.List<weak Bamf.Window>? windows = null;
-      if (App != null)
+      if (App != null) {
         windows = App.get_windows ();
+        foreach (var merged in merged_apps)
+          windows.concat (merged.get_windows ());
+      }
 
       var window_count = 0U;
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);

@@ -88,22 +88,12 @@ namespace PlankTests {
   }
 
   void matcher_desktop_file_for_window_class () {
-    // The test home's XDG_DATA_HOME, which GLib searches for applications
+    // The fixtures from tests/data/applications, copied into the test home's
+    // XDG_DATA_HOME before any test runs, since GLib only picks up files added
+    // after its first desktop ID lookup through an asynchronous monitor
     var applications = File.new_for_path (Environment.get_user_data_dir ()).get_child ("applications");
-    Paths.ensure_directory_exists (applications);
-
     var exact = applications.get_child ("org.example.TestWindow.desktop");
     var lower = applications.get_child ("testwindowlower.desktop");
-    var hidden = applications.get_child ("testwindowhidden.desktop");
-    var entry = "[Desktop Entry]\nType=Application\nName=Test\nExec=true\n";
-
-    try {
-      FileUtils.set_contents (exact.get_path (), entry);
-      FileUtils.set_contents (lower.get_path (), entry);
-      FileUtils.set_contents (hidden.get_path (), entry + "NoDisplay=true\n");
-    } catch (FileError e) {
-      assert_not_reached ();
-    }
 
     // The instance name matches as written, like dev.zed.Zed
     assert (Matcher.desktop_file_for_window_class ("org.example.TestWindow", "Other") == exact.get_path ());

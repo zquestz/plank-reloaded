@@ -37,8 +37,8 @@ lib_soversion = lt_current
 
 production_release = get_option('production-release')
 plank_version = meson.project_version()
-if not production_release
-  git_version = run_command('git', 'describe', '--tags', check: false).stdout().strip()
+if not production_release and git.found()
+  git_version = run_command(git, 'describe', '--tags', check: false).stdout().strip()
   if git_version != ''
     plank_version = git_version.split('-')[0]
   endif
