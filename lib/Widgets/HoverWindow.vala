@@ -34,6 +34,12 @@ namespace Plank {
     Gtk.Box box;
     Gtk.Label label;
 
+    /**
+     * The position manager of the dock this window belongs to, so the window
+     * makes the same monitor or work area choice as the dock.
+     */
+    internal unowned PositionManager? position_manager { get; set; }
+
     public HoverWindow () {
       GLib.Object (type: Gtk.WindowType.POPUP, type_hint: Gdk.WindowTypeHint.TOOLTIP);
     }
@@ -74,7 +80,7 @@ namespace Plank {
       Gdk.Rectangle monitor;
       var monitor_at_point = display.get_monitor_at_point (x, y);
 
-      if (environment_is_session_desktop (XdgSessionDesktop.GNOME | XdgSessionDesktop.UBUNTU | XdgSessionDesktop.MATE | XdgSessionDesktop.CINNAMON | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE)) {
+      if (position_manager == null || position_manager.use_monitor_geometry ()) {
         monitor = monitor_at_point.get_geometry ();
       } else {
         monitor = monitor_at_point.get_workarea ();

@@ -106,6 +106,7 @@ namespace Plank {
       hide_manager = new HideManager (this);
       window = new DockWindow (this);
       hover = new HoverWindow ();
+      hover.position_manager = position_manager;
       renderer = new DockRenderer (this, window);
     }
 

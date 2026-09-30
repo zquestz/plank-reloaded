@@ -147,7 +147,7 @@ namespace Plank {
       controller.prefs.notify.disconnect (prefs_changed);
     }
 
-    bool use_monitor_geometry () {
+    internal bool use_monitor_geometry () {
       switch (controller.prefs.AreaMode) {
       case AreaType.MONITOR:
         return true;
