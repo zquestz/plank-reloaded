@@ -2,6 +2,11 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.174 "Reloaded" (2026-09-30)
+
+- Make hover labels follow each dock's Screen Area setting
+- Fix newly opened apps sometimes staying hidden or showing a wrong window count
+
 ## 0.11.173 "Reloaded" (2026-09-29)
 
 - Match apps to launchers by window class when BAMF cannot, fixing duplicate icons

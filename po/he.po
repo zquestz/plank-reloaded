@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-09-29 11:35-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-11-13 03:12\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
@@ -48,19 +48,19 @@ msgstr ""
 "שמעגן צריך ומוחלט שום דבר יותר. הוא גם נשאר ספרייה שניתן להרחיב ליצירת "
 "תוכניות מעגן אחרות עם תכונות מתקדמות יותר."
 
-#: data/plank.appdata.xml.in:136
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "מעגן עם ערכת נושא Matte"
 
-#: data/plank.appdata.xml.in:141
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "העדפות מראה"
 
-#: data/plank.appdata.xml.in:146
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "העדפות התנהגות"
 
-#: data/plank.appdata.xml.in:151
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "העדפות גאדג'טים"
 

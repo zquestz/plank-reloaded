@@ -116,6 +116,10 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Wed Sep 30 2026 Josh Ellithorpe <quest@mac.com> - 0.11.174-1
+- Make hover labels follow each dock's Screen Area setting
+- Fix newly opened apps sometimes staying hidden or showing a wrong window count
+
 * Tue Sep 29 2026 Josh Ellithorpe <quest@mac.com> - 0.11.173-1
 - Match apps to launchers by window class when BAMF cannot, fixing duplicate icons
 - Keep one icon per launcher that counts every window of apps BAMF splits apart

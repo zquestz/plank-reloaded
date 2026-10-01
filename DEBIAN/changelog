@@ -1,3 +1,10 @@
+plank-reloaded (0.11.174-1) unstable; urgency=medium
+
+  * Make hover labels follow each dock's Screen Area setting
+  * Fix newly opened apps sometimes staying hidden or showing a wrong window count
+
+ -- Josh Ellithorpe <quest@mac.com>  Wed, 30 Sep 2026 14:53:56 -1000
+
 plank-reloaded (0.11.173-1) unstable; urgency=medium
 
   * Match apps to launchers by window class when BAMF cannot, fixing duplicate icons
