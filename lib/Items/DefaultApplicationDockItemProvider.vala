@@ -41,6 +41,8 @@ namespace Plank {
       Prefs.notify["CurrentWorkspaceOnly"].connect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].connect (handle_pinned_only_changed);
 
+      WindowControl.get_wnck_screen ().window_opened.connect_after (handle_window_opened);
+
       current_workspace_only = Prefs.CurrentWorkspaceOnly;
 
       if (current_workspace_only)
@@ -50,6 +52,8 @@ namespace Plank {
     ~DefaultApplicationDockItemProvider () {
       Prefs.notify["CurrentWorkspaceOnly"].disconnect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].disconnect (handle_pinned_only_changed);
+
+      WindowControl.get_wnck_screen ().window_opened.disconnect (handle_window_opened);
 
       if (current_workspace_only)
         disconnect_wnck ();
@@ -185,6 +189,13 @@ namespace Plank {
 
     [CCode (instance_pos = -1)]
     void handle_window_closed (Wnck.Screen screen, Wnck.Window? window) {
+      update_visible_elements ();
+    }
+
+    // BAMF can report an application before Wnck has read its new window, so
+    // the item looks windowless until Wnck knows it; check again then
+    [CCode (instance_pos = -1)]
+    void handle_window_opened (Wnck.Screen screen, Wnck.Window? window) {
       update_visible_elements ();
     }
 
