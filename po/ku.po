@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Kurmanji (Kurdish)\n"
@@ -50,19 +50,19 @@ msgstr ""
 "wiha pirtûkxaneyek e ku dikare bê berfirehkirin ji bo afirandina bernameyên "
 "din ên dokê bi taybetmendiyên pêşketî."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "Dok bi dirba Matte"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "Vebijarkên xuyang"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "Vebijarkên reftarê"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "Vebijarkên dokletên"
 
@@ -613,20 +613,20 @@ msgstr "Berîne ji bo zêdekirinê li dokê"
 msgid "translator-credits"
 msgstr "Wergerandin bo Kurmancî"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "Di dokê de _bihêle"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "Hemûyan _bigire"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "_Bigire"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Berîne ji bo vekirinê bi %s"

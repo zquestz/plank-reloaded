@@ -17,7 +17,7 @@ clean_test_dir = custom_target(
   output: 'clean_test_dir_stamp',
   command: [
     'sh',
-    '-c', 'rm -rf "@0@" && mkdir -p "@0@" && touch @OUTPUT@'.format(test_home),
+    '-c', 'rm -rf "@0@" && mkdir -p "@0@/.local/share" && cp -R "@1@" "@0@/.local/share/" && touch @OUTPUT@'.format(test_home, meson.current_source_dir() / 'data' / 'applications'),
   ],
   build_always_stale: true,
 )
@@ -47,8 +47,15 @@ dock_bin = executable(
 
 test_env = environment()
 test_env.set('HOME', test_home)
+test_env.set('XDG_DATA_HOME', test_home / '.local' / 'share')
+test_env.set('XDG_CONFIG_HOME', test_home / '.config')
+test_env.set('XDG_CACHE_HOME', test_home / '.cache')
+test_env.set('GSETTINGS_BACKEND', 'memory')
 test_env.set('GSETTINGS_SCHEMA_DIR', meson.current_build_dir() / '../data')
 test_env.set('PLANK_DOCKLET_DIRS', meson.current_build_dir() / '../docklets')
+# Keep GTK from starting the accessibility bus and AT-SPI registry under
+# dbus-run-session, whose log lines would otherwise corrupt the TAP output
+test_env.set('NO_AT_BRIDGE', '1')
 
 # GMock tests setup
 if get_option('enable-gmock')
@@ -58,6 +65,9 @@ if get_option('enable-gmock')
   gmock_test = executable(
     'gmock-tests',
     'gmock/main.cpp',
+    'gmock/color.cpp',
+    # plank.h includes libwnck, which requires this opt-in in C++ too
+    cpp_args: ['-DWNCK_I_KNOW_THIS_IS_UNSTABLE'],
     dependencies: [gtest_dep, gmock_dep, plank_dep, plank_base_dep],
     include_directories: [include_directories('../lib'), include_directories('../src')],
   )
@@ -119,10 +129,26 @@ if get_option('enable-headless-tests')
     is_parallel: false,
   )
 else
-  # Regular test without headless setup
+  # Regular tests use the real display, but a private session bus when
+  # dbus-run-session is available, so services the dock talks to (like BAMF,
+  # which it registers favorites with) stay out of the user's own session
+  dbus_run = find_program('dbus-run-session', required: false)
+  if dbus_run.found()
+    tests_exe = dbus_run
+    tests_args = [tests_bin.full_path()]
+    dock_exe = dbus_run
+    dock_args = [dock_bin.full_path(), '-n', 'test1']
+  else
+    tests_exe = tests_bin
+    tests_args = []
+    dock_exe = dock_bin
+    dock_args = ['-n', 'test1']
+  endif
+
   test(
     'plank-tests',
-    tests_bin,
+    tests_exe,
+    args: tests_args,
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [clean_test_dir],
@@ -131,8 +157,8 @@ else
 
   test(
     'dock-test',
-    dock_bin,
-    args: ['-n', 'test1'],
+    dock_exe,
+    args: dock_args,
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [clean_test_dir],

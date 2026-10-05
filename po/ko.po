@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
@@ -49,19 +49,19 @@ msgstr ""
 "또한 더 고급 기능을 갖춘 다른 독 프로그램을 만들기 위해 확장할 수 있는 라이브"
 "러리로 남아 있습니다."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "매트 테마가 적용된 도크"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "외관 기본 설정"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "행동 환경설정"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "독릿 환경설정"
 
@@ -618,20 +618,20 @@ msgstr ""
 "  Youngbin Han https://launchpad.net/~sukso96100\n"
 "  cafeinoz https://launchpad.net/~cafeinoz"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "플랭크에 두기 (_K)"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "모두 닫기 (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "닫기 (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s로 열려면 가져다 놓으세요"

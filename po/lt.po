@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-11-13 04:02\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "daugiau. Jis taip pat lieka biblioteka, kuri gali būti išplėsta kuriant "
 "kitas doko programas su pažangesnėmis funkcijomis."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "Dokas su Matte tema"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "Išvaizdos nustatymai"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "Elgsenos nustatymai"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "Doko įskiepių nustatymai"
 
@@ -623,20 +623,20 @@ msgstr ""
 "  Moo https://launchpad.net/~mooo\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Laikyti skydelyje"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "_Užverti visus"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "_Užverti"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Numeskite, kad atvertumėte su %s"

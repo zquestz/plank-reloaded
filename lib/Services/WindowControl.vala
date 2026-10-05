@@ -43,6 +43,10 @@ namespace Plank {
     static uint delayed_focus_timer_id = 0U;
     static ulong delayed_focus_xid = 0UL;
 
+    // Applications whose windows count as those of another application, one
+    // list for each dock's item tracking it
+    static Gee.HashMap<Bamf.Application, Gee.ArrayList<Gee.List<Bamf.Application>>>? merged_applications = null;
+
     // Action type for pending operations
     enum PendingActionType {
       MINIMIZE,
@@ -57,7 +61,7 @@ namespace Plank {
       public Gee.ArrayList<ulong> xids;
       public uint32 event_time;
       public int index;
-      public uint window_count;  // Used by SCHEDULE_DELAYED_FOCUS
+      public uint window_count; // Used by SCHEDULE_DELAYED_FOCUS
 
       public PendingOperation (PendingActionType action_type, Gee.ArrayList<ulong> xids, uint32 event_time, uint window_count = 0) {
         this.action_type = action_type;
@@ -278,11 +282,89 @@ namespace Plank {
       }
     }
 
+    /**
+     * Adds a list of applications whose windows count as those of an
+     * application, as when BAMF splits the windows of one program across
+     * applications without a desktop file. Each dock's item tracking the
+     * application adds its own list, which is kept so later changes apply.
+     *
+     * @param app the application
+     * @param merged the applications merged into it
+     */
+    public static void add_merged_applications (Bamf.Application app, Gee.List<Bamf.Application> merged) {
+      if (merged_applications == null)
+        merged_applications = new Gee.HashMap<Bamf.Application, Gee.ArrayList<Gee.List<Bamf.Application>>> ();
+
+      var lists = merged_applications[app];
+      if (lists == null) {
+        lists = new Gee.ArrayList<Gee.List<Bamf.Application>> ();
+        merged_applications[app] = lists;
+      }
+
+      if (!lists.contains (merged))
+        lists.add (merged);
+    }
+
+    /**
+     * Removes a list added with {@link add_merged_applications}, leaving the
+     * lists of other docks' items.
+     *
+     * @param app the application
+     * @param merged the list that was added for it
+     */
+    public static void remove_merged_applications (Bamf.Application app, Gee.List<Bamf.Application> merged) {
+      var lists = (merged_applications != null ? merged_applications[app] : null);
+      if (lists == null)
+        return;
+
+      lists.remove (merged);
+      if (lists.is_empty)
+        merged_applications.unset (app);
+    }
+
+    // The windows of an application and of the applications merged into it,
+    // counting each application once when several docks merged the same one
+    static Array<uint32>? get_xids (Bamf.Application app) {
+      Array<uint32>? xids = app.get_xids ();
+
+      var lists = (merged_applications != null ? merged_applications[app] : null);
+      if (lists == null)
+        return xids;
+
+      // Created for the first merged application only, as this runs for every
+      // item on each frame while the dock animates
+      Gee.HashSet<Bamf.Application>? counted = null;
+
+      foreach (var merged in lists) {
+        foreach (var other in merged) {
+          if (counted == null) {
+            counted = new Gee.HashSet<Bamf.Application> ();
+            counted.add (app);
+          }
+
+          if (!counted.add (other))
+            continue;
+
+          Array<uint32>? other_xids = other.get_xids ();
+          if (other_xids == null)
+            continue;
+
+          if (xids == null)
+            xids = new Array<uint32> ();
+
+          foreach (uint32 xid in other_xids)
+            xids.append_val (xid);
+        }
+      }
+
+      return xids;
+    }
+
     public static unowned Gdk.Pixbuf? get_app_icon (Bamf.Application app)
     {
       unowned Gdk.Pixbuf? pbuf = null;
 
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -324,6 +406,64 @@ namespace Plank {
         critical ("get_window_icon() for '%s' caused a XError", window.get_name ());
 
       return pbuf;
+    }
+
+    /**
+     * Gets the WM_CLASS instance and class names of a window, or null for
+     * both if the window is unknown.
+     */
+    public static void get_window_class (Bamf.Window window, out string? instance_name, out string? class_name) {
+      var xid = window.get_xid ();
+      unowned Wnck.Window? w = get_wnck_window (xid);
+
+      if (w != null) {
+        instance_name = w.get_class_instance_name ();
+        class_name = w.get_class_group_name ();
+        if (instance_name != null || class_name != null)
+          return;
+      }
+
+      // Wnck can lag BAMF, missing the window or its class, and forcing an
+      // update cannot help before Plank reads the X event, so ask the X
+      // server, which already has both
+      get_window_class_from_server (xid, out instance_name, out class_name);
+    }
+
+    static void get_window_class_from_server (ulong xid, out string? instance_name, out string? class_name) {
+      instance_name = null;
+      class_name = null;
+
+      unowned Gdk.X11.Display? gdk_display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (gdk_display == null)
+        return;
+
+      unowned X.Display display = gdk_display.get_xdisplay ();
+
+      X.Atom actual_type;
+      int actual_format;
+      ulong nitems, bytes_after;
+      void* prop_data;
+
+      error_trap_push ();
+      var status = display.get_window_property ((X.Window) xid, X.XA_WM_CLASS, 0, 1024, false, X.XA_STRING,
+                                                 out actual_type, out actual_format,
+                                                 out nitems, out bytes_after, out prop_data);
+      error_trap_pop ();
+
+      if (status != X.Success || prop_data == null)
+        return;
+
+      // WM_CLASS holds the instance and then the class name, each ending in a
+      // NUL, and Xlib adds one more NUL after the data
+      if (actual_type == X.XA_STRING && actual_format == 8 && nitems > 0) {
+        unowned string instance = (string) prop_data;
+        instance_name = instance;
+
+        if ((ulong) (instance.length + 1) < nitems)
+          class_name = (string) ((char*) prop_data + instance.length + 1);
+      }
+
+      X.free (prop_data);
     }
 
     public static Gdk.Pixbuf? get_window_thumbnail (Bamf.Window window)
@@ -386,7 +526,7 @@ namespace Plank {
     }
 
     public static bool has_maximized_window (Bamf.Application app) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -400,7 +540,7 @@ namespace Plank {
     }
 
     public static bool has_minimized_window (Bamf.Application app) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -487,7 +627,7 @@ namespace Plank {
         return xids;
 
       unowned Wnck.Workspace? active_workspace = get_wnck_screen ().get_active_workspace ();
-      Array<uint32> app_xids = app.get_xids ();
+      Array<uint32> app_xids = get_xids (app);
 
       if (active_workspace == null) {
         return app_xids;
@@ -516,7 +656,7 @@ namespace Plank {
     }
 
     public static void update_icon_regions (Bamf.Application app, Gdk.Rectangle rect) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -545,7 +685,7 @@ namespace Plank {
     }
 
     public static void close_all (Bamf.Application app, uint32 event_time) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -557,7 +697,7 @@ namespace Plank {
     }
 
     public static void close_all_in_workspace (Bamf.Application app, uint32 event_time) {
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
@@ -619,11 +759,11 @@ namespace Plank {
     }
 
     public static void focus_previous (Bamf.Application app, uint32 event_time, bool focus_workspace) {
-      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
 
       warn_if_fail (xids != null);
 
-      if (xids == null)
+      if (xids == null || xids.length == 0)
         return;
 
       var i = find_active_xid_index (xids);
@@ -636,11 +776,11 @@ namespace Plank {
     }
 
     public static void focus_next (Bamf.Application app, uint32 event_time, bool focus_workspace) {
-      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : app.get_xids ();
+      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
 
       warn_if_fail (xids != null);
 
-      if (xids == null)
+      if (xids == null || xids.length == 0)
         return;
 
       var i = find_active_xid_index (xids);
@@ -694,7 +834,7 @@ namespace Plank {
     public static GLib.List<unowned Wnck.Window> get_ordered_window_stack (Bamf.Application app) {
       var windows = new GLib.List<unowned Wnck.Window> ();
 
-      Array<uint32>? xids = app.get_xids ();
+      Array<uint32>? xids = get_xids (app);
 
       if (xids == null) {
         debug ("Failed to get xids for %s", app.get_name ());
@@ -791,10 +931,13 @@ namespace Plank {
         return;
       }
 
-      additional_windows.reverse ();
+      // Reverse a copy: reversing the caller's list in place would leave it
+      // pointing at a single node, leaking the rest when it is freed
+      var stack = additional_windows.copy ();
+      stack.reverse ();
 
       var windows_to_focus = new Gee.ArrayList<unowned Wnck.Window> ();
-      foreach (unowned Wnck.Window window in additional_windows) {
+      foreach (unowned Wnck.Window window in stack) {
         if (window == targetWindow)
           continue;
         if (!window.is_minimized () && windows_share_viewport (targetWindow, window)) {

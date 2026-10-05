@@ -147,7 +147,7 @@ namespace Plank {
       controller.prefs.notify.disconnect (prefs_changed);
     }
 
-    bool use_monitor_geometry () {
+    internal bool use_monitor_geometry () {
       switch (controller.prefs.AreaMode) {
       case AreaType.MONITOR:
         return true;
@@ -2052,6 +2052,13 @@ namespace Plank {
 
     public Gdk.Rectangle get_monitor_geometry () {
       return monitor_geo;
+    }
+
+    // The whole monitor the dock is on, as last measured, where
+    // get_monitor_geometry () is the dock's area and leaves out panels in
+    // work area mode
+    internal Gdk.Rectangle get_raw_monitor_geometry () {
+      return last_raw_geo;
     }
 
     /**

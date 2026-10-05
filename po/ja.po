@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
@@ -48,19 +48,19 @@ msgstr ""
 "クに必要なものだけを提供し、それ以上は何もありません。また、より高度な機能を"
 "持つ他のドックプログラムを作成するために拡張できるライブラリでもあります。"
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "マットテーマのドック"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "外観設定"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "動作設定"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "ドックレット設定"
 
@@ -619,20 +619,20 @@ msgstr ""
 "  night1ynx https://launchpad.net/~night1ynx\n"
 "  smp https://launchpad.net/~cheat-hc0-ms"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ドックに追加(_K)"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "すべて閉じる(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "ドロップして %s で開く"

@@ -91,23 +91,49 @@ namespace Plank {
         if (app == value)
           return;
 
-        if (app != null)
+        if (app != null) {
           app_signals_disconnect (app);
+          WindowControl.remove_merged_applications (app, merged_apps);
+        }
+
+        // A merged application that takes over is no longer merged, and an
+        // item without an application keeps none
+        if (value == null)
+          clear_merged_applications ();
+        else if (merged_apps.remove (value))
+          merged_signals_disconnect (value);
+
+        // An application replaced before it closes stays merged, as its
+        // window may still arrive
+        if (app != null && value != null && !app.is_closed ()) {
+          merged_apps.add (app);
+          merged_signals_connect (app);
+        }
 
         app = value;
 
         if (app != null) {
           app_signals_connect (app);
+          WindowControl.add_merged_applications (app, merged_apps);
           initialize_states ();
           if (app.is_running () && app.is_user_visible ())
             app_window_added ();
         } else {
           reset_application_status ();
         }
-
-        unity_update_application_uri ();
       }
     }
+
+    // Other running applications for this launcher, when BAMF splits the
+    // windows of one program across applications without a desktop file.
+    // Created here, as App can be set before construct runs
+    Gee.ArrayList<Bamf.Application> merged_apps = new Gee.ArrayList<Bamf.Application> ();
+
+    // Focus moving between merged applications reports one inactive just
+    // before the other active, so the item waits this long (ms) to go inactive
+    const uint MERGED_INACTIVE_DELAY = 100U;
+
+    uint merged_inactive_timer_id = 0U;
 
     Gee.ArrayList<string> supported_mime_types;
     Gee.ArrayList<string> actions;
@@ -147,6 +173,11 @@ namespace Plank {
       actions = null;
       actions_map = null;
 
+      if (merged_inactive_timer_id > 0U) {
+        Source.remove (merged_inactive_timer_id);
+        merged_inactive_timer_id = 0U;
+      }
+
       App = null;
 #if HAVE_DBUSMENU
       Quicklist = null;
@@ -175,6 +206,29 @@ namespace Plank {
       app.closed.disconnect (handle_closed);
     }
 
+    void merged_signals_connect (Bamf.Application app) {
+      app.active_changed.connect_after (handle_active_changed);
+      app.urgent_changed.connect_after (handle_urgent_changed);
+      app.child_added.connect_after (handle_window_added);
+      app.child_removed.connect_after (handle_window_removed);
+      app.closed.connect_after (handle_merged_closed);
+    }
+
+    void merged_signals_disconnect (Bamf.Application app) {
+      app.active_changed.disconnect (handle_active_changed);
+      app.urgent_changed.disconnect (handle_urgent_changed);
+      app.child_added.disconnect (handle_window_added);
+      app.child_removed.disconnect (handle_window_removed);
+      app.closed.disconnect (handle_merged_closed);
+    }
+
+    void clear_merged_applications () {
+      foreach (var merged in merged_apps)
+        merged_signals_disconnect (merged);
+
+      merged_apps.clear ();
+    }
+
     void initialize_states ()
     requires (App != null)
     {
@@ -184,16 +238,45 @@ namespace Plank {
       update_indicator (UpdateIndicatorEvent.INITIALIZE);
     }
 
+    /**
+     * Merges another running application for this item's launcher, so that
+     * its windows count as the item's.
+     *
+     * @param app the application to merge
+     */
+    internal void merge_application (Bamf.Application app) {
+      if (app == App || merged_apps.contains (app))
+        return;
+
+      merged_apps.add (app);
+      merged_signals_connect (app);
+
+      handle_active_changed (app.is_active ());
+      handle_urgent_changed (app.is_urgent ());
+      update_indicator (UpdateIndicatorEvent.WINDOW_ADDED);
+
+      app_window_added ();
+    }
+
+    /**
+     * Moves the merged applications to an item that replaces this one.
+     *
+     * @param target the item replacing this one
+     */
+    internal void move_merged_applications_to (ApplicationDockItem target) {
+      foreach (var merged in merged_apps)
+        target.merge_application (merged);
+
+      clear_merged_applications ();
+    }
+
     public bool is_running () {
       return (App != null && App.is_running ());
     }
 
     public bool is_window () {
-      if (App == null)
-        return false;
-
-      unowned string? desktop_file = App.get_desktop_file ();
-      return (desktop_file == null || desktop_file == "");
+      // Without a launcher the item only stands for the running windows
+      return (Prefs.Launcher == "");
     }
 
     void handle_user_visible_changed (bool user_visible) {
@@ -204,13 +287,63 @@ namespace Plank {
     }
 
     void handle_closed () {
+      // A merged application takes over, preferring a running one to one
+      // that is still starting, whose window may yet arrive
+      Bamf.Application? next = null;
+      foreach (var merged in merged_apps) {
+        if (merged.is_closed ())
+          continue;
+
+        if (merged.is_running ()) {
+          next = merged;
+          break;
+        }
+
+        if (next == null)
+          next = merged;
+      }
+
+      if (next != null) {
+        App = next;
+        return;
+      }
+
       App = null;
 
       app_closed ();
     }
 
+    void handle_merged_closed (Bamf.View view) {
+      unowned Bamf.Application merged = (Bamf.Application) view;
+
+      merged_signals_disconnect (merged);
+      merged_apps.remove (merged);
+
+      // Recompute from the applications left. The window count too, as libbamf
+      // closes views without removing their windows when the daemon goes away
+      handle_active_changed (false);
+      handle_urgent_changed (false);
+      update_indicator (UpdateIndicatorEvent.WINDOW_REMOVED);
+    }
+
     void handle_active_changed (bool is_active) {
+      // The item is active while any of its applications is
+      is_active = is_active || (App != null && App.is_active ());
+      foreach (var merged in merged_apps)
+        is_active = is_active || merged.is_active ();
+
       var was_active = (State & ItemState.ACTIVE) == ItemState.ACTIVE;
+
+      // Recheck shortly before going inactive while applications are merged;
+      // the recheck runs with the timer still set, so it applies the result
+      if (!is_active && was_active && !merged_apps.is_empty && merged_inactive_timer_id == 0U) {
+        merged_inactive_timer_id = Gdk.threads_add_timeout (MERGED_INACTIVE_DELAY, () => {
+          handle_active_changed (false);
+          merged_inactive_timer_id = 0U;
+          return false;
+        });
+        return;
+      }
 
       if (is_active && !was_active) {
         LastActive = GLib.get_monotonic_time ();
@@ -223,7 +356,7 @@ namespace Plank {
 
     void handle_name_changed (string old_name, string new_name) {
       // do nothing if name and icon are coming from the desktop-file
-      if (this is TransientDockItem)
+      if (Prefs.Launcher == "")
         Text = new_name;
     }
 
@@ -243,6 +376,11 @@ namespace Plank {
     }
 
     void handle_urgent_changed (bool is_urgent) {
+      // The item is urgent while any of its applications is
+      is_urgent = is_urgent || (App != null && App.is_urgent ());
+      foreach (var merged in merged_apps)
+        is_urgent = is_urgent || merged.is_urgent ();
+
       var was_urgent = (State & ItemState.URGENT) == ItemState.URGENT;
 
       if (is_urgent && !was_urgent) {
@@ -340,6 +478,30 @@ namespace Plank {
 
     void launch () {
       System.get_default ().launch (File.new_for_uri (Prefs.Launcher));
+    }
+
+    void launch_action (string exec, string action_id) {
+      unowned AppLaunchContext context = System.get_default ().context;
+
+      // GLib activates D-Bus applications and honors Terminal and Path;
+      // Unity shortcuts and launchers it can't load fall back to the command line
+      if (action_id != "") {
+        try {
+          var info = new DesktopAppInfo.from_filename (Filename.from_uri (Prefs.Launcher));
+          if (info != null) {
+            info.launch_action (action_id, context);
+            return;
+          }
+        } catch (ConvertError e) {
+          warning (e.message);
+        }
+      }
+
+      try {
+        AppInfo.create_from_commandline (exec, null, AppInfoCreateFlags.NONE).launch (null, context);
+      } catch (Error e) {
+        warning (e.message);
+      }
     }
 
     /**
@@ -464,8 +626,11 @@ namespace Plank {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
       GLib.List<weak Bamf.Window>? windows = null;
-      if (App != null)
+      if (App != null) {
         windows = App.get_windows ();
+        foreach (var merged in merged_apps)
+          windows.concat (merged.get_windows ());
+      }
 
       var window_count = 0U;
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
@@ -515,11 +680,7 @@ namespace Plank {
           var values = actions_map.get (s).split (";;");
 
           var item = create_menu_item (s, values[1], true);
-          item.activate.connect (() => {
-            try {
-              AppInfo.create_from_commandline (values[0], null, AppInfoCreateFlags.NONE).launch (null, null);
-            } catch {}
-          });
+          item.activate.connect (() => launch_action (values[0], values[2]));
           items.add (item);
         }
       }
@@ -696,7 +857,7 @@ namespace Plank {
      * @param icon the icon key from the launcher
      * @param text the text key from the launcher
      * @param actions a list of all actions by name
-     * @param actions_map a map of actions from name to exec;;icon
+     * @param actions_map a map of actions from name to exec;;icon;;id, where id is empty for Unity shortcuts
      * @param mimes a list of all supported mime types
      * @param accepts_files whether the Exec key contains file/URL arguments (%F, %f, %U, %u)
      */
@@ -777,8 +938,12 @@ namespace Plank {
               continue;
 
             foreach (unowned string action in file.get_string_list (KeyFileDesktop.GROUP, key)) {
+              // Only actions listed in Actions= with a Desktop Action group can
+              // be launched by id, Unity shortcuts only have a command line
+              var action_id = (key == DESKTOP_ACTION_KEY ? action : "");
               var group = DESKTOP_ACTION_GROUP_NAME.printf (action);
               if (!file.has_group (group)) {
+                action_id = "";
                 group = UNITY_QUICKLISTS_SHORTCUT_GROUP_NAME.printf (action);
                 if (!file.has_group (group))
                   continue;
@@ -834,7 +999,7 @@ namespace Plank {
                 action_name = GLib.dgettext (textdomain, action_name).dup ();
 
               actions.add (action_name);
-              actions_map.set (action_name, "%s;;%s".printf (action_exec, action_icon));
+              actions_map.set (action_name, "%s;;%s;;%s".printf (action_exec, action_icon, action_id));
             }
           }
         }
@@ -847,15 +1012,17 @@ namespace Plank {
     void unity_update_application_uri () {
       unity_application_uri = null;
 
-      unowned string? desktop_file = (App != null ? App.get_desktop_file () : Launcher);
-      if (desktop_file == null || desktop_file == "")
+      // The launcher is the item's .desktop file, even when BAMF has none, and
+      // badge updates name it by its plain (unescaped) filename
+      unowned string launcher = Launcher;
+      if (launcher == "")
         return;
 
-      var p = desktop_file.split ("/");
-      if (p.length == 0)
+      var basename = File.new_for_uri (launcher).get_basename ();
+      if (basename == null || basename == "")
         return;
 
-      unity_application_uri = "application://%s".printf (p[p.length - 1]);
+      unity_application_uri = "application://%s".printf (basename);
     }
 
     /**

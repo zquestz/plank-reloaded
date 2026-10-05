@@ -41,6 +41,8 @@ namespace Plank {
       Prefs.notify["CurrentWorkspaceOnly"].connect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].connect (handle_pinned_only_changed);
 
+      WindowControl.get_wnck_screen ().window_opened.connect_after (handle_window_opened);
+
       current_workspace_only = Prefs.CurrentWorkspaceOnly;
 
       if (current_workspace_only)
@@ -50,6 +52,8 @@ namespace Plank {
     ~DefaultApplicationDockItemProvider () {
       Prefs.notify["CurrentWorkspaceOnly"].disconnect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].disconnect (handle_pinned_only_changed);
+
+      WindowControl.get_wnck_screen ().window_opened.disconnect (handle_window_opened);
 
       if (current_workspace_only)
         disconnect_wnck ();
@@ -107,9 +111,8 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override void prepare () {
-      if (!Prefs.PinnedOnly)
-        add_transient_items ();
-
+      // Register the pinned launchers as BAMF favorites in one call;
+      // launchers pinned later are registered in connect_element ()
       var favs = new Gee.ArrayList<string> ();
 
       foreach (var element in internal_elements) {
@@ -119,12 +122,23 @@ namespace Plank {
       }
 
       Matcher.get_default ().set_favorites (favs);
+
+      match_running_applications ();
     }
 
     protected override void app_opened (Bamf.Application app) {
       unowned ApplicationDockItem? found = item_for_application (app);
       if (found != null) {
         found.App = app;
+        return;
+      }
+
+      // An item with this launcher already tracks another running application,
+      // and takes this one's windows too
+      var launcher = launcher_for_application (app);
+      unowned ApplicationDockItem? owner = (launcher != null ? (item_for_uri (launcher) as ApplicationDockItem) : null);
+      if (owner != null) {
+        owner.merge_application (app);
         return;
       }
 
@@ -178,6 +192,13 @@ namespace Plank {
       update_visible_elements ();
     }
 
+    // BAMF can report an application before Wnck has read its new window, so
+    // the item looks windowless until Wnck knows it; check again then
+    [CCode (instance_pos = -1)]
+    void handle_window_opened (Wnck.Screen screen, Wnck.Window? window) {
+      update_visible_elements ();
+    }
+
     [CCode (instance_pos = -1)]
     void handle_workspace_changed (Wnck.Screen screen, Wnck.Workspace? previous) {
       unowned Wnck.Workspace? active_workspace = screen.get_active_workspace ();
@@ -214,13 +235,16 @@ namespace Plank {
       if (Prefs.PinnedOnly)
         remove_transient_items ();
       else
-        add_transient_items ();
+        match_running_applications ();
     }
 
-    void add_transient_items () {
+    void match_running_applications () {
       var transient_items = new Gee.ArrayList<DockElement> ();
+      var transient_launchers = new Gee.HashMap<string, TransientDockItem> ();
 
-      // Match running applications to their available dock-items
+      // Match running applications to their available dock-items, and add
+      // items for the others unless only pinned items are shown. A launcher
+      // gets one item, which takes the windows of every application sharing it
       foreach (var app in Matcher.get_default ().active_launchers ()) {
         unowned ApplicationDockItem? found = item_for_application (app);
         if (found != null) {
@@ -228,7 +252,26 @@ namespace Plank {
           continue;
         }
 
-        transient_items.add (new TransientDockItem.with_application (app));
+        var launcher = launcher_for_application (app);
+        if (launcher != null) {
+          ApplicationDockItem? owner = (item_for_uri (launcher) as ApplicationDockItem);
+          if (owner == null)
+            owner = transient_launchers[launcher];
+
+          if (owner != null) {
+            owner.merge_application (app);
+            continue;
+          }
+        }
+
+        if (Prefs.PinnedOnly)
+          continue;
+
+        var new_item = new TransientDockItem.with_application (app);
+        if (launcher != null)
+          transient_launchers[launcher] = new_item;
+
+        transient_items.add (new_item);
       }
 
       add_all (transient_items);
@@ -252,6 +295,13 @@ namespace Plank {
       if (appitem != null) {
         appitem.app_closed.connect (app_closed);
         appitem.pin_launcher.connect (pin_item);
+
+        // Launchers loaded at startup were registered together in prepare ()
+        if (Container != null && !(appitem is TransientDockItem)) {
+          var favs = new Gee.ArrayList<string> ();
+          favs.add (appitem.Launcher);
+          Matcher.get_default ().set_favorites (favs);
+        }
       }
     }
 
@@ -277,6 +327,7 @@ namespace Plank {
 
       var new_item = new TransientDockItem.with_application (app);
       item.copy_values_to (new_item);
+      ((ApplicationDockItem) item).move_merged_applications_to (new_item);
 
       replace (new_item, item);
     }
@@ -298,13 +349,13 @@ namespace Plank {
 
       if (item is TransientDockItem) {
         var dockitem_file = Factory.item_factory.make_dock_item (item.Launcher, LaunchersDir);
-        if (dockitem_file == null)
-          return;
+        if (dockitem_file != null) {
+          var new_item = new ApplicationDockItem.with_dockitem_file (dockitem_file);
+          item.copy_values_to (new_item);
+          app_item.move_merged_applications_to (new_item);
 
-        var new_item = new ApplicationDockItem.with_dockitem_file (dockitem_file);
-        item.copy_values_to (new_item);
-
-        replace (new_item, item);
+          replace (new_item, item);
+        }
       } else {
         if (!(app_item.is_running () || app_item.has_unity_info ()))
           remove (item);

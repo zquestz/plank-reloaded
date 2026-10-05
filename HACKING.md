@@ -31,29 +31,36 @@ git clone https://github.com/zquestz/plank-reloaded.git
 cd plank-reloaded
 ```
 
-2. **Build and Install:**
+2. **Install the build dependencies:**
+
+The README's [Installation](README.md#installation) section has the command that installs them on Ubuntu and Linux Mint, Debian and LMDE, and Fedora. Elsewhere, install the equivalent packages. You need the development packages, such as `libwnck-3-dev` rather than the `libwnck-3-0` runtime, along with `meson`, `ninja` and `valac`.
+
+3. **Build:**
 
 ```bash
 meson setup --prefix=/usr build
 meson compile -C build
+```
+
+4. **Install, or run without installing:**
+
+Install it, then start Plank as usual:
+
+```bash
 sudo meson install -C build
 ```
 
-3. **Run Plank:**
+Or run it straight from the build directory without installing. Quit any running Plank first, then:
 
 ```bash
 meson compile -C build run
 ```
 
-4. **Run Plank with verbose logging:**
-
-```bash
-meson compile -C build run-verbose
-```
+For verbose logging, use `run-verbose` instead of `run`.
 
 ## Debugging Issues
 
-For investigating crashes or memory issues, use GDB:
+For investigating crashes or memory issues, run Plank under GDB. This needs `gdb` installed when the build directory is set up, since the target only exists when meson finds it:
 
 ```bash
 meson compile -C build run-debug

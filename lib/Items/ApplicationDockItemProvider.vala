@@ -69,47 +69,52 @@ namespace Plank {
     }
 
     protected unowned ApplicationDockItem ? item_for_application (Bamf.Application app) {
-      var app_desktop_file = app.get_desktop_file ();
-      if (app_desktop_file != null && app_desktop_file.has_prefix ("/"))
-        try {
-          app_desktop_file = Filename.to_uri (app_desktop_file);
-        } catch (ConvertError e) {
-          warning (e.message);
-        }
-
+      // An item already tracking this application always wins
       foreach (var item in internal_elements) {
         unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
-        if (appitem == null)
-          continue;
-
-        unowned Bamf.Application? item_app = appitem.App;
-        if (item_app != null && item_app == app)
+        if (appitem != null && appitem.App == app)
           return appitem;
+      }
 
-        unowned string launcher = appitem.Launcher;
-        if (launcher != "" && app_desktop_file != null && launcher == app_desktop_file)
+      var app_desktop_file = launcher_for_application (app);
+      if (app_desktop_file == null)
+        return null;
+
+      // Take an item only if its application isn't running. BAMF opens a
+      // windowless application when a launch starts, and the window may then
+      // arrive in a different one
+      foreach (var item in internal_elements) {
+        unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
+        if (appitem != null && appitem.Launcher == app_desktop_file
+            && !appitem.is_running ())
           return appitem;
       }
 
       return null;
     }
 
+    // The launcher uri of an application, from BAMF or its window class
+    internal static string ? launcher_for_application (Bamf.Application app) {
+      var launcher = Matcher.desktop_file_for_application (app);
+
+      if (launcher != null && launcher.has_prefix ("/"))
+        try {
+          launcher = Filename.to_uri (launcher);
+        } catch (ConvertError e) {
+          warning (e.message);
+        }
+
+      return launcher;
+    }
+
     static File ? desktop_file_for_application_uri (string app_uri) {
-      foreach (var folder in Paths.DataDirFolders) {
-        var applications_folder = folder.get_child ("applications");
-        if (!applications_folder.query_exists ())
-          continue;
+      // DesktopAppInfo does the full XDG lookup, including the user's data
+      // folder and desktop IDs that map to subfolders
+      var app_info = new DesktopAppInfo (app_uri.replace ("application://", ""));
+      if (app_info == null || app_info.get_filename () == null)
+        return null;
 
-        var desktop_file = applications_folder.get_child (app_uri.replace ("application://", ""));
-        if (!desktop_file.query_exists ())
-          continue;
-
-        return desktop_file;
-      }
-
-      debug ("Matching application for '%s' not found or not installed!", app_uri);
-
-      return null;
+      return File.new_for_path (app_info.get_filename ());
     }
 
     /**

@@ -74,6 +74,8 @@ Here is a list of themes known to support Plank Reloaded:
 
 ## Installation
 
+Expand your distribution below for packages and, where provided, steps to build from source, including the build dependencies to install.
+
 <details markdown="1">
 <summary><strong>Arch Linux</strong></summary>
 

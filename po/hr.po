@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-11-13 03:56\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "On također ostaje biblioteka koja se može proširiti za stvaranje drugih dok "
 "programa s naprednijim značajkama."
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "Dok s Matte temom"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "Postavke izgleda"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "Postavke ponašanja"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "Postavke dok-apleta"
 
@@ -622,20 +622,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Zadrži u Docku"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "_Zatvori sve"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Ispusti za otvaranje s %s"

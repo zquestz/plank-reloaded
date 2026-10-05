@@ -23,6 +23,16 @@ namespace PlankTests
 {
 	public static void register_preferences_tests ()
 	{
+		// Each test expects its file to start from the defaults, so remove any
+		// an earlier run left behind (a fresh test home has none)
+		try {
+			var enumerator = Paths.AppConfigFolder.enumerate_children (FileAttribute.STANDARD_NAME, 0);
+			FileInfo? info;
+			while ((info = enumerator.next_file ()) != null)
+				if (info.get_name ().has_prefix ("test_preferences_"))
+					Paths.AppConfigFolder.get_child (info.get_name ()).delete ();
+		} catch {}
+
 		Test.add_func ("/Services/Preferences/basics", preferences_basics);
 		Test.add_func ("/Services/Preferences/delay", preferences_delay);
 		Test.add_func ("/Services/Preferences/signals", preferences_signals);

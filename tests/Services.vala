@@ -19,986 +19,1103 @@
 
 using Plank;
 
-namespace PlankTests
-{
-	public static void register_services_tests ()
-	{
-		Test.add_func ("/Services/Environment/desktop_from_string", environment_desktop_from_string);
-		Test.add_func ("/Services/Environment/desktop_from_string_unknown_fallthrough", environment_desktop_from_string_unknown);
-		Test.add_func ("/Services/Environment/desktop_from_string_case_insensitive", environment_desktop_from_string_case);
-		Test.add_func ("/Services/Environment/desktop_from_string_multi", environment_desktop_from_string_multi);
-		Test.add_func ("/Services/Environment/desktop_bitmask", environment_desktop_bitmask);
-		Test.add_func ("/Services/Helpers/truncate_middle_short", helpers_truncate_middle_short);
-		Test.add_func ("/Services/Helpers/truncate_middle_exact", helpers_truncate_middle_exact);
-		Test.add_func ("/Services/Helpers/truncate_middle_long", helpers_truncate_middle_long);
-		Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit", helpers_truncate_middle_very_short_limit);
-		Test.add_func ("/Services/Helpers/truncate_middle_utf8", helpers_truncate_middle_utf8);
-		Test.add_func ("/Services/Helpers/truncate_middle_cjk", helpers_truncate_middle_cjk);
-		Test.add_func ("/Services/DockWindowPosition/bottom_composited", dock_win_pos_bottom_composited);
-		Test.add_func ("/Services/DockWindowPosition/top_composited", dock_win_pos_top_composited);
-		Test.add_func ("/Services/DockWindowPosition/left_composited", dock_win_pos_left_composited);
-		Test.add_func ("/Services/DockWindowPosition/right_composited", dock_win_pos_right_composited);
-		Test.add_func ("/Services/DockWindowPosition/bottom_with_gap", dock_win_pos_bottom_with_gap);
-		Test.add_func ("/Services/DockWindowPosition/offset_monitor", dock_win_pos_offset_monitor);
-		Test.add_func ("/Services/BackgroundPadding/bottom", bg_padding_bottom);
-		Test.add_func ("/Services/BackgroundPadding/top", bg_padding_top);
-		Test.add_func ("/Services/BackgroundPadding/left", bg_padding_left);
-		Test.add_func ("/Services/BackgroundPadding/right", bg_padding_right);
-		Test.add_func ("/Services/BackgroundPadding/with_hide_offset", bg_padding_with_hide_offset);
-		Test.add_func ("/Services/EasingBounce/start_zero", easing_bounce_start_zero);
-		Test.add_func ("/Services/EasingBounce/end_zero", easing_bounce_end_zero);
-		Test.add_func ("/Services/EasingBounce/midpoint_positive", easing_bounce_midpoint_positive);
-		Test.add_func ("/Services/EasingBounce/always_non_negative", easing_bounce_always_non_negative);
-		Test.add_func ("/Services/SessionType/known_types", session_type_known);
-		Test.add_func ("/Services/SessionType/case_insensitive", session_type_case);
-		Test.add_func ("/Services/SessionType/unknown_defaults", session_type_unknown);
-		Test.add_func ("/Services/ColorPrefs/round_trip", color_prefs_round_trip);
-		Test.add_func ("/Services/ColorPrefs/clamping", color_prefs_clamping);
-		Test.add_func ("/Services/ColorPrefs/format", color_prefs_format);
-		Test.add_func ("/Services/DockDrawPosition/bottom_visible", draw_position_bottom_visible);
-		Test.add_func ("/Services/DockDrawPosition/bottom_hidden", draw_position_bottom_hidden);
-		Test.add_func ("/Services/DockDrawPosition/bottom_half", draw_position_bottom_half);
-		Test.add_func ("/Services/DockDrawPosition/top_hidden", draw_position_top_hidden);
-		Test.add_func ("/Services/DockDrawPosition/left_hidden", draw_position_left_hidden);
-		Test.add_func ("/Services/DockDrawPosition/right_hidden", draw_position_right_hidden);
-		Test.add_func ("/Services/DockDrawPosition/with_hide_offset", draw_position_with_hide_offset);
-		Test.add_func ("/Services/Easing/linear_bounds", easing_linear_bounds);
-		Test.add_func ("/Services/Easing/linear_midpoint", easing_linear_midpoint);
-		Test.add_func ("/Services/Easing/all_modes_bounds", easing_all_modes_bounds);
-		Test.add_func ("/Services/DrawValue/move_in_bottom", draw_value_move_in_bottom);
-		Test.add_func ("/Services/DrawValue/move_in_top", draw_value_move_in_top);
-		Test.add_func ("/Services/DrawValue/move_right_bottom", draw_value_move_right_bottom);
-		Test.add_func ("/Services/DrawValue/move_right_left", draw_value_move_right_left);
-		Test.add_func ("/Services/Struts/single_monitor_bottom", struts_single_monitor_bottom);
-		Test.add_func ("/Services/Struts/single_monitor_top", struts_single_monitor_top);
-		Test.add_func ("/Services/Struts/single_monitor_left", struts_single_monitor_left);
-		Test.add_func ("/Services/Struts/single_monitor_right", struts_single_monitor_right);
-		Test.add_func ("/Services/Struts/multi_monitor_bottom", struts_multi_monitor_bottom);
-		Test.add_func ("/Services/Struts/scaling_2x", struts_scaling_2x);
-		Test.add_func ("/Services/Struts/with_gap", struts_with_gap);
-		Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_bottom", struts_multi_monitor_scaling_2x_bottom);
-		Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_right", struts_multi_monitor_scaling_2x_right);
-		Test.add_func ("/Services/Struts/gap_with_scaling_2x", struts_gap_with_scaling_2x);
-		Test.add_func ("/Services/Struts/top_scaling_2x", struts_top_scaling_2x);
-		Test.add_func ("/Services/Struts/left_scaling_2x", struts_left_scaling_2x);
-		Test.add_func ("/Services/Struts/right_scaling_2x", struts_right_scaling_2x);
-		Test.add_func ("/Services/Struts/non_primary_monitor_bottom", struts_non_primary_monitor_bottom);
-		Test.add_func ("/Services/Struts/non_primary_monitor_scaling_2x", struts_non_primary_monitor_scaling_2x);
-		Test.add_func ("/Services/Struts/ewmh_xinerama_example", struts_ewmh_xinerama_example);
-		Test.add_func ("/Services/Struts/different_height_monitors_scaling_2x", struts_different_height_monitors_scaling_2x);
-	}
-
-	//
-	// Environment detection tests
-	//
-
-	void environment_desktop_from_string ()
-	{
-		assert (XdgSessionDesktop.from_string ("xfce") == XdgSessionDesktop.XFCE);
-		assert (XdgSessionDesktop.from_string ("cinnamon") == XdgSessionDesktop.CINNAMON);
-		assert (XdgSessionDesktop.from_string ("x-cinnamon") == XdgSessionDesktop.CINNAMON);
-		assert (XdgSessionDesktop.from_string ("gnome") == XdgSessionDesktop.GNOME);
-		assert (XdgSessionDesktop.from_string ("gnome-xorg") == XdgSessionDesktop.GNOME);
-		assert (XdgSessionDesktop.from_string ("gnome-classic") == XdgSessionDesktop.GNOME);
-		assert (XdgSessionDesktop.from_string ("gnome-flashback") == XdgSessionDesktop.GNOME);
-		assert (XdgSessionDesktop.from_string ("kde") == XdgSessionDesktop.KDE);
-		assert (XdgSessionDesktop.from_string ("mate") == XdgSessionDesktop.MATE);
-		assert (XdgSessionDesktop.from_string ("unity") == XdgSessionDesktop.UNITY);
-		assert (XdgSessionDesktop.from_string ("ubuntu") == XdgSessionDesktop.UBUNTU);
-		assert (XdgSessionDesktop.from_string ("ubuntu-xorg") == XdgSessionDesktop.UBUNTU);
-		assert (XdgSessionDesktop.from_string ("pantheon") == XdgSessionDesktop.PANTHEON);
-		assert (XdgSessionDesktop.from_string ("lxde") == XdgSessionDesktop.LXDE);
-		assert (XdgSessionDesktop.from_string ("lxqt") == XdgSessionDesktop.LXDE);
-	}
-
-	void environment_desktop_from_string_unknown ()
-	{
-		// Unknown strings should return UNKNOWN
-		assert (XdgSessionDesktop.from_string ("lightdm-xsession") == XdgSessionDesktop.UNKNOWN);
-		assert (XdgSessionDesktop.from_string ("something-random") == XdgSessionDesktop.UNKNOWN);
-		assert (XdgSessionDesktop.from_string ("") == XdgSessionDesktop.UNKNOWN);
-	}
-
-	void environment_desktop_from_string_case ()
-	{
-		// Detection should be case-insensitive
-		assert (XdgSessionDesktop.from_string ("XFCE") == XdgSessionDesktop.XFCE);
-		assert (XdgSessionDesktop.from_string ("Xfce") == XdgSessionDesktop.XFCE);
-		assert (XdgSessionDesktop.from_string ("CINNAMON") == XdgSessionDesktop.CINNAMON);
-		assert (XdgSessionDesktop.from_string ("KDE") == XdgSessionDesktop.KDE);
-		assert (XdgSessionDesktop.from_string ("GNOME") == XdgSessionDesktop.GNOME);
-		assert (XdgSessionDesktop.from_string ("MATE") == XdgSessionDesktop.MATE);
-		assert (XdgSessionDesktop.from_string ("Xubuntu") == XdgSessionDesktop.XFCE);
-	}
-
-	void environment_desktop_from_string_multi ()
-	{
-		// Semicolon-separated values should OR together
-		var result = XdgSessionDesktop.from_string ("ubuntu;xfce");
-		assert ((result & XdgSessionDesktop.UBUNTU) != 0);
-		assert ((result & XdgSessionDesktop.XFCE) != 0);
-		assert ((result & XdgSessionDesktop.KDE) == 0);
-
-		// Single unknown in a list shouldn't break the known ones
-		var result2 = XdgSessionDesktop.from_string ("lightdm-xsession;XFCE");
-		assert ((result2 & XdgSessionDesktop.XFCE) != 0);
-	}
-
-	void environment_desktop_bitmask ()
-	{
-		// Verify bitmask matching works correctly
-		var xfce = XdgSessionDesktop.from_string ("xfce");
-		var kde = XdgSessionDesktop.from_string ("kde");
-		var gnome = XdgSessionDesktop.from_string ("gnome");
-
-		var mask = XdgSessionDesktop.GNOME | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE;
-
-		assert ((mask & xfce) > 0);
-		assert ((mask & kde) > 0);
-		assert ((mask & gnome) > 0);
-
-		var cinnamon = XdgSessionDesktop.from_string ("cinnamon");
-		assert ((mask & cinnamon) == 0);
-	}
-
-	//
-	// Helpers tests
-	//
-
-	void helpers_truncate_middle_short ()
-	{
-		// String shorter than limit should be returned as-is
-		var result = Helpers.truncate_middle ("hello", 10);
-		assert (result == "hello");
-	}
-
-	void helpers_truncate_middle_exact ()
-	{
-		// String exactly at limit should be returned as-is
-		var result = Helpers.truncate_middle ("hello", 5);
-		assert (result == "hello");
-	}
-
-	void helpers_truncate_middle_long ()
-	{
-		// String longer than limit should be truncated with ellipsis in middle
-		var result = Helpers.truncate_middle ("hello world test", 11);
-		assert (result.char_count () == 11);
-		assert (result.contains ("…"));
-		// Should start with beginning of original
-		assert (result.has_prefix ("hello"));
-		// Should end with end of original
-		assert (result.has_suffix ("test"));
-	}
-
-	void helpers_truncate_middle_very_short_limit ()
-	{
-		// Very short limit (< 5) should just truncate from start
-		var result = Helpers.truncate_middle ("hello world", 3);
-		assert (result.char_count () == 3);
-		assert (result == "hel");
-	}
-
-	void helpers_truncate_middle_utf8 ()
-	{
-		// UTF-8 multi-byte characters should be handled by character count, not byte count
-		// Each é is 2 bytes in UTF-8
-		var input = "éléphant résumé";
-		var char_count = input.char_count ();
-		assert (char_count == 15);
-
-		var result = Helpers.truncate_middle (input, 9);
-		assert (result.char_count () == 9);
-		assert (result.contains ("…"));
-		// Should preserve valid UTF-8
-		assert (result.validate ());
-	}
-
-	void helpers_truncate_middle_cjk ()
-	{
-		// CJK characters are 3 bytes each in UTF-8
-		// If we used byte length instead of char_count, this would truncate too aggressively
-		var input = "日本語テスト文字列";
-		var char_count = input.char_count ();
-		assert (char_count == 9);
-
-		// At limit — should not truncate
-		var result = Helpers.truncate_middle (input, 9);
-		assert (result == input);
-
-		// Below limit — should truncate by character count
-		var result2 = Helpers.truncate_middle (input, 7);
-		assert (result2.char_count () == 7);
-		assert (result2.contains ("…"));
-		assert (result2.validate ());
-		// Should start with first characters
-		assert (result2.has_prefix ("日本語"));
-		// Should end with last characters
-		assert (result2.has_suffix ("字列"));
-	}
-
-	//
-	// Session type detection tests
-	//
-
-	void session_type_known ()
-	{
-		assert (XdgSessionType.from_string ("x11") == XdgSessionType.X11);
-		assert (XdgSessionType.from_string ("wayland") == XdgSessionType.WAYLAND);
-		assert (XdgSessionType.from_string ("tty") == XdgSessionType.TTY);
-		assert (XdgSessionType.from_string ("mir") == XdgSessionType.MIR);
-		assert (XdgSessionType.from_string ("unspecified") == XdgSessionType.UNSPECIFIED);
-	}
-
-	void session_type_case ()
-	{
-		assert (XdgSessionType.from_string ("X11") == XdgSessionType.X11);
-		assert (XdgSessionType.from_string ("Wayland") == XdgSessionType.WAYLAND);
-		assert (XdgSessionType.from_string ("WAYLAND") == XdgSessionType.WAYLAND);
-	}
-
-	void session_type_unknown ()
-	{
-		// Unknown strings should default to UNSPECIFIED
-		assert (XdgSessionType.from_string ("something") == XdgSessionType.UNSPECIFIED);
-		assert (XdgSessionType.from_string ("") == XdgSessionType.UNSPECIFIED);
-	}
-
-	//
-	// Color prefs round-trip tests
-	//
-
-	void color_prefs_round_trip ()
-	{
-		// A color should survive to_prefs_string → from_prefs_string
-		Color original = { 0.5, 0.25, 0.75, 1.0 };
-		var str = original.to_prefs_string ();
-		var restored = Color.from_prefs_string (str);
-
-		// Allow 1/255 precision loss from int conversion
-		const double EPSILON = 1.0 / 255.0 + 0.001;
-		assert (Math.fabs (original.red - restored.red) < EPSILON);
-		assert (Math.fabs (original.green - restored.green) < EPSILON);
-		assert (Math.fabs (original.blue - restored.blue) < EPSILON);
-		assert (Math.fabs (original.alpha - restored.alpha) < EPSILON);
-	}
-
-	void color_prefs_clamping ()
-	{
-		// Values outside 0-255 should be clamped
-		var color = Color.from_prefs_string ("300;;-10;;128;;255");
-		assert (color.red == 1.0);   // 300 clamped to 255 → 1.0
-		assert (color.green == 0.0); // -10 clamped to 0 → 0.0
-		assert (color.blue > 0.49 && color.blue < 0.51); // 128/255 ≈ 0.502
-		assert (color.alpha == 1.0); // 255 → 1.0
-	}
-
-	void color_prefs_format ()
-	{
-		// Verify the string format uses ;; separators
-		Color color = { 1.0, 0.0, 0.5, 1.0 };
-		var str = color.to_prefs_string ();
-		var parts = str.split (";;");
-		assert (parts.length == 4);
-		assert (int.parse (parts[0]) == 255);  // red
-		assert (int.parse (parts[1]) == 0);    // green
-		assert (int.parse (parts[3]) == 255);  // alpha
-	}
-
-	//
-	// Dock window position tests
-	//
-
-	void dock_win_pos_bottom_composited ()
-	{
-		int x, y;
-		// 1920x1080 monitor at origin, 48px dock at bottom, composited
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
-			monitor, 1920, 48, 0, 0,
-			true, true, 1920, 48, false);
-
-		assert (x == 0);
-		assert (y == 1080 - 48);
-	}
-
-	void dock_win_pos_top_composited ()
-	{
-		int x, y;
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.TOP, Gtk.Align.CENTER,
-			monitor, 1920, 48, 0, 0,
-			true, true, 1920, 48, false);
-
-		assert (x == 0);
-		assert (y == 0);
-	}
-
-	void dock_win_pos_left_composited ()
-	{
-		int x, y;
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.LEFT, Gtk.Align.CENTER,
-			monitor, 48, 1080, 0, 0,
-			true, false, 48, 1080, false);
-
-		assert (x == 0);
-		assert (y == 0);
-	}
-
-	void dock_win_pos_right_composited ()
-	{
-		int x, y;
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.RIGHT, Gtk.Align.CENTER,
-			monitor, 48, 1080, 0, 0,
-			true, false, 48, 1080, false);
-
-		assert (x == 1920 - 48);
-		assert (y == 0);
-	}
-
-	void dock_win_pos_bottom_with_gap ()
-	{
-		int x, y;
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
-			monitor, 1920, 48, 20, 0,
-			true, true, 1920, 48, false);
-
-		assert (x == 0);
-		// Gap pushes dock up from edge
-		assert (y == 1080 - 48 - 20);
-	}
-
-	void dock_win_pos_offset_monitor ()
-	{
-		int x, y;
-		// Monitor not at origin (second monitor at x=1920)
-		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
-		PositionManager.compute_dock_window_position (out x, out y,
-			Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
-			monitor, 1920, 48, 0, 0,
-			true, true, 1920, 48, false);
-
-		assert (x == 1920);
-		assert (y == 1080 - 48);
-	}
-
-	//
-	// Background padding tests
-	//
-
-	void bg_padding_bottom ()
-	{
-		int x, y;
-		// dock_height=48, bg_height=40, no hide offset
-		// padding = 48 - 40 + 0 = 8
-		PositionManager.compute_background_padding (out x, out y,
-			Gtk.PositionType.BOTTOM, 200, 48, 200, 40, 0);
-
-		assert (x == 0);
-		assert (y == 8);
-	}
-
-	void bg_padding_top ()
-	{
-		int x, y;
-		PositionManager.compute_background_padding (out x, out y,
-			Gtk.PositionType.TOP, 200, 48, 200, 40, 0);
-
-		assert (x == 0);
-		assert (y == -8);
-	}
-
-	void bg_padding_left ()
-	{
-		int x, y;
-		// dock_width=48, bg_width=40
-		PositionManager.compute_background_padding (out x, out y,
-			Gtk.PositionType.LEFT, 48, 200, 40, 200, 0);
-
-		assert (x == -8);
-		assert (y == 0);
-	}
-
-	void bg_padding_right ()
-	{
-		int x, y;
-		PositionManager.compute_background_padding (out x, out y,
-			Gtk.PositionType.RIGHT, 48, 200, 40, 200, 0);
-
-		assert (x == 8);
-		assert (y == 0);
-	}
-
-	void bg_padding_with_hide_offset ()
-	{
-		int x, y;
-		// hide_offset adds to the padding
-		PositionManager.compute_background_padding (out x, out y,
-			Gtk.PositionType.BOTTOM, 200, 48, 200, 40, 5);
-
-		assert (x == 0);
-		assert (y == 13);  // 48 - 40 + 5
-	}
-
-	//
-	// Easing bounce tests
-	//
-
-	void easing_bounce_start_zero ()
-	{
-		// Bounce should start at 0
-		var val = DockRenderer.easing_bounce (0.0, 1000.0, 2.0);
-		assert (val == 0.0);
-	}
-
-	void easing_bounce_end_zero ()
-	{
-		// Bounce should end at 0 (dampened to nothing)
-		var val = DockRenderer.easing_bounce (1000.0, 1000.0, 2.0);
-		assert (val == 0.0);
-	}
-
-	void easing_bounce_midpoint_positive ()
-	{
-		// Bounce should be positive at midpoint
-		var val = DockRenderer.easing_bounce (250.0, 1000.0, 2.0);
-		assert (val > 0.0);
-	}
-
-	void easing_bounce_always_non_negative ()
-	{
-		// Bounce uses fabs so should always be >= 0
-		for (int i = 0; i <= 100; i++) {
-			var val = DockRenderer.easing_bounce (i * 10.0, 1000.0, 2.0);
-			assert (val >= 0.0);
-			assert (val <= 1.0);
-		}
-	}
-
-	//
-	// Dock draw position tests
-	//
-
-	void draw_position_bottom_visible ()
-	{
-		int x, y;
-		// Fully visible (progress = 0) — no offset
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.BOTTOM, 0.0, 200, 48, 0);
-		assert (x == 0);
-		assert (y == 0);
-	}
-
-	void draw_position_bottom_hidden ()
-	{
-		int x, y;
-		// Fully hidden (progress = 1) — offset equals dock height
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.BOTTOM, 1.0, 200, 48, 0);
-		assert (x == 0);
-		assert (y == 48);
-	}
-
-	void draw_position_bottom_half ()
-	{
-		int x, y;
-		// Half hidden
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.BOTTOM, 0.5, 200, 48, 0);
-		assert (x == 0);
-		assert (y == 24);
-	}
-
-	void draw_position_top_hidden ()
-	{
-		int x, y;
-		// Top dock hides upward (negative y)
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.TOP, 1.0, 200, 48, 0);
-		assert (x == 0);
-		assert (y == -48);
-	}
-
-	void draw_position_left_hidden ()
-	{
-		int x, y;
-		// Left dock hides leftward (negative x)
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.LEFT, 1.0, 48, 200, 0);
-		assert (x == -48);
-		assert (y == 0);
-	}
-
-	void draw_position_right_hidden ()
-	{
-		int x, y;
-		// Right dock hides rightward (positive x)
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.RIGHT, 1.0, 48, 200, 0);
-		assert (x == 48);
-		assert (y == 0);
-	}
-
-	void draw_position_with_hide_offset ()
-	{
-		int x, y;
-		// Hide offset adds to the distance
-		PositionManager.compute_dock_draw_position (out x, out y,
-			Gtk.PositionType.BOTTOM, 1.0, 200, 48, 10);
-		assert (x == 0);
-		assert (y == 58);
-	}
-
-	//
-	// Easing function tests
-	//
-
-	void easing_linear_bounds ()
-	{
-		// Linear easing: t=0 → 0, t=d → 1
-		assert (easing_for_mode (AnimationMode.LINEAR, 0.0, 1000.0) == 0.0);
-		assert (easing_for_mode (AnimationMode.LINEAR, 1000.0, 1000.0) == 1.0);
-	}
-
-	void easing_linear_midpoint ()
-	{
-		// Linear easing: midpoint should be exactly 0.5
-		assert (easing_for_mode (AnimationMode.LINEAR, 500.0, 1000.0) == 0.5);
-	}
-
-	void easing_all_modes_bounds ()
-	{
-		// All easing modes should return 0 at t=0 and 1 at t=d
-		// and stay within the documented range of -1.0 to 2.0
-		AnimationMode[] modes = {
-			AnimationMode.LINEAR,
-			AnimationMode.EASE_IN_QUAD,
-			AnimationMode.EASE_OUT_QUAD,
-			AnimationMode.EASE_IN_OUT_QUAD,
-			AnimationMode.EASE_IN_CUBIC,
-			AnimationMode.EASE_OUT_CUBIC,
-			AnimationMode.EASE_IN_OUT_CUBIC,
-			AnimationMode.EASE_IN_QUART,
-			AnimationMode.EASE_OUT_QUART,
-			AnimationMode.EASE_IN_OUT_QUART,
-			AnimationMode.EASE_IN_QUINT,
-			AnimationMode.EASE_OUT_QUINT,
-			AnimationMode.EASE_IN_OUT_QUINT,
-			AnimationMode.EASE_IN_SINE,
-			AnimationMode.EASE_OUT_SINE,
-			AnimationMode.EASE_IN_OUT_SINE,
-			AnimationMode.EASE_IN_EXPO,
-			AnimationMode.EASE_OUT_EXPO,
-			AnimationMode.EASE_IN_OUT_EXPO,
-			AnimationMode.EASE_IN_CIRC,
-			AnimationMode.EASE_OUT_CIRC,
-			AnimationMode.EASE_IN_OUT_CIRC,
-			AnimationMode.EASE_IN_BACK,
-			AnimationMode.EASE_OUT_BACK,
-			AnimationMode.EASE_IN_OUT_BACK,
-			AnimationMode.EASE_IN_BOUNCE,
-			AnimationMode.EASE_OUT_BOUNCE,
-			AnimationMode.EASE_IN_OUT_BOUNCE,
-		};
-
-		const double EPSILON = 0.0001;
-
-		foreach (var mode in modes) {
-			var start = easing_for_mode (mode, 0.0, 1000.0);
-			var end = easing_for_mode (mode, 1000.0, 1000.0);
-
-			// All modes start at ~0 and end at ~1
-			assert (Math.fabs (start) < EPSILON);
-			assert (Math.fabs (end - 1.0) < EPSILON);
-
-			// Check 10 intermediate points stay in range
-			for (int i = 1; i < 10; i++) {
-				var val = easing_for_mode (mode, i * 100.0, 1000.0);
-				assert (val >= -1.0 && val <= 2.0);
-			}
-		}
-	}
-
-	//
-	// DockItemDrawValue movement tests
-	//
-
-	void draw_value_move_in_bottom ()
-	{
-		var val = new DockItemDrawValue ();
-		val.center = { 100.0, 200.0 };
-		val.static_center = { 100.0, 200.0 };
-		val.hover_region = { 80, 180, 40, 40 };
-		val.draw_region = { 80, 180, 40, 40 };
-
-		val.move_in (Gtk.PositionType.BOTTOM, 10.0);
-
-		// Bottom dock: move_in decreases y (moves up toward screen)
-		assert (val.center.y == 190.0);
-		assert (val.static_center.y == 190.0);
-		assert (val.hover_region.y == 170);
-		assert (val.draw_region.y == 170);
-		// x should not change
-		assert (val.center.x == 100.0);
-	}
-
-	void draw_value_move_in_top ()
-	{
-		var val = new DockItemDrawValue ();
-		val.center = { 100.0, 200.0 };
-		val.static_center = { 100.0, 200.0 };
-		val.hover_region = { 80, 180, 40, 40 };
-		val.draw_region = { 80, 180, 40, 40 };
-
-		val.move_in (Gtk.PositionType.TOP, 10.0);
-
-		// Top dock: move_in increases y (moves down toward screen)
-		assert (val.center.y == 210.0);
-		assert (val.static_center.y == 210.0);
-		assert (val.hover_region.y == 190);
-		assert (val.draw_region.y == 190);
-	}
-
-	void draw_value_move_right_bottom ()
-	{
-		var val = new DockItemDrawValue ();
-		val.center = { 100.0, 200.0 };
-		val.static_center = { 100.0, 200.0 };
-		val.hover_region = { 80, 180, 40, 40 };
-		val.draw_region = { 80, 180, 40, 40 };
-		val.background_region = { 80, 180, 40, 40 };
-
-		val.move_right (Gtk.PositionType.BOTTOM, 15.0);
-
-		// Bottom/Top dock: move_right increases x
-		assert (val.center.x == 115.0);
-		assert (val.static_center.x == 115.0);
-		assert (val.hover_region.x == 95);
-		assert (val.draw_region.x == 95);
-		assert (val.background_region.x == 95);
-		// y should not change
-		assert (val.center.y == 200.0);
-	}
-
-	void draw_value_move_right_left ()
-	{
-		var val = new DockItemDrawValue ();
-		val.center = { 100.0, 200.0 };
-		val.static_center = { 100.0, 200.0 };
-		val.hover_region = { 80, 180, 40, 40 };
-		val.draw_region = { 80, 180, 40, 40 };
-		val.background_region = { 80, 180, 40, 40 };
-
-		val.move_right (Gtk.PositionType.LEFT, 15.0);
-
-		// Left/Right dock: move_right increases y (perpendicular axis)
-		assert (val.center.y == 215.0);
-		assert (val.static_center.y == 215.0);
-		assert (val.hover_region.y == 195);
-		assert (val.draw_region.y == 195);
-		assert (val.background_region.y == 195);
-		// x should not change
-		assert (val.center.x == 100.0);
-	}
-
-	//
-	// Struts computation tests
-	//
-
-	void struts_single_monitor_bottom ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 1920x1080 monitor, 48px dock at bottom, no gap, 1x scale
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 0, 1);
-
-		assert (struts[Struts.BOTTOM] == 48);
-		assert (struts[Struts.BOTTOM_START] == 0);
-		assert (struts[Struts.BOTTOM_END] == 1919);
-		assert (struts[Struts.TOP] == 0);
-		assert (struts[Struts.LEFT] == 0);
-		assert (struts[Struts.RIGHT] == 0);
-	}
-
-	void struts_single_monitor_top ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 0, 1);
-
-		assert (struts[Struts.TOP] == 48);
-		assert (struts[Struts.TOP_START] == 0);
-		assert (struts[Struts.TOP_END] == 1919);
-		assert (struts[Struts.BOTTOM] == 0);
-	}
-
-	void struts_single_monitor_left ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 1);
-
-		assert (struts[Struts.LEFT] == 48);
-		assert (struts[Struts.LEFT_START] == 0);
-		assert (struts[Struts.LEFT_END] == 1079);
-		assert (struts[Struts.RIGHT] == 0);
-	}
-
-	void struts_single_monitor_right ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 1);
-
-		assert (struts[Struts.RIGHT] == 48);
-		assert (struts[Struts.RIGHT_START] == 0);
-		assert (struts[Struts.RIGHT_END] == 1079);
-		assert (struts[Struts.LEFT] == 0);
-	}
-
-	void struts_multi_monitor_bottom ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Two 1920x1080 monitors side by side, dock on the right monitor
-		// GDK logical bounding box = (3840, 1080)
-		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 1);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
-		assert (struts[Struts.BOTTOM] == 48);
-		// Strut range should cover only the right monitor
-		assert (struts[Struts.BOTTOM_START] == 1920);
-		assert (struts[Struts.BOTTOM_END] == 3839);
-	}
-
-	void struts_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor with 2x scaling
-		// GDK logical monitor = {0, 0, 1920, 1080}
-		// screen dims = monitor bounds = (1920, 1080)
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 0, 2);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
-		assert (struts[Struts.BOTTOM] == 96);
-		assert (struts[Struts.BOTTOM_START] == 0);
-		assert (struts[Struts.BOTTOM_END] == 3839);
-	}
-
-	void struts_with_gap ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single monitor with 10px gap
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 10, 1);
-
-		// BOTTOM strut should include gap
-		assert (struts[Struts.BOTTOM] == 58);
-	}
-
-	void struts_multi_monitor_scaling_2x_bottom ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Two 4K monitors side by side with 2x scaling
-		// Right monitor GDK = {1920, 0, 1920, 1080}
-		// GDK logical bounding box = (3840, 1080)
-		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 2);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
-		assert (struts[Struts.BOTTOM] == 96);
-		assert (struts[Struts.BOTTOM_START] == 3840);
-		assert (struts[Struts.BOTTOM_END] == 7679);
-	}
-
-	void struts_multi_monitor_scaling_2x_right ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Two 4K monitors stacked vertically with 2x scaling
-		// Top monitor GDK = {0, 0, 1920, 1080}, bottom = {0, 1080, 1920, 1080}
-		// GDK logical bounding box = (1920, 2160)
-		// Dock on top monitor, RIGHT position
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 2160, 48, 1080, 0, 2);
-
-		// RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96 (monitor right = screen right)
-		assert (struts[Struts.RIGHT] == 96);
-		assert (struts[Struts.RIGHT_START] == 0);
-		assert (struts[Struts.RIGHT_END] == 2159);
-	}
-
-	void struts_gap_with_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, 10px GDK gap, BOTTOM dock
-		// GDK logical = {0, 0, 1920, 1080}
-		// GDK logical bounding box = (1920, 1080)
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 1920, 1080, 1920, 48, 10, 2);
-
-		// BOTTOM = (48 + 10 + 1080 - 0 - 1080) * 2 = 116
-		assert (struts[Struts.BOTTOM] == 116);
-		assert (struts[Struts.BOTTOM_START] == 0);
-		assert (struts[Struts.BOTTOM_END] == 3839);
-
-		// Also test RIGHT with gap + scaling
-		var struts2 = new ulong[Struts.N_VALUES];
-		PositionManager.compute_struts (ref struts2, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 10, 2);
-
-		// RIGHT = (48 + 10 + 1920 - 0 - 1920) * 2 = 116
-		assert (struts2[Struts.RIGHT] == 116);
-
-		// And TOP with gap + scaling
-		var struts3 = new ulong[Struts.N_VALUES];
-		PositionManager.compute_struts (ref struts3, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 10, 2);
-
-		// TOP = (0 + 48 + 10) * 2 = 116
-		assert (struts3[Struts.TOP] == 116);
-
-		// And LEFT with gap + scaling
-		var struts4 = new ulong[Struts.N_VALUES];
-		PositionManager.compute_struts (ref struts4, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 10, 2);
-
-		// LEFT = (0 + 48 + 10) * 2 = 116
-		assert (struts4[Struts.LEFT] == 116);
-	}
-
-	void struts_top_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, TOP dock
-		// GDK logical = {0, 0, 1920, 1080}
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
-		                                monitor, 1920, 1080, 1920, 48, 0, 2);
-
-		// TOP = (0 + 48 + 0) * 2 = 96
-		assert (struts[Struts.TOP] == 96);
-		assert (struts[Struts.TOP_START] == 0);
-		assert (struts[Struts.TOP_END] == 3839);
-	}
-
-	void struts_left_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, LEFT dock
-		// GDK logical = {0, 0, 1920, 1080}
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 2);
-
-		// LEFT = (0 + 48 + 0) * 2 = 96
-		assert (struts[Struts.LEFT] == 96);
-		assert (struts[Struts.LEFT_START] == 0);
-		assert (struts[Struts.LEFT_END] == 2159);
-	}
-
-	void struts_right_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Single 4K monitor, 2x scaling, RIGHT dock
-		// GDK logical = {0, 0, 1920, 1080}
-		Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
-		                                monitor, 1920, 1080, 48, 1080, 0, 2);
-
-		// RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96
-		assert (struts[Struts.RIGHT] == 96);
-		assert (struts[Struts.RIGHT_START] == 0);
-		assert (struts[Struts.RIGHT_END] == 2159);
-	}
-
-	void struts_non_primary_monitor_bottom ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Dock on non-primary monitor, scale=1
-		// Monitor A (primary): 1920x1080 at (0,0)
-		// Monitor B: 1920x1080 at (1920,0) — dock is here
-		// GDK logical bounding box = (3840, 1080)
-		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 1);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
-		assert (struts[Struts.BOTTOM] == 48);
-		assert (struts[Struts.BOTTOM_START] == 1920);
-		assert (struts[Struts.BOTTOM_END] == 3839);
-	}
-
-	void struts_non_primary_monitor_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Dock on non-primary monitor, scale=2
-		// Monitor A (primary): 3840x2160 at (0,0), GDK {0, 0, 1920, 1080}
-		// Monitor B: 3840x2160 at (3840,0), GDK {1920, 0, 1920, 1080} — dock is here
-		// GDK logical bounding box = (3840, 1080)
-		Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3840, 1080, 1920, 48, 0, 2);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
-		assert (struts[Struts.BOTTOM] == 96);
-		assert (struts[Struts.BOTTOM_START] == 3840);
-		assert (struts[Struts.BOTTOM_END] == 7679);
-	}
-
-	void struts_ewmh_xinerama_example ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// Exact example from EWMH spec section 5.10:
-		// Two monitors: 1280x1024 (left) + 1024x768 (right), top-aligned
-		// GDK logical (scale=1): left={0,0,1280,1024}, right={1280,0,1024,768}
-		// GDK logical bounding box = (2304, 1024)
-		// Panel: 50px tall at bottom of right (shorter) monitor
-		// Spec says: bottom strut = 306, bottom_start_x = 1280, bottom_end_x = 2303
-		Gdk.Rectangle monitor = { 1280, 0, 1024, 768 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 2304, 1024, 1024, 50, 0, 1);
-
-		// BOTTOM = (50 + 0 + 1024 - 0 - 768) * 1 = 306
-		assert (struts[Struts.BOTTOM] == 306);
-		assert (struts[Struts.BOTTOM_START] == 1280);
-		assert (struts[Struts.BOTTOM_END] == 2303);
-	}
-
-	void struts_different_height_monitors_scaling_2x ()
-	{
-		var struts = new ulong[Struts.N_VALUES];
-		// 4K (left) + 1440p (right) side by side, top-aligned, scale=2
-		// Left: 3840x2160, GDK {0, 0, 1920, 1080}
-		// Right: 2560x1440, GDK {1920, 0, 1280, 720}
-		// GDK logical bounding box = (3200, 1080)
-		// Dock on right (shorter) monitor, BOTTOM
-		Gdk.Rectangle monitor = { 1920, 0, 1280, 720 };
-		PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
-		                                monitor, 3200, 1080, 1280, 48, 0, 2);
-
-		// BOTTOM = (48 + 0 + 1080 - 0 - 720) * 2 = 408 * 2 = 816
-		// = dock(96) + offset from monitor bottom to screen bottom (720 logical = 360 X11 pixels)
-		assert (struts[Struts.BOTTOM] == 816);
-		assert (struts[Struts.BOTTOM_START] == 3840);
-		assert (struts[Struts.BOTTOM_END] == 6399);
-	}
+namespace PlankTests {
+  public static void register_services_tests () {
+    Test.add_func ("/Services/Environment/desktop_from_string", environment_desktop_from_string);
+    Test.add_func ("/Services/Environment/desktop_from_string_unknown_fallthrough", environment_desktop_from_string_unknown);
+    Test.add_func ("/Services/Environment/desktop_from_string_case_insensitive", environment_desktop_from_string_case);
+    Test.add_func ("/Services/Environment/desktop_from_string_multi", environment_desktop_from_string_multi);
+    Test.add_func ("/Services/Environment/desktop_bitmask", environment_desktop_bitmask);
+    Test.add_func ("/Services/Helpers/truncate_middle_short", helpers_truncate_middle_short);
+    Test.add_func ("/Services/Helpers/truncate_middle_exact", helpers_truncate_middle_exact);
+    Test.add_func ("/Services/Helpers/truncate_middle_long", helpers_truncate_middle_long);
+    Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit", helpers_truncate_middle_very_short_limit);
+    Test.add_func ("/Services/Helpers/truncate_middle_utf8", helpers_truncate_middle_utf8);
+    Test.add_func ("/Services/Helpers/truncate_middle_cjk", helpers_truncate_middle_cjk);
+    Test.add_func ("/Services/DockWindowPosition/bottom_composited", dock_win_pos_bottom_composited);
+    Test.add_func ("/Services/DockWindowPosition/top_composited", dock_win_pos_top_composited);
+    Test.add_func ("/Services/DockWindowPosition/left_composited", dock_win_pos_left_composited);
+    Test.add_func ("/Services/DockWindowPosition/right_composited", dock_win_pos_right_composited);
+    Test.add_func ("/Services/DockWindowPosition/bottom_with_gap", dock_win_pos_bottom_with_gap);
+    Test.add_func ("/Services/DockWindowPosition/offset_monitor", dock_win_pos_offset_monitor);
+    Test.add_func ("/Services/BackgroundPadding/bottom", bg_padding_bottom);
+    Test.add_func ("/Services/BackgroundPadding/top", bg_padding_top);
+    Test.add_func ("/Services/BackgroundPadding/left", bg_padding_left);
+    Test.add_func ("/Services/BackgroundPadding/right", bg_padding_right);
+    Test.add_func ("/Services/BackgroundPadding/with_hide_offset", bg_padding_with_hide_offset);
+    Test.add_func ("/Services/EasingBounce/start_zero", easing_bounce_start_zero);
+    Test.add_func ("/Services/EasingBounce/end_zero", easing_bounce_end_zero);
+    Test.add_func ("/Services/EasingBounce/midpoint_positive", easing_bounce_midpoint_positive);
+    Test.add_func ("/Services/EasingBounce/always_non_negative", easing_bounce_always_non_negative);
+    Test.add_func ("/Services/SessionType/known_types", session_type_known);
+    Test.add_func ("/Services/SessionType/case_insensitive", session_type_case);
+    Test.add_func ("/Services/SessionType/unknown_defaults", session_type_unknown);
+    Test.add_func ("/Services/ColorPrefs/round_trip", color_prefs_round_trip);
+    Test.add_func ("/Services/ColorPrefs/clamping", color_prefs_clamping);
+    Test.add_func ("/Services/ColorPrefs/format", color_prefs_format);
+    Test.add_func ("/Services/DockDrawPosition/bottom_visible", draw_position_bottom_visible);
+    Test.add_func ("/Services/DockDrawPosition/bottom_hidden", draw_position_bottom_hidden);
+    Test.add_func ("/Services/DockDrawPosition/bottom_half", draw_position_bottom_half);
+    Test.add_func ("/Services/DockDrawPosition/top_hidden", draw_position_top_hidden);
+    Test.add_func ("/Services/DockDrawPosition/left_hidden", draw_position_left_hidden);
+    Test.add_func ("/Services/DockDrawPosition/right_hidden", draw_position_right_hidden);
+    Test.add_func ("/Services/DockDrawPosition/with_hide_offset", draw_position_with_hide_offset);
+    Test.add_func ("/Services/Easing/linear_bounds", easing_linear_bounds);
+    Test.add_func ("/Services/Easing/linear_midpoint", easing_linear_midpoint);
+    Test.add_func ("/Services/Easing/all_modes_bounds", easing_all_modes_bounds);
+    Test.add_func ("/Services/DrawValue/move_in_bottom", draw_value_move_in_bottom);
+    Test.add_func ("/Services/DrawValue/move_in_top", draw_value_move_in_top);
+    Test.add_func ("/Services/DrawValue/move_right_bottom", draw_value_move_right_bottom);
+    Test.add_func ("/Services/DrawValue/move_right_left", draw_value_move_right_left);
+    Test.add_func ("/Services/Struts/single_monitor_bottom", struts_single_monitor_bottom);
+    Test.add_func ("/Services/Struts/single_monitor_top", struts_single_monitor_top);
+    Test.add_func ("/Services/Struts/single_monitor_left", struts_single_monitor_left);
+    Test.add_func ("/Services/Struts/single_monitor_right", struts_single_monitor_right);
+    Test.add_func ("/Services/Struts/multi_monitor_bottom", struts_multi_monitor_bottom);
+    Test.add_func ("/Services/Struts/scaling_2x", struts_scaling_2x);
+    Test.add_func ("/Services/Struts/with_gap", struts_with_gap);
+    Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_bottom", struts_multi_monitor_scaling_2x_bottom);
+    Test.add_func ("/Services/Struts/multi_monitor_scaling_2x_right", struts_multi_monitor_scaling_2x_right);
+    Test.add_func ("/Services/Struts/gap_with_scaling_2x", struts_gap_with_scaling_2x);
+    Test.add_func ("/Services/Struts/top_scaling_2x", struts_top_scaling_2x);
+    Test.add_func ("/Services/Struts/left_scaling_2x", struts_left_scaling_2x);
+    Test.add_func ("/Services/Struts/right_scaling_2x", struts_right_scaling_2x);
+    Test.add_func ("/Services/Struts/non_primary_monitor_bottom", struts_non_primary_monitor_bottom);
+    Test.add_func ("/Services/Struts/non_primary_monitor_scaling_2x", struts_non_primary_monitor_scaling_2x);
+    Test.add_func ("/Services/Struts/ewmh_xinerama_example", struts_ewmh_xinerama_example);
+    Test.add_func ("/Services/Struts/different_height_monitors_scaling_2x", struts_different_height_monitors_scaling_2x);
+    Test.add_func ("/Services/Matcher/desktop_file_for_window_class", matcher_desktop_file_for_window_class);
+    Test.add_func ("/Services/DockEdge/monitor_mode_edges", dock_edge_monitor_mode_edges);
+    Test.add_func ("/Services/DockEdge/outside_span", dock_edge_outside_span);
+    Test.add_func ("/Services/DockEdge/work_area_band", dock_edge_work_area_band);
+    Test.add_func ("/Services/DockEdge/neighbouring_monitor", dock_edge_neighbouring_monitor);
+    Test.add_func ("/Services/DockEdge/offset_monitor", dock_edge_offset_monitor);
+    Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
+  }
+
+  void matcher_desktop_file_for_window_class () {
+    // The fixtures from tests/data/applications, copied into the test home's
+    // XDG_DATA_HOME before any test runs, since GLib only picks up files added
+    // after its first desktop ID lookup through an asynchronous monitor
+    var applications = File.new_for_path (Environment.get_user_data_dir ()).get_child ("applications");
+    var exact = applications.get_child ("org.example.TestWindow.desktop");
+    var lower = applications.get_child ("testwindowlower.desktop");
+
+    // The instance name matches as written, like dev.zed.Zed
+    assert (Matcher.desktop_file_for_window_class ("org.example.TestWindow", "Other") == exact.get_path ());
+    // The class name matches once lowercased
+    assert (Matcher.desktop_file_for_window_class (null, "TestWindowLower") == lower.get_path ());
+    // Entries hidden from menus are skipped
+    assert (Matcher.desktop_file_for_window_class ("testwindowhidden", null) == null);
+    assert (Matcher.desktop_file_for_window_class ("no-such-app", "NoSuchApp") == null);
+  }
+
+  //
+  // Environment detection tests
+  //
+
+  void environment_desktop_from_string () {
+    assert (XdgSessionDesktop.from_string ("xfce") == XdgSessionDesktop.XFCE);
+    assert (XdgSessionDesktop.from_string ("cinnamon") == XdgSessionDesktop.CINNAMON);
+    assert (XdgSessionDesktop.from_string ("x-cinnamon") == XdgSessionDesktop.CINNAMON);
+    assert (XdgSessionDesktop.from_string ("gnome") == XdgSessionDesktop.GNOME);
+    assert (XdgSessionDesktop.from_string ("gnome-xorg") == XdgSessionDesktop.GNOME);
+    assert (XdgSessionDesktop.from_string ("gnome-classic") == XdgSessionDesktop.GNOME);
+    assert (XdgSessionDesktop.from_string ("gnome-flashback") == XdgSessionDesktop.GNOME);
+    assert (XdgSessionDesktop.from_string ("kde") == XdgSessionDesktop.KDE);
+    assert (XdgSessionDesktop.from_string ("mate") == XdgSessionDesktop.MATE);
+    assert (XdgSessionDesktop.from_string ("unity") == XdgSessionDesktop.UNITY);
+    assert (XdgSessionDesktop.from_string ("ubuntu") == XdgSessionDesktop.UBUNTU);
+    assert (XdgSessionDesktop.from_string ("ubuntu-xorg") == XdgSessionDesktop.UBUNTU);
+    assert (XdgSessionDesktop.from_string ("pantheon") == XdgSessionDesktop.PANTHEON);
+    assert (XdgSessionDesktop.from_string ("lxde") == XdgSessionDesktop.LXDE);
+    assert (XdgSessionDesktop.from_string ("lxqt") == XdgSessionDesktop.LXDE);
+  }
+
+  void environment_desktop_from_string_unknown () {
+    // Unknown strings should return UNKNOWN
+    assert (XdgSessionDesktop.from_string ("lightdm-xsession") == XdgSessionDesktop.UNKNOWN);
+    assert (XdgSessionDesktop.from_string ("something-random") == XdgSessionDesktop.UNKNOWN);
+    assert (XdgSessionDesktop.from_string ("") == XdgSessionDesktop.UNKNOWN);
+  }
+
+  void environment_desktop_from_string_case () {
+    // Detection should be case-insensitive
+    assert (XdgSessionDesktop.from_string ("XFCE") == XdgSessionDesktop.XFCE);
+    assert (XdgSessionDesktop.from_string ("Xfce") == XdgSessionDesktop.XFCE);
+    assert (XdgSessionDesktop.from_string ("CINNAMON") == XdgSessionDesktop.CINNAMON);
+    assert (XdgSessionDesktop.from_string ("KDE") == XdgSessionDesktop.KDE);
+    assert (XdgSessionDesktop.from_string ("GNOME") == XdgSessionDesktop.GNOME);
+    assert (XdgSessionDesktop.from_string ("MATE") == XdgSessionDesktop.MATE);
+    assert (XdgSessionDesktop.from_string ("Xubuntu") == XdgSessionDesktop.XFCE);
+  }
+
+  void environment_desktop_from_string_multi () {
+    // Semicolon-separated values should OR together
+    var result = XdgSessionDesktop.from_string ("ubuntu;xfce");
+    assert ((result & XdgSessionDesktop.UBUNTU) != 0);
+    assert ((result & XdgSessionDesktop.XFCE) != 0);
+    assert ((result & XdgSessionDesktop.KDE) == 0);
+
+    // Single unknown in a list shouldn't break the known ones
+    var result2 = XdgSessionDesktop.from_string ("lightdm-xsession;XFCE");
+    assert ((result2 & XdgSessionDesktop.XFCE) != 0);
+  }
+
+  void environment_desktop_bitmask () {
+    // Verify bitmask matching works correctly
+    var xfce = XdgSessionDesktop.from_string ("xfce");
+    var kde = XdgSessionDesktop.from_string ("kde");
+    var gnome = XdgSessionDesktop.from_string ("gnome");
+
+    var mask = XdgSessionDesktop.GNOME | XdgSessionDesktop.XFCE | XdgSessionDesktop.KDE;
+
+    assert ((mask & xfce) > 0);
+    assert ((mask & kde) > 0);
+    assert ((mask & gnome) > 0);
+
+    var cinnamon = XdgSessionDesktop.from_string ("cinnamon");
+    assert ((mask & cinnamon) == 0);
+  }
+
+  //
+  // Helpers tests
+  //
+
+  void helpers_truncate_middle_short () {
+    // String shorter than limit should be returned as-is
+    var result = Helpers.truncate_middle ("hello", 10);
+    assert (result == "hello");
+  }
+
+  void helpers_truncate_middle_exact () {
+    // String exactly at limit should be returned as-is
+    var result = Helpers.truncate_middle ("hello", 5);
+    assert (result == "hello");
+  }
+
+  void helpers_truncate_middle_long () {
+    // String longer than limit should be truncated with ellipsis in middle
+    var result = Helpers.truncate_middle ("hello world test", 11);
+    assert (result.char_count () == 11);
+    assert (result.contains ("…"));
+    // Should start with beginning of original
+    assert (result.has_prefix ("hello"));
+    // Should end with end of original
+    assert (result.has_suffix ("test"));
+  }
+
+  void helpers_truncate_middle_very_short_limit () {
+    // Very short limit (< 5) should just truncate from start
+    var result = Helpers.truncate_middle ("hello world", 3);
+    assert (result.char_count () == 3);
+    assert (result == "hel");
+  }
+
+  void helpers_truncate_middle_utf8 () {
+    // UTF-8 multi-byte characters should be handled by character count, not byte count
+    // Each é is 2 bytes in UTF-8
+    var input = "éléphant résumé";
+    var char_count = input.char_count ();
+    assert (char_count == 15);
+
+    var result = Helpers.truncate_middle (input, 9);
+    assert (result.char_count () == 9);
+    assert (result.contains ("…"));
+    // Should preserve valid UTF-8
+    assert (result.validate ());
+  }
+
+  void helpers_truncate_middle_cjk () {
+    // CJK characters are 3 bytes each in UTF-8
+    // If we used byte length instead of char_count, this would truncate too aggressively
+    var input = "日本語テスト文字列";
+    var char_count = input.char_count ();
+    assert (char_count == 9);
+
+    // At limit — should not truncate
+    var result = Helpers.truncate_middle (input, 9);
+    assert (result == input);
+
+    // Below limit — should truncate by character count
+    var result2 = Helpers.truncate_middle (input, 7);
+    assert (result2.char_count () == 7);
+    assert (result2.contains ("…"));
+    assert (result2.validate ());
+    // Should start with first characters
+    assert (result2.has_prefix ("日本語"));
+    // Should end with last characters
+    assert (result2.has_suffix ("字列"));
+  }
+
+  //
+  // Session type detection tests
+  //
+
+  void session_type_known () {
+    assert (XdgSessionType.from_string ("x11") == XdgSessionType.X11);
+    assert (XdgSessionType.from_string ("wayland") == XdgSessionType.WAYLAND);
+    assert (XdgSessionType.from_string ("tty") == XdgSessionType.TTY);
+    assert (XdgSessionType.from_string ("mir") == XdgSessionType.MIR);
+    assert (XdgSessionType.from_string ("unspecified") == XdgSessionType.UNSPECIFIED);
+  }
+
+  void session_type_case () {
+    assert (XdgSessionType.from_string ("X11") == XdgSessionType.X11);
+    assert (XdgSessionType.from_string ("Wayland") == XdgSessionType.WAYLAND);
+    assert (XdgSessionType.from_string ("WAYLAND") == XdgSessionType.WAYLAND);
+  }
+
+  void session_type_unknown () {
+    // Unknown strings should default to UNSPECIFIED
+    assert (XdgSessionType.from_string ("something") == XdgSessionType.UNSPECIFIED);
+    assert (XdgSessionType.from_string ("") == XdgSessionType.UNSPECIFIED);
+  }
+
+  //
+  // Color prefs round-trip tests
+  //
+
+  void color_prefs_round_trip () {
+    // A color should survive to_prefs_string → from_prefs_string
+    Color original = { 0.5, 0.25, 0.75, 1.0 };
+    var str = original.to_prefs_string ();
+    var restored = Color.from_prefs_string (str);
+
+    // Allow 1/255 precision loss from int conversion
+    const double EPSILON = 1.0 / 255.0 + 0.001;
+    assert (Math.fabs (original.red - restored.red) < EPSILON);
+    assert (Math.fabs (original.green - restored.green) < EPSILON);
+    assert (Math.fabs (original.blue - restored.blue) < EPSILON);
+    assert (Math.fabs (original.alpha - restored.alpha) < EPSILON);
+  }
+
+  void color_prefs_clamping () {
+    // Values outside 0-255 should be clamped
+    var color = Color.from_prefs_string ("300;;-10;;128;;255");
+    assert (color.red == 1.0);               // 300 clamped to 255 → 1.0
+    assert (color.green == 0.0);             // -10 clamped to 0 → 0.0
+    assert (color.blue > 0.49 && color.blue < 0.51);             // 128/255 ≈ 0.502
+    assert (color.alpha == 1.0);             // 255 → 1.0
+  }
+
+  void color_prefs_format () {
+    // Verify the string format uses ;; separators
+    Color color = { 1.0, 0.0, 0.5, 1.0 };
+    var str = color.to_prefs_string ();
+    var parts = str.split (";;");
+    assert (parts.length == 4);
+    assert (int.parse (parts[0]) == 255);              // red
+    assert (int.parse (parts[1]) == 0);                // green
+    assert (int.parse (parts[3]) == 255);              // alpha
+  }
+
+  //
+  // Dock window position tests
+  //
+
+  void dock_win_pos_bottom_composited () {
+    int x, y;
+    // 1920x1080 monitor at origin, 48px dock at bottom, composited
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  monitor, 1920, 48, 0, 0,
+                                                  true, true, 1920, 48, false);
+
+    assert (x == 0);
+    assert (y == 1080 - 48);
+  }
+
+  void dock_win_pos_top_composited () {
+    int x, y;
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.TOP, Gtk.Align.CENTER,
+                                                  monitor, 1920, 48, 0, 0,
+                                                  true, true, 1920, 48, false);
+
+    assert (x == 0);
+    assert (y == 0);
+  }
+
+  void dock_win_pos_left_composited () {
+    int x, y;
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.LEFT, Gtk.Align.CENTER,
+                                                  monitor, 48, 1080, 0, 0,
+                                                  true, false, 48, 1080, false);
+
+    assert (x == 0);
+    assert (y == 0);
+  }
+
+  void dock_win_pos_right_composited () {
+    int x, y;
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.RIGHT, Gtk.Align.CENTER,
+                                                  monitor, 48, 1080, 0, 0,
+                                                  true, false, 48, 1080, false);
+
+    assert (x == 1920 - 48);
+    assert (y == 0);
+  }
+
+  void dock_win_pos_bottom_with_gap () {
+    int x, y;
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  monitor, 1920, 48, 20, 0,
+                                                  true, true, 1920, 48, false);
+
+    assert (x == 0);
+    // Gap pushes dock up from edge
+    assert (y == 1080 - 48 - 20);
+  }
+
+  void dock_win_pos_offset_monitor () {
+    int x, y;
+    // Monitor not at origin (second monitor at x=1920)
+    Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  monitor, 1920, 48, 0, 0,
+                                                  true, true, 1920, 48, false);
+
+    assert (x == 1920);
+    assert (y == 1080 - 48);
+  }
+
+  //
+  // Background padding tests
+  //
+
+  void bg_padding_bottom () {
+    int x, y;
+    // dock_height=48, bg_height=40, no hide offset
+    // padding = 48 - 40 + 0 = 8
+    PositionManager.compute_background_padding (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 200, 48, 200, 40, 0);
+
+    assert (x == 0);
+    assert (y == 8);
+  }
+
+  void bg_padding_top () {
+    int x, y;
+    PositionManager.compute_background_padding (out x, out y,
+                                                Gtk.PositionType.TOP, 200, 48, 200, 40, 0);
+
+    assert (x == 0);
+    assert (y == -8);
+  }
+
+  void bg_padding_left () {
+    int x, y;
+    // dock_width=48, bg_width=40
+    PositionManager.compute_background_padding (out x, out y,
+                                                Gtk.PositionType.LEFT, 48, 200, 40, 200, 0);
+
+    assert (x == -8);
+    assert (y == 0);
+  }
+
+  void bg_padding_right () {
+    int x, y;
+    PositionManager.compute_background_padding (out x, out y,
+                                                Gtk.PositionType.RIGHT, 48, 200, 40, 200, 0);
+
+    assert (x == 8);
+    assert (y == 0);
+  }
+
+  void bg_padding_with_hide_offset () {
+    int x, y;
+    // hide_offset adds to the padding
+    PositionManager.compute_background_padding (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 200, 48, 200, 40, 5);
+
+    assert (x == 0);
+    assert (y == 13);              // 48 - 40 + 5
+  }
+
+  //
+  // Easing bounce tests
+  //
+
+  void easing_bounce_start_zero () {
+    // Bounce should start at 0
+    var val = DockRenderer.easing_bounce (0.0, 1000.0, 2.0);
+    assert (val == 0.0);
+  }
+
+  void easing_bounce_end_zero () {
+    // Bounce should end at 0 (dampened to nothing)
+    var val = DockRenderer.easing_bounce (1000.0, 1000.0, 2.0);
+    assert (val == 0.0);
+  }
+
+  void easing_bounce_midpoint_positive () {
+    // Bounce should be positive at midpoint
+    var val = DockRenderer.easing_bounce (250.0, 1000.0, 2.0);
+    assert (val > 0.0);
+  }
+
+  void easing_bounce_always_non_negative () {
+    // Bounce uses fabs so should always be >= 0
+    for (int i = 0; i <= 100; i++) {
+      var val = DockRenderer.easing_bounce (i * 10.0, 1000.0, 2.0);
+      assert (val >= 0.0);
+      assert (val <= 1.0);
+    }
+  }
+
+  //
+  // Dock draw position tests
+  //
+
+  void draw_position_bottom_visible () {
+    int x, y;
+    // Fully visible (progress = 0) — no offset
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 0.0, 200, 48, 0);
+    assert (x == 0);
+    assert (y == 0);
+  }
+
+  void draw_position_bottom_hidden () {
+    int x, y;
+    // Fully hidden (progress = 1) — offset equals dock height
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 1.0, 200, 48, 0);
+    assert (x == 0);
+    assert (y == 48);
+  }
+
+  void draw_position_bottom_half () {
+    int x, y;
+    // Half hidden
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 0.5, 200, 48, 0);
+    assert (x == 0);
+    assert (y == 24);
+  }
+
+  void draw_position_top_hidden () {
+    int x, y;
+    // Top dock hides upward (negative y)
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.TOP, 1.0, 200, 48, 0);
+    assert (x == 0);
+    assert (y == -48);
+  }
+
+  void draw_position_left_hidden () {
+    int x, y;
+    // Left dock hides leftward (negative x)
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.LEFT, 1.0, 48, 200, 0);
+    assert (x == -48);
+    assert (y == 0);
+  }
+
+  void draw_position_right_hidden () {
+    int x, y;
+    // Right dock hides rightward (positive x)
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.RIGHT, 1.0, 48, 200, 0);
+    assert (x == 48);
+    assert (y == 0);
+  }
+
+  void draw_position_with_hide_offset () {
+    int x, y;
+    // Hide offset adds to the distance
+    PositionManager.compute_dock_draw_position (out x, out y,
+                                                Gtk.PositionType.BOTTOM, 1.0, 200, 48, 10);
+    assert (x == 0);
+    assert (y == 58);
+  }
+
+  //
+  // Easing function tests
+  //
+
+  void easing_linear_bounds () {
+    // Linear easing: t=0 → 0, t=d → 1
+    assert (easing_for_mode (AnimationMode.LINEAR, 0.0, 1000.0) == 0.0);
+    assert (easing_for_mode (AnimationMode.LINEAR, 1000.0, 1000.0) == 1.0);
+  }
+
+  void easing_linear_midpoint () {
+    // Linear easing: midpoint should be exactly 0.5
+    assert (easing_for_mode (AnimationMode.LINEAR, 500.0, 1000.0) == 0.5);
+  }
+
+  void easing_all_modes_bounds () {
+    // All easing modes should return 0 at t=0 and 1 at t=d
+    // and stay within the documented range of -1.0 to 2.0
+    AnimationMode[] modes = {
+      AnimationMode.LINEAR,
+      AnimationMode.EASE_IN_QUAD,
+      AnimationMode.EASE_OUT_QUAD,
+      AnimationMode.EASE_IN_OUT_QUAD,
+      AnimationMode.EASE_IN_CUBIC,
+      AnimationMode.EASE_OUT_CUBIC,
+      AnimationMode.EASE_IN_OUT_CUBIC,
+      AnimationMode.EASE_IN_QUART,
+      AnimationMode.EASE_OUT_QUART,
+      AnimationMode.EASE_IN_OUT_QUART,
+      AnimationMode.EASE_IN_QUINT,
+      AnimationMode.EASE_OUT_QUINT,
+      AnimationMode.EASE_IN_OUT_QUINT,
+      AnimationMode.EASE_IN_SINE,
+      AnimationMode.EASE_OUT_SINE,
+      AnimationMode.EASE_IN_OUT_SINE,
+      AnimationMode.EASE_IN_EXPO,
+      AnimationMode.EASE_OUT_EXPO,
+      AnimationMode.EASE_IN_OUT_EXPO,
+      AnimationMode.EASE_IN_CIRC,
+      AnimationMode.EASE_OUT_CIRC,
+      AnimationMode.EASE_IN_OUT_CIRC,
+      AnimationMode.EASE_IN_BACK,
+      AnimationMode.EASE_OUT_BACK,
+      AnimationMode.EASE_IN_OUT_BACK,
+      AnimationMode.EASE_IN_BOUNCE,
+      AnimationMode.EASE_OUT_BOUNCE,
+      AnimationMode.EASE_IN_OUT_BOUNCE,
+    };
+
+    const double EPSILON = 0.0001;
+
+    foreach (var mode in modes) {
+      var start = easing_for_mode (mode, 0.0, 1000.0);
+      var end = easing_for_mode (mode, 1000.0, 1000.0);
+
+      // All modes start at ~0 and end at ~1
+      assert (Math.fabs (start) < EPSILON);
+      assert (Math.fabs (end - 1.0) < EPSILON);
+
+      // Check 10 intermediate points stay in range
+      for (int i = 1; i < 10; i++) {
+        var val = easing_for_mode (mode, i * 100.0, 1000.0);
+        assert (val >= -1.0 && val <= 2.0);
+      }
+    }
+  }
+
+  //
+  // DockItemDrawValue movement tests
+  //
+
+  void draw_value_move_in_bottom () {
+    var val = new DockItemDrawValue ();
+    val.center = { 100.0, 200.0 };
+    val.static_center = { 100.0, 200.0 };
+    val.hover_region = { 80, 180, 40, 40 };
+    val.draw_region = { 80, 180, 40, 40 };
+
+    val.move_in (Gtk.PositionType.BOTTOM, 10.0);
+
+    // Bottom dock: move_in decreases y (moves up toward screen)
+    assert (val.center.y == 190.0);
+    assert (val.static_center.y == 190.0);
+    assert (val.hover_region.y == 170);
+    assert (val.draw_region.y == 170);
+    // x should not change
+    assert (val.center.x == 100.0);
+  }
+
+  void draw_value_move_in_top () {
+    var val = new DockItemDrawValue ();
+    val.center = { 100.0, 200.0 };
+    val.static_center = { 100.0, 200.0 };
+    val.hover_region = { 80, 180, 40, 40 };
+    val.draw_region = { 80, 180, 40, 40 };
+
+    val.move_in (Gtk.PositionType.TOP, 10.0);
+
+    // Top dock: move_in increases y (moves down toward screen)
+    assert (val.center.y == 210.0);
+    assert (val.static_center.y == 210.0);
+    assert (val.hover_region.y == 190);
+    assert (val.draw_region.y == 190);
+  }
+
+  void draw_value_move_right_bottom () {
+    var val = new DockItemDrawValue ();
+    val.center = { 100.0, 200.0 };
+    val.static_center = { 100.0, 200.0 };
+    val.hover_region = { 80, 180, 40, 40 };
+    val.draw_region = { 80, 180, 40, 40 };
+    val.background_region = { 80, 180, 40, 40 };
+
+    val.move_right (Gtk.PositionType.BOTTOM, 15.0);
+
+    // Bottom/Top dock: move_right increases x
+    assert (val.center.x == 115.0);
+    assert (val.static_center.x == 115.0);
+    assert (val.hover_region.x == 95);
+    assert (val.draw_region.x == 95);
+    assert (val.background_region.x == 95);
+    // y should not change
+    assert (val.center.y == 200.0);
+  }
+
+  void draw_value_move_right_left () {
+    var val = new DockItemDrawValue ();
+    val.center = { 100.0, 200.0 };
+    val.static_center = { 100.0, 200.0 };
+    val.hover_region = { 80, 180, 40, 40 };
+    val.draw_region = { 80, 180, 40, 40 };
+    val.background_region = { 80, 180, 40, 40 };
+
+    val.move_right (Gtk.PositionType.LEFT, 15.0);
+
+    // Left/Right dock: move_right increases y (perpendicular axis)
+    assert (val.center.y == 215.0);
+    assert (val.static_center.y == 215.0);
+    assert (val.hover_region.y == 195);
+    assert (val.draw_region.y == 195);
+    assert (val.background_region.y == 195);
+    // x should not change
+    assert (val.center.x == 100.0);
+  }
+
+  //
+  // Struts computation tests
+  //
+
+  void struts_single_monitor_bottom () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 1920x1080 monitor, 48px dock at bottom, no gap, 1x scale
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 1920, 1080, 1920, 48, 0, 1);
+
+    assert (struts[Struts.BOTTOM] == 48);
+    assert (struts[Struts.BOTTOM_START] == 0);
+    assert (struts[Struts.BOTTOM_END] == 1919);
+    assert (struts[Struts.TOP] == 0);
+    assert (struts[Struts.LEFT] == 0);
+    assert (struts[Struts.RIGHT] == 0);
+  }
+
+  void struts_single_monitor_top () {
+    var struts = new ulong[Struts.N_VALUES];
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
+                                    monitor, 1920, 1080, 1920, 48, 0, 1);
+
+    assert (struts[Struts.TOP] == 48);
+    assert (struts[Struts.TOP_START] == 0);
+    assert (struts[Struts.TOP_END] == 1919);
+    assert (struts[Struts.BOTTOM] == 0);
+  }
+
+  void struts_single_monitor_left () {
+    var struts = new ulong[Struts.N_VALUES];
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
+                                    monitor, 1920, 1080, 48, 1080, 0, 1);
+
+    assert (struts[Struts.LEFT] == 48);
+    assert (struts[Struts.LEFT_START] == 0);
+    assert (struts[Struts.LEFT_END] == 1079);
+    assert (struts[Struts.RIGHT] == 0);
+  }
+
+  void struts_single_monitor_right () {
+    var struts = new ulong[Struts.N_VALUES];
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+                                    monitor, 1920, 1080, 48, 1080, 0, 1);
+
+    assert (struts[Struts.RIGHT] == 48);
+    assert (struts[Struts.RIGHT_START] == 0);
+    assert (struts[Struts.RIGHT_END] == 1079);
+    assert (struts[Struts.LEFT] == 0);
+  }
+
+  void struts_multi_monitor_bottom () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Two 1920x1080 monitors side by side, dock on the right monitor
+    // GDK logical bounding box = (3840, 1080)
+    Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 3840, 1080, 1920, 48, 0, 1);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
+    assert (struts[Struts.BOTTOM] == 48);
+    // Strut range should cover only the right monitor
+    assert (struts[Struts.BOTTOM_START] == 1920);
+    assert (struts[Struts.BOTTOM_END] == 3839);
+  }
+
+  void struts_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 4K monitor with 2x scaling
+    // GDK logical monitor = {0, 0, 1920, 1080}
+    // screen dims = monitor bounds = (1920, 1080)
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 1920, 1080, 1920, 48, 0, 2);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
+    assert (struts[Struts.BOTTOM] == 96);
+    assert (struts[Struts.BOTTOM_START] == 0);
+    assert (struts[Struts.BOTTOM_END] == 3839);
+  }
+
+  void struts_with_gap () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single monitor with 10px gap
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 1920, 1080, 1920, 48, 10, 1);
+
+    // BOTTOM strut should include gap
+    assert (struts[Struts.BOTTOM] == 58);
+  }
+
+  void struts_multi_monitor_scaling_2x_bottom () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Two 4K monitors side by side with 2x scaling
+    // Right monitor GDK = {1920, 0, 1920, 1080}
+    // GDK logical bounding box = (3840, 1080)
+    Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 3840, 1080, 1920, 48, 0, 2);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
+    assert (struts[Struts.BOTTOM] == 96);
+    assert (struts[Struts.BOTTOM_START] == 3840);
+    assert (struts[Struts.BOTTOM_END] == 7679);
+  }
+
+  void struts_multi_monitor_scaling_2x_right () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Two 4K monitors stacked vertically with 2x scaling
+    // Top monitor GDK = {0, 0, 1920, 1080}, bottom = {0, 1080, 1920, 1080}
+    // GDK logical bounding box = (1920, 2160)
+    // Dock on top monitor, RIGHT position
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+                                    monitor, 1920, 2160, 48, 1080, 0, 2);
+
+    // RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96 (monitor right = screen right)
+    assert (struts[Struts.RIGHT] == 96);
+    assert (struts[Struts.RIGHT_START] == 0);
+    assert (struts[Struts.RIGHT_END] == 2159);
+  }
+
+  void struts_gap_with_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 4K monitor, 2x scaling, 10px GDK gap, BOTTOM dock
+    // GDK logical = {0, 0, 1920, 1080}
+    // GDK logical bounding box = (1920, 1080)
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 1920, 1080, 1920, 48, 10, 2);
+
+    // BOTTOM = (48 + 10 + 1080 - 0 - 1080) * 2 = 116
+    assert (struts[Struts.BOTTOM] == 116);
+    assert (struts[Struts.BOTTOM_START] == 0);
+    assert (struts[Struts.BOTTOM_END] == 3839);
+
+    // Also test RIGHT with gap + scaling
+    var struts2 = new ulong[Struts.N_VALUES];
+    PositionManager.compute_struts (ref struts2, Gtk.PositionType.RIGHT,
+                                    monitor, 1920, 1080, 48, 1080, 10, 2);
+
+    // RIGHT = (48 + 10 + 1920 - 0 - 1920) * 2 = 116
+    assert (struts2[Struts.RIGHT] == 116);
+
+    // And TOP with gap + scaling
+    var struts3 = new ulong[Struts.N_VALUES];
+    PositionManager.compute_struts (ref struts3, Gtk.PositionType.TOP,
+                                    monitor, 1920, 1080, 1920, 48, 10, 2);
+
+    // TOP = (0 + 48 + 10) * 2 = 116
+    assert (struts3[Struts.TOP] == 116);
+
+    // And LEFT with gap + scaling
+    var struts4 = new ulong[Struts.N_VALUES];
+    PositionManager.compute_struts (ref struts4, Gtk.PositionType.LEFT,
+                                    monitor, 1920, 1080, 48, 1080, 10, 2);
+
+    // LEFT = (0 + 48 + 10) * 2 = 116
+    assert (struts4[Struts.LEFT] == 116);
+  }
+
+  void struts_top_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 4K monitor, 2x scaling, TOP dock
+    // GDK logical = {0, 0, 1920, 1080}
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.TOP,
+                                    monitor, 1920, 1080, 1920, 48, 0, 2);
+
+    // TOP = (0 + 48 + 0) * 2 = 96
+    assert (struts[Struts.TOP] == 96);
+    assert (struts[Struts.TOP_START] == 0);
+    assert (struts[Struts.TOP_END] == 3839);
+  }
+
+  void struts_left_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 4K monitor, 2x scaling, LEFT dock
+    // GDK logical = {0, 0, 1920, 1080}
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.LEFT,
+                                    monitor, 1920, 1080, 48, 1080, 0, 2);
+
+    // LEFT = (0 + 48 + 0) * 2 = 96
+    assert (struts[Struts.LEFT] == 96);
+    assert (struts[Struts.LEFT_START] == 0);
+    assert (struts[Struts.LEFT_END] == 2159);
+  }
+
+  void struts_right_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Single 4K monitor, 2x scaling, RIGHT dock
+    // GDK logical = {0, 0, 1920, 1080}
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.RIGHT,
+                                    monitor, 1920, 1080, 48, 1080, 0, 2);
+
+    // RIGHT = (48 + 0 + 1920 - 0 - 1920) * 2 = 96
+    assert (struts[Struts.RIGHT] == 96);
+    assert (struts[Struts.RIGHT_START] == 0);
+    assert (struts[Struts.RIGHT_END] == 2159);
+  }
+
+  void struts_non_primary_monitor_bottom () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Dock on non-primary monitor, scale=1
+    // Monitor A (primary): 1920x1080 at (0,0)
+    // Monitor B: 1920x1080 at (1920,0) — dock is here
+    // GDK logical bounding box = (3840, 1080)
+    Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 3840, 1080, 1920, 48, 0, 1);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 1 = 48
+    assert (struts[Struts.BOTTOM] == 48);
+    assert (struts[Struts.BOTTOM_START] == 1920);
+    assert (struts[Struts.BOTTOM_END] == 3839);
+  }
+
+  void struts_non_primary_monitor_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Dock on non-primary monitor, scale=2
+    // Monitor A (primary): 3840x2160 at (0,0), GDK {0, 0, 1920, 1080}
+    // Monitor B: 3840x2160 at (3840,0), GDK {1920, 0, 1920, 1080} — dock is here
+    // GDK logical bounding box = (3840, 1080)
+    Gdk.Rectangle monitor = { 1920, 0, 1920, 1080 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 3840, 1080, 1920, 48, 0, 2);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 1080) * 2 = 96
+    assert (struts[Struts.BOTTOM] == 96);
+    assert (struts[Struts.BOTTOM_START] == 3840);
+    assert (struts[Struts.BOTTOM_END] == 7679);
+  }
+
+  void struts_ewmh_xinerama_example () {
+    var struts = new ulong[Struts.N_VALUES];
+    // Exact example from EWMH spec section 5.10:
+    // Two monitors: 1280x1024 (left) + 1024x768 (right), top-aligned
+    // GDK logical (scale=1): left={0,0,1280,1024}, right={1280,0,1024,768}
+    // GDK logical bounding box = (2304, 1024)
+    // Panel: 50px tall at bottom of right (shorter) monitor
+    // Spec says: bottom strut = 306, bottom_start_x = 1280, bottom_end_x = 2303
+    Gdk.Rectangle monitor = { 1280, 0, 1024, 768 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 2304, 1024, 1024, 50, 0, 1);
+
+    // BOTTOM = (50 + 0 + 1024 - 0 - 768) * 1 = 306
+    assert (struts[Struts.BOTTOM] == 306);
+    assert (struts[Struts.BOTTOM_START] == 1280);
+    assert (struts[Struts.BOTTOM_END] == 2303);
+  }
+
+  void struts_different_height_monitors_scaling_2x () {
+    var struts = new ulong[Struts.N_VALUES];
+    // 4K (left) + 1440p (right) side by side, top-aligned, scale=2
+    // Left: 3840x2160, GDK {0, 0, 1920, 1080}
+    // Right: 2560x1440, GDK {1920, 0, 1280, 720}
+    // GDK logical bounding box = (3200, 1080)
+    // Dock on right (shorter) monitor, BOTTOM
+    Gdk.Rectangle monitor = { 1920, 0, 1280, 720 };
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    monitor, 3200, 1080, 1280, 48, 0, 2);
+
+    // BOTTOM = (48 + 0 + 1080 - 0 - 720) * 2 = 408 * 2 = 816
+    // = dock(96) + offset from monitor bottom to screen bottom (720 logical = 360 X11 pixels)
+    assert (struts[Struts.BOTTOM] == 816);
+    assert (struts[Struts.BOTTOM_START] == 3840);
+    assert (struts[Struts.BOTTOM_END] == 6399);
+  }
+
+  //
+  // Dock edge tests
+  //
+
+  void dock_edge_monitor_mode_edges () {
+    // In monitor mode the dock's area is the whole monitor, so only the
+    // monitor's edge row or column counts
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1078, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 760, 0, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 1, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 0, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 540, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1, 540, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1918, 540, monitor, monitor, right));
+  }
+
+  void dock_edge_outside_span () {
+    // On the edge but beside the dock does not count, and the span is
+    // half-open like the rectangle it comes from
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 760, 1079, monitor, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 1159, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 759, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 1160, 1079, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 760, 0, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 760, 0, monitor, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 1159, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 759, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 1160, 0, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 0, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 340, monitor, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 739, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 339, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 740, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 340, monitor, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 739, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 339, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 740, monitor, monitor, right));
+  }
+
+  void dock_edge_work_area_band () {
+    // In work area mode a 40px panel sits between the dock's area and the
+    // monitor's edge, and anywhere from the area's edge to the monitor's
+    // edge counts
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom_area = { 0, 0, 1920, 1040 };
+    Gdk.Rectangle bottom = { 760, 992, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1039, bottom_area, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1060, bottom_area, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, bottom_area, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1038, bottom_area, monitor, bottom));
+
+    Gdk.Rectangle top_area = { 0, 40, 1920, 1040 };
+    Gdk.Rectangle top = { 760, 40, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 40, top_area, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 20, top_area, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 0, top_area, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 41, top_area, monitor, top));
+
+    Gdk.Rectangle left_area = { 40, 0, 1880, 1080 };
+    Gdk.Rectangle left = { 40, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 40, 540, left_area, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 20, 540, left_area, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 540, left_area, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 41, 540, left_area, monitor, left));
+
+    Gdk.Rectangle right_area = { 0, 0, 1880, 1080 };
+    Gdk.Rectangle right = { 1832, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1879, 540, right_area, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1900, 540, right_area, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, right_area, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1878, 540, right_area, monitor, right));
+  }
+
+  void dock_edge_neighbouring_monitor () {
+    // A monitor across the dock's edge is not past the edge: the dock
+    // monitor's own edge counts, the neighbour does not
+
+    // A bottom dock on the upper of two stacked monitors
+    Gdk.Rectangle upper_monitor = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, upper_monitor, upper_monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1080, upper_monitor, upper_monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1500, upper_monitor, upper_monitor, bottom));
+
+    // A top dock on the lower of two stacked monitors
+    Gdk.Rectangle lower_monitor = { 0, 1080, 1920, 1080 };
+    Gdk.Rectangle top = { 760, 1080, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 1080, lower_monitor, lower_monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 1079, lower_monitor, lower_monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 500, lower_monitor, lower_monitor, top));
+
+    // A left dock on the right of two side-by-side monitors
+    Gdk.Rectangle right_monitor = { 1920, 0, 1920, 1080 };
+    Gdk.Rectangle left = { 1920, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 1920, 540, right_monitor, right_monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1919, 540, right_monitor, right_monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 500, 540, right_monitor, right_monitor, left));
+
+    // A right dock on the left of two side-by-side monitors
+    Gdk.Rectangle left_monitor = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, left_monitor, left_monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1920, 540, left_monitor, left_monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 2500, 540, left_monitor, left_monitor, right));
+  }
+
+  void dock_edge_offset_monitor () {
+    // On a monitor away from the origin, the lower right of a 2x2 grid,
+    // each edge sits at the monitor's offset
+    Gdk.Rectangle monitor = { 1920, 1080, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 2680, 2112, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 2880, 2159, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 2880, 2158, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 2680, 1080, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 2880, 1080, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 2880, 1081, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 1920, 1420, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 1920, 1620, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1921, 1620, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 3792, 1420, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 3839, 1620, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 3838, 1620, monitor, monitor, right));
+  }
+
+  void dock_edge_empty_monitor () {
+    // Before the first valid measurement the area and monitor are both
+    // empty. An empty area alone would put the bottom and right edges
+    // everywhere, so each point below would count without the monitor check
+    Gdk.Rectangle empty = { 0, 0, 0, 0 };
+    Gdk.Rectangle dock = { 0, 0, 400, 400 };
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 10, 10, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 10, 0, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 10, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 10, 10, empty, empty, dock));
+  }
 }

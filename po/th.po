@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-08-03 15:45-1000\n"
+"POT-Creation-Date: 2026-09-30 14:54-1000\n"
 "PO-Revision-Date: 2025-11-13 02:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
@@ -48,19 +48,19 @@ msgstr ""
 "โดยให้เพียงสิ่งที่ด็อกต้องการและไม่มีอะไรเพิ่มเติมอีก "
 "นอกจากนี้ยังคงเป็นไลบรารีที่สามารถขยายเพื่อสร้างโปรแกรมด็อกอื่นๆ ที่มีคุณสมบัติขั้นสูงกว่า"
 
-#: data/plank.appdata.xml.in:135
+#: data/plank.appdata.xml.in:137
 msgid "Dock with Matte theme"
 msgstr "ด็อกด้วยธีม Matte"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:142
 msgid "Appearance Preferences"
 msgstr "การตั้งค่าลักษณะ"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:147
 msgid "Behavior Preferences"
 msgstr "การตั้งค่าพฤติกรรม"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:152
 msgid "Docklets Preferences"
 msgstr "การตั้งค่า Docklet"
 
@@ -611,20 +611,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  คเชนทร์ https://launchpad.net/~kachaint"
 
-#: lib/Items/ApplicationDockItem.vala:444 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "เก็บไว้ในดอค"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close All"
 msgstr "ปิดทั้งหมด"
 
-#: lib/Items/ApplicationDockItem.vala:452
+#: lib/Items/ApplicationDockItem.vala:617
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: lib/Items/ApplicationDockItem.vala:601
+#: lib/Items/ApplicationDockItem.vala:762
 #, c-format
 msgid "Drop to open with %s"
 msgstr "ลากวางเพื่อเปิดด้วย %s"
