@@ -429,6 +429,11 @@ namespace Plank {
       if (pending_reveal_timer_id > 0U)
         GLib.Source.remove (pending_reveal_timer_id);
       pending_reveal_timer_id = Gdk.threads_add_timeout (compute_reveal_timeout (), () => {
+        // The gap leaves the edge outside the dock's hover region, so a
+        // pointer still resting there keeps the reveal going
+        if (pointer_at_dock_edge ())
+          return true;
+
         pending_reveal = false;
         pending_reveal_timer_id = 0U;
         update_hovered ();
@@ -462,6 +467,15 @@ namespace Plank {
     }
 
     bool edge_poll_tick () {
+      if (pointer_at_dock_edge () && Hidden)
+        start_pending_reveal ();
+
+      return true;
+    }
+
+    // Whether the pointer is at the screen edge the dock sits on, within the
+    // dock's span
+    bool pointer_at_dock_edge () {
       unowned PositionManager position_manager = controller.position_manager;
       unowned DockWindow window = controller.window;
 
@@ -497,10 +511,7 @@ namespace Plank {
         break;
       }
 
-      if (at_edge && within_dock_span && Hidden)
-        start_pending_reveal ();
-
-      return true;
+      return at_edge && within_dock_span;
     }
 
     [CCode (instance_pos = -1)]
