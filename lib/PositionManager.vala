@@ -2054,6 +2054,13 @@ namespace Plank {
       return monitor_geo;
     }
 
+    // The whole monitor the dock is on, as last measured, where
+    // get_monitor_geometry () is the dock's area and leaves out panels in
+    // work area mode
+    internal Gdk.Rectangle get_raw_monitor_geometry () {
+      return last_raw_geo;
+    }
+
     /**
      * Get's the padding between background and icons of the dock.
      *

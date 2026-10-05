@@ -85,6 +85,12 @@ namespace PlankTests {
     Test.add_func ("/Services/Struts/ewmh_xinerama_example", struts_ewmh_xinerama_example);
     Test.add_func ("/Services/Struts/different_height_monitors_scaling_2x", struts_different_height_monitors_scaling_2x);
     Test.add_func ("/Services/Matcher/desktop_file_for_window_class", matcher_desktop_file_for_window_class);
+    Test.add_func ("/Services/DockEdge/monitor_mode_edges", dock_edge_monitor_mode_edges);
+    Test.add_func ("/Services/DockEdge/outside_span", dock_edge_outside_span);
+    Test.add_func ("/Services/DockEdge/work_area_band", dock_edge_work_area_band);
+    Test.add_func ("/Services/DockEdge/neighbouring_monitor", dock_edge_neighbouring_monitor);
+    Test.add_func ("/Services/DockEdge/offset_monitor", dock_edge_offset_monitor);
+    Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -953,5 +959,163 @@ namespace PlankTests {
     assert (struts[Struts.BOTTOM] == 816);
     assert (struts[Struts.BOTTOM_START] == 3840);
     assert (struts[Struts.BOTTOM_END] == 6399);
+  }
+
+  //
+  // Dock edge tests
+  //
+
+  void dock_edge_monitor_mode_edges () {
+    // In monitor mode the dock's area is the whole monitor, so only the
+    // monitor's edge row or column counts
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1078, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 760, 0, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 1, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 0, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 540, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1, 540, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1918, 540, monitor, monitor, right));
+  }
+
+  void dock_edge_outside_span () {
+    // On the edge but beside the dock does not count, and the span is
+    // half-open like the rectangle it comes from
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 760, 1079, monitor, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 1159, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 759, 1079, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 1160, 1079, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 760, 0, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 760, 0, monitor, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 1159, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 759, 0, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 1160, 0, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 0, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 340, monitor, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 739, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 339, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 740, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 340, monitor, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 739, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 339, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 740, monitor, monitor, right));
+  }
+
+  void dock_edge_work_area_band () {
+    // In work area mode a 40px panel sits between the dock's area and the
+    // monitor's edge, and anywhere from the area's edge to the monitor's
+    // edge counts
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom_area = { 0, 0, 1920, 1040 };
+    Gdk.Rectangle bottom = { 760, 992, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1039, bottom_area, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1060, bottom_area, monitor, bottom));
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, bottom_area, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1038, bottom_area, monitor, bottom));
+
+    Gdk.Rectangle top_area = { 0, 40, 1920, 1040 };
+    Gdk.Rectangle top = { 760, 40, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 40, top_area, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 20, top_area, monitor, top));
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 0, top_area, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 41, top_area, monitor, top));
+
+    Gdk.Rectangle left_area = { 40, 0, 1880, 1080 };
+    Gdk.Rectangle left = { 40, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 40, 540, left_area, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 20, 540, left_area, monitor, left));
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 0, 540, left_area, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 41, 540, left_area, monitor, left));
+
+    Gdk.Rectangle right_area = { 0, 0, 1880, 1080 };
+    Gdk.Rectangle right = { 1832, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1879, 540, right_area, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1900, 540, right_area, monitor, right));
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, right_area, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1878, 540, right_area, monitor, right));
+  }
+
+  void dock_edge_neighbouring_monitor () {
+    // A monitor across the dock's edge is not past the edge: the dock
+    // monitor's own edge counts, the neighbour does not
+
+    // A bottom dock on the upper of two stacked monitors
+    Gdk.Rectangle upper_monitor = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1079, upper_monitor, upper_monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1080, upper_monitor, upper_monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 960, 1500, upper_monitor, upper_monitor, bottom));
+
+    // A top dock on the lower of two stacked monitors
+    Gdk.Rectangle lower_monitor = { 0, 1080, 1920, 1080 };
+    Gdk.Rectangle top = { 760, 1080, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 960, 1080, lower_monitor, lower_monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 1079, lower_monitor, lower_monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 960, 500, lower_monitor, lower_monitor, top));
+
+    // A left dock on the right of two side-by-side monitors
+    Gdk.Rectangle right_monitor = { 1920, 0, 1920, 1080 };
+    Gdk.Rectangle left = { 1920, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 1920, 540, right_monitor, right_monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1919, 540, right_monitor, right_monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 500, 540, right_monitor, right_monitor, left));
+
+    // A right dock on the left of two side-by-side monitors
+    Gdk.Rectangle left_monitor = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 1919, 540, left_monitor, left_monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 1920, 540, left_monitor, left_monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 2500, 540, left_monitor, left_monitor, right));
+  }
+
+  void dock_edge_offset_monitor () {
+    // On a monitor away from the origin, the lower right of a 2x2 grid,
+    // each edge sits at the monitor's offset
+    Gdk.Rectangle monitor = { 1920, 1080, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 2680, 2112, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.BOTTOM, 2880, 2159, monitor, monitor, bottom));
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 2880, 2158, monitor, monitor, bottom));
+
+    Gdk.Rectangle top = { 2680, 1080, 400, 48 };
+    assert (point_at_dock_edge (Gtk.PositionType.TOP, 2880, 1080, monitor, monitor, top));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 2880, 1081, monitor, monitor, top));
+
+    Gdk.Rectangle left = { 1920, 1420, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.LEFT, 1920, 1620, monitor, monitor, left));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 1921, 1620, monitor, monitor, left));
+
+    Gdk.Rectangle right = { 3792, 1420, 48, 400 };
+    assert (point_at_dock_edge (Gtk.PositionType.RIGHT, 3839, 1620, monitor, monitor, right));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 3838, 1620, monitor, monitor, right));
+  }
+
+  void dock_edge_empty_monitor () {
+    // Before the first valid measurement the area and monitor are both
+    // empty. An empty area alone would put the bottom and right edges
+    // everywhere, so each point below would count without the monitor check
+    Gdk.Rectangle empty = { 0, 0, 0, 0 };
+    Gdk.Rectangle dock = { 0, 0, 400, 400 };
+    assert (!point_at_dock_edge (Gtk.PositionType.BOTTOM, 10, 10, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.TOP, 10, 0, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 10, empty, empty, dock));
+    assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 10, 10, empty, empty, dock));
   }
 }

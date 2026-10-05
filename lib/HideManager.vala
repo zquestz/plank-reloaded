@@ -473,8 +473,7 @@ namespace Plank {
       return true;
     }
 
-    // Whether the pointer is at the screen edge the dock sits on, within the
-    // dock's span
+    // Whether the pointer is at the dock's edge, as point_at_dock_edge () defines it
     bool pointer_at_dock_edge () {
       unowned PositionManager position_manager = controller.position_manager;
       unowned DockWindow window = controller.window;
@@ -485,33 +484,10 @@ namespace Plank {
        .get_pointer ()
        .get_position (null, out pointer_x, out pointer_y);
 
-      var monitor = position_manager.get_monitor_geometry ();
-      var dock_rect = position_manager.get_static_dock_region ();
-
-      bool at_edge = false;
-      bool within_dock_span = false;
-
-      switch (position_manager.Position) {
-      default:
-      case Gtk.PositionType.BOTTOM:
-        at_edge = pointer_y >= monitor.y + monitor.height - 1;
-        within_dock_span = pointer_x >= dock_rect.x && pointer_x < dock_rect.x + dock_rect.width;
-        break;
-      case Gtk.PositionType.TOP:
-        at_edge = pointer_y <= monitor.y;
-        within_dock_span = pointer_x >= dock_rect.x && pointer_x < dock_rect.x + dock_rect.width;
-        break;
-      case Gtk.PositionType.LEFT:
-        at_edge = pointer_x <= monitor.x;
-        within_dock_span = pointer_y >= dock_rect.y && pointer_y < dock_rect.y + dock_rect.height;
-        break;
-      case Gtk.PositionType.RIGHT:
-        at_edge = pointer_x >= monitor.x + monitor.width - 1;
-        within_dock_span = pointer_y >= dock_rect.y && pointer_y < dock_rect.y + dock_rect.height;
-        break;
-      }
-
-      return at_edge && within_dock_span;
+      return point_at_dock_edge (position_manager.Position, pointer_x, pointer_y,
+                                 position_manager.get_monitor_geometry (),
+                                 position_manager.get_raw_monitor_geometry (),
+                                 position_manager.get_static_dock_region ());
     }
 
     [CCode (instance_pos = -1)]

@@ -414,22 +414,56 @@ namespace Plank {
      */
     public static void get_window_class (Bamf.Window window, out string? instance_name, out string? class_name) {
       var xid = window.get_xid ();
-      unowned Wnck.Window? w = get_wnck_window (xid) ?? get_wnck_window_after_update (xid);
+      unowned Wnck.Window? w = get_wnck_window (xid);
 
-      instance_name = (w != null ? w.get_class_instance_name () : null);
-      class_name = (w != null ? w.get_class_group_name () : null);
+      if (w != null) {
+        instance_name = w.get_class_instance_name ();
+        class_name = w.get_class_group_name ();
+        if (instance_name != null || class_name != null)
+          return;
+      }
+
+      // Wnck can lag BAMF, missing the window or its class, and forcing an
+      // update cannot help before Plank reads the X event, so ask the X
+      // server, which already has both
+      get_window_class_from_server (xid, out instance_name, out class_name);
     }
 
-    // Wnck may not yet know about a window BAMF just reported
-    static unowned Wnck.Window? get_wnck_window_after_update (ulong xid) {
+    static void get_window_class_from_server (ulong xid, out string? instance_name, out string? class_name) {
+      instance_name = null;
+      class_name = null;
+
+      unowned Gdk.X11.Display? gdk_display = Gdk.Display.get_default () as Gdk.X11.Display;
+      if (gdk_display == null)
+        return;
+
+      unowned X.Display display = gdk_display.get_xdisplay ();
+
+      X.Atom actual_type;
+      int actual_format;
+      ulong nitems, bytes_after;
+      void* prop_data;
+
       error_trap_push ();
+      var status = display.get_window_property ((X.Window) xid, X.XA_WM_CLASS, 0, 1024, false, X.XA_STRING,
+                                                 out actual_type, out actual_format,
+                                                 out nitems, out bytes_after, out prop_data);
+      error_trap_pop ();
 
-      get_wnck_screen ().force_update ();
+      if (status != X.Success || prop_data == null)
+        return;
 
-      if (error_trap_pop () != 0)
-        critical ("Wnck.Screen.force_update() caused a XError");
+      // WM_CLASS holds the instance and then the class name, each ending in a
+      // NUL, and Xlib adds one more NUL after the data
+      if (actual_type == X.XA_STRING && actual_format == 8 && nitems > 0) {
+        unowned string instance = (string) prop_data;
+        instance_name = instance;
 
-      return get_wnck_window (xid);
+        if ((ulong) (instance.length + 1) < nitems)
+          class_name = (string) ((char*) prop_data + instance.length + 1);
+      }
+
+      X.free (prop_data);
     }
 
     public static Gdk.Pixbuf? get_window_thumbnail (Bamf.Window window)
