@@ -246,8 +246,9 @@ namespace Plank {
         update_needed = true;
       }
 
-      // disable hiding if menu is visible or drags are active
-      var disabled = (window.menu_is_visible () || drag_manager.InternalDragActive || drag_manager.ExternalDragActive);
+      // disable hiding if menu is visible, drags are active or the pointer is inside the window previews
+      var disabled = (window.menu_is_visible () || drag_manager.InternalDragActive || drag_manager.ExternalDragActive
+                      || controller.hover.PointerInside);
       if (Disabled != disabled) {
         Disabled = disabled;
         update_needed = true;

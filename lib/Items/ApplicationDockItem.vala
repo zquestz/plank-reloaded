@@ -423,6 +423,41 @@ namespace Plank {
     }
 
     /**
+     * Captures a preview of each of this application's user-visible windows,
+     * falling back to the window icon when the window cannot be captured
+     * (e.g. it is minimized or on another workspace).
+     *
+     * @return the previews, empty if the application has no windows
+     */
+    public Gee.ArrayList<WindowPreview> get_window_previews () {
+      var previews = new Gee.ArrayList<WindowPreview> ();
+
+      if (App == null || !is_running ())
+        return previews;
+
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+      bool cw_only = Helpers.current_workspace_only (default_provider);
+      unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
+
+      foreach (unowned Bamf.Window window in App.get_windows ()) {
+        if (window == null || window.get_transient () != null || !window.is_user_visible ())
+          continue;
+
+        if (cw_only && WindowControl.get_window_workspace (window) != active_workspace)
+          continue;
+
+        Gdk.Pixbuf? pbuf = WindowControl.get_window_thumbnail (window);
+        if (pbuf == null)
+          pbuf = WindowControl.get_window_icon (window);
+
+        if (pbuf != null)
+          previews.add (new WindowPreview (window, pbuf, shorten_window_name (window.get_name () ?? "")));
+      }
+
+      return previews;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {

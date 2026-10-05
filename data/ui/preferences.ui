@@ -43,6 +43,18 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
     <property name="upper">100</property>
     <property name="step_increment">1</property>
   </object>
+  <object class="GtkAdjustment" id="adj_preview_delay">
+    <property name="upper">5000</property>
+    <property name="value">600</property>
+    <property name="step_increment">50</property>
+  </object>
+  <object class="GtkAdjustment" id="adj_preview_size">
+    <property name="lower">64</property>
+    <property name="upper">640</property>
+    <property name="value">240</property>
+    <property name="step_increment">16</property>
+    <property name="page_increment">64</property>
+  </object>
   <object class="GtkAdjustment" id="adj_unhide_delay">
     <property name="upper">2500</property>
     <property name="step_increment">50</property>
@@ -717,6 +729,103 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">8</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_previews_enabled">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Window Previews:</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="sw_previews_enabled">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Show thumbnails of an application's windows when hovering its icon</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_preview_delay">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Preview Delay:</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="sp_preview_delay">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Delay in ms before showing window previews</property>
+                <property name="halign">start</property>
+                <property name="invisible_char">•</property>
+                <property name="adjustment">adj_preview_delay</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_preview_size">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property
+                  name="label"
+                  translatable="yes"
+                >Preview Size:</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="sp_preview_size">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property
+                  name="tooltip_text"
+                  translatable="yes"
+                >Maximum width and height of a window preview in pixels</property>
+                <property name="halign">start</property>
+                <property name="invisible_char">•</property>
+                <property name="adjustment">adj_preview_size</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">10</property>
               </packing>
             </child>
             <child>

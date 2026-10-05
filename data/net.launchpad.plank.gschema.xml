@@ -145,6 +145,23 @@
 			<summary>The position for the dock on the monitor</summary>
 			<description>Possible values are "left", "right", "top", and "bottom".</description>
 		</key>
+		<key name="preview-delay" type="i">
+			<range min="0" max="5000"/>
+			<default>600</default>
+			<summary>Window preview delay</summary>
+			<description>Length of the delay before showing window previews for a hovered application, in milliseconds.</description>
+		</key>
+		<key name="preview-size" type="i">
+			<range min="64" max="640"/>
+			<default>240</default>
+			<summary>Window preview size</summary>
+			<description>The maximum width and height of a single window preview, in pixels.</description>
+		</key>
+		<key name="previews-enabled" type="b">
+			<default>true</default>
+			<summary>Show window previews when application items are hovered</summary>
+			<description>If true, thumbnails of an application's open windows will be shown when its dock item is hovered.</description>
+		</key>
 		<key name="pressure-reveal" type="b">
 			<default>false</default>
 			<summary>Pressure Reveal</summary>

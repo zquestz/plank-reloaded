@@ -24,6 +24,7 @@ namespace Plank {
   public class DockWindow : CompositedWindow {
     const uint LONG_PRESS_TIME = 750U;
     const uint HOVER_DELAY_TIME = 200U;
+    const uint PREVIEW_HIDE_DELAY_TIME = 300U;
 
     /**
      * The controller for this dock.
@@ -64,6 +65,11 @@ namespace Plank {
     Gee.ArrayList<Gtk.MenuItem>? menu_items;
 
     uint hover_reposition_timer_id = 0U;
+    uint preview_timer_id = 0U;
+    uint preview_hide_timer_id = 0U;
+
+    // The item whose window previews are currently shown, if any
+    DockItem? preview_item = null;
 
     uint long_press_timer_id = 0U;
     bool long_press_active = false;
@@ -105,6 +111,9 @@ namespace Plank {
 
       controller.prefs.notify["HideMode"].connect (update_struts);
 
+      controller.hover.notify["PointerInside"].connect (handle_hover_pointer_changed);
+      controller.hover.window_activated.connect (handle_preview_activated);
+
       // Remove WM_TAKE_FOCUS after realization to prevent focus
       // stealing under focus-follows-mouse / sloppy focus policies.
       realize.connect (() => {
@@ -121,10 +130,16 @@ namespace Plank {
 
       controller.prefs.notify["HideMode"].disconnect (update_struts);
 
+      controller.hover.notify["PointerInside"].disconnect (handle_hover_pointer_changed);
+      controller.hover.window_activated.disconnect (handle_preview_activated);
+
       if (hover_reposition_timer_id > 0U) {
         GLib.Source.remove (hover_reposition_timer_id);
         hover_reposition_timer_id = 0U;
       }
+
+      cancel_preview ();
+      cancel_preview_hide ();
 
       if (long_press_timer_id > 0U) {
         GLib.Source.remove (long_press_timer_id);
@@ -201,7 +216,8 @@ namespace Plank {
       // Make sure the HoveredItem is still the same since button-pressed
       if (ClickedItem != null && HoveredItem == ClickedItem && !menu_is_visible ()) {
         // The user made a choice so hide tooltip to avoid obstructing anything
-        controller.hover.hide ();
+        cancel_preview ();
+        hide_hover ();
 
         HoveredItem.clicked (PopupButton.from_event_button (event), event.state, event.time);
       }
@@ -233,7 +249,7 @@ namespace Plank {
         set_hovered_provider (null);
         set_hovered (null);
       } else
-        controller.hover.hide ();
+        hide_hover ();
 
       return Gdk.EVENT_STOP;
     }
@@ -288,7 +304,8 @@ namespace Plank {
 
       if (HoveredItem != null) {
         // The user made a choice so hide tooltip to avoid obstructing anything
-        controller.hover.hide ();
+        cancel_preview ();
+        hide_hover ();
 
         HoveredItem.scrolled (event.direction, event.state, event.time);
         controller.renderer.animated_draw ();
@@ -374,14 +391,32 @@ namespace Plank {
         hover_reposition_timer_id = 0U;
       }
 
+      cancel_preview ();
+
+      // Moving back onto the item whose previews are shown keeps them open
+      if (item != null && item == preview_item && controller.hover.ShowsPreviews && controller.hover.visible) {
+        cancel_preview_hide ();
+        return;
+      }
+
       if (controller.drag_manager.ExternalDragActive)
         return;
 
-      controller.hover.hide ();
+      // Keep shown previews open for a moment so the pointer can move into them
+      if (item == null && controller.hover.ShowsPreviews && controller.hover.visible) {
+        schedule_preview_hide ();
+        return;
+      }
+
+      hide_hover ();
 
       if (HoveredItem == null
-          || !controller.prefs.TooltipsEnabled
           || controller.drag_manager.InternalDragActive)
+        return;
+
+      schedule_preview ();
+
+      if (!controller.prefs.TooltipsEnabled)
         return;
 
       // don't be that demanding this delay is still fast enough
@@ -411,6 +446,125 @@ namespace Plank {
 
         return false;
       });
+    }
+
+    /**
+     * Cancels a scheduled window preview for the hovered item, if any.
+     */
+    void cancel_preview () {
+      if (preview_timer_id > 0U) {
+        Source.remove (preview_timer_id);
+        preview_timer_id = 0U;
+      }
+    }
+
+    /**
+     * Schedules showing the window previews of the hovered item after the
+     * user-configured delay, if it is an application with open windows.
+     */
+    void schedule_preview () {
+      if (!controller.prefs.PreviewsEnabled
+          || !(HoveredItem is ApplicationDockItem)
+          || !((ApplicationDockItem) HoveredItem).is_running ())
+        return;
+
+      preview_timer_id = Gdk.threads_add_timeout (controller.prefs.PreviewDelay, () => {
+        if (HoveredItem == null
+            || menu_is_visible ()
+            || controller.drag_manager.InternalDragActive
+            || controller.drag_manager.ExternalDragActive) {
+          preview_timer_id = 0U;
+          return false;
+        }
+
+        // wait for the dock to be completely unhidden if it was
+        if (!controller.hide_manager.Hidden
+            && controller.renderer.hide_progress > 0.0)
+          return true;
+
+        preview_timer_id = 0U;
+
+        unowned ApplicationDockItem? item = (HoveredItem as ApplicationDockItem);
+        if (item == null)
+          return false;
+
+        var previews = item.get_window_previews ();
+        if (previews.size == 0)
+          return false;
+
+        // The previews replace a still pending tooltip
+        if (hover_reposition_timer_id > 0U) {
+          Source.remove (hover_reposition_timer_id);
+          hover_reposition_timer_id = 0U;
+        }
+
+        unowned HoverWindow hover = controller.hover;
+        unowned PositionManager position_manager = controller.position_manager;
+
+        hover.set_text (controller.prefs.TooltipsEnabled && item.Text != null ? item.Text : "");
+        hover.set_thumbnails (previews, position_manager.Position, (int) controller.prefs.PreviewSize);
+
+        int x, y;
+        position_manager.get_hover_position (item, out x, out y);
+        hover.show_at (x, y, position_manager.Position);
+        preview_item = item;
+
+        return false;
+      });
+    }
+
+    /**
+     * Hides the hover window right away, dropping any pending deferred hide.
+     */
+    void hide_hover () {
+      cancel_preview_hide ();
+      preview_item = null;
+      controller.hover.hide ();
+    }
+
+    /**
+     * Cancels a deferred hide of the window previews, if any.
+     */
+    void cancel_preview_hide () {
+      if (preview_hide_timer_id > 0U) {
+        Source.remove (preview_hide_timer_id);
+        preview_hide_timer_id = 0U;
+      }
+    }
+
+    /**
+     * Hides the shown window previews after a short delay,
+     * unless the pointer has moved into them by then.
+     */
+    void schedule_preview_hide () {
+      if (preview_hide_timer_id > 0U)
+        return;
+
+      preview_hide_timer_id = Gdk.threads_add_timeout (PREVIEW_HIDE_DELAY_TIME, () => {
+        preview_hide_timer_id = 0U;
+
+        if (!controller.hover.PointerInside && (HoveredItem == null || HoveredItem != preview_item))
+          hide_hover ();
+
+        return false;
+      });
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_hover_pointer_changed () {
+      // The dock must not hide while the pointer is inside the previews
+      controller.hide_manager.update_hovered ();
+
+      if (controller.hover.PointerInside)
+        cancel_preview_hide ();
+      else if (HoveredItem == null && controller.hover.ShowsPreviews && controller.hover.visible)
+        schedule_preview_hide ();
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_preview_activated (Bamf.Window window, uint32 event_time) {
+      hide_hover ();
+      WindowControl.focus_window (window, event_time);
     }
 
     /**
@@ -780,7 +934,8 @@ namespace Plank {
      * Called when the popup menu shows.
      */
     void on_menu_show () {
-      controller.hover.hide ();
+      cancel_preview ();
+      hide_hover ();
       controller.renderer.animated_draw ();
     }
 

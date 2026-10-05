@@ -49,6 +49,10 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.SpinButton sp_unhide_delay;
     [GtkChild]
+    unowned Gtk.SpinButton sp_preview_delay;
+    [GtkChild]
+    unowned Gtk.SpinButton sp_preview_size;
+    [GtkChild]
     unowned Gtk.Scale s_offset;
     [GtkChild]
     unowned Gtk.Scale s_active_display_polling_interval;
@@ -59,6 +63,10 @@ namespace Plank {
     unowned Gtk.Adjustment adj_hide_delay;
     [GtkChild]
     unowned Gtk.Adjustment adj_unhide_delay;
+    [GtkChild]
+    unowned Gtk.Adjustment adj_preview_delay;
+    [GtkChild]
+    unowned Gtk.Adjustment adj_preview_size;
     [GtkChild]
     unowned Gtk.Adjustment adj_iconsize;
     [GtkChild]
@@ -84,6 +92,8 @@ namespace Plank {
     unowned Gtk.Switch sw_lock_items;
     [GtkChild]
     unowned Gtk.Switch sw_tooltips_enabled;
+    [GtkChild]
+    unowned Gtk.Switch sw_previews_enabled;
     [GtkChild]
     unowned Gtk.Switch sw_anchor_docklets;
     [GtkChild]
@@ -162,6 +172,17 @@ namespace Plank {
         break;
       case "TooltipsEnabled":
         sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);
+        break;
+      case "PreviewsEnabled":
+        sw_previews_enabled.set_active (prefs.PreviewsEnabled);
+        sp_preview_delay.sensitive = prefs.PreviewsEnabled;
+        sp_preview_size.sensitive = prefs.PreviewsEnabled;
+        break;
+      case "PreviewDelay":
+        adj_preview_delay.value = prefs.PreviewDelay;
+        break;
+      case "PreviewSize":
+        adj_preview_size.value = prefs.PreviewSize;
         break;
       case "AnchorDocklets":
         sw_anchor_docklets.set_active (prefs.AnchorDocklets);
@@ -303,6 +324,10 @@ namespace Plank {
       prefs.TooltipsEnabled = ((Gtk.Switch) widget).get_active ();
     }
 
+    void previews_enabled_toggled (GLib.Object widget, ParamSpec param) {
+      prefs.PreviewsEnabled = ((Gtk.Switch) widget).get_active ();
+    }
+
     void anchor_docklets_toggled (GLib.Object widget, ParamSpec param) {
       prefs.AnchorDocklets = ((Gtk.Switch) widget).get_active ();
     }
@@ -343,6 +368,14 @@ namespace Plank {
 
     void unhide_delay_changed (Gtk.Adjustment adj) {
       prefs.UnhideDelay = (int) adj.value;
+    }
+
+    void preview_delay_changed (Gtk.Adjustment adj) {
+      prefs.PreviewDelay = (int) adj.value;
+    }
+
+    void preview_size_changed (Gtk.Adjustment adj) {
+      prefs.PreviewSize = (int) adj.value;
     }
 
     void zoom_percent_changed (Gtk.Adjustment adj) {
@@ -435,6 +468,9 @@ namespace Plank {
       sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
       sw_lock_items.notify["active"].connect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].connect (tooltips_enabled_toggled);
+      sw_previews_enabled.notify["active"].connect (previews_enabled_toggled);
+      adj_preview_delay.value_changed.connect (preview_delay_changed);
+      adj_preview_size.value_changed.connect (preview_size_changed);
       sw_anchor_docklets.notify["active"].connect (anchor_docklets_toggled);
       sw_anchor_files.notify["active"].connect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].connect (pressure_reveal_toggled);
@@ -469,6 +505,9 @@ namespace Plank {
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].disconnect (tooltips_enabled_toggled);
+      sw_previews_enabled.notify["active"].disconnect (previews_enabled_toggled);
+      adj_preview_delay.value_changed.disconnect (preview_delay_changed);
+      adj_preview_size.value_changed.disconnect (preview_size_changed);
       sw_anchor_docklets.notify["active"].disconnect (anchor_docklets_toggled);
       sw_anchor_files.notify["active"].disconnect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].disconnect (pressure_reveal_toggled);
@@ -524,6 +563,11 @@ namespace Plank {
       sw_show_unpinned.set_active (!prefs.PinnedOnly);
       sw_lock_items.set_active (prefs.LockItems);
       sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);
+      sw_previews_enabled.set_active (prefs.PreviewsEnabled);
+      adj_preview_delay.value = prefs.PreviewDelay;
+      sp_preview_delay.sensitive = prefs.PreviewsEnabled;
+      adj_preview_size.value = prefs.PreviewSize;
+      sp_preview_size.sensitive = prefs.PreviewsEnabled;
       sw_anchor_docklets.set_active (prefs.AnchorDocklets);
       sw_anchor_files.set_active (prefs.AnchorFiles);
       sw_pressure_reveal.set_active (prefs.PressureReveal);

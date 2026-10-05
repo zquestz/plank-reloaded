@@ -34,6 +34,12 @@ namespace Plank {
     public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
     public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
 
+    public const uint MIN_PREVIEW_DELAY = 0;
+    public const uint MAX_PREVIEW_DELAY = 5000;
+
+    public const uint MIN_PREVIEW_SIZE = 64;
+    public const uint MAX_PREVIEW_SIZE = 640;
+
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
 
@@ -115,6 +121,15 @@ namespace Plank {
     [Description (nick = "tooltips-enabled", blurb = "Whether to show tooltips when items are hovered.")]
     public bool TooltipsEnabled { get; set; }
 
+    [Description (nick = "previews-enabled", blurb = "Whether to show window previews when application items are hovered.")]
+    public bool PreviewsEnabled { get; set; }
+
+    [Description (nick = "preview-delay", blurb = "Time (in ms) to wait before showing window previews for a hovered item.")]
+    public uint PreviewDelay { get; set; }
+
+    [Description (nick = "preview-size", blurb = "The maximum width and height of a single window preview, in pixels.")]
+    public uint PreviewSize { get; set; }
+
     /**
      * {@inheritDoc}
      */
@@ -176,6 +191,18 @@ namespace Plank {
           ActiveDisplayPollingInterval = MIN_ACTIVE_DISPLAY_POLLING_INTERVAL;
         else if (ActiveDisplayPollingInterval > MAX_ACTIVE_DISPLAY_POLLING_INTERVAL)
           ActiveDisplayPollingInterval = MAX_ACTIVE_DISPLAY_POLLING_INTERVAL;
+        break;
+
+      case "PreviewDelay":
+        if (PreviewDelay > MAX_PREVIEW_DELAY)
+          PreviewDelay = MAX_PREVIEW_DELAY;
+        break;
+
+      case "PreviewSize":
+        if (PreviewSize < MIN_PREVIEW_SIZE)
+          PreviewSize = MIN_PREVIEW_SIZE;
+        else if (PreviewSize > MAX_PREVIEW_SIZE)
+          PreviewSize = MAX_PREVIEW_SIZE;
         break;
 
       case "Theme":

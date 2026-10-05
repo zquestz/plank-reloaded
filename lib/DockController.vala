@@ -101,11 +101,12 @@ namespace Plank {
 
       dbus_manager = new DBusManager (this);
 
+      // The hide manager and dock window rely on the hover window existing
+      hover = new HoverWindow ();
       position_manager = new PositionManager (this);
       drag_manager = new DragManager (this);
       hide_manager = new HideManager (this);
       window = new DockWindow (this);
-      hover = new HoverWindow ();
       renderer = new DockRenderer (this, window);
     }
 
