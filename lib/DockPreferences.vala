@@ -34,6 +34,9 @@ namespace Plank {
     public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
     public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
 
+    public const uint MAX_HIDE_DELAY = 2500;
+    public const uint MAX_UNHIDE_DELAY = 2500;
+
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
 
@@ -176,6 +179,16 @@ namespace Plank {
           ActiveDisplayPollingInterval = MIN_ACTIVE_DISPLAY_POLLING_INTERVAL;
         else if (ActiveDisplayPollingInterval > MAX_ACTIVE_DISPLAY_POLLING_INTERVAL)
           ActiveDisplayPollingInterval = MAX_ACTIVE_DISPLAY_POLLING_INTERVAL;
+        break;
+
+      case "HideDelay":
+        if (HideDelay > MAX_HIDE_DELAY)
+          HideDelay = MAX_HIDE_DELAY;
+        break;
+
+      case "UnhideDelay":
+        if (UnhideDelay > MAX_UNHIDE_DELAY)
+          UnhideDelay = MAX_UNHIDE_DELAY;
         break;
 
       case "Theme":

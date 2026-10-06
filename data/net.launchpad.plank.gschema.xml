@@ -71,7 +71,7 @@
 			<description>Array of dockitem-files for this particular dock. This list is automatically updated and managed by Plank. DO NOT MODIFY.</description>
 		</key>
 		<key name="hide-delay" type="i">
-			<range min="0"/>
+			<range min="0" max="2500"/>
 			<default>0</default>
 			<summary>Dock hide delay</summary>
 			<description>Length of the delay before hiding the dock, in milliseconds.</description>
@@ -166,7 +166,7 @@
 			<description>If true, tooltips will be shown when dock items are hovered with the cursor.</description>
 		</key>
 		<key name="unhide-delay" type="i">
-			<range min="0"/>
+			<range min="0" max="2500"/>
 			<default>0</default>
 			<summary>Dock unhide delay</summary>
 			<description>Length of the delay before unhiding the dock, in milliseconds.</description>
