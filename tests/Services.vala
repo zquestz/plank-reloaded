@@ -91,6 +91,19 @@ namespace PlankTests {
     Test.add_func ("/Services/DockEdge/neighbouring_monitor", dock_edge_neighbouring_monitor);
     Test.add_func ("/Services/DockEdge/offset_monitor", dock_edge_offset_monitor);
     Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
+    Test.add_func ("/Services/PreviewThumbnail/shape", preview_thumbnail_shape);
+    Test.add_func ("/Services/PreviewThumbnail/inverse", preview_thumbnail_inverse);
+    Test.add_func ("/Services/PreviewSpace/edges", preview_space_edges);
+    Test.add_func ("/Services/PreviewSpace/offset_monitor", preview_space_offset_monitor);
+    Test.add_func ("/Services/PreviewLayout/all_fit", preview_layout_all_fit);
+    Test.add_func ("/Services/PreviewLayout/shrink", preview_layout_shrink);
+    Test.add_func ("/Services/PreviewLayout/overflow", preview_layout_overflow);
+    Test.add_func ("/Services/PreviewLayout/across_limit", preview_layout_across_limit);
+    Test.add_func ("/Services/PreviewLayout/tight_space", preview_layout_tight_space);
+    Test.add_func ("/Services/PreviewPosition/edges", preview_position_edges);
+    Test.add_func ("/Services/PreviewPosition/clamped", preview_position_clamped);
+    Test.add_func ("/Services/PreviewZone/bottom", preview_zone_bottom);
+    Test.add_func ("/Services/PreviewZone/side", preview_zone_side);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -1117,5 +1130,403 @@ namespace PlankTests {
     assert (!point_at_dock_edge (Gtk.PositionType.TOP, 10, 0, empty, empty, dock));
     assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 10, empty, empty, dock));
     assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 10, 10, empty, empty, dock));
+  }
+
+  //
+  // Window preview geometry tests
+  //
+
+  void preview_thumbnail_shape () {
+    // Thumbnails take the monitor's shape, rounding down
+    Gdk.Rectangle sixteen_nine = { 0, 0, 1920, 1080 };
+    assert (preview_thumbnail_height (240, sixteen_nine) == 135);
+    assert (preview_thumbnail_height (64, sixteen_nine) == 36);
+    assert (preview_thumbnail_height (65, sixteen_nine) == 36);
+
+    Gdk.Rectangle sixteen_ten = { 0, 0, 1920, 1200 };
+    assert (preview_thumbnail_height (240, sixteen_ten) == 150);
+
+    Gdk.Rectangle ultrawide = { 1920, 0, 3440, 1440 };
+    assert (preview_thumbnail_height (240, ultrawide) == 100);
+
+    Gdk.Rectangle portrait = { 0, 0, 1080, 1920 };
+    assert (preview_thumbnail_height (240, portrait) == 426);
+
+    // Until the monitor is fully known they are square, rather than
+    // dividing by zero
+    Gdk.Rectangle empty = { 0, 0, 0, 0 };
+    assert (preview_thumbnail_height (240, empty) == 240);
+
+    Gdk.Rectangle no_width = { 0, 0, 0, 1080 };
+    assert (preview_thumbnail_height (240, no_width) == 240);
+
+    Gdk.Rectangle no_height = { 0, 0, 1920, 0 };
+    assert (preview_thumbnail_height (240, no_height) == 240);
+
+    // Sizes whose product passes int's range still come out exact
+    Gdk.Rectangle huge = { 0, 0, 50000, 50000 };
+    assert (preview_thumbnail_height (50000, huge) == 50000);
+  }
+
+  void preview_thumbnail_inverse () {
+    // For every height and monitor shape, the width found is the widest
+    // whose thumbnail fits: its own fits and one pixel more would not
+    Gdk.Rectangle sixteen_nine = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle sixteen_ten = { 0, 0, 1920, 1200 };
+    Gdk.Rectangle ultrawide = { 1920, 0, 3440, 1440 };
+    Gdk.Rectangle portrait = { 0, 0, 1080, 1920 };
+    Gdk.Rectangle no_width = { 0, 0, 0, 1080 };
+    Gdk.Rectangle no_height = { 0, 0, 1920, 0 };
+    Gdk.Rectangle empty = { 0, 0, 0, 0 };
+    Gdk.Rectangle[] monitors = { sixteen_nine, sixteen_ten, ultrawide, portrait, no_width, no_height, empty };
+
+    foreach (var monitor in monitors) {
+      for (var height = 0; height <= 500; height++) {
+        var width = preview_width_for_thumbnail_height (height, monitor);
+        assert (preview_thumbnail_height (width, monitor) <= height);
+        assert (preview_thumbnail_height (width + 1, monitor) > height);
+      }
+
+      // Below zero nothing fits
+      assert (preview_width_for_thumbnail_height (-1, monitor) == 0);
+      assert (preview_width_for_thumbnail_height (-5, monitor) == 0);
+    }
+
+    // Sizes whose product passes int's range still come out exact
+    Gdk.Rectangle huge = { 0, 0, 50000, 50000 };
+    assert (preview_width_for_thumbnail_height (50000, huge) == 50000);
+  }
+
+  void preview_space_edges () {
+    // Along the dock's edge the popup may use the whole area, and across it
+    // the room from the anchor, past a 10px gap, to the area's far edge
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int width, height;
+
+    compute_preview_space (out width, out height, Gtk.PositionType.BOTTOM, 960, 1000, 10, monitor);
+    assert (width == 1920);
+    assert (height == 990);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.TOP, 960, 80, 10, monitor);
+    assert (width == 1920);
+    assert (height == 990);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.LEFT, 80, 540, 10, monitor);
+    assert (width == 1830);
+    assert (height == 1080);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.RIGHT, 1840, 540, 10, monitor);
+    assert (width == 1830);
+    assert (height == 1080);
+
+    // An anchor closer to the area's edge than the gap leaves no room
+    compute_preview_space (out width, out height, Gtk.PositionType.BOTTOM, 960, 5, 10, monitor);
+    assert (height == 0);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.RIGHT, 5, 540, 10, monitor);
+    assert (width == 0);
+  }
+
+  void preview_space_offset_monitor () {
+    // On the lower right monitor of a 2x2 grid the room is measured from
+    // that monitor's own edges
+    Gdk.Rectangle monitor = { 1920, 1080, 1920, 1080 };
+    int width, height;
+
+    compute_preview_space (out width, out height, Gtk.PositionType.BOTTOM, 2880, 2080, 10, monitor);
+    assert (width == 1920);
+    assert (height == 990);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.TOP, 2880, 1160, 10, monitor);
+    assert (width == 1920);
+    assert (height == 990);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.LEFT, 2000, 1620, 10, monitor);
+    assert (width == 1830);
+    assert (height == 1080);
+
+    compute_preview_space (out width, out height, Gtk.PositionType.RIGHT, 3760, 1620, 10, monitor);
+    assert (width == 1830);
+    assert (height == 1080);
+  }
+
+  // The layout tests use tiles that add 8px of margins to a thumbnail's
+  // width and 32px of margins and title to its height, with 6px between
+  // tiles and a 64px minimum, on a 1920x1080 monitor unless noted
+
+  void preview_layout_all_fit () {
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int size, shown;
+
+    // Three windows easily fit a 1896px row at the preferred 240px
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 3, 240, 64, 1896, 900, 8, 32, 6);
+    assert (size == 240);
+    assert (shown == 3);
+
+    // Five fit a 1056px column, each tile a 135px tall thumbnail plus 32px
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 5, 240, 64, 1800, 1056, 8, 32, 6);
+    assert (size == 240);
+    assert (shown == 5);
+  }
+
+  void preview_layout_shrink () {
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int size, shown;
+
+    // Ten 240px tiles would need 2534px, so all ten shrink to 176px, the
+    // largest that fits: 10 * (176 + 8) + 9 * 6 = 1894
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 10, 240, 64, 1896, 900, 8, 32, 6);
+    assert (size == 176);
+    assert (shown == 10);
+
+    // In a column the thumbnails' height decides: 168px wide is 94px tall
+    // and 8 * (94 + 32) + 7 * 6 = 1050 fits, where 169px (95px tall) would not
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 8, 240, 64, 1800, 1056, 8, 32, 6);
+    assert (size == 168);
+    assert (shown == 8);
+
+    // A top dock lays out like a bottom one, and a right dock like a left one
+    compute_preview_layout (out size, out shown, Gtk.PositionType.TOP, monitor, 10, 240, 64, 1896, 900, 8, 32, 6);
+    assert (size == 176);
+    assert (shown == 10);
+
+    compute_preview_layout (out size, out shown, Gtk.PositionType.RIGHT, monitor, 8, 240, 64, 1800, 1056, 8, 32, 6);
+    assert (size == 168);
+    assert (shown == 8);
+
+    // A 16:10 monitor makes thumbnails taller, so the same column shrinks
+    // them further, to 151px wide for the same 94px
+    Gdk.Rectangle sixteen_ten = { 0, 0, 1920, 1200 };
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, sixteen_ten, 8, 240, 64, 1800, 1056, 8, 32, 6);
+    assert (size == 151);
+    assert (shown == 8);
+  }
+
+  void preview_layout_overflow () {
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int size, shown;
+
+    // 40 windows don't fit even at 64px, but 24 slots of 72px do,
+    // 24 * 72 + 23 * 6 = 1866, so 23 windows show and the last slot holds
+    // the count of the other 17
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 40, 240, 64, 1896, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 23);
+
+    // 25 windows exactly fill a 1944px row at the minimum, so all show
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 25, 240, 64, 1944, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 25);
+
+    // A pixel less and only 24 slots fit, so 23 windows show
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 25, 240, 64, 1943, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 23);
+
+    // One more, and the last slot goes to the count
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 26, 240, 64, 1944, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 24);
+
+    // A 1056px column holds 14 slots of 36 + 32 = 68px, so 13 of 20 show
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 20, 240, 64, 1800, 1056, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 13);
+
+    // 14 windows exactly fill a 1030px column at 65px, whose thumbnail is
+    // 36px tall like 64px's, and a pixel less leaves 13 slots, so 12 show
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 14, 240, 64, 1800, 1030, 8, 32, 6);
+    assert (size == 65);
+    assert (shown == 14);
+
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 14, 240, 64, 1800, 1029, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 12);
+  }
+
+  void preview_layout_across_limit () {
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int size, shown;
+
+    // Above a bottom dock with 300px of room, a 478px thumbnail (268px
+    // tall) plus 32px is the most that fits, so 640px is capped there
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 1, 640, 64, 1896, 300, 8, 32, 6);
+    assert (size == 478);
+    assert (shown == 1);
+
+    // Beside a side dock with 500px of room, 492px plus 8px fits
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 1, 640, 64, 500, 1056, 8, 32, 6);
+    assert (size == 492);
+    assert (shown == 1);
+
+    // With less room than the minimum needs, the minimum still holds
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 1, 240, 64, 1896, 50, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+  }
+
+  void preview_layout_tight_space () {
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int size, shown;
+
+    // A line too short for even one tile still shows one window, with the
+    // count of the others
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 3, 240, 64, 50, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    // A lone window shows with no count
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 1, 240, 64, 50, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    // No windows, nothing to show
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 0, 240, 64, 1896, 900, 8, 32, 6);
+    assert (shown == 0);
+
+    // With no room along the line, or less than none, one window still shows
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 3, 240, 64, 0, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 3, 240, 64, -10, 900, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 3, 240, 64, 1800, 0, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 3, 240, 64, 1800, -10, 8, 32, 6);
+    assert (size == 64);
+    assert (shown == 1);
+
+    // Even slots that take no space don't divide by zero: on a 128x1
+    // monitor a 64px thumbnail is 0px tall, here with no margins, title or
+    // spacing either
+    Gdk.Rectangle sliver = { 0, 0, 128, 1 };
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, sliver, 1, 240, 64, 1000, -1, 0, 0, 0);
+    assert (size == 64);
+    assert (shown == 1);
+  }
+
+  void preview_position_edges () {
+    // Past a 10px gap from the anchor, centered on it along the dock's edge
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int x, y;
+
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 960, 1000, 400, 200, 10, monitor);
+    assert (x == 760);
+    assert (y == 790);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.TOP, 960, 80, 400, 200, 10, monitor);
+    assert (x == 760);
+    assert (y == 90);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.LEFT, 80, 540, 300, 600, 10, monitor);
+    assert (x == 90);
+    assert (y == 240);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.RIGHT, 1840, 540, 300, 600, 10, monitor);
+    assert (x == 1530);
+    assert (y == 240);
+  }
+
+  void preview_position_clamped () {
+    // Near the area's ends the popup slides back inside
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    int x, y;
+
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 50, 1000, 400, 200, 10, monitor);
+    assert (x == 0);
+    assert (y == 790);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 1900, 1000, 400, 200, 10, monitor);
+    assert (x == 1520);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.LEFT, 80, 100, 300, 600, 10, monitor);
+    assert (y == 0);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.RIGHT, 1840, 1000, 300, 600, 10, monitor);
+    assert (y == 480);
+
+    // On a monitor away from the origin it stays on that monitor
+    Gdk.Rectangle offset_monitor = { 1920, 0, 1920, 1080 };
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 1950, 1000, 400, 200, 10, offset_monitor);
+    assert (x == 1920);
+
+    // A popup wider than the area is pinned to the area's start, and one
+    // taller than it to the area's top
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 960, 1000, 2000, 200, 10, monitor);
+    assert (x == 0);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.LEFT, 80, 540, 300, 1200, 10, monitor);
+    assert (y == 0);
+
+    // On a monitor above the primary one, with a negative origin, it is
+    // placed and kept within that monitor all the same
+    Gdk.Rectangle upper_monitor = { 0, -1080, 1920, 1080 };
+    compute_preview_position (out x, out y, Gtk.PositionType.BOTTOM, 960, -80, 400, 200, 10, upper_monitor);
+    assert (y == -290);
+
+    compute_preview_position (out x, out y, Gtk.PositionType.LEFT, 80, -1000, 300, 600, 10, upper_monitor);
+    assert (y == -1080);
+  }
+
+  void preview_zone_bottom () {
+    // A bottom dock and one of its items, with the item's popup 42px above it
+    Gdk.Rectangle dock = { 500, 1032, 900, 48 };
+    Gdk.Rectangle item = { 936, 1032, 48, 48 };
+    Gdk.Rectangle popup = { 760, 790, 400, 200 };
+
+    // On the popup, and in the gap straight up or toward the popup's ends
+    assert (point_in_preview_zone (960, 800, popup, item, dock));
+    assert (point_in_preview_zone (960, 1010, popup, item, dock));
+    assert (point_in_preview_zone (780, 1000, popup, item, dock));
+    assert (point_in_preview_zone (1150, 1000, popup, item, dock));
+
+    // Anywhere on the dock, even beyond the popup's ends
+    assert (point_in_preview_zone (520, 1050, popup, item, dock));
+
+    // Beside the gap, above the popup, and past the dock's end
+    assert (!point_in_preview_zone (700, 1000, popup, item, dock));
+    assert (!point_in_preview_zone (960, 780, popup, item, dock));
+    assert (!point_in_preview_zone (480, 1050, popup, item, dock));
+
+    // The span is half-open like the rectangles it comes from
+    assert (point_in_preview_zone (760, 900, popup, item, dock));
+    assert (!point_in_preview_zone (759, 900, popup, item, dock));
+    assert (!point_in_preview_zone (1160, 900, popup, item, dock));
+    assert (point_in_preview_zone (960, 790, popup, item, dock));
+    assert (!point_in_preview_zone (960, 789, popup, item, dock));
+
+    // So is the dock, beyond the span's ends
+    assert (point_in_preview_zone (500, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (499, 1050, popup, item, dock));
+    assert (point_in_preview_zone (1399, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (1400, 1050, popup, item, dock));
+    assert (point_in_preview_zone (520, 1079, popup, item, dock));
+    assert (!point_in_preview_zone (520, 1080, popup, item, dock));
+  }
+
+  void preview_zone_side () {
+    // A left dock and one of its items, with the item's popup 42px to the right
+    Gdk.Rectangle dock = { 0, 340, 48, 400 };
+    Gdk.Rectangle item = { 0, 516, 48, 48 };
+    Gdk.Rectangle popup = { 90, 400, 300, 280 };
+
+    // On the popup, and in the gap straight across or toward the popup's ends
+    assert (point_in_preview_zone (200, 540, popup, item, dock));
+    assert (point_in_preview_zone (70, 540, popup, item, dock));
+    assert (point_in_preview_zone (70, 410, popup, item, dock));
+
+    // Past the popup, and beside the gap beyond the popup's ends
+    assert (!point_in_preview_zone (400, 540, popup, item, dock));
+    assert (!point_in_preview_zone (70, 380, popup, item, dock));
+    assert (!point_in_preview_zone (70, 700, popup, item, dock));
+
+    // The span's bottom edge is excluded, as in the rectangles it comes from
+    assert (point_in_preview_zone (70, 679, popup, item, dock));
+    assert (!point_in_preview_zone (70, 680, popup, item, dock));
   }
 }
