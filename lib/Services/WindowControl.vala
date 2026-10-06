@@ -504,25 +504,27 @@ namespace Plank {
       return thumbnail;
     }
 
+    /**
+     * Whether a window is on a workspace, the test behind everything
+     * Restrict to Workspace decides. On a workspace with viewports that
+     * means in its current viewport; on any other, pinned and sticky
+     * windows are on every workspace.
+     *
+     * @param window the window
+     * @param workspace the workspace
+     * @return whether the window is on the workspace
+     */
+    public static bool window_is_on_workspace (Wnck.Window window, Wnck.Workspace workspace) {
+      // A sticky window stays in place as the viewport scrolls, so
+      // is_in_viewport () already counts it in the current viewport
+      if (workspace.is_virtual ())
+        return window.is_in_viewport (workspace);
 
-    public static unowned Wnck.Workspace? get_window_workspace (Bamf.Window window)
-    {
-      unowned Wnck.Window w = get_wnck_window (window.get_xid ());
-      unowned Wnck.Workspace? workspace = null;
-
-      warn_if_fail (w != null);
-
-      if (w == null)
-        return null;
-
-      error_trap_push ();
-
-      workspace = w.get_workspace ();
-
-      if (error_trap_pop () != 0)
-        critical ("get_window_workspace() for '%s' caused a XError", window.get_name ());
-
-      return workspace;
+      // Wnck leaves sticky to the viewport, but window managers like
+      // Cinnamon's show sticky windows on every workspace, as
+      // window_is_on_active_viewport and center_and_focus_window already
+      // assume; is_on_workspace () covers pinned
+      return (window.is_sticky () || window.is_on_workspace (workspace));
     }
 
     public static bool has_maximized_window (Bamf.Application app) {
@@ -554,21 +556,12 @@ namespace Plank {
     }
 
     public static bool has_window_on_workspace (Bamf.Application app, Wnck.Workspace workspace) {
-      var is_virtual = workspace.is_virtual ();
-
       foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
-        if (!is_virtual) {
-          if (window.is_on_workspace (workspace)) {
-            return true;
-          }
-        } else {
-          if (window.is_in_viewport (workspace)) {
-            return true;
-          }
-        }
+        if (window_is_on_workspace (window, workspace))
+          return true;
       }
 
       return false;
@@ -576,21 +569,13 @@ namespace Plank {
 
     public static int window_on_workspace_count (Bamf.Application app, Wnck.Workspace workspace) {
       int window_count = 0;
-      var is_virtual = workspace.is_virtual ();
 
       foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
-        if (!is_virtual) {
-          if (window.is_on_workspace (workspace)) {
-            window_count += 1;
-          }
-        } else {
-          if (window.is_in_viewport (workspace)) {
-            window_count += 1;
-          }
-        }
+        if (window_is_on_workspace (window, workspace))
+          window_count += 1;
       }
 
       return window_count;
@@ -633,23 +618,14 @@ namespace Plank {
         return app_xids;
       }
 
-      var is_virtual = active_workspace.is_virtual ();
-
       foreach (uint32 xid in app_xids) {
         unowned Wnck.Window? window = get_wnck_window (xid);
 
         if (window == null)
           continue;
 
-        if (!is_virtual) {
-          if (window.is_on_workspace (active_workspace)) {
-            xids.append_val (xid);
-          }
-        } else {
-          if (window.is_in_viewport (active_workspace)) {
-            xids.append_val (xid);
-          }
-        }
+        if (window_is_on_workspace (window, active_workspace))
+          xids.append_val (xid);
       }
 
       return xids;
@@ -708,21 +684,10 @@ namespace Plank {
       if (active_workspace == null)
         return;
 
-      var is_virtual = active_workspace.is_virtual ();
-
       for (var i = 0; xids != null && i < xids.length; i++) {
         unowned Wnck.Window window = get_wnck_window (xids.index (i));
-        if (window != null && !window.is_skip_tasklist () && active_workspace != null) {
-          if (!is_virtual) {
-            if (window.is_on_workspace (active_workspace)) {
-              window.close (event_time);
-            }
-          } else {
-            if (window.is_in_viewport (active_workspace)) {
-              window.close (event_time);
-            }
-          }
-        }
+        if (window != null && !window.is_skip_tasklist () && window_is_on_workspace (window, active_workspace))
+          window.close (event_time);
       }
     }
 

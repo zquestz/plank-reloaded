@@ -564,7 +564,11 @@ namespace Plank {
           if (type == Wnck.WindowType.DESKTOP || type == Wnck.WindowType.DOCK
               || type == Wnck.WindowType.MENU || type == Wnck.WindowType.SPLASHSCREEN)
             continue;
-          if (!w.is_visible_on_workspace (active_workspace))
+          // The window counts' test, so sticky windows shown on every
+          // workspace count here too; like is_visible_on_workspace (), skip
+          // hidden windows (minimized ones are skipped above)
+          if ((w.get_state () & Wnck.WindowState.HIDDEN) != 0
+              || !WindowControl.window_is_on_workspace (w, active_workspace))
             continue;
           var pid = w.get_pid ();
           if (pid == plank_pid)
@@ -599,7 +603,8 @@ namespace Plank {
         if (last_window_name == STEAM_WINDOW_NAME) {
           unowned Wnck.Window? existing_window = WindowControl.get_wnck_window (last_window_xid);
 
-          if (existing_window != null && last_window_workspace_id == active_workspace.get_number ()) {
+          if (existing_window != null && active_workspace != null
+              && last_window_workspace_id == active_workspace.get_number ()) {
             ignore_update = true;
           } else {
             last_window_name = null;

@@ -594,8 +594,9 @@ namespace Plank {
 
     /**
      * The windows this item lists in its menu and window previews: those of
-     * its applications that aren't transient and are user visible, and only
-     * the current workspace's when the dock is restricted to it.
+     * its applications that aren't transient, are user visible and that
+     * Wnck knows, and only those on the current workspace when the dock is
+     * restricted to it, by the same test as the window count.
      *
      * @return the windows, those of the item's own application first
      */
@@ -617,7 +618,14 @@ namespace Plank {
         if (window == null || window.get_transient () != null || !window.is_user_visible ())
           continue;
 
-        if (cw_only && WindowControl.get_window_workspace (window) != active_workspace)
+        // Like the window count, which leaves out windows Wnck doesn't know
+        // yet, as while it lags BAMF for a new window
+        unowned Wnck.Window? wnck_window = WindowControl.get_wnck_window (window.get_xid ());
+        if (wnck_window == null)
+          continue;
+
+        // Like the window count, which counts nothing without an active workspace
+        if (cw_only && (active_workspace == null || !WindowControl.window_is_on_workspace (wnck_window, active_workspace)))
           continue;
 
         window_list.add (window);
@@ -683,12 +691,15 @@ namespace Plank {
       }
 
       if (is_running () && window_count > 1) {
-        if (items.size > 0)
+        var window_list = get_window_list ();
+
+        // The count can include windows the list leaves out, so it may be empty
+        if (items.size > 0 && window_list.size > 0)
           items.add (new Gtk.SeparatorMenuItem ());
 
         bool bring_to_current = Helpers.bring_to_current_workspace (default_provider);
 
-        foreach (var window in get_window_list ()) {
+        foreach (var window in window_list) {
           var window_name = window.get_name ();
           window_name = shorten_window_name (window_name);
           window_name = Helpers.truncate_middle (window_name, MAX_WINDOW_NAME_LENGTH);

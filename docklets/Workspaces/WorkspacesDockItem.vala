@@ -499,21 +499,24 @@ namespace Docky {
           window.get_geometry (out preview.x, out preview.y, out preview.width, out preview.height);
 
           unowned Wnck.Workspace? workspace = window.get_workspace ();
-          if (workspace != null) {
+
+          // Pinned windows show on every workspace, and so do sticky ones,
+          // as the dock counts them, except on workspaces with viewports,
+          // where sticky only keeps a window in place as the viewport scrolls
+          if (window.is_pinned () || (window.is_sticky () && (workspace == null || !workspace.is_virtual ()))) {
+            for (int i = 0; i < workspace_count; i++) {
+              if (window_buckets[i] == null) {
+                window_buckets[i] = new Gee.ArrayList<WindowPreview?> ();
+              }
+              window_buckets[i].add (preview);
+            }
+          } else if (workspace != null) {
             int num = workspace.get_number ();
             if (num >= 0 && num < workspace_count) {
               if (window_buckets[num] == null) {
                 window_buckets[num] = new Gee.ArrayList<WindowPreview?> ();
               }
               window_buckets[num].add (preview);
-            }
-          } else if (window.is_pinned () || window.is_sticky ()) {
-            // Pinned windows show on every workspace
-            for (int i = 0; i < workspace_count; i++) {
-              if (window_buckets[i] == null) {
-                window_buckets[i] = new Gee.ArrayList<WindowPreview?> ();
-              }
-              window_buckets[i].add (preview);
             }
           }
         }
