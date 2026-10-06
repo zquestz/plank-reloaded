@@ -550,7 +550,15 @@ namespace Plank {
       return AnimationType.DARKEN;
     }
 
-    string shorten_window_name (string window_name) {
+    /**
+     * Shortens a window's name for display, dropping this item's
+     * application name, or a run of its words, when the window's name
+     * starts or ends with it.
+     *
+     * @param window_name the window's name
+     * @return the shortened name
+     */
+    internal string shorten_window_name (string window_name) {
       const string[] WINDOW_NAME_PATTERN = { "%s - (.+)", "(.+) - %s", "%s – (.+)", "(.+) – %s", "%s: (.+)" };
       const string[] APP_NAME_DELIMITER = { " ", "-", "–" };
 
@@ -585,23 +593,47 @@ namespace Plank {
     }
 
     /**
+     * The windows this item lists in its menu and window previews: those of
+     * its applications that aren't transient and are user visible, and only
+     * the current workspace's when the dock is restricted to it.
+     *
+     * @return the windows, those of the item's own application first
+     */
+    internal Gee.ArrayList<Bamf.Window> get_window_list () {
+      var window_list = new Gee.ArrayList<Bamf.Window> ();
+
+      if (App == null)
+        return window_list;
+
+      var windows = App.get_windows ();
+      foreach (var merged in merged_apps)
+        windows.concat (merged.get_windows ());
+
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+      bool cw_only = Helpers.current_workspace_only (default_provider);
+      unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
+
+      foreach (var window in windows) {
+        if (window == null || window.get_transient () != null || !window.is_user_visible ())
+          continue;
+
+        if (cw_only && WindowControl.get_window_workspace (window) != active_workspace)
+          continue;
+
+        window_list.add (window);
+      }
+
+      return window_list;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public override Gee.ArrayList<Gtk.MenuItem> get_menu_items () {
       var items = new Gee.ArrayList<Gtk.MenuItem> ();
 
-      GLib.List<weak Bamf.Window>? windows = null;
-      if (App != null) {
-        windows = App.get_windows ();
-        foreach (var merged in merged_apps)
-          windows.concat (merged.get_windows ());
-      }
-
-      var window_count = 0U;
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
-
-      if (windows != null)
-        window_count = Helpers.window_count (App, default_provider);
+      var window_count = Helpers.window_count (App, default_provider);
 
       if (default_provider != null
           && !default_provider.Prefs.LockItems
@@ -654,23 +686,9 @@ namespace Plank {
         if (items.size > 0)
           items.add (new Gtk.SeparatorMenuItem ());
 
-        bool cw_only = Helpers.current_workspace_only (default_provider);
         bool bring_to_current = Helpers.bring_to_current_workspace (default_provider);
-        unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
 
-        foreach (var window in windows) {
-          if (window == null || window.get_transient () != null || !window.is_user_visible ()) {
-            continue;
-          }
-
-          if (cw_only && WindowControl.get_window_workspace (window) != active_workspace) {
-            continue;
-          }
-
-          // get_windows () returns unowned elements, so closures which outlive
-          // this loop must hold a strong reference to keep the window alive
-          Bamf.Window win = window;
-
+        foreach (var window in get_window_list ()) {
           var window_name = window.get_name ();
           window_name = shorten_window_name (window_name);
           window_name = Helpers.truncate_middle (window_name, MAX_WINDOW_NAME_LENGTH);
@@ -726,7 +744,7 @@ namespace Plank {
                   event.y <= close_y + close_allocation.height) {
 
                 was_close_click = true;
-                WindowControl.close_window (win, event_time);
+                WindowControl.close_window (window, event_time);
               }
             }
 
@@ -738,8 +756,8 @@ namespace Plank {
               return;
             }
 
-            if (!win.is_active ()) {
-              WindowControl.focus_window (win, event_time, bring_to_current);
+            if (!window.is_active ()) {
+              WindowControl.focus_window (window, event_time, bring_to_current);
             }
           });
 
