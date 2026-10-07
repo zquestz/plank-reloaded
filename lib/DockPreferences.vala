@@ -37,6 +37,11 @@ namespace Plank {
     public const uint MAX_HIDE_DELAY = 2500;
     public const uint MAX_UNHIDE_DELAY = 2500;
 
+    public const uint MAX_PREVIEW_DELAY = 2500;
+
+    public const int MIN_PREVIEW_SIZE = 64;
+    public const int MAX_PREVIEW_SIZE = 640;
+
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
 
@@ -118,6 +123,15 @@ namespace Plank {
     [Description (nick = "tooltips-enabled", blurb = "Whether to show tooltips when items are hovered.")]
     public bool TooltipsEnabled { get; set; }
 
+    [Description (nick = "previews-enabled", blurb = "Whether to show previews of an application's windows instead of a tooltip when its item is hovered.")]
+    public bool PreviewsEnabled { get; set; }
+
+    [Description (nick = "preview-delay", blurb = "Time (in ms) to wait before showing window previews.")]
+    public uint PreviewDelay { get; set; }
+
+    [Description (nick = "preview-size", blurb = "The largest width of a window preview's thumbnail (in pixels).")]
+    public int PreviewSize { get; set; }
+
     /**
      * {@inheritDoc}
      */
@@ -189,6 +203,18 @@ namespace Plank {
       case "UnhideDelay":
         if (UnhideDelay > MAX_UNHIDE_DELAY)
           UnhideDelay = MAX_UNHIDE_DELAY;
+        break;
+
+      case "PreviewDelay":
+        if (PreviewDelay > MAX_PREVIEW_DELAY)
+          PreviewDelay = MAX_PREVIEW_DELAY;
+        break;
+
+      case "PreviewSize":
+        if (PreviewSize < MIN_PREVIEW_SIZE)
+          PreviewSize = MIN_PREVIEW_SIZE;
+        else if (PreviewSize > MAX_PREVIEW_SIZE)
+          PreviewSize = MAX_PREVIEW_SIZE;
         break;
 
       case "Theme":
