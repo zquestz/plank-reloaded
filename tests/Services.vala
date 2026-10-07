@@ -32,6 +32,11 @@ namespace PlankTests {
     Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit", helpers_truncate_middle_very_short_limit);
     Test.add_func ("/Services/Helpers/truncate_middle_utf8", helpers_truncate_middle_utf8);
     Test.add_func ("/Services/Helpers/truncate_middle_cjk", helpers_truncate_middle_cjk);
+    Test.add_func ("/Services/Helpers/truncate_middle_combining", helpers_truncate_middle_combining);
+    Test.add_func ("/Services/Helpers/truncate_middle_emoji", helpers_truncate_middle_emoji);
+    Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit_combining", helpers_truncate_middle_very_short_limit_combining);
+    Test.add_func ("/Services/Helpers/truncate_middle_edge_cases", helpers_truncate_middle_edge_cases);
+    Test.add_func ("/Services/Helpers/truncate_middle_no_room", helpers_truncate_middle_no_room);
     Test.add_func ("/Services/DockWindowPosition/bottom_composited", dock_win_pos_bottom_composited);
     Test.add_func ("/Services/DockWindowPosition/top_composited", dock_win_pos_top_composited);
     Test.add_func ("/Services/DockWindowPosition/left_composited", dock_win_pos_left_composited);
@@ -259,6 +264,68 @@ namespace PlankTests {
     assert (result2.has_prefix ("日本語"));
     // Should end with last characters
     assert (result2.has_suffix ("字列"));
+  }
+
+  void helpers_truncate_middle_combining () {
+    // A letter with a combining accent is one character of two code points,
+    // and a cut never separates them
+    var e = "e\u0301";
+    var input = e + e + e + e + e + e + e + e + e + e;
+    assert (input.char_count () == 20);
+
+    var result = Helpers.truncate_middle (input, 7);
+    assert (result == e + e + e + "…" + e + e + e);
+
+    // Six characters fit a limit of 6 or 9, though they are 12 code points
+    var six = e + e + e + e + e + e;
+    assert (Helpers.truncate_middle (six, 6) == six);
+    assert (Helpers.truncate_middle (six, 9) == six);
+  }
+
+  void helpers_truncate_middle_emoji () {
+    // A family joined by zero-width joiners is one character of 7 code
+    // points, and stays whole on both sides of the ellipsis
+    var family = "👩\u200D👩\u200D👧\u200D👦";
+    var families = family + family + family + family + family + family;
+    assert (families.char_count () == 42);
+
+    var result = Helpers.truncate_middle (families, 5);
+    assert (result == family + family + "…" + family + family);
+
+    // A flag is one character of two regional indicators
+    var flags = "🇯🇵🇺🇸🇫🇷🇩🇪🇮🇹🇬🇧🇨🇦";
+    assert (flags.char_count () == 14);
+
+    var result2 = Helpers.truncate_middle (flags, 6);
+    assert (result2 == "🇯🇵🇺🇸…🇮🇹🇬🇧🇨🇦");
+  }
+
+  void helpers_truncate_middle_very_short_limit_combining () {
+    // A very short limit cuts from the start by whole characters too
+    var e = "e\u0301";
+    var six = e + e + e + e + e + e;
+    assert (Helpers.truncate_middle (six, 1) == e);
+    assert (Helpers.truncate_middle (six, 2) == e + e);
+    assert (Helpers.truncate_middle (six, 3) == e + e + e);
+    assert (Helpers.truncate_middle (six, 4) == e + e + e + e);
+  }
+
+  void helpers_truncate_middle_edge_cases () {
+    // An empty string stays empty
+    assert (Helpers.truncate_middle ("", 5) == "");
+
+    // CR LF is one character
+    assert (Helpers.truncate_middle ("\r\nX", 1) == "\r\n");
+
+    // Combining marks with no letter before them are one character
+    var marks = "\u0301\u0301\u0301";
+    assert (Helpers.truncate_middle (marks, 1) == marks);
+  }
+
+  void helpers_truncate_middle_no_room () {
+    // A limit with no room leaves nothing
+    assert (Helpers.truncate_middle ("hello", 0) == "");
+    assert (Helpers.truncate_middle ("hello", -1) == "");
   }
 
   //
