@@ -123,6 +123,26 @@ namespace Plank {
       return start;
     }
 
+    /**
+     * Whether a point falls on a widget, given in the coordinates of a
+     * widget that contains it, like a close icon in a window's menu item or
+     * preview tile. The widget's right and bottom edges are outside it.
+     *
+     * @param container the widget the point's coordinates are relative to
+     * @param widget the widget inside it
+     * @param x the point's x coordinate
+     * @param y the point's y coordinate
+     * @return whether the point is on the widget
+     */
+    internal bool is_point_on_widget (Gtk.Widget container, Gtk.Widget widget, double x, double y) {
+      int widget_x, widget_y;
+      if (!widget.translate_coordinates (container, 0, 0, out widget_x, out widget_y))
+        return false;
+
+      return (x >= widget_x && x < widget_x + widget.get_allocated_width ()
+              && y >= widget_y && y < widget_y + widget.get_allocated_height ());
+    }
+
     public static bool current_workspace_only (DefaultApplicationDockItemProvider? provider) {
       bool current_workspace_only = false;
 
