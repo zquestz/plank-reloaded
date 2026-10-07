@@ -150,6 +150,23 @@
 			<summary>Pressure Reveal</summary>
 			<description>If true, use pressure-based revealing of the dock if the input device supports it.</description>
 		</key>
+		<key name="preview-delay" type="i">
+			<range min="0" max="2500"/>
+			<default>400</default>
+			<summary>Window preview delay</summary>
+			<description>Length of the delay before showing previews of a hovered application's windows, in milliseconds.</description>
+		</key>
+		<key name="preview-size" type="i">
+			<range min="64" max="640"/>
+			<default>240</default>
+			<summary>Window preview size</summary>
+			<description>The largest width of a window preview's thumbnail, in pixels.</description>
+		</key>
+		<key name="previews-enabled" type="b">
+			<default>false</default>
+			<summary>Show window previews when items are hovered</summary>
+			<description>If true, hovering an application's dock item shows previews of its windows instead of a tooltip.</description>
+		</key>
 		<key name="show-dock-item" type="b">
 			<default>false</default>
 			<summary>Show the item for the dock itself</summary>
