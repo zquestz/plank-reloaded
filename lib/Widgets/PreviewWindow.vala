@@ -48,11 +48,22 @@ namespace Plank {
   }
 
   /**
-   * A window's tile in a {@link PreviewWindow}, highlighted while hovered.
+   * A window's tile in a {@link PreviewWindow}: a row with the window's
+   * title and a close icon, above the window's thumbnail or icon. It is
+   * highlighted while hovered, when the close icon also shows.
    */
   class PreviewTile : Gtk.EventBox {
+    // The space around the tile's content, and between the title's row and
+    // the image
+    internal const int MARGIN = 4;
+    internal const int TITLE_SPACING = 4;
+    // The space between the title and the close icon
+    const int CLOSE_SPACING = 4;
+
     const double HIGHLIGHT_ALPHA = 0.15;
     const double HIGHLIGHT_RADIUS = 4.0;
+    // The close icon's strength until the pointer is on it
+    const double CLOSE_ICON_DIMMED = 0.8;
 
     /**
      * The window's X id. Only that is kept, so the entry and its pixbufs
@@ -60,15 +71,90 @@ namespace Plank {
      */
     public ulong xid { get; construct; }
 
+    Gtk.Image close_icon;
     bool hovered = false;
 
-    public PreviewTile (ulong xid) {
-      GLib.Object (xid: xid);
+    /**
+     * Creates the tile for a window.
+     *
+     * @param entry the window
+     * @param image the window's thumbnail or icon, sized for the tile
+     */
+    public PreviewTile (PreviewEntry entry, Gtk.Widget image) {
+      GLib.Object (xid: entry.xid);
+
+      var title = create_title (entry.title, entry.active);
+      title.hexpand = true;
+
+      // The close icon keeps its space while hidden, so the title never
+      // moves when it shows
+      close_icon = create_close_icon ();
+      close_icon.opacity = 0.0;
+
+      var row = new Gtk.Box (Gtk.Orientation.HORIZONTAL, CLOSE_SPACING);
+      row.add (title);
+      row.add (close_icon);
+
+      // The title's row takes the image's width
+      var box = new Gtk.Box (Gtk.Orientation.VERTICAL, TITLE_SPACING);
+      box.margin = MARGIN;
+      box.add (row);
+      box.add (image);
+      add (box);
     }
 
     construct
     {
       visible_window = false;
+      // The close icon follows the pointer within the tile
+      add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+    }
+
+    /**
+     * Creates a title as tiles show it, which the popup also measures.
+     *
+     * @param text the title's text
+     * @param active whether it is the active window's title
+     * @return the title
+     */
+    public static Gtk.Label create_title (string? text, bool active) {
+      var title = new Gtk.Label (text);
+      title.xalign = 0.0f;
+      title.ellipsize = Pango.EllipsizeMode.MIDDLE;
+      // One line, with any line breaks shown as glyphs
+      title.single_line_mode = true;
+      // The tile decides the width, however long the title is
+      title.max_width_chars = 1;
+      title.set_attributes (title_attributes (active));
+
+      return title;
+    }
+
+    /**
+     * A title's attributes: the active window's title is bold, as in the
+     * window list's menu.
+     *
+     * @param active whether it is the active window's title
+     * @return the attributes, if any
+     */
+    public static Pango.AttrList? title_attributes (bool active) {
+      if (!active)
+        return null;
+
+      var attributes = new Pango.AttrList ();
+      attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
+
+      return attributes;
+    }
+
+    /**
+     * Creates the close icon of the window list's menu, which the popup
+     * also measures.
+     *
+     * @return the close icon
+     */
+    public static Gtk.Image create_close_icon () {
+      return new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
     }
 
     /**
@@ -76,7 +162,17 @@ namespace Plank {
      */
     public override bool enter_notify_event (Gdk.EventCrossing event) {
       hovered = true;
+      update_close_icon (event.x, event.y);
       queue_draw ();
+
+      return Gdk.EVENT_PROPAGATE;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public override bool motion_notify_event (Gdk.EventMotion event) {
+      update_close_icon (event.x, event.y);
 
       return Gdk.EVENT_PROPAGATE;
     }
@@ -86,9 +182,27 @@ namespace Plank {
      */
     public override bool leave_notify_event (Gdk.EventCrossing event) {
       hovered = false;
+      close_icon.opacity = 0.0;
       queue_draw ();
 
       return Gdk.EVENT_PROPAGATE;
+    }
+
+    // While the tile is hovered, the close icon shows dimmed, at full
+    // strength with the pointer on it
+    void update_close_icon (double x, double y) {
+      close_icon.opacity = (on_close_icon (x, y) ? 1.0 : CLOSE_ICON_DIMMED);
+    }
+
+    /**
+     * Whether a point in the tile is on its close icon.
+     *
+     * @param x the x coordinate in the tile
+     * @param y the y coordinate in the tile
+     * @return whether the point is on the close icon
+     */
+    public bool on_close_icon (double x, double y) {
+      return Helpers.is_point_on_widget (this, close_icon, x, y);
     }
 
     /**
@@ -119,9 +233,7 @@ namespace Plank {
     // The space between the dock item and the popup, as for tooltips
     const int GAP = 10;
     const int PADDING = 6;
-    const int TILE_MARGIN = 4;
     const int TILE_SPACING = 6;
-    const int TITLE_SPACING = 4;
 
     /**
      * The largest an icon is shown, in a tile without a thumbnail.
@@ -142,6 +254,15 @@ namespace Plank {
      * @param event_time the time of the click
      */
     public signal void activated (ulong xid, uint32 event_time);
+
+    /**
+     * Emitted when a window's close icon is clicked, or its tile is
+     * middle-clicked.
+     *
+     * @param xid the window's X id
+     * @param event_time the time of the click
+     */
+    public signal void close_requested (ulong xid, uint32 event_time);
 
     /**
      * The area the popup was last placed in, in logical pixels, as it was
@@ -206,18 +327,24 @@ namespace Plank {
       Gtk.Requisition empty;
       get_preferred_size (null, out empty);
 
-      // The tallest title, measured on a title label inside the popup so the
+      // The title row's height: the tallest title or the close icon beside
+      // it, measured on a title label and an icon inside the popup so the
       // theme's styling and fallback fonts count. All the windows' titles
       // are measured, since which of them are shown depends on the result
-      var probe = create_title (null);
+      var probe = PreviewTile.create_title (null, false);
+      var probe_icon = PreviewTile.create_close_icon ();
       line.add (probe);
+      line.add (probe_icon);
       // GTK measures hidden widgets as empty
       probe.show ();
+      probe_icon.show ();
 
-      var title_height = 0;
+      int title_height;
+      probe_icon.get_preferred_height (null, out title_height);
+
       foreach (var entry in entries) {
         probe.set_text (entry.title);
-        probe.set_attributes (title_attributes (entry.active));
+        probe.set_attributes (PreviewTile.title_attributes (entry.active));
 
         int label_height;
         probe.get_preferred_height (null, out label_height);
@@ -225,11 +352,13 @@ namespace Plank {
       }
 
       probe.destroy ();
+      probe_icon.destroy ();
 
       int thumbnail_width, shown;
       compute_preview_layout (out thumbnail_width, out shown, position, monitor, entries.size, size,
                               DockPreferences.MIN_PREVIEW_SIZE, width - empty.width, height - empty.height,
-                              2 * TILE_MARGIN, 2 * TILE_MARGIN + TITLE_SPACING + title_height, TILE_SPACING);
+                              2 * PreviewTile.MARGIN, 2 * PreviewTile.MARGIN + PreviewTile.TITLE_SPACING + title_height,
+                              TILE_SPACING);
 
       var thumbnail_height = preview_thumbnail_height (thumbnail_width, monitor);
 
@@ -271,44 +400,10 @@ namespace Plank {
     }
 
     PreviewTile create_tile (PreviewEntry entry, int thumbnail_width, int thumbnail_height) {
-      var image = create_image (entry, thumbnail_width, thumbnail_height);
-
-      var title = create_title (entry.title);
-      title.set_attributes (title_attributes (entry.active));
-      title.set_size_request (thumbnail_width, -1);
-
-      var box = new Gtk.Box (Gtk.Orientation.VERTICAL, TITLE_SPACING);
-      box.margin = TILE_MARGIN;
-      box.add (image);
-      box.add (title);
-
-      var tile = new PreviewTile (entry.xid);
-      tile.add (box);
+      var tile = new PreviewTile (entry, create_image (entry, thumbnail_width, thumbnail_height));
       tile.button_release_event.connect (tile_button_released);
 
       return tile;
-    }
-
-    Gtk.Label create_title (string? text) {
-      var title = new Gtk.Label (text);
-      title.ellipsize = Pango.EllipsizeMode.MIDDLE;
-      // One line, with any line breaks shown as glyphs
-      title.single_line_mode = true;
-      // The tile decides the width, however long the title is
-      title.max_width_chars = 1;
-
-      return title;
-    }
-
-    // The active window's title is bold, as in the window list's menu
-    static Pango.AttrList? title_attributes (bool active) {
-      if (!active)
-        return null;
-
-      var attributes = new Pango.AttrList ();
-      attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
-
-      return attributes;
     }
 
     Gtk.Image create_image (PreviewEntry entry, int thumbnail_width, int thumbnail_height) {
@@ -346,8 +441,8 @@ namespace Plank {
       // Never wider than a tile, even in a very large font
       label.ellipsize = Pango.EllipsizeMode.END;
       label.max_width_chars = 1;
-      label.set_size_request (thumbnail_width, thumbnail_height + TITLE_SPACING + title_height);
-      label.margin = TILE_MARGIN;
+      label.set_size_request (thumbnail_width, thumbnail_height + PreviewTile.TITLE_SPACING + title_height);
+      label.margin = PreviewTile.MARGIN;
 
       return label;
     }
@@ -355,7 +450,7 @@ namespace Plank {
     bool tile_button_released (Gtk.Widget widget, Gdk.EventButton event) {
       unowned PreviewTile tile = (PreviewTile) widget;
 
-      if (event.button != Gdk.BUTTON_PRIMARY)
+      if (event.button != Gdk.BUTTON_PRIMARY && event.button != Gdk.BUTTON_MIDDLE)
         return Gdk.EVENT_PROPAGATE;
 
       // Releasing away from the tile takes the click back
@@ -363,7 +458,12 @@ namespace Plank {
           || event.x >= tile.get_allocated_width () || event.y >= tile.get_allocated_height ())
         return Gdk.EVENT_STOP;
 
-      activated (tile.xid, event.time);
+      // A middle-click anywhere on the tile closes the window, like a click
+      // on its close icon
+      if (event.button == Gdk.BUTTON_MIDDLE || tile.on_close_icon (event.x, event.y))
+        close_requested (tile.xid, event.time);
+      else
+        activated (tile.xid, event.time);
 
       return Gdk.EVENT_STOP;
     }

@@ -62,6 +62,7 @@ namespace Plank {
     {
       popup = new PreviewWindow ();
       popup.activated.connect (window_activated);
+      popup.close_requested.connect (window_close_requested);
 
       controller.prefs.notify["PreviewsEnabled"].connect (previews_enabled_changed);
       controller.hide_manager.notify["Hidden"].connect (hidden_changed);
@@ -75,6 +76,7 @@ namespace Plank {
 
     ~PreviewManager () {
       popup.activated.disconnect (window_activated);
+      popup.close_requested.disconnect (window_close_requested);
 
       controller.prefs.notify["PreviewsEnabled"].disconnect (previews_enabled_changed);
       controller.hide_manager.notify["Hidden"].disconnect (hidden_changed);
@@ -295,27 +297,42 @@ namespace Plank {
       return thumbnail;
     }
 
+    // A window of the shown item as it is listed now, in case it closed
+    // meanwhile
+    Bamf.Window? find_window (ulong xid) {
+      if (shown_item == null)
+        return null;
+
+      foreach (var window in shown_item.get_window_list ()) {
+        if (window.get_xid () == xid)
+          return window;
+      }
+
+      return null;
+    }
+
     void window_activated (ulong xid, uint32 event_time) {
       var item = shown_item;
-      if (item == null)
-        return;
-
-      // The window as it is listed now, in case it closed meanwhile
-      Bamf.Window? target = null;
-      foreach (var window in item.get_window_list ()) {
-        if (window.get_xid () == xid) {
-          target = window;
-          break;
-        }
-      }
+      var target = find_window (xid);
 
       close ();
 
-      if (target == null)
+      if (item == null || target == null)
         return;
 
       unowned DefaultApplicationDockItemProvider? provider = (item.Container as DefaultApplicationDockItemProvider);
       WindowControl.focus_window (target, event_time, Helpers.bring_to_current_workspace (provider));
+    }
+
+    // Like a click that focuses a window, closing one closes the popup,
+    // which doesn't follow changes to the windows while it is open
+    void window_close_requested (ulong xid, uint32 event_time) {
+      var target = find_window (xid);
+
+      close ();
+
+      if (target != null)
+        WindowControl.close_window (target, event_time);
     }
 
     bool poll () {

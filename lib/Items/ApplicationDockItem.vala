@@ -744,19 +744,9 @@ namespace Plank {
           bool was_close_click = false;
 
           window_item.button_release_event.connect ((event) => {
-            Gtk.Allocation close_allocation;
-            close_icon.get_allocation (out close_allocation);
-
-            int close_x, close_y;
-            if (close_icon.translate_coordinates (window_item, 0, 0, out close_x, out close_y)) {
-              if (event.x >= close_x &&
-                  event.x <= close_x + close_allocation.width &&
-                  event.y >= close_y &&
-                  event.y <= close_y + close_allocation.height) {
-
-                was_close_click = true;
-                WindowControl.close_window (window, event_time);
-              }
+            if (Helpers.is_point_on_widget (window_item, close_icon, event.x, event.y)) {
+              was_close_click = true;
+              WindowControl.close_window (window, event_time);
             }
 
             return false;
