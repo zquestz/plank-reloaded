@@ -241,6 +241,11 @@ namespace Plank {
                    && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
       }
 
+      // Open window previews keep the dock hovered, so it neither hides nor
+      // drops its zoom while the pointer crosses over to them
+      if (controller.preview_manager.is_open ())
+        hovered = true;
+
       if (Hovered != hovered) {
         Hovered = hovered;
         update_needed = true;

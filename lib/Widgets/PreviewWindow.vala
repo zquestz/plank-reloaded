@@ -34,8 +34,8 @@ namespace Plank {
      *
      * @param xid the window's X id
      * @param title the window's title
-     * @param thumbnail a picture of the window, or null to show its icon
-     * @param icon the window's icon, shown when there is no thumbnail
+     * @param thumbnail a picture of the window, or null to show the icon
+     * @param icon the icon shown when there is no thumbnail
      * @param active whether this is the active window
      */
     public PreviewEntry (ulong xid, string title, Gdk.Pixbuf? thumbnail, Gdk.Pixbuf? icon, bool active) {
@@ -54,12 +54,16 @@ namespace Plank {
     const double HIGHLIGHT_ALPHA = 0.15;
     const double HIGHLIGHT_RADIUS = 4.0;
 
-    public PreviewEntry entry { get; construct; }
+    /**
+     * The window's X id. Only that is kept, so the entry and its pixbufs
+     * are freed once the tile's image has been made from them.
+     */
+    public ulong xid { get; construct; }
 
     bool hovered = false;
 
-    public PreviewTile (PreviewEntry entry) {
-      GLib.Object (entry: entry);
+    public PreviewTile (ulong xid) {
+      GLib.Object (xid: xid);
     }
 
     construct
@@ -118,7 +122,11 @@ namespace Plank {
     const int TILE_MARGIN = 4;
     const int TILE_SPACING = 6;
     const int TITLE_SPACING = 4;
-    const int ICON_SIZE = 48;
+
+    /**
+     * The largest an icon is shown, in a tile without a thumbnail.
+     */
+    internal const int ICON_SIZE = 48;
 
     static construct
     {
@@ -127,13 +135,19 @@ namespace Plank {
     }
 
     /**
-     * Emitted when a window's tile is clicked, unless it is the active
-     * window's.
+     * Emitted when a window's tile is clicked, the active window's too,
+     * which the window manager simply keeps in front.
      *
      * @param xid the window's X id
      * @param event_time the time of the click
      */
     public signal void activated (ulong xid, uint32 event_time);
+
+    /**
+     * The area the popup was last placed in, in logical pixels, as it was
+     * computed rather than read back from the window.
+     */
+    internal Gdk.Rectangle shown_region { get; private set; }
 
     Gtk.Box line;
 
@@ -174,7 +188,7 @@ namespace Plank {
     public void show_entries (Gee.List<PreviewEntry> entries, Gtk.PositionType position,
                               int anchor_x, int anchor_y, Gdk.Rectangle area,
                               Gdk.Rectangle monitor, int size) {
-      line.foreach ((child) => child.destroy ());
+      clear_tiles ();
 
       if (entries.is_empty) {
         hide ();
@@ -203,6 +217,7 @@ namespace Plank {
       var title_height = 0;
       foreach (var entry in entries) {
         probe.set_text (entry.title);
+        probe.set_attributes (title_attributes (entry.active));
 
         int label_height;
         probe.get_preferred_height (null, out label_height);
@@ -238,28 +253,36 @@ namespace Plank {
       compute_preview_position (out x, out y, position, anchor_x, anchor_y,
                                 natural.width, natural.height, GAP, area);
       move (x, y);
+
+      shown_region = { x, y, natural.width, natural.height };
+    }
+
+    /**
+     * Hides the popup and drops its tiles, with their images, rather than
+     * keeping them until it shows again.
+     */
+    internal void clear () {
+      hide ();
+      clear_tiles ();
+    }
+
+    void clear_tiles () {
+      line.foreach ((child) => child.destroy ());
     }
 
     PreviewTile create_tile (PreviewEntry entry, int thumbnail_width, int thumbnail_height) {
       var image = create_image (entry, thumbnail_width, thumbnail_height);
 
       var title = create_title (entry.title);
+      title.set_attributes (title_attributes (entry.active));
       title.set_size_request (thumbnail_width, -1);
-
-      // The active window is greyed out, as in the window list's menu. GTK
-      // dims insensitive pixbuf images but draws surfaces as they are, so
-      // the image is faded by hand, to the opacity GTK's dim effect leaves
-      if (entry.active) {
-        title.set_sensitive (false);
-        image.set_opacity (0.5);
-      }
 
       var box = new Gtk.Box (Gtk.Orientation.VERTICAL, TITLE_SPACING);
       box.margin = TILE_MARGIN;
       box.add (image);
       box.add (title);
 
-      var tile = new PreviewTile (entry);
+      var tile = new PreviewTile (entry.xid);
       tile.add (box);
       tile.button_release_event.connect (tile_button_released);
 
@@ -275,6 +298,17 @@ namespace Plank {
       title.max_width_chars = 1;
 
       return title;
+    }
+
+    // The active window's title is bold, as in the window list's menu
+    static Pango.AttrList? title_attributes (bool active) {
+      if (!active)
+        return null;
+
+      var attributes = new Pango.AttrList ();
+      attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
+
+      return attributes;
     }
 
     Gtk.Image create_image (PreviewEntry entry, int thumbnail_width, int thumbnail_height) {
@@ -329,9 +363,7 @@ namespace Plank {
           || event.x >= tile.get_allocated_width () || event.y >= tile.get_allocated_height ())
         return Gdk.EVENT_STOP;
 
-      // Clicking the active window does nothing, as in the menu
-      if (!tile.entry.active)
-        activated (tile.entry.xid, event.time);
+      activated (tile.xid, event.time);
 
       return Gdk.EVENT_STOP;
     }

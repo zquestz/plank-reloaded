@@ -954,7 +954,9 @@ namespace Plank {
 
       // Store XID instead of window reference - safe to use in timeout
       delayed_focus_xid = targetWindow.get_xid ();
-      delayed_focus_timer_id = Gdk.threads_add_timeout (VIEWPORT_CHANGE_DELAY, () => {
+      // The _full variant owns the closure, which holds event_time, rather
+      // than letting it be freed when this returns
+      delayed_focus_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, VIEWPORT_CHANGE_DELAY, () => {
         delayed_focus_timer_id = 0U;
         // Look up window by XID - returns null if window was closed
         unowned Wnck.Window? w = get_wnck_window (delayed_focus_xid);

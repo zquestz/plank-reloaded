@@ -6,6 +6,7 @@ plank_lib_sources = [
   'DragManager.vala',
   'HideManager.vala',
   'PositionManager.vala',
+  'PreviewManager.vala',
   'DBus/Client.vala',
   'DBus/Interfaces.vala',
   'Docklets/Docklet.vala',

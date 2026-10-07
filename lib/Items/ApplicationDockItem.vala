@@ -767,14 +767,16 @@ namespace Plank {
               return;
             }
 
-            if (!window.is_active ()) {
-              WindowControl.focus_window (window, event_time, bring_to_current);
-            }
+            // The active window too, which the window manager simply keeps
+            // in front
+            WindowControl.focus_window (window, event_time, bring_to_current);
           });
 
+          // The active window's title is bold, as in the window previews
           if (window.is_active ()) {
-            label.set_sensitive (false);
-            image.set_sensitive (false);
+            var attributes = new Pango.AttrList ();
+            attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
+            label.set_attributes (attributes);
           }
 
           items.add (window_item);
