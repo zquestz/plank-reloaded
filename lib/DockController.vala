@@ -42,6 +42,11 @@ namespace Plank {
     public DockWindow window { get; protected set; }
     public HoverWindow hover { get; protected set; }
 
+    /**
+     * The window previews for this dock's applications.
+     */
+    internal PreviewManager preview_manager { get; private set; }
+
     public DockItemProvider? default_provider { get; private set; }
 
     DBusManager dbus_manager;
@@ -108,6 +113,7 @@ namespace Plank {
       hover = new HoverWindow ();
       hover.position_manager = position_manager;
       renderer = new DockRenderer (this, window);
+      preview_manager = new PreviewManager (this);
     }
 
     ~DockController () {

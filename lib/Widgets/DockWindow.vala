@@ -200,8 +200,10 @@ namespace Plank {
 
       // Make sure the HoveredItem is still the same since button-pressed
       if (ClickedItem != null && HoveredItem == ClickedItem && !menu_is_visible ()) {
-        // The user made a choice so hide tooltip to avoid obstructing anything
+        // The user made a choice so hide the tooltip and window previews to
+        // avoid obstructing anything
         controller.hover.hide ();
+        controller.preview_manager.dismiss ();
 
         HoveredItem.clicked (PopupButton.from_event_button (event), event.state, event.time);
       }
@@ -229,7 +231,16 @@ namespace Plank {
       if ((bool) event.send_event)
         return Gdk.EVENT_PROPAGATE;
 
-      if (!menu_is_visible ()) {
+      unowned ApplicationDockItem? previewed_item = controller.preview_manager.shown_item;
+
+      if (previewed_item != null) {
+        // Open window previews keep their own item hovered, as the menu
+        // keeps its item, while the pointer crosses over to them, whatever
+        // else it passed on its way out of the dock
+        set_hovered_provider (previewed_item.Container as DockItemProvider);
+        set_hovered (previewed_item);
+        controller.hover.hide ();
+      } else if (!menu_is_visible ()) {
         set_hovered_provider (null);
         set_hovered (null);
       } else
@@ -287,8 +298,10 @@ namespace Plank {
       }
 
       if (HoveredItem != null) {
-        // The user made a choice so hide tooltip to avoid obstructing anything
+        // The user made a choice so hide the tooltip and window previews to
+        // avoid obstructing anything
         controller.hover.hide ();
+        controller.preview_manager.dismiss ();
 
         HoveredItem.scrolled (event.direction, event.state, event.time);
         controller.renderer.animated_draw ();
@@ -378,6 +391,10 @@ namespace Plank {
         return;
 
       controller.hover.hide ();
+
+      // An item with window previews shows them instead of a tooltip
+      if (controller.preview_manager.hovered_item_changed (HoveredItem))
+        return;
 
       if (HoveredItem == null
           || !controller.prefs.TooltipsEnabled
@@ -766,12 +783,7 @@ namespace Plank {
      * Called when the popup menu hides.
      */
     void on_menu_hide () {
-      unowned HideManager hide_manager = controller.hide_manager;
-      hide_manager.update_hovered ();
-      if (!hide_manager.Hovered) {
-        set_hovered_provider (null);
-        set_hovered (null);
-      }
+      recheck_hovered ();
 
       menu_items = null;
     }
@@ -781,7 +793,22 @@ namespace Plank {
      */
     void on_menu_show () {
       controller.hover.hide ();
+      controller.preview_manager.dismiss ();
       controller.renderer.animated_draw ();
+    }
+
+    /**
+     * Rechecks whether the pointer still hovers the dock once a popup that
+     * held on to the hovered item goes away, the menu or the window
+     * previews, and drops the hovered item when it doesn't.
+     */
+    internal void recheck_hovered () {
+      unowned HideManager hide_manager = controller.hide_manager;
+      hide_manager.update_hovered ();
+      if (!hide_manager.Hovered) {
+        set_hovered_provider (null);
+        set_hovered (null);
+      }
     }
 
     void set_input_mask () {
