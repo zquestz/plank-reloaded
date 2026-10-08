@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Galician\n"
@@ -124,7 +124,7 @@ msgstr "Centrado"
 
 #: data/ui/preferences.ui:238
 msgid "On Primary Display:"
-msgstr "No monitor principal"
+msgstr "No monitor principal:"
 
 #: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
@@ -132,7 +132,7 @@ msgstr "Desprazar en porcentaxe desde o centro do bordo da pantalla"
 
 #: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
-msgstr "Aliñamentos das iconas"
+msgstr "Aliñamentos das iconas:"
 
 #: data/ui/preferences.ui:314
 msgid "Icon Size:"
@@ -256,7 +256,7 @@ msgstr "Largura máxima da vista previa dunha xanela en píxeles"
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "Bloquear as iconas"
+msgstr "Bloquear as iconas:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -652,7 +652,7 @@ msgstr "_Pechar todo"
 msgid "_Close"
 msgstr "_Pechar"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Soltar para abrir con %s"

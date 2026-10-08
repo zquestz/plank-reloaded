@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -188,7 +188,7 @@ msgstr "Ekranı kaplamış pencerede gizle"
 
 #: data/ui/preferences.ui:502
 msgid "Window Dodge"
-msgstr "Pencere Çekilmesi"
+msgstr "Herhangi bir pencerede gizle"
 
 #: data/ui/preferences.ui:503
 msgid "Dodge active window"
@@ -216,7 +216,7 @@ msgstr "Dock'u göstermeden önce geçecek süre (ms)"
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
-msgstr "Hassasiyeti Azalt:"
+msgstr "Basınçla Göster:"
 
 #: data/ui/preferences.ui:638
 msgid "Item Management"
@@ -659,7 +659,7 @@ msgstr "Hepsini _Kapat"
 msgid "_Close"
 msgstr "_Kapat"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s ile açmak için üzerine bırakın"

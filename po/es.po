@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -245,7 +245,8 @@ msgstr "Retardo de vista previa:"
 
 #: data/ui/preferences.ui:780
 msgid "Delay in ms before showing window previews"
-msgstr "Retardo en milisegundos antes de mostrar las vistas previas de ventanas"
+msgstr ""
+"Retardo en milisegundos antes de mostrar las vistas previas de ventanas"
 
 #: data/ui/preferences.ui:799
 msgid "Preview Size:"
@@ -671,7 +672,7 @@ msgstr "_Cerrar todo"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Soltar para abrir con %s"

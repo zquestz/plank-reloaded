@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 02:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
@@ -173,7 +173,7 @@ msgstr "ลักษณะ"
 
 #: data/ui/preferences.ui:499
 msgid "Intellihide"
-msgstr "ซ่อนอัฉริยะ"
+msgstr "ซ่อนอัจฉริยะ"
 
 #: data/ui/preferences.ui:500
 msgid "Autohide"
@@ -221,11 +221,11 @@ msgstr "การจัดการรายการ"
 
 #: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
-msgstr "แสดงรายการที่ไม่ได้ปักหมุด"
+msgstr "แสดงรายการที่ไม่ได้ปักหมุด:"
 
 #: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
-msgstr "แสดงจำกัดเฉพาะในเวอร์สเปค"
+msgstr "แสดงเฉพาะในพื้นที่ทำงาน:"
 
 #: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
@@ -253,7 +253,7 @@ msgstr "ความกว้างสูงสุดของตัวอย่
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "ล็อกไอคอน"
+msgstr "ล็อกไอคอน:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -644,7 +644,7 @@ msgstr "ปิดทั้งหมด"
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "ลากวางเพื่อเปิดด้วย %s"

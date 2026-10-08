@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Georgian\n"
@@ -124,15 +124,15 @@ msgstr "ცენტრში"
 
 #: data/ui/preferences.ui:238
 msgid "On Primary Display:"
-msgstr "(აქტიურ) დესკტოპზე გამოტანა"
+msgstr "ძირითად ეკრანზე:"
 
 #: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
-msgstr "პროცენტული სიზუსტე კუთხიდან ცენტრამდე"
+msgstr "წანაცვლება პროცენტებში ეკრანის კიდის ცენტრიდან"
 
 #: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
-msgstr "ხატულას (Icon)-ის მდებარეობა"
+msgstr "ხატულების წყობა:"
 
 #: data/ui/preferences.ui:314
 msgid "Icon Size:"
@@ -649,7 +649,7 @@ msgstr "_ყველას დახურვა"
 msgid "_Close"
 msgstr "_დახურვა"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "გადაიტანეთ %s-ით გასახსნელად"

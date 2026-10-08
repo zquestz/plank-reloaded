@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Sorani (Kurdish)\n"
@@ -71,11 +71,11 @@ msgstr "دۆک"
 
 #: data/ui/preferences.ui:102
 msgid "Theme:"
-msgstr "رووکار"
+msgstr "رووکار:"
 
 #: data/ui/preferences.ui:115
 msgid "Position:"
-msgstr "شوێن"
+msgstr "شوێن:"
 
 #: data/ui/preferences.ui:142
 msgid "Left"
@@ -103,7 +103,7 @@ msgstr "ماوەی پشکنین بە چرکە بۆ بزانینی پیشاندا
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
-msgstr "لاگرتن"
+msgstr "لاگرتن:"
 
 #: data/ui/preferences.ui:219
 msgid "Fill"
@@ -255,7 +255,7 @@ msgstr "زۆرترین پانی پێشبینینی پەنجەرە بە پیکس�
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "داخستنی ئایکۆن"
+msgstr "داخستنی ئایکۆن:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -645,7 +645,7 @@ msgstr "_هەمووی دابخە"
 msgid "_Close"
 msgstr "_داخستن"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "فڕێیبدە بۆ کردنەوەی لەگەڵ %s"

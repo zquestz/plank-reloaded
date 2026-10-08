@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
@@ -97,7 +97,7 @@ msgstr "在活動顯示器上："
 
 #: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
-msgstr "主動顯示偵測的輪詢間隔（秒）"
+msgstr "活動顯示器偵測的輪詢間隔（秒）"
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
@@ -644,7 +644,7 @@ msgstr "全部關閉(_C)"
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "拖曳來以 %s 開啟"

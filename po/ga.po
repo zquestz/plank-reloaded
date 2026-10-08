@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -76,7 +76,7 @@ msgstr "Téama:"
 
 #: data/ui/preferences.ui:115
 msgid "Position:"
-msgstr "Suíomh"
+msgstr "Suíomh:"
 
 #: data/ui/preferences.ui:142
 msgid "Left"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
-msgstr "Ailíniú"
+msgstr "Ailíniú:"
 
 #: data/ui/preferences.ui:219
 msgid "Fill"
@@ -225,11 +225,11 @@ msgstr "Bainistiú Míreanna"
 
 #: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
-msgstr "Taispeáin Míreanna Neamhghreamaithe"
+msgstr "Taispeáin Míreanna Neamhghreamaithe:"
 
 #: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
-msgstr "Srianta don Spás Oibre"
+msgstr "Srianta don Spás Oibre:"
 
 #: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
@@ -257,7 +257,7 @@ msgstr "Leithead is mó réamhamhairc fuinneoige i bpicteilíní"
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "Glasáil Deilbhíní"
+msgstr "Glasáil Deilbhíní:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -659,7 +659,7 @@ msgstr "_Dún Gach Rud"
 msgid "_Close"
 msgstr "_Dún"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Scaoil chun é a oscailt le %s"

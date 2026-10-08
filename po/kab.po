@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:06\n"
 "Last-Translator: \n"
 "Language-Team: Kabyle\n"
@@ -75,7 +75,7 @@ msgstr "Asentel:"
 
 #: data/ui/preferences.ui:115
 msgid "Position:"
-msgstr "Ideg"
+msgstr "Ideg:"
 
 #: data/ui/preferences.ui:142
 msgid "Left"
@@ -103,7 +103,7 @@ msgstr "Azilal n usenqed s tsinin i tifin n uskan urmid"
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
-msgstr "Areyyec"
+msgstr "Areyyec:"
 
 #: data/ui/preferences.ui:219
 msgid "Fill"
@@ -123,7 +123,7 @@ msgstr "Talemmast"
 
 #: data/ui/preferences.ui:238
 msgid "On Primary Display:"
-msgstr "Deg Uskan Amenzu"
+msgstr "Deg Uskan Amenzu:"
 
 #: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
@@ -131,7 +131,7 @@ msgstr "Adigen s amur n usatal seg wammas n tama n ugdil"
 
 #: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
-msgstr "Areyyec n tignit"
+msgstr "Areyyec n tignit:"
 
 #: data/ui/preferences.ui:314
 msgid "Icon Size:"
@@ -139,7 +139,7 @@ msgstr "Tiddi n tignit:"
 
 #: data/ui/preferences.ui:380
 msgid "Icon Zoom:"
-msgstr "Semɣeṛ tignit"
+msgstr "Semɣeṛ tignit:"
 
 #: data/ui/preferences.ui:394
 msgid "Gap Size:"
@@ -215,7 +215,7 @@ msgstr "Aεeḍḍel s ms send n wesskan n Dock"
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
-msgstr "Aseḍheṛ n Tussda"
+msgstr "Aseḍheṛ n Tussda:"
 
 #: data/ui/preferences.ui:638
 msgid "Item Management"
@@ -227,7 +227,7 @@ msgstr "Sken wer nseṭṭen ara:"
 
 #: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
-msgstr "Qeyyed ar Tallunt n Leqdic"
+msgstr "Qeyyed ar Tallunt n Leqdic:"
 
 #: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
@@ -255,7 +255,7 @@ msgstr "Tehri tameqqrant n tiskanin n yisfuyla s yipiksilen"
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "Sewḥel Tignit"
+msgstr "Sewḥel Tignit:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -647,7 +647,7 @@ msgstr "_Mdel akk ayen yellan"
 msgid "_Close"
 msgstr "_Mdel"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Serreḥ i wakken ad teldiḍ akkʷed %s"

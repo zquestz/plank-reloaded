@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-10-30 22:55\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
@@ -96,7 +96,7 @@ msgstr "Bas"
 
 #: data/ui/preferences.ui:162
 msgid "On Active Display:"
-msgstr "Sur l'écran actif :"
+msgstr "Sur l'écran actif :"
 
 #: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
@@ -148,7 +148,7 @@ msgstr "Marge :"
 
 #: data/ui/preferences.ui:435
 msgid "Screen Area:"
-msgstr "Zone de l'écran :"
+msgstr "Zone de l'écran :"
 
 #: data/ui/preferences.ui:451
 msgid ""
@@ -264,7 +264,7 @@ msgstr "Docklets ancrés :"
 
 #: data/ui/preferences.ui:883
 msgid "Anchor Files:"
-msgstr "Fichiers ancrés :"
+msgstr "Fichiers ancrés :"
 
 #: data/ui/preferences.ui:910
 msgid "Bring to Workspace:"
@@ -615,7 +615,7 @@ msgstr "Espace de travail %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
-msgstr "_Aperçus"
+msgstr "Aperçus en _direct"
 
 #. *
 #. * Returns the description of this docklet.
@@ -668,7 +668,7 @@ msgstr "_Fermer tout"
 msgid "_Close"
 msgstr "_Fermer"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Relâcher pour ouvrir avec %s"
@@ -691,7 +691,7 @@ msgstr "_OK"
 
 #: lib/Items/FileDockItem.vala:320
 msgid "Sort By:"
-msgstr "Trier par:"
+msgstr "Trier par :"
 
 #: lib/Items/FileDockItem.vala:324
 msgid "Name"
@@ -715,7 +715,7 @@ msgstr "Date de modification"
 
 #: lib/Items/FileDockItem.vala:332
 msgid "Style:"
-msgstr "Style :"
+msgstr "Style :"
 
 #: lib/Items/FileDockItem.vala:336
 msgid "Simple"
@@ -727,11 +727,11 @@ msgstr "Tuile"
 
 #: lib/Items/FileDockItem.vala:341
 msgid "Large Icons:"
-msgstr "Grandes icônes:"
+msgstr "Grandes icônes :"
 
 #: lib/Items/FileDockItem.vala:348
 msgid "Show Hidden Files:"
-msgstr "Afficher les fichiers cachés :"
+msgstr "Afficher les fichiers cachés :"
 
 #: lib/Items/FileDockItem.vala:411
 msgid "_Open"

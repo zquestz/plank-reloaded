@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 03:32\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
@@ -199,7 +199,7 @@ msgstr "Dölj docka"
 
 #: data/ui/preferences.ui:545
 msgid "Hide Delay:"
-msgstr "Dölj fördröjning:"
+msgstr "Fördröjning för att dölja:"
 
 #: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
@@ -207,7 +207,7 @@ msgstr "Fördröjning (i millisekunder) innan dockan döljs"
 
 #: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
-msgstr "Visa fördröjning:"
+msgstr "Fördröjning för att visa:"
 
 #: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
@@ -655,7 +655,7 @@ msgstr "_Stäng alla"
 msgid "_Close"
 msgstr "S_täng"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Släpp för att öppna med %s"

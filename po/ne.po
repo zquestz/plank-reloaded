@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Nepali\n"
@@ -98,7 +98,7 @@ msgstr "सक्रिय प्रदर्शनमा:"
 
 #: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
-msgstr "सक्रिय प्रदर्शन पत्ता लगाउनको लागि सेकेन्डमा मतदान अन्तराल"
+msgstr "सक्रिय प्रदर्शन पत्ता लगाउनको लागि सेकेन्डमा जाँच अन्तराल"
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
@@ -647,7 +647,7 @@ msgstr "_सबै बन्द गर्नुहोस्"
 msgid "_Close"
 msgstr "_बन्द गर्नुहोस्"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s सँग खोल्न छोड्नुहोस्"
