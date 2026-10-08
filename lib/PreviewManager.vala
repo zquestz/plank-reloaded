@@ -54,6 +54,16 @@ namespace Plank {
     uint poll_timer_id = 0U;
     int64 away_since = 0;
 
+    // Each window's last thumbnail, at the largest thumbnail's size in
+    // device pixels, so windows that can't be captured now still have one
+    Gee.HashMap<ulong, Gdk.Pixbuf> thumbnails = new Gee.HashMap<ulong, Gdk.Pixbuf> ();
+    int thumbnails_width = 0;
+    int thumbnails_height = 0;
+
+    // The windows with tiles still to capture, one per pass of the main loop
+    Gee.ArrayList<ulong> pending_captures = new Gee.ArrayList<ulong> ();
+    uint capture_idle_id = 0U;
+
     public PreviewManager (DockController controller) {
       GLib.Object (controller : controller);
     }
@@ -72,6 +82,7 @@ namespace Plank {
       screen.active_workspace_changed.connect (workspace_changed);
       // Window managers like Compiz switch viewports instead of workspaces
       screen.viewports_changed.connect (workspace_changed);
+      screen.window_closed.connect (window_closed);
     }
 
     ~PreviewManager () {
@@ -85,6 +96,7 @@ namespace Plank {
       unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
       screen.active_workspace_changed.disconnect (workspace_changed);
       screen.viewports_changed.disconnect (workspace_changed);
+      screen.window_closed.disconnect (window_closed);
 
       dismiss ();
       popup.destroy ();
@@ -168,6 +180,7 @@ namespace Plank {
      */
     internal void dismiss () {
       stop_open_timer ();
+      stop_captures ();
 
       if (poll_timer_id > 0U) {
         GLib.Source.remove (poll_timer_id);
@@ -219,47 +232,64 @@ namespace Plank {
         return;
       }
 
+      // A popup moving to another item leaves its captures behind
+      stop_captures ();
+
       unowned PositionManager position_manager = controller.position_manager;
       var monitor = position_manager.get_raw_monitor_geometry ();
       var size = controller.prefs.PreviewSize;
+      var scale = popup.get_scale_factor ();
 
-      var entries = create_entries (item, windows, size, monitor);
+      // Thumbnails are kept at the largest thumbnail's size, so a new size,
+      // scale or monitor shape makes the kept ones the wrong size
+      var max_width = size * scale;
+      var max_height = preview_thumbnail_height (size, monitor) * scale;
+      if (max_width != thumbnails_width || max_height != thumbnails_height) {
+        thumbnails.clear ();
+        thumbnails_width = max_width;
+        thumbnails_height = max_height;
+      }
+
+      var entries = create_entries (item, windows, scale);
 
       position_manager.get_hover_position (item, out anchor_x, out anchor_y);
       shown_position = position_manager.Position;
       shown_dock_region = position_manager.get_dock_window_region ();
       shown_area = position_manager.get_monitor_geometry ();
 
-      popup.show_entries (entries, shown_position, anchor_x, anchor_y, shown_area, monitor, size);
+      var shown = popup.show_entries (entries, shown_position, anchor_x, anchor_y, shown_area, monitor, size);
 
       shown_item = item;
       away_since = 0;
+
+      // Only the windows with tiles are captured, once the popup has shown,
+      // and never without compositing
+      if (popup.get_screen ().is_composited ()) {
+        for (var i = 0; i < shown; i++)
+          pending_captures.add (entries[i].xid);
+
+        capture_idle_id = Gdk.threads_add_idle_full (GLib.Priority.DEFAULT_IDLE, capture_next);
+      }
 
       if (poll_timer_id == 0U)
         poll_timer_id = Gdk.threads_add_timeout (POLL_INTERVAL, poll);
     }
 
-    Gee.ArrayList<PreviewEntry> create_entries (ApplicationDockItem item, Gee.List<Bamf.Window> windows,
-                                                int size, Gdk.Rectangle monitor) {
+    Gee.ArrayList<PreviewEntry> create_entries (ApplicationDockItem item, Gee.List<Bamf.Window> windows, int scale) {
       var entries = new Gee.ArrayList<PreviewEntry> ();
-      var scale = popup.get_scale_factor ();
 
       // Without compositing, the covered parts of windows hold nothing to
       // show, so every tile gets the icon
       var composited = popup.get_screen ().is_composited ();
-      unowned Wnck.Workspace? workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
-
-      // Captures shrink to the largest thumbnail right away, rather than all
-      // being held at full size
-      var max_width = size * scale;
-      var max_height = preview_thumbnail_height (size, monitor) * scale;
 
       Gdk.Pixbuf? icon = null;
 
       foreach (var window in windows) {
-        Gdk.Pixbuf? thumbnail = null;
-        if (composited && is_on_screen (window, workspace))
-          thumbnail = capture (window, max_width, max_height);
+        var xid = window.get_xid ();
+
+        // A window's last thumbnail shows until it is captured again, if it
+        // is on screen
+        var thumbnail = (composited ? thumbnails[xid] : null);
 
         // The item's themed icon, loaded once, is sharper than the windows'
         // own, which Wnck keeps at 32 pixels
@@ -268,11 +298,46 @@ namespace Plank {
           icon = DrawingService.load_icon (item.Icon, icon_size, icon_size);
         }
 
-        entries.add (new PreviewEntry (window.get_xid (), item.shorten_window_name (window.get_name ()),
+        entries.add (new PreviewEntry (xid, item.shorten_window_name (window.get_name ()),
                                        thumbnail, icon, window.is_active ()));
       }
 
       return entries;
+    }
+
+    // Captures the next window with a tile that is on screen, keeps its
+    // thumbnail and puts it on the tile, one window per pass of the main
+    // loop so the popup stays responsive
+    bool capture_next () {
+      unowned Wnck.Workspace? workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
+
+      while (!pending_captures.is_empty) {
+        var xid = pending_captures.remove_at (0);
+
+        var window = find_window (xid);
+        if (window == null || !is_on_screen (window, workspace))
+          continue;
+
+        var thumbnail = capture (window, thumbnails_width, thumbnails_height);
+        if (thumbnail == null)
+          continue;
+
+        thumbnails[xid] = thumbnail;
+        popup.set_thumbnail (xid, thumbnail);
+        return true;
+      }
+
+      capture_idle_id = 0U;
+      return false;
+    }
+
+    void stop_captures () {
+      if (capture_idle_id > 0U) {
+        GLib.Source.remove (capture_idle_id);
+        capture_idle_id = 0U;
+      }
+
+      pending_captures.clear ();
     }
 
     // Whether a window is on screen, where its contents can be captured:
@@ -400,8 +465,13 @@ namespace Plank {
     }
 
     void previews_enabled_changed () {
-      if (!controller.prefs.PreviewsEnabled)
-        close ();
+      if (controller.prefs.PreviewsEnabled)
+        return;
+
+      close ();
+
+      // Turning previews off frees the memory their thumbnails took
+      thumbnails.clear ();
     }
 
     void hidden_changed () {
@@ -418,6 +488,10 @@ namespace Plank {
 
     void workspace_changed () {
       close ();
+    }
+
+    void window_closed (Wnck.Screen screen, Wnck.Window window) {
+      thumbnails.unset (window.get_xid ());
     }
   }
 }

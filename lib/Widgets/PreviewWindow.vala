@@ -71,6 +71,11 @@ namespace Plank {
      */
     public ulong xid { get; construct; }
 
+    /**
+     * The window's thumbnail or icon, which a newer thumbnail can replace.
+     */
+    public Gtk.Image image { get; private set; }
+
     Gtk.Image close_icon;
     bool hovered = false;
 
@@ -80,8 +85,10 @@ namespace Plank {
      * @param entry the window
      * @param image the window's thumbnail or icon, sized for the tile
      */
-    public PreviewTile (PreviewEntry entry, Gtk.Widget image) {
+    public PreviewTile (PreviewEntry entry, Gtk.Image image) {
       GLib.Object (xid: entry.xid);
+
+      this.image = image;
 
       var title = create_title (entry.title, entry.active);
       title.hexpand = true;
@@ -272,6 +279,10 @@ namespace Plank {
 
     Gtk.Box line;
 
+    // The size of the tiles' thumbnails, which newer thumbnails fit into
+    int frame_width;
+    int frame_height;
+
     public PreviewWindow () {
       GLib.Object (type: Gtk.WindowType.POPUP, type_hint: Gdk.WindowTypeHint.TOOLTIP);
     }
@@ -305,15 +316,16 @@ namespace Plank {
      * @param area the dock's area, the monitor or its work area
      * @param monitor the dock's monitor, whose shape the thumbnails take
      * @param size the preferred thumbnail width
+     * @return how many windows got tiles, the first ones of the entries
      */
-    public void show_entries (Gee.List<PreviewEntry> entries, Gtk.PositionType position,
-                              int anchor_x, int anchor_y, Gdk.Rectangle area,
-                              Gdk.Rectangle monitor, int size) {
+    public int show_entries (Gee.List<PreviewEntry> entries, Gtk.PositionType position,
+                             int anchor_x, int anchor_y, Gdk.Rectangle area,
+                             Gdk.Rectangle monitor, int size) {
       clear_tiles ();
 
       if (entries.is_empty) {
         hide ();
-        return;
+        return 0;
       }
 
       var horizontal = (position == Gtk.PositionType.TOP || position == Gtk.PositionType.BOTTOM);
@@ -361,6 +373,8 @@ namespace Plank {
                               TILE_SPACING);
 
       var thumbnail_height = preview_thumbnail_height (thumbnail_width, monitor);
+      frame_width = thumbnail_width;
+      frame_height = thumbnail_height;
 
       for (var i = 0; i < shown; i++)
         line.add (create_tile (entries[i], thumbnail_width, thumbnail_height));
@@ -384,6 +398,26 @@ namespace Plank {
       move (x, y);
 
       shown_region = { x, y, natural.width, natural.height };
+
+      return shown;
+    }
+
+    /**
+     * Puts a newer thumbnail on a window's tile, in place, as the tile keeps
+     * its size.
+     *
+     * @param xid the window's X id
+     * @param thumbnail the window's picture, in device pixels
+     */
+    internal void set_thumbnail (ulong xid, Gdk.Pixbuf thumbnail) {
+      foreach (unowned Gtk.Widget child in line.get_children ()) {
+        unowned PreviewTile? tile = (child as PreviewTile);
+        if (tile == null || tile.xid != xid)
+          continue;
+
+        tile.image.set_from_surface (create_surface (thumbnail, frame_width, frame_height));
+        return;
+      }
     }
 
     /**
@@ -411,27 +445,25 @@ namespace Plank {
       image.set_size_request (thumbnail_width, thumbnail_height);
 
       // A thumbnail may take the whole frame, an icon only its icon size
-      Gdk.Pixbuf? pixbuf = entry.thumbnail;
-      var width = thumbnail_width;
-      var height = thumbnail_height;
-
-      if (pixbuf == null) {
-        pixbuf = entry.icon;
-        width = height = int.min (ICON_SIZE, thumbnail_height);
+      if (entry.thumbnail != null) {
+        image.set_from_surface (create_surface (entry.thumbnail, thumbnail_width, thumbnail_height));
+      } else if (entry.icon != null) {
+        var icon_size = int.min (ICON_SIZE, thumbnail_height);
+        image.set_from_surface (create_surface (entry.icon, icon_size, icon_size));
       }
 
-      if (pixbuf == null)
-        return image;
-
-      // Pixbufs hold device pixels, which a surface with the scale factor
-      // draws sharp on HiDPI screens; they only ever shrink to fit
-      var scale = get_scale_factor ();
-      if (pixbuf.width > width * scale || pixbuf.height > height * scale)
-        pixbuf = DrawingService.ar_scale (pixbuf, width * scale, height * scale);
-
-      image.set_from_surface (Gdk.cairo_surface_create_from_pixbuf (pixbuf, scale, null));
-
       return image;
+    }
+
+    // Pixbufs hold device pixels, which a surface with the scale factor
+    // draws sharp on HiDPI screens; they only ever shrink to fit
+    Cairo.Surface create_surface (Gdk.Pixbuf pixbuf, int width, int height) {
+      var scale = get_scale_factor ();
+      var fitted = pixbuf;
+      if (pixbuf.width > width * scale || pixbuf.height > height * scale)
+        fitted = DrawingService.ar_scale (pixbuf, width * scale, height * scale);
+
+      return Gdk.cairo_surface_create_from_pixbuf (fitted, scale, null);
     }
 
     Gtk.Widget create_count (int count, int thumbnail_width, int thumbnail_height, int title_height) {
