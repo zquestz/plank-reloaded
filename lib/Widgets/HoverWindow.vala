@@ -46,13 +46,7 @@ namespace Plank {
 
     construct
     {
-      app_paintable = true;
-      resizable = false;
-
-      unowned Gdk.Screen screen = get_screen ();
-      set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
-
-      get_style_context ().add_class (Gtk.STYLE_CLASS_TOOLTIP);
+      init_tooltip_window (this);
 
       box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
       box.set_margin_start (6);
@@ -136,33 +130,61 @@ namespace Plank {
      * {@inheritDoc}
      */
     public override bool draw (Cairo.Context cr) {
-      var width = get_allocated_width ();
-      var height = get_allocated_height ();
-      unowned Gtk.StyleContext context = get_style_context ();
-      var screen = get_screen ();
-
-      if (screen.is_composited ()) {
-        cr.save ();
-        cr.set_operator (Cairo.Operator.CLEAR);
-        cr.paint ();
-        cr.restore ();
-
-        shape_combine_region (null);
-
-        context.render_background (cr, 0, 0, width, height);
-        context.render_frame (cr, 0, 0, width, height);
-      } else {
-        var surface = get_window ().create_similar_surface (Cairo.Content.COLOR_ALPHA, width, height);
-        var compat_cr = new Cairo.Context (surface);
-
-        context.render_background (compat_cr, 0, 0, width, height);
-        context.render_frame (compat_cr, 0, 0, width, height);
-
-        var region = Gdk.cairo_region_create_from_surface (surface);
-        shape_combine_region (region);
-      }
+      draw_tooltip_window (this, cr);
 
       return base.draw (cr);
+    }
+  }
+
+  /**
+   * Sets a popup window up to look like a tooltip, as the dock's hover
+   * labels and window previews do.
+   *
+   * @param window the window
+   */
+  internal void init_tooltip_window (Gtk.Window window) {
+    window.app_paintable = true;
+    window.resizable = false;
+
+    unowned Gdk.Screen screen = window.get_screen ();
+    window.set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
+
+    window.get_style_context ().add_class (Gtk.STYLE_CLASS_TOOLTIP);
+  }
+
+  /**
+   * Draws a tooltip-like window's background and frame from the theme.
+   * Without compositing the window can't be transparent, so it is shaped
+   * to them instead.
+   *
+   * @param window the window
+   * @param cr the context to draw on
+   */
+  internal void draw_tooltip_window (Gtk.Window window, Cairo.Context cr) {
+    var width = window.get_allocated_width ();
+    var height = window.get_allocated_height ();
+    unowned Gtk.StyleContext context = window.get_style_context ();
+    var screen = window.get_screen ();
+
+    if (screen.is_composited ()) {
+      cr.save ();
+      cr.set_operator (Cairo.Operator.CLEAR);
+      cr.paint ();
+      cr.restore ();
+
+      window.shape_combine_region (null);
+
+      context.render_background (cr, 0, 0, width, height);
+      context.render_frame (cr, 0, 0, width, height);
+    } else {
+      var surface = window.get_window ().create_similar_surface (Cairo.Content.COLOR_ALPHA, width, height);
+      var compat_cr = new Cairo.Context (surface);
+
+      context.render_background (compat_cr, 0, 0, width, height);
+      context.render_frame (compat_cr, 0, 0, width, height);
+
+      var region = Gdk.cairo_region_create_from_surface (surface);
+      window.shape_combine_region (region);
     }
   }
 }

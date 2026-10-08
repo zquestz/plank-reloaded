@@ -28,7 +28,9 @@ namespace Plank {
   internal class PreviewManager : GLib.Object {
     // How often the pointer is checked while the popup is open
     const uint POLL_INTERVAL = 100U;
-    // How long the pointer may be away before the popup closes
+    // How long the pointer may be away before the popup closes, counted from
+    // the first poll that finds it away, so the popup closes 300-400 ms after
+    // the pointer leaves
     const uint CLOSE_DELAY = 250U;
     // How long an open popup waits before following the pointer to another
     // item, so sweeping across the dock doesn't open every application
