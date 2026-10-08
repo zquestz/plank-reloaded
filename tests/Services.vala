@@ -357,6 +357,23 @@ namespace PlankTests {
     run.append ("🇯");
     assert (Helpers.truncate_middle ("a" + x + run.str, 7) == "axx…🇯🇵🇯🇵🇯");
 
+    // and where it would begin at the run's third code point
+    var even_run = new StringBuilder ();
+    for (var i = 0; i < 513; i++) {
+      even_run.append ("🇯🇵");
+    }
+    assert (Helpers.truncate_middle ("a" + x + even_run.str, 7) == "axx…🇯🇵🇯🇵🇯🇵");
+
+    // Text exactly at the limit stays whole, even where the end's analysis
+    // begins inside a character whose start it can't see: here two women
+    // joined across thousands of accents make one character
+    var joined = new StringBuilder ("ab👩");
+    for (var i = 0; i < 3000; i++) {
+      joined.append_unichar (0x301);
+    }
+    joined.append (zwj + "👩cd");
+    assert (Helpers.truncate_middle (joined.str, 5) == joined.str);
+
     // Absurd text, whose ends hold too few characters for the cuts, is
     // analyzed whole: here a letter carrying thousands of accents
     var accented = new StringBuilder ("e");

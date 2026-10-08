@@ -101,8 +101,8 @@ namespace Plank {
      * character starts somewhere depends only on the text just before it,
      * so the end window, which may begin inside a character, can misread
      * only its first two characters. Flags are the exception, as they pair
-     * up from the start of their run, so that window begins with any run it
-     * would begin inside.
+     * up from the start of their run, so that window begins on the start of
+     * a pair.
      *
      * @param str the string, of more than twice window code points
      * @param code_points the string's code point count
@@ -126,22 +126,30 @@ namespace Plank {
         return head.substring (0, left_end);
       }
 
+      // A window that would begin after an odd number of a run's indicators
+      // begins one earlier, which takes counting them but no copying
       var tail_start = (int) str.index_of_nth_char (code_points - window);
       if (is_regional_indicator (str.get_char (tail_start))) {
         var index = tail_start;
+        var preceding = 0;
         unichar previous;
         while (str.get_prev_char (ref index, out previous) && is_regional_indicator (previous)) {
-          tail_start = index;
+          preceding++;
+        }
+
+        if (preceding % 2 == 1) {
+          str.get_prev_char (ref tail_start, out previous);
         }
       }
 
       // The cut has to come after the two characters the end window may
-      // misread
+      // misread and at least one more, which proves the text holds more than
+      // max_length characters
       var tail = str.substring (tail_start);
       var tail_attrs = analyze_characters (tail, tail.char_count ());
       var tail_chars = count_characters (tail_attrs);
       var right_chars = max_length - left_chars - 1;
-      if (tail_chars - right_chars < 2) {
+      if (tail_chars - right_chars <= 2) {
         return null;
       }
 
