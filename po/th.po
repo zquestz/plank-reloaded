@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-09-30 14:54-1000\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
 "PO-Revision-Date: 2025-11-13 02:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
@@ -68,186 +68,206 @@ msgstr "การตั้งค่า Docklet"
 msgid "Dock"
 msgstr "ด็อก"
 
-#: data/ui/preferences.ui:93
+#: data/ui/preferences.ui:102
 msgid "Theme:"
 msgstr "ธีม:"
 
-#: data/ui/preferences.ui:106
+#: data/ui/preferences.ui:115
 msgid "Position:"
 msgstr "ตำแหน่ง:"
 
-#: data/ui/preferences.ui:133
+#: data/ui/preferences.ui:142
 msgid "Left"
 msgstr "ด้านซ้าย"
 
-#: data/ui/preferences.ui:134
+#: data/ui/preferences.ui:143
 msgid "Right"
 msgstr "ด้านขวา"
 
-#: data/ui/preferences.ui:135
+#: data/ui/preferences.ui:144
 msgid "Top"
 msgstr "ด้านบน"
 
-#: data/ui/preferences.ui:136
+#: data/ui/preferences.ui:145
 msgid "Bottom"
 msgstr "ด้านล่าง"
 
-#: data/ui/preferences.ui:153
+#: data/ui/preferences.ui:162
 msgid "On Active Display:"
 msgstr "บนจอแสดงผลที่ใช้งาน:"
 
-#: data/ui/preferences.ui:180
+#: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
 msgstr "ช่วงเวลาตรวจสอบเป็นวินาทีสำหรับการตรวจจับจอแสดงผลที่ใช้งาน"
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:206
 msgid "Alignment:"
 msgstr "การจัดเรียง:"
 
-#: data/ui/preferences.ui:210
+#: data/ui/preferences.ui:219
 msgid "Fill"
 msgstr "ยืดเต็มจอ"
 
-#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
+#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
 msgid "Start"
 msgstr "ต้น"
 
-#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "End"
 msgstr "ท้าย"
 
-#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "Center"
 msgstr "กึ่งกลาง"
 
-#: data/ui/preferences.ui:229
+#: data/ui/preferences.ui:238
 msgid "On Primary Display:"
 msgstr "แสดงบนหน้าจอหลักเท่านั้น:"
 
-#: data/ui/preferences.ui:255
+#: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
-msgstr "ระยะห่างจากขอบจอคิดเป็นเปอร์เซ็น"
+msgstr "ระยะห่างจากกึ่งกลางขอบจอ คิดเป็นเปอร์เซ็นต์"
 
-#: data/ui/preferences.ui:275
+#: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
 msgstr "การจัดเรียงของไอคอน:"
 
-#: data/ui/preferences.ui:305
+#: data/ui/preferences.ui:314
 msgid "Icon Size:"
 msgstr "ขนาดไอคอน:"
 
-#: data/ui/preferences.ui:371
+#: data/ui/preferences.ui:380
 msgid "Icon Zoom:"
 msgstr "ซูมไอคอน:"
 
-#: data/ui/preferences.ui:385
+#: data/ui/preferences.ui:394
 msgid "Gap Size:"
 msgstr "ขนาดช่องว่าง:"
 
-#: data/ui/preferences.ui:426
+#: data/ui/preferences.ui:435
 msgid "Screen Area:"
 msgstr "พื้นที่หน้าจอ:"
 
-#: data/ui/preferences.ui:442
+#: data/ui/preferences.ui:451
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
 msgstr ""
 "จอภาพใช้พื้นที่แสดงผลทั้งหมด พื้นที่ทำงานเว้นที่ไว้สำหรับพาเนลอื่น อัตโนมัติจะเลือกตามเดสก์ท็อปของคุณ"
 
-#: data/ui/preferences.ui:444
+#: data/ui/preferences.ui:453
 msgid "Auto"
 msgstr "อัตโนมัติ"
 
-#: data/ui/preferences.ui:445
+#: data/ui/preferences.ui:454
 msgid "Monitor"
 msgstr "จอภาพ"
 
-#: data/ui/preferences.ui:446
+#: data/ui/preferences.ui:455
 msgid "Work Area"
 msgstr "พื้นที่ทำงาน"
 
-#: data/ui/preferences.ui:470
+#: data/ui/preferences.ui:479
 msgid "Appearance"
 msgstr "ลักษณะ"
 
-#: data/ui/preferences.ui:490
+#: data/ui/preferences.ui:499
 msgid "Intellihide"
 msgstr "ซ่อนอัฉริยะ"
 
-#: data/ui/preferences.ui:491
+#: data/ui/preferences.ui:500
 msgid "Autohide"
 msgstr "ซ่อนอัตโนมัติ"
 
-#: data/ui/preferences.ui:492
+#: data/ui/preferences.ui:501
 msgid "Dodge maximized window"
 msgstr "หลบหน้าต่างที่แสดงเต็มจอ"
 
-#: data/ui/preferences.ui:493
+#: data/ui/preferences.ui:502
 msgid "Window Dodge"
 msgstr "หลบหน้าต่าง"
 
-#: data/ui/preferences.ui:494
+#: data/ui/preferences.ui:503
 msgid "Dodge active window"
 msgstr "หลบหน้าต่างที่ใช้งาน"
 
-#: data/ui/preferences.ui:520
+#: data/ui/preferences.ui:529
 msgid "Hide Dock"
 msgstr "การซ่อนดอค"
 
-#: data/ui/preferences.ui:536
+#: data/ui/preferences.ui:545
 msgid "Hide Delay:"
-msgstr "ดีเลย์ของการซ่อน"
+msgstr "ดีเลย์ของการซ่อน:"
 
-#: data/ui/preferences.ui:550
+#: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
 msgstr "ดีเลย์ก่อนซ่อนเป็นมิลลิวินาที"
 
-#: data/ui/preferences.ui:569
+#: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
-msgstr "ดีเลย์ของการเลิกซ่อน"
+msgstr "ดีเลย์ของการเลิกซ่อน:"
 
-#: data/ui/preferences.ui:583
+#: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
 msgstr "ดีเลย์ก่อนการเลิกซ่อนเป็นมิลลิวินาที"
 
-#: data/ui/preferences.ui:602
+#: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
 msgstr "แสดงด้วยการกด:"
 
-#: data/ui/preferences.ui:629
+#: data/ui/preferences.ui:638
 msgid "Item Management"
 msgstr "การจัดการรายการ"
 
-#: data/ui/preferences.ui:648
+#: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
 msgstr "แสดงรายการที่ไม่ได้ปักหมุด"
 
-#: data/ui/preferences.ui:675
+#: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
 msgstr "แสดงจำกัดเฉพาะในเวอร์สเปค"
 
-#: data/ui/preferences.ui:703
+#: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
 msgstr "เปิดใช้คำแนะนำ:"
 
-#: data/ui/preferences.ui:727
+#: data/ui/preferences.ui:739
+msgid "Window Previews:"
+msgstr "ตัวอย่างหน้าต่าง:"
+
+#: data/ui/preferences.ui:766
+msgid "Preview Delay:"
+msgstr "ดีเลย์ของการแสดงตัวอย่าง:"
+
+#: data/ui/preferences.ui:780
+msgid "Delay in ms before showing window previews"
+msgstr "ดีเลย์ก่อนการแสดงตัวอย่างหน้าต่างเป็นมิลลิวินาที"
+
+#: data/ui/preferences.ui:799
+msgid "Preview Size:"
+msgstr "ขนาดตัวอย่าง:"
+
+#: data/ui/preferences.ui:813
+msgid "Largest width of a window preview in pixels"
+msgstr "ความกว้างสูงสุดของตัวอย่างหน้าต่างเป็นพิกเซล"
+
+#: data/ui/preferences.ui:829
 msgid "Lock Icons:"
 msgstr "ล็อกไอคอน"
 
-#: data/ui/preferences.ui:754
+#: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
 msgstr "ยึด Docklet:"
 
-#: data/ui/preferences.ui:781
+#: data/ui/preferences.ui:883
 msgid "Anchor Files:"
 msgstr "ยึดไฟล์:"
 
-#: data/ui/preferences.ui:808
+#: data/ui/preferences.ui:910
 msgid "Bring to Workspace:"
 msgstr "ย้ายมาที่พื้นที่ทำงาน:"
 
-#: data/ui/preferences.ui:825
+#: data/ui/preferences.ui:927
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -255,11 +275,11 @@ msgstr ""
 "เมื่อเปิดใช้งานหน้าต่างที่อยู่ในพื้นที่ทำงานอื่น "
 "ให้ย้ายหน้าต่างมายังพื้นที่ทำงานปัจจุบันแทนการสลับไปยังพื้นที่ทำงานของหน้าต่าง"
 
-#: data/ui/preferences.ui:835
+#: data/ui/preferences.ui:937
 msgid "Behaviour"
 msgstr "พฤติกรรม"
 
-#: data/ui/preferences.ui:855
+#: data/ui/preferences.ui:957
 msgid "Docklets"
 msgstr "Docklet"
 
@@ -552,7 +572,7 @@ msgid "_Space"
 msgstr "_ช่องว่าง"
 
 #: docklets/Separator/SeparatorDockItem.vala:405
-#: docklets/Workspaces/WorkspacesDockItem.vala:653
+#: docklets/Workspaces/WorkspacesDockItem.vala:656
 msgid "_Invert Color"
 msgstr "_กลับสี"
 
@@ -581,12 +601,12 @@ msgstr "พื้นที่ทำงาน"
 msgid "Workspace %d of %d"
 msgstr "พื้นที่ทำงาน %d จาก %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:631
+#: docklets/Workspaces/WorkspacesDockItem.vala:634
 #, c-format
 msgid "Workspace %d"
 msgstr "พื้นที่ทำงาน %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:660
+#: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
 msgstr "แสดง_ตัวอย่างสด"
 
@@ -611,20 +631,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  คเชนทร์ https://launchpad.net/~kachaint"
 
-#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "เก็บไว้ในดอค"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close All"
 msgstr "ปิดทั้งหมด"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: lib/Items/ApplicationDockItem.vala:762
+#: lib/Items/ApplicationDockItem.vala:783
 #, c-format
 msgid "Drop to open with %s"
 msgstr "ลากวางเพื่อเปิดด้วย %s"
@@ -725,7 +745,7 @@ msgstr "เ_กี่ยวกับ"
 msgid "_Quit"
 msgstr "_ออก"
 
-#: lib/Widgets/PreferencesWindow.vala:107
+#: lib/Widgets/PreferencesWindow.vala:117
 msgid "Preferences"
 msgstr "ปรับแต่ง"
 

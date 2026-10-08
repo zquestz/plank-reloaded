@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-09-30 14:54-1000\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Telugu\n"
@@ -67,87 +67,87 @@ msgstr "డాక్‌లెట్స్ ఎంపికలు"
 msgid "Dock"
 msgstr "డాక్"
 
-#: data/ui/preferences.ui:93
+#: data/ui/preferences.ui:102
 msgid "Theme:"
 msgstr "థీమ్:"
 
-#: data/ui/preferences.ui:106
+#: data/ui/preferences.ui:115
 msgid "Position:"
 msgstr "స్థానం:"
 
-#: data/ui/preferences.ui:133
+#: data/ui/preferences.ui:142
 msgid "Left"
 msgstr "ఎడమ వైపు"
 
-#: data/ui/preferences.ui:134
+#: data/ui/preferences.ui:143
 msgid "Right"
 msgstr "కుడి వైపు"
 
-#: data/ui/preferences.ui:135
+#: data/ui/preferences.ui:144
 msgid "Top"
 msgstr "పైన"
 
-#: data/ui/preferences.ui:136
+#: data/ui/preferences.ui:145
 msgid "Bottom"
 msgstr "అడుగున"
 
-#: data/ui/preferences.ui:153
+#: data/ui/preferences.ui:162
 msgid "On Active Display:"
 msgstr "చురుకైన డిస్‌ప్లేపై:"
 
-#: data/ui/preferences.ui:180
+#: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
 msgstr "చురుకైన డిస్‌ప్లే గుర్తింపు కోసం సెకన్లలో పోలింగ్ విరామం"
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:206
 msgid "Alignment:"
 msgstr "సర్దుబాటు:"
 
-#: data/ui/preferences.ui:210
+#: data/ui/preferences.ui:219
 msgid "Fill"
 msgstr "నింపుము"
 
-#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
+#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
 msgid "Start"
 msgstr "ప్రారంభంలో"
 
-#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "End"
 msgstr "చివరిలో"
 
-#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "Center"
 msgstr "మధ్యలో"
 
-#: data/ui/preferences.ui:229
+#: data/ui/preferences.ui:238
 msgid "On Primary Display:"
 msgstr "ప్రధాన డిస్ప్లే"
 
-#: data/ui/preferences.ui:255
+#: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "స్క్రీన్ ఎడ్జ్ నుంచి పెర్సెంట్ లో కొలువు"
 
-#: data/ui/preferences.ui:275
+#: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
 msgstr "ఇకాన్ ల క్రమం"
 
-#: data/ui/preferences.ui:305
+#: data/ui/preferences.ui:314
 msgid "Icon Size:"
-msgstr "ఇకాన్ పరిమాణం"
+msgstr "ఇకాన్ పరిమాణం:"
 
-#: data/ui/preferences.ui:371
+#: data/ui/preferences.ui:380
 msgid "Icon Zoom:"
 msgstr "ఐకాన్ జూమ్:"
 
-#: data/ui/preferences.ui:385
+#: data/ui/preferences.ui:394
 msgid "Gap Size:"
 msgstr "గ్యాప్ పరిమాణం:"
 
-#: data/ui/preferences.ui:426
+#: data/ui/preferences.ui:435
 msgid "Screen Area:"
 msgstr "స్క్రీన్ ప్రాంతం:"
 
-#: data/ui/preferences.ui:442
+#: data/ui/preferences.ui:451
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -155,99 +155,119 @@ msgstr ""
 "మానిటర్ మొత్తం డిస్‌ప్లేను ఉపయోగిస్తుంది. పని ప్రాంతం ఇతర ప్యానెల్‌లకు స్థలం వదులుతుంది. స్వయంచాలకం మీ "
 "డెస్క్‌టాప్ ఆధారంగా ఎంచుకుంటుంది."
 
-#: data/ui/preferences.ui:444
+#: data/ui/preferences.ui:453
 msgid "Auto"
 msgstr "స్వయంచాలకం"
 
-#: data/ui/preferences.ui:445
+#: data/ui/preferences.ui:454
 msgid "Monitor"
 msgstr "మానిటర్"
 
-#: data/ui/preferences.ui:446
+#: data/ui/preferences.ui:455
 msgid "Work Area"
 msgstr "పని ప్రాంతం"
 
-#: data/ui/preferences.ui:470
+#: data/ui/preferences.ui:479
 msgid "Appearance"
 msgstr "కనిపించు విధానం"
 
-#: data/ui/preferences.ui:490
+#: data/ui/preferences.ui:499
 msgid "Intellihide"
 msgstr "తెలివిగా దాచు"
 
-#: data/ui/preferences.ui:491
+#: data/ui/preferences.ui:500
 msgid "Autohide"
 msgstr "స్వయంగా దాచు"
 
-#: data/ui/preferences.ui:492
+#: data/ui/preferences.ui:501
 msgid "Dodge maximized window"
 msgstr "మాగ్జిమైజ్ అయిన విండో నుంచి తప్పించుకో"
 
-#: data/ui/preferences.ui:493
+#: data/ui/preferences.ui:502
 msgid "Window Dodge"
 msgstr "విండో తప్పించుకోవడం"
 
-#: data/ui/preferences.ui:494
+#: data/ui/preferences.ui:503
 msgid "Dodge active window"
 msgstr "చురుకైన విండో నుండి తప్పించుకోండి"
 
-#: data/ui/preferences.ui:520
+#: data/ui/preferences.ui:529
 msgid "Hide Dock"
 msgstr "డాక్ ను దాచిపెట్టు"
 
-#: data/ui/preferences.ui:536
+#: data/ui/preferences.ui:545
 msgid "Hide Delay:"
 msgstr "దాచే ఆలస్యం:"
 
-#: data/ui/preferences.ui:550
+#: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
 msgstr "డాక్‌ను దాచడానికి ముందు ms లో ఆలస్యం"
 
-#: data/ui/preferences.ui:569
+#: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
 msgstr "చూపించే ఆలస్యం:"
 
-#: data/ui/preferences.ui:583
+#: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
 msgstr "డాక్ ని చూపించడానికి ముందు మిల్లీసెకండ్స్ లో ఆలస్యం"
 
-#: data/ui/preferences.ui:602
+#: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
 msgstr "వత్తిడి వల్ల డాక్ ని చూపించు"
 
-#: data/ui/preferences.ui:629
+#: data/ui/preferences.ui:638
 msgid "Item Management"
 msgstr "ఐటెంలను నిర్వహించు"
 
-#: data/ui/preferences.ui:648
+#: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
 msgstr "పిన్ చేయని వాటిని చూపించు"
 
-#: data/ui/preferences.ui:675
+#: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
 msgstr "వర్క్ స్పేస్ లో మాత్రమే అనుమతించు"
 
-#: data/ui/preferences.ui:703
+#: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
 msgstr "టూల్‌టిప్స్ ప్రారంభించబడింది:"
 
-#: data/ui/preferences.ui:727
+#: data/ui/preferences.ui:739
+msgid "Window Previews:"
+msgstr "విండో ప్రివ్యూలు:"
+
+#: data/ui/preferences.ui:766
+msgid "Preview Delay:"
+msgstr "ప్రివ్యూ ఆలస్యం:"
+
+#: data/ui/preferences.ui:780
+msgid "Delay in ms before showing window previews"
+msgstr "విండో ప్రివ్యూలను చూపించడానికి ముందు ms లో ఆలస్యం"
+
+#: data/ui/preferences.ui:799
+msgid "Preview Size:"
+msgstr "ప్రివ్యూ పరిమాణం:"
+
+#: data/ui/preferences.ui:813
+msgid "Largest width of a window preview in pixels"
+msgstr "పిక్సెల్స్ లో విండో ప్రివ్యూ గరిష్ఠ వెడల్పు"
+
+#: data/ui/preferences.ui:829
 msgid "Lock Icons:"
 msgstr "ఇకాన్ లను బంధించు"
 
-#: data/ui/preferences.ui:754
+#: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
 msgstr "డాక్‌లెట్స్ లంగరు:"
 
-#: data/ui/preferences.ui:781
+#: data/ui/preferences.ui:883
 msgid "Anchor Files:"
 msgstr "ఫైళ్ళ లంగరు:"
 
-#: data/ui/preferences.ui:808
+#: data/ui/preferences.ui:910
 msgid "Bring to Workspace:"
 msgstr "వర్క్‌స్పేస్‌కు తీసుకురండి:"
 
-#: data/ui/preferences.ui:825
+#: data/ui/preferences.ui:927
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -255,11 +275,11 @@ msgstr ""
 "మరొక వర్క్‌స్పేస్‌లో ఉన్న విండోను సక్రియం చేస్తున్నప్పుడు, విండో వర్క్‌స్పేస్‌కు మారడానికి బదులుగా దాన్ని "
 "ప్రస్తుత వర్క్‌స్పేస్‌కు తరలించండి."
 
-#: data/ui/preferences.ui:835
+#: data/ui/preferences.ui:937
 msgid "Behaviour"
 msgstr "ప్రవర్తన"
 
-#: data/ui/preferences.ui:855
+#: data/ui/preferences.ui:957
 msgid "Docklets"
 msgstr "డాక్‌లెట్స్"
 
@@ -555,7 +575,7 @@ msgid "_Space"
 msgstr "_ఖాళీ"
 
 #: docklets/Separator/SeparatorDockItem.vala:405
-#: docklets/Workspaces/WorkspacesDockItem.vala:653
+#: docklets/Workspaces/WorkspacesDockItem.vala:656
 msgid "_Invert Color"
 msgstr "_రంగును తిప్పండి"
 
@@ -584,12 +604,12 @@ msgstr "వర్క్‌స్పేస్‌లు"
 msgid "Workspace %d of %d"
 msgstr "వర్క్‌స్పేస్ %d / %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:631
+#: docklets/Workspaces/WorkspacesDockItem.vala:634
 #, c-format
 msgid "Workspace %d"
 msgstr "వర్క్‌స్పేస్ %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:660
+#: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
 msgstr "_లైవ్ ప్రివ్యూలు"
 
@@ -613,20 +633,20 @@ msgstr ""
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  Venkata Jaswanth https://launchpad.net/~aj-jaswanth"
 
-#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "డాక్ లోనే ఉంచు"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close All"
 msgstr "అన్నీ మూసివేయి (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close"
 msgstr "మూసివేయి (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:762
+#: lib/Items/ApplicationDockItem.vala:783
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s తో తెరవడానికి వదలండి"
@@ -727,7 +747,7 @@ msgstr "_గురించి"
 msgid "_Quit"
 msgstr "_నిష్క్రమించు"
 
-#: lib/Widgets/PreferencesWindow.vala:107
+#: lib/Widgets/PreferencesWindow.vala:117
 msgid "Preferences"
 msgstr "ప్రాధాన్యతలు"
 

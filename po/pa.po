@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-09-30 14:54-1000\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Punjabi\n"
@@ -68,87 +68,87 @@ msgstr "ਡੌਕਲੈੱਟਸ ਪਸੰਦਾਂ"
 msgid "Dock"
 msgstr "ਡੌਕ"
 
-#: data/ui/preferences.ui:93
+#: data/ui/preferences.ui:102
 msgid "Theme:"
 msgstr "ਥੀਮ:"
 
-#: data/ui/preferences.ui:106
+#: data/ui/preferences.ui:115
 msgid "Position:"
 msgstr "ਸਥਿਤੀ:"
 
-#: data/ui/preferences.ui:133
+#: data/ui/preferences.ui:142
 msgid "Left"
 msgstr "ਖੱਬੇ"
 
-#: data/ui/preferences.ui:134
+#: data/ui/preferences.ui:143
 msgid "Right"
 msgstr "ਸੱਜੇ"
 
-#: data/ui/preferences.ui:135
+#: data/ui/preferences.ui:144
 msgid "Top"
 msgstr "ਉੱਪਰ"
 
-#: data/ui/preferences.ui:136
+#: data/ui/preferences.ui:145
 msgid "Bottom"
 msgstr "ਹੇਠਾਂ"
 
-#: data/ui/preferences.ui:153
+#: data/ui/preferences.ui:162
 msgid "On Active Display:"
 msgstr "ਸਰਗਰਮ ਡਿਸਪਲੇ 'ਤੇ:"
 
-#: data/ui/preferences.ui:180
+#: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
 msgstr "ਸਰਗਰਮ ਡਿਸਪਲੇ ਖੋਜ ਲਈ ਸਕਿੰਟਾਂ ਵਿੱਚ ਪੋਲਿੰਗ ਅੰਤਰਾਲ"
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:206
 msgid "Alignment:"
 msgstr "ਇਕਸਾਰ:"
 
-#: data/ui/preferences.ui:210
+#: data/ui/preferences.ui:219
 msgid "Fill"
 msgstr "ਭਰੋ"
 
-#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
+#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
 msgid "Start"
 msgstr "ਸ਼ੁਰੂ"
 
-#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "End"
 msgstr "ਅੰਤ"
 
-#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "Center"
 msgstr "ਕੇਂਦਰ"
 
-#: data/ui/preferences.ui:229
+#: data/ui/preferences.ui:238
 msgid "On Primary Display:"
 msgstr "ਮੁੱਖ ਡਿਸਪਲੇ 'ਤੇ:"
 
-#: data/ui/preferences.ui:255
+#: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "ਸਕਰੀਨ-ਕਿਨਾਰੇ ਦੇ ਕੇਂਦਰ ਤੋਂ ਪ੍ਰਤੀਸ਼ਤ ਵਿੱਚ ਆਫਸੈੱਟ"
 
-#: data/ui/preferences.ui:275
+#: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
 msgstr "ਆਈਕਨ ਇਕਸਾਰ:"
 
-#: data/ui/preferences.ui:305
+#: data/ui/preferences.ui:314
 msgid "Icon Size:"
 msgstr "ਆਈਕਨ ਆਕਾਰ:"
 
-#: data/ui/preferences.ui:371
+#: data/ui/preferences.ui:380
 msgid "Icon Zoom:"
 msgstr "ਆਈਕਨ ਜ਼ੂਮ:"
 
-#: data/ui/preferences.ui:385
+#: data/ui/preferences.ui:394
 msgid "Gap Size:"
 msgstr "ਖਾਲੀ ਥਾਂ ਆਕਾਰ:"
 
-#: data/ui/preferences.ui:426
+#: data/ui/preferences.ui:435
 msgid "Screen Area:"
 msgstr "ਸਕ੍ਰੀਨ ਖੇਤਰ:"
 
-#: data/ui/preferences.ui:442
+#: data/ui/preferences.ui:451
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -156,99 +156,119 @@ msgstr ""
 "ਮਾਨੀਟਰ ਪੂਰੀ ਡਿਸਪਲੇਅ ਵਰਤਦਾ ਹੈ। ਕੰਮ ਦਾ ਖੇਤਰ ਹੋਰ ਪੈਨਲਾਂ ਲਈ ਥਾਂ ਛੱਡਦਾ ਹੈ। ਆਪਣੇ-ਆਪ ਤੁਹਾਡੇ "
 "ਡੈਸਕਟਾਪ ਮੁਤਾਬਕ ਚੁਣਦਾ ਹੈ।"
 
-#: data/ui/preferences.ui:444
+#: data/ui/preferences.ui:453
 msgid "Auto"
 msgstr "ਆਪਣੇ-ਆਪ"
 
-#: data/ui/preferences.ui:445
+#: data/ui/preferences.ui:454
 msgid "Monitor"
 msgstr "ਮਾਨੀਟਰ"
 
-#: data/ui/preferences.ui:446
+#: data/ui/preferences.ui:455
 msgid "Work Area"
 msgstr "ਕੰਮ ਦਾ ਖੇਤਰ"
 
-#: data/ui/preferences.ui:470
+#: data/ui/preferences.ui:479
 msgid "Appearance"
 msgstr "ਦਿੱਖ"
 
-#: data/ui/preferences.ui:490
+#: data/ui/preferences.ui:499
 msgid "Intellihide"
 msgstr "ਬੁੱਧੀਮਾਨ ਲੁਕਾਓ"
 
-#: data/ui/preferences.ui:491
+#: data/ui/preferences.ui:500
 msgid "Autohide"
 msgstr "ਆਪਣੇ-ਆਪ ਲੁਕਾਓ"
 
-#: data/ui/preferences.ui:492
+#: data/ui/preferences.ui:501
 msgid "Dodge maximized window"
 msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਵਿੰਡੋ ਤੋਂ ਬਚੋ"
 
-#: data/ui/preferences.ui:493
+#: data/ui/preferences.ui:502
 msgid "Window Dodge"
 msgstr "ਵਿੰਡੋ ਬਚਾਅ"
 
-#: data/ui/preferences.ui:494
+#: data/ui/preferences.ui:503
 msgid "Dodge active window"
 msgstr "ਸਰਗਰਮ ਵਿੰਡੋ ਤੋਂ ਬਚੋ"
 
-#: data/ui/preferences.ui:520
+#: data/ui/preferences.ui:529
 msgid "Hide Dock"
 msgstr "ਡੌਕ ਲੁਕਾਓ"
 
-#: data/ui/preferences.ui:536
+#: data/ui/preferences.ui:545
 msgid "Hide Delay:"
 msgstr "ਲੁਕਾਉਣ ਵਿੱਚ ਦੇਰੀ:"
 
-#: data/ui/preferences.ui:550
+#: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
 msgstr "ਡੌਕ ਨੂੰ ਲੁਕਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ms ਵਿੱਚ ਦੇਰੀ"
 
-#: data/ui/preferences.ui:569
+#: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
 msgstr "ਦਿਖਾਉਣ ਵਿੱਚ ਦੇਰੀ:"
 
-#: data/ui/preferences.ui:583
+#: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
 msgstr "ਡੌਕ ਨੂੰ ਦਿਖਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ms ਵਿੱਚ ਦੇਰੀ"
 
-#: data/ui/preferences.ui:602
+#: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
 msgstr "ਦਬਾਅ ਪ੍ਰਗਟ:"
 
-#: data/ui/preferences.ui:629
+#: data/ui/preferences.ui:638
 msgid "Item Management"
 msgstr "ਆਈਟਮ ਪ੍ਰਬੰਧਨ"
 
-#: data/ui/preferences.ui:648
+#: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
 msgstr "ਅਨਪਿੰਨ ਕੀਤੇ ਦਿਖਾਓ:"
 
-#: data/ui/preferences.ui:675
+#: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
 msgstr "ਵਰਕਸਪੇਸ ਤੱਕ ਸੀਮਿਤ ਕਰੋ:"
 
-#: data/ui/preferences.ui:703
+#: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
 msgstr "ਟੂਲਟਿਪਸ ਸਮਰੱਥ:"
 
-#: data/ui/preferences.ui:727
+#: data/ui/preferences.ui:739
+msgid "Window Previews:"
+msgstr "ਵਿੰਡੋ ਪੂਰਵਦਰਸ਼ਨ:"
+
+#: data/ui/preferences.ui:766
+msgid "Preview Delay:"
+msgstr "ਪੂਰਵਦਰਸ਼ਨ ਵਿੱਚ ਦੇਰੀ:"
+
+#: data/ui/preferences.ui:780
+msgid "Delay in ms before showing window previews"
+msgstr "ਵਿੰਡੋ ਪੂਰਵਦਰਸ਼ਨ ਨੂੰ ਦਿਖਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ms ਵਿੱਚ ਦੇਰੀ"
+
+#: data/ui/preferences.ui:799
+msgid "Preview Size:"
+msgstr "ਪੂਰਵਦਰਸ਼ਨ ਆਕਾਰ:"
+
+#: data/ui/preferences.ui:813
+msgid "Largest width of a window preview in pixels"
+msgstr "ਪਿਕਸਲਾਂ ਵਿੱਚ ਵਿੰਡੋ ਪੂਰਵਦਰਸ਼ਨ ਦੀ ਵੱਧ ਤੋਂ ਵੱਧ ਚੌੜਾਈ"
+
+#: data/ui/preferences.ui:829
 msgid "Lock Icons:"
 msgstr "ਆਈਕਨ ਲਾਕ ਕਰੋ:"
 
-#: data/ui/preferences.ui:754
+#: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
 msgstr "ਡੌਕਲੈੱਟਸ ਐਂਕਰ ਕਰੋ:"
 
-#: data/ui/preferences.ui:781
+#: data/ui/preferences.ui:883
 msgid "Anchor Files:"
 msgstr "ਫਾਈਲਾਂ ਐਂਕਰ ਕਰੋ:"
 
-#: data/ui/preferences.ui:808
+#: data/ui/preferences.ui:910
 msgid "Bring to Workspace:"
 msgstr "ਵਰਕਸਪੇਸ ਉੱਤੇ ਲਿਆਓ:"
 
-#: data/ui/preferences.ui:825
+#: data/ui/preferences.ui:927
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -256,11 +276,11 @@ msgstr ""
 "ਕਿਸੇ ਹੋਰ ਵਰਕਸਪੇਸ ਉੱਤੇ ਮੌਜੂਦ ਵਿੰਡੋ ਨੂੰ ਸਰਗਰਮ ਕਰਨ ਵੇਲੇ, ਵਿੰਡੋ ਦੇ ਵਰਕਸਪੇਸ ਉੱਤੇ ਜਾਣ ਦੀ ਬਜਾਏ ਇਸ ਨੂੰ "
 "ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਉੱਤੇ ਲਿਆਓ।"
 
-#: data/ui/preferences.ui:835
+#: data/ui/preferences.ui:937
 msgid "Behaviour"
 msgstr "ਵਿਵਹਾਰ"
 
-#: data/ui/preferences.ui:855
+#: data/ui/preferences.ui:957
 msgid "Docklets"
 msgstr "ਡੌਕਲੈੱਟਸ"
 
@@ -556,7 +576,7 @@ msgid "_Space"
 msgstr "_ਖਾਲੀ ਥਾਂ"
 
 #: docklets/Separator/SeparatorDockItem.vala:405
-#: docklets/Workspaces/WorkspacesDockItem.vala:653
+#: docklets/Workspaces/WorkspacesDockItem.vala:656
 msgid "_Invert Color"
 msgstr "ਰੰਗ _ਉਲਟਾਓ"
 
@@ -585,12 +605,12 @@ msgstr "ਵਰਕਸਪੇਸ"
 msgid "Workspace %d of %d"
 msgstr "%d ਦਾ %d ਵਰਕਸਪੇਸ"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:631
+#: docklets/Workspaces/WorkspacesDockItem.vala:634
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:660
+#: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
 msgstr "_ਲਾਈਵ ਪੂਰਵਦਰਸ਼ਨ"
 
@@ -613,20 +633,20 @@ msgstr ""
 "ਅਨੁਵਾਦਕ ਸਿਹਰਾ:\n"
 "ਪਲੈਂਕ ਰੀਲੋਡਡ ਟੀਮ"
 
-#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ਡੌਕ ਵਿੱਚ _ਰੱਖੋ"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close All"
 msgstr "_ਸਾਰੇ ਬੰਦ ਕਰੋ"
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close"
 msgstr "_ਬੰਦ ਕਰੋ"
 
-#: lib/Items/ApplicationDockItem.vala:762
+#: lib/Items/ApplicationDockItem.vala:783
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s ਨਾਲ ਖੋਲ੍ਹਣ ਲਈ ਸੁੱਟੋ"
@@ -727,7 +747,7 @@ msgstr "_ਬਾਰੇ"
 msgid "_Quit"
 msgstr "_ਬੰਦ ਕਰੋ"
 
-#: lib/Widgets/PreferencesWindow.vala:107
+#: lib/Widgets/PreferencesWindow.vala:117
 msgid "Preferences"
 msgstr "ਪਸੰਦਾਂ"
 

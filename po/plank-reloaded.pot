@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded 0.11.174\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-09-30 14:54-1000\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,195 +62,215 @@ msgstr ""
 msgid "Dock"
 msgstr ""
 
-#: data/ui/preferences.ui:93
+#: data/ui/preferences.ui:102
 msgid "Theme:"
 msgstr ""
 
-#: data/ui/preferences.ui:106
+#: data/ui/preferences.ui:115
 msgid "Position:"
 msgstr ""
 
-#: data/ui/preferences.ui:133
+#: data/ui/preferences.ui:142
 msgid "Left"
 msgstr ""
 
-#: data/ui/preferences.ui:134
+#: data/ui/preferences.ui:143
 msgid "Right"
 msgstr ""
 
-#: data/ui/preferences.ui:135
+#: data/ui/preferences.ui:144
 msgid "Top"
 msgstr ""
 
-#: data/ui/preferences.ui:136
+#: data/ui/preferences.ui:145
 msgid "Bottom"
 msgstr ""
 
-#: data/ui/preferences.ui:153
+#: data/ui/preferences.ui:162
 msgid "On Active Display:"
 msgstr ""
 
-#: data/ui/preferences.ui:180
+#: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
 msgstr ""
 
-#: data/ui/preferences.ui:197
+#: data/ui/preferences.ui:206
 msgid "Alignment:"
 msgstr ""
 
-#: data/ui/preferences.ui:210
+#: data/ui/preferences.ui:219
 msgid "Fill"
 msgstr ""
 
-#: data/ui/preferences.ui:211 data/ui/preferences.ui:289
+#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
 msgid "Start"
 msgstr ""
 
-#: data/ui/preferences.ui:212 data/ui/preferences.ui:290
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "End"
 msgstr ""
 
-#: data/ui/preferences.ui:213 data/ui/preferences.ui:291
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "Center"
 msgstr ""
 
-#: data/ui/preferences.ui:229
+#: data/ui/preferences.ui:238
 msgid "On Primary Display:"
 msgstr ""
 
-#: data/ui/preferences.ui:255
+#: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
 msgstr ""
 
-#: data/ui/preferences.ui:275
+#: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
 msgstr ""
 
-#: data/ui/preferences.ui:305
+#: data/ui/preferences.ui:314
 msgid "Icon Size:"
 msgstr ""
 
-#: data/ui/preferences.ui:371
+#: data/ui/preferences.ui:380
 msgid "Icon Zoom:"
 msgstr ""
 
-#: data/ui/preferences.ui:385
+#: data/ui/preferences.ui:394
 msgid "Gap Size:"
 msgstr ""
 
-#: data/ui/preferences.ui:426
+#: data/ui/preferences.ui:435
 msgid "Screen Area:"
 msgstr ""
 
-#: data/ui/preferences.ui:442
+#: data/ui/preferences.ui:451
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
 msgstr ""
 
-#: data/ui/preferences.ui:444
+#: data/ui/preferences.ui:453
 msgid "Auto"
 msgstr ""
 
-#: data/ui/preferences.ui:445
+#: data/ui/preferences.ui:454
 msgid "Monitor"
 msgstr ""
 
-#: data/ui/preferences.ui:446
+#: data/ui/preferences.ui:455
 msgid "Work Area"
 msgstr ""
 
-#: data/ui/preferences.ui:470
+#: data/ui/preferences.ui:479
 msgid "Appearance"
 msgstr ""
 
-#: data/ui/preferences.ui:490
+#: data/ui/preferences.ui:499
 msgid "Intellihide"
 msgstr ""
 
-#: data/ui/preferences.ui:491
+#: data/ui/preferences.ui:500
 msgid "Autohide"
 msgstr ""
 
-#: data/ui/preferences.ui:492
+#: data/ui/preferences.ui:501
 msgid "Dodge maximized window"
 msgstr ""
 
-#: data/ui/preferences.ui:493
+#: data/ui/preferences.ui:502
 msgid "Window Dodge"
 msgstr ""
 
-#: data/ui/preferences.ui:494
+#: data/ui/preferences.ui:503
 msgid "Dodge active window"
 msgstr ""
 
-#: data/ui/preferences.ui:520
+#: data/ui/preferences.ui:529
 msgid "Hide Dock"
 msgstr ""
 
-#: data/ui/preferences.ui:536
+#: data/ui/preferences.ui:545
 msgid "Hide Delay:"
 msgstr ""
 
-#: data/ui/preferences.ui:550
+#: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
 msgstr ""
 
-#: data/ui/preferences.ui:569
+#: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
 msgstr ""
 
-#: data/ui/preferences.ui:583
+#: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
 msgstr ""
 
-#: data/ui/preferences.ui:602
+#: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
 msgstr ""
 
-#: data/ui/preferences.ui:629
+#: data/ui/preferences.ui:638
 msgid "Item Management"
 msgstr ""
 
-#: data/ui/preferences.ui:648
+#: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
 msgstr ""
 
-#: data/ui/preferences.ui:675
+#: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
 msgstr ""
 
-#: data/ui/preferences.ui:703
+#: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
 msgstr ""
 
-#: data/ui/preferences.ui:727
+#: data/ui/preferences.ui:739
+msgid "Window Previews:"
+msgstr ""
+
+#: data/ui/preferences.ui:766
+msgid "Preview Delay:"
+msgstr ""
+
+#: data/ui/preferences.ui:780
+msgid "Delay in ms before showing window previews"
+msgstr ""
+
+#: data/ui/preferences.ui:799
+msgid "Preview Size:"
+msgstr ""
+
+#: data/ui/preferences.ui:813
+msgid "Largest width of a window preview in pixels"
+msgstr ""
+
+#: data/ui/preferences.ui:829
 msgid "Lock Icons:"
 msgstr ""
 
-#: data/ui/preferences.ui:754
+#: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
 msgstr ""
 
-#: data/ui/preferences.ui:781
+#: data/ui/preferences.ui:883
 msgid "Anchor Files:"
 msgstr ""
 
-#: data/ui/preferences.ui:808
+#: data/ui/preferences.ui:910
 msgid "Bring to Workspace:"
 msgstr ""
 
-#: data/ui/preferences.ui:825
+#: data/ui/preferences.ui:927
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
 msgstr ""
 
-#: data/ui/preferences.ui:835
+#: data/ui/preferences.ui:937
 msgid "Behaviour"
 msgstr ""
 
-#: data/ui/preferences.ui:855
+#: data/ui/preferences.ui:957
 msgid "Docklets"
 msgstr ""
 
@@ -546,7 +566,7 @@ msgid "_Space"
 msgstr ""
 
 #: docklets/Separator/SeparatorDockItem.vala:405
-#: docklets/Workspaces/WorkspacesDockItem.vala:653
+#: docklets/Workspaces/WorkspacesDockItem.vala:656
 msgid "_Invert Color"
 msgstr ""
 
@@ -575,12 +595,12 @@ msgstr ""
 msgid "Workspace %d of %d"
 msgstr ""
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:631
+#: docklets/Workspaces/WorkspacesDockItem.vala:634
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: docklets/Workspaces/WorkspacesDockItem.vala:660
+#: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
 msgstr ""
 
@@ -601,20 +621,20 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:609 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close All"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:617
+#: lib/Items/ApplicationDockItem.vala:657
 msgid "_Close"
 msgstr ""
 
-#: lib/Items/ApplicationDockItem.vala:762
+#: lib/Items/ApplicationDockItem.vala:783
 #, c-format
 msgid "Drop to open with %s"
 msgstr ""
@@ -715,6 +735,6 @@ msgstr ""
 msgid "_Quit"
 msgstr ""
 
-#: lib/Widgets/PreferencesWindow.vala:107
+#: lib/Widgets/PreferencesWindow.vala:117
 msgid "Preferences"
 msgstr ""
