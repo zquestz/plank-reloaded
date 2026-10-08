@@ -181,6 +181,10 @@ namespace Plank {
       if (controller.hide_manager.Hidden)
         return Gdk.EVENT_STOP;
 
+      // Like the menu, window previews close on a click anywhere on the dock,
+      // a long press included
+      controller.preview_manager.dismiss ();
+
       if (long_press_timer_id > 0U) {
         Source.remove (long_press_timer_id);
         long_press_timer_id = 0U;
@@ -194,9 +198,6 @@ namespace Plank {
 
       if (controller.drag_manager.InternalDragActive)
         return Gdk.EVENT_STOP;
-
-      // Like the menu, window previews close on a click anywhere on the dock
-      controller.preview_manager.dismiss ();
 
       if (HoveredItem != null && ClickedItem == null && menu_is_visible ())
         menu.hide ();
