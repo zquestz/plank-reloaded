@@ -2,6 +2,21 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.175 "Reloaded" (2026-10-07)
+
+- Add window previews on hover, with click to focus, close buttons, and adjustable delay and size
+- Treat windows shown on all workspaces as on every workspace for Restrict to Workspace, Intellihide, window dodging, and the Workspaces docklet
+- Bold the active window in the right-click window list instead of greying it out
+- Shorten window titles and Clippy entries without splitting accents, emoji, or flags, and stay fast on huge clipboard entries
+- Limit hide and unhide delays to 2500 ms, matching the preferences dialog
+- Keep docks with a gap revealed while the pointer rests at the screen edge or crosses to the dock
+- Reveal docks with a gap only from their own monitor's edge
+- Read window classes straight from X when Wnck lags, so new windows match their launchers
+- Fix a use-after-free when focusing apps with several windows, and a warning in the Steam workaround
+- Translate the new settings into all 71 languages and fix older mistranslations, typos, and missing colons in 41 locales
+- Clarify building from source in HACKING.md and the README
+- Add tests for preview layout, dock edge detection, and text shortening
+
 ## 0.11.174 "Reloaded" (2026-09-30)
 
 - Make hover labels follow each dock's Screen Area setting

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 16:36-1000\n"
+"POT-Creation-Date: 2026-10-07 22:25-1000\n"
 "PO-Revision-Date: 2025-11-13 01:56\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
@@ -49,19 +49,19 @@ msgstr ""
 "ما يحتاجه الحامل ولا شيء آخر على الإطلاق. كما أنه يبقى مكتبة يمكن توسيعها "
 "لإنشاء برامج حامل أخرى بميزات أكثر تقدماً."
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Dock with Matte theme"
 msgstr "حامل مع سمة مات"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Appearance Preferences"
 msgstr "تفضيلات المظهر"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Behavior Preferences"
 msgstr "تفضيلات السلوك"
 
-#: data/plank.appdata.xml.in:152
+#: data/plank.appdata.xml.in:153
 msgid "Docklets Preferences"
 msgstr "تفضيلات الودجات"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 16:36-1000\n"
+"POT-Creation-Date: 2026-10-07 22:25-1000\n"
 "PO-Revision-Date: 2025-11-13 21:04\n"
 "Last-Translator: \n"
 "Language-Team: Irish\n"
@@ -50,19 +50,19 @@ msgstr ""
 "dhuga agus faic eile. Fanann sé ina leabharlann freisin ar féidir é a "
 "leathnú chun cláir duga eile a chruthú le gnéithe níos forbartha."
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Dock with Matte theme"
 msgstr "Duga le téama Matte"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Appearance Preferences"
 msgstr "Sainroghanna cuma"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Behavior Preferences"
 msgstr "Sainroghanna iompair"
 
-#: data/plank.appdata.xml.in:152
+#: data/plank.appdata.xml.in:153
 msgid "Docklets Preferences"
 msgstr "Sainroghanna dugán"
 

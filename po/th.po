@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 16:36-1000\n"
+"POT-Creation-Date: 2026-10-07 22:25-1000\n"
 "PO-Revision-Date: 2025-11-13 02:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
@@ -48,19 +48,19 @@ msgstr ""
 "โดยให้เพียงสิ่งที่ด็อกต้องการและไม่มีอะไรเพิ่มเติมอีก "
 "นอกจากนี้ยังคงเป็นไลบรารีที่สามารถขยายเพื่อสร้างโปรแกรมด็อกอื่นๆ ที่มีคุณสมบัติขั้นสูงกว่า"
 
-#: data/plank.appdata.xml.in:137
+#: data/plank.appdata.xml.in:138
 msgid "Dock with Matte theme"
 msgstr "ด็อกด้วยธีม Matte"
 
-#: data/plank.appdata.xml.in:142
+#: data/plank.appdata.xml.in:143
 msgid "Appearance Preferences"
 msgstr "การตั้งค่าลักษณะ"
 
-#: data/plank.appdata.xml.in:147
+#: data/plank.appdata.xml.in:148
 msgid "Behavior Preferences"
 msgstr "การตั้งค่าพฤติกรรม"
 
-#: data/plank.appdata.xml.in:152
+#: data/plank.appdata.xml.in:153
 msgid "Docklets Preferences"
 msgstr "การตั้งค่า Docklet"
 
