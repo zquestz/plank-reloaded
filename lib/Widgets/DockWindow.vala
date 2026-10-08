@@ -195,15 +195,16 @@ namespace Plank {
       if (controller.drag_manager.InternalDragActive)
         return Gdk.EVENT_STOP;
 
+      // Like the menu, window previews close on a click anywhere on the dock
+      controller.preview_manager.dismiss ();
+
       if (HoveredItem != null && ClickedItem == null && menu_is_visible ())
         menu.hide ();
 
       // Make sure the HoveredItem is still the same since button-pressed
       if (ClickedItem != null && HoveredItem == ClickedItem && !menu_is_visible ()) {
-        // The user made a choice so hide the tooltip and window previews to
-        // avoid obstructing anything
+        // The user made a choice so hide tooltip to avoid obstructing anything
         controller.hover.hide ();
-        controller.preview_manager.dismiss ();
 
         HoveredItem.clicked (PopupButton.from_event_button (event), event.state, event.time);
       }
@@ -284,6 +285,9 @@ namespace Plank {
       if (controller.drag_manager.InternalDragActive)
         return Gdk.EVENT_STOP;
 
+      // Window previews close on a scroll anywhere on the dock, as on a click
+      controller.preview_manager.dismiss ();
+
       // Smooth scrolling (touchpads) is not supported
       if (event.direction >= 4)
         return Gdk.EVENT_STOP;
@@ -298,10 +302,8 @@ namespace Plank {
       }
 
       if (HoveredItem != null) {
-        // The user made a choice so hide the tooltip and window previews to
-        // avoid obstructing anything
+        // The user made a choice so hide tooltip to avoid obstructing anything
         controller.hover.hide ();
-        controller.preview_manager.dismiss ();
 
         HoveredItem.scrolled (event.direction, event.state, event.time);
         controller.renderer.animated_draw ();
