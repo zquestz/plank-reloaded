@@ -37,6 +37,7 @@ namespace PlankTests {
     Test.add_func ("/Services/Helpers/truncate_middle_very_short_limit_combining", helpers_truncate_middle_very_short_limit_combining);
     Test.add_func ("/Services/Helpers/truncate_middle_edge_cases", helpers_truncate_middle_edge_cases);
     Test.add_func ("/Services/Helpers/truncate_middle_no_room", helpers_truncate_middle_no_room);
+    Test.add_func ("/Services/Helpers/truncate_middle_huge", helpers_truncate_middle_huge);
     Test.add_func ("/Services/DockWindowPosition/bottom_composited", dock_win_pos_bottom_composited);
     Test.add_func ("/Services/DockWindowPosition/top_composited", dock_win_pos_top_composited);
     Test.add_func ("/Services/DockWindowPosition/left_composited", dock_win_pos_left_composited);
@@ -329,6 +330,41 @@ namespace PlankTests {
     // A limit with no room leaves nothing
     assert (Helpers.truncate_middle ("hello", 0) == "");
     assert (Helpers.truncate_middle ("hello", -1) == "");
+  }
+
+  void helpers_truncate_middle_huge () {
+    // Text too long to analyze whole has only its ends analyzed, with the
+    // same result as for short text
+    var x = string.nfill (5000, 'x');
+    assert (Helpers.truncate_middle ("é" + x + "z", 9) == "éxxx…xxxz");
+
+    // Accents at the start, and flags and a family at the end, stay whole
+    var e = "e" + ((unichar) 0x301).to_string ();
+    var zwj = ((unichar) 0x200D).to_string ();
+    var family = "👩" + zwj + "👩" + zwj + "👧" + zwj + "👦";
+    var input = e + e + e + x + "🇯🇵🇺🇸" + family;
+    assert (Helpers.truncate_middle (input, 7) == e + e + e + "…🇯🇵🇺🇸" + family);
+
+    // A very short limit keeps only the start
+    assert (Helpers.truncate_middle (input, 2) == e + e);
+
+    // Flags pair up from the start of their run, even where the end's
+    // analysis would begin inside it, here at the run's second code point
+    var run = new StringBuilder ();
+    for (var i = 0; i < 512; i++) {
+      run.append ("🇯🇵");
+    }
+    run.append ("🇯");
+    assert (Helpers.truncate_middle ("a" + x + run.str, 7) == "axx…🇯🇵🇯🇵🇯");
+
+    // Absurd text, whose ends hold too few characters for the cuts, is
+    // analyzed whole: here a letter carrying thousands of accents
+    var accented = new StringBuilder ("e");
+    for (var i = 0; i < 3000; i++) {
+      accented.append_unichar (0x301);
+    }
+    assert (Helpers.truncate_middle (accented.str + "abcdefgh", 5) == accented.str + "a…gh");
+    assert (Helpers.truncate_middle ("abcdefgh" + accented.str, 5) == "ab…h" + accented.str);
   }
 
   //
