@@ -505,10 +505,10 @@ namespace Plank {
     }
 
     /**
-     * Whether a window is on a workspace, the test behind everything
-     * Restrict to Workspace decides. On a workspace with viewports that
-     * means in its current viewport; on any other, pinned and sticky
-     * windows are on every workspace.
+     * Whether a window is on a workspace, as the dock counts it for Restrict
+     * to Workspace, window dodging and preview captures. On a workspace with
+     * viewports that means in its current viewport; on any other, pinned and
+     * sticky windows are on every workspace.
      *
      * @param window the window
      * @param workspace the workspace

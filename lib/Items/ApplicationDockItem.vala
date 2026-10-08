@@ -764,9 +764,7 @@ namespace Plank {
 
           // The active window's title is bold, as in the window previews
           if (window.is_active ()) {
-            var attributes = new Pango.AttrList ();
-            attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
-            label.set_attributes (attributes);
+            label.set_attributes (Helpers.bold_attributes ());
           }
 
           items.add (window_item);

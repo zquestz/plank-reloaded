@@ -143,6 +143,19 @@ namespace Plank {
               && y >= widget_y && y < widget_y + widget.get_allocated_height ());
     }
 
+    /**
+     * Attributes that make a label bold, like the active window's title in
+     * a window's menu item or preview tile.
+     *
+     * @return the attributes
+     */
+    internal Pango.AttrList bold_attributes () {
+      var attributes = new Pango.AttrList ();
+      attributes.insert (Pango.attr_weight_new (Pango.Weight.BOLD));
+
+      return attributes;
+    }
+
     public static bool current_workspace_only (DefaultApplicationDockItemProvider? provider) {
       bool current_workspace_only = false;
 

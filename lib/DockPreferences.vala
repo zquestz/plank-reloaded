@@ -34,13 +34,10 @@ namespace Plank {
     public const uint MIN_ACTIVE_DISPLAY_POLLING_INTERVAL = 1;
     public const uint MAX_ACTIVE_DISPLAY_POLLING_INTERVAL = 10;
 
-    public const uint MAX_HIDE_DELAY = 2500;
-    public const uint MAX_UNHIDE_DELAY = 2500;
+    internal const uint MAX_HIDE_DELAY = 2500;
+    internal const uint MAX_UNHIDE_DELAY = 2500;
 
-    public const uint MAX_PREVIEW_DELAY = 2500;
-
-    public const int MIN_PREVIEW_SIZE = 64;
-    public const int MAX_PREVIEW_SIZE = 640;
+    internal const int MIN_PREVIEW_SIZE = 64;
 
     [Description (nick = "current-workspace-only", blurb = "Whether to show only windows of the current workspace.")]
     public bool CurrentWorkspaceOnly { get; set; }
@@ -195,6 +192,9 @@ namespace Plank {
           ActiveDisplayPollingInterval = MAX_ACTIVE_DISPLAY_POLLING_INTERVAL;
         break;
 
+      // The schema sets no maximum for the hide and unhide delays, so a
+      // longer delay stored before the limit existed is clamped to it here
+      // rather than reset to 0
       case "HideDelay":
         if (HideDelay > MAX_HIDE_DELAY)
           HideDelay = MAX_HIDE_DELAY;
@@ -203,18 +203,6 @@ namespace Plank {
       case "UnhideDelay":
         if (UnhideDelay > MAX_UNHIDE_DELAY)
           UnhideDelay = MAX_UNHIDE_DELAY;
-        break;
-
-      case "PreviewDelay":
-        if (PreviewDelay > MAX_PREVIEW_DELAY)
-          PreviewDelay = MAX_PREVIEW_DELAY;
-        break;
-
-      case "PreviewSize":
-        if (PreviewSize < MIN_PREVIEW_SIZE)
-          PreviewSize = MIN_PREVIEW_SIZE;
-        else if (PreviewSize > MAX_PREVIEW_SIZE)
-          PreviewSize = MAX_PREVIEW_SIZE;
         break;
 
       case "Theme":

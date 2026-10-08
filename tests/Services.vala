@@ -314,8 +314,11 @@ namespace PlankTests {
     // An empty string stays empty
     assert (Helpers.truncate_middle ("", 5) == "");
 
-    // CR LF is one character
+    // CR LF is one character, which stays whole on either side of the
+    // ellipsis
     assert (Helpers.truncate_middle ("\r\nX", 1) == "\r\n");
+    assert (Helpers.truncate_middle ("a\r\nbcdefg", 5) == "a\r\n…fg");
+    assert (Helpers.truncate_middle ("abcdef\r\ng", 5) == "ab…\r\ng");
 
     // Combining marks with no letter before them are one character
     var marks = "\u0301\u0301\u0301";
@@ -1425,6 +1428,19 @@ namespace PlankTests {
     compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 1, 640, 64, 500, 1056, 8, 32, 6);
     assert (size == 492);
     assert (shown == 1);
+
+    // Windows that all fit along the line are each still limited by the
+    // room across it: beside a side dock with 200px of room, five fit at
+    // 192px plus 8px
+    compute_preview_layout (out size, out shown, Gtk.PositionType.LEFT, monitor, 5, 240, 64, 200, 1056, 8, 32, 6);
+    assert (size == 192);
+    assert (shown == 5);
+
+    // Above a bottom dock with 150px of room, five fit at 211px, whose
+    // thumbnail is 118px tall, plus 32px
+    compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 5, 240, 64, 1896, 150, 8, 32, 6);
+    assert (size == 211);
+    assert (shown == 5);
 
     // With less room than the minimum needs, the minimum still holds
     compute_preview_layout (out size, out shown, Gtk.PositionType.BOTTOM, monitor, 1, 240, 64, 1896, 50, 8, 32, 6);
