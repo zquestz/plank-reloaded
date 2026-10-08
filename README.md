@@ -20,6 +20,7 @@ Like its predecessor, Plank Reloaded aims to be the simplest dock on the planet,
 - Max zoom increased to 400%
 - Floating dock support with configurable gap from the screen edge
 - Multi-monitor support with active display tracking
+- Window previews on hover, with click to focus, close buttons, and adjustable delay and size
 - Comprehensive docklet improvements:
   - Applications: Better reliability and fixed duplicate items issue
   - Battery: Modern UPower integration
