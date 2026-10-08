@@ -98,6 +98,7 @@ namespace Plank {
     uint pending_reveal_timer_id = 0U;
 
     bool pending_reveal = false;
+    int64 pending_reveal_deadline = 0;
     bool pointer_update = true;
     bool window_intersect = false;
     bool active_window_intersect = false;
@@ -431,12 +432,24 @@ namespace Plank {
       pending_reveal = true;
       show ();
 
+      pending_reveal_deadline = 0;
       if (pending_reveal_timer_id > 0U)
         GLib.Source.remove (pending_reveal_timer_id);
-      pending_reveal_timer_id = Gdk.threads_add_timeout (compute_reveal_timeout (), () => {
-        // The gap leaves the edge outside the dock's hover region, so a
-        // pointer still resting there keeps the reveal going
-        if (pointer_at_dock_edge ())
+      pending_reveal_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, () => {
+        // The gap leaves the edge outside the dock's hover region, so the
+        // reveal lasts until the pointer has been away from the edge for the
+        // whole timeout, counted from the first poll that finds it gone,
+        // leaving it that long to cross the gap to the dock
+        if (pointer_at_dock_edge ()) {
+          pending_reveal_deadline = 0;
+          return true;
+        }
+
+        var now = GLib.get_monotonic_time ();
+        if (pending_reveal_deadline == 0)
+          pending_reveal_deadline = now + (int64) compute_reveal_timeout () * 1000;
+
+        if (now < pending_reveal_deadline)
           return true;
 
         pending_reveal = false;
