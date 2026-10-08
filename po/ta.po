@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Tamil\n"
@@ -99,7 +99,7 @@ msgstr "செயலில் உள்ள காட்சியில்:"
 
 #: data/ui/preferences.ui:189
 msgid "Polling interval in seconds for active display detection"
-msgstr "செயலில் உள்ள காட்சி கண்டறிதலுக்கான நொடிகளில் வாக்கெடுப்பு இடைவெளி"
+msgstr "செயலில் உள்ள காட்சி கண்டறிதலுக்கான நொடிகளில் சரிபார்ப்பு இடைவெளி"
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
@@ -650,7 +650,7 @@ msgstr "அனைத்தையும் மூடு (_C)"
 msgid "_Close"
 msgstr "மூடு (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s உடன் திறக்க விடவும்"

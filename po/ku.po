@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Kurmanji (Kurdish)\n"
@@ -204,7 +204,7 @@ msgstr "Derengiya veşartinê:"
 
 #: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
-msgstr "Dereng bi ms berî veşartina dokê"
+msgstr "Derengî bi ms berî veşartina dokê"
 
 #: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
@@ -212,7 +212,7 @@ msgstr "Derengiya xuyankirinê:"
 
 #: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
-msgstr "Dereng bi ms berî nîşandana dokê"
+msgstr "Derengî bi ms berî nîşandana dokê"
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
@@ -244,7 +244,7 @@ msgstr "Derengiya pêşdîtinê:"
 
 #: data/ui/preferences.ui:780
 msgid "Delay in ms before showing window previews"
-msgstr "Dereng bi ms berî nîşandana pêşdîtinên paceyan"
+msgstr "Derengî bi ms berî nîşandana pêşdîtinên paceyan"
 
 #: data/ui/preferences.ui:799
 msgid "Preview Size:"
@@ -646,7 +646,7 @@ msgstr "Hemûyan _bigire"
 msgid "_Close"
 msgstr "_Bigire"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Berîne ji bo vekirinê bi %s"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Telugu\n"
@@ -121,15 +121,15 @@ msgstr "మధ్యలో"
 
 #: data/ui/preferences.ui:238
 msgid "On Primary Display:"
-msgstr "ప్రధాన డిస్ప్లే"
+msgstr "ప్రధాన డిస్ప్లే:"
 
 #: data/ui/preferences.ui:264
 msgid "Offset in percent from the center of the screen-edge"
-msgstr "స్క్రీన్ ఎడ్జ్ నుంచి పెర్సెంట్ లో కొలువు"
+msgstr "స్క్రీన్ అంచు మధ్య నుండి శాతంలో ఆఫ్‌సెట్"
 
 #: data/ui/preferences.ui:284
 msgid "Icon Alignment:"
-msgstr "ఇకాన్ ల క్రమం"
+msgstr "ఇకాన్ ల క్రమం:"
 
 #: data/ui/preferences.ui:314
 msgid "Icon Size:"
@@ -213,7 +213,7 @@ msgstr "డాక్ ని చూపించడానికి ముందు
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
-msgstr "వత్తిడి వల్ల డాక్ ని చూపించు"
+msgstr "వత్తిడి వల్ల డాక్ ని చూపించు:"
 
 #: data/ui/preferences.ui:638
 msgid "Item Management"
@@ -221,11 +221,11 @@ msgstr "ఐటెంలను నిర్వహించు"
 
 #: data/ui/preferences.ui:657
 msgid "Show Unpinned:"
-msgstr "పిన్ చేయని వాటిని చూపించు"
+msgstr "పిన్ చేయని వాటిని చూపించు:"
 
 #: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
-msgstr "వర్క్ స్పేస్ లో మాత్రమే అనుమతించు"
+msgstr "వర్క్ స్పేస్ లో మాత్రమే అనుమతించు:"
 
 #: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
@@ -253,7 +253,7 @@ msgstr "పిక్సెల్స్ లో విండో ప్రివ్
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "ఇకాన్ లను బంధించు"
+msgstr "ఇకాన్ లను బంధించు:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -646,7 +646,7 @@ msgstr "అన్నీ మూసివేయి (_C)"
 msgid "_Close"
 msgstr "మూసివేయి (_C)"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s తో తెరవడానికి వదలండి"

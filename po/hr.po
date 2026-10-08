@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 03:56\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
@@ -618,7 +618,7 @@ msgstr "Radni prostor %d"
 
 #: docklets/Workspaces/WorkspacesDockItem.vala:663
 msgid "_Live Previews"
-msgstr "_Uživo pregledi"
+msgstr "Pregledi _uživo"
 
 #. *
 #. * Returns the description of this docklet.
@@ -655,7 +655,7 @@ msgstr "_Zatvori sve"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Ispusti za otvaranje s %s"

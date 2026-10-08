@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"POT-Creation-Date: 2026-10-07 16:36-1000\n"
 "PO-Revision-Date: 2025-11-13 21:27\n"
 "Last-Translator: \n"
 "Language-Team: Uzbek\n"
@@ -77,7 +77,7 @@ msgstr "Mavzu:"
 
 #: data/ui/preferences.ui:115
 msgid "Position:"
-msgstr "Joylashishi"
+msgstr "Joylashishi:"
 
 #: data/ui/preferences.ui:142
 msgid "Left"
@@ -105,7 +105,7 @@ msgstr "Faol ekranni aniqlash uchun soniyalardagi so'rov intervali"
 
 #: data/ui/preferences.ui:206
 msgid "Alignment:"
-msgstr "Tekislash"
+msgstr "Tekislash:"
 
 #: data/ui/preferences.ui:219
 msgid "Fill"
@@ -181,7 +181,7 @@ msgstr "Aqlli yashirish"
 
 #: data/ui/preferences.ui:500
 msgid "Autohide"
-msgstr "Avtoyashirsh"
+msgstr "Avtoyashirish"
 
 #: data/ui/preferences.ui:501
 msgid "Dodge maximized window"
@@ -205,7 +205,7 @@ msgstr "Yashirish vaqti:"
 
 #: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
-msgstr "Yashirish vaqti mslarda"
+msgstr "Yashirishdan oldingi kechikish mslarda"
 
 #: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
@@ -213,7 +213,7 @@ msgstr "Tiklash vaqti:"
 
 #: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
-msgstr "Tiklash vaqti mslarda"
+msgstr "Tiklashdan oldingi kechikish mslarda"
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
@@ -229,7 +229,7 @@ msgstr "Mahkamlanmaganlarni Ko'rsatish:"
 
 #: data/ui/preferences.ui:684
 msgid "Restrict to Workspace:"
-msgstr "Ish maydoniga Cheklash"
+msgstr "Ish maydoniga Cheklash:"
 
 #: data/ui/preferences.ui:712
 msgid "Tooltips Enabled:"
@@ -245,7 +245,7 @@ msgstr "Ko'rinish vaqti:"
 
 #: data/ui/preferences.ui:780
 msgid "Delay in ms before showing window previews"
-msgstr "Oyna ko'rinishlarini ko'rsatish vaqti mslarda"
+msgstr "Oyna ko'rinishlarini ko'rsatishdan oldingi kechikish mslarda"
 
 #: data/ui/preferences.ui:799
 msgid "Preview Size:"
@@ -257,7 +257,7 @@ msgstr "Oyna ko'rinishining eng katta kengligi piksellarda"
 
 #: data/ui/preferences.ui:829
 msgid "Lock Icons:"
-msgstr "Nishonchalarni Qulflash"
+msgstr "Nishonchalarni Qulflash:"
 
 #: data/ui/preferences.ui:856
 msgid "Anchor Docklets:"
@@ -650,7 +650,7 @@ msgstr "_Barchasini Yopish"
 msgid "_Close"
 msgstr "_Yopish"
 
-#: lib/Items/ApplicationDockItem.vala:783
+#: lib/Items/ApplicationDockItem.vala:781
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s bilan ochish uchun tashlang"
