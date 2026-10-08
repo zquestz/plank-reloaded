@@ -527,6 +527,20 @@ namespace Plank {
       return (window.is_sticky () || window.is_on_workspace (workspace));
     }
 
+    /**
+     * Whether a window is visible on a workspace: not hidden, as minimized
+     * windows are, and on the workspace as the dock counts it. Like Wnck's
+     * is_visible_on_workspace (), with window_is_on_workspace ()'s test.
+     *
+     * @param window the window
+     * @param workspace the workspace
+     * @return whether the window is visible on the workspace
+     */
+    public static bool window_is_visible_on_workspace (Wnck.Window window, Wnck.Workspace workspace) {
+      return ((window.get_state () & Wnck.WindowState.HIDDEN) == 0
+              && window_is_on_workspace (window, workspace));
+    }
+
     public static bool has_maximized_window (Bamf.Application app) {
       Array<uint32>? xids = get_xids (app);
 

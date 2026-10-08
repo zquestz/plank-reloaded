@@ -360,10 +360,8 @@ namespace Plank {
     static bool is_on_screen (Bamf.Window window, Wnck.Workspace? workspace) {
       unowned Wnck.Window? wnck_window = WindowControl.get_wnck_window (window.get_xid ());
 
-      return (wnck_window != null && workspace != null
-              && (wnck_window.get_state () & Wnck.WindowState.HIDDEN) == 0
-              && !wnck_window.is_shaded ()
-              && WindowControl.window_is_on_workspace (wnck_window, workspace));
+      return (wnck_window != null && workspace != null && !wnck_window.is_shaded ()
+              && WindowControl.window_is_visible_on_workspace (wnck_window, workspace));
     }
 
     static Gdk.Pixbuf? capture (Bamf.Window window, int max_width, int max_height) {
