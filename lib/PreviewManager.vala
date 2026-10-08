@@ -61,7 +61,7 @@ namespace Plank {
     int thumbnails_height = 0;
 
     // The windows with tiles still to capture, one per pass of the main loop
-    Gee.ArrayList<ulong> pending_captures = new Gee.ArrayList<ulong> ();
+    Gee.ArrayList<Bamf.Window> pending_captures = new Gee.ArrayList<Bamf.Window> ();
     uint capture_idle_id = 0U;
 
     public PreviewManager (DockController controller) {
@@ -122,15 +122,17 @@ namespace Plank {
     internal bool hovered_item_changed (DockItem? item) {
       stop_open_timer ();
 
+      // While open, empty dock space and the popup's own item change nothing
+      var open = is_open ();
+      if (open && (item == null || item == shown_item))
+        return (item != null);
+
       var app_item = (item as ApplicationDockItem);
       var has_previews = (app_item != null && can_show () && !app_item.get_window_list ().is_empty);
 
       // The _full variants own their closures, which hold the item, rather
       // than letting them be freed when this returns
-      if (is_open ()) {
-        if (item == null || item == shown_item)
-          return (item != null);
-
+      if (open) {
         open_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, RETARGET_DELAY, () => {
           open_timer_id = 0U;
 
@@ -266,7 +268,7 @@ namespace Plank {
       // and never without compositing
       if (popup.get_screen ().is_composited ()) {
         for (var i = 0; i < shown; i++)
-          pending_captures.add (entries[i].xid);
+          pending_captures.add (windows[i]);
 
         capture_idle_id = Gdk.threads_add_idle_full (GLib.Priority.DEFAULT_IDLE, capture_next);
       }
@@ -292,10 +294,17 @@ namespace Plank {
         var thumbnail = (composited ? thumbnails[xid] : null);
 
         // The item's themed icon, loaded once, is sharper than the windows'
-        // own, which Wnck keeps at 32 pixels
+        // own, which Wnck keeps at 32 pixels. An item without a launcher has
+        // none, so it gets its application's window icon, as the dock does,
+        // at its own size
         if (thumbnail == null && icon == null) {
-          var icon_size = PreviewWindow.ICON_SIZE * scale;
-          icon = DrawingService.load_icon (item.Icon, icon_size, icon_size);
+          unowned Gdk.Pixbuf? app_icon = (item.Icon == "" && item.App != null ? WindowControl.get_app_icon (item.App) : null);
+          if (app_icon != null) {
+            icon = app_icon;
+          } else {
+            var icon_size = PreviewWindow.ICON_SIZE * scale;
+            icon = DrawingService.load_icon (item.Icon, icon_size, icon_size);
+          }
         }
 
         entries.add (new PreviewEntry (xid, item.shorten_window_name (window.get_name ()),
@@ -312,16 +321,18 @@ namespace Plank {
       unowned Wnck.Workspace? workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
 
       while (!pending_captures.is_empty) {
-        var xid = pending_captures.remove_at (0);
+        var window = pending_captures.remove_at (0);
 
-        var window = find_window (xid);
-        if (window == null || !is_on_screen (window, workspace))
+        // A window that closed meanwhile is gone from Wnck, which
+        // is_on_screen () checks first
+        if (!is_on_screen (window, workspace))
           continue;
 
         var thumbnail = capture (window, thumbnails_width, thumbnails_height);
         if (thumbnail == null)
           continue;
 
+        var xid = window.get_xid ();
         thumbnails[xid] = thumbnail;
         popup.set_thumbnail (xid, thumbnail);
         return true;
