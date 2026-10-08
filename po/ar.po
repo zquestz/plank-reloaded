@@ -203,7 +203,7 @@ msgstr "تأجيل الإخفاء:"
 
 #: data/ui/preferences.ui:559
 msgid "Delay in ms before hiding the dock"
-msgstr "مدة التأجيل بأجزاء الثانية قبل إخفاء الحامل"
+msgstr "مدة التأجيل بالمللي ثانية قبل إخفاء الحامل"
 
 #: data/ui/preferences.ui:578
 msgid "Unhide Delay:"
@@ -211,7 +211,7 @@ msgstr "تأجيل الإظهار:"
 
 #: data/ui/preferences.ui:592
 msgid "Delay in ms before showing the dock"
-msgstr "مدة التأجيل بأجزاء الثانية قبل إظهار الحامل"
+msgstr "مدة التأجيل بالمللي ثانية قبل إظهار الحامل"
 
 #: data/ui/preferences.ui:611
 msgid "Pressure Reveal:"
@@ -243,7 +243,7 @@ msgstr "تأجيل المعاينة:"
 
 #: data/ui/preferences.ui:780
 msgid "Delay in ms before showing window previews"
-msgstr "مدة التأجيل بأجزاء الثانية قبل إظهار معاينات النوافذ"
+msgstr "مدة التأجيل بالمللي ثانية قبل إظهار معاينات النوافذ"
 
 #: data/ui/preferences.ui:799
 msgid "Preview Size:"
