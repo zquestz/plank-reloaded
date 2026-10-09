@@ -207,7 +207,9 @@ namespace Plank {
       x -= win_rect.x;
       y -= win_rect.y;
 
-      update_hovered_with_coords (x, y);
+      // X only reports the pointer inside the dock's window, so a pointer
+      // outside it can't count as hovering, or no leave would ever clear it
+      update_hovered_with_coords (x, y, x < 0 || y < 0 || x >= win_rect.width || y >= win_rect.height);
     }
 
     // The pointer's position in logical pixels. GTK rounds the device
