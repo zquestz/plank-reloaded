@@ -100,13 +100,6 @@ namespace Plank {
 
     bool pending_reveal = false;
     int64 pending_reveal_deadline = 0;
-
-    // The pointer at the edge poll's previous sample
-    bool edge_poll_sampled = false;
-    int edge_poll_x = 0;
-    int edge_poll_y = 0;
-    // A crossing of the edge at that sample, waiting for the next one
-    bool edge_poll_crossed = false;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -563,8 +556,6 @@ namespace Plank {
                           && Hidden;
 
       if (need_polling && edge_poll_timer_id == 0U) {
-        edge_poll_sampled = false;
-        edge_poll_crossed = false;
         edge_poll_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, edge_poll_tick);
       } else if (!need_polling && edge_poll_timer_id > 0U) {
         GLib.Source.remove (edge_poll_timer_id);
@@ -573,42 +564,29 @@ namespace Plank {
     }
 
     bool edge_poll_tick () {
-      unowned PositionManager position_manager = controller.position_manager;
-
-      int x, y;
-      get_pointer_position (out x, out y);
-
-      var position = position_manager.Position;
-      var raw_monitor = position_manager.get_raw_monitor_geometry ();
-      var dock_rect = position_manager.get_static_dock_region ();
-
-      var touched = point_at_dock_edge (position, x, y, position_manager.get_monitor_geometry (),
-                                        raw_monitor, dock_rect);
-
-      // A pointer sliding on into a monitor beyond the edge may never be
-      // sampled on the edge itself, so crossing it since the previous sample
-      // counts as touching it, once the pointer has stopped near the dock.
-      // Someone reaching for the dock stops there, while a move to that
-      // monitor keeps going, so the crossing has to land in the keep area
-      // and the next sample has to find the pointer still in it
-      var in_keep_area = point_in_dock_keep_area (position, x, y, raw_monitor, dock_rect);
-      var crossed = (edge_poll_sampled && in_keep_area
-                     && move_crosses_dock_edge (position, edge_poll_x, edge_poll_y, x, y, raw_monitor, dock_rect));
-      var confirmed = (edge_poll_crossed && in_keep_area);
-
-      edge_poll_crossed = crossed;
-      edge_poll_sampled = true;
-      edge_poll_x = x;
-      edge_poll_y = y;
-
-      if ((touched || confirmed) && Hidden)
+      if (pointer_at_dock_edge () && Hidden)
         start_pending_reveal ();
 
       return true;
     }
 
+    // Whether a point is on another monitor past the dock's edge, as
+    // monitor_past_dock_edge () defines it. Pressure reveal shows the dock
+    // only for a push against its own monitor's edge, so there another
+    // monitor never counts
+    bool on_monitor_past_dock_edge (int x, int y) {
+      if (pressure_reveals ())
+        return false;
+
+      unowned PositionManager position_manager = controller.position_manager;
+      var monitor = controller.window.get_display ().get_monitor_at_point (x, y).get_geometry ();
+
+      return monitor_past_dock_edge (position_manager.Position, monitor,
+                                     position_manager.get_raw_monitor_geometry ());
+    }
+
     // Whether the pointer is in the dock's keep area, as
-    // point_in_dock_keep_area () defines it
+    // point_in_dock_keep_area () defines it, or on a monitor past its edge
     bool pointer_in_keep_area () {
       unowned PositionManager position_manager = controller.position_manager;
 
@@ -617,10 +595,12 @@ namespace Plank {
 
       return point_in_dock_keep_area (position_manager.Position, x, y,
                                       position_manager.get_raw_monitor_geometry (),
-                                      position_manager.get_static_dock_region ());
+                                      position_manager.get_static_dock_region ())
+             || on_monitor_past_dock_edge (x, y);
     }
 
-    // Whether the pointer is at the dock's edge, as point_at_dock_edge () defines it
+    // Whether the pointer is at the dock's edge, as point_at_dock_edge () defines it,
+    // or anywhere on a monitor past it
     bool pointer_at_dock_edge () {
       unowned PositionManager position_manager = controller.position_manager;
 
@@ -630,7 +610,8 @@ namespace Plank {
       return point_at_dock_edge (position_manager.Position, pointer_x, pointer_y,
                                  position_manager.get_monitor_geometry (),
                                  position_manager.get_raw_monitor_geometry (),
-                                 position_manager.get_static_dock_region ());
+                                 position_manager.get_static_dock_region ())
+             || on_monitor_past_dock_edge (pointer_x, pointer_y);
     }
 
     [CCode (instance_pos = -1)]
@@ -668,8 +649,8 @@ namespace Plank {
         var x = (int) event.x_root;
         var y = (int) event.y_root;
 
-        // Leaving a dock with a gap for its edge, across the gap or past
-        // the edge within its span, is reaching for the edge rather than
+        // Leaving a dock with a gap for its edge, across the gap or on to a
+        // monitor past the edge, is reaching for the edge rather than
         // leaving, so the dock stays shown as for a reveal from the edge. At
         // a scale of 2, the input region of a bottom or right dock leaves out
         // the dock's far row or column, so a pointer leaving the other way
@@ -678,8 +659,9 @@ namespace Plank {
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
         if (controller.prefs.GapSize > 0 && controller.prefs.HideMode != HideType.NONE
             && !Hidden && !on_dock
-            && point_in_dock_keep_area (position_manager.Position, x, y,
-                                        position_manager.get_raw_monitor_geometry (), dock_rect))
+            && (point_in_dock_keep_area (position_manager.Position, x, y,
+                                         position_manager.get_raw_monitor_geometry (), dock_rect)
+                || on_monitor_past_dock_edge (x, y)))
           start_pending_reveal ();
 
         update_hovered_with_coords ((int) event.x, (int) event.y, true);
