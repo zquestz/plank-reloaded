@@ -67,6 +67,118 @@ namespace Plank {
   }
 
   /**
+   * Whether the pointer's move between two samples left the dock's monitor
+   * through the dock's edge, within the stretch of that edge the dock
+   * covers: from a point on the monitor to one past the edge, on a
+   * neighbouring monitor. A pointer sliding on into that monitor may never
+   * be sampled on the edge itself. Moves the other way don't count. Pure
+   * math, testable in isolation.
+   *
+   * @param position the dock position
+   * @param x0 the x coordinate of the earlier point
+   * @param y0 the y coordinate of the earlier point
+   * @param x1 the x coordinate of the later point
+   * @param y1 the y coordinate of the later point
+   * @param raw_monitor the whole monitor the dock is on
+   * @param dock_rect the visible dock
+   * @return whether the move crossed the dock's edge outward
+   */
+  public static bool move_crosses_dock_edge (Gtk.PositionType position, int x0, int y0, int x1, int y1,
+                                             Gdk.Rectangle raw_monitor, Gdk.Rectangle dock_rect) {
+    if (x0 < raw_monitor.x || x0 >= raw_monitor.x + raw_monitor.width
+        || y0 < raw_monitor.y || y0 >= raw_monitor.y + raw_monitor.height)
+      return false;
+
+    // The edge lies between the monitor's last row or column of pixels and
+    // the first one past it; where the move crossed it must be within the
+    // dock's span
+    double edge, crossing;
+    int span_start, span_length;
+
+    switch (position) {
+    default:
+    case Gtk.PositionType.BOTTOM:
+      edge = raw_monitor.y + raw_monitor.height - 0.5;
+      if (y1 < edge)
+        return false;
+      crossing = x0 + (x1 - x0) * (edge - y0) / (y1 - y0);
+      span_start = dock_rect.x;
+      span_length = dock_rect.width;
+      break;
+    case Gtk.PositionType.TOP:
+      edge = raw_monitor.y - 0.5;
+      if (y1 > edge)
+        return false;
+      crossing = x0 + (x1 - x0) * (y0 - edge) / (y0 - y1);
+      span_start = dock_rect.x;
+      span_length = dock_rect.width;
+      break;
+    case Gtk.PositionType.LEFT:
+      edge = raw_monitor.x - 0.5;
+      if (x1 > edge)
+        return false;
+      crossing = y0 + (y1 - y0) * (x0 - edge) / (x0 - x1);
+      span_start = dock_rect.y;
+      span_length = dock_rect.height;
+      break;
+    case Gtk.PositionType.RIGHT:
+      edge = raw_monitor.x + raw_monitor.width - 0.5;
+      if (x1 < edge)
+        return false;
+      crossing = y0 + (y1 - y0) * (edge - x0) / (x1 - x0);
+      span_start = dock_rect.y;
+      span_length = dock_rect.height;
+      break;
+    }
+
+    return (crossing >= span_start && crossing < span_start + span_length);
+  }
+
+  /**
+   * Whether a point is near a dock with a gap, where a pointer reaching for
+   * it ends up: within the stretch of the edge the dock covers, from the
+   * dock's far side across the gap to the edge, and on past the edge by the
+   * dock's thickness, which only a monitor beyond the edge can hold. A
+   * crossing of the edge must land here to reveal the dock, and while the
+   * unhide delay runs the pointer must stay here. Pure math, testable in
+   * isolation.
+   *
+   * @param position the dock position
+   * @param x the x coordinate of the point
+   * @param y the y coordinate of the point
+   * @param raw_monitor the whole monitor the dock is on
+   * @param dock_rect the visible dock
+   * @return whether the point is in the dock's keep area
+   */
+  public static bool point_in_dock_keep_area (Gtk.PositionType position, int x, int y,
+                                              Gdk.Rectangle raw_monitor, Gdk.Rectangle dock_rect) {
+    bool within_dock_span = false;
+    bool within_depth = false;
+
+    switch (position) {
+    default:
+    case Gtk.PositionType.BOTTOM:
+      within_dock_span = x >= dock_rect.x && x < dock_rect.x + dock_rect.width;
+      within_depth = y >= dock_rect.y && y < raw_monitor.y + raw_monitor.height + dock_rect.height;
+      break;
+    case Gtk.PositionType.TOP:
+      within_dock_span = x >= dock_rect.x && x < dock_rect.x + dock_rect.width;
+      within_depth = y < dock_rect.y + dock_rect.height && y >= raw_monitor.y - dock_rect.height;
+      break;
+    case Gtk.PositionType.LEFT:
+      within_dock_span = y >= dock_rect.y && y < dock_rect.y + dock_rect.height;
+      within_depth = x < dock_rect.x + dock_rect.width && x >= raw_monitor.x - dock_rect.width;
+      break;
+    case Gtk.PositionType.RIGHT:
+      within_dock_span = y >= dock_rect.y && y < dock_rect.y + dock_rect.height;
+      within_depth = x >= dock_rect.x && x < raw_monitor.x + raw_monitor.width + dock_rect.width;
+      break;
+    }
+
+    return within_dock_span && within_depth;
+  }
+
+  /**
    * The line on the edge of the dock's area that the pressure reveal
    * barrier covers: the stretch of that edge the visible dock spans, so the
    * barrier lines up with the dock whatever its alignment and offset. Pure

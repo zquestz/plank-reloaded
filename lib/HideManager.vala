@@ -100,6 +100,11 @@ namespace Plank {
 
     bool pending_reveal = false;
     int64 pending_reveal_deadline = 0;
+
+    // The pointer at the edge poll's previous sample
+    bool edge_poll_sampled = false;
+    int edge_poll_x = 0;
+    int edge_poll_y = 0;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -197,15 +202,10 @@ namespace Plank {
      */
     public void update_hovered () {
       unowned PositionManager position_manager = controller.position_manager;
-      unowned DockWindow window = controller.window;
 
       // get current mouse pointer location
       int x, y;
-
-      window.get_display ()
-       .get_default_seat ()
-       .get_pointer ()
-       .get_position (null, out x, out y);
+      get_pointer_position (out x, out y);
 
       // get window location
       var win_rect = position_manager.get_dock_window_region ();
@@ -213,6 +213,21 @@ namespace Plank {
       y -= win_rect.y;
 
       update_hovered_with_coords (x, y);
+    }
+
+    // The pointer's position in logical pixels. GTK rounds the device
+    // position divided by the scale to the nearest pixel, which at a scale
+    // of 2 or more puts a monitor's last device row or column on the pixel
+    // past the monitor; rounding down keeps it on the pixel that holds it
+    void get_pointer_position (out int x, out int y) {
+      double pointer_x, pointer_y;
+      controller.window.get_display ()
+       .get_default_seat ()
+       .get_pointer ()
+       .get_position_double (null, out pointer_x, out pointer_y);
+
+      x = (int) Math.floor (pointer_x);
+      y = (int) Math.floor (pointer_y);
     }
 
     /**
@@ -287,6 +302,7 @@ namespace Plank {
 #if HAVE_BARRIERS
         update_barrier ();
 #endif
+        update_edge_polling ();
         break;
       case "GapSize":
         update_edge_polling ();
@@ -413,9 +429,23 @@ namespace Plank {
         return;
 
       unhide_timer_id = Gdk.threads_add_timeout (controller.prefs.UnhideDelay, () => {
+        unhide_timer_id = 0U;
+
+        // A dock shown meanwhile for another reason leaves nothing to decide
+        if (!Hidden)
+          return false;
+
+        // The reveal poll checks a dock with a gap only every 100 ms, so
+        // make sure the pointer still waits near the edge as the delay ends
+        if (pending_reveal && !pointer_in_keep_area ()) {
+          cancel_pending_reveal ();
+          update_hovered ();
+          update_hidden ();
+          return false;
+        }
+
         if (Hidden)
           Hidden = false;
-        unhide_timer_id = 0U;
         return false;
       });
     }
@@ -449,21 +479,30 @@ namespace Plank {
       if (pending_reveal_timer_id > 0U)
         GLib.Source.remove (pending_reveal_timer_id);
       pending_reveal_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, () => {
-        // The gap leaves the edge outside the dock's hover region, so the
-        // reveal lasts until the pointer has been away from the edge for the
-        // whole timeout, counted from the first poll that finds it gone,
-        // leaving it that long to cross the gap to the dock
-        if (pointer_at_dock_edge ()) {
-          pending_reveal_deadline = 0;
-          return true;
+        if (Hidden) {
+          // While the unhide delay runs, the pointer has to wait near the
+          // edge, as it has to stay on a dock without a gap; leaving gives
+          // the reveal up
+          if (pointer_in_keep_area ())
+            return true;
+        } else {
+          // The gap leaves the edge outside the dock's hover region, so the
+          // reveal lasts until the pointer has been away from the edge for
+          // the whole timeout, counted from the first poll that finds it
+          // gone once the dock shows, leaving it that long to cross the gap
+          // to the dock
+          if (pointer_at_dock_edge ()) {
+            pending_reveal_deadline = 0;
+            return true;
+          }
+
+          var now = GLib.get_monotonic_time ();
+          if (pending_reveal_deadline == 0)
+            pending_reveal_deadline = now + (int64) compute_reveal_timeout () * 1000;
+
+          if (now < pending_reveal_deadline)
+            return true;
         }
-
-        var now = GLib.get_monotonic_time ();
-        if (pending_reveal_deadline == 0)
-          pending_reveal_deadline = now + (int64) compute_reveal_timeout () * 1000;
-
-        if (now < pending_reveal_deadline)
-          return true;
 
         pending_reveal = false;
         pending_reveal_timer_id = 0U;
@@ -484,12 +523,24 @@ namespace Plank {
       }
     }
 
+    // Pressure reveal, when the barriers it needs work, reveals a dock with
+    // a gap by pushing against the edge instead of touching it
+    bool pressure_reveals () {
+#if HAVE_BARRIERS
+      return (barriers_supported && controller.prefs.PressureReveal);
+#else
+      return false;
+#endif
+    }
+
     void update_edge_polling () {
       bool need_polling = controller.prefs.GapSize > 0
                           && controller.prefs.HideMode != HideType.NONE
+                          && !pressure_reveals ()
                           && Hidden;
 
       if (need_polling && edge_poll_timer_id == 0U) {
+        edge_poll_sampled = false;
         edge_poll_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, edge_poll_tick);
       } else if (!need_polling && edge_poll_timer_id > 0U) {
         GLib.Source.remove (edge_poll_timer_id);
@@ -498,22 +549,58 @@ namespace Plank {
     }
 
     bool edge_poll_tick () {
-      if (pointer_at_dock_edge () && Hidden)
+      unowned PositionManager position_manager = controller.position_manager;
+
+      int x, y;
+      get_pointer_position (out x, out y);
+
+      var position = position_manager.Position;
+      var raw_monitor = position_manager.get_raw_monitor_geometry ();
+      var dock_rect = position_manager.get_static_dock_region ();
+
+      // A pointer sliding on into a monitor beyond the edge may never be
+      // sampled on the edge itself, so crossing it since the previous
+      // sample counts as touching it
+      var touched = point_at_dock_edge (position, x, y, position_manager.get_monitor_geometry (),
+                                        raw_monitor, dock_rect);
+      var crossed = (edge_poll_sampled
+                     && move_crosses_dock_edge (position, edge_poll_x, edge_poll_y, x, y, raw_monitor, dock_rect));
+
+      // A pointer reaching for the dock stops near it, so a crossing that
+      // went on deep into the monitor beyond, a move to that monitor,
+      // doesn't count
+      if (crossed && !point_in_dock_keep_area (position, x, y, raw_monitor, dock_rect))
+        crossed = false;
+
+      edge_poll_sampled = true;
+      edge_poll_x = x;
+      edge_poll_y = y;
+
+      if ((touched || crossed) && Hidden)
         start_pending_reveal ();
 
       return true;
     }
 
+    // Whether the pointer is in the dock's keep area, as
+    // point_in_dock_keep_area () defines it
+    bool pointer_in_keep_area () {
+      unowned PositionManager position_manager = controller.position_manager;
+
+      int x, y;
+      get_pointer_position (out x, out y);
+
+      return point_in_dock_keep_area (position_manager.Position, x, y,
+                                      position_manager.get_raw_monitor_geometry (),
+                                      position_manager.get_static_dock_region ());
+    }
+
     // Whether the pointer is at the dock's edge, as point_at_dock_edge () defines it
     bool pointer_at_dock_edge () {
       unowned PositionManager position_manager = controller.position_manager;
-      unowned DockWindow window = controller.window;
 
       int pointer_x, pointer_y;
-      window.get_display ()
-       .get_default_seat ()
-       .get_pointer ()
-       .get_position (null, out pointer_x, out pointer_y);
+      get_pointer_position (out pointer_x, out pointer_y);
 
       return point_at_dock_edge (position_manager.Position, pointer_x, pointer_y,
                                  position_manager.get_monitor_geometry (),
@@ -551,6 +638,17 @@ namespace Plank {
         return Gdk.EVENT_PROPAGATE;
 
       if (Hovered) {
+        unowned PositionManager position_manager = controller.position_manager;
+
+        // Leaving a dock with a gap for its edge, across the gap or past
+        // the edge within its span, is reaching for the edge rather than
+        // leaving, so the dock stays shown as for a reveal from the edge
+        if (controller.prefs.GapSize > 0 && !Hidden
+            && point_in_dock_keep_area (position_manager.Position, (int) event.x_root, (int) event.y_root,
+                                        position_manager.get_raw_monitor_geometry (),
+                                        position_manager.get_static_dock_region ()))
+          start_pending_reveal ();
+
         update_hovered_with_coords ((int) event.x, (int) event.y, true);
       }
 
