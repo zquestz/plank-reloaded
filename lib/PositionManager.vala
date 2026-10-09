@@ -1191,16 +1191,16 @@ namespace Plank {
         switch (Position) {
         default:
         case Gtk.PositionType.BOTTOM:
-          dock_region.y -= DockHeight - 1;
+          dock_region.y -= DockHeight + GapSize - 1;
           break;
         case Gtk.PositionType.TOP:
-          dock_region.y += DockHeight - 1;
+          dock_region.y += DockHeight + GapSize - 1;
           break;
         case Gtk.PositionType.LEFT:
-          dock_region.x += DockWidth - 1;
+          dock_region.x += DockWidth + GapSize - 1;
           break;
         case Gtk.PositionType.RIGHT:
-          dock_region.x -= DockWidth - 1;
+          dock_region.x -= DockWidth + GapSize - 1;
           break;
         }
       }
@@ -2037,21 +2037,23 @@ namespace Plank {
         break;
       }
 
-      // Actually change the window position while hidden for non-compositing mode
+      // Actually change the window position while hidden for non-compositing
+      // mode, sliding the window across its gap too, so only its row or
+      // column at the edge is left on screen
       if (hidden) {
         switch (position) {
         default:
         case Gtk.PositionType.BOTTOM:
-          y += dock_height - 1;
+          y += dock_height + gap_size - 1;
           break;
         case Gtk.PositionType.TOP:
-          y -= dock_height - 1;
+          y -= dock_height + gap_size - 1;
           break;
         case Gtk.PositionType.LEFT:
-          x -= dock_width - 1;
+          x -= dock_width + gap_size - 1;
           break;
         case Gtk.PositionType.RIGHT:
-          x += dock_width - 1;
+          x += dock_width + gap_size - 1;
           break;
         }
       }

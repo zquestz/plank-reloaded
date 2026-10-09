@@ -44,6 +44,7 @@ namespace PlankTests {
     Test.add_func ("/Services/DockWindowPosition/right_composited", dock_win_pos_right_composited);
     Test.add_func ("/Services/DockWindowPosition/bottom_with_gap", dock_win_pos_bottom_with_gap);
     Test.add_func ("/Services/DockWindowPosition/offset_monitor", dock_win_pos_offset_monitor);
+    Test.add_func ("/Services/DockWindowPosition/hidden_not_composited", dock_win_pos_hidden_not_composited);
     Test.add_func ("/Services/BackgroundPadding/bottom", bg_padding_bottom);
     Test.add_func ("/Services/BackgroundPadding/top", bg_padding_top);
     Test.add_func ("/Services/BackgroundPadding/left", bg_padding_left);
@@ -542,6 +543,49 @@ namespace PlankTests {
 
     assert (x == 1920);
     assert (y == 1080 - 48);
+  }
+
+  void dock_win_pos_hidden_not_composited () {
+    int x, y;
+    // Without compositing a hidden 48px dock slides off its edge until only
+    // its row or column at the edge is left on the monitor, across a 10px
+    // gap as much as without one
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  monitor, 400, 48, 0, 0,
+                                                  false, true, 400, 48, true);
+    assert (x == 760);
+    assert (y == 1079);
+
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  monitor, 400, 48, 10, 0,
+                                                  false, true, 400, 48, true);
+    assert (x == 760);
+    assert (y == 1079);
+
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.TOP, Gtk.Align.CENTER,
+                                                  monitor, 400, 48, 10, 0,
+                                                  false, true, 400, 48, true);
+    assert (x == 760);
+    assert (y == 1 - 48);
+
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.LEFT, Gtk.Align.CENTER,
+                                                  monitor, 48, 400, 10, 0,
+                                                  false, false, 48, 400, true);
+    assert (x == 1 - 48);
+    assert (y == 340);
+
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.RIGHT, Gtk.Align.CENTER,
+                                                  monitor, 48, 400, 10, 0,
+                                                  false, false, 48, 400, true);
+    assert (x == 1919);
+    assert (y == 340);
   }
 
   //
