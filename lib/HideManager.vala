@@ -676,7 +676,8 @@ namespace Plank {
         // can still be on the dock, which doesn't count
         var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
-        if (controller.prefs.GapSize > 0 && !Hidden && !on_dock
+        if (controller.prefs.GapSize > 0 && controller.prefs.HideMode != HideType.NONE
+            && !Hidden && !on_dock
             && point_in_dock_keep_area (position_manager.Position, x, y,
                                         position_manager.get_raw_monitor_geometry (), dock_rect))
           start_pending_reveal ();
