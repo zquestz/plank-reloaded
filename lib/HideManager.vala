@@ -1058,9 +1058,10 @@ namespace Plank {
 
       debug ("Barrier: %i,%i - %i,%i\n", barrier_area.x, barrier_area.y, barrier_area.x + barrier_area.width, barrier_area.y + barrier_area.height);
 
-      // The barrier holds only pushes out of the dock's monitor. Inward
-      // motion passes straight through, so a push from a neighbouring
-      // monitor can't reveal the dock while the pointer is outside it
+      // The barrier holds only pushes out of the dock's area: into a monitor
+      // beyond the edge or, when the dock keeps to the work area, a panel
+      // along it. Inward motion passes straight through, so a push from
+      // beyond can't reveal the dock while the pointer is outside it
       int directions;
       switch (controller.position_manager.Position) {
       default:
