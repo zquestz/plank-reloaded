@@ -1020,6 +1020,11 @@ namespace Plank {
       var root_xwindow = display.default_root_window ();
       var barrier_area = controller.position_manager.get_barrier ();
 
+      // A dock without items can have no width at all, and the X server
+      // rejects a barrier without length
+      if (barrier_area.width <= 0 && barrier_area.height <= 0)
+        return;
+
       // Enable barrier events
       uchar[] mask_bits = new uchar[XInput.mask_length (XInput.EventType.LASTEVENT)];
       XInput.EventMask mask = { XInput.ALL_MASTER_DEVICES, (int) (sizeof (uchar) * mask_bits.length), (owned) mask_bits };
@@ -1049,12 +1054,15 @@ namespace Plank {
         break;
       }
 
+      // A barrier the X server rejects must not take the dock down with it
+      gdk_display.error_trap_push ();
       barrier = XFixes.create_pointer_barrier (
                                                display, root_xwindow,
                                                barrier_area.x, barrier_area.y, barrier_area.x + barrier_area.width,
                                                barrier_area.y + barrier_area.height,
                                                directions,
                                                0, null);
+      gdk_display.error_trap_pop_ignored ();
 
       warn_if_fail (barrier > 0);
     }
