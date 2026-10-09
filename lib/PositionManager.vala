@@ -591,6 +591,10 @@ namespace Plank {
     }
 
     void schedule_screen_update (Gdk.Screen screen) {
+      // Until the episode ends, the dock's monitor may still be measured as
+      // it was, which the hide manager has to allow for
+      controller.hide_manager.screen_update_started ();
+
       // Withhold struts for the whole episode, so the measurement stays
       // free of our own reservation even if HideMode flips to NONE
       // mid-episode; the evaluation exits re-apply whatever the state

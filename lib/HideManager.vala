@@ -102,6 +102,9 @@ namespace Plank {
     int64 pending_reveal_deadline = 0;
     // The dock's monitor setting changed, and the move hasn't landed yet
     bool monitor_change_pending = false;
+    // A screen update is running, and the dock's own monitor may still be
+    // measured as it was before
+    bool screen_update_pending = false;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -612,11 +615,20 @@ namespace Plank {
     }
 
     /**
+     * Notes that a screen update has begun, and the dock's own monitor may
+     * still be measured as it was before.
+     */
+    internal void screen_update_started () {
+      screen_update_pending = true;
+    }
+
+    /**
      * Picks up after a screen update: the dock may have landed on another
      * monitor, and monitors may have come or gone past its edge.
      */
     internal void screen_update_ended () {
       monitor_change_pending = false;
+      screen_update_pending = false;
       update_edge_polling ();
     }
 
@@ -647,9 +659,13 @@ namespace Plank {
     // Whether a monitor past the dock's edge counts at all. Pressure reveal
     // shows the dock only for a push against its own monitor's edge, and a
     // dock about to move to another monitor no longer belongs to the old
-    // monitor's edge
+    // monitor's edge. While a screen update runs, the dock's own monitor
+    // can look like one past its edge, so a hidden dock waits for it to land
+    // rather than flash up; a dock already shown keeps counting, so it
+    // doesn't hide and come back
     bool monitors_past_count () {
-      return !pressure_reveals () && !monitor_change_pending;
+      return !pressure_reveals () && !monitor_change_pending
+             && !(screen_update_pending && Hidden);
     }
 
     // Whether a point is on another monitor past the dock's edge, as
