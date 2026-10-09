@@ -161,6 +161,10 @@ namespace Plank {
 #if HAVE_BARRIERS
       hide_manager.update_barrier ();
 #endif
+
+      // Whether the dock polls its edge depends on its position, which is
+      // only known once the renderer has set up the position manager
+      hide_manager.update_edge_polling ();
     }
 
     /**
