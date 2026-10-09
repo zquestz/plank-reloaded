@@ -105,6 +105,8 @@ namespace Plank {
     bool edge_poll_sampled = false;
     int edge_poll_x = 0;
     int edge_poll_y = 0;
+    // A crossing of the edge at that sample, waiting for the next one
+    bool edge_poll_crossed = false;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -562,6 +564,7 @@ namespace Plank {
 
       if (need_polling && edge_poll_timer_id == 0U) {
         edge_poll_sampled = false;
+        edge_poll_crossed = false;
         edge_poll_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, edge_poll_tick);
       } else if (!need_polling && edge_poll_timer_id > 0U) {
         GLib.Source.remove (edge_poll_timer_id);
@@ -579,25 +582,26 @@ namespace Plank {
       var raw_monitor = position_manager.get_raw_monitor_geometry ();
       var dock_rect = position_manager.get_static_dock_region ();
 
-      // A pointer sliding on into a monitor beyond the edge may never be
-      // sampled on the edge itself, so crossing it since the previous
-      // sample counts as touching it
       var touched = point_at_dock_edge (position, x, y, position_manager.get_monitor_geometry (),
                                         raw_monitor, dock_rect);
-      var crossed = (edge_poll_sampled
+
+      // A pointer sliding on into a monitor beyond the edge may never be
+      // sampled on the edge itself, so crossing it since the previous sample
+      // counts as touching it, once the pointer has stopped near the dock.
+      // Someone reaching for the dock stops there, while a move to that
+      // monitor keeps going, so the crossing has to land in the keep area
+      // and the next sample has to find the pointer still in it
+      var in_keep_area = point_in_dock_keep_area (position, x, y, raw_monitor, dock_rect);
+      var crossed = (edge_poll_sampled && in_keep_area
                      && move_crosses_dock_edge (position, edge_poll_x, edge_poll_y, x, y, raw_monitor, dock_rect));
+      var confirmed = (edge_poll_crossed && in_keep_area);
 
-      // A pointer reaching for the dock stops near it, so a crossing that
-      // went on deep into the monitor beyond, a move to that monitor,
-      // doesn't count
-      if (crossed && !point_in_dock_keep_area (position, x, y, raw_monitor, dock_rect))
-        crossed = false;
-
+      edge_poll_crossed = crossed;
       edge_poll_sampled = true;
       edge_poll_x = x;
       edge_poll_y = y;
 
-      if ((touched || crossed) && Hidden)
+      if ((touched || confirmed) && Hidden)
         start_pending_reveal ();
 
       return true;
