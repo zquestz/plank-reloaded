@@ -363,6 +363,13 @@ namespace Plank {
       if (unhide_timer_id > 0U) {
         GLib.Source.remove (unhide_timer_id);
         unhide_timer_id = 0U;
+
+#if HAVE_BARRIERS
+        // The reveal was cancelled before the dock showed, and the pointer
+        // may still be within the barrier's reach, where no leave arrives,
+        // so let the next push reveal again
+        pressure_counter.leave ();
+#endif
       }
 
       if (Hidden)
@@ -811,13 +818,6 @@ namespace Plank {
 
       switch (xcookie.evtype) {
       case XInput.EventType.BARRIER_HIT :
-        // A shown dock has nothing to reveal, so its barrier lets the
-        // pointer straight through, uncounted
-        if (!Hidden) {
-          release = true;
-          break;
-        }
-
         double slide = 0.0, distance = 0.0;
         switch (controller.position_manager.Position) {
         default :
@@ -838,14 +838,19 @@ namespace Plank {
           break;
         }
 
-        Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
-
-        start_pending_reveal ();
-
-        // Releasing the pointer ends the barrier's hold on this push, and X
-        // reports no more of it, so only a push that reached the threshold
-        // is released, letting it on past an edge shared with another monitor
-        release = true;
+        // Every push needs the full threshold, and a push triggers only once
+        // until the pointer leaves the edge. Against a hidden dock it reveals
+        // the dock and stays held, so it can't carry the pointer on into a
+        // monitor beyond; against a shown dock it goes through. Releasing the
+        // pointer ends the barrier's hold on this push, and X reports no more
+        // of it
+        if (Hidden) {
+          Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
+          start_pending_reveal ();
+        } else {
+          Logger.verbose ("HideManager (pressure-threshold reached > release (%f))", PRESSURE_THRESHOLD);
+          release = true;
+        }
         break;
       case XInput.EventType.BARRIER_LEAVE:
         pressure_counter.leave ();
