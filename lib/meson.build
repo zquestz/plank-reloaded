@@ -61,6 +61,7 @@ plank_lib_sources = [
 plank_internal_lib_sources = [
   'InternalConsts.vala',
   'InternalGeometry.vala',
+  'InternalPressure.vala',
   'InternalQuarks.vala',
   'Services/Matcher.vala',
   'Services/WindowControl.vala',

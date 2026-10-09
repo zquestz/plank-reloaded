@@ -102,6 +102,15 @@ namespace PlankTests {
     Test.add_func ("/Services/DockBarrier/work_area", dock_barrier_work_area);
     Test.add_func ("/Services/DockBarrier/offset_monitor", dock_barrier_offset_monitor);
     Test.add_func ("/Services/DockBarrier/gap", dock_barrier_gap);
+    Test.add_func ("/Services/PressureCounter/threshold", pressure_counter_threshold);
+    Test.add_func ("/Services/PressureCounter/cap", pressure_counter_cap);
+    Test.add_func ("/Services/PressureCounter/single_push", pressure_counter_single_push);
+    Test.add_func ("/Services/PressureCounter/slide", pressure_counter_slide);
+    Test.add_func ("/Services/PressureCounter/window", pressure_counter_window);
+    Test.add_func ("/Services/PressureCounter/retrigger", pressure_counter_retrigger);
+    Test.add_func ("/Services/PressureCounter/wraparound", pressure_counter_wraparound);
+    Test.add_func ("/Services/PressureCounter/partial_expiry", pressure_counter_partial_expiry);
+    Test.add_func ("/Services/PressureCounter/wraparound_expiry", pressure_counter_wraparound_expiry);
     Test.add_func ("/Services/PreviewThumbnail/shape", preview_thumbnail_shape);
     Test.add_func ("/Services/PreviewThumbnail/inverse", preview_thumbnail_inverse);
     Test.add_func ("/Services/PreviewSpace/edges", preview_space_edges);
@@ -1364,6 +1373,116 @@ namespace PlankTests {
 
     Gdk.Rectangle right = { 1862, 340, 48, 400 };
     assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, monitor, right), 1920, 340, 0, 400));
+  }
+
+  //
+  // Pressure counter tests
+  //
+
+  void pressure_counter_threshold () {
+    // Pushes add up until they reach the threshold, which triggers and
+    // starts over
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 24; i++)
+      assert (!counter.push (10 * i, 10.0, 0.0));
+    assert (counter.pressure == 240.0);
+    assert (counter.push (240, 10.0, 0.0));
+    assert (counter.pressure == 0.0);
+  }
+
+  void pressure_counter_cap () {
+    // Each push adds at most 15 pixels
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (10 * i, 40.0, 0.0));
+    assert (counter.pressure == 240.0);
+    assert (counter.push (160, 40.0, 0.0));
+  }
+
+  void pressure_counter_single_push () {
+    // A single push of the whole threshold triggers on its own, even while
+    // sliding along the barrier
+    var counter = new PressureCounter (250.0, 1000U);
+    assert (counter.push (0, 250.0, 400.0));
+  }
+
+  void pressure_counter_slide () {
+    // A move sliding along the barrier more than into it doesn't count, and
+    // an even one does
+    var counter = new PressureCounter (250.0, 1000U);
+    assert (!counter.push (0, 10.0, 11.0));
+    assert (counter.pressure == 0.0);
+    assert (!counter.push (10, 10.0, 10.0));
+    assert (counter.pressure == 10.0);
+  }
+
+  void pressure_counter_window () {
+    // Only pushes within the timeout of the latest one count, one exactly
+    // the timeout old included
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (0, 15.0, 0.0));
+    assert (!counter.push (1001, 15.0, 0.0));
+    assert (counter.pressure == 15.0);
+
+    counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (0, 15.0, 0.0));
+    assert (counter.push (1000, 15.0, 0.0));
+  }
+
+  void pressure_counter_retrigger () {
+    // After triggering, pushes are ignored until the pointer leaves the
+    // barrier, and leaving forgets everything counted so far
+    var counter = new PressureCounter (250.0, 1000U);
+    assert (counter.push (0, 250.0, 0.0));
+    assert (!counter.push (10, 250.0, 0.0));
+    assert (!counter.push (20, 15.0, 0.0));
+    assert (counter.pressure == 0.0);
+
+    counter.leave ();
+    assert (counter.push (30, 250.0, 0.0));
+
+    counter.leave ();
+    assert (!counter.push (40, 15.0, 0.0));
+    counter.leave ();
+    assert (counter.pressure == 0.0);
+  }
+
+  void pressure_counter_wraparound () {
+    // The X server time wraps around after 2^32 milliseconds, and pushes on
+    // either side of the wrap are still close together
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (uint32.MAX - 200, 15.0, 0.0));
+    assert (counter.push (300, 15.0, 0.0));
+  }
+
+  void pressure_counter_partial_expiry () {
+    // Expiring the pushes that have aged out keeps the newer ones
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 8; i++)
+      assert (!counter.push (0, 15.0, 0.0));
+    for (uint32 i = 0; i < 8; i++)
+      assert (!counter.push (500, 15.0, 0.0));
+    assert (counter.pressure == 240.0);
+    assert (!counter.push (1001, 15.0, 0.0));
+    assert (counter.pressure == 135.0);
+  }
+
+  void pressure_counter_wraparound_expiry () {
+    // Across the wrap, a push exactly the timeout old still counts, and one
+    // a millisecond older no longer does
+    var counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (uint32.MAX - 499, 15.0, 0.0));
+    assert (counter.push (500, 15.0, 0.0));
+
+    counter = new PressureCounter (250.0, 1000U);
+    for (uint32 i = 0; i < 16; i++)
+      assert (!counter.push (uint32.MAX - 499, 15.0, 0.0));
+    assert (!counter.push (501, 15.0, 0.0));
+    assert (counter.pressure == 15.0);
   }
 
   //

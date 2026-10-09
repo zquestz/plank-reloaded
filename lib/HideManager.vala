@@ -58,7 +58,8 @@ namespace Plank {
     const uint UPDATE_TIMEOUT = 200U;
 
 #if HAVE_BARRIERS
-    const double PRESSURE_THRESHOLD = 100.0;
+    // As GNOME Shell's edge pressure: 250 pixels of pushing within a second
+    const double PRESSURE_THRESHOLD = 250.0;
     const uint PRESSURE_TIMEOUT = 1000U;
 #endif
 
@@ -113,8 +114,7 @@ namespace Plank {
 #if HAVE_BARRIERS
     XFixes.PointerBarrier barrier = 0;
     int opcode = 0;
-    double pressure = 0.0;
-    uint pressure_timer_id = 0U;
+    PressureCounter pressure_counter = new PressureCounter (PRESSURE_THRESHOLD, PRESSURE_TIMEOUT);
     bool barriers_supported = false;
 #endif
 
@@ -751,13 +751,6 @@ namespace Plank {
       }
 
       cancel_pending_reveal ();
-
-#if HAVE_BARRIERS
-      if (pressure_timer_id > 0U) {
-        GLib.Source.remove (pressure_timer_id);
-        pressure_timer_id = 0U;
-      }
-#endif
     }
 
 #if HAVE_BARRIERS
@@ -840,38 +833,22 @@ namespace Plank {
           break;
         }
 
-        if (slide < distance) {
-          distance = Math.fmin (15.0, distance);
-          pressure += distance;
-          Logger.verbose ("HideManager (pressure = %f)", pressure);
+        if (!pressure_counter.push ((uint32) barrier_event.time, distance, slide)) {
+          Logger.verbose ("HideManager (pressure = %f)", pressure_counter.pressure);
+          break;
         }
 
-        if (pressure >= PRESSURE_THRESHOLD) {
-          Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
+        Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
 
-          pressure = 0.0;
+        start_pending_reveal ();
 
-          if (pressure_timer_id > 0U) {
-            GLib.Source.remove (pressure_timer_id);
-            pressure_timer_id = 0U;
-          }
-
-          if (Hidden)
-            start_pending_reveal ();
-
-          // Releasing the pointer ends the barrier's hold on this push, and X
-          // reports no more of it, so only a push that reached the threshold
-          // is released, letting it on past an edge shared with another monitor
-          release = true;
-        }
+        // Releasing the pointer ends the barrier's hold on this push, and X
+        // reports no more of it, so only a push that reached the threshold
+        // is released, letting it on past an edge shared with another monitor
+        release = true;
         break;
       case XInput.EventType.BARRIER_LEAVE:
-        if (pressure_timer_id == 0U)
-          pressure_timer_id = Gdk.threads_add_timeout (PRESSURE_TIMEOUT, () => {
-            pressure = 0.0;
-            pressure_timer_id = 0U;
-            return false;
-          });
+        pressure_counter.leave ();
         break;
       default:
         break;
@@ -909,6 +886,10 @@ namespace Plank {
         XFixes.destroy_pointer_barrier (display, barrier);
         gdk_display.error_trap_pop_ignored ();
         barrier = 0;
+
+        // The old barrier's leave is filtered out by its id, so start the
+        // next barrier with a clean count, never stuck on a trigger
+        pressure_counter.leave ();
       }
 
       if (!controller.prefs.PressureReveal)
