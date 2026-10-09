@@ -100,6 +100,8 @@ namespace Plank {
 
     bool pending_reveal = false;
     int64 pending_reveal_deadline = 0;
+    // The dock's monitor setting changed, and the move hasn't landed yet
+    bool monitor_change_pending = false;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -304,6 +306,18 @@ namespace Plank {
       case "GapSize":
         update_edge_polling ();
         break;
+      case "Monitor":
+        // The dock moves to another monitor once the screen update lands,
+        // with the setting changed by hand or by following the active
+        // display. Until then, monitors past its old edge mustn't hold it,
+        // so a reveal from one ends and the dock hides where it is rather
+        // than arriving shown
+        monitor_change_pending = true;
+        cancel_pending_reveal ();
+        update_hovered ();
+        update_hidden ();
+        update_edge_polling ();
+        break;
       default:
         // Nothing important for us changed
         break;
@@ -464,7 +478,12 @@ namespace Plank {
       });
     }
 
-    uint compute_reveal_timeout () {
+    /**
+     * How long a dock revealed from its edge stays shown once the pointer has
+     * left that edge, and how long a dock following the active display waits
+     * before moving to another monitor.
+     */
+    internal uint compute_reveal_timeout () {
       unowned DockTheme theme = controller.renderer.theme;
       var anim_time = theme.FadeOpacity == 1.0 ? theme.HideTime : theme.FadeTime;
       return (uint) anim_time + EDGE_REVEAL_TIMEOUT;
@@ -593,6 +612,15 @@ namespace Plank {
     }
 
     /**
+     * Picks up after a screen update: the dock may have landed on another
+     * monitor, and monitors may have come or gone past its edge.
+     */
+    internal void screen_update_ended () {
+      monitor_change_pending = false;
+      update_edge_polling ();
+    }
+
+    /**
      * Starts or stops polling the pointer for a hidden dock's edge, after a
      * change to the dock or to the monitors around it.
      */
@@ -616,12 +644,18 @@ namespace Plank {
       return true;
     }
 
+    // Whether a monitor past the dock's edge counts at all. Pressure reveal
+    // shows the dock only for a push against its own monitor's edge, and a
+    // dock about to move to another monitor no longer belongs to the old
+    // monitor's edge
+    bool monitors_past_count () {
+      return !pressure_reveals () && !monitor_change_pending;
+    }
+
     // Whether a point is on another monitor past the dock's edge, as
-    // monitor_past_dock_edge () defines it. Pressure reveal shows the dock
-    // only for a push against its own monitor's edge, so there another
-    // monitor never counts
+    // monitor_past_dock_edge () defines it
     bool on_monitor_past_dock_edge (int x, int y) {
-      if (pressure_reveals ())
+      if (!monitors_past_count ())
         return false;
 
       unowned PositionManager position_manager = controller.position_manager;
@@ -634,6 +668,9 @@ namespace Plank {
     // Whether any monitor lies past the dock's edge, as
     // monitor_past_dock_edge () defines it
     bool any_monitor_past_dock_edge () {
+      if (!monitors_past_count ())
+        return false;
+
       unowned PositionManager position_manager = controller.position_manager;
       unowned Gdk.Display display = controller.window.get_display ();
       var raw_monitor = position_manager.get_raw_monitor_geometry ();

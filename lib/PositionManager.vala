@@ -58,6 +58,9 @@ namespace Plank {
     const uint SCREEN_UPDATE_STABLE_SAMPLES = 5;
 
     uint active_display_timeout_id;
+    // The other monitor the pointer was found on, waiting to be followed
+    uint follow_timeout_id;
+    string? follow_monitor = null;
     uint screen_update_timeout_id;
     uint screen_sample_timeout_id;
 
@@ -441,7 +444,7 @@ namespace Plank {
 
       active_display_timeout_id = GLib.Timeout.add_seconds (controller.prefs.ActiveDisplayPollingInterval, () => {
         if (controller.prefs.ActiveDisplay) {
-          move_to_active_monitor ();
+          follow_active_monitor ();
           return GLib.Source.CONTINUE;
         } else {
           active_display_timeout_id = 0;
@@ -450,10 +453,61 @@ namespace Plank {
       });
     }
 
+    // Follows the pointer to another monitor. A monitor past the dock's edge
+    // is where the pointer overshoots while reaching for the dock, so the
+    // dock only follows there once the pointer has stayed as long as a dock
+    // waits for it to come back to its edge; any other monitor is followed
+    // at once
+    void follow_active_monitor () {
+      if (follow_timeout_id > 0)
+        return;
+
+      var monitor_name = active_monitor ();
+      if (monitor_name == controller.prefs.Monitor)
+        return;
+
+      if (!pointer_on_monitor_past_dock_edge ()) {
+        move_to_active_monitor ();
+        return;
+      }
+
+      follow_monitor = monitor_name;
+      follow_timeout_id = GLib.Timeout.add (controller.hide_manager.compute_reveal_timeout (), () => {
+        follow_timeout_id = 0;
+
+        if (controller.prefs.ActiveDisplay && active_monitor () == follow_monitor)
+          move_to_active_monitor ();
+
+        follow_monitor = null;
+        return GLib.Source.REMOVE;
+      });
+    }
+
+    // Whether the pointer is on a monitor past the dock's edge, as
+    // monitor_past_dock_edge () defines it, finding the pointer's monitor the
+    // way active_monitor () does
+    bool pointer_on_monitor_past_dock_edge () {
+      unowned Gdk.Display display = controller.window.get_display ();
+
+      int x, y;
+      display.get_default_seat ()
+       .get_pointer ()
+       .get_position (null, out x, out y);
+
+      var monitor = display.get_monitor_at_point (x, y).get_geometry ();
+      return monitor_past_dock_edge (Position, monitor, get_raw_monitor_geometry ());
+    }
+
     void stop_active_display_polling () {
       if (active_display_timeout_id > 0) {
         GLib.Source.remove (active_display_timeout_id);
         active_display_timeout_id = 0;
+      }
+
+      if (follow_timeout_id > 0) {
+        GLib.Source.remove (follow_timeout_id);
+        follow_timeout_id = 0;
+        follow_monitor = null;
       }
     }
 
@@ -573,9 +627,10 @@ namespace Plank {
       controller.hide_manager.update_barrier ();
 #endif
 
-      // A monitor may have come or gone past the dock's edge, which decides
-      // whether a gapless dock polls the edge
-      controller.hide_manager.update_edge_polling ();
+      // The dock may have landed on another monitor, and a monitor may have
+      // come or gone past its edge, which decides whether a gapless dock
+      // polls the edge
+      controller.hide_manager.screen_update_ended ();
     }
 
     void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
