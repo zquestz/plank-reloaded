@@ -2402,8 +2402,6 @@ namespace Plank {
       barrier.width *= window_scale_factor;
       barrier.height *= window_scale_factor;
 
-      warn_if_fail (barrier.width > 0 || barrier.height > 0);
-
       return barrier;
     }
 
