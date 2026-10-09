@@ -903,14 +903,12 @@ namespace Plank {
           || (xcookie.evtype != XInput.EventType.BARRIER_HIT && xcookie.evtype != XInput.EventType.BARRIER_LEAVE))
         return Gdk.FilterReturn.CONTINUE;
 
-      X.get_event_data (display, xcookie);
-
-      // Does it match our registered barrier?
+      // GDK fetches the event's data before running any filter and frees it
+      // afterwards, so it must be left alone here: freeing it would leave
+      // the next dock's filter reading nothing
       XInput.BarrierEvent* barrier_event = (XInput.BarrierEvent*) (xcookie.data);
-      if (barrier_event.barrier != barrier) {
-        X.free_event_data (display, xcookie);
+      if (barrier_event == null || barrier_event.barrier != barrier)
         return Gdk.FilterReturn.CONTINUE;
-      }
 
       bool release = false;
 
@@ -971,7 +969,6 @@ namespace Plank {
           gdk_display.error_trap_pop_ignored ();
       }
 
-      X.free_event_data (display, xcookie);
       return Gdk.FilterReturn.REMOVE;
     }
 
