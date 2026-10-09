@@ -551,6 +551,11 @@ namespace Plank {
       if (!Hidden && !Hovered)
         update_hovered ();
 
+      // A dock that shows with the pointer on it no longer needs the reveal
+      // that brought it out: leaving the dock decides from here
+      if (!Hidden && Hovered)
+        cancel_pending_reveal ();
+
 #if HAVE_BARRIERS
       // A dock that has just hidden starts every push afresh. The pointer may
       // still be within the barrier's reach, where no leave arrives to end
@@ -672,7 +677,11 @@ namespace Plank {
       if (event.detail == Gdk.NotifyType.INFERIOR)
         return Hidden;
 
-      cancel_pending_reveal ();
+      // A reveal from the edge still waiting out its unhide delay carries on
+      // across a gapless dock's strip, as long as the pointer stays near the
+      // dock; once the dock shows, the pointer on it takes over
+      if (!Hidden)
+        cancel_pending_reveal ();
 
 #if HAVE_BARRIERS
       if (Hidden && barriers_supported
@@ -705,13 +714,15 @@ namespace Plank {
         // Leaving a dock for its edge, across its gap, onto a panel along the
         // edge or onto a monitor past it, is reaching for the edge rather
         // than leaving, so the dock stays shown as for a reveal from the
-        // edge. A gapless dock does this only where its edge poll runs. At a
-        // scale of 2, the input region of a bottom or right dock leaves out
-        // the dock's far row or column, so a pointer leaving the other way can
-        // still be on the dock, which doesn't count
+        // edge. A gapless dock still hidden, hovered through its strip during
+        // its unhide delay, keeps revealing the same way rather than starting
+        // the delay over. A gapless dock does this only where its edge poll
+        // runs. At a scale of 2, the input region of a bottom or right dock
+        // leaves out the dock's far row or column, so a pointer leaving the
+        // other way can still be on the dock, which doesn't count
         var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
-        if (controller.prefs.HideMode != HideType.NONE && !Hidden && !on_dock
+        if (controller.prefs.HideMode != HideType.NONE && !on_dock
             && (controller.prefs.GapSize > 0 || edge_poll_applies ())
             && (point_in_dock_keep_area (position_manager.Position, x, y,
                                          position_manager.get_raw_monitor_geometry (), dock_rect)
