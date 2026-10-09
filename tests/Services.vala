@@ -1328,6 +1328,22 @@ namespace PlankTests {
     Gdk.Rectangle left_monitor = { 0, 0, 1920, 1080 };
     Gdk.Rectangle right = { 1872, 340, 48, 400 };
     assert (!move_crosses_dock_edge (Gtk.PositionType.RIGHT, 1850, 100, 2100, 100, left_monitor, right));
+
+    // The other edges each work out where a move crossed them on their own,
+    // so each gets the same diagonal pair. These moves cross just after they
+    // start, so measuring from the wrong end, or backwards, would fail
+    Gdk.Rectangle lower = { 0, 1080, 1920, 1080 };
+    Gdk.Rectangle top = { 760, 1080, 400, 48 };
+    assert (move_crosses_dock_edge (Gtk.PositionType.TOP, 770, 1100, 1470, 900, lower, top));
+    assert (!move_crosses_dock_edge (Gtk.PositionType.TOP, 500, 1100, 900, 900, lower, top));
+
+    Gdk.Rectangle right_monitor = { 1920, 0, 1920, 1080 };
+    Gdk.Rectangle left = { 1920, 340, 48, 400 };
+    assert (move_crosses_dock_edge (Gtk.PositionType.LEFT, 1940, 350, 1740, 1050, right_monitor, left));
+    assert (!move_crosses_dock_edge (Gtk.PositionType.LEFT, 1940, 100, 1740, 500, right_monitor, left));
+
+    assert (move_crosses_dock_edge (Gtk.PositionType.RIGHT, 1900, 350, 2100, 1050, left_monitor, right));
+    assert (!move_crosses_dock_edge (Gtk.PositionType.RIGHT, 1900, 100, 2100, 500, left_monitor, right));
   }
 
   void dock_edge_crossing_not_crossing () {
