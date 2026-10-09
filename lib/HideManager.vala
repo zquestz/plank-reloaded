@@ -651,14 +651,21 @@ namespace Plank {
 
       if (Hovered) {
         unowned PositionManager position_manager = controller.position_manager;
+        var dock_rect = position_manager.get_static_dock_region ();
+        var x = (int) event.x_root;
+        var y = (int) event.y_root;
 
         // Leaving a dock with a gap for its edge, across the gap or past
         // the edge within its span, is reaching for the edge rather than
-        // leaving, so the dock stays shown as for a reveal from the edge
-        if (controller.prefs.GapSize > 0 && !Hidden
-            && point_in_dock_keep_area (position_manager.Position, (int) event.x_root, (int) event.y_root,
-                                        position_manager.get_raw_monitor_geometry (),
-                                        position_manager.get_static_dock_region ()))
+        // leaving, so the dock stays shown as for a reveal from the edge. At
+        // a scale of 2, the input region of a bottom or right dock leaves out
+        // the dock's far row or column, so a pointer leaving the other way
+        // can still be on the dock, which doesn't count
+        var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
+                       && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
+        if (controller.prefs.GapSize > 0 && !Hidden && !on_dock
+            && point_in_dock_keep_area (position_manager.Position, x, y,
+                                        position_manager.get_raw_monitor_geometry (), dock_rect))
           start_pending_reveal ();
 
         update_hovered_with_coords ((int) event.x, (int) event.y, true);
