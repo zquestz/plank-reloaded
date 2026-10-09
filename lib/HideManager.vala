@@ -526,6 +526,14 @@ namespace Plank {
     void hidden_changed () {
       update_edge_polling ();
 
+      // With pressure reveal on, a hidden dock ignores the pointer entering
+      // its edge, so a pointer parked there isn't hovering it. When the dock
+      // then shows for another reason, the pointer is already inside its
+      // window and no further enter arrives, so check now, while the input
+      // region is still the edge strip
+      if (!Hidden && !Hovered)
+        update_hovered ();
+
 #if HAVE_BARRIERS
       // A dock that has just hidden starts every push afresh. The pointer may
       // still be within the barrier's reach, where no leave arrives to end
