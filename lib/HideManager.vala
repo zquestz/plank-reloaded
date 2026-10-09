@@ -387,6 +387,14 @@ namespace Plank {
       if (Hidden)
         return;
 
+      // A dock the edge poll would reveal again at once, with the pointer at
+      // its edge or on a monitor past it, holds there instead of hiding and
+      // bouncing straight back
+      if (edge_poll_applies () && pointer_at_dock_edge ()) {
+        start_pending_reveal ();
+        return;
+      }
+
       if (controller.prefs.HideDelay == 0U) {
         if (!Hidden)
           Hidden = true;
@@ -397,9 +405,17 @@ namespace Plank {
         return;
 
       hide_timer_id = Gdk.threads_add_timeout (controller.prefs.HideDelay, () => {
-        if (!Hidden)
-          Hidden = true;
         hide_timer_id = 0U;
+
+        if (Hidden)
+          return false;
+
+        // The pointer may have reached the edge while the delay ran
+        if (edge_poll_applies () && pointer_at_dock_edge ())
+          start_pending_reveal ();
+        else
+          Hidden = true;
+
         return false;
       });
     }
@@ -453,7 +469,12 @@ namespace Plank {
     }
 
     void start_pending_reveal () {
-      if (controller.prefs.GapSize == 0) {
+      // A push against a gapless dock holds the pointer on the dock's own
+      // edge, so the dock simply counts as hovered until the pointer leaves
+      // it. The edge poll may find the pointer off the dock, on a panel or
+      // another monitor, where the dock would never see it leave, so that
+      // reveal takes the hold below
+      if (controller.prefs.GapSize == 0 && pressure_reveals ()) {
         freeze_notify ();
 
         if (!Hovered) {
@@ -482,11 +503,11 @@ namespace Plank {
           if (pointer_in_keep_area ())
             return true;
         } else {
-          // The gap leaves the edge outside the dock's hover region, so the
-          // reveal lasts until the pointer has been away from the edge for
-          // the whole timeout, counted from the first poll that finds it
-          // gone once the dock shows, leaving it that long to cross the gap
-          // to the dock
+          // A gap, a panel or a monitor past the edge leaves the pointer
+          // outside the dock's hover region, so the reveal lasts until the
+          // pointer has been away from the edge for the whole timeout, counted
+          // from the first poll that finds it gone once the dock shows,
+          // leaving it that long to cross over to the dock
           if (pointer_at_dock_edge ()) {
             pending_reveal_deadline = 0;
             return true;
@@ -549,11 +570,27 @@ namespace Plank {
 #endif
     }
 
-    void update_edge_polling () {
-      bool need_polling = controller.prefs.GapSize > 0
-                          && controller.prefs.HideMode != HideType.NONE
-                          && !pressure_reveals ()
-                          && Hidden;
+    // Whether the dock polls its edge for the pointer while hidden. A gapless
+    // dock already sees the pointer at its edge through its own input
+    // region, so it only needs the poll for a panel between that edge and
+    // the monitor's, or for a monitor past it
+    bool edge_poll_applies () {
+      unowned PositionManager position_manager = controller.position_manager;
+
+      return controller.prefs.HideMode != HideType.NONE
+             && !pressure_reveals ()
+             && (controller.prefs.GapSize > 0
+                 || band_past_dock_area (position_manager.Position, position_manager.get_monitor_geometry (),
+                                         position_manager.get_raw_monitor_geometry ())
+                 || any_monitor_past_dock_edge ());
+    }
+
+    /**
+     * Starts or stops polling the pointer for a hidden dock's edge, after a
+     * change to the dock or to the monitors around it.
+     */
+    internal void update_edge_polling () {
+      bool need_polling = Hidden && edge_poll_applies ();
 
       if (need_polling && edge_poll_timer_id == 0U) {
         edge_poll_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, edge_poll_tick);
@@ -564,7 +601,9 @@ namespace Plank {
     }
 
     bool edge_poll_tick () {
-      if (pointer_at_dock_edge () && Hidden)
+      // A hovered dock is already showing for the pointer on its own edge
+      // strip, and a hold started here would outlast the hover
+      if (Hidden && !Hovered && pointer_at_dock_edge ())
         start_pending_reveal ();
 
       return true;
@@ -583,6 +622,20 @@ namespace Plank {
 
       return monitor_past_dock_edge (position_manager.Position, monitor,
                                      position_manager.get_raw_monitor_geometry ());
+    }
+
+    // Whether any monitor lies past the dock's edge, as
+    // monitor_past_dock_edge () defines it
+    bool any_monitor_past_dock_edge () {
+      unowned PositionManager position_manager = controller.position_manager;
+      unowned Gdk.Display display = controller.window.get_display ();
+      var raw_monitor = position_manager.get_raw_monitor_geometry ();
+
+      for (var i = 0; i < display.get_n_monitors (); i++)
+        if (monitor_past_dock_edge (position_manager.Position, display.get_monitor (i).get_geometry (), raw_monitor))
+          return true;
+
+      return false;
     }
 
     // Whether the pointer is in the dock's keep area, as
@@ -649,16 +702,17 @@ namespace Plank {
         var x = (int) event.x_root;
         var y = (int) event.y_root;
 
-        // Leaving a dock with a gap for its edge, across the gap or on to a
-        // monitor past the edge, is reaching for the edge rather than
-        // leaving, so the dock stays shown as for a reveal from the edge. At
-        // a scale of 2, the input region of a bottom or right dock leaves out
-        // the dock's far row or column, so a pointer leaving the other way
-        // can still be on the dock, which doesn't count
+        // Leaving a dock for its edge, across its gap, onto a panel along the
+        // edge or onto a monitor past it, is reaching for the edge rather
+        // than leaving, so the dock stays shown as for a reveal from the
+        // edge. A gapless dock does this only where its edge poll runs. At a
+        // scale of 2, the input region of a bottom or right dock leaves out
+        // the dock's far row or column, so a pointer leaving the other way can
+        // still be on the dock, which doesn't count
         var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
-        if (controller.prefs.GapSize > 0 && controller.prefs.HideMode != HideType.NONE
-            && !Hidden && !on_dock
+        if (controller.prefs.HideMode != HideType.NONE && !Hidden && !on_dock
+            && (controller.prefs.GapSize > 0 || edge_poll_applies ())
             && (point_in_dock_keep_area (position_manager.Position, x, y,
                                          position_manager.get_raw_monitor_geometry (), dock_rect)
                 || on_monitor_past_dock_edge (x, y)))

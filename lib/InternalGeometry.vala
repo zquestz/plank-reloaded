@@ -109,6 +109,39 @@ namespace Plank {
   }
 
   /**
+   * Whether the dock's monitor reaches past the edge of the dock's area on
+   * the dock's side, leaving a band there, such as a panel in work area
+   * mode. Pure math, testable in isolation.
+   *
+   * @param position the dock position
+   * @param area the dock's area, the monitor or its work area
+   * @param raw_monitor the whole monitor the dock is on
+   * @return whether a band lies between the dock's area and its monitor's edge
+   */
+  public static bool band_past_dock_area (Gtk.PositionType position, Gdk.Rectangle area,
+                                          Gdk.Rectangle raw_monitor) {
+    bool band = false;
+
+    switch (position) {
+    default:
+    case Gtk.PositionType.BOTTOM:
+      band = area.y + area.height < raw_monitor.y + raw_monitor.height;
+      break;
+    case Gtk.PositionType.TOP:
+      band = area.y > raw_monitor.y;
+      break;
+    case Gtk.PositionType.LEFT:
+      band = area.x > raw_monitor.x;
+      break;
+    case Gtk.PositionType.RIGHT:
+      band = area.x + area.width < raw_monitor.x + raw_monitor.width;
+      break;
+    }
+
+    return band;
+  }
+
+  /**
    * Whether a point is near a dock with a gap, where a pointer reaching for
    * it waits: within the stretch of the edge the dock covers, from the
    * dock's far side across the gap to the edge. While the unhide delay runs

@@ -99,6 +99,7 @@ namespace PlankTests {
     Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
     Test.add_func ("/Services/DockEdge/monitor_past", dock_edge_monitor_past);
     Test.add_func ("/Services/DockEdge/monitor_not_past", dock_edge_monitor_not_past);
+    Test.add_func ("/Services/DockEdge/band_past_area", dock_edge_band_past_area);
     Test.add_func ("/Services/DockKeepArea/bottom", dock_keep_area_bottom);
     Test.add_func ("/Services/DockKeepArea/edges", dock_keep_area_edges);
     Test.add_func ("/Services/DockBarrier/edges", dock_barrier_edges);
@@ -1308,6 +1309,37 @@ namespace PlankTests {
     Gdk.Rectangle empty = { 0, 0, 0, 0 };
     assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, laptop, empty));
     assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, laptop, empty));
+  }
+
+  void dock_edge_band_past_area () {
+    // In work area mode a 40px panel on the dock's edge leaves a band between
+    // the dock's area and the monitor's edge. In monitor mode, or with the
+    // panel on another edge, there is none
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+    assert (!band_past_dock_area (Gtk.PositionType.BOTTOM, monitor, monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.LEFT, monitor, monitor));
+
+    Gdk.Rectangle bottom_panel = { 0, 0, 1920, 1040 };
+    assert (band_past_dock_area (Gtk.PositionType.BOTTOM, bottom_panel, monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.TOP, bottom_panel, monitor));
+
+    Gdk.Rectangle top_panel = { 0, 40, 1920, 1040 };
+    assert (band_past_dock_area (Gtk.PositionType.TOP, top_panel, monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.BOTTOM, top_panel, monitor));
+
+    Gdk.Rectangle left_panel = { 40, 0, 1880, 1080 };
+    assert (band_past_dock_area (Gtk.PositionType.LEFT, left_panel, monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.RIGHT, left_panel, monitor));
+
+    Gdk.Rectangle right_panel = { 0, 0, 1880, 1080 };
+    assert (band_past_dock_area (Gtk.PositionType.RIGHT, right_panel, monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.LEFT, right_panel, monitor));
+
+    // The same on a monitor away from the origin
+    Gdk.Rectangle offset_monitor = { 1920, 1080, 1920, 1080 };
+    Gdk.Rectangle offset_bottom_panel = { 1920, 1080, 1920, 1040 };
+    assert (band_past_dock_area (Gtk.PositionType.BOTTOM, offset_bottom_panel, offset_monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.BOTTOM, offset_monitor, offset_monitor));
   }
 
   //

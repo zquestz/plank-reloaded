@@ -572,6 +572,10 @@ namespace Plank {
       // logical geometry alone still moves it; rebuild it like the struts
       controller.hide_manager.update_barrier ();
 #endif
+
+      // A monitor may have come or gone past the dock's edge, which decides
+      // whether a gapless dock polls the edge
+      controller.hide_manager.update_edge_polling ();
     }
 
     void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
