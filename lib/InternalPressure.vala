@@ -40,12 +40,16 @@ namespace Plank {
     uint32 timeout;
 
     Push[] pushes = {};
-    bool triggered = false;
 
     /**
      * The pressure the counted pushes add up to.
      */
     public double pressure { get; private set; }
+
+    /**
+     * Whether a push has triggered since the pointer last left the barrier.
+     */
+    public bool triggered { get; private set; }
 
     /**
      * Creates a pressure counter.

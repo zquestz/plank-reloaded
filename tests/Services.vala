@@ -1631,11 +1631,13 @@ namespace PlankTests {
     // barrier, and leaving forgets everything counted so far
     var counter = new PressureCounter (250.0, 1000U);
     assert (counter.push (0, 250.0, 0.0));
+    assert (counter.triggered);
     assert (!counter.push (10, 250.0, 0.0));
     assert (!counter.push (20, 15.0, 0.0));
     assert (counter.pressure == 0.0);
 
     counter.leave ();
+    assert (!counter.triggered);
     assert (counter.push (30, 250.0, 0.0));
 
     counter.leave ();

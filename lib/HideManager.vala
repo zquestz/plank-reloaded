@@ -121,6 +121,10 @@ namespace Plank {
     int opcode = 0;
     PressureCounter pressure_counter = new PressureCounter (PRESSURE_THRESHOLD, PRESSURE_TIMEOUT);
     bool barriers_supported = false;
+    Gtk.Clipboard? xdnd_selection = null;
+    // A drag-and-drop is running, in any app. A window move or a text
+    // selection grabs the pointer too, but isn't one
+    bool drag_live = false;
 #endif
 
     /**
@@ -183,6 +187,9 @@ namespace Plank {
 
 #if HAVE_BARRIERS
       gdk_window_remove_filter (null, (Gdk.FilterFunc) xevent_filter);
+
+      if (xdnd_selection != null)
+        xdnd_selection.owner_change.disconnect (xdnd_owner_changed);
 
       if (barrier != 0) {
         unowned Gdk.X11.Display? gdk_display = (controller.window.get_display () as Gdk.X11.Display);
@@ -1017,11 +1024,30 @@ namespace Plank {
           message ("Barriers enabled (XInput %i.%i support)\n", major, minor);
           barriers_supported = true;
           gdk_window_add_filter (null, (Gdk.FilterFunc) xevent_filter);
+
+          // A drag-and-drop starts by taking the XdndSelection. GTK lets it
+          // go as the drag ends, but an app may keep it once its drag is
+          // over, so a button release ends a drag too
+          xdnd_selection = Gtk.Clipboard.get_for_display (gdk_display, Gdk.Atom.intern_static_string ("XdndSelection"));
+          xdnd_selection.owner_change.connect (xdnd_owner_changed);
         } else {
           debug ("Barriers disabled (XInput %i.%i not sufficient)", major, minor);
           barriers_supported = false;
         }
       }
+    }
+
+    [CCode (instance_pos = -1)]
+    void xdnd_owner_changed (Gtk.Clipboard clipboard, Gdk.EventOwnerChange event) {
+      var live = (event.owner != null);
+      if (drag_live == live)
+        return;
+
+      drag_live = live;
+      if (live)
+        Logger.verbose ("HideManager (drag started)");
+      else
+        Logger.verbose ("HideManager (drag ended)");
     }
 
     /**
@@ -1032,6 +1058,19 @@ namespace Plank {
       X.Event* xevent = (X.Event*) gdk_xevent;
       X.GenericEventCookie* xcookie = &xevent.xcookie;
       unowned X.Display display = xcookie.display;
+
+      // A drag ends as its button is released, which X reports even while
+      // the drag holds the pointer grabbed. Every dock's filter needs to see
+      // it, and a wheel's buttons, 4 to 7, can release mid-drag
+      if (xcookie.extension == opcode && xcookie.evtype == XInput.EventType.RAW_BUTTON_RELEASE) {
+        XInput.RawEvent* raw_event = (XInput.RawEvent*) (xcookie.data);
+        if (drag_live && raw_event != null && (raw_event.detail < 4 || raw_event.detail > 7)) {
+          drag_live = false;
+          Logger.verbose ("HideManager (drag ended)");
+        }
+
+        return Gdk.FilterReturn.CONTINUE;
+      }
 
       // Did we got a barrier-event?
       if (barrier == 0
@@ -1054,8 +1093,14 @@ namespace Plank {
         // another app drags something, goes straight through uncounted, as
         // GNOME Shell's pressure barriers ignore it: a drag is never held by
         // the dock, and never reveals it, which it would do without the dock
-        // ever seeing the drag leave
-        if ((barrier_event.flags & XInput.BARRIER_DEVICE_IS_GRABBED) != 0) {
+        // ever seeing the drag leave. A drag-and-drop against a hidden dock
+        // with a gap counts, though: the dock's window sits off the edge, out
+        // of the drag's reach, so nothing else can reveal it, and the edge
+        // hold it reveals through ends by itself. The push that reveals it
+        // stays held until it leaves the barrier, as any other does, rather
+        // than carrying the drag on into a monitor beyond
+        if ((barrier_event.flags & XInput.BARRIER_DEVICE_IS_GRABBED) != 0
+            && !(drag_live && controller.prefs.GapSize > 0 && (Hidden || pressure_counter.triggered))) {
           release = true;
           break;
         }
@@ -1152,11 +1197,12 @@ namespace Plank {
       if (barrier_area.width <= 0 && barrier_area.height <= 0)
         return;
 
-      // Enable barrier events
+      // Enable barrier events, and the button releases that end a drag
       uchar[] mask_bits = new uchar[XInput.mask_length (XInput.EventType.LASTEVENT)];
       XInput.EventMask mask = { XInput.ALL_MASTER_DEVICES, (int) (sizeof (uchar) * mask_bits.length), (owned) mask_bits };
       XInput.set_mask (mask.mask, XInput.EventType.BARRIER_HIT);
       XInput.set_mask (mask.mask, XInput.EventType.BARRIER_LEAVE);
+      XInput.set_mask (mask.mask, XInput.EventType.RAW_BUTTON_RELEASE);
       XInput.select_events (display, root_xwindow, &mask, 1);
 
       debug ("Barrier: %i,%i - %i,%i\n", barrier_area.x, barrier_area.y, barrier_area.x + barrier_area.width, barrier_area.y + barrier_area.height);
