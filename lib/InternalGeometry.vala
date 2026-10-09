@@ -67,6 +67,48 @@ namespace Plank {
   }
 
   /**
+   * The line on the edge of the dock's area that the pressure reveal
+   * barrier covers: the stretch of that edge the visible dock spans, so the
+   * barrier lines up with the dock whatever its alignment and offset. Pure
+   * math, testable in isolation.
+   *
+   * @param position the dock position
+   * @param area the dock's area, the monitor or its work area
+   * @param dock_rect the visible dock
+   * @return the line, as a rectangle without height or without width
+   */
+  public static Gdk.Rectangle dock_barrier_line (Gtk.PositionType position, Gdk.Rectangle area,
+                                                 Gdk.Rectangle dock_rect) {
+    Gdk.Rectangle line = {};
+
+    switch (position) {
+    default:
+    case Gtk.PositionType.BOTTOM:
+      line.x = dock_rect.x;
+      line.y = area.y + area.height;
+      line.width = dock_rect.width;
+      break;
+    case Gtk.PositionType.TOP:
+      line.x = dock_rect.x;
+      line.y = area.y;
+      line.width = dock_rect.width;
+      break;
+    case Gtk.PositionType.LEFT:
+      line.x = area.x;
+      line.y = dock_rect.y;
+      line.height = dock_rect.height;
+      break;
+    case Gtk.PositionType.RIGHT:
+      line.x = area.x + area.width;
+      line.y = dock_rect.y;
+      line.height = dock_rect.height;
+      break;
+    }
+
+    return line;
+  }
+
+  /**
    * The height of a window preview's thumbnail, which takes the shape of
    * the dock's monitor: the shape of a fullscreen window, and close to that
    * of a maximized one. Pure math, testable in isolation.

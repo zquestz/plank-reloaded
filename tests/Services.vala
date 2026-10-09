@@ -97,6 +97,11 @@ namespace PlankTests {
     Test.add_func ("/Services/DockEdge/neighbouring_monitor", dock_edge_neighbouring_monitor);
     Test.add_func ("/Services/DockEdge/offset_monitor", dock_edge_offset_monitor);
     Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
+    Test.add_func ("/Services/DockBarrier/edges", dock_barrier_edges);
+    Test.add_func ("/Services/DockBarrier/off_center", dock_barrier_off_center);
+    Test.add_func ("/Services/DockBarrier/work_area", dock_barrier_work_area);
+    Test.add_func ("/Services/DockBarrier/offset_monitor", dock_barrier_offset_monitor);
+    Test.add_func ("/Services/DockBarrier/gap", dock_barrier_gap);
     Test.add_func ("/Services/PreviewThumbnail/shape", preview_thumbnail_shape);
     Test.add_func ("/Services/PreviewThumbnail/inverse", preview_thumbnail_inverse);
     Test.add_func ("/Services/PreviewSpace/edges", preview_space_edges);
@@ -1253,6 +1258,112 @@ namespace PlankTests {
     assert (!point_at_dock_edge (Gtk.PositionType.TOP, 10, 0, empty, empty, dock));
     assert (!point_at_dock_edge (Gtk.PositionType.LEFT, 0, 10, empty, empty, dock));
     assert (!point_at_dock_edge (Gtk.PositionType.RIGHT, 10, 10, empty, empty, dock));
+  }
+
+  //
+  // Dock barrier tests
+  //
+
+  bool barrier_is (Gdk.Rectangle line, int x, int y, int width, int height) {
+    return (line.x == x && line.y == y && line.width == width && line.height == height);
+  }
+
+  void dock_barrier_edges () {
+    // The barrier lies on the edge of the dock's area, spanning a centered
+    // dock as it did before
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1032, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom), 760, 1080, 400, 0));
+
+    Gdk.Rectangle top = { 760, 0, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.TOP, monitor, top), 760, 0, 400, 0));
+
+    Gdk.Rectangle left = { 0, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.LEFT, monitor, left), 0, 340, 0, 400));
+
+    Gdk.Rectangle right = { 1872, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, monitor, right), 1920, 340, 0, 400));
+  }
+
+  void dock_barrier_off_center () {
+    // A dock aligned to the start or end of its edge, or moved by an offset,
+    // takes the barrier with it instead of leaving it centered
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom_start = { 0, 1032, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom_start), 0, 1080, 400, 0));
+
+    Gdk.Rectangle bottom_end = { 1520, 1032, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom_end), 1520, 1080, 400, 0));
+
+    Gdk.Rectangle bottom_offset = { 1140, 1032, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom_offset), 1140, 1080, 400, 0));
+
+    Gdk.Rectangle top_end = { 1520, 0, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.TOP, monitor, top_end), 1520, 0, 400, 0));
+
+    Gdk.Rectangle left_start = { 0, 0, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.LEFT, monitor, left_start), 0, 0, 0, 400));
+
+    Gdk.Rectangle right_offset = { 1872, 170, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, monitor, right_offset), 1920, 170, 0, 400));
+  }
+
+  void dock_barrier_work_area () {
+    // In work area mode a 40px panel sits between the dock's area and the
+    // monitor's edge, and the barrier lies on the area's edge, by the dock
+    Gdk.Rectangle bottom_area = { 0, 0, 1920, 1040 };
+    Gdk.Rectangle bottom = { 760, 992, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, bottom_area, bottom), 760, 1040, 400, 0));
+
+    Gdk.Rectangle top_area = { 0, 40, 1920, 1040 };
+    Gdk.Rectangle top = { 760, 40, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.TOP, top_area, top), 760, 40, 400, 0));
+
+    Gdk.Rectangle left_area = { 40, 0, 1880, 1080 };
+    Gdk.Rectangle left = { 40, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.LEFT, left_area, left), 40, 340, 0, 400));
+
+    Gdk.Rectangle right_area = { 0, 0, 1880, 1080 };
+    Gdk.Rectangle right = { 1832, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, right_area, right), 1880, 340, 0, 400));
+  }
+
+  void dock_barrier_offset_monitor () {
+    // On a monitor away from the origin, the lower right of a 2x2 grid,
+    // each edge sits at the monitor's offset
+    Gdk.Rectangle monitor = { 1920, 1080, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 2680, 2112, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom), 2680, 2160, 400, 0));
+
+    Gdk.Rectangle top = { 2680, 1080, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.TOP, monitor, top), 2680, 1080, 400, 0));
+
+    Gdk.Rectangle left = { 1920, 1420, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.LEFT, monitor, left), 1920, 1420, 0, 400));
+
+    Gdk.Rectangle right = { 3792, 1420, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, monitor, right), 3840, 1420, 0, 400));
+  }
+
+  void dock_barrier_gap () {
+    // A 10px gap holds the dock off its edge, and the barrier stays on the
+    // area's edge rather than following the dock's nearer side
+    Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
+
+    Gdk.Rectangle bottom = { 760, 1022, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.BOTTOM, monitor, bottom), 760, 1080, 400, 0));
+
+    Gdk.Rectangle top = { 760, 10, 400, 48 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.TOP, monitor, top), 760, 0, 400, 0));
+
+    Gdk.Rectangle left = { 10, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.LEFT, monitor, left), 0, 340, 0, 400));
+
+    Gdk.Rectangle right = { 1862, 340, 48, 400 };
+    assert (barrier_is (dock_barrier_line (Gtk.PositionType.RIGHT, monitor, right), 1920, 340, 0, 400));
   }
 
   //

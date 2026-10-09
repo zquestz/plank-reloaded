@@ -566,6 +566,12 @@ namespace Plank {
     void end_screen_update_episode () {
       geometry_change_in_flight = false;
       controller.window.release_struts ();
+
+#if HAVE_BARRIERS
+      // The barrier is in device pixels, so a scale change that leaves the
+      // logical geometry alone still moves it; rebuild it like the struts
+      controller.hide_manager.update_barrier ();
+#endif
     }
 
     void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
@@ -1082,11 +1088,16 @@ namespace Plank {
       // When GapSize is set, then we use polling for HideManager
       var min_hover_region = GapSize > 0 ? 0 : 1;
 
+      // Without compositing, hiding moves the window until only its row or
+      // column at the screen edge is left on screen, so the region must not
+      // be shifted away from that edge
+      var scale_offset = (screen_is_composited ? window_scale_factor - 1 : 0);
+
       switch (Position) {
       default :
       case Gtk.PositionType.BOTTOM:
         cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
-        cursor_region.y = DockHeight - cursor_region.height + (window_scale_factor - 1);
+        cursor_region.y = DockHeight - cursor_region.height + scale_offset;
         break;
       case Gtk.PositionType.TOP:
         cursor_region.height = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.height));
@@ -1098,7 +1109,7 @@ namespace Plank {
         break;
       case Gtk.PositionType.RIGHT:
         cursor_region.width = int.max (min_hover_region * window_scale_factor, (int) (progress * cursor_region.width));
-        cursor_region.x = DockWidth - cursor_region.width + (window_scale_factor - 1);
+        cursor_region.x = DockWidth - cursor_region.width + scale_offset;
         break;
       }
 
@@ -2379,41 +2390,17 @@ namespace Plank {
 
 #if HAVE_BARRIERS
     public Gdk.Rectangle get_barrier () {
-      Gdk.Rectangle barrier = {};
-
       // Before the window is realized there is no Gdk.Window to read the
       // scale factor from; keep the last-known value
       unowned Gdk.Window? window = controller.window.get_window ();
       if (window != null)
         window_scale_factor = window.get_scale_factor ();
 
-      switch (Position) {
-      default:
-      case Gtk.PositionType.BOTTOM:
-        barrier.x = (monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2) * window_scale_factor;
-        barrier.y = (monitor_geo.y + monitor_geo.height) * window_scale_factor;
-        barrier.width = VisibleDockWidth * window_scale_factor;
-        barrier.height = 0;
-        break;
-      case Gtk.PositionType.TOP:
-        barrier.x = (monitor_geo.x + (monitor_geo.width - VisibleDockWidth) / 2) * window_scale_factor;
-        barrier.y = monitor_geo.y * window_scale_factor;
-        barrier.width = VisibleDockWidth * window_scale_factor;
-        barrier.height = 0;
-        break;
-      case Gtk.PositionType.LEFT:
-        barrier.x = monitor_geo.x * window_scale_factor;
-        barrier.y = (monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2) * window_scale_factor;
-        barrier.width = 0;
-        barrier.height = VisibleDockHeight * window_scale_factor;
-        break;
-      case Gtk.PositionType.RIGHT:
-        barrier.x = (monitor_geo.x + monitor_geo.width) * window_scale_factor;
-        barrier.y = (monitor_geo.y + (monitor_geo.height - VisibleDockHeight) / 2) * window_scale_factor;
-        barrier.width = 0;
-        barrier.height = VisibleDockHeight * window_scale_factor;
-        break;
-      }
+      var barrier = dock_barrier_line (Position, monitor_geo, get_static_dock_region ());
+      barrier.x *= window_scale_factor;
+      barrier.y *= window_scale_factor;
+      barrier.width *= window_scale_factor;
+      barrier.height *= window_scale_factor;
 
       warn_if_fail (barrier.width > 0 || barrier.height > 0);
 

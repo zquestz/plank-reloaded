@@ -36,4 +36,13 @@ namespace XFixes {
 		int x1, int y1, int x2, int y2, int directions, int num_devices, int *devices);
 	[CCode (cname = "XFixesDestroyPointerBarrier")]
 	public static void destroy_pointer_barrier (X.Display display, XFixes.PointerBarrier barrier);
+
+	[CCode (cname = "BarrierPositiveX")]
+	public const int BARRIER_POSITIVE_X;
+	[CCode (cname = "BarrierPositiveY")]
+	public const int BARRIER_POSITIVE_Y;
+	[CCode (cname = "BarrierNegativeX")]
+	public const int BARRIER_NEGATIVE_X;
+	[CCode (cname = "BarrierNegativeY")]
+	public const int BARRIER_NEGATIVE_Y;
 }

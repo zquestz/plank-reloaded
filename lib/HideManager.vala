@@ -58,7 +58,7 @@ namespace Plank {
     const uint UPDATE_TIMEOUT = 200U;
 
 #if HAVE_BARRIERS
-    const double PRESSURE_THRESHOLD = 50.0;
+    const double PRESSURE_THRESHOLD = 100.0;
     const uint PRESSURE_TIMEOUT = 1000U;
 #endif
 
@@ -814,8 +814,17 @@ namespace Plank {
         return Gdk.FilterReturn.CONTINUE;
       }
 
+      bool release = false;
+
       switch (xcookie.evtype) {
       case XInput.EventType.BARRIER_HIT :
+        // A shown dock has nothing to reveal, so its barrier lets the
+        // pointer straight through, uncounted
+        if (!Hidden) {
+          release = true;
+          break;
+        }
+
         double slide = 0.0, distance = 0.0;
         switch (controller.position_manager.Position) {
         default :
@@ -849,6 +858,11 @@ namespace Plank {
 
           if (Hidden)
             start_pending_reveal ();
+
+          // Releasing the pointer ends the barrier's hold on this push, and X
+          // reports no more of it, so only a push that reached the threshold
+          // is released, letting it on past an edge shared with another monitor
+          release = true;
         }
         break;
       case XInput.EventType.BARRIER_LEAVE:
@@ -863,17 +877,19 @@ namespace Plank {
         break;
       }
 
-      unowned Gdk.X11.Display? gdk_display = Gdk.Display.get_default () as Gdk.X11.Display;
-      if (gdk_display != null)
-        gdk_display.error_trap_push ();
+      if (release) {
+        unowned Gdk.X11.Display? gdk_display = Gdk.Display.get_default () as Gdk.X11.Display;
+        if (gdk_display != null)
+          gdk_display.error_trap_push ();
 
-      XInput.barrier_release_pointer (display, barrier_event.deviceid,
-                                      barrier, barrier_event.eventid);
+        XInput.barrier_release_pointer (display, barrier_event.deviceid,
+                                        barrier, barrier_event.eventid);
 
-      display.flush ();
+        display.flush ();
 
-      if (gdk_display != null)
-        gdk_display.error_trap_pop_ignored ();
+        if (gdk_display != null)
+          gdk_display.error_trap_pop_ignored ();
+      }
 
       X.free_event_data (display, xcookie);
       return Gdk.FilterReturn.REMOVE;
@@ -913,11 +929,31 @@ namespace Plank {
 
       debug ("Barrier: %i,%i - %i,%i\n", barrier_area.x, barrier_area.y, barrier_area.x + barrier_area.width, barrier_area.y + barrier_area.height);
 
+      // The barrier holds only pushes out of the dock's monitor. Inward
+      // motion passes straight through, so a push from a neighbouring
+      // monitor can't reveal the dock while the pointer is outside it
+      int directions;
+      switch (controller.position_manager.Position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        directions = XFixes.BARRIER_NEGATIVE_Y;
+        break;
+      case Gtk.PositionType.TOP:
+        directions = XFixes.BARRIER_POSITIVE_Y;
+        break;
+      case Gtk.PositionType.LEFT:
+        directions = XFixes.BARRIER_POSITIVE_X;
+        break;
+      case Gtk.PositionType.RIGHT:
+        directions = XFixes.BARRIER_NEGATIVE_X;
+        break;
+      }
+
       barrier = XFixes.create_pointer_barrier (
                                                display, root_xwindow,
                                                barrier_area.x, barrier_area.y, barrier_area.x + barrier_area.width,
                                                barrier_area.y + barrier_area.height,
-                                               0,
+                                               directions,
                                                0, null);
 
       warn_if_fail (barrier > 0);
