@@ -68,11 +68,13 @@ namespace Plank {
   }
 
   /**
-   * Whether a monitor lies past the edge of the dock's monitor, such as the
-   * lower of two stacked monitors for a bottom dock. A pointer anywhere on
-   * it counts as at the dock's edge, wherever the dock's span is: the dock
-   * is out of the way of whatever goes on there. A monitor beside the
-   * dock's, even one reaching past the line of its edge, doesn't count.
+   * Whether a monitor lies past the edge of the dock's monitor, alongside
+   * it, such as the lower of two stacked monitors for a bottom dock: its
+   * near side is at or beyond that edge, and it overlaps the dock's monitor
+   * along the edge. A pointer anywhere on it counts as at the dock's edge,
+   * wherever the dock's span is: the dock is out of the way of whatever goes
+   * on there. A monitor beside the dock's, even one reaching past the line
+   * of its edge, doesn't count, nor does one touching it only at a corner.
    * Pure math, testable in isolation.
    *
    * @param position the dock position
@@ -88,24 +90,29 @@ namespace Plank {
       return false;
 
     bool past = false;
+    bool alongside = false;
 
     switch (position) {
     default:
     case Gtk.PositionType.BOTTOM:
       past = monitor.y >= raw_monitor.y + raw_monitor.height;
+      alongside = monitor.x < raw_monitor.x + raw_monitor.width && monitor.x + monitor.width > raw_monitor.x;
       break;
     case Gtk.PositionType.TOP:
       past = monitor.y + monitor.height <= raw_monitor.y;
+      alongside = monitor.x < raw_monitor.x + raw_monitor.width && monitor.x + monitor.width > raw_monitor.x;
       break;
     case Gtk.PositionType.LEFT:
       past = monitor.x + monitor.width <= raw_monitor.x;
+      alongside = monitor.y < raw_monitor.y + raw_monitor.height && monitor.y + monitor.height > raw_monitor.y;
       break;
     case Gtk.PositionType.RIGHT:
       past = monitor.x >= raw_monitor.x + raw_monitor.width;
+      alongside = monitor.y < raw_monitor.y + raw_monitor.height && monitor.y + monitor.height > raw_monitor.y;
       break;
     }
 
-    return past;
+    return past && alongside;
   }
 
   /**

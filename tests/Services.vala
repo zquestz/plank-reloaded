@@ -1333,9 +1333,16 @@ namespace PlankTests {
     assert (monitor_past_dock_edge (Gtk.PositionType.RIGHT, right, left));
     assert (monitor_past_dock_edge (Gtk.PositionType.LEFT, left, right));
 
-    // The lower right of a 2x2 grid lies past the upper left's bottom edge
-    Gdk.Rectangle grid_lower_right = { 1920, 1080, 1920, 1080 };
-    assert (monitor_past_dock_edge (Gtk.PositionType.BOTTOM, grid_lower_right, upper));
+    // A taller portrait monitor right of a landscape one counts for a right
+    // dock, all of it, above and below the landscape one too
+    Gdk.Rectangle landscape = { 0, 420, 1920, 1080 };
+    Gdk.Rectangle portrait = { 1920, 0, 1080, 1920 };
+    assert (monitor_past_dock_edge (Gtk.PositionType.RIGHT, portrait, landscape));
+
+    // Lined up along the edge, a monitor further out counts too: the third
+    // of three stacked monitors for a bottom dock on the first
+    Gdk.Rectangle third = { 0, 2160, 1920, 1080 };
+    assert (monitor_past_dock_edge (Gtk.PositionType.BOTTOM, third, upper));
   }
 
   void dock_edge_monitor_not_past () {
@@ -1348,6 +1355,25 @@ namespace PlankTests {
     assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, taller, laptop));
     assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, taller, laptop));
     assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, taller, laptop));
+
+    // The same at the other edges: a monitor beside the dock's, reaching past
+    // the line of its edge, still doesn't count
+    Gdk.Rectangle lower_left = { 0, 360, 1920, 1080 };
+    Gdk.Rectangle taller_right = { 1920, 0, 2560, 1440 };
+    assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, taller_right, lower_left));
+
+    Gdk.Rectangle wide_above = { 0, 0, 3840, 1080 };
+    Gdk.Rectangle lower_right = { 1920, 1080, 1920, 1080 };
+    assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, wide_above, lower_right));
+
+    Gdk.Rectangle wide_below = { 0, 1080, 2560, 1440 };
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, wide_below, laptop));
+
+    // In a 2x2 grid, the diagonal monitor touches the upper left only at a
+    // corner, so it counts neither past its bottom edge nor past its right
+    Gdk.Rectangle grid_lower_right = { 1920, 1080, 1920, 1080 };
+    assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, grid_lower_right, laptop));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, grid_lower_right, laptop));
 
     // Before the first valid measurement the dock's monitor is empty
     Gdk.Rectangle empty = { 0, 0, 0, 0 };
