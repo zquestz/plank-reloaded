@@ -314,9 +314,10 @@ namespace Plank {
     }
 
     void update_hidden () {
+      // Showing also drops a hide timer that was counting down, so it can't
+      // hide the dock under a menu or a drag
       if (Disabled) {
-        if (Hidden)
-          Hidden = false;
+        show (false);
         return;
       }
 
