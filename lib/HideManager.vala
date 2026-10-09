@@ -136,7 +136,7 @@ namespace Plank {
     construct
     {
       controller.prefs.notify.connect (prefs_changed);
-      notify["Hidden"].connect (() => update_edge_polling ());
+      notify["Hidden"].connect (hidden_changed);
     }
 
     /**
@@ -521,6 +521,18 @@ namespace Plank {
         GLib.Source.remove (pending_reveal_timer_id);
         pending_reveal_timer_id = 0U;
       }
+    }
+
+    void hidden_changed () {
+      update_edge_polling ();
+
+#if HAVE_BARRIERS
+      // A dock that has just hidden starts every push afresh. The pointer may
+      // still be within the barrier's reach, where no leave arrives to end
+      // the push that revealed it
+      if (Hidden)
+        pressure_counter.leave ();
+#endif
     }
 
     // Pressure reveal, when the barriers it needs work, reveals a dock with
