@@ -1316,9 +1316,9 @@ namespace PlankTests {
     // Straight down beside the dock
     assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 100, 1000, 100, 1300, upper, bottom));
     // Diagonally, crossing under the dock and ending beside it
-    assert (move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 900, 1000, 1300, 1200, upper, bottom));
+    assert (move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 770, 1060, 1470, 1260, upper, bottom));
     // Diagonally, crossing beside the dock and ending under it
-    assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 600, 1000, 800, 1200, upper, bottom));
+    assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 500, 1060, 900, 1260, upper, bottom));
 
     // The span is half-open, like the rectangle it comes from
     assert (move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 760, 1070, 760, 1100, upper, bottom));
@@ -1360,6 +1360,8 @@ namespace PlankTests {
     assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 900, 1300, 1000, 1300, upper, bottom));
     // Arriving from a monitor beside the dock's one
     assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 2000, 1000, 1000, 1300, upper, bottom));
+    // Moving down within the monitor below, starting on its first row
+    assert (!move_crosses_dock_edge (Gtk.PositionType.BOTTOM, 960, 1080, 960, 1100, upper, bottom));
   }
 
   //
