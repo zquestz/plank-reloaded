@@ -99,7 +99,6 @@ namespace Plank {
 
     bool pending_reveal = false;
     int64 pending_reveal_deadline = 0;
-    bool pointer_update = true;
     bool window_intersect = false;
     bool active_window_intersect = false;
     bool active_application_intersect = false;
@@ -305,54 +304,59 @@ namespace Plank {
         return;
       }
 
-      if (pending_reveal) {
-        show ();
-        pointer_update = true;
-        return;
-      }
+      // The pointer shows the dock while it hovers it or a reveal from the
+      // edge is pending; each hide mode's own reason to show comes first
+      var pointer = (Hovered || pending_reveal);
 
       switch (controller.prefs.HideMode) {
       default:
       case HideType.NONE:
-        show ();
+        show (false);
         break;
 
       case HideType.INTELLIGENT:
-        if (Hovered || !active_application_intersect)
-          show ();
+        if (!active_application_intersect)
+          show (false);
+        else if (pointer)
+          show (true);
         else
           hide ();
         break;
 
       case HideType.AUTO:
-        if (Hovered)
-          show ();
+        if (pointer)
+          show (true);
         else
           hide ();
         break;
 
       case HideType.DODGE_MAXIMIZED:
-        if (Hovered || !(active_maximized_window_intersect || dialog_windows_intersect))
-          show ();
+        if (!(active_maximized_window_intersect || dialog_windows_intersect))
+          show (false);
+        else if (pointer)
+          show (true);
         else
           hide ();
         break;
 
       case HideType.WINDOW_DODGE:
-        if (Hovered || !window_intersect)
-          show ();
+        if (!window_intersect)
+          show (false);
+        else if (pointer)
+          show (true);
         else
           hide ();
         break;
 
       case HideType.DODGE_ACTIVE:
-        if (Hovered || !active_window_intersect)
-          show ();
+        if (!active_window_intersect)
+          show (false);
+        else if (pointer)
+          show (true);
         else
           hide ();
         break;
       }
-      pointer_update = true;
     }
 
     void hide () {
@@ -381,7 +385,9 @@ namespace Plank {
       });
     }
 
-    void show () {
+    // Only showing for the pointer waits for the unhide delay, whatever event
+    // asked; once the dock no longer needs to hide, it shows at once
+    void show (bool pointer_update) {
       if (hide_timer_id > 0U) {
         GLib.Source.remove (hide_timer_id);
         hide_timer_id = 0U;
@@ -430,7 +436,7 @@ namespace Plank {
         return;
 
       pending_reveal = true;
-      show ();
+      show (true);
 
       pending_reveal_deadline = 0;
       if (pending_reveal_timer_id > 0U)
@@ -640,7 +646,6 @@ namespace Plank {
       active_window_intersect = new_active_window_intersect;
       active_maximized_window_intersect = active_maximized_intersect;
 
-      pointer_update = false;
       update_hidden ();
     }
 
