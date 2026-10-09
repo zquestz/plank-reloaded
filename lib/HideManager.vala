@@ -943,6 +943,16 @@ namespace Plank {
 
       switch (xcookie.evtype) {
       case XInput.EventType.BARRIER_HIT :
+        // A grabbed pointer, as when the window manager moves a window or
+        // another app drags something, goes straight through uncounted, as
+        // GNOME Shell's pressure barriers ignore it: a drag is never held by
+        // the dock, and never reveals it, which it would do without the dock
+        // ever seeing the drag leave
+        if ((barrier_event.flags & XInput.BARRIER_DEVICE_IS_GRABBED) != 0) {
+          release = true;
+          break;
+        }
+
         double slide = 0.0, distance = 0.0;
         switch (controller.position_manager.Position) {
         default :
