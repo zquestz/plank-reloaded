@@ -648,13 +648,19 @@ namespace Plank {
     public static void update_icon_regions (Bamf.Application app, Gdk.Rectangle rect) {
       Array<uint32>? xids = get_xids (app);
 
-      warn_if_fail (xids != null);
+      // An application that has just closed can already be gone from BAMF,
+      // leaving no windows to update. This runs on every frame while the
+      // dock animates, so it is no cause for a warning
+      if (xids == null) {
+        debug ("Failed to get xids to update icon regions");
+        return;
+      }
 
       // BAMF xids can lag the server, and pre-43 libwnck does not trap
       // set_icon_geometry internally, so guard the whole loop
       error_trap_push ();
 
-      for (var i = 0; xids != null && i < xids.length; i++) {
+      for (var i = 0; i < xids.length; i++) {
         unowned Wnck.Window window = get_wnck_window (xids.index (i));
         if (window != null)
           window.set_icon_geometry (rect.x, rect.y, rect.width, rect.height);
