@@ -100,6 +100,7 @@ namespace PlankTests {
     Test.add_func ("/Services/DockEdge/empty_monitor", dock_edge_empty_monitor);
     Test.add_func ("/Services/DockEdge/monitor_past", dock_edge_monitor_past);
     Test.add_func ("/Services/DockEdge/monitor_not_past", dock_edge_monitor_not_past);
+    Test.add_func ("/Services/DockEdge/monitor_grid", dock_edge_monitor_grid);
     Test.add_func ("/Services/DockEdge/band_past_area", dock_edge_band_past_area);
     Test.add_func ("/Services/DockKeepArea/bottom", dock_keep_area_bottom);
     Test.add_func ("/Services/DockKeepArea/edges", dock_keep_area_edges);
@@ -1352,6 +1353,9 @@ namespace PlankTests {
     Gdk.Rectangle laptop = { 0, 0, 1920, 1080 };
     Gdk.Rectangle taller = { 1920, 0, 2560, 1440 };
     assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, laptop, laptop));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, laptop, laptop));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, laptop, laptop));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, laptop, laptop));
     assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, taller, laptop));
     assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, taller, laptop));
     assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, taller, laptop));
@@ -1379,6 +1383,34 @@ namespace PlankTests {
     Gdk.Rectangle empty = { 0, 0, 0, 0 };
     assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, laptop, empty));
     assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, laptop, empty));
+  }
+
+  void dock_edge_monitor_grid () {
+    // Around the middle monitor of a 3x3 grid, a monitor past an edge counts
+    // when it overlaps the middle one along that edge by a single pixel, at
+    // either end, and never when it touches it only at a corner
+    Gdk.Rectangle middle = { 1920, 1080, 1920, 1080 };
+    assert (monitor_past_dock_edge (Gtk.PositionType.BOTTOM, { 1, 2160, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.BOTTOM, { 3839, 2160, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.TOP, { 1, 0, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.TOP, { 3839, 0, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.LEFT, { 0, 1, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.LEFT, { 0, 2159, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.RIGHT, { 3840, 1, 1920, 1080 }, middle));
+    assert (monitor_past_dock_edge (Gtk.PositionType.RIGHT, { 3840, 2159, 1920, 1080 }, middle));
+
+    Gdk.Rectangle upper_left = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle upper_right = { 3840, 0, 1920, 1080 };
+    Gdk.Rectangle lower_left = { 0, 2160, 1920, 1080 };
+    Gdk.Rectangle lower_right = { 3840, 2160, 1920, 1080 };
+    assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, lower_left, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, lower_right, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, upper_left, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, upper_right, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, upper_left, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, lower_left, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, upper_right, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, lower_right, middle));
   }
 
   void dock_edge_band_past_area () {
