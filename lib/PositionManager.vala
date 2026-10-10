@@ -2290,7 +2290,9 @@ namespace Plank {
 
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
-        int hit_box_size = (int) Math.round (draw_value.icon_size / 4.0);
+        // Sized from the un-zoomed icon, like its position, so the target
+        // holds still while the dock zooms
+        int hit_box_size = (int) Math.round (IconSize / 4.0);
 
         region.width = hit_box_size * 2;
         region.height = hit_box_size * 2;
