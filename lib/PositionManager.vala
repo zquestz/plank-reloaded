@@ -453,14 +453,21 @@ namespace Plank {
 
     // Follows the pointer to another monitor. A monitor past the dock's edge
     // is where the pointer overshoots while reaching for the dock, so the
-    // dock only follows there once the pointer has stayed as long as a dock
-    // waits for it to come back to its edge; any other monitor is followed
-    // at once
+    // dock only follows there if the pointer is still there after as long as
+    // a dock waits for it to come back to its edge; any other monitor is
+    // followed at once, ending such a wait
     void follow_active_monitor () {
-      if (follow_timeout_id > 0)
-        return;
-
       var monitor_name = active_monitor ();
+
+      if (follow_timeout_id > 0) {
+        if (monitor_name == follow_monitor)
+          return;
+
+        GLib.Source.remove (follow_timeout_id);
+        follow_timeout_id = 0;
+        follow_monitor = null;
+      }
+
       if (monitor_name == controller.prefs.Monitor)
         return;
 
