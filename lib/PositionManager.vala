@@ -411,9 +411,7 @@ namespace Plank {
       var display = screen.get_display ();
 
       int x, y;
-      display.get_default_seat ()
-       .get_pointer ()
-       .get_position (null, out x, out y);
+      controller.hide_manager.get_pointer_position (out x, out y);
 
       var monitor = display.get_monitor_at_point (x, y);
       int active_monitor_num = 0;
@@ -490,9 +488,7 @@ namespace Plank {
       unowned Gdk.Display display = controller.window.get_display ();
 
       int x, y;
-      display.get_default_seat ()
-       .get_pointer ()
-       .get_position (null, out x, out y);
+      controller.hide_manager.get_pointer_position (out x, out y);
 
       var monitor = display.get_monitor_at_point (x, y).get_geometry ();
       return monitor_past_dock_edge (Position, monitor, get_raw_monitor_geometry ());

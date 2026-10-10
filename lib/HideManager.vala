@@ -224,11 +224,13 @@ namespace Plank {
       update_hovered_with_coords (x, y, x < 0 || y < 0 || x >= win_rect.width || y >= win_rect.height);
     }
 
-    // The pointer's position in logical pixels. GTK rounds the device
-    // position divided by the scale to the nearest pixel, which at a scale
-    // of 2 or more puts a monitor's last device row or column on the pixel
-    // past the monitor; rounding down keeps it on the pixel that holds it
-    void get_pointer_position (out int x, out int y) {
+    /**
+     * The pointer's position in logical pixels. GTK rounds the device
+     * position divided by the scale to the nearest pixel, which at a scale
+     * of 2 or more puts a monitor's last device row or column on the pixel
+     * past the monitor; rounding down keeps it on the pixel that holds it.
+     */
+    internal void get_pointer_position (out int x, out int y) {
       double pointer_x, pointer_y;
       controller.window.get_display ()
        .get_default_seat ()
