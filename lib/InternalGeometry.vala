@@ -147,8 +147,9 @@ namespace Plank {
    * Whether a point is near the dock, where a pointer reaching for it waits:
    * within the stretch of the edge the dock covers, from the dock's far side
    * across any gap or panel to the monitor's edge. A reveal waiting out its
-   * unhide delay needs the pointer here, and leaving the dock for here can
-   * keep it shown. Pure math, testable in isolation.
+   * unhide delay needs the pointer here or, with pressure reveal off, on a
+   * monitor past the edge, and leaving the dock for either can keep it
+   * shown. Pure math, testable in isolation.
    *
    * @param position the dock position
    * @param x the x coordinate of the point
