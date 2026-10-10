@@ -1692,7 +1692,7 @@ namespace PlankTests {
     assert (counter.push (240, 10.0, 0.0));
     assert (counter.pressure == 0.0);
     assert (counter.triggered);
-    assert (!counter.push (250, 10.0, 0.0));
+    assert (!counter.push (250, 250.0, 0.0));
   }
 
   void pressure_counter_cap () {
@@ -1777,6 +1777,8 @@ namespace PlankTests {
     assert (counter.pressure == 135.0);
     assert (!counter.push (1200, 15.0, 0.0));
     assert (counter.pressure == 150.0);
+    assert (!counter.push (1501, 15.0, 0.0));
+    assert (counter.pressure == 45.0);
   }
 
   void pressure_counter_wraparound_expiry () {
