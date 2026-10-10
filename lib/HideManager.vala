@@ -754,12 +754,9 @@ namespace Plank {
       if (!Hidden)
         cancel_pending_reveal ();
 
-#if HAVE_BARRIERS
-      if (Hidden && barriers_supported
-          && controller.prefs.PressureReveal
+      if (Hidden && pressure_reveals ()
           && device_supports_pressure (event.get_source_device ()))
         return Hidden;
-#endif
 
       if (!Hovered)
         update_hovered_with_coords ((int) event.x, (int) event.y);
