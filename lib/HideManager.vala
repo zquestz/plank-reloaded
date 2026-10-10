@@ -481,8 +481,8 @@ namespace Plank {
         if (!Hidden)
           return false;
 
-        // The reveal poll checks a dock with a gap only every 100 ms, so
-        // make sure the pointer still waits near the edge as the delay ends
+        // The reveal checks the pointer only every 100 ms, so make sure it
+        // still waits near the edge as the delay ends
         if (pending_reveal && !pointer_in_keep_area ()) {
           cancel_pending_reveal ();
           update_hovered ();
@@ -499,7 +499,7 @@ namespace Plank {
     /**
      * How long a dock revealed from its edge stays shown once the pointer has
      * left that edge, and how long a dock following the active display waits
-     * before moving to another monitor.
+     * before moving to a monitor past its edge.
      */
     internal uint compute_reveal_timeout () {
       unowned DockTheme theme = controller.renderer.theme;
@@ -606,8 +606,8 @@ namespace Plank {
 #endif
     }
 
-    // Pressure reveal, when the barriers it needs work, reveals a dock with
-    // a gap by pushing against the edge instead of touching it
+    // Pressure reveal, when the barriers it needs work, reveals a dock by
+    // pushing against its edge instead of touching it
     bool pressure_reveals () {
 #if HAVE_BARRIERS
       return (barriers_supported && controller.prefs.PressureReveal);
@@ -789,9 +789,10 @@ namespace Plank {
         // edge. A gapless dock still hidden, hovered through its strip during
         // its unhide delay, keeps revealing the same way rather than starting
         // the delay over. A gapless dock does this only where its edge poll
-        // runs. At a scale of 2, the input region of a bottom or right dock
-        // leaves out the dock's far row or column, so a pointer leaving the
-        // other way can still be on the dock, which doesn't count
+        // runs. With a compositor at a scale of 2, the input region of a
+        // bottom or right dock leaves out the dock's far row or column, so a
+        // pointer leaving the other way can still be on the dock, which
+        // doesn't count
         var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
         if (controller.prefs.HideMode != HideType.NONE && !on_dock

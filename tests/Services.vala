@@ -1356,9 +1356,9 @@ namespace PlankTests {
 
   void dock_edge_monitor_past () {
     // Another monitor past the dock monitor's edge counts as a whole, whatever
-    // its size and offset: the lower of two stacked monitors for a bottom
-    // dock, the upper for a top dock, and the outer of two side-by-side
-    // monitors for a side dock
+    // its size, as long as it overlaps the dock's monitor along that edge:
+    // the lower of two stacked monitors for a bottom dock, the upper for a
+    // top dock, and the outer of two side-by-side monitors for a side dock
     Gdk.Rectangle upper = { 0, 0, 1920, 1080 };
     Gdk.Rectangle lower = { 320, 1080, 1280, 800 };
     assert (monitor_past_dock_edge (Gtk.PositionType.BOTTOM, lower, upper));
@@ -1564,7 +1564,7 @@ namespace PlankTests {
 
   void dock_barrier_edges () {
     // The barrier lies on the edge of the dock's area, spanning a centered
-    // dock as it did before
+    // dock
     Gdk.Rectangle monitor = { 0, 0, 1920, 1080 };
 
     Gdk.Rectangle bottom = { 760, 1032, 400, 48 };

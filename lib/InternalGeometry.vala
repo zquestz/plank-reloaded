@@ -85,7 +85,7 @@ namespace Plank {
   public static bool monitor_past_dock_edge (Gtk.PositionType position, Gdk.Rectangle monitor,
                                              Gdk.Rectangle raw_monitor) {
     // Before the first valid measurement the dock's monitor is empty, and
-    // every monitor would lie past its bottom and right edges
+    // has no edge for any monitor to lie past
     if (raw_monitor.width <= 0 || raw_monitor.height <= 0)
       return false;
 
@@ -149,11 +149,12 @@ namespace Plank {
   }
 
   /**
-   * Whether a point is near a dock with a gap, where a pointer reaching for
-   * it waits: within the stretch of the edge the dock covers, from the
-   * dock's far side across the gap to the edge. While the unhide delay runs
-   * the pointer must stay here or on a monitor past the edge, and leaving
-   * the dock for either keeps it shown. Pure math, testable in isolation.
+   * Whether a point is near the dock, where a pointer reaching for it waits:
+   * within the stretch of the edge the dock covers, from the dock's far side
+   * across any gap or panel to the monitor's edge. While the unhide delay
+   * runs the pointer must stay here or on a monitor past the edge, and
+   * leaving the dock for either keeps it shown. Pure math, testable in
+   * isolation.
    *
    * @param position the dock position
    * @param x the x coordinate of the point

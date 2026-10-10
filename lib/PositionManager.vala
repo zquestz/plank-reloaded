@@ -1151,7 +1151,8 @@ namespace Plank {
         cursor_region.union (hover_region, out cursor_region);
       }
 
-      // When GapSize is set, then we use polling for HideManager
+      // A hidden dock with a gap reveals through the edge poll or a push, so
+      // only a gapless dock keeps a strip at the edge for the pointer to enter
       var min_hover_region = GapSize > 0 ? 0 : 1;
 
       // Without compositing, hiding moves the window until only its row or
