@@ -165,7 +165,6 @@ namespace Plank {
       wnck_screen.active_workspace_changed.connect_after (handle_workspace_changed);
 
       setup_active_window (wnck_screen);
-      update_edge_polling ();
     }
 
     ~HideManager () {
