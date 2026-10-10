@@ -481,23 +481,6 @@ namespace Plank {
     }
 
     void start_pending_reveal () {
-      // A push against a gapless dock holds the pointer on the dock's own
-      // edge, so the dock simply counts as hovered until the pointer leaves
-      // it. The edge poll may find the pointer off the dock, on a panel or
-      // another monitor, where the dock would never see it leave, so that
-      // reveal takes the hold below
-      if (controller.prefs.GapSize == 0 && pressure_reveals ()) {
-        freeze_notify ();
-
-        if (!Hovered) {
-          Hovered = true;
-          update_hidden ();
-        }
-
-        thaw_notify ();
-        return;
-      }
-
       if (pending_reveal)
         return;
 
@@ -1110,7 +1093,20 @@ namespace Plank {
         // against a shown dock it goes through, and X reports no more of it
         if (Hidden) {
           Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
-          start_pending_reveal ();
+
+          // The push holds the pointer on a gapless dock's own edge, so the
+          // dock simply counts as hovered until the pointer leaves it; a dock
+          // with a gap reveals through the edge hold
+          if (controller.prefs.GapSize == 0) {
+            freeze_notify ();
+            if (!Hovered) {
+              Hovered = true;
+              update_hidden ();
+            }
+            thaw_notify ();
+          } else {
+            start_pending_reveal ();
+          }
         } else {
           Logger.verbose ("HideManager (pressure-threshold reached > release (%f))", PRESSURE_THRESHOLD);
           release = true;
