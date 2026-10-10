@@ -163,8 +163,11 @@ namespace Plank {
       if (!has_previews)
         return false;
 
-      // While browsing, previews follow as quickly as an open popup would
-      var delay = (browsing ? RETARGET_DELAY : controller.prefs.PreviewDelay);
+      // While browsing, previews follow as quickly as an open popup would,
+      // unless the preview delay is shorter still
+      var delay = controller.prefs.PreviewDelay;
+      if (browsing)
+        delay = uint.min (RETARGET_DELAY, delay);
       open_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, delay, () => {
         open_timer_id = 0U;
         show_when_unhidden (app_item);
