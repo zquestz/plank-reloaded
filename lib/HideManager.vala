@@ -523,11 +523,7 @@ namespace Plank {
         return;
 
       pending_reveal = true;
-      show (true);
-
       pending_reveal_deadline = 0;
-      if (pending_reveal_timer_id > 0U)
-        GLib.Source.remove (pending_reveal_timer_id);
       pending_reveal_timer_id = Gdk.threads_add_timeout (EDGE_POLL_INTERVAL, () => {
         if (Hidden) {
           // While the unhide delay runs, the pointer has to wait near the
@@ -560,6 +556,10 @@ namespace Plank {
         update_hidden ();
         return false;
       });
+
+      // Showing can find the pointer already on the dock and end the reveal
+      // there, which has to take the timer with it
+      show (true);
     }
 
     void cancel_pending_reveal () {
@@ -576,12 +576,14 @@ namespace Plank {
     void hidden_changed () {
       update_edge_polling ();
 
-      // With pressure reveal on, a hidden dock ignores the pointer entering
-      // its edge, so a pointer parked there isn't hovering it. When the dock
-      // then shows for another reason, the pointer is already inside its
-      // window and no further enter arrives, so check now, while the input
-      // region is still the edge strip
-      if (!Hidden && !Hovered)
+      // With pressure reveal on, a hidden gapless dock ignores the pointer
+      // entering its edge strip, so a pointer parked there isn't hovering it.
+      // When the dock then shows for another reason, the pointer is already
+      // inside its window and no further enter arrives, so check now, while
+      // the input region is still the strip. A dock with a gap has no strip,
+      // and without a compositor its window is still where it hid, so the
+      // pointer that revealed it on the edge row would count as on the dock
+      if (!Hidden && !Hovered && controller.prefs.GapSize == 0)
         update_hovered ();
 
       // A dock that shows with the pointer on it no longer needs the reveal
