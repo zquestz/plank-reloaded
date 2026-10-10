@@ -578,8 +578,9 @@ namespace Plank {
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
 
       // This runs on every frame while the dock animates, but a region only
-      // changes with the dock's layout, or as it hides or shows or a menu
-      // opens, so each item passes it on only when it changed
+      // changes with the dock's layout, as it hides or shows or a menu
+      // opens, or when the zoom moves its box a step, so each item passes it
+      // on only when it changed
       foreach (var item in controller.VisibleItems) {
         unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
         if (appitem == null || !appitem.is_running ())
