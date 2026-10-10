@@ -441,13 +441,8 @@ namespace Plank {
         return;
 
       active_display_timeout_id = GLib.Timeout.add_seconds (controller.prefs.ActiveDisplayPollingInterval, () => {
-        if (controller.prefs.ActiveDisplay) {
-          follow_active_monitor ();
-          return GLib.Source.CONTINUE;
-        } else {
-          active_display_timeout_id = 0;
-          return GLib.Source.REMOVE;
-        }
+        follow_active_monitor ();
+        return GLib.Source.CONTINUE;
       });
     }
 
