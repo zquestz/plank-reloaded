@@ -1477,6 +1477,18 @@ namespace PlankTests {
     Gdk.Rectangle offset_bottom_panel = { 1920, 1080, 1920, 1040 };
     assert (band_past_dock_area (Gtk.PositionType.BOTTOM, offset_bottom_panel, offset_monitor));
     assert (!band_past_dock_area (Gtk.PositionType.BOTTOM, offset_monitor, offset_monitor));
+
+    Gdk.Rectangle offset_top_panel = { 1920, 1120, 1920, 1040 };
+    assert (band_past_dock_area (Gtk.PositionType.TOP, offset_top_panel, offset_monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.TOP, offset_monitor, offset_monitor));
+
+    Gdk.Rectangle offset_left_panel = { 1960, 1080, 1880, 1080 };
+    assert (band_past_dock_area (Gtk.PositionType.LEFT, offset_left_panel, offset_monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.LEFT, offset_monitor, offset_monitor));
+
+    Gdk.Rectangle offset_right_panel = { 1920, 1080, 1880, 1080 };
+    assert (band_past_dock_area (Gtk.PositionType.RIGHT, offset_right_panel, offset_monitor));
+    assert (!band_past_dock_area (Gtk.PositionType.RIGHT, offset_monitor, offset_monitor));
   }
 
   //
