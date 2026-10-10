@@ -296,6 +296,17 @@ namespace Plank {
       return current_workspace_only;
     }
 
+    /**
+     * The monitor a dock's windows are restricted to, in device pixels, or
+     * null when they aren't.
+     *
+     * @param provider the dock's provider
+     * @return the monitor, or null
+     */
+    internal static Gdk.Rectangle? restricted_monitor (DefaultApplicationDockItemProvider? provider) {
+      return (provider != null ? provider.get_restricted_monitor () : null);
+    }
+
     public static bool bring_to_current_workspace (DefaultApplicationDockItemProvider? provider) {
       bool bring_to_current_workspace = false;
 
@@ -369,12 +380,14 @@ namespace Plank {
         return window_count;
       }
 
+      var monitor = restricted_monitor (provider);
+
       if (current_workspace_only (provider)) {
         unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
         if (active_workspace != null)
-          window_count = WindowControl.window_on_workspace_count (app, active_workspace);
+          window_count = WindowControl.window_on_workspace_count (app, active_workspace, monitor);
       } else {
-        window_count = WindowControl.window_count (app);
+        window_count = WindowControl.window_count (app, monitor);
       }
 
       return window_count;

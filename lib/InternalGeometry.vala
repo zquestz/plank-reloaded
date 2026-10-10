@@ -516,4 +516,21 @@ namespace Plank {
     var kept = (zoomed_side >= max_side - 2 * step ? max_side : reached + step);
     return int.min (kept, box_side);
   }
+
+  /**
+   * Whether a window belongs to a monitor, judged by its center, so a window
+   * spanning two monitors belongs to exactly one of them, and one off every
+   * monitor to none. Pure math, testable in isolation.
+   *
+   * @param window the window's frame
+   * @param monitor the monitor, in the same pixels as the window
+   * @return whether the window's center is on the monitor
+   */
+  public static bool window_on_monitor (Gdk.Rectangle window, Gdk.Rectangle monitor) {
+    var x = window.x + window.width / 2;
+    var y = window.y + window.height / 2;
+
+    return (x >= monitor.x && x < monitor.x + monitor.width
+            && y >= monitor.y && y < monitor.y + monitor.height);
+  }
 }

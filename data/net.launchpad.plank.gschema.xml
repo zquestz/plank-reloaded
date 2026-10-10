@@ -65,6 +65,11 @@
 			<summary>Only show windows from the current workspace</summary>
 			<description>If true, only show unpinned windows from the current workspace in addition to pinned items.</description>
 		</key>
+		<key name="restrict-to-monitor" type="b">
+			<default>false</default>
+			<summary>Only show and act on windows on the dock's monitor</summary>
+			<description>If true, only show unpinned windows on the dock's monitor in addition to pinned items, and count, focus, cycle and close only those windows.</description>
+		</key>
 		<key name="dock-items" type="as">
 			<default>[]</default>
 			<summary>Dockitem-files Array</summary>

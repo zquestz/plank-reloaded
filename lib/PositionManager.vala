@@ -129,6 +129,9 @@ namespace Plank {
       update_monitor_geo (monitor);
       watch_workarea ();
 
+      // The dock's items were loaded before its monitor was known
+      dock_monitor_changed ();
+
       screen_is_composited = screen.is_composited ();
 
       if (controller.prefs.ActiveDisplay) {
@@ -640,6 +643,15 @@ namespace Plank {
       // come or gone past its edge, which decides whether a gapless dock
       // polls the edge
       controller.hide_manager.screen_update_ended ();
+
+      // Which windows a dock restricted to its monitor shows may have changed
+      dock_monitor_changed ();
+    }
+
+    void dock_monitor_changed () {
+      unowned DefaultApplicationDockItemProvider? provider = (controller.default_provider as DefaultApplicationDockItemProvider);
+      if (provider != null)
+        provider.dock_monitor_changed ();
     }
 
     void do_screen_update (Gdk.Screen screen, uint sample, uint stable) {
