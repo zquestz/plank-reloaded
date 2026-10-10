@@ -56,6 +56,11 @@ namespace Plank {
     uint poll_timer_id = 0U;
     int64 away_since = 0;
 
+    // The popup closed for an item without previews while the pointer stayed
+    // on the dock, so the next item with previews follows as quickly as an
+    // open popup would
+    bool browsing = false;
+
     // Each window's last thumbnail, at the largest thumbnail's size in
     // device pixels, so windows that can't be captured now still have one
     Gee.HashMap<ulong, Gdk.Pixbuf> thumbnails = new Gee.HashMap<ulong, Gdk.Pixbuf> ();
@@ -116,7 +121,9 @@ namespace Plank {
      * them after the preview delay. While the popup is open, the pointer may
      * just be crossing the dock on its way to the popup, so empty dock space
      * changes nothing, and another item only takes over the popup, or closes
-     * it when it has no previews, once the pointer rests on it.
+     * it when it has no previews, once the pointer rests on it. Once it has
+     * closed for an item without previews, the next item's previews come as
+     * quickly, until the pointer leaves the dock.
      *
      * @param item the hovered item, if any
      * @return whether the item shows window previews instead of a tooltip
@@ -129,6 +136,11 @@ namespace Plank {
       if (open && (item == null || item == shown_item))
         return (item != null);
 
+      // Leaving the dock ends browsing; the gaps between its items don't,
+      // just as they leave an open popup alone
+      if (item == null && !controller.hide_manager.Hovered)
+        browsing = false;
+
       var app_item = (item as ApplicationDockItem);
       var has_previews = (app_item != null && can_show () && !app_item.get_window_list ().is_empty);
 
@@ -138,10 +150,12 @@ namespace Plank {
         open_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, RETARGET_DELAY, () => {
           open_timer_id = 0U;
 
-          if (has_previews)
+          if (has_previews) {
             show (app_item);
-          else
+          } else {
             dismiss ();
+            browsing = true;
+          }
 
           return false;
         });
@@ -152,7 +166,9 @@ namespace Plank {
       if (!has_previews)
         return false;
 
-      open_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, controller.prefs.PreviewDelay, () => {
+      // While browsing, previews follow as quickly as an open popup would
+      var delay = (browsing ? RETARGET_DELAY : controller.prefs.PreviewDelay);
+      open_timer_id = Gdk.threads_add_timeout_full (GLib.Priority.DEFAULT, delay, () => {
         open_timer_id = 0U;
         show_when_unhidden (app_item);
         return false;
@@ -192,6 +208,7 @@ namespace Plank {
       }
 
       shown_item = null;
+      browsing = false;
       popup.clear ();
     }
 
