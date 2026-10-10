@@ -131,6 +131,7 @@ namespace PlankTests {
     Test.add_func ("/Services/PreviewPosition/clamped", preview_position_clamped);
     Test.add_func ("/Services/PreviewZone/bottom", preview_zone_bottom);
     Test.add_func ("/Services/PreviewZone/side", preview_zone_side);
+    Test.add_func ("/Services/DBusPath/element", dbus_path_element_names);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -2205,5 +2206,22 @@ namespace PlankTests {
     // The span's bottom edge is excluded, as in the rectangles it comes from
     assert (point_in_preview_zone (70, 679, popup, item, dock));
     assert (!point_in_preview_zone (70, 680, popup, item, dock));
+  }
+
+  void dbus_path_element_names () {
+    // Names a path can hold stay as they are
+    assert (dbus_path_element ("dock1") == "dock1");
+    assert (dbus_path_element ("my_dock") == "my_dock");
+
+    // Anything else becomes an underscore, a monitor's connector name's
+    // hyphens as GApplication turns them in its own path, and each byte of
+    // a non-ASCII character
+    assert (dbus_path_element ("DP-2-8") == "DP_2_8");
+    assert (dbus_path_element ("left dock.2") == "left_dock_2");
+    assert (dbus_path_element ("Écran") == "__cran");
+
+    // Every result makes a valid path
+    foreach (var name in new string[] { "dock1", "DP-2-8", "left dock.2", "Écran", "-", "1st" })
+      assert (Variant.is_object_path ("/net/launchpad/plank/" + dbus_path_element (name)));
   }
 }

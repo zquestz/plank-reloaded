@@ -193,8 +193,11 @@ namespace Plank
 				return;
 			}
 			
-			if (!object_path.has_suffix (controller.name))
-				object_path = "%s/%s".printf (object_path, controller.name);
+			// A dock's name can hold characters a path can't, like the hyphens
+			// of a monitor's connector name such as DP-2-8
+			var element = dbus_path_element (controller.name);
+			if (!object_path.has_suffix (element))
+				object_path = "%s/%s".printf (object_path, element);
 			
 			// Listen for "Ping" signals coming from clients
 			try {
