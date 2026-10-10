@@ -35,27 +35,35 @@ namespace Plank {
       { null }
     };
 
-    static void sig_handler (int sig) {
-      warning ("Caught signal (%d), exiting", sig);
-      GLib.Application.get_default ().quit ();
-    }
-
     static construct
     {
-      Posix.signal (Posix.Signal.INT, sig_handler);
-      Posix.signal (Posix.Signal.TERM, sig_handler);
-      Posix.signal (Posix.Signal.USR1, usr1_sig_handler);
+      // GLib catches these and runs the handlers from the main loop, where
+      // logging, quitting and moving docks are safe, unlike in a signal
+      // handler
+      GLib.Unix.signal_add (Posix.Signal.INT, () => quit_on_signal (Posix.Signal.INT));
+      GLib.Unix.signal_add (Posix.Signal.TERM, () => quit_on_signal (Posix.Signal.TERM));
+      GLib.Unix.signal_add (Posix.Signal.USR1, usr1_sig_handler);
+    }
+
+    // Quits on the first signal. Both signals get their default action back
+    // first, so another one ends a shutdown that hangs, even in logging
+    static bool quit_on_signal (int sig) {
+      Posix.signal (Posix.Signal.INT, Posix.SIG_DFL);
+      Posix.signal (Posix.Signal.TERM, Posix.SIG_DFL);
+      warning ("Caught signal (%d), exiting", sig);
+      GLib.Application.get_default ().quit ();
+      return GLib.Source.REMOVE;
     }
 
     /**
      * Provide USR1 signal to move dock to the active monitor.
      */
-    static void usr1_sig_handler (int sig) {
-      debug ("Caught signal (%d)", sig);
+    static bool usr1_sig_handler () {
+      debug ("Caught signal (%d)", Posix.Signal.USR1);
 
       unowned AbstractMain app = (AbstractMain) GLib.Application.get_default ();
       if (app == null || app.docks == null || app.docks.size == 0)
-        return;
+        return GLib.Source.CONTINUE;
 
       foreach (var dock in app.docks) {
         if (dock.position_manager == null) {
@@ -63,6 +71,8 @@ namespace Plank {
         }
         dock.position_manager.move_to_active_monitor ();
       }
+
+      return GLib.Source.CONTINUE;
     }
 
     /**
