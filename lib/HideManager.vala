@@ -616,6 +616,9 @@ namespace Plank {
       monitor_change_pending = false;
       screen_update_pending = false;
       update_edge_polling ();
+
+      // The dock may now cover other windows, or none
+      schedule_update ();
     }
 
     /**
