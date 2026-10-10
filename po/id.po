@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-11-13 01:49\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "juga tetap menjadi pustaka yang dapat diperluas untuk membuat program dock "
 "lain dengan fitur yang lebih canggih."
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "Dock dengan tema Matte"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "Preferensi Tampilan"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "Preferensi Perilaku"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "Preferensi Docklet"
 
@@ -625,7 +625,7 @@ msgstr "Penukar ruang kerja grafis."
 msgid "Drop to add to dock"
 msgstr "Jatuhkan untuk menambah dok"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -637,20 +637,20 @@ msgstr ""
 "  Ronny Anthony Akbar https://launchpad.net/~ronny-assalafi\n"
 "  kurnia ginting https://launchpad.net/~khugank"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Taruh di Dok"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_Tutup Semua"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_Tutup"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Letakkan untuk membukanya dengan %s"

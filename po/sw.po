@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Swahili\n"
@@ -49,19 +49,19 @@ msgstr ""
 "inabaki kuwa maktaba ambayo inaweza kupanuliwa ili kuunda programu nyingine "
 "za dock zenye vipengele vya hali ya juu zaidi."
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "Dock na mandhari ya Matte"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "Mapendeleo ya Mwonekano"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "Mapendeleo ya Tabia"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "Mapendeleo ya Docklets"
 
@@ -628,26 +628,26 @@ msgstr "Kibadilishaji cha eneo la kazi la picha."
 msgid "Drop to add to dock"
 msgstr "Tupa ili kuongeza kwenye dock"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Sifa za watafsiri:\n"
 "Timu ya Plank Reloaded"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Hifadhi kwenye Dock"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_Funga Zote"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_Funga"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Tupa ili kufungua na %s"

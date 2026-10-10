@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -47,19 +47,19 @@ msgstr ""
 "所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来"
 "开发具有更多进阶功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "停靠Matte 主题"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "外观首选项"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "行为首选项"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "小部件首选项"
 
@@ -622,7 +622,7 @@ msgstr "图形化工作区切换器。"
 msgid "Drop to add to dock"
 msgstr "拖动添加到这里"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -635,20 +635,20 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_全部关闭"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_关闭"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"

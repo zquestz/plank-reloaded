@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-11-13 21:49\n"
 "Last-Translator: \n"
 "Language-Team: Nepali\n"
@@ -48,19 +48,19 @@ msgstr ""
 "आवश्यक पर्ने कुरा मात्र प्रदान गर्दछ र अरू केही छैन। यो एक पुस्तकालय पनि रहन्छ जसलाई थप "
 "उन्नत सुविधाहरू भएका अन्य डक कार्यक्रमहरू सिर्जना गर्न विस्तार गर्न सकिन्छ।"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "म्याट थिमको साथ डक"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "उपस्थिति प्राथमिकताहरू"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "व्यवहार प्राथमिकताहरू"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "डकलेट प्राथमिकताहरू"
 
@@ -627,27 +627,27 @@ msgstr "एक ग्राफिकल कार्यस्थान स्व
 msgid "Drop to add to dock"
 msgstr "डकमा थप्न छोड्नुहोस्"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz\n"
 "  Sachin Adhikari https://launchpad.net/~sachin-adhikari38"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "डकमा _राख्नुहोस्"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_सबै बन्द गर्नुहोस्"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_बन्द गर्नुहोस्"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s सँग खोल्न छोड्नुहोस्"

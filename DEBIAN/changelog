@@ -1,3 +1,22 @@
+plank-reloaded (0.11.176-1) unstable; urgency=medium
+
+  * Make pressure reveal work again for mice, touchpads and TrackPoints, counting pushes like GNOME Shell: a 250 px push reveals a hidden dock and holds the pointer at the edge, and another push crosses a shown dock into the next monitor
+  * Let a file drag reveal a hidden dock with a gap under pressure reveal; the drag stays held at the edge, so reaching another monitor through the dock takes easing off and pushing again, while window moves pass freely
+  * Reveal a hidden dock from anywhere on a monitor past its edge that lines up with the dock's monitor, and from a panel between the dock and the screen edge, with or without a gap, when pressure reveal is off
+  * Keep a dock revealed from its edge shown while the pointer stays near it, instead of hiding and bouncing back
+  * Make Follow Active Display wait about 2 seconds before moving to a monitor past the dock's edge, so an overshoot doesn't take the dock with it, and hide the dock before it moves
+  * Without a compositor, slide a hidden dock across its gap so only its edge row is left showing
+  * Fix docks sticking shown or misreading the pointer's monitor at 2x scaling, including preview popups closing at the screen edge
+  * Stop calling BAMF and rewriting every window's minimize target on each animation frame, which also ends the log flood when an app closes; targets now follow the zoom in 8 px steps and sit on the dock's edge while it is hidden
+  * Keep the quick 100 ms preview switch when passing an icon without previews between two apps
+  * Recheck which windows the dock covers after it moves to another monitor, so dodge modes act on the new one
+  * Fix crashes when two docks used pressure reveal and when an empty dock with a borderless theme created its barrier
+  * Handle Ctrl+C and SIGTERM from the main loop, and let a second one end a shutdown that hangs
+  * Apply Gap Size changes to a hidden dock at once, keep the unhide delay running through window events, and keep the dock from vanishing under a drag during its hide delay
+  * Add tests for pressure counting, monitor edges, keep areas, barrier lines and hidden window positions
+
+ -- Josh Ellithorpe <quest@mac.com>  Fri, 09 Oct 2026 18:04:50 -1000
+
 plank-reloaded (0.11.175-1) unstable; urgency=medium
 
   * Add window previews on hover, with click to focus, close buttons, and adjustable delay and size

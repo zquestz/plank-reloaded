@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-11-13 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
@@ -51,19 +51,19 @@ msgstr ""
 "також залишається бібліотекою, яку можна розширити для створення інших "
 "програм панелей з більш просунутими функціями."
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "Док з темою Matte"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "Налаштування оздоблення"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "Налаштування поведінки"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "Налаштування доклетів"
 
@@ -637,7 +637,7 @@ msgstr "Графічний перемикач робочих просторів.
 msgid "Drop to add to dock"
 msgstr "Перетягніть та киньте, щоб додати до панелі"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -651,20 +651,20 @@ msgstr ""
 "  sawka6600 https://launchpad.net/~sawik87\n"
 "  Микола Ткач https://launchpad.net/~stuartlittle1970"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Причепити до панелі"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_Закрити все"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_Закрити"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Відпустіть щоб відкрити в %s"

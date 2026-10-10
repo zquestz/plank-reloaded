@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-07 22:25-1000\n"
+"POT-Creation-Date: 2026-10-09 18:05-1000\n"
 "PO-Revision-Date: 2025-11-13 22:21\n"
 "Last-Translator: \n"
 "Language-Team: Urdu (India)\n"
@@ -49,19 +49,19 @@ msgstr ""
 "لائبریری بھی رہتا ہے جسے مزید جدید خصوصیات کے ساتھ دوسرے ڈاک پروگرام بنانے "
 "کے لیے بڑھایا جا سکتا ہے۔"
 
-#: data/plank.appdata.xml.in:138
+#: data/plank.appdata.xml.in:139
 msgid "Dock with Matte theme"
 msgstr "میٹ تھیم کے ساتھ ڈاک"
 
-#: data/plank.appdata.xml.in:143
+#: data/plank.appdata.xml.in:144
 msgid "Appearance Preferences"
 msgstr "ظاہری ترجیحات"
 
-#: data/plank.appdata.xml.in:148
+#: data/plank.appdata.xml.in:149
 msgid "Behavior Preferences"
 msgstr "رویے کی ترجیحات"
 
-#: data/plank.appdata.xml.in:153
+#: data/plank.appdata.xml.in:154
 msgid "Docklets Preferences"
 msgstr "ڈاکلیٹس کی ترجیحات"
 
@@ -628,26 +628,26 @@ msgstr "ایک گرافیکل ورک اسپیس سوئچر۔"
 msgid "Drop to add to dock"
 msgstr "ڈاک میں شامل کرنے کے لیے چھوڑیں"
 
-#: lib/Factories/AbstractMain.vala:429 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "مترجم کریڈٹس:\n"
 "پلینک ری لوڈڈ ٹیم"
 
-#: lib/Items/ApplicationDockItem.vala:649 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ڈاک میں _رکھیں"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close All"
 msgstr "_سب بند کریں"
 
-#: lib/Items/ApplicationDockItem.vala:657
+#: lib/Items/ApplicationDockItem.vala:701
 msgid "_Close"
 msgstr "_بند کریں"
 
-#: lib/Items/ApplicationDockItem.vala:781
+#: lib/Items/ApplicationDockItem.vala:825
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s کے ساتھ کھولنے کے لیے چھوڑیں"
