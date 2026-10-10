@@ -83,6 +83,7 @@ namespace Plank {
 
       controller.prefs.notify["PreviewsEnabled"].connect (previews_enabled_changed);
       controller.hide_manager.notify["Hidden"].connect (hidden_changed);
+      controller.hide_manager.notify["Hovered"].connect (hovered_changed);
       controller.drag_manager.notify["InternalDragActive"].connect (drag_changed);
       controller.drag_manager.notify["ExternalDragActive"].connect (drag_changed);
       unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
@@ -98,6 +99,7 @@ namespace Plank {
 
       controller.prefs.notify["PreviewsEnabled"].disconnect (previews_enabled_changed);
       controller.hide_manager.notify["Hidden"].disconnect (hidden_changed);
+      controller.hide_manager.notify["Hovered"].disconnect (hovered_changed);
       controller.drag_manager.notify["InternalDragActive"].disconnect (drag_changed);
       controller.drag_manager.notify["ExternalDragActive"].disconnect (drag_changed);
       unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
@@ -135,11 +137,6 @@ namespace Plank {
       var open = is_open ();
       if (open && (item == null || item == shown_item))
         return (item != null);
-
-      // Leaving the dock ends browsing; the gaps between its items don't,
-      // just as they leave an open popup alone
-      if (item == null && !controller.hide_manager.Hovered)
-        browsing = false;
 
       var app_item = (item as ApplicationDockItem);
       var has_previews = (app_item != null && can_show () && !app_item.get_window_list ().is_empty);
@@ -500,6 +497,13 @@ namespace Plank {
 
       // Turning previews off frees the memory their thumbnails took
       thumbnails.clear ();
+    }
+
+    void hovered_changed () {
+      // Leaving ends browsing even when the hovered item was already null
+      // in empty dock space; crossing that space while hovered doesn't
+      if (!controller.hide_manager.Hovered)
+        browsing = false;
     }
 
     void hidden_changed () {
