@@ -2323,30 +2323,32 @@ namespace Plank {
         return region;
       }
 
-      // For hidden dock, return point geometry at screen edge
+      // For a hidden dock, return a point on the edge of its area, in device
+      // pixels as above. Without compositing the hidden window has slid off
+      // that edge, so only its position along the edge can be used
       var x = win_x, y = win_y;
 
       switch (Position) {
       default:
       case Gtk.PositionType.BOTTOM:
         x += (int) Math.round (draw_value.static_center.x);
-        y += DockHeight + GapSize;
+        y = monitor_geo.y + monitor_geo.height;
         break;
       case Gtk.PositionType.TOP:
         x += (int) Math.round (draw_value.static_center.x);
-        y -= GapSize;
+        y = monitor_geo.y;
         break;
       case Gtk.PositionType.LEFT:
-        x -= GapSize;
+        x = monitor_geo.x;
         y += (int) Math.round (draw_value.static_center.y);
         break;
       case Gtk.PositionType.RIGHT:
-        x += DockWidth + GapSize;
+        x = monitor_geo.x + monitor_geo.width;
         y += (int) Math.round (draw_value.static_center.y);
         break;
       }
 
-      return { x, y, 0, 0 };
+      return { x * window_scale_factor, y * window_scale_factor, 0, 0 };
     }
 
     /**
