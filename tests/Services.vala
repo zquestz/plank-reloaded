@@ -1446,6 +1446,12 @@ namespace PlankTests {
     assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, lower_left, middle));
     assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, upper_right, middle));
     assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, lower_right, middle));
+
+    // A monitor lined up on the far side of the middle one never counts
+    assert (!monitor_past_dock_edge (Gtk.PositionType.BOTTOM, { 1920, 0, 1920, 1080 }, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.TOP, { 1920, 2160, 1920, 1080 }, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.LEFT, { 3840, 1080, 1920, 1080 }, middle));
+    assert (!monitor_past_dock_edge (Gtk.PositionType.RIGHT, { 0, 1080, 1920, 1080 }, middle));
   }
 
   void dock_edge_band_past_area () {
