@@ -342,65 +342,35 @@ namespace Plank {
     }
 
     void update_hidden () {
-      // Showing also drops a hide timer that was counting down, so it can't
-      // hide the dock under a menu or a drag
-      if (Disabled) {
+      // A menu, a drag or the hide mode itself shows the dock at once, and
+      // showing also drops a hide timer that was counting down, so it can't
+      // hide the dock under a menu or a drag. Otherwise the pointer shows it
+      // while it hovers it or a reveal from the edge is pending
+      if (Disabled || hide_mode_shows ())
         show (false);
-        return;
-      }
+      else if (Hovered || pending_reveal)
+        show (true);
+      else
+        hide ();
+    }
 
-      // The pointer shows the dock while it hovers it or a reveal from the
-      // edge is pending; each hide mode's own reason to show comes first
-      var pointer = (Hovered || pending_reveal);
-
+    // Whether the hide mode itself keeps the dock shown, whatever the
+    // pointer does
+    bool hide_mode_shows () {
       switch (controller.prefs.HideMode) {
       default:
       case HideType.NONE:
-        show (false);
-        break;
-
+        return true;
       case HideType.INTELLIGENT:
-        if (!active_application_intersect)
-          show (false);
-        else if (pointer)
-          show (true);
-        else
-          hide ();
-        break;
-
+        return !active_application_intersect;
       case HideType.AUTO:
-        if (pointer)
-          show (true);
-        else
-          hide ();
-        break;
-
+        return false;
       case HideType.DODGE_MAXIMIZED:
-        if (!(active_maximized_window_intersect || dialog_windows_intersect))
-          show (false);
-        else if (pointer)
-          show (true);
-        else
-          hide ();
-        break;
-
+        return !(active_maximized_window_intersect || dialog_windows_intersect);
       case HideType.WINDOW_DODGE:
-        if (!window_intersect)
-          show (false);
-        else if (pointer)
-          show (true);
-        else
-          hide ();
-        break;
-
+        return !window_intersect;
       case HideType.DODGE_ACTIVE:
-        if (!active_window_intersect)
-          show (false);
-        else if (pointer)
-          show (true);
-        else
-          hide ();
-        break;
+        return !active_window_intersect;
       }
     }
 
