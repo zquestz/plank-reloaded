@@ -323,11 +323,17 @@ namespace Plank {
         // with the setting changed by hand or by following the active
         // display. Until then, monitors past its old edge mustn't hold it,
         // so a reveal from one ends and the dock hides where it is rather
-        // than arriving shown
+        // than arriving shown, without waiting out a hide delay that could
+        // outlast the move
         monitor_change_pending = true;
         cancel_pending_reveal ();
         update_hovered ();
         update_hidden ();
+        if (hide_timer_id > 0U) {
+          GLib.Source.remove (hide_timer_id);
+          hide_timer_id = 0U;
+          Hidden = true;
+        }
         update_edge_polling ();
         break;
       default:
