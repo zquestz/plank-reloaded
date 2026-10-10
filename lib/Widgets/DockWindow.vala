@@ -577,13 +577,16 @@ namespace Plank {
 
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
 
+      // This runs on every frame while the dock animates, but a region only
+      // moves with the dock's layout, so each item passes it on only when it
+      // changed
       foreach (var item in controller.VisibleItems) {
         unowned ApplicationDockItem? appitem = (item as ApplicationDockItem);
         if (appitem == null || !appitem.is_running ())
           continue;
 
         var region = controller.position_manager.get_icon_geometry (appitem, use_hidden_region);
-        WindowControl.update_icon_regions (appitem.App, region);
+        appitem.set_icon_region (region, false);
       }
     }
 
@@ -598,9 +601,10 @@ namespace Plank {
 
       Logger.verbose ("DockWindow.update_icon_region ('%s')", appitem.describe ());
 
+      // A window just added needs the region whether it changed or not
       var use_hidden_region = (menu_is_visible () || controller.hide_manager.Hidden);
       var region = controller.position_manager.get_icon_geometry (appitem, use_hidden_region);
-      WindowControl.update_icon_regions (appitem.App, region);
+      appitem.set_icon_region (region, true);
     }
 
     /**

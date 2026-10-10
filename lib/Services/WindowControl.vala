@@ -331,8 +331,8 @@ namespace Plank {
       if (lists == null)
         return xids;
 
-      // Created for the first merged application only, as this runs for every
-      // item on each frame while the dock animates
+      // Created for the first merged application only, as most items merge
+      // none
       Gee.HashSet<Bamf.Application>? counted = null;
 
       foreach (var merged in lists) {
@@ -649,8 +649,7 @@ namespace Plank {
       Array<uint32>? xids = get_xids (app);
 
       // An application that has just closed can already be gone from BAMF,
-      // leaving no windows to update. This runs on every frame while the
-      // dock animates, so it is no cause for a warning
+      // leaving no windows to update, which is no cause for a warning
       if (xids == null) {
         debug ("Failed to get xids to update icon regions");
         return;

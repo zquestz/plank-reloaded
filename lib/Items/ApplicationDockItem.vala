@@ -135,6 +135,10 @@ namespace Plank {
 
     uint merged_inactive_timer_id = 0U;
 
+    // The region last given to the windows of this item's applications
+    Gdk.Rectangle icon_region;
+    bool icon_region_set = false;
+
     Gee.ArrayList<string> supported_mime_types;
     Gee.ArrayList<string> actions;
     Gee.HashMap<string, string> actions_map;
@@ -268,6 +272,22 @@ namespace Plank {
         target.merge_application (merged);
 
       clear_merged_applications ();
+    }
+
+    /**
+     * Gives the windows of this item's applications a region to minimize
+     * to, unless it is the one they were given last.
+     *
+     * @param region the region, in root window coordinates
+     * @param force whether to give it anyway, as to a window just added
+     */
+    internal void set_icon_region (Gdk.Rectangle region, bool force) {
+      if (!force && icon_region_set && icon_region == region)
+        return;
+
+      icon_region = region;
+      icon_region_set = true;
+      WindowControl.update_icon_regions (App, region);
     }
 
     public bool is_running () {
