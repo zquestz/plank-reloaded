@@ -457,7 +457,7 @@ namespace Plank {
       unowned PositionManager position_manager = controller.position_manager;
 
       int x, y;
-      popup.get_display ().get_default_seat ().get_pointer ().get_position (null, out x, out y);
+      controller.hide_manager.get_pointer_position (out x, out y);
 
       // The popup's area as it was placed, which needs no query of the
       // window; the item's and the dock's regions are relative to the
