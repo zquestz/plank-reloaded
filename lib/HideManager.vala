@@ -299,6 +299,10 @@ namespace Plank {
         }
 
         prefs_changed_timer_id = Gdk.threads_add_timeout (UPDATE_TIMEOUT, () => {
+          // A dock that never hides has no use for a reveal's hold
+          if (controller.prefs.HideMode == HideType.NONE)
+            cancel_pending_reveal ();
+
           update_window_intersect ();
 #if HAVE_BARRIERS
           update_barrier ();
