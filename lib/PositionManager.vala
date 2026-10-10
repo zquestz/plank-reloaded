@@ -480,7 +480,7 @@ namespace Plank {
       follow_timeout_id = GLib.Timeout.add (controller.hide_manager.compute_reveal_timeout (), () => {
         follow_timeout_id = 0;
 
-        if (controller.prefs.ActiveDisplay && active_monitor () == follow_monitor)
+        if (active_monitor () == follow_monitor)
           move_to_active_monitor ();
 
         follow_monitor = null;

@@ -635,8 +635,9 @@ namespace Plank {
 
     bool edge_poll_tick () {
       // A hovered dock is already showing for the pointer on its own edge
-      // strip, and a hold started here would outlast the hover
-      if (Hidden && !Hovered && pointer_at_dock_edge ())
+      // strip, and a hold started here would outlast the hover. A reveal
+      // already pending watches the pointer itself
+      if (Hidden && !Hovered && !pending_reveal && pointer_at_dock_edge ())
         start_pending_reveal ();
 
       return true;
@@ -1066,16 +1067,12 @@ namespace Plank {
 
       switch (xcookie.evtype) {
       case XInput.EventType.BARRIER_HIT :
-        // A grabbed pointer, as when the window manager moves a window or
-        // another app drags something, goes straight through uncounted, as
-        // GNOME Shell's pressure barriers ignore it: a drag is never held by
-        // the dock, and never reveals it, which it would do without the dock
-        // ever seeing the drag leave. A drag-and-drop against a hidden dock
-        // with a gap counts, though: the dock's window sits off the edge, out
-        // of the drag's reach, so nothing else can reveal it, and the edge
-        // hold it reveals through ends by itself. The push that reveals it
-        // stays held until it leaves the barrier, as any other does, rather
-        // than carrying the drag on into a monitor beyond
+        // A grabbed pointer, such as a window being moved, goes through
+        // uncounted, as with GNOME Shell's barriers, since the dock would
+        // never see it leave. A drag-and-drop against a hidden dock with a
+        // gap counts: nothing else can reveal that dock, and the edge hold
+        // ends by itself. Its revealing push stays held until it leaves the
+        // barrier, so the drag can't carry on into a monitor beyond
         if ((barrier_event.flags & XInput.BARRIER_DEVICE_IS_GRABBED) != 0
             && !(drag_live && controller.prefs.GapSize > 0 && (Hidden || pressure_counter.triggered))) {
           release = true;
