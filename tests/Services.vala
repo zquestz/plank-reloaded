@@ -587,6 +587,41 @@ namespace PlankTests {
                                                   false, false, 48, 400, true);
     assert (x == 1919);
     assert (y == 340);
+
+    // The same in work area mode on monitors away from the origin, each with
+    // a 40px panel on the dock's edge: only the row or column at the edge of
+    // the work area is left in it, next to the panel
+    Gdk.Rectangle bottom_area = { 1920, 1080, 1920, 1040 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.BOTTOM, Gtk.Align.CENTER,
+                                                  bottom_area, 400, 48, 10, 0,
+                                                  false, true, 400, 48, true);
+    assert (x == 2680);
+    assert (y == 2119);
+
+    Gdk.Rectangle top_area = { 0, 1120, 1920, 1040 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.TOP, Gtk.Align.CENTER,
+                                                  top_area, 400, 48, 10, 0,
+                                                  false, true, 400, 48, true);
+    assert (x == 760);
+    assert (y == 1120 + 1 - 48);
+
+    Gdk.Rectangle left_area = { 1960, 0, 1880, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.LEFT, Gtk.Align.CENTER,
+                                                  left_area, 48, 400, 10, 0,
+                                                  false, false, 48, 400, true);
+    assert (x == 1960 + 1 - 48);
+    assert (y == 340);
+
+    Gdk.Rectangle right_area = { 1920, 0, 1880, 1080 };
+    PositionManager.compute_dock_window_position (out x, out y,
+                                                  Gtk.PositionType.RIGHT, Gtk.Align.CENTER,
+                                                  right_area, 48, 400, 10, 0,
+                                                  false, false, 48, 400, true);
+    assert (x == 3799);
+    assert (y == 340);
   }
 
   //
