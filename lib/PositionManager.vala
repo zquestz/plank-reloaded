@@ -1005,6 +1005,10 @@ namespace Plank {
       controller.window.update_size_and_position ();
 
       thaw_notify ();
+
+      // Moving alone doesn't redraw the dock, and the input region, which a
+      // hidden dock's edge strip depends on, only follows on a redraw
+      controller.renderer.animated_draw ();
     }
 
     int get_items_width (Gee.ArrayList<unowned DockItem> items) {
