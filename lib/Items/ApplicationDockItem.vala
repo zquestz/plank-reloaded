@@ -135,7 +135,8 @@ namespace Plank {
 
     uint merged_inactive_timer_id = 0U;
 
-    // The region last given to the windows of this item's applications
+    // The region last given to the windows of this item's applications, and
+    // whether every one of them got it
     Gdk.Rectangle icon_region;
     bool icon_region_set = false;
 
@@ -276,7 +277,8 @@ namespace Plank {
 
     /**
      * Gives the windows of this item's applications a region to minimize
-     * to, unless it is the one they were given last.
+     * to, unless every one of them already has it. A window that missed it,
+     * as one Wnck doesn't know yet, gets it on the next call.
      *
      * @param region the region, in root window coordinates
      * @param force whether to give it anyway, as to a window just added
@@ -286,8 +288,7 @@ namespace Plank {
         return;
 
       icon_region = region;
-      icon_region_set = true;
-      WindowControl.update_icon_regions (App, region);
+      icon_region_set = WindowControl.update_icon_regions (App, region);
     }
 
     public bool is_running () {
