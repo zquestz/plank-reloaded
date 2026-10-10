@@ -124,6 +124,8 @@ namespace Plank {
       states_changed.disconnect (handle_states_changed);
       elements_changed.disconnect (handle_elements_changed);
 
+      WindowControl.get_wnck_screen ().window_opened.disconnect (window.update_icon_regions);
+
       if (serialize_item_positions_timer_id > 0U)
         Source.remove (serialize_item_positions_timer_id);
       serialize_item_positions ();
@@ -157,6 +159,10 @@ namespace Plank {
       renderer.initialize ();
 
       window.show_all ();
+
+      // A window that BAMF reported before Wnck had read it missed its
+      // minimize target, and nothing may redraw the dock once Wnck has it
+      WindowControl.get_wnck_screen ().window_opened.connect_after (window.update_icon_regions);
 
 #if HAVE_BARRIERS
       hide_manager.update_barrier ();
