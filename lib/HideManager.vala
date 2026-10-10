@@ -554,12 +554,16 @@ namespace Plank {
       // With pressure reveal on, a hidden gapless dock ignores the pointer
       // entering its edge strip, so a pointer parked there isn't hovering it.
       // When the dock then shows for another reason, the pointer is already
-      // inside its window and no further enter arrives, so check now, while
-      // the input region is still the strip. A dock with a gap has no strip,
-      // and without a compositor its window is still where it hid, so the
-      // pointer that revealed it on the edge row would count as on the dock
-      if (!Hidden && !Hovered && controller.prefs.GapSize == 0)
+      // inside its window and no further enter arrives, so check now.
+      // Without a compositor the window only moves back once the renderer
+      // hears of the change, so measure it where it is going. A dock with a
+      // gap needs no check: the pointer at its edge is never on it once shown
+      if (!Hidden && !Hovered && controller.prefs.GapSize == 0) {
+        unowned PositionManager position_manager = controller.position_manager;
+        if (!position_manager.screen_is_composited)
+          position_manager.update_dock_position ();
         update_hovered ();
+      }
 
       // A dock that shows with the pointer on it no longer needs the reveal
       // that brought it out: leaving the dock decides from here
