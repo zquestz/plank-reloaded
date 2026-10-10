@@ -654,13 +654,11 @@ namespace Plank {
       return true;
     }
 
-    // Whether a monitor past the dock's edge counts at all. Pressure reveal
-    // shows the dock only for a push against its own monitor's edge, and a
-    // dock about to move to another monitor no longer belongs to the old
-    // monitor's edge. While a screen update runs, the dock's own monitor
-    // can look like one past its edge, so a hidden dock waits for it to land
-    // rather than flash up; a dock already shown keeps counting, so it
-    // doesn't hide and come back
+    // Whether a monitor past the dock's edge counts: not under pressure
+    // reveal, where only a push reveals; not while the dock moves to another
+    // monitor; and not for a hidden dock during a screen update, when its own
+    // monitor can look like one past its edge. A shown dock keeps counting
+    // then, so it doesn't hide and come back
     bool monitors_past_count () {
       return !pressure_reveals () && !monitor_change_pending
              && !(screen_update_pending && Hidden);
@@ -761,16 +759,13 @@ namespace Plank {
         var x = (int) event.x_root;
         var y = (int) event.y_root;
 
-        // Leaving a dock for its edge, across its gap, onto a panel along the
-        // edge or onto a monitor past it, is reaching for the edge rather
-        // than leaving, so the dock stays shown as for a reveal from the
-        // edge. A gapless dock still hidden, hovered through its strip during
-        // its unhide delay, keeps revealing the same way rather than starting
-        // the delay over. A gapless dock does this only where its edge poll
-        // runs. With a compositor at a scale of 2, the input region of a
-        // bottom or right dock leaves out the dock's far row or column, so a
-        // pointer leaving the other way can still be on the dock, which
-        // doesn't count
+        // Leaving for the edge (across the gap, onto a panel along it or onto
+        // a monitor past it) is reaching for the edge, so the dock stays
+        // shown as for a reveal from it; a gapless dock does this only where
+        // its edge poll runs, and one still hidden in its unhide delay keeps
+        // revealing rather than starting the delay over. With a compositor
+        // at 2x, a bottom or right dock's input region leaves out its far
+        // row or column, so a pointer leaving that way can still be on it
         var on_dock = (x >= dock_rect.x && x < dock_rect.x + dock_rect.width
                        && y >= dock_rect.y && y < dock_rect.y + dock_rect.height);
         if (controller.prefs.HideMode != HideType.NONE && !on_dock
@@ -1110,12 +1105,9 @@ namespace Plank {
           break;
         }
 
-        // Every push needs the full threshold, and a push triggers only once
-        // until the pointer leaves the edge. Against a hidden dock it reveals
-        // the dock and stays held, so it can't carry the pointer on into a
-        // monitor beyond; against a shown dock it goes through. Releasing the
-        // pointer ends the barrier's hold on this push, and X reports no more
-        // of it
+        // Against a hidden dock the triggering push reveals it and stays
+        // held, so it can't carry the pointer on into a monitor beyond;
+        // against a shown dock it goes through, and X reports no more of it
         if (Hidden) {
           Logger.verbose ("HideManager (pressure-threshold reached > unhide (%f))", PRESSURE_THRESHOLD);
           start_pending_reveal ();

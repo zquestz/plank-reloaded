@@ -1155,13 +1155,15 @@ namespace Plank {
         cursor_region.union (hover_region, out cursor_region);
       }
 
-      // A hidden dock with a gap reveals through the edge poll or a push, so
-      // only a gapless dock keeps a strip at the edge for the pointer to enter
+      // With a compositor, a hidden dock with a gap reveals through the edge
+      // poll or a push, so only a gapless dock keeps a strip at the edge for
+      // the pointer to enter. Without one the whole window stays input, so
+      // the row a hidden dock leaves at the edge takes the pointer either way
       var min_hover_region = GapSize > 0 ? 0 : 1;
 
       // Without compositing, hiding moves the window until only its row or
-      // column at the screen edge is left on screen, so the region must not
-      // be shifted away from that edge
+      // column at the edge of its area is left in that area, so the region
+      // must not be shifted away from that edge
       var scale_offset = (screen_is_composited ? window_scale_factor - 1 : 0);
 
       switch (Position) {
@@ -2051,7 +2053,7 @@ namespace Plank {
 
       // Actually change the window position while hidden for non-compositing
       // mode, sliding the window across its gap too, so only its row or
-      // column at the edge is left on screen
+      // column at the edge is left in its area
       if (hidden) {
         switch (position) {
         default:

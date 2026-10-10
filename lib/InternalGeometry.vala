@@ -71,11 +71,11 @@ namespace Plank {
    * Whether a monitor lies past the edge of the dock's monitor, alongside
    * it, such as the lower of two stacked monitors for a bottom dock: its
    * near side is at or beyond that edge, and it overlaps the dock's monitor
-   * along the edge. A pointer anywhere on it counts as at the dock's edge,
-   * wherever the dock's span is: the dock is out of the way of whatever goes
-   * on there. A monitor beside the dock's, even one reaching past the line
-   * of its edge, doesn't count, nor does one touching it only at a corner.
-   * Pure math, testable in isolation.
+   * along the edge. With pressure reveal off, a pointer anywhere on it counts
+   * as at the dock's edge, wherever the dock's span is: the dock is out of
+   * the way of whatever goes on there. A monitor beside the dock's, even one
+   * reaching past the line of its edge, doesn't count, nor does one touching
+   * it only at a corner. Pure math, testable in isolation.
    *
    * @param position the dock position
    * @param monitor the monitor in question
@@ -84,11 +84,6 @@ namespace Plank {
    */
   public static bool monitor_past_dock_edge (Gtk.PositionType position, Gdk.Rectangle monitor,
                                              Gdk.Rectangle raw_monitor) {
-    // Before the first valid measurement the dock's monitor is empty, and
-    // has no edge for any monitor to lie past
-    if (raw_monitor.width <= 0 || raw_monitor.height <= 0)
-      return false;
-
     bool past = false;
     bool alongside = false;
 
@@ -151,10 +146,9 @@ namespace Plank {
   /**
    * Whether a point is near the dock, where a pointer reaching for it waits:
    * within the stretch of the edge the dock covers, from the dock's far side
-   * across any gap or panel to the monitor's edge. While the unhide delay
-   * runs the pointer must stay here or on a monitor past the edge, and
-   * leaving the dock for either keeps it shown. Pure math, testable in
-   * isolation.
+   * across any gap or panel to the monitor's edge. A reveal waiting out its
+   * unhide delay needs the pointer here, and leaving the dock for here can
+   * keep it shown. Pure math, testable in isolation.
    *
    * @param position the dock position
    * @param x the x coordinate of the point
