@@ -1462,12 +1462,19 @@ namespace PlankTests {
 
     assert (point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 760, 1079, upper, bottom));
     assert (!point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 759, 1079, upper, bottom));
+    assert (point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 1159, 1079, upper, bottom));
     assert (!point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 1160, 1079, upper, bottom));
 
     // In work area mode, a 40px panel between the dock and the edge is part
     // of it
     Gdk.Rectangle above_panel = { 760, 982, 400, 48 };
     assert (point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 960, 1060, upper, above_panel));
+
+    // On a monitor away from the origin, it still ends at that monitor's edge
+    Gdk.Rectangle lower = { 0, 1080, 1920, 1080 };
+    Gdk.Rectangle lower_bottom = { 760, 2102, 400, 48 };
+    assert (point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 960, 2159, lower, lower_bottom));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.BOTTOM, 960, 2160, lower, lower_bottom));
   }
 
   void dock_keep_area_edges () {
@@ -1478,6 +1485,10 @@ namespace PlankTests {
     assert (!point_in_dock_keep_area (Gtk.PositionType.TOP, 960, 1138, lower, top));
     assert (point_in_dock_keep_area (Gtk.PositionType.TOP, 960, 1080, lower, top));
     assert (!point_in_dock_keep_area (Gtk.PositionType.TOP, 960, 1079, lower, top));
+    assert (point_in_dock_keep_area (Gtk.PositionType.TOP, 760, 1100, lower, top));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.TOP, 759, 1100, lower, top));
+    assert (point_in_dock_keep_area (Gtk.PositionType.TOP, 1159, 1100, lower, top));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.TOP, 1160, 1100, lower, top));
 
     Gdk.Rectangle right_monitor = { 1920, 0, 1920, 1080 };
     Gdk.Rectangle left = { 1930, 340, 48, 400 };
@@ -1485,6 +1496,10 @@ namespace PlankTests {
     assert (!point_in_dock_keep_area (Gtk.PositionType.LEFT, 1978, 540, right_monitor, left));
     assert (point_in_dock_keep_area (Gtk.PositionType.LEFT, 1920, 540, right_monitor, left));
     assert (!point_in_dock_keep_area (Gtk.PositionType.LEFT, 1919, 540, right_monitor, left));
+    assert (point_in_dock_keep_area (Gtk.PositionType.LEFT, 1925, 340, right_monitor, left));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.LEFT, 1925, 339, right_monitor, left));
+    assert (point_in_dock_keep_area (Gtk.PositionType.LEFT, 1925, 739, right_monitor, left));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.LEFT, 1925, 740, right_monitor, left));
 
     Gdk.Rectangle left_monitor = { 0, 0, 1920, 1080 };
     Gdk.Rectangle right = { 1862, 340, 48, 400 };
@@ -1492,8 +1507,16 @@ namespace PlankTests {
     assert (!point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1861, 540, left_monitor, right));
     assert (point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1919, 540, left_monitor, right));
     assert (!point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1920, 540, left_monitor, right));
+    assert (point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1900, 340, left_monitor, right));
     assert (!point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1900, 339, left_monitor, right));
+    assert (point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1900, 739, left_monitor, right));
     assert (!point_in_dock_keep_area (Gtk.PositionType.RIGHT, 1900, 740, left_monitor, right));
+
+    // On a monitor away from the origin, a right dock's area still ends at
+    // that monitor's edge
+    Gdk.Rectangle offset_right = { 3782, 340, 48, 400 };
+    assert (point_in_dock_keep_area (Gtk.PositionType.RIGHT, 3839, 540, right_monitor, offset_right));
+    assert (!point_in_dock_keep_area (Gtk.PositionType.RIGHT, 3840, 540, right_monitor, offset_right));
   }
 
   //
