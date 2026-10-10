@@ -329,8 +329,11 @@ namespace Plank {
         // position twice.
         if (++window_position_retry < 3) {
           update_size_and_position ();
-        } else {
-          critical ("Retry #%i update_size_and_position() to force requested values!", window_position_retry);
+        } else if (window_position_retry == 3) {
+          // The window manager keeps the dock elsewhere, such as to fit a
+          // work area: accept it, saying so once rather than on every
+          // configure event that follows
+          warning ("Window manager overrides the dock's position, accepting it after %i retries", window_position_retry - 1);
         }
       } else {
         window_position_retry = 0;
