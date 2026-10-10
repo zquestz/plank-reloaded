@@ -91,6 +91,10 @@ namespace PlankTests {
     Test.add_func ("/Services/Struts/non_primary_monitor_scaling_2x", struts_non_primary_monitor_scaling_2x);
     Test.add_func ("/Services/Struts/ewmh_xinerama_example", struts_ewmh_xinerama_example);
     Test.add_func ("/Services/Struts/different_height_monitors_scaling_2x", struts_different_height_monitors_scaling_2x);
+    Test.add_func ("/Services/Struts/covers_other_monitor_stacked", struts_covers_other_monitor_stacked);
+    Test.add_func ("/Services/Struts/covers_other_monitor_side_by_side", struts_covers_other_monitor_side_by_side);
+    Test.add_func ("/Services/Struts/covers_other_monitor_grid", struts_covers_other_monitor_grid);
+    Test.add_func ("/Services/Struts/covers_other_monitor_offset_laptop", struts_covers_other_monitor_offset_laptop);
     Test.add_func ("/Services/Matcher/desktop_file_for_window_class", matcher_desktop_file_for_window_class);
     Test.add_func ("/Services/DockEdge/monitor_mode_edges", dock_edge_monitor_mode_edges);
     Test.add_func ("/Services/DockEdge/outside_span", dock_edge_outside_span);
@@ -1194,6 +1198,81 @@ namespace PlankTests {
     assert (struts[Struts.BOTTOM] == 816);
     assert (struts[Struts.BOTTOM_START] == 3840);
     assert (struts[Struts.BOTTOM_END] == 6399);
+  }
+
+  void struts_covers_other_monitor_stacked () {
+    // Between two stacked monitors, a strut on the shared edge would reserve
+    // the other monitor too; on the outer edges it reserves nothing extra
+    Gdk.Rectangle upper = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle lower = { 0, 1080, 1920, 1080 };
+    Gdk.Rectangle[] monitors = { upper, lower };
+    assert (strut_covers_other_monitor (Gtk.PositionType.BOTTOM, upper, monitors));
+    assert (strut_covers_other_monitor (Gtk.PositionType.TOP, lower, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.TOP, upper, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, lower, monitors));
+
+    // The side edges of stacked monitors face nothing
+    assert (!strut_covers_other_monitor (Gtk.PositionType.LEFT, upper, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.RIGHT, lower, monitors));
+
+    // A narrower lower monitor still counts while it overlaps the edge,
+    // and a single monitor never does
+    Gdk.Rectangle narrow = { 1500, 1080, 1280, 1024 };
+    Gdk.Rectangle[] offset = { upper, narrow };
+    assert (strut_covers_other_monitor (Gtk.PositionType.BOTTOM, upper, offset));
+    Gdk.Rectangle[] single = { upper };
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, upper, single));
+  }
+
+  void struts_covers_other_monitor_side_by_side () {
+    // Side by side, the shared edge is covered for side docks, while top
+    // and bottom docks reserve only their own stretch, as the EWMH spec's
+    // example of differently sized monitors does
+    Gdk.Rectangle left = { 0, 0, 1280, 1024 };
+    Gdk.Rectangle right = { 1280, 0, 1024, 768 };
+    Gdk.Rectangle[] monitors = { left, right };
+    assert (strut_covers_other_monitor (Gtk.PositionType.RIGHT, left, monitors));
+    assert (strut_covers_other_monitor (Gtk.PositionType.LEFT, right, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.LEFT, left, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.RIGHT, right, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, right, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, left, monitors));
+    assert (!strut_covers_other_monitor (Gtk.PositionType.TOP, right, monitors));
+  }
+
+  void struts_covers_other_monitor_grid () {
+    // In a 2x2 grid, a bottom dock on the top-left monitor covers the one
+    // below it, but never the diagonal one, which only touches a corner
+    Gdk.Rectangle top_left = { 0, 0, 1920, 1080 };
+    Gdk.Rectangle top_right = { 1920, 0, 1920, 1080 };
+    Gdk.Rectangle bottom_right = { 1920, 1080, 1920, 1080 };
+    Gdk.Rectangle[] without_below = { top_left, top_right, bottom_right };
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, top_left, without_below));
+    assert (strut_covers_other_monitor (Gtk.PositionType.BOTTOM, top_right, without_below));
+    assert (strut_covers_other_monitor (Gtk.PositionType.RIGHT, top_left, without_below));
+  }
+
+  void struts_covers_other_monitor_offset_laptop () {
+    // A laptop panel right of two taller monitors and lower down: its
+    // bottom is above the screen's, but nothing lies below it, so it keeps
+    // its strut, which reaches down to the screen's bottom
+    Gdk.Rectangle wide = { 0, 0, 3440, 1440 };
+    Gdk.Rectangle middle = { 3440, 0, 2560, 1440 };
+    Gdk.Rectangle laptop = { 6000, 124, 1920, 1080 };
+    Gdk.Rectangle[] monitors = { wide, middle, laptop };
+    assert (!strut_covers_other_monitor (Gtk.PositionType.BOTTOM, laptop, monitors));
+
+    var struts = new ulong[Struts.N_VALUES];
+    PositionManager.compute_struts (ref struts, Gtk.PositionType.BOTTOM,
+                                    laptop, 7920, 1440, 1920, 48, 0, 1);
+
+    // BOTTOM = (48 + 0 + 1440 - 124 - 1080) * 1 = 284
+    assert (struts[Struts.BOTTOM] == 284);
+    assert (struts[Struts.BOTTOM_START] == 6000);
+    assert (struts[Struts.BOTTOM_END] == 7919);
+
+    // Its left edge faces the middle monitor
+    assert (strut_covers_other_monitor (Gtk.PositionType.LEFT, laptop, monitors));
   }
 
   //

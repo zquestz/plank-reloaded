@@ -2407,11 +2407,20 @@ namespace Plank {
       var display = controller.window.get_display ();
       int screen_width = 0;
       int screen_height = 0;
-      for (var i = 0; i < display.get_n_monitors (); i++) {
+      var monitors = new Gdk.Rectangle[display.get_n_monitors ()];
+      for (var i = 0; i < monitors.length; i++) {
         var geo = display.get_monitor (i).get_geometry ();
+        monitors[i] = geo;
         screen_width = int.max (screen_width, geo.x + geo.width);
         screen_height = int.max (screen_height, geo.y + geo.height);
       }
+
+      // A strut is measured from the screen's edge, so on an edge facing
+      // another monitor it would reserve that monitor as well, leaving it
+      // unusable for maximizing, snapping and resizing; reserve nothing then,
+      // and maximized windows on this monitor may cover the dock
+      if (strut_covers_other_monitor (Position, raw_geo, monitors))
+        return;
 
       compute_struts (ref struts, Position, monitor_geo,
                       screen_width, screen_height,

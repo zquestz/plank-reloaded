@@ -447,4 +447,54 @@ namespace Plank {
     return ((x >= span.x && x < span.x + span.width && y >= span.y && y < span.y + span.height)
             || (x >= dock.x && x < dock.x + dock.width && y >= dock.y && y < dock.y + dock.height));
   }
+
+  /**
+   * Whether a strut for a dock on a monitor would reach over another
+   * monitor. A strut runs from the edge of the whole screen in to the dock,
+   * along the stretch of that edge the dock's monitor spans, so it covers
+   * any other monitor overlapping that stretch that reaches past the dock
+   * monitor's edge, such as the lower of two stacked monitors for a bottom
+   * dock, however far down it lies. Window managers would take it out
+   * of the work area, so the dock reserves nothing there. Monitors beside
+   * the dock's, or touching it only at a corner, are not covered. Pure
+   * math, testable in isolation.
+   *
+   * @param position the dock position
+   * @param raw_monitor the whole monitor the dock is on
+   * @param monitors every monitor of the screen, the dock's included
+   * @return whether the strut would reach over another monitor
+   */
+  public static bool strut_covers_other_monitor (Gtk.PositionType position, Gdk.Rectangle raw_monitor,
+                                                 Gdk.Rectangle[] monitors) {
+    foreach (var monitor in monitors) {
+      if (monitor.x == raw_monitor.x && monitor.y == raw_monitor.y
+          && monitor.width == raw_monitor.width && monitor.height == raw_monitor.height)
+        continue;
+
+      var along_x = (monitor.x < raw_monitor.x + raw_monitor.width && monitor.x + monitor.width > raw_monitor.x);
+      var along_y = (monitor.y < raw_monitor.y + raw_monitor.height && monitor.y + monitor.height > raw_monitor.y);
+
+      switch (position) {
+      default:
+      case Gtk.PositionType.BOTTOM:
+        if (along_x && monitor.y + monitor.height > raw_monitor.y + raw_monitor.height)
+          return true;
+        break;
+      case Gtk.PositionType.TOP:
+        if (along_x && monitor.y < raw_monitor.y)
+          return true;
+        break;
+      case Gtk.PositionType.LEFT:
+        if (along_y && monitor.x < raw_monitor.x)
+          return true;
+        break;
+      case Gtk.PositionType.RIGHT:
+        if (along_y && monitor.x + monitor.width > raw_monitor.x + raw_monitor.width)
+          return true;
+        break;
+      }
+    }
+
+    return false;
+  }
 }
