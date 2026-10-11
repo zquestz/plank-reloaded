@@ -447,4 +447,44 @@ namespace Plank {
     return ((x >= span.x && x < span.x + span.width && y >= span.y && y < span.y + span.height)
             || (x >= dock.x && x < dock.x + dock.width && y >= dock.y && y < dock.y + dock.height));
   }
+
+  // The steps an item's minimize target box takes as the dock zooms: the
+  // whole zoom split into this many, but each at least this many pixels a side
+  const int ICON_BOX_STEPS = 4;
+  const int ICON_BOX_MIN_STEP = 8;
+
+  /**
+   * The side of an item's minimize target box as the dock zooms, from the
+   * side it had before. The box follows the zoom in steps of a quarter of
+   * the whole zoom, but at least 8 pixels. Going up, it takes each step once
+   * the zoom reaches it, and the full size once the zoom is within a step of
+   * that, so the hovered item gets it even with the pointer off its center.
+   * Going down, it drops a step only once the zoom is a step below where
+   * that step began, so a zoom wavering about a step's edge doesn't keep
+   * changing it. It is the normal size again as soon as the zoom ends. Pure
+   * math, testable in isolation.
+   *
+   * @param normal_side the box side for the icon at its normal size
+   * @param max_side the box side for the icon at its full zoom
+   * @param zoomed_side the box side for the icon as zoomed now
+   * @param box_side the box side used before
+   * @return the box side to use now
+   */
+  public static int next_icon_box_side (int normal_side, int max_side, int zoomed_side, int box_side) {
+    if (zoomed_side <= normal_side)
+      return normal_side;
+
+    var step = int.max ((max_side - normal_side) / ICON_BOX_STEPS, ICON_BOX_MIN_STEP);
+
+    // The last step the zoom reached
+    var reached = normal_side + (zoomed_side - normal_side) / step * step;
+
+    var side = (zoomed_side >= max_side - step ? max_side : reached);
+    if (side >= box_side)
+      return side;
+
+    // Going down, keep one step more than the zoom calls for
+    var kept = (zoomed_side >= max_side - 2 * step ? max_side : reached + step);
+    return int.min (kept, box_side);
+  }
 }

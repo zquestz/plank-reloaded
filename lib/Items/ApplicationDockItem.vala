@@ -140,9 +140,6 @@ namespace Plank {
     Gdk.Rectangle icon_region;
     bool icon_region_set = false;
 
-    // A zoom resizes the box only in steps of this many pixels a side
-    const int ICON_BOX_STEP = 8;
-
     // The side of the box last used as the minimize target while the dock
     // shows, in logical pixels
     int icon_box_side = 0;
@@ -284,16 +281,16 @@ namespace Plank {
 
     /**
      * The side of the box to use as this item's minimize target while the
-     * dock shows: the zoomed icon's, once it is a step away from the box
-     * last used, and the normal one as soon as the zoom ends.
+     * dock shows, following the zoom in steps from the box last used, as
+     * next_icon_box_side () describes.
      *
      * @param normal_side the box side for the icon at its normal size
+     * @param max_side the box side for the icon at its full zoom
      * @param zoomed_side the box side for the icon as zoomed now
      * @return the box side to use, in logical pixels
      */
-    internal int follow_icon_box_side (int normal_side, int zoomed_side) {
-      if (zoomed_side == normal_side || (zoomed_side - icon_box_side).abs () >= ICON_BOX_STEP)
-        icon_box_side = zoomed_side;
+    internal int follow_icon_box_side (int normal_side, int max_side, int zoomed_side) {
+      icon_box_side = next_icon_box_side (normal_side, max_side, zoomed_side, icon_box_side);
 
       return icon_box_side;
     }
