@@ -131,6 +131,8 @@ namespace PlankTests {
     Test.add_func ("/Services/PreviewPosition/clamped", preview_position_clamped);
     Test.add_func ("/Services/PreviewZone/bottom", preview_zone_bottom);
     Test.add_func ("/Services/PreviewZone/side", preview_zone_side);
+    Test.add_func ("/Services/PreviewZone/dock_end", preview_zone_dock_end);
+    Test.add_func ("/Services/PreviewZone/item_edge", preview_zone_item_edge);
     Test.add_func ("/Services/IconBox/zoom_in", icon_box_zoom_in);
     Test.add_func ("/Services/IconBox/zoom_out", icon_box_zoom_out);
     Test.add_func ("/Services/IconBox/wavering", icon_box_wavering);
@@ -2163,33 +2165,33 @@ namespace PlankTests {
     Gdk.Rectangle popup = { 760, 790, 400, 200 };
 
     // On the popup, and in the gap straight up or toward the popup's ends
-    assert (point_in_preview_zone (960, 800, popup, item, dock));
-    assert (point_in_preview_zone (960, 1010, popup, item, dock));
-    assert (point_in_preview_zone (780, 1000, popup, item, dock));
-    assert (point_in_preview_zone (1150, 1000, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 800, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 1010, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 780, 1000, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 1150, 1000, popup, item, dock));
 
     // Anywhere on the dock, even beyond the popup's ends
-    assert (point_in_preview_zone (520, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1050, popup, item, dock));
 
     // Beside the gap, above the popup, and past the dock's end
-    assert (!point_in_preview_zone (700, 1000, popup, item, dock));
-    assert (!point_in_preview_zone (960, 780, popup, item, dock));
-    assert (!point_in_preview_zone (480, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 700, 1000, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 780, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 480, 1050, popup, item, dock));
 
     // The span is half-open like the rectangles it comes from
-    assert (point_in_preview_zone (760, 900, popup, item, dock));
-    assert (!point_in_preview_zone (759, 900, popup, item, dock));
-    assert (!point_in_preview_zone (1160, 900, popup, item, dock));
-    assert (point_in_preview_zone (960, 790, popup, item, dock));
-    assert (!point_in_preview_zone (960, 789, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 760, 900, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 759, 900, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 1160, 900, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 790, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 789, popup, item, dock));
 
     // So is the dock, beyond the span's ends
-    assert (point_in_preview_zone (500, 1050, popup, item, dock));
-    assert (!point_in_preview_zone (499, 1050, popup, item, dock));
-    assert (point_in_preview_zone (1399, 1050, popup, item, dock));
-    assert (!point_in_preview_zone (1400, 1050, popup, item, dock));
-    assert (point_in_preview_zone (520, 1079, popup, item, dock));
-    assert (!point_in_preview_zone (520, 1080, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 500, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 499, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 1399, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 1400, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1079, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1080, popup, item, dock));
   }
 
   void preview_zone_side () {
@@ -2199,18 +2201,93 @@ namespace PlankTests {
     Gdk.Rectangle popup = { 90, 400, 300, 280 };
 
     // On the popup, and in the gap straight across or toward the popup's ends
-    assert (point_in_preview_zone (200, 540, popup, item, dock));
-    assert (point_in_preview_zone (70, 540, popup, item, dock));
-    assert (point_in_preview_zone (70, 410, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 200, 540, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 540, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 410, popup, item, dock));
 
     // Past the popup, and beside the gap beyond the popup's ends
-    assert (!point_in_preview_zone (400, 540, popup, item, dock));
-    assert (!point_in_preview_zone (70, 380, popup, item, dock));
-    assert (!point_in_preview_zone (70, 700, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 400, 540, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 380, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 700, popup, item, dock));
 
     // The span's bottom edge is excluded, as in the rectangles it comes from
-    assert (point_in_preview_zone (70, 679, popup, item, dock));
-    assert (!point_in_preview_zone (70, 680, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 679, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 680, popup, item, dock));
+  }
+
+  void preview_zone_dock_end () {
+    // A bottom dock's first item, with its popup 42px above it, centered on
+    // the item and so sticking out past the dock's left end
+    Gdk.Rectangle dock = { 500, 1032, 900, 48 };
+    Gdk.Rectangle item = { 500, 1032, 48, 48 };
+    Gdk.Rectangle popup = { 324, 790, 400, 200 };
+
+    // Beside the dock's end, at the dock's height, the popup closes
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 450, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 499, 1032, popup, item, dock));
+
+    // but not in the gap beside it, on the way to the popup's far end
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 450, 1031, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 330, 1000, popup, item, dock));
+
+    // nor on the dock, or straight up from the item
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 500, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1010, popup, item, dock));
+
+    // Without room across, the popup can be pushed over the gap and the dock,
+    // and it still counts beside the dock's end
+    popup = { 324, 960, 400, 100 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 400, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 400, 1070, popup, item, dock));
+
+    // The same for a top dock, with the popup below it
+    dock = { 500, 0, 900, 48 };
+    item = { 500, 0, 48, 48 };
+    popup = { 324, 90, 400, 200 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.TOP, 450, 30, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.TOP, 450, 47, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.TOP, 450, 48, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.TOP, 520, 30, popup, item, dock));
+
+    // A left dock's first item, with its popup to the right sticking out past
+    // the dock's top end
+    dock = { 0, 340, 48, 400 };
+    item = { 0, 340, 48, 48 };
+    popup = { 90, 224, 300, 280 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 47, 300, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 48, 300, popup, item, dock));
+
+    // And for a right dock's last item, with its popup to the left sticking
+    // out past the dock's bottom end
+    dock = { 1872, 340, 48, 400 };
+    item = { 1872, 692, 48, 48 };
+    popup = { 1530, 576, 300, 280 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.RIGHT, 1890, 760, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.RIGHT, 1872, 760, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1871, 760, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1890, 739, popup, item, dock));
+  }
+
+  void preview_zone_item_edge () {
+    // With a compositor at a scale above 1, a bottom dock's cursor region can
+    // start below its items' top edge, here by a pixel, and the item's top
+    // row still counts
+    Gdk.Rectangle dock = { 500, 1033, 900, 48 };
+    Gdk.Rectangle item = { 936, 1032, 48, 48 };
+    Gdk.Rectangle popup = { 760, 790, 400, 200 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 1032, popup, item, dock));
+
+    // as does a right dock item's left column, a pixel left of its region
+    dock = { 1873, 340, 48, 400 };
+    item = { 1872, 692, 48, 48 };
+    popup = { 1530, 576, 300, 280 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1872, 716, popup, item, dock));
   }
 
   //
