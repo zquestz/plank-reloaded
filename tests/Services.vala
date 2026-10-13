@@ -135,6 +135,14 @@ namespace PlankTests {
     Test.add_func ("/Services/PreviewPosition/clamped", preview_position_clamped);
     Test.add_func ("/Services/PreviewZone/bottom", preview_zone_bottom);
     Test.add_func ("/Services/PreviewZone/side", preview_zone_side);
+    Test.add_func ("/Services/PreviewZone/dock_end", preview_zone_dock_end);
+    Test.add_func ("/Services/PreviewZone/item_edge", preview_zone_item_edge);
+    Test.add_func ("/Services/IconBox/zoom_in", icon_box_zoom_in);
+    Test.add_func ("/Services/IconBox/zoom_out", icon_box_zoom_out);
+    Test.add_func ("/Services/IconBox/wavering", icon_box_wavering);
+    Test.add_func ("/Services/IconBox/quarter_steps", icon_box_quarter_steps);
+    Test.add_func ("/Services/IconBox/small_zoom", icon_box_small_zoom);
+    Test.add_func ("/Services/IconBox/zoom_changed", icon_box_zoom_changed);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -2236,33 +2244,33 @@ namespace PlankTests {
     Gdk.Rectangle popup = { 760, 790, 400, 200 };
 
     // On the popup, and in the gap straight up or toward the popup's ends
-    assert (point_in_preview_zone (960, 800, popup, item, dock));
-    assert (point_in_preview_zone (960, 1010, popup, item, dock));
-    assert (point_in_preview_zone (780, 1000, popup, item, dock));
-    assert (point_in_preview_zone (1150, 1000, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 800, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 1010, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 780, 1000, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 1150, 1000, popup, item, dock));
 
     // Anywhere on the dock, even beyond the popup's ends
-    assert (point_in_preview_zone (520, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1050, popup, item, dock));
 
     // Beside the gap, above the popup, and past the dock's end
-    assert (!point_in_preview_zone (700, 1000, popup, item, dock));
-    assert (!point_in_preview_zone (960, 780, popup, item, dock));
-    assert (!point_in_preview_zone (480, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 700, 1000, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 780, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 480, 1050, popup, item, dock));
 
     // The span is half-open like the rectangles it comes from
-    assert (point_in_preview_zone (760, 900, popup, item, dock));
-    assert (!point_in_preview_zone (759, 900, popup, item, dock));
-    assert (!point_in_preview_zone (1160, 900, popup, item, dock));
-    assert (point_in_preview_zone (960, 790, popup, item, dock));
-    assert (!point_in_preview_zone (960, 789, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 760, 900, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 759, 900, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 1160, 900, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 790, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 789, popup, item, dock));
 
     // So is the dock, beyond the span's ends
-    assert (point_in_preview_zone (500, 1050, popup, item, dock));
-    assert (!point_in_preview_zone (499, 1050, popup, item, dock));
-    assert (point_in_preview_zone (1399, 1050, popup, item, dock));
-    assert (!point_in_preview_zone (1400, 1050, popup, item, dock));
-    assert (point_in_preview_zone (520, 1079, popup, item, dock));
-    assert (!point_in_preview_zone (520, 1080, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 500, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 499, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 1399, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 1400, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1079, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1080, popup, item, dock));
   }
 
   void preview_zone_side () {
@@ -2272,17 +2280,199 @@ namespace PlankTests {
     Gdk.Rectangle popup = { 90, 400, 300, 280 };
 
     // On the popup, and in the gap straight across or toward the popup's ends
-    assert (point_in_preview_zone (200, 540, popup, item, dock));
-    assert (point_in_preview_zone (70, 540, popup, item, dock));
-    assert (point_in_preview_zone (70, 410, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 200, 540, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 540, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 410, popup, item, dock));
 
     // Past the popup, and beside the gap beyond the popup's ends
-    assert (!point_in_preview_zone (400, 540, popup, item, dock));
-    assert (!point_in_preview_zone (70, 380, popup, item, dock));
-    assert (!point_in_preview_zone (70, 700, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 400, 540, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 380, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 700, popup, item, dock));
 
     // The span's bottom edge is excluded, as in the rectangles it comes from
-    assert (point_in_preview_zone (70, 679, popup, item, dock));
-    assert (!point_in_preview_zone (70, 680, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 70, 679, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 70, 680, popup, item, dock));
+  }
+
+  void preview_zone_dock_end () {
+    // A bottom dock's first item, with its popup 42px above it, centered on
+    // the item and so sticking out past the dock's left end
+    Gdk.Rectangle dock = { 500, 1032, 900, 48 };
+    Gdk.Rectangle item = { 500, 1032, 48, 48 };
+    Gdk.Rectangle popup = { 324, 790, 400, 200 };
+
+    // Beside the dock's end, at the dock's height, the popup closes
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 450, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 499, 1032, popup, item, dock));
+
+    // but not in the gap beside it, on the way to the popup's far end
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 450, 1031, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 330, 1000, popup, item, dock));
+
+    // nor on the dock, or straight up from the item
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 500, 1050, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 520, 1010, popup, item, dock));
+
+    // Without room across, the popup can be pushed over the gap and the dock,
+    // and it still counts beside the dock's end
+    popup = { 324, 960, 400, 100 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 400, 1050, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.BOTTOM, 400, 1070, popup, item, dock));
+
+    // The same for a top dock, with the popup below it
+    dock = { 500, 0, 900, 48 };
+    item = { 500, 0, 48, 48 };
+    popup = { 324, 90, 400, 200 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.TOP, 450, 30, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.TOP, 450, 47, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.TOP, 450, 48, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.TOP, 520, 30, popup, item, dock));
+
+    // A left dock's first item, with its popup to the right sticking out past
+    // the dock's top end
+    dock = { 0, 340, 48, 400 };
+    item = { 0, 340, 48, 48 };
+    popup = { 90, 224, 300, 280 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.LEFT, 47, 300, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.LEFT, 48, 300, popup, item, dock));
+
+    // And for a right dock's last item, with its popup to the left sticking
+    // out past the dock's bottom end
+    dock = { 1872, 340, 48, 400 };
+    item = { 1872, 692, 48, 48 };
+    popup = { 1530, 576, 300, 280 };
+
+    assert (!point_in_preview_zone (Gtk.PositionType.RIGHT, 1890, 760, popup, item, dock));
+    assert (!point_in_preview_zone (Gtk.PositionType.RIGHT, 1872, 760, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1871, 760, popup, item, dock));
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1890, 739, popup, item, dock));
+  }
+
+  void preview_zone_item_edge () {
+    // With a compositor at a scale above 1, a bottom dock's cursor region can
+    // start below its items' top edge, here by a pixel, and the item's top
+    // row still counts
+    Gdk.Rectangle dock = { 500, 1033, 900, 48 };
+    Gdk.Rectangle item = { 936, 1032, 48, 48 };
+    Gdk.Rectangle popup = { 760, 790, 400, 200 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.BOTTOM, 960, 1032, popup, item, dock));
+
+    // as does a right dock item's left column, a pixel left of its region
+    dock = { 1873, 340, 48, 400 };
+    item = { 1872, 692, 48, 48 };
+    popup = { 1530, 576, 300, 280 };
+
+    assert (point_in_preview_zone (Gtk.PositionType.RIGHT, 1872, 716, popup, item, dock));
+  }
+
+  //
+  // Minimize target box tests
+  //
+
+  void icon_box_zoom_in () {
+    // 48px icons at 200%, a box side of 24 to 48 in steps of 8: each step is
+    // taken once the zoom reaches it, not before
+    assert (next_icon_box_side (24, 48, 26, 24) == 24);
+    assert (next_icon_box_side (24, 48, 30, 24) == 24);
+    assert (next_icon_box_side (24, 48, 32, 24) == 32);
+    assert (next_icon_box_side (24, 48, 38, 32) == 32);
+
+    // and the full size once the zoom is within a step of it
+    assert (next_icon_box_side (24, 48, 40, 32) == 48);
+    assert (next_icon_box_side (24, 48, 48, 48) == 48);
+
+    // A zoom can pass several steps between frames, and an item without a
+    // box yet starts at the zoom's
+    assert (next_icon_box_side (24, 48, 38, 24) == 32);
+    assert (next_icon_box_side (24, 48, 44, 24) == 48);
+    assert (next_icon_box_side (24, 48, 34, 0) == 32);
+
+    // With the defaults, 48px icons at 150%, the box goes straight to the
+    // full size once the zoom is a step, 8px, short of it
+    assert (next_icon_box_side (24, 36, 26, 24) == 24);
+    assert (next_icon_box_side (24, 36, 28, 24) == 36);
+  }
+
+  void icon_box_zoom_out () {
+    // Going down, a step is dropped only once the zoom is a step below where
+    // it began
+    assert (next_icon_box_side (24, 48, 46, 48) == 48);
+    assert (next_icon_box_side (24, 48, 32, 48) == 48);
+    assert (next_icon_box_side (24, 48, 30, 48) == 32);
+    assert (next_icon_box_side (24, 48, 26, 32) == 32);
+
+    // and the box is back to normal as soon as the zoom ends
+    assert (next_icon_box_side (24, 48, 24, 32) == 24);
+    assert (next_icon_box_side (24, 48, 24, 48) == 24);
+  }
+
+  void icon_box_wavering () {
+    // A zoom wavering about a step's edge doesn't keep changing the box
+    assert (next_icon_box_side (24, 48, 32, 24) == 32);
+    assert (next_icon_box_side (24, 48, 30, 32) == 32);
+    assert (next_icon_box_side (24, 48, 32, 32) == 32);
+    assert (next_icon_box_side (24, 48, 40, 32) == 48);
+    assert (next_icon_box_side (24, 48, 38, 48) == 48);
+    assert (next_icon_box_side (24, 48, 40, 48) == 48);
+
+    // nor does one about the edge of the defaults' single step
+    assert (next_icon_box_side (24, 36, 28, 24) == 36);
+    assert (next_icon_box_side (24, 36, 26, 36) == 36);
+    assert (next_icon_box_side (24, 36, 28, 36) == 36);
+  }
+
+  void icon_box_quarter_steps () {
+    // 128px icons at 400%, a box side of 64 to 256: the steps are a quarter
+    // of the zoom, 48, so the box changes only three times on the way up
+    assert (next_icon_box_side (64, 256, 110, 64) == 64);
+    assert (next_icon_box_side (64, 256, 112, 64) == 112);
+    assert (next_icon_box_side (64, 256, 158, 112) == 112);
+    assert (next_icon_box_side (64, 256, 160, 112) == 160);
+    assert (next_icon_box_side (64, 256, 206, 160) == 160);
+    assert (next_icon_box_side (64, 256, 208, 160) == 256);
+
+    // and a zoom falling several steps between frames drops them together,
+    // keeping one more than it calls for
+    assert (next_icon_box_side (64, 256, 100, 256) == 112);
+
+    // Going down, the full size began at 208, so it is kept down to 160, a
+    // step below that
+    assert (next_icon_box_side (64, 256, 160, 256) == 256);
+    assert (next_icon_box_side (64, 256, 158, 256) == 160);
+
+    // 104px icons at 190%, a box side of 52 to 100 in steps of 12: the
+    // hovered item, a few pixels short of the full zoom with the pointer off
+    // its center, still gets the full size
+    assert (next_icon_box_side (52, 100, 86, 76) == 76);
+    assert (next_icon_box_side (52, 100, 88, 76) == 100);
+    assert (next_icon_box_side (52, 100, 94, 76) == 100);
+
+    // A quarter that doesn't come out whole rounds down: 48px icons at 275%,
+    // a box side of 24 to 66, take steps of 10, not 10.5
+    assert (next_icon_box_side (24, 66, 34, 24) == 34);
+  }
+
+  void icon_box_small_zoom () {
+    // A zoom of less than a step, such as 48px icons at 125%, is a single
+    // step to the full size, taken as soon as the icon zooms
+    assert (next_icon_box_side (24, 30, 26, 24) == 30);
+    assert (next_icon_box_side (24, 30, 28, 30) == 30);
+    assert (next_icon_box_side (24, 30, 24, 30) == 24);
+
+    // Without zoom, the box keeps its normal size
+    assert (next_icon_box_side (24, 24, 24, 24) == 24);
+    assert (next_icon_box_side (24, 24, 24, 0) == 24);
+  }
+
+  void icon_box_zoom_changed () {
+    // When the zoom is lowered while an icon is still drawn at the old zoom,
+    // from 200% to 150% with 48px icons, the box comes down to the new full
+    // size, and when zoom is turned off, to the normal size
+    assert (next_icon_box_side (24, 36, 48, 48) == 36);
+    assert (next_icon_box_side (24, 24, 48, 48) == 24);
   }
 }

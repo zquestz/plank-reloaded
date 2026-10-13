@@ -93,6 +93,9 @@ namespace Plank {
       skip_pager_hint = true;
       skip_taskbar_hint = true;
 
+      // What window manager rules match to single out the dock
+      role = DOCK_WINDOW_ROLE;
+
       stick ();
 
       add_events (Gdk.EventMask.BUTTON_PRESS_MASK

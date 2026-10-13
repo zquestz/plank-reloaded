@@ -2292,11 +2292,13 @@ namespace Plank {
       if (!for_hidden) {
         var region = Gdk.Rectangle ();
         // The box follows the zoomed icon in steps, around the same spot, so
-        // a zoom changes the target a few times rather than on every frame,
-        // and it is back at its normal size once the zoom ends
+        // a zoom changes the target a few times rather than on every frame.
+        // It reaches the full zoom's size on the hovered item, and is back at
+        // its normal size once the zoom ends
         var normal_side = 2 * (int) Math.round (IconSize / 4.0);
+        var max_side = 2 * (int) Math.round (ZoomIconSize / 4.0);
         var zoomed_side = 2 * (int) Math.round (double.max (IconSize, draw_value.icon_size) / 4.0);
-        int hit_box_size = item.follow_icon_box_side (normal_side, zoomed_side) / 2;
+        int hit_box_size = item.follow_icon_box_side (normal_side, max_side, zoomed_side) / 2;
 
         region.width = hit_box_size * 2;
         region.height = hit_box_size * 2;
