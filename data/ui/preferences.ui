@@ -75,6 +75,7 @@ along with plank.  If not, see <http://www.gnu.org/licenses/>.
     <property name="window_position">center</property>
     <property name="icon_name">plank</property>
     <property name="type_hint">dialog</property>
+    <property name="role">preferences</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
     <property name="gravity">center</property>

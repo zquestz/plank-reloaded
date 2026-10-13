@@ -11,6 +11,8 @@ namespace Docky {
       this.set_default_size(300, 200);
       this.set_position(Gtk.WindowPosition.MOUSE);
       this.set_skip_taskbar_hint(true);
+      // Lets window manager rules single out the calendar
+      this.set_role("calendar");
       Gtk.Window.set_default_icon_name("calendar");
 
       calendar = new Gtk.Calendar();

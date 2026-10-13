@@ -426,12 +426,20 @@ namespace Plank {
 
   /**
    * Whether a point is where the pointer may be while a window preview
-   * popup is open: on the dock, or anywhere in the span from the hovered
-   * item to the popup, which covers the gap between them and diagonal paths
-   * toward the popup's far ends. The popup and item must not be empty, as
-   * GDK's union still stretches the span to an empty rectangle's position.
-   * Pure math, testable in isolation.
+   * popup is open: on the popup, the hovered item or the dock, or in the
+   * span between the item and the popup. Along the dock's edge the span
+   * covers both, which takes in diagonal paths toward the popup's far ends.
+   * Across it, the span runs from the popup's far side only to the item's
+   * edge facing the popup, so beside the dock's ends just the dock itself
+   * counts and the popup closes once the pointer moves past them. The popup
+   * and the item count on their own too: without room across, the popup can
+   * be pushed over the gap and the dock, and with a compositor at a scale
+   * above 1, the cursor region of a bottom or right dock can start past the
+   * item's facing edge. The popup and item must not be empty, as an empty
+   * one still stretches the span to its position. Pure math, testable in
+   * isolation.
    *
+   * @param position the dock position
    * @param x the x coordinate of the point
    * @param y the y coordinate of the point
    * @param popup the popup
@@ -439,12 +447,73 @@ namespace Plank {
    * @param dock the dock's cursor region
    * @return whether the point is in the zone
    */
-  public static bool point_in_preview_zone (int x, int y, Gdk.Rectangle popup,
+  public static bool point_in_preview_zone (Gtk.PositionType position, int x, int y, Gdk.Rectangle popup,
                                             Gdk.Rectangle item, Gdk.Rectangle dock) {
-    Gdk.Rectangle span;
-    popup.union (item, out span);
+    bool in_span = false;
 
-    return ((x >= span.x && x < span.x + span.width && y >= span.y && y < span.y + span.height)
+    switch (position) {
+    default:
+    case Gtk.PositionType.BOTTOM:
+      in_span = x >= int.min (popup.x, item.x) && x < int.max (popup.x + popup.width, item.x + item.width)
+                && y >= popup.y && y < item.y;
+      break;
+    case Gtk.PositionType.TOP:
+      in_span = x >= int.min (popup.x, item.x) && x < int.max (popup.x + popup.width, item.x + item.width)
+                && y >= item.y + item.height && y < popup.y + popup.height;
+      break;
+    case Gtk.PositionType.LEFT:
+      in_span = y >= int.min (popup.y, item.y) && y < int.max (popup.y + popup.height, item.y + item.height)
+                && x >= item.x + item.width && x < popup.x + popup.width;
+      break;
+    case Gtk.PositionType.RIGHT:
+      in_span = y >= int.min (popup.y, item.y) && y < int.max (popup.y + popup.height, item.y + item.height)
+                && x >= popup.x && x < item.x;
+      break;
+    }
+
+    return (in_span
+            || (x >= popup.x && x < popup.x + popup.width && y >= popup.y && y < popup.y + popup.height)
+            || (x >= item.x && x < item.x + item.width && y >= item.y && y < item.y + item.height)
             || (x >= dock.x && x < dock.x + dock.width && y >= dock.y && y < dock.y + dock.height));
+  }
+
+  // The steps an item's minimize target box takes as the dock zooms: the
+  // whole zoom split into this many, but each at least this many pixels a side
+  const int ICON_BOX_STEPS = 4;
+  const int ICON_BOX_MIN_STEP = 8;
+
+  /**
+   * The side of an item's minimize target box as the dock zooms, from the
+   * side it had before. The box follows the zoom in steps of a quarter of
+   * the whole zoom, but at least 8 pixels. Going up, it takes each step once
+   * the zoom reaches it, and the full size once the zoom is within a step of
+   * that, so the hovered item gets it even with the pointer off its center.
+   * Going down, it drops a step only once the zoom is a step below where
+   * that step began, so a zoom wavering about a step's edge doesn't keep
+   * changing it. It is the normal size again as soon as the zoom ends. Pure
+   * math, testable in isolation.
+   *
+   * @param normal_side the box side for the icon at its normal size
+   * @param max_side the box side for the icon at its full zoom
+   * @param zoomed_side the box side for the icon as zoomed now
+   * @param box_side the box side used before
+   * @return the box side to use now
+   */
+  public static int next_icon_box_side (int normal_side, int max_side, int zoomed_side, int box_side) {
+    if (zoomed_side <= normal_side)
+      return normal_side;
+
+    var step = int.max ((max_side - normal_side) / ICON_BOX_STEPS, ICON_BOX_MIN_STEP);
+
+    // The last step the zoom reached
+    var reached = normal_side + (zoomed_side - normal_side) / step * step;
+
+    var side = (zoomed_side >= max_side - step ? max_side : reached);
+    if (side >= box_side)
+      return side;
+
+    // Going down, keep one step more than the zoom calls for
+    var kept = (zoomed_side >= max_side - 2 * step ? max_side : reached + step);
+    return int.min (kept, box_side);
   }
 }

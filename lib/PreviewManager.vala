@@ -489,7 +489,7 @@ namespace Plank {
       dock_region.x += window_region.x;
       dock_region.y += window_region.y;
 
-      return point_in_preview_zone (x, y, popup.shown_region, item_region, dock_region);
+      return point_in_preview_zone (shown_position, x, y, popup.shown_region, item_region, dock_region);
     }
 
     void previews_enabled_changed () {
