@@ -467,15 +467,15 @@ This allows dbus activation to cleanly start bamfdaemon on demand, and survives 
 <details markdown="1">
 <summary><strong>Plank sensitivity extends too far in IceWM?</strong></summary>
 
-If you're using IceWM and experiencing issues where clicking near the dock becomes unresponsive in applications (e.g., Firefox's back button doesn't work when too close to the dock), you need to tell IceWM not to manage the Plank window.
+If you're using IceWM and experiencing issues where clicking near the dock becomes unresponsive in applications (e.g., Firefox's back button doesn't work when too close to the dock), you need to tell IceWM not to manage Plank's dock window.
 
 **Solution:** Add the following line to your IceWM winoptions file (typically `~/.icewm/winoptions`):
 
 ```
-plank.doNotManage: 1
+plank.dock.doNotManage: 1
 ```
 
-This tells IceWM not to apply window management rules to Plank, resolving the click sensitivity issues.
+This tells IceWM not to manage the dock, which fixes the click sensitivity, while Plank's other windows, such as preferences, keep their frames.
 
 See [issue #124](https://github.com/zquestz/plank-reloaded/issues/124) for more details.
 
