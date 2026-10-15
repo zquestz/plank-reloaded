@@ -139,6 +139,8 @@ namespace PlankTests {
     Test.add_func ("/Services/IconBox/quarter_steps", icon_box_quarter_steps);
     Test.add_func ("/Services/IconBox/small_zoom", icon_box_small_zoom);
     Test.add_func ("/Services/IconBox/zoom_changed", icon_box_zoom_changed);
+    Test.add_func ("/Services/DBusNames/application_id", dbus_names_application_id);
+    Test.add_func ("/Services/DBusNames/object_path", dbus_names_object_path);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -2395,5 +2397,19 @@ namespace PlankTests {
     // size, and when zoom is turned off, to the normal size
     assert (next_icon_box_side (24, 36, 48, 48) == 36);
     assert (next_icon_box_side (24, 24, 48, 48) == 24);
+  }
+
+  void dbus_names_application_id () {
+    // Without a name, the docks share the plain id
+    assert (dock_application_id ("net.launchpad.plank", "") == "net.launchpad.plank");
+
+    // A named dock's id comes from its name's checksum, so a name a bus name
+    // can't hold still gives a valid one
+    assert (dock_application_id ("net.launchpad.plank", "2 my-dock.é") == "net.launchpad.plank.hf9fb8291697c5813e5723639ed67763c3b9f5363c4ed155c05ec9cbd21e02fff");
+  }
+
+  void dbus_names_object_path () {
+    // A dock's path is its escaped name under the application's path
+    assert (dock_dbus_object_path ("/net/launchpad/plank", "2 my-dock.é") == "/net/launchpad/plank/" + DBus.escape_object_path ("2 my-dock.é"));
   }
 }

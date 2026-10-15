@@ -193,8 +193,7 @@ namespace Plank
 				return;
 			}
 			
-			if (!object_path.has_suffix (controller.name))
-				object_path = "%s/%s".printf (object_path, controller.name);
+			object_path = dock_dbus_object_path (object_path, controller.name);
 			
 			// Listen for "Ping" signals coming from clients
 			try {
