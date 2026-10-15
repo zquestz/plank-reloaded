@@ -623,6 +623,13 @@ namespace Plank {
       geometry_change_in_flight = false;
       controller.window.release_struts ();
 
+      // Monitor mode normally keeps its struts up during an update, so the
+      // release above may not refresh them, yet monitors coming or going
+      // elsewhere change them too: the screen's bounds, and whether a
+      // monitor lies past the dock's edge
+      if (use_monitor_geometry ())
+        controller.window.update_struts ();
+
 #if HAVE_BARRIERS
       // The barrier is in device pixels, so a scale change that leaves the
       // logical geometry alone still moves it; rebuild it like the struts
@@ -2411,6 +2418,13 @@ namespace Plank {
       int screen_height = 0;
       for (var i = 0; i < display.get_n_monitors (); i++) {
         var geo = display.get_monitor (i).get_geometry ();
+
+        // With a monitor past the dock's edge, the strut would reach over
+        // that monitor too, so reserve nothing and let maximized windows on
+        // this monitor cover the dock
+        if (monitor_past_dock_edge (Position, geo, raw_geo))
+          return;
+
         screen_width = int.max (screen_width, geo.x + geo.width);
         screen_height = int.max (screen_height, geo.y + geo.height);
       }
