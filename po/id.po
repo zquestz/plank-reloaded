@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-11-13 01:49\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "juga tetap menjadi pustaka yang dapat diperluas untuk membuat program dock "
 "lain dengan fitur yang lebih canggih."
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "Dock dengan tema Matte"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "Preferensi Tampilan"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "Preferensi Perilaku"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "Preferensi Docklet"
 
@@ -69,87 +69,87 @@ msgstr "Preferensi Docklet"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "Tema:"
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "Posisi:"
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "Kiri"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "Kanan"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "Atas"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "Bawah"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "Pada Layar Aktif:"
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "Interval polling dalam detik untuk deteksi layar aktif"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "Perataan:"
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "Isi"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "Awal"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "Akhir"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "Tengah"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "Dalam Tampilan Utama:"
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Offset dalam persen dari tengah tepi layar"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "Perataan Ikon:"
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "Ukuran Ikon:"
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "Perbesar Ikon:"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "Ukuran Celah:"
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "Area Layar:"
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -157,119 +157,119 @@ msgstr ""
 "Monitor menggunakan seluruh tampilan. Area Kerja menyisakan ruang untuk "
 "panel lain. Otomatis memilih sesuai desktop Anda."
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "Otomatis"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "Monitor"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "Area Kerja"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "Tampilan"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "Sembunyikan secara cerdas"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "Sembunyikan otomatis"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "Hindari jendela yang dimaksimalkan"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "Hindari jendela"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "Hindari jendela aktif"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "Sembunyikan Dock"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "Tunda Sembunyikan:"
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "Tunda dalam ms sebelum menyembunyikan dock"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "Tunda Tampilkan:"
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "Tunda dalam ms sebelum menampilkan dock"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "Tampilkan dengan Tekanan:"
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "Manajemen Item"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "Tampilkan yang Tidak Disematkan:"
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "Batasi ke Ruang Kerja:"
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "Keterangan Alat Diaktifkan:"
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "Pratinjau Jendela:"
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "Tunda Pratinjau:"
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "Tunda dalam ms sebelum menampilkan pratinjau jendela"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "Ukuran Pratinjau:"
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "Lebar terbesar pratinjau jendela dalam piksel"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "Kunci Ikon:"
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "Jangkar Docklet:"
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "Jangkar Berkas:"
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "Bawa ke Ruang Kerja:"
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -277,11 +277,11 @@ msgstr ""
 "Saat mengaktifkan jendela yang berada di ruang kerja lain, pindahkan ke "
 "ruang kerja saat ini alih-alih beralih ke ruang kerja jendela tersebut."
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "Perilaku"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "Docklet"
 
@@ -625,7 +625,7 @@ msgstr "Penukar ruang kerja grafis."
 msgid "Drop to add to dock"
 msgstr "Jatuhkan untuk menambah dok"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -637,20 +637,20 @@ msgstr ""
 "  Ronny Anthony Akbar https://launchpad.net/~ronny-assalafi\n"
 "  kurnia ginting https://launchpad.net/~khugank"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Taruh di Dok"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "_Tutup Semua"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "_Tutup"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Letakkan untuk membukanya dengan %s"

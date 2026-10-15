@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-10-30 22:56\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "mult. Este și o librărie ce poate fi extinsă pentru a crea alte programe "
 "dock cu funcții mai avansate."
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "Dock cu tema Matte"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "Preferințe de Aspect"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "Preferințe Comportament"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "Preferințe Docklets"
 
@@ -70,87 +70,87 @@ msgstr "Preferințe Docklets"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "Temă:"
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "Poziție:"
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "Stânga"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "Dreapta"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "Sus"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "Jos"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "Pe ecranul activ:"
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "Interval de interogare în secunde pentru detectarea afișajului activ"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "Aliniere:"
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "Umplere"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "Pornire"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "Sfârșit"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "Centru"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "Pe ecranul principal:"
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "Decalaj în procente din centrul ecranului"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "Aliniere Pictogramă:"
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "Dimensiune Pictogramă:"
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "Zoom Pictogramă:"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "Dimensiune spațiu:"
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "Zona ecranului:"
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -158,119 +158,119 @@ msgstr ""
 "Monitor folosește întregul ecran. Zona de lucru lasă loc pentru alte "
 "panouri. Automat alege în funcție de desktop."
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "Automat"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "Monitor"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "Zonă de lucru"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "Aspect"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "Ascundere inteligentă"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "Ascundere automată"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "Evitare fereastră maximizată"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "Evitare fereastră"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "Evitare fereastră activă"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "Ascunde Dock-ul"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "Ascunde după:"
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "Întârziere în ms înainte de a ascunde dock-ul"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "Afișează după:"
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "Întârziere în ms înainte de afișarea dock-ului"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "Afișare la insistență:"
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "Gestionare Elemente"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "Arată Elemente Nefixate:"
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "Restricționează la spațiul de lucru:"
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "Sugestii Activate:"
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "Previzualizări ferestre:"
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "Previzualizare după:"
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "Întârziere în ms înainte de afișarea previzualizărilor ferestrelor"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "Dimensiune previzualizare:"
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "Lățimea maximă a previzualizării unei ferestre în pixeli"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "Blocare Pictograme:"
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "Ancorează Dockleturi:"
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "Ancorează Fișiere:"
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "Mută în spațiul de lucru:"
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -278,11 +278,11 @@ msgstr ""
 "La activarea unei ferestre aflate în alt spațiu de lucru, mutați-o în "
 "spațiul de lucru curent în loc să comutați la spațiul de lucru al ferestrei."
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "Comportament"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "Dockleturi"
 
@@ -632,7 +632,7 @@ msgstr "Un comutator grafic pentru spații de lucru."
 msgid "Drop to add to dock"
 msgstr "Dă drumul pentru a adăuga la dock"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -640,20 +640,20 @@ msgstr ""
 "  Cristian Moldovan https://launchpad.net/~crismblog\n"
 "  Rico Tzschichholz https://launchpad.net/~ricotz"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_Păstrează în panou"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "În_chide toate"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "În_chide"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "Dă drumul pentru a deschide cu %s"

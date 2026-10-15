@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Persian\n"
@@ -49,19 +49,19 @@ msgstr ""
 "کتابخانه باقی می‌ماند که می‌تواند برای ایجاد برنامه‌های داک دیگر با ویژگی‌های "
 "پیشرفته‌تر گسترش یابد."
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "داک با تم مات"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "تنظیمات ظاهری"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "تنظیمات رفتاری"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "تنظیمات داکلت‌ها"
 
@@ -69,87 +69,87 @@ msgstr "تنظیمات داکلت‌ها"
 msgid "Dock"
 msgstr "داک"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "تم:"
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "موقعیت:"
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "چپ"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "راست"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "بالا"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "پایین"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "در نمایشگر فعال:"
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "فاصله زمانی نظرسنجی به ثانیه برای تشخیص نمایشگر فعال"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "تراز:"
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "پر کردن"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "شروع"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "پایان"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "وسط"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "در نمایشگر اصلی:"
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "فاصله به درصد از مرکز لبه صفحه"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "تراز نماد:"
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "اندازه نماد:"
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "بزرگ‌نمایی نماد:"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "اندازه فاصله:"
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "ناحیهٔ صفحه:"
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -157,119 +157,119 @@ msgstr ""
 "نمایشگر از تمام صفحه استفاده می‌کند. ناحیهٔ کاری برای دیگر پنل‌ها جا می‌گذارد. "
 "خودکار بر اساس میزکار انتخاب می‌کند."
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "خودکار"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "نمایشگر"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "ناحیهٔ کاری"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "ظاهر"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "پنهان‌سازی هوشمند"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "پنهان‌سازی خودکار"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "اجتناب از پنجره بزرگ شده"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "اجتناب از پنجره"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "اجتناب از پنجره فعال"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "پنهان کردن داک"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "تاخیر پنهان‌سازی:"
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "تاخیر به میلی‌ثانیه قبل از پنهان کردن داک"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "تاخیر نمایش:"
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "تاخیر به میلی‌ثانیه قبل از نمایش داک"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "نمایش با فشار:"
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "مدیریت موارد"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "نمایش سنجاق نشده:"
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "محدود به فضای کاری:"
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "راهنماهای ابزار فعال:"
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "پیش‌نمایش‌های پنجره:"
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "تاخیر پیش‌نمایش:"
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "تاخیر به میلی‌ثانیه قبل از نمایش پیش‌نمایش‌های پنجره"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "اندازه پیش‌نمایش:"
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "بیشترین عرض پیش‌نمایش پنجره به پیکسل"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "قفل نمادها:"
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "لنگر داکلت‌ها:"
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "لنگر فایل‌ها:"
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "آوردن به فضای کاری:"
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -277,11 +277,11 @@ msgstr ""
 "هنگام فعال کردن پنجره‌ای که در فضای کاری دیگری قرار دارد، به‌جای رفتن به فضای "
 "کاری پنجره، آن را به فضای کاری فعلی منتقل کنید."
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "رفتار"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "داکلت‌ها"
 
@@ -628,26 +628,26 @@ msgstr "یک تعویض‌کننده فضای کاری گرافیکی."
 msgid "Drop to add to dock"
 msgstr "رها کنید تا به داک اضافه شود"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "اعتبار مترجمان:\n"
 "تیم پلنک ریلودد"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_نگه داشتن در داک"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "_بستن همه"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "_بستن"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "رها کنید تا با %s باز شود"

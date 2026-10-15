@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-11-13 03:12\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
@@ -48,19 +48,19 @@ msgstr ""
 "שמעגן צריך ומוחלט שום דבר יותר. הוא גם נשאר ספרייה שניתן להרחיב ליצירת "
 "תוכניות מעגן אחרות עם תכונות מתקדמות יותר."
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "מעגן עם ערכת נושא Matte"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "העדפות מראה"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "העדפות התנהגות"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "העדפות גאדג'טים"
 
@@ -68,87 +68,87 @@ msgstr "העדפות גאדג'טים"
 msgid "Dock"
 msgstr "מעגן"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "ערכת נושא:"
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "מיקום:"
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "שמאל"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "ימין"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "מעלה"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "מטה"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "על תצוגה פעילה:"
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "מרווח סקר בשניות לזיהוי תצוגה פעילה"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "יישור:"
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "מילוי"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "התחלה"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "סיום"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "מרכוז"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "בצג הראשי:"
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "הסטה (באחוזים) מהמרכז של צלע המסך"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "יישור סמלים:"
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "גודל הסמלים:"
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "הגדלת אייקונים:"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "גודל הרווח:"
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "אזור מסך:"
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -156,119 +156,119 @@ msgstr ""
 "צג משתמש בכל המסך. אזור עבודה משאיר מקום ללוחות אחרים. אוטומטי בוחר לפי "
 "שולחן העבודה."
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "אוטומטי"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "צג"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "אזור עבודה"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "מראה"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "הסתרה חכמה"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "הסתרה אוטומטית"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "התחמקות מחלונות מוגדלים"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "התחמקות מחלונות"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "מאחורי החלון הפעיל"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "הסתר את המעגן"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "השהיית ההסתרה:"
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "השהייה (ב ms) בטרם הסתרת המעגן"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "השהיית ההופעה:"
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "השהייה (ב ms) בטרם הופעת המעגן"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "הופעה מאולצת:"
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "ניהול פריטים"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "הראה יישומים לא מוצמדים:"
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "הגבלה לחלון עבודה:"
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "הפעלת רמזי עזר:"
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "תצוגות מקדימות של חלונות:"
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "השהיית התצוגה המקדימה:"
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "השהייה (ב ms) בטרם הצגת התצוגות המקדימות של החלונות"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "גודל התצוגה המקדימה:"
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "הרוחב המרבי של תצוגה מקדימה של חלון (בפיקסלים)"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "נעילת הסמלים:"
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "עיגון גאדג'טים:"
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "עיגון קבצים:"
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "העברה לסביבת העבודה:"
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -276,11 +276,11 @@ msgstr ""
 "כאשר מפעילים חלון שנמצא בסביבת עבודה אחרת, יש להעביר אותו לסביבת העבודה "
 "הנוכחית במקום לעבור לסביבת העבודה של החלון."
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "התנהגות"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "גאדג'טים"
 
@@ -633,7 +633,7 @@ msgstr "מחליף משטחי עבודה גרפי."
 msgid "Drop to add to dock"
 msgstr "שחרר בכדי להוסיף לסרגל הדוק"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -645,20 +645,20 @@ msgstr ""
 "  Uri Damsker  אורי דמסקר https://launchpad.net/~ud1955\n"
 "  yagel sheli https://launchpad.net/~yagelsheli"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_שמירה במעגן"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "_סגירת הכול"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "_סגירה"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "שחרר בכדי לפתוח באמצעות %s"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-10-30 22:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -47,19 +47,19 @@ msgstr ""
 "所需的功能，不多一分不少一分。它同时也保持作为一个函式库的特性，可以被扩充来"
 "开发具有更多进阶功能的其他 Dock 程式。"
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "停靠Matte 主题"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "外观首选项"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "行为首选项"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "小部件首选项"
 
@@ -67,206 +67,206 @@ msgstr "小部件首选项"
 msgid "Dock"
 msgstr "Dock"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "样式："
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "位置："
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "左侧"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "右侧"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "顶部"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "底部"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "在活动显示器："
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "活动显示器检测的轮询间隔（秒）"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "对齐方式："
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "满格"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "首部"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "尾部"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "居中"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "在主显示器："
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "从屏幕边缘的中心按比例微调"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "图标排列："
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "图标尺寸："
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "缩放效果："
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "间距大小："
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "屏幕区域："
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
 msgstr ""
 "显示器使用整个屏幕。工作区域为其他面板留出空间。自动会根据您的桌面环境选择。"
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "自动"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "显示器"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "工作区域"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "外观"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "智能隐藏"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "自动隐藏"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "避开最大化窗口"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "避开所有窗口"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "避开活动窗口"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "隐藏面板"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "隐藏延迟："
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "隐藏面板前的延迟（毫秒）"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "显示延迟："
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "显示面板前的延迟（毫秒）"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "压力显示："
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "项目管理"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "显示未收藏项："
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "限制到工作区："
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "启用工具提示："
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "窗口预览："
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "预览延迟："
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "显示窗口预览前的延迟（毫秒）"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "预览尺寸："
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "窗口预览的最大宽度（像素）"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "锁定图标："
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "固定小部件："
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "固定配置："
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "移至工作区："
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -274,11 +274,11 @@ msgstr ""
 "激活位于其他工作区的窗口时，将其移至当前工作区，而不是切换到该窗口所在的工作"
 "区。"
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "行为"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "小部件"
 
@@ -622,7 +622,7 @@ msgstr "图形化工作区切换器。"
 msgid "Drop to add to dock"
 msgstr "拖动添加到这里"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -635,20 +635,20 @@ msgstr ""
 "  maomao https://launchpad.net/~fsfjzby\n"
 "ilmpixar https://github.com/ilmpixar"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "_收藏"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "_全部关闭"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "_关闭"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "拖放以 %s 打开"

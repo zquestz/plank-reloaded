@@ -2,7 +2,7 @@ project(
   'plank-reloaded',
   'c',
   'vala',
-  version: '0.11.176',
+  version: '0.11.177',
   meson_version: '>= 0.59.0',
   license: 'GPL3',
 )

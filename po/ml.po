@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-09 18:05-1000\n"
+"POT-Creation-Date: 2026-10-15 11:24-1000\n"
 "PO-Revision-Date: 2025-11-13 03:00\n"
 "Last-Translator: \n"
 "Language-Team: Malayalam\n"
@@ -49,19 +49,19 @@ msgstr ""
 "സവിശേഷതകളുള്ള മറ്റ് ഡോക്ക് പ്രോഗ്രാമുകൾ സൃഷ്ടിക്കുന്നതിന് വിപുലീകരിക്കാവുന്ന ഒരു ലൈബ്രറിയായി ഇത് "
 "തുടരുന്നു."
 
-#: data/plank.appdata.xml.in:139
+#: data/plank.appdata.xml.in:140
 msgid "Dock with Matte theme"
 msgstr "മാറ്റ് തീം ഉള്ള ഡോക്ക്"
 
-#: data/plank.appdata.xml.in:144
+#: data/plank.appdata.xml.in:145
 msgid "Appearance Preferences"
 msgstr "കാഴ്ച മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:149
+#: data/plank.appdata.xml.in:150
 msgid "Behavior Preferences"
 msgstr "പെരുമാറ്റ മുൻഗണനകൾ"
 
-#: data/plank.appdata.xml.in:154
+#: data/plank.appdata.xml.in:155
 msgid "Docklets Preferences"
 msgstr "ഡോക്ക്‌ലെറ്റുകളുടെ മുൻഗണനകൾ"
 
@@ -69,87 +69,87 @@ msgstr "ഡോക്ക്‌ലെറ്റുകളുടെ മുൻഗണ�
 msgid "Dock"
 msgstr "ഡോക്ക്"
 
-#: data/ui/preferences.ui:102
+#: data/ui/preferences.ui:103
 msgid "Theme:"
 msgstr "തീം:"
 
-#: data/ui/preferences.ui:115
+#: data/ui/preferences.ui:116
 msgid "Position:"
 msgstr "സ്ഥാനം:"
 
-#: data/ui/preferences.ui:142
+#: data/ui/preferences.ui:143
 msgid "Left"
 msgstr "ഇടത്"
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:144
 msgid "Right"
 msgstr "വലത്"
 
-#: data/ui/preferences.ui:144
+#: data/ui/preferences.ui:145
 msgid "Top"
 msgstr "മുകളിൽ"
 
-#: data/ui/preferences.ui:145
+#: data/ui/preferences.ui:146
 msgid "Bottom"
 msgstr "താഴെ"
 
-#: data/ui/preferences.ui:162
+#: data/ui/preferences.ui:163
 msgid "On Active Display:"
 msgstr "സജീവ ഡിസ്പ്ലേയിൽ:"
 
-#: data/ui/preferences.ui:189
+#: data/ui/preferences.ui:190
 msgid "Polling interval in seconds for active display detection"
 msgstr "സജീവ ഡിസ്പ്ലേ കണ്ടെത്തലിനുള്ള സെക്കൻഡുകളിലെ പോളിംഗ് ഇടവേള"
 
-#: data/ui/preferences.ui:206
+#: data/ui/preferences.ui:207
 msgid "Alignment:"
 msgstr "വിന്യാസം:"
 
-#: data/ui/preferences.ui:219
+#: data/ui/preferences.ui:220
 msgid "Fill"
 msgstr "നിറയ്ക്കുക"
 
-#: data/ui/preferences.ui:220 data/ui/preferences.ui:298
+#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
 msgid "Start"
 msgstr "തുടക്കം"
 
-#: data/ui/preferences.ui:221 data/ui/preferences.ui:299
+#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
 msgid "End"
 msgstr "അവസാനം"
 
-#: data/ui/preferences.ui:222 data/ui/preferences.ui:300
+#: data/ui/preferences.ui:223 data/ui/preferences.ui:301
 msgid "Center"
 msgstr "മധ്യം"
 
-#: data/ui/preferences.ui:238
+#: data/ui/preferences.ui:239
 msgid "On Primary Display:"
 msgstr "പ്രാഥമിക ഡിസ്പ്ലേയിൽ:"
 
-#: data/ui/preferences.ui:264
+#: data/ui/preferences.ui:265
 msgid "Offset in percent from the center of the screen-edge"
 msgstr "സ്ക്രീൻ അറ്റത്തിന്റെ മധ്യത്തിൽ നിന്നുള്ള ശതമാനത്തിലെ ഓഫ്‌സെറ്റ്"
 
-#: data/ui/preferences.ui:284
+#: data/ui/preferences.ui:285
 msgid "Icon Alignment:"
 msgstr "ഐക്കൺ വിന്യാസം:"
 
-#: data/ui/preferences.ui:314
+#: data/ui/preferences.ui:315
 msgid "Icon Size:"
 msgstr "ഐക്കൺ വലുപ്പം:"
 
-#: data/ui/preferences.ui:380
+#: data/ui/preferences.ui:381
 msgid "Icon Zoom:"
 msgstr "ഐക്കൺ സൂം:"
 
-#: data/ui/preferences.ui:394
+#: data/ui/preferences.ui:395
 msgid "Gap Size:"
 msgstr "വിടവിന്റെ വലുപ്പം:"
 
-#: data/ui/preferences.ui:435
+#: data/ui/preferences.ui:436
 msgid "Screen Area:"
 msgstr "സ്ക്രീൻ പ്രദേശം:"
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:452
 msgid ""
 "Monitor uses the full display. Work Area leaves room for other panels. Auto "
 "chooses based on your desktop."
@@ -157,119 +157,119 @@ msgstr ""
 "മോണിറ്റർ മുഴുവൻ ഡിസ്പ്ലേയും ഉപയോഗിക്കുന്നു. പ്രവർത്തന മേഖല മറ്റ് പാനലുകൾക്ക് ഇടം നൽകുന്നു. "
 "സ്വയമേവ നിങ്ങളുടെ ഡെസ്ക്ടോപ്പ് അനുസരിച്ച് തിരഞ്ഞെടുക്കുന്നു."
 
-#: data/ui/preferences.ui:453
+#: data/ui/preferences.ui:454
 msgid "Auto"
 msgstr "സ്വയമേവ"
 
-#: data/ui/preferences.ui:454
+#: data/ui/preferences.ui:455
 msgid "Monitor"
 msgstr "മോണിറ്റർ"
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "Work Area"
 msgstr "പ്രവർത്തന മേഖല"
 
-#: data/ui/preferences.ui:479
+#: data/ui/preferences.ui:480
 msgid "Appearance"
 msgstr "കാഴ്ച"
 
-#: data/ui/preferences.ui:499
+#: data/ui/preferences.ui:500
 msgid "Intellihide"
 msgstr "ബുദ്ധിപരമായി മറയ്ക്കുക"
 
-#: data/ui/preferences.ui:500
+#: data/ui/preferences.ui:501
 msgid "Autohide"
 msgstr "സ്വയം മറയ്ക്കുക"
 
-#: data/ui/preferences.ui:501
+#: data/ui/preferences.ui:502
 msgid "Dodge maximized window"
 msgstr "പരമാവധി വലുപ്പത്തിലുള്ള വിൻഡോ ഒഴിവാക്കുക"
 
-#: data/ui/preferences.ui:502
+#: data/ui/preferences.ui:503
 msgid "Window Dodge"
 msgstr "വിൻഡോ ഒഴിവാക്കൽ"
 
-#: data/ui/preferences.ui:503
+#: data/ui/preferences.ui:504
 msgid "Dodge active window"
 msgstr "സജീവ വിൻഡോ ഒഴിവാക്കുക"
 
-#: data/ui/preferences.ui:529
+#: data/ui/preferences.ui:530
 msgid "Hide Dock"
 msgstr "ഡോക്ക് മറയ്ക്കുക"
 
-#: data/ui/preferences.ui:545
+#: data/ui/preferences.ui:546
 msgid "Hide Delay:"
 msgstr "മറയ്ക്കൽ കാലതാമസം:"
 
-#: data/ui/preferences.ui:559
+#: data/ui/preferences.ui:560
 msgid "Delay in ms before hiding the dock"
 msgstr "ഡോക്ക് മറയ്ക്കുന്നതിന് മുമ്പ് ms-ൽ കാലതാമസം"
 
-#: data/ui/preferences.ui:578
+#: data/ui/preferences.ui:579
 msgid "Unhide Delay:"
 msgstr "കാണിക്കൽ കാലതാമസം:"
 
-#: data/ui/preferences.ui:592
+#: data/ui/preferences.ui:593
 msgid "Delay in ms before showing the dock"
 msgstr "ഡോക്ക് കാണിക്കുന്നതിന് മുമ്പ് ms-ൽ കാലതാമസം"
 
-#: data/ui/preferences.ui:611
+#: data/ui/preferences.ui:612
 msgid "Pressure Reveal:"
 msgstr "സമ്മർദ്ദം വെളിപ്പെടുത്തൽ:"
 
-#: data/ui/preferences.ui:638
+#: data/ui/preferences.ui:639
 msgid "Item Management"
 msgstr "ഇനം മാനേജ്‌മെന്റ്"
 
-#: data/ui/preferences.ui:657
+#: data/ui/preferences.ui:658
 msgid "Show Unpinned:"
 msgstr "പിൻ ചെയ്യാത്തവ കാണിക്കുക:"
 
-#: data/ui/preferences.ui:684
+#: data/ui/preferences.ui:685
 msgid "Restrict to Workspace:"
 msgstr "വർക്ക്‌സ്‌പെയ്‌സിലേക്ക് പരിമിതപ്പെടുത്തുക:"
 
-#: data/ui/preferences.ui:712
+#: data/ui/preferences.ui:713
 msgid "Tooltips Enabled:"
 msgstr "ടൂൾടിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കി:"
 
-#: data/ui/preferences.ui:739
+#: data/ui/preferences.ui:740
 msgid "Window Previews:"
 msgstr "വിൻഡോ പ്രിവ്യൂകൾ:"
 
-#: data/ui/preferences.ui:766
+#: data/ui/preferences.ui:767
 msgid "Preview Delay:"
 msgstr "പ്രിവ്യൂ കാലതാമസം:"
 
-#: data/ui/preferences.ui:780
+#: data/ui/preferences.ui:781
 msgid "Delay in ms before showing window previews"
 msgstr "വിൻഡോ പ്രിവ്യൂകൾ കാണിക്കുന്നതിന് മുമ്പ് ms-ൽ കാലതാമസം"
 
-#: data/ui/preferences.ui:799
+#: data/ui/preferences.ui:800
 msgid "Preview Size:"
 msgstr "പ്രിവ്യൂ വലുപ്പം:"
 
-#: data/ui/preferences.ui:813
+#: data/ui/preferences.ui:814
 msgid "Largest width of a window preview in pixels"
 msgstr "പിക്സലുകളിൽ ഒരു വിൻഡോ പ്രിവ്യൂവിന്റെ പരമാവധി വീതി"
 
-#: data/ui/preferences.ui:829
+#: data/ui/preferences.ui:830
 msgid "Lock Icons:"
 msgstr "ഐക്കണുകൾ ലോക്ക് ചെയ്യുക:"
 
-#: data/ui/preferences.ui:856
+#: data/ui/preferences.ui:857
 msgid "Anchor Docklets:"
 msgstr "ഡോക്ക്‌ലെറ്റുകൾ നങ്കൂരമിടുക:"
 
-#: data/ui/preferences.ui:883
+#: data/ui/preferences.ui:884
 msgid "Anchor Files:"
 msgstr "ഫയലുകൾ നങ്കൂരമിടുക:"
 
-#: data/ui/preferences.ui:910
+#: data/ui/preferences.ui:911
 msgid "Bring to Workspace:"
 msgstr "വർക്ക്‌സ്‌പെയ്‌സിലേക്ക് കൊണ്ടുവരിക:"
 
-#: data/ui/preferences.ui:927
+#: data/ui/preferences.ui:928
 msgid ""
 "When activating a window located on another workspace, move it to the "
 "current workspace instead of switching to the window's workspace."
@@ -277,11 +277,11 @@ msgstr ""
 "മറ്റൊരു വർക്ക്‌സ്‌പെയ്‌സിലുള്ള ജാലകം സജീവമാക്കുമ്പോൾ, ജാലകത്തിന്റെ വർക്ക്‌സ്‌പെയ്‌സിലേക്ക് മാറുന്നതിന് "
 "പകരം അതിനെ നിലവിലെ വർക്ക്‌സ്‌പെയ്‌സിലേക്ക് നീക്കുക."
 
-#: data/ui/preferences.ui:937
+#: data/ui/preferences.ui:938
 msgid "Behaviour"
 msgstr "പെരുമാറ്റം"
 
-#: data/ui/preferences.ui:957
+#: data/ui/preferences.ui:958
 msgid "Docklets"
 msgstr "ഡോക്ക്‌ലെറ്റുകൾ"
 
@@ -628,7 +628,7 @@ msgstr "ഒരു ഗ്രാഫിക്കൽ വർക്ക്‌സ്‌�
 msgid "Drop to add to dock"
 msgstr "ഡോക്കിലേക്ക് ചേർക്കാൻ ഇടുക"
 
-#: lib/Factories/AbstractMain.vala:439 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -637,20 +637,20 @@ msgstr ""
 "  ST Alfas https://launchpad.net/~alfasst\n"
 "  muhammed shameem https://launchpad.net/~shameempk"
 
-#: lib/Items/ApplicationDockItem.vala:693 lib/Items/FileDockItem.vala:285
+#: lib/Items/ApplicationDockItem.vala:690 lib/Items/FileDockItem.vala:285
 #: lib/Items/FileDockItem.vala:405
 msgid "_Keep in Dock"
 msgstr "ഡോക്കില്‍ _സൂക്ഷിക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close All"
 msgstr "എല്ലാം _അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:701
+#: lib/Items/ApplicationDockItem.vala:698
 msgid "_Close"
 msgstr "_അടയ്ക്കുക"
 
-#: lib/Items/ApplicationDockItem.vala:825
+#: lib/Items/ApplicationDockItem.vala:822
 #, c-format
 msgid "Drop to open with %s"
 msgstr "%s കൊണ്ട് തുറക്കാൻ ഇടുക"

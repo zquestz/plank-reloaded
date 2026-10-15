@@ -2,6 +2,18 @@
 
 **Note:** There is no stability of ABI/API until further notice!
 
+## 0.11.177 "Reloaded" (2026-10-15)
+
+- Stop reserving space on an edge that faces another monitor, since the reservation would reach from the screen's edge over that monitor too; a dock that's always shown there now lets maximized windows extend behind it (thanks cdmdotnet)
+- Keep the dock's reserved space current when Screen Area uses the whole monitor, so a monitor coming or going elsewhere can't leave it stale
+- Give the dock and its poof animation the window role "dock", the preferences window "preferences" and the clock's calendar "calendar", so window manager rules can tell them apart; with IceWM's next release, plank.dock.doNotManage leaves only the dock unmanaged
+- Give every dock a valid D-Bus path whatever its name, and docks started with -n a bus name of their own (net.launchpad.plank.h plus a hash of the name), so names with hyphens, dots, spaces or a leading digit no longer lose the dock's D-Bus interface or its single instance (thanks cdmdotnet)
+- Close window previews once the pointer moves past the dock's ends
+- Size a shown item's minimize target in quarter steps of the zoom, with hysteresis, so the hovered icon always gets a full-size target
+- Log a single warning, instead of a critical on every configure event, when the dock's window doesn't get its requested size and position, which flooded the log and aborted the dock under G_DEBUG=fatal-criticals (thanks cdmdotnet)
+- Fix the name given with -n pointing into memory GLib frees, and skip the poof animation when its image fails to load
+- Add tests for minimize target steps, the preview zone's ends and D-Bus names
+
 ## 0.11.176 "Reloaded" (2026-10-09)
 
 - Make pressure reveal work again for mice, touchpads and TrackPoints, counting pushes like GNOME Shell: a 250 px push reveals a hidden dock and holds the pointer at the edge, and another push crosses a shown dock into the next monitor
