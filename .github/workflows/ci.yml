@@ -58,6 +58,9 @@ jobs:
   freebsd:
     name: Build and Test (FreeBSD)
     runs-on: ubuntu-latest
+    # A full run takes about 20 minutes, mostly booting the VM and installing
+    # packages, so anything past this is a hang
+    timeout-minutes: 30
 
     steps:
       - name: Checkout Code
@@ -80,6 +83,15 @@ jobs:
           run: |
             meson setup build -D enable-apport=false
             meson compile -C build
-            Xvfb :99 -screen 0 1280x1024x24 &
+
+            # The action runs this over ssh and waits for the session to
+            # close, which it never does while a background process still
+            # holds its output, so Xvfb gets none and is stopped afterwards.
+            # The tests' status is kept, since the action runs this with set -e
+            Xvfb :99 -screen 0 1280x1024x24 >/dev/null 2>&1 &
+            xvfb=$!
             sleep 3
-            DISPLAY=:99 meson test -C build --print-errorlogs
+            status=0
+            DISPLAY=:99 meson test -C build --print-errorlogs || status=$?
+            kill "$xvfb"
+            exit "$status"
