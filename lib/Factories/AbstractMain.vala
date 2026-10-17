@@ -50,11 +50,12 @@ namespace Plank {
     }
 
     // Quits on the first signal. GLib gives a signal its default action back
-    // once its last source is gone, so both sources go first: returning REMOVE
-    // ends this one's, and the other is removed here. Logging and quitting wait
-    // for an idle, so another signal ends a shutdown that hangs, even in logging
+    // once its last source is gone, so both sources go first. Logging and
+    // quitting wait for an idle, so another signal ends a shutdown that hangs,
+    // even in logging
     static bool quit_on_signal (int sig) {
-      GLib.Source.remove (sig == Posix.Signal.INT ? sigterm_id : sigint_id);
+      GLib.Source.remove (sigint_id);
+      GLib.Source.remove (sigterm_id);
       sigint_id = sigterm_id = 0U;
 
       GLib.Idle.add (() => {
