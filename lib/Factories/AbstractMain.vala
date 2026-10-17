@@ -35,23 +35,34 @@ namespace Plank {
       { null }
     };
 
+    // The sources catching SIGINT and SIGTERM
+    static uint sigint_id = 0U;
+    static uint sigterm_id = 0U;
+
     static construct
     {
       // GLib catches these and runs the handlers from the main loop, where
       // logging, quitting and moving docks are safe, unlike in a signal
       // handler
-      GLib.Unix.signal_add (Posix.Signal.INT, () => quit_on_signal (Posix.Signal.INT));
-      GLib.Unix.signal_add (Posix.Signal.TERM, () => quit_on_signal (Posix.Signal.TERM));
+      sigint_id = GLib.Unix.signal_add (Posix.Signal.INT, () => quit_on_signal (Posix.Signal.INT));
+      sigterm_id = GLib.Unix.signal_add (Posix.Signal.TERM, () => quit_on_signal (Posix.Signal.TERM));
       GLib.Unix.signal_add (Posix.Signal.USR1, usr1_sig_handler);
     }
 
-    // Quits on the first signal. Both signals get their default action back
-    // first, so another one ends a shutdown that hangs, even in logging
+    // Quits on the first signal. GLib gives a signal its default action back
+    // once its last source is gone, so both sources go first: returning REMOVE
+    // ends this one's, and the other is removed here. Logging and quitting wait
+    // for an idle, so another signal ends a shutdown that hangs, even in logging
     static bool quit_on_signal (int sig) {
-      Posix.signal (Posix.Signal.INT, Posix.SIG_DFL);
-      Posix.signal (Posix.Signal.TERM, Posix.SIG_DFL);
-      warning ("Caught signal (%d), exiting", sig);
-      GLib.Application.get_default ().quit ();
+      GLib.Source.remove (sig == Posix.Signal.INT ? sigterm_id : sigint_id);
+      sigint_id = sigterm_id = 0U;
+
+      GLib.Idle.add (() => {
+        warning ("Caught signal (%d), exiting", sig);
+        GLib.Application.get_default ().quit ();
+        return GLib.Source.REMOVE;
+      });
+
       return GLib.Source.REMOVE;
     }
 
@@ -172,7 +183,7 @@ namespace Plank {
 #if HAVE_SYS_PRCTL_H
       prctl (15, exec_name);
 #else
-      setproctitle (exec_name);
+      setproctitle ("%s", exec_name);
 #endif
       Environment.set_prgname (exec_name);
 
