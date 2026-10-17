@@ -58,9 +58,9 @@ jobs:
   freebsd:
     name: Build and Test (FreeBSD)
     runs-on: ubuntu-latest
-    # A full run takes about 20 minutes, mostly booting the VM and installing
-    # packages, so anything past this is a hang
-    timeout-minutes: 30
+    # A full run takes about 3 minutes, so anything past this is a hang, with
+    # room left for slow package mirrors
+    timeout-minutes: 15
 
     steps:
       - name: Checkout Code
