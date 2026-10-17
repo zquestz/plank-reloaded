@@ -116,13 +116,18 @@ add_project_arguments(
   ],
   language: 'vala',
 )
+# Only the warning flags this compiler knows: clang has no
+# -Wdiscarded-qualifiers, and covers it under -Wincompatible-pointer-types
 add_project_arguments(
-  [
+  cc.get_supported_arguments(
     '-Wno-discarded-qualifiers',
     '-Wno-incompatible-pointer-types',
     '-Wno-unused',
-    '-Wl,--enable-new-dtags',
-
+  ),
+  language: 'c',
+)
+add_project_arguments(
+  [
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     '-DGMENU_I_KNOW_THIS_IS_UNSTABLE',
     '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
