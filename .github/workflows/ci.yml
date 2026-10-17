@@ -54,3 +54,32 @@ jobs:
 
       - name: Test
         run: meson test -C build --print-errorlogs
+
+  freebsd:
+    name: Build and Test (FreeBSD)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # FreeBSD has no xvfb-run, so the tests take the regular path against
+      # an Xvfb started here, each still under its own dbus-run-session
+      - name: Build and Test
+        uses: vmactions/freebsd-vm@v1
+        with:
+          release: "15"
+          prepare: |
+            pkg install -y \
+              git meson ninja vala pkgconf gettext-tools desktop-file-utils \
+              gtk3 libgee libwnck3 bamf gnome-menus libcanberra libXi libXfixes \
+              hicolor-icon-theme xorg-vfbserver dbus
+            dbus-uuidgen --ensure
+          run: |
+            meson setup build -D enable-apport=false
+            meson compile -C build
+            Xvfb :99 -screen 0 1280x1024x24 &
+            sleep 3
+            DISPLAY=:99 meson test -C build --print-errorlogs
