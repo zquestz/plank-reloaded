@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 04:58\n"
 "Last-Translator: \n"
 "Language-Team: Sorani (Kurdish)\n"
@@ -49,19 +49,19 @@ msgstr ""
 "کتێبخانەیەک دەمێنێتەوە کە دەتوانرێت فراوان بکرێت بۆ دروستکردنی پڕۆگرامەکانی "
 "تری دۆک بە تایبەتمەندییە پێشکەوتووتر."
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "دۆک بە ڕووکاری Matte"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "هەڵبژاردەکانی دەرکەوتن"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "هەڵبژاردەکانی ڕەفتار"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "هەڵبژاردەکانی دۆکلێت"
 
@@ -628,7 +628,7 @@ msgstr "گۆڕەری شوێنی کاری وێنەیی."
 msgid "Drop to add to dock"
 msgstr "فڕێیبدە بۆ زیادکردنی بۆ سەر دۆک"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr "وەرگێڕان بۆ کوردی"
 

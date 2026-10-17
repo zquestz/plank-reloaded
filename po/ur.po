@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 22:21\n"
 "Last-Translator: \n"
 "Language-Team: Urdu (India)\n"
@@ -49,19 +49,19 @@ msgstr ""
 "لائبریری بھی رہتا ہے جسے مزید جدید خصوصیات کے ساتھ دوسرے ڈاک پروگرام بنانے "
 "کے لیے بڑھایا جا سکتا ہے۔"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "میٹ تھیم کے ساتھ ڈاک"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "ظاہری ترجیحات"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "رویے کی ترجیحات"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "ڈاکلیٹس کی ترجیحات"
 
@@ -628,7 +628,7 @@ msgstr "ایک گرافیکل ورک اسپیس سوئچر۔"
 msgid "Drop to add to dock"
 msgstr "ڈاک میں شامل کرنے کے لیے چھوڑیں"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "مترجم کریڈٹس:\n"

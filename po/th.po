@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 02:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
@@ -48,19 +48,19 @@ msgstr ""
 "โดยให้เพียงสิ่งที่ด็อกต้องการและไม่มีอะไรเพิ่มเติมอีก "
 "นอกจากนี้ยังคงเป็นไลบรารีที่สามารถขยายเพื่อสร้างโปรแกรมด็อกอื่นๆ ที่มีคุณสมบัติขั้นสูงกว่า"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "ด็อกด้วยธีม Matte"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "การตั้งค่าลักษณะ"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "การตั้งค่าพฤติกรรม"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "การตั้งค่า Docklet"
 
@@ -623,7 +623,7 @@ msgstr "ตัวสลับพื้นที่ทำงานแบบกร
 msgid "Drop to add to dock"
 msgstr "ลากวางเพื่อเพิ่มลงในด็อก"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"

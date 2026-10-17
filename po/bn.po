@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 22:20\n"
 "Last-Translator: \n"
 "Language-Team: Bengali\n"
@@ -49,19 +49,19 @@ msgstr ""
 "হিসেবেও থেকে যায় যা আরও উন্নত বৈশিষ্ট্য সহ অন্যান্য ডক প্রোগ্রাম তৈরি করতে প্রসারিত "
 "করা যেতে পারে।"
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "ম্যাট থিম সহ ডক"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "চেহারার পছন্দসমূহ"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "আচরণ পছন্দসমূহ"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "ডকলেট পছন্দসমূহ"
 
@@ -628,7 +628,7 @@ msgstr "একটি গ্রাফিক্যাল কর্মস্থা�
 msgid "Drop to add to dock"
 msgstr "ডকে যোগ করতে ড্রপ করুন"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr "Plank Reloaded Team"
 

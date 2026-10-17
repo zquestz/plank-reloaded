@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Filipino\n"
@@ -50,19 +50,19 @@ msgstr ""
 "pa. Ito rin ay nananatiling library na maaaring palawakin upang lumikha ng "
 "ibang dock programs na may mas advanced na features."
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "Dock na may Matte theme"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "Mga Kagustuhan sa Hitsura"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "Mga Kagustuhan sa Pag-uugali"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "Mga Kagustuhan ng Docklets"
 
@@ -629,7 +629,7 @@ msgstr "Isang graphical na workspace switcher."
 msgid "Drop to add to dock"
 msgstr "I-drop para idagdag sa dock"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Kredito sa mga tagasalin:\n"

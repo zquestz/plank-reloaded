@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 04:30\n"
 "Last-Translator: \n"
 "Language-Team: Bosnian\n"
@@ -50,19 +50,19 @@ msgstr ""
 "ostaje biblioteka koja se može proširiti za kreiranje drugih dok programa s "
 "naprednijim mogućnostima."
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "Dok sa Matte temom"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "Postavke izgleda"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "Postavke ponašanja"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "Postavke dokleta"
 
@@ -633,7 +633,7 @@ msgstr "Grafički prekidač radnih prostora."
 msgid "Drop to add to dock"
 msgstr "Ispustite da dodate u dok"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr "Zasluge prevoditeljima"
 

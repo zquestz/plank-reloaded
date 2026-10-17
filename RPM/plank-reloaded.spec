@@ -116,6 +116,15 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %changelog
+* Sat Oct 17 2026 Josh Ellithorpe <quest@mac.com> - 0.11.178-1
+- Fix the FreeBSD build, broken since 0.11.176: GLib now restores the default action for SIGINT and SIGTERM itself, instead of a call that needed glibc's sighandler_t (thanks VVD)
+- Run an AppImage opened from the dock, whether pinned or in a folder stack, instead of failing to find an app for it, and make it executable first if it belongs to the user
+- Pass only the warning flags the compiler supports and drop a linker flag that never reached the linker, so clang builds no longer warn on every file, and give setproctitle its title as an argument rather than as the format
+- Stop warning about preference keys missing from dock item files, which every newly pinned item and every upgrade that adds keys triggered; the defaults are still saved
+- Load docklets from PLANK_DOCKLET_DIRS before the installed folder, so tests and development builds use their own docklets instead of failing to register them over installed copies
+- Build and test on FreeBSD 15 in CI, so FreeBSD-only breaks show up before a release
+- Add a test for AppImage detection
+
 * Thu Oct 15 2026 Josh Ellithorpe <quest@mac.com> - 0.11.177-1
 - Stop reserving space on an edge that faces another monitor, since the reservation would reach from the screen's edge over that monitor too; a dock that's always shown there now lets maximized windows extend behind it (thanks cdmdotnet)
 - Keep the dock's reserved space current when Screen Area uses the whole monitor, so a monitor coming or going elsewhere can't leave it stale

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plank-reloaded\n"
 "Report-Msgid-Bugs-To: https://github.com/zquestz/plank-reloaded/issues\n"
-"POT-Creation-Date: 2026-10-15 11:24-1000\n"
+"POT-Creation-Date: 2026-10-17 11:54-1000\n"
 "PO-Revision-Date: 2025-11-13 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Galician\n"
@@ -50,19 +50,19 @@ msgstr ""
 "máis. Tamén permanece como unha biblioteca que pode ser estendida para crear "
 "outros programas de doca con funcións máis avanzadas."
 
-#: data/plank.appdata.xml.in:140
+#: data/plank.appdata.xml.in:141
 msgid "Dock with Matte theme"
 msgstr "Doca co tema Matte"
 
-#: data/plank.appdata.xml.in:145
+#: data/plank.appdata.xml.in:146
 msgid "Appearance Preferences"
 msgstr "Preferencias da aparencia"
 
-#: data/plank.appdata.xml.in:150
+#: data/plank.appdata.xml.in:151
 msgid "Behavior Preferences"
 msgstr "Preferencias do comportamento"
 
-#: data/plank.appdata.xml.in:155
+#: data/plank.appdata.xml.in:156
 msgid "Docklets Preferences"
 msgstr "Preferencias dos docklets"
 
@@ -629,7 +629,7 @@ msgstr "Un cambiador gráfico de espazos de traballo."
 msgid "Drop to add to dock"
 msgstr "Soltar para engadir á doca"
 
-#: lib/Factories/AbstractMain.vala:437 src/Main.vala:74
+#: lib/Factories/AbstractMain.vala:449 src/Main.vala:74
 msgid "translator-credits"
 msgstr ""
 "Créditos de traduciónLaunchpad Contributions:\n"
