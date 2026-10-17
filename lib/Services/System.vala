@@ -195,6 +195,25 @@ namespace Plank
 				
 				info = new DesktopAppInfo.from_filename (launcher);
 			} else {
+				// No handler is registered for an AppImage's type, so each one
+				// runs as it is, and anything else opens as before
+				var others = new GLib.List<File> ();
+				var ran_appimage = false;
+				foreach (unowned File file in files) {
+					if (file.is_native () && is_appimage (file)) {
+						launch_appimage (file);
+						ran_appimage = true;
+					} else {
+						others.append (file);
+					}
+				}
+
+				if (ran_appimage) {
+					if (others.length () > 0)
+						internal_launch (null, others);
+					return;
+				}
+
 				try {
 					info = files.first ().data.query_default_handler ();
 				} catch (Error e) {
@@ -232,6 +251,29 @@ namespace Plank
 				warning ("The application '%s' doesn't support files/URIs or wasn't found.", info.get_name ());
 			} catch (Error e) {
 				critical (e.message);
+			}
+		}
+
+		// Runs an AppImage itself. The variables keep AppImageLauncher from
+		// moving the file and AppImageKit's old desktopintegration script from
+		// adding a launcher of its own
+		void launch_appimage (File file)
+		{
+			if (!ensure_appimage_executable (file))
+				return;
+
+			// The command line is unquoted like a desktop file's Exec, so a
+			// percent sign in the path must be doubled
+			var commandline = "env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 %s".printf (
+				Shell.quote (file.get_path ()).replace ("%", "%%"));
+
+			try {
+				var info = AppInfo.create_from_commandline (commandline, file.get_basename (),
+					AppInfoCreateFlags.SUPPORTS_STARTUP_NOTIFICATION);
+				Logger.verbose ("Launch AppImage '%s'", file.get_path ());
+				info.launch (null, context);
+			} catch (Error e) {
+				critical ("Unable to run '%s': %s", file.get_path (), e.message);
 			}
 		}
 	}

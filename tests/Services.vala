@@ -141,6 +141,7 @@ namespace PlankTests {
     Test.add_func ("/Services/IconBox/zoom_changed", icon_box_zoom_changed);
     Test.add_func ("/Services/DBusNames/application_id", dbus_names_application_id);
     Test.add_func ("/Services/DBusNames/object_path", dbus_names_object_path);
+    Test.add_func ("/Services/AppImage/header", appimage_header);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -2411,5 +2412,22 @@ namespace PlankTests {
   void dbus_names_object_path () {
     // A dock's path is its escaped name under the application's path
     assert (dock_dbus_object_path ("/net/launchpad/plank", "2 my-dock.é") == "/net/launchpad/plank/" + DBus.escape_object_path ("2 my-dock.é"));
+  }
+
+  void appimage_header () {
+    // An AppImage is an ELF file with "AI" and its type, 1 or 2, at byte 8
+    uint8[] type2 = { 0x7f, 0x45, 0x4c, 0x46, 2, 1, 1, 0, 0x41, 0x49, 2 };
+    uint8[] type1 = { 0x7f, 0x45, 0x4c, 0x46, 2, 1, 1, 0, 0x41, 0x49, 1 };
+    uint8[] elf = { 0x7f, 0x45, 0x4c, 0x46, 2, 1, 1, 0, 0, 0, 0 };
+    uint8[] not_elf = { 0, 0, 0, 0, 2, 1, 1, 0, 0x41, 0x49, 2 };
+    uint8[] type3 = { 0x7f, 0x45, 0x4c, 0x46, 2, 1, 1, 0, 0x41, 0x49, 3 };
+    assert (is_appimage_header (type2));
+    assert (is_appimage_header (type1));
+    assert (!is_appimage_header (elf));
+    assert (!is_appimage_header (not_elf));
+    assert (!is_appimage_header (type3));
+
+    // A file too short to hold the type isn't one either
+    assert (!is_appimage_header (type2[0:10]));
   }
 }

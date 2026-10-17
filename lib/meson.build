@@ -59,6 +59,7 @@ plank_lib_sources = [
 ]
 
 plank_internal_lib_sources = [
+  'InternalAppImage.vala',
   'InternalConsts.vala',
   'InternalDBus.vala',
   'InternalGeometry.vala',
@@ -85,7 +86,7 @@ plank_resources = gnome.compile_resources(
 plank_internal_lib = static_library(
   'plank-internal',
   plank_internal_lib_sources,
-  dependencies: [plank_base_dep, wnck_x11_dep],
+  dependencies: [plank_base_dep, wnck_x11_dep, posix_dep],
   install: false,
   c_args: '-fvisibility=internal',
   vala_args: [
