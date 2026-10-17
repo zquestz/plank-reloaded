@@ -81,12 +81,17 @@ namespace Plank
 		 */
 		public void load_docklets ()
 		{
-			load_modules_from_dir (File.new_for_path (Build.DOCKLETSDIR));
+			// Folders from PLANK_DOCKLET_DIRS come first, so a build's docklets
+			// win over installed ones with the same file name, which would only
+			// fail to register their types again
+			var loaded = new Gee.HashSet<string> ();
 
 			unowned string? docklet_dirs = Environment.get_variable ("PLANK_DOCKLET_DIRS");
 			if (docklet_dirs != null)
 				foreach (unowned string dir in docklet_dirs.split (":"))
-					load_modules_from_dir (File.new_for_path (dir));
+					load_modules_from_dir (File.new_for_path (dir), loaded);
+
+			load_modules_from_dir (File.new_for_path (Build.DOCKLETSDIR), loaded);
 		}
 
 		/**
@@ -153,7 +158,7 @@ namespace Plank
 			return docklets.values;
 		}
 
-		void load_modules_from_dir (File dir)
+		void load_modules_from_dir (File dir, Gee.HashSet<string> loaded)
 		{
 			if (!dir.query_exists ())
 				return;
@@ -170,10 +175,14 @@ namespace Plank
 					unowned string name = info.get_name ();
 					var file = dir.get_child (name);
 					if (info.get_content_type () == "application/x-sharedlib"
-						&& docklet_filename_regex.match (name))
-						load_module_from_file (file.get_path ());
-					else if (info.get_file_type () == FileType.DIRECTORY)
-						load_modules_from_dir (file);
+						&& docklet_filename_regex.match (name)) {
+						if (loaded.add (name))
+							load_module_from_file (file.get_path ());
+						else
+							debug ("Skipping docklet '%s', one with that file name is already loaded", file.get_path ());
+					} else if (info.get_file_type () == FileType.DIRECTORY) {
+						load_modules_from_dir (file, loaded);
+					}
 				}
 			} catch (Error error) {
 				critical ("Error listing contents of folder '%s': %s", dir.get_path (), error.message);
