@@ -359,8 +359,10 @@ namespace Plank {
               }
           }
 
+          // New files and keys added since a file was written both land here,
+          // and the default gets saved back below, so this is no problem
           if (!file.has_group (group_name) || !file.has_key (group_name, prop_name)) {
-            warning ("Missing key '%s' for group '%s' in preferences file '%s' - using default value", prop_name, group_name, backing_file_path);
+            debug ("Missing key '%s' for group '%s' in preferences file '%s' - using default value", prop_name, group_name, backing_file_path);
             missing_keys = true;
             continue;
           }
