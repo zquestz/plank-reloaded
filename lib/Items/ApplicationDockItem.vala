@@ -561,7 +561,8 @@ namespace Plank {
       }
 
       if (button == PopupButton.LEFT && App != null && Helpers.window_count (App, default_provider) > 0) {
-        WindowControl.smart_focus (App, event_time, Helpers.bring_to_current_workspace (default_provider));
+        WindowControl.smart_focus (App, event_time, Helpers.bring_to_current_workspace (default_provider),
+                                   Helpers.restricted_monitor (default_provider));
         return AnimationType.DARKEN;
       }
 
@@ -572,7 +573,10 @@ namespace Plank {
      * {@inheritDoc}
      */
     protected override AnimationType on_scrolled (Gdk.ScrollDirection direction, Gdk.ModifierType mod, uint32 event_time) {
-      if (App == null || WindowControl.window_count (App) == 0)
+      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
+      var monitor = Helpers.restricted_monitor (default_provider);
+
+      if (App == null || WindowControl.window_count (App, monitor) == 0)
         return AnimationType.NONE;
 
       if (GLib.get_monotonic_time () - LastScrolled < ITEM_SCROLL_DURATION * 1000)
@@ -580,12 +584,10 @@ namespace Plank {
 
       LastScrolled = GLib.get_monotonic_time ();
 
-      unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
-
       if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT) {
-        WindowControl.focus_previous (App, event_time, Helpers.current_workspace_only (default_provider));
+        WindowControl.focus_previous (App, event_time, Helpers.current_workspace_only (default_provider), monitor);
       } else {
-        WindowControl.focus_next (App, event_time, Helpers.current_workspace_only (default_provider));
+        WindowControl.focus_next (App, event_time, Helpers.current_workspace_only (default_provider), monitor);
       }
 
       return AnimationType.DARKEN;
@@ -636,8 +638,9 @@ namespace Plank {
     /**
      * The windows this item lists in its menu and window previews: those of
      * its applications that aren't transient, are user visible and that
-     * Wnck knows, and only those on the current workspace when the dock is
-     * restricted to it, by the same test as the window count.
+     * Wnck knows, and only those on the current workspace or the dock's
+     * monitor when the dock is restricted to them, by the same tests as the
+     * window count.
      *
      * @return the windows, those of the item's own application first
      */
@@ -654,6 +657,7 @@ namespace Plank {
       unowned DefaultApplicationDockItemProvider? default_provider = (Container as DefaultApplicationDockItemProvider);
       bool cw_only = Helpers.current_workspace_only (default_provider);
       unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
+      var monitor = Helpers.restricted_monitor (default_provider);
 
       foreach (var window in windows) {
         if (window == null || window.get_transient () != null || !window.is_user_visible ())
@@ -667,6 +671,10 @@ namespace Plank {
 
         // Like the window count, which counts nothing without an active workspace
         if (cw_only && (active_workspace == null || !WindowControl.window_is_on_workspace (wnck_window, active_workspace)))
+          continue;
+
+        // Like the window count, when restricted to the dock's monitor
+        if (monitor != null && !WindowControl.window_is_on_monitor (wnck_window, monitor))
           continue;
 
         window_list.add (window);
@@ -696,10 +704,13 @@ namespace Plank {
       var event_time = Gtk.get_current_event_time ();
       if (is_running () && window_count > 0) {
         var item = create_menu_item ((window_count > 1 ? _("_Close All") : _("_Close")), "window-close-symbolic;;window-close");
+        // Restricted to a monitor, the windows elsewhere stay open, matching
+        // the count the label is chosen by
+        var monitor = Helpers.restricted_monitor (default_provider);
         if (Helpers.current_workspace_only (default_provider)) {
-          item.activate.connect (() => WindowControl.close_all_in_workspace (App, event_time));
+          item.activate.connect (() => WindowControl.close_all_in_workspace (App, event_time, monitor));
         } else {
-          item.activate.connect (() => WindowControl.close_all (App, event_time));
+          item.activate.connect (() => WindowControl.close_all (App, event_time, monitor));
         }
         items.add (item);
       }

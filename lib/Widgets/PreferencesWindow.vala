@@ -104,6 +104,8 @@ namespace Plank {
     unowned Gtk.Switch sw_zoom_enabled;
     [GtkChild]
     unowned Gtk.Switch sw_bring_to_workspace;
+    [GtkChild]
+    unowned Gtk.Switch sw_monitor_only;
 
     [GtkChild]
     unowned Gtk.IconView view_docklets;
@@ -151,6 +153,9 @@ namespace Plank {
         break;
       case "BringToCurrentWorkspace":
         sw_bring_to_workspace.set_active (prefs.BringToCurrentWorkspace);
+        break;
+      case "RestrictToMonitor":
+        sw_monitor_only.set_active (prefs.RestrictToMonitor);
         break;
       case "IconSize":
         adj_iconsize.value = prefs.IconSize;
@@ -310,6 +315,10 @@ namespace Plank {
       prefs.BringToCurrentWorkspace = ((Gtk.Switch) widget).get_active ();
     }
 
+    void monitor_only_toggled (GLib.Object widget, ParamSpec param) {
+      prefs.RestrictToMonitor = ((Gtk.Switch) widget).get_active ();
+    }
+
     void show_unpinned_toggled (GLib.Object widget, ParamSpec param) {
       prefs.PinnedOnly = !((Gtk.Switch) widget).get_active ();
     }
@@ -466,6 +475,7 @@ namespace Plank {
       adj_active_display_polling_interval.value_changed.connect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].connect (workspace_only_toggled);
       sw_bring_to_workspace.notify["active"].connect (bring_to_workspace_toggled);
+      sw_monitor_only.notify["active"].connect (monitor_only_toggled);
       sw_show_unpinned.notify["active"].connect (show_unpinned_toggled);
       sw_lock_items.notify["active"].connect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].connect (tooltips_enabled_toggled);
@@ -503,6 +513,7 @@ namespace Plank {
       adj_active_display_polling_interval.value_changed.disconnect (active_display_polling_interval_changed);
       sw_workspace_only.notify["active"].disconnect (workspace_only_toggled);
       sw_bring_to_workspace.notify["active"].disconnect (bring_to_workspace_toggled);
+      sw_monitor_only.notify["active"].disconnect (monitor_only_toggled);
       sw_show_unpinned.notify["active"].disconnect (show_unpinned_toggled);
       sw_lock_items.notify["active"].disconnect (lock_items_toggled);
       sw_tooltips_enabled.notify["active"].disconnect (tooltips_enabled_toggled);
@@ -561,6 +572,7 @@ namespace Plank {
       }
       sw_workspace_only.set_active (prefs.CurrentWorkspaceOnly);
       sw_bring_to_workspace.set_active (prefs.BringToCurrentWorkspace);
+      sw_monitor_only.set_active (prefs.RestrictToMonitor);
       sw_show_unpinned.set_active (!prefs.PinnedOnly);
       sw_lock_items.set_active (prefs.LockItems);
       sw_tooltips_enabled.set_active (prefs.TooltipsEnabled);

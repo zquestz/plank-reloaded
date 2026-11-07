@@ -541,6 +541,27 @@ namespace Plank {
               && window_is_on_workspace (window, workspace));
     }
 
+    /**
+     * Whether a window is on a monitor, judged by its center as
+     * window_on_monitor () does.
+     *
+     * @param window the window
+     * @param monitor the monitor, in device pixels like Wnck's geometry
+     * @return whether the window is on the monitor
+     */
+    public static bool window_is_on_monitor (Wnck.Window window, Gdk.Rectangle monitor) {
+      Gdk.Rectangle geo = {};
+      window.get_geometry (out geo.x, out geo.y, out geo.width, out geo.height);
+
+      return window_on_monitor (geo, monitor);
+    }
+
+    // Whether a window is on the monitor a dock is restricted to, which any
+    // window is when there is none
+    static bool window_in_monitor_scope (Wnck.Window window, Gdk.Rectangle? monitor) {
+      return (monitor == null || window_is_on_monitor (window, monitor));
+    }
+
     public static bool has_maximized_window (Bamf.Application app) {
       Array<uint32>? xids = get_xids (app);
 
@@ -569,8 +590,8 @@ namespace Plank {
       return false;
     }
 
-    public static bool has_window_on_workspace (Bamf.Application app, Wnck.Workspace workspace) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+    public static bool has_window_on_workspace (Bamf.Application app, Wnck.Workspace workspace, Gdk.Rectangle? monitor = null) {
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app, monitor)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
@@ -581,10 +602,10 @@ namespace Plank {
       return false;
     }
 
-    public static int window_on_workspace_count (Bamf.Application app, Wnck.Workspace workspace) {
+    public static int window_on_workspace_count (Bamf.Application app, Wnck.Workspace workspace, Gdk.Rectangle? monitor = null) {
       int window_count = 0;
 
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app, monitor)) {
         if (window == null || window.is_skip_tasklist ())
           continue;
 
@@ -595,8 +616,8 @@ namespace Plank {
       return window_count;
     }
 
-    public static bool has_window (Bamf.Application app) {
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+    public static bool has_window (Bamf.Application app, Gdk.Rectangle? monitor = null) {
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app, monitor)) {
         if (window != null && !window.is_skip_tasklist ()) {
           return true;
         }
@@ -605,10 +626,10 @@ namespace Plank {
       return false;
     }
 
-    public static int window_count (Bamf.Application app) {
+    public static int window_count (Bamf.Application app, Gdk.Rectangle? monitor = null) {
       int window_count = 0;
 
-      foreach (unowned Wnck.Window window in get_ordered_window_stack (app)) {
+      foreach (unowned Wnck.Window window in get_ordered_window_stack (app, monitor)) {
         if (window != null && !window.is_skip_tasklist ()) {
           window_count += 1;
         }
@@ -686,19 +707,19 @@ namespace Plank {
       wnck_window.close (event_time);
     }
 
-    public static void close_all (Bamf.Application app, uint32 event_time) {
+    public static void close_all (Bamf.Application app, uint32 event_time, Gdk.Rectangle? monitor = null) {
       Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
 
       for (var i = 0; xids != null && i < xids.length; i++) {
         unowned Wnck.Window window = get_wnck_window (xids.index (i));
-        if (window != null && !window.is_skip_tasklist ())
+        if (window != null && !window.is_skip_tasklist () && window_in_monitor_scope (window, monitor))
           window.close (event_time);
       }
     }
 
-    public static void close_all_in_workspace (Bamf.Application app, uint32 event_time) {
+    public static void close_all_in_workspace (Bamf.Application app, uint32 event_time, Gdk.Rectangle? monitor = null) {
       Array<uint32>? xids = get_xids (app);
 
       warn_if_fail (xids != null);
@@ -712,7 +733,8 @@ namespace Plank {
 
       for (var i = 0; xids != null && i < xids.length; i++) {
         unowned Wnck.Window window = get_wnck_window (xids.index (i));
-        if (window != null && !window.is_skip_tasklist () && window_is_on_workspace (window, active_workspace))
+        if (window != null && !window.is_skip_tasklist () && window_is_on_workspace (window, active_workspace)
+            && window_in_monitor_scope (window, monitor))
           window.close (event_time);
       }
     }
@@ -749,8 +771,25 @@ namespace Plank {
       return i;
     }
 
-    public static void focus_previous (Bamf.Application app, uint32 event_time, bool focus_workspace) {
+    // The windows scrolling on an item cycles through
+    static Array<uint32>? get_focus_cycle_xids (Bamf.Application app, bool focus_workspace, Gdk.Rectangle? monitor) {
       Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
+
+      if (xids == null || monitor == null)
+        return xids;
+
+      var xids_on_monitor = new Array<uint32> ();
+      foreach (uint32 xid in xids) {
+        unowned Wnck.Window? window = get_wnck_window (xid);
+        if (window != null && window_is_on_monitor (window, monitor))
+          xids_on_monitor.append_val (xid);
+      }
+
+      return xids_on_monitor;
+    }
+
+    public static void focus_previous (Bamf.Application app, uint32 event_time, bool focus_workspace, Gdk.Rectangle? monitor = null) {
+      Array<uint32>? xids = get_focus_cycle_xids (app, focus_workspace, monitor);
 
       warn_if_fail (xids != null);
 
@@ -766,8 +805,8 @@ namespace Plank {
       focus_window_by_xid (xids.index (i), event_time);
     }
 
-    public static void focus_next (Bamf.Application app, uint32 event_time, bool focus_workspace) {
-      Array<uint32>? xids = focus_workspace ? get_app_xids_on_workspace (app) : get_xids (app);
+    public static void focus_next (Bamf.Application app, uint32 event_time, bool focus_workspace, Gdk.Rectangle? monitor = null) {
+      Array<uint32>? xids = get_focus_cycle_xids (app, focus_workspace, monitor);
 
       warn_if_fail (xids != null);
 
@@ -822,7 +861,7 @@ namespace Plank {
           window.unmaximize ();
     }
 
-    public static GLib.List<unowned Wnck.Window> get_ordered_window_stack (Bamf.Application app) {
+    public static GLib.List<unowned Wnck.Window> get_ordered_window_stack (Bamf.Application app, Gdk.Rectangle? monitor = null) {
       var windows = new GLib.List<unowned Wnck.Window> ();
 
       Array<uint32>? xids = get_xids (app);
@@ -836,14 +875,17 @@ namespace Plank {
 
       foreach (unowned Wnck.Window window in stack)
         for (var j = 0; j < xids.length; j++)
-          if (xids.index (j) == window.get_xid ())
+          if (xids.index (j) == window.get_xid () && window_in_monitor_scope (window, monitor))
             windows.append (window);
 
       return windows;
     }
 
-    public static void smart_focus (Bamf.Application app, uint32 event_time, bool bring_to_current = false) {
-      var windows = get_ordered_window_stack (app);
+    public static void smart_focus (Bamf.Application app, uint32 event_time, bool bring_to_current = false,
+                                    Gdk.Rectangle? monitor = null) {
+      // Restricted to a monitor, the windows elsewhere are left alone, as
+      // if the application had only those on the monitor
+      var windows = get_ordered_window_stack (app, monitor);
 
       var not_in_viewport = true;
       var urgent = false;

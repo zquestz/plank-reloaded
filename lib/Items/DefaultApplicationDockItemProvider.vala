@@ -25,6 +25,12 @@ namespace Plank {
     public DockPreferences Prefs { get; construct; }
 
     bool current_workspace_only;
+    bool restrict_to_monitor;
+
+    // Whether each window was on the dock's monitor when last checked, so a
+    // window moving or resizing updates the dock only when it crosses to or
+    // from that monitor
+    Gee.HashMap<ulong, bool> windows_on_monitor = new Gee.HashMap<ulong, bool> ();
 
     /**
      * Creates the default container for dock items.
@@ -40,23 +46,72 @@ namespace Plank {
     {
       Prefs.notify["CurrentWorkspaceOnly"].connect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].connect (handle_pinned_only_changed);
+      Prefs.notify["RestrictToMonitor"].connect (handle_restrict_to_monitor_changed);
 
       WindowControl.get_wnck_screen ().window_opened.connect_after (handle_window_opened);
 
       current_workspace_only = Prefs.CurrentWorkspaceOnly;
+      restrict_to_monitor = Prefs.RestrictToMonitor;
 
       if (current_workspace_only)
         connect_wnck ();
+
+      if (restrict_to_monitor)
+        connect_monitor_tracking ();
     }
 
     ~DefaultApplicationDockItemProvider () {
       Prefs.notify["CurrentWorkspaceOnly"].disconnect (handle_setting_changed);
       Prefs.notify["PinnedOnly"].disconnect (handle_pinned_only_changed);
+      Prefs.notify["RestrictToMonitor"].disconnect (handle_restrict_to_monitor_changed);
 
       WindowControl.get_wnck_screen ().window_opened.disconnect (handle_window_opened);
 
       if (current_workspace_only)
         disconnect_wnck ();
+
+      if (restrict_to_monitor)
+        disconnect_monitor_tracking ();
+    }
+
+    /**
+     * The monitor the dock's windows are restricted to, as a rectangle in
+     * device pixels like Wnck's window geometry, or null when they aren't
+     * restricted or the dock's monitor isn't measured yet.
+     *
+     * @return the monitor, or null
+     */
+    internal Gdk.Rectangle? get_restricted_monitor () {
+      if (!Prefs.RestrictToMonitor)
+        return null;
+
+      unowned DockController? controller = get_dock ();
+      if (controller == null)
+        return null;
+
+      var monitor = controller.position_manager.get_raw_monitor_geometry ();
+      if (monitor.width <= 0 || monitor.height <= 0)
+        return null;
+
+      var scale = controller.window.get_scale_factor ();
+      monitor.x *= scale;
+      monitor.y *= scale;
+      monitor.width *= scale;
+      monitor.height *= scale;
+
+      return monitor;
+    }
+
+    /**
+     * Called once the dock's monitor is measured, at first and after every
+     * screen update, as the dock may be on another monitor now.
+     */
+    internal void dock_monitor_changed () {
+      if (!restrict_to_monitor)
+        return;
+
+      refresh_windows_on_monitor ();
+      update_visible_elements ();
     }
 
     public void trigger_update_visible_elements (bool update_indicator) {
@@ -66,13 +121,15 @@ namespace Plank {
     protected void internal_update_visible_elements (bool update_indicator) {
       Logger.verbose ("DefaultDockItemProvider.update_visible_items ()");
 
+      var monitor = get_restricted_monitor ();
+
       if (Prefs.CurrentWorkspaceOnly) {
         unowned Wnck.Workspace? active_workspace = WindowControl.get_wnck_screen ().get_active_workspace ();
         foreach (var item in internal_elements) {
           unowned TransientDockItem? transient = (item as TransientDockItem);
 
           item.IsAttached = (transient == null || transient.App == null || active_workspace == null
-                             || WindowControl.has_window_on_workspace (transient.App, active_workspace));
+                             || WindowControl.has_window_on_workspace (transient.App, active_workspace, monitor));
 
           if (update_indicator && item.IsAttached) {
             unowned ApplicationDockItem? app_item = (item as ApplicationDockItem);
@@ -88,7 +145,7 @@ namespace Plank {
           if (transient == null || transient.App == null) {
             item.IsAttached = true;
           } else {
-            item.IsAttached = WindowControl.has_window (transient.App);
+            item.IsAttached = WindowControl.has_window (transient.App, monitor);
           }
 
           if (update_indicator && item.IsAttached) {
@@ -228,6 +285,84 @@ namespace Plank {
       else
         disconnect_wnck ();
 
+      update_visible_elements ();
+    }
+
+    void handle_restrict_to_monitor_changed () {
+      if (restrict_to_monitor == Prefs.RestrictToMonitor)
+        return;
+
+      restrict_to_monitor = Prefs.RestrictToMonitor;
+
+      if (restrict_to_monitor)
+        connect_monitor_tracking ();
+      else
+        disconnect_monitor_tracking ();
+
+      update_visible_elements ();
+    }
+
+    void connect_monitor_tracking () {
+      unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
+
+      screen.window_opened.connect_after (handle_tracked_window_opened);
+      screen.window_closed.connect_after (handle_tracked_window_closed);
+
+      foreach (unowned Wnck.Window window in screen.get_windows ())
+        window.geometry_changed.connect_after (handle_window_geometry_changed);
+
+      refresh_windows_on_monitor ();
+    }
+
+    void disconnect_monitor_tracking () {
+      unowned Wnck.Screen screen = WindowControl.get_wnck_screen ();
+
+      screen.window_opened.disconnect (handle_tracked_window_opened);
+      screen.window_closed.disconnect (handle_tracked_window_closed);
+
+      foreach (unowned Wnck.Window window in screen.get_windows ())
+        window.geometry_changed.disconnect (handle_window_geometry_changed);
+
+      windows_on_monitor.clear ();
+    }
+
+    void refresh_windows_on_monitor () {
+      var monitor = get_restricted_monitor ();
+
+      windows_on_monitor.clear ();
+      foreach (unowned Wnck.Window window in WindowControl.get_wnck_screen ().get_windows ())
+        windows_on_monitor[window.get_xid ()] = (monitor != null && WindowControl.window_is_on_monitor (window, monitor));
+    }
+
+    [CCode (instance_pos = -1)]
+    void handle_tracked_window_opened (Wnck.Screen screen, Wnck.Window window) {
+      var monitor = get_restricted_monitor ();
+
+      window.geometry_changed.connect_after (handle_window_geometry_changed);
+      windows_on_monitor[window.get_xid ()] = (monitor != null && WindowControl.window_is_on_monitor (window, monitor));
+    }
+
+    // A window closing on the dock's monitor can leave its application with
+    // none there, while it still has windows elsewhere
+    [CCode (instance_pos = -1)]
+    void handle_tracked_window_closed (Wnck.Screen screen, Wnck.Window window) {
+      window.geometry_changed.disconnect (handle_window_geometry_changed);
+      windows_on_monitor.unset (window.get_xid ());
+
+      update_visible_elements ();
+    }
+
+    // Dragging a window reports every step, so the dock is updated only
+    // when the window crosses to or from its monitor
+    void handle_window_geometry_changed (Wnck.Window window) {
+      var monitor = get_restricted_monitor ();
+      var on_monitor = (monitor != null && WindowControl.window_is_on_monitor (window, monitor));
+      var xid = window.get_xid ();
+
+      if (windows_on_monitor.has_key (xid) && windows_on_monitor[xid] == on_monitor)
+        return;
+
+      windows_on_monitor[xid] = on_monitor;
       update_visible_elements ();
     }
 
