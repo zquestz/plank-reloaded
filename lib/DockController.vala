@@ -49,6 +49,12 @@ namespace Plank {
 
     public DockItemProvider? default_provider { get; private set; }
 
+    /**
+     * The monitor a monitor manager assigned this dock to, by its plug
+     * name, for this run only; empty when the dock goes by its settings.
+     */
+    internal string assigned_monitor { get; set; default = ""; }
+
     DBusManager dbus_manager;
     Gee.ArrayList<unowned DockItem> visible_items;
     Gee.ArrayList<unowned DockItem> new_visible_items;
@@ -133,6 +139,18 @@ namespace Plank {
       items.clear ();
       visible_items.clear ();
       new_visible_items.clear ();
+    }
+
+    // The monitor this dock is on: the one it was assigned, else the one
+    // its settings name
+    internal string monitor_plug_name () {
+      return (assigned_monitor != "" ? assigned_monitor : prefs.Monitor);
+    }
+
+    // Whether this dock follows the active display, which a dock assigned
+    // its monitor never does
+    internal bool follows_active_display () {
+      return (prefs.ActiveDisplay && assigned_monitor == "");
     }
 
     /**

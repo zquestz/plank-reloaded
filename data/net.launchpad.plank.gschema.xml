@@ -37,6 +37,11 @@
 			<summary>Array of names of active/enabled docks</summary>
 			<description>Contains the names of docks which are created and loaded on start up</description>
 		</key>
+		<key name="monitor-docks" type="a{ss}">
+			<default>{}</default>
+			<summary>The dock the monitor manager gave each monitor and position</summary>
+			<description>Maps each monitor's EDID identity, as edid:IDENTITY, and each position in a monitor layout, as position:POSITION, to the name of the dock it was last given when plank runs with --monitor-manager</description>
+		</key>
 	</schema>
 
 	<schema id="net.launchpad.plank.dock.settings" gettext-domain="plank-reloaded">

@@ -142,6 +142,15 @@ namespace PlankTests {
     Test.add_func ("/Services/DBusNames/application_id", dbus_names_application_id);
     Test.add_func ("/Services/DBusNames/object_path", dbus_names_object_path);
     Test.add_func ("/Services/AppImage/header", appimage_header);
+    Test.add_func ("/Services/MonitorManager/edid_identity", monitor_manager_edid_identity);
+    Test.add_func ("/Services/MonitorManager/edid_invalid", monitor_manager_edid_invalid);
+    Test.add_func ("/Services/MonitorManager/positions", monitor_manager_positions);
+    Test.add_func ("/Services/MonitorManager/earlier_dock", monitor_manager_earlier_dock);
+    Test.add_func ("/Services/MonitorManager/choose_first_run", monitor_manager_choose_first_run);
+    Test.add_func ("/Services/MonitorManager/choose_by_identity", monitor_manager_choose_by_identity);
+    Test.add_func ("/Services/MonitorManager/choose_by_position", monitor_manager_choose_by_position);
+    Test.add_func ("/Services/MonitorManager/choose_earlier", monitor_manager_choose_earlier);
+    Test.add_func ("/Services/MonitorManager/choose_identical_models", monitor_manager_choose_identical_models);
   }
 
   void matcher_desktop_file_for_window_class () {
@@ -2429,5 +2438,206 @@ namespace PlankTests {
 
     // A file too short to hold the type isn't one either
     assert (!is_appimage_header (type2[0:10]));
+  }
+
+  // An EDID for a Samsung monitor, product 0F35, serial number 12345678,
+  // with or without a serial string
+  uint8[] test_edid (string? serial_text, uint32 serial_number = 0x12345678) {
+    var edid = new uint8[128];
+    uint8[] header = { 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00 };
+    for (var i = 0; i < header.length; i++)
+      edid[i] = header[i];
+
+    // S, A, M as 19, 1, 13 in five bits each
+    edid[8] = 0x4c;
+    edid[9] = 0x2d;
+    edid[10] = 0x35;
+    edid[11] = 0x0f;
+    edid[12] = (uint8) (serial_number & 0xff);
+    edid[13] = (uint8) ((serial_number >> 8) & 0xff);
+    edid[14] = (uint8) ((serial_number >> 16) & 0xff);
+    edid[15] = (uint8) ((serial_number >> 24) & 0xff);
+
+    // The serial string in the second display descriptor
+    if (serial_text != null) {
+      edid[75] = 0xff;
+      for (var i = 0; i < 13; i++)
+        edid[77 + i] = (i < serial_text.length ? serial_text[i] : (i == serial_text.length ? 0x0a : 0x20));
+    }
+
+    return edid;
+  }
+
+  void monitor_manager_edid_identity () {
+    // The serial string wins over the serial number, which in turn
+    // identifies a monitor without one; a monitor with neither is
+    // identified by its model
+    assert (edid_identity (test_edid ("HNMT500123")) == "SAM-0F35-HNMT500123");
+    assert (edid_identity (test_edid (null)) == "SAM-0F35-12345678");
+    assert (edid_identity (test_edid (null, 0)) == "SAM-0F35");
+
+    // Two units of a model tell apart by serial
+    assert (edid_identity (test_edid ("HNMT500123")) != edid_identity (test_edid ("HNMT500124")));
+  }
+
+  void monitor_manager_edid_invalid () {
+    // Too short, or not starting with the EDID header
+    var edid = test_edid (null);
+    assert (edid_identity (edid[0:127]) == null);
+
+    edid[1] = 0x00;
+    assert (edid_identity (edid) == null);
+
+    // A manufacturer letter out of range
+    edid = test_edid (null);
+    edid[8] = 0x00;
+    edid[9] = 0x00;
+    assert (edid_identity (edid) == null);
+  }
+
+  void monitor_manager_positions () {
+    // External monitors count left to right, the laptop's screen apart,
+    // wherever it sits
+    Gdk.Rectangle[] monitors = {
+      { 3440, 0, 2560, 1440 },
+      { 6000, 124, 1920, 1080 },
+      { 0, 0, 3440, 1440 }
+    };
+    bool[] builtin = { false, true, false };
+    var positions = monitor_positions (monitors, builtin);
+    assert (positions[0] == "external-2-1");
+    assert (positions[1] == "builtin");
+    assert (positions[2] == "external-2-0");
+
+    // Stacked monitors count top to bottom, and how many there are is part
+    // of the position
+    Gdk.Rectangle[] stacked = { { 0, 1080, 1920, 1080 }, { 0, 0, 1920, 1080 }, { 1920, 0, 1920, 1080 } };
+    bool[] none_builtin = { false, false, false };
+    positions = monitor_positions (stacked, none_builtin);
+    assert (positions[0] == "external-3-1");
+    assert (positions[1] == "external-3-0");
+    assert (positions[2] == "external-3-2");
+
+    assert (monitor_is_builtin ("eDP-1"));
+    assert (monitor_is_builtin ("LVDS1"));
+    assert (!monitor_is_builtin ("DP-2-1"));
+    assert (!monitor_is_builtin ("HDMI-1"));
+  }
+
+  void monitor_manager_earlier_dock () {
+    string[] names = { "dock1", "DP-2-1-SAM-797x333mm", "DP-2", "HDMI-1-Dell-Inc--527x296mm" };
+
+    // The full name of a connector's dock, or the connector alone
+    assert (earlier_monitor_dock ("DP-2-1", names) == "DP-2-1-SAM-797x333mm");
+    assert (earlier_monitor_dock ("DP-2", names) == "DP-2");
+    assert (earlier_monitor_dock ("HDMI-1", names) == "HDMI-1-Dell-Inc--527x296mm");
+
+    // Another connector's dock never matches, nor does an unrelated one
+    assert (earlier_monitor_dock ("DP-2-2", names) == null);
+    assert (earlier_monitor_dock ("DP-1", names) == null);
+    string[] only_longer = { "DP-2-1-SAM-797x333mm" };
+    assert (earlier_monitor_dock ("DP-2", only_longer) == null);
+  }
+
+  void monitor_manager_choose_first_run () {
+    // With nothing known, each monitor gets a new dock, skipping names in
+    // use, and both its identity and its position are recorded
+    var known = new Gee.HashMap<string, string> ();
+    string?[] identities = { "SAM-0F35-A1", "DEL-A0B1-B2" };
+    string[] positions = { "external-2-0", "external-2-1" };
+    string?[] earlier = { null, null };
+    string[] taken = { "dock1", "monitor1" };
+
+    var docks = choose_monitor_docks (identities, positions, earlier, known, taken);
+    assert (docks[0] == "monitor2");
+    assert (docks[1] == "monitor3");
+    assert (known["edid:SAM-0F35-A1"] == "monitor2");
+    assert (known["position:external-2-1"] == "monitor3");
+  }
+
+  void monitor_manager_choose_by_identity () {
+    // The same monitors swapped around keep their docks
+    var known = new Gee.HashMap<string, string> ();
+    known["edid:SAM-0F35-A1"] = "monitor1";
+    known["edid:DEL-A0B1-B2"] = "monitor2";
+    known["position:external-2-0"] = "monitor1";
+    known["position:external-2-1"] = "monitor2";
+
+    string?[] identities = { "SAM-0F35-A1", "DEL-A0B1-B2" };
+    string[] swapped = { "external-2-1", "external-2-0" };
+    string?[] earlier = { null, null };
+    var docks = choose_monitor_docks (identities, swapped, earlier, known, new string[0]);
+    assert (docks[0] == "monitor1");
+    assert (docks[1] == "monitor2");
+
+    // Their new positions are recorded
+    assert (known["position:external-2-0"] == "monitor2");
+  }
+
+  void monitor_manager_choose_by_position () {
+    // At another desk with the same arrangement, monitors never seen before
+    // take the docks of the positions they are in
+    var known = new Gee.HashMap<string, string> ();
+    known["edid:SAM-0F35-A1"] = "monitor1";
+    known["edid:DEL-A0B1-B2"] = "monitor2";
+    known["position:external-2-0"] = "monitor1";
+    known["position:external-2-1"] = "monitor2";
+    known["position:builtin"] = "monitor3";
+
+    string?[] identities = { "SAM-0F35-C3", "SAM-0F35-D4", "LGD-0001" };
+    string[] positions = { "external-2-0", "external-2-1", "builtin" };
+    string?[] earlier = { null, null, null };
+    var docks = choose_monitor_docks (identities, positions, earlier, known, new string[0]);
+    assert (docks[0] == "monitor1");
+    assert (docks[1] == "monitor2");
+    assert (docks[2] == "monitor3");
+
+    // and are known by identity from now on
+    assert (known["edid:SAM-0F35-C3"] == "monitor1");
+
+    // A different arrangement gets docks of its own
+    string?[] three = { "AAA-0001-1", "AAA-0001-2", "AAA-0001-3" };
+    string[] three_positions = { "external-3-0", "external-3-1", "external-3-2" };
+    string?[] none = { null, null, null };
+    docks = choose_monitor_docks (three, three_positions, none, known, new string[0]);
+    assert (docks[0] == "monitor4");
+    assert (docks[1] == "monitor5");
+    assert (docks[2] == "monitor6");
+  }
+
+  void monitor_manager_choose_earlier () {
+    // An earlier monitor manager's dock is taken over on the first run,
+    // before any position
+    var known = new Gee.HashMap<string, string> ();
+    string?[] identities = { "SAM-0F35-A1" };
+    string[] positions = { "external-1-0" };
+    string?[] earlier = { "DP-2-1-SAM-797x333mm" };
+    string[] taken = { "DP-2-1-SAM-797x333mm" };
+
+    var docks = choose_monitor_docks (identities, positions, earlier, known, taken);
+    assert (docks[0] == "DP-2-1-SAM-797x333mm");
+    assert (known["edid:SAM-0F35-A1"] == "DP-2-1-SAM-797x333mm");
+  }
+
+  void monitor_manager_choose_identical_models () {
+    // Two monitors of a model reporting no serial share an identity, so
+    // only one keeps the dock it has by identity, and the other goes by
+    // its position; no two monitors share a dock
+    var known = new Gee.HashMap<string, string> ();
+    known["edid:SAM-0F35"] = "monitor1";
+    known["position:external-2-0"] = "monitor1";
+    known["position:external-2-1"] = "monitor2";
+
+    string?[] identities = { "SAM-0F35", "SAM-0F35" };
+    string[] positions = { "external-2-0", "external-2-1" };
+    string?[] earlier = { null, null };
+    var docks = choose_monitor_docks (identities, positions, earlier, known, new string[0]);
+    assert (docks[0] == "monitor1");
+    assert (docks[1] == "monitor2");
+
+    // Even when the position is taken already, a new dock is made
+    known["position:external-2-1"] = "monitor1";
+    docks = choose_monitor_docks (identities, positions, earlier, known, new string[0]);
+    assert (docks[0] != docks[1]);
   }
 }

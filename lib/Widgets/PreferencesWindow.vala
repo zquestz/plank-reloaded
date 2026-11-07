@@ -244,6 +244,8 @@ namespace Plank {
         warning ("%s not supported", prop.name);
         break;
       }
+
+      lock_monitor_controls ();
     }
 
     void theme_changed (Gtk.ComboBox widget) {
@@ -439,8 +441,22 @@ namespace Plank {
 
       bool should_be_sensitive = (prefs.Monitor != "" && !prefs.ActiveDisplay);
       cb_display_plug.sensitive = should_be_sensitive;
+      lock_monitor_controls ();
 
       refreshing_display_plugs = false;
+    }
+
+    // A dock a monitor manager assigned its monitor keeps it, so its
+    // monitor controls show its settings but can't change them
+    void lock_monitor_controls () {
+      if (controller.assigned_monitor == "")
+        return;
+
+      var reason = _("Assigned to %s by the monitor manager").printf (controller.assigned_monitor);
+      foreach (var widget in new Gtk.Widget[] { sw_primary_display, cb_display_plug, sw_active_display, s_active_display_polling_interval }) {
+        widget.sensitive = false;
+        widget.tooltip_text = reason;
+      }
     }
 
     void connect_signals () {
@@ -576,6 +592,7 @@ namespace Plank {
       cb_alignment.active_id = ((int) prefs.Alignment).to_string ();
       cb_items_alignment.active_id = ((int) prefs.ItemsAlignment).to_string ();
       cb_items_alignment.sensitive = (prefs.Alignment == Gtk.Align.FILL);
+      lock_monitor_controls ();
     }
 
     void init_docklets_tab () {

@@ -25,6 +25,11 @@ namespace Plank {
     Intl.bind_textdomain_codeset (Build.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Build.GETTEXT_PACKAGE);
 
+    // A monitor manager runs docks rather than being one
+    foreach (unowned string arg in argv)
+      if (arg == "--monitor-manager")
+        return new MonitorManager ().run (argv);
+
     var application = new Plank.Main ();
     Factory.init (application, new ItemFactory ());
     return application.run (argv);
