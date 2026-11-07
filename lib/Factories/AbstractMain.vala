@@ -30,6 +30,8 @@ namespace Plank {
       { "debug", 'd', 0, OptionArg.NONE, null, "Enable debug logging", null },
       { "verbose", 'v', 0, OptionArg.NONE, null, "Enable verbose logging", null },
       { "name", 'n', 0, OptionArg.STRING, null, "The name of this dock. Defaults to \"dock1\".", null },
+      { "monitor-manager", 0, 0, OptionArg.NONE, null, "Run one dock on each connected monitor, adding and removing docks as monitors come and go", null },
+      { "assigned-monitor", 0, OptionFlags.HIDDEN, OptionArg.STRING, null, "The monitor a monitor manager assigned this dock to, by its plug name", null },
       { "preferences", 0, 0, OptionArg.NONE, null, "Show preferences dialog of the just started or already running instance", null },
       { "version", 'V', 0, OptionArg.NONE, null, "Show the application's version", null },
       { null }
@@ -169,6 +171,7 @@ namespace Plank {
     public Gtk.License about_license_type { get; construct set; default = Gtk.License.UNKNOWN; }
 
     string dock_name = "";
+    string assigned_monitor = "";
 
     Gtk.AboutDialog? about_dlg;
     PreferencesWindow? preferences_dlg;
@@ -223,6 +226,10 @@ namespace Plank {
       dock_name = (options.lookup ("name", "s", out name) ? name : "");
 
       application_id = dock_application_id (app_dbus, dock_name);
+
+      // Only a named dock can be assigned a monitor
+      string monitor;
+      assigned_monitor = (options.lookup ("assigned-monitor", "s", out monitor) && dock_name != "" ? monitor : "");
 
       return -1;
     }
@@ -309,8 +316,11 @@ namespace Plank {
      */
     protected virtual void create_docks () {
       if (dock_name != null && dock_name != "") {
-        message ("Running with 1 dock ('%s')", dock_name);
-        add_dock (create_dock (dock_name));
+        if (assigned_monitor != "")
+          message ("Running with 1 dock ('%s') on monitor '%s'", dock_name, assigned_monitor);
+        else
+          message ("Running with 1 dock ('%s')", dock_name);
+        add_dock (create_dock (dock_name, assigned_monitor));
         return;
       }
 
@@ -331,12 +341,15 @@ namespace Plank {
         add_dock (create_dock (dock_name));
     }
 
-    DockController create_dock (string dock_name) {
+    DockController create_dock (string dock_name, string assigned_monitor = "") {
       var config_folder = Paths.AppConfigFolder.get_child (dock_name);
       // Make sure our config-directory exists
       Paths.ensure_directory_exists (config_folder);
 
       var dock = new DockController (dock_name, config_folder);
+      // Before initializing, so the dock is placed on its monitor from the
+      // first frame
+      dock.assigned_monitor = assigned_monitor;
       dock.initialize ();
 
       return dock;
