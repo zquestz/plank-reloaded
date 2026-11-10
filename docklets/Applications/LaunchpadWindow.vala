@@ -213,7 +213,20 @@ namespace Docky {
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
-      // a press that reaches the window missed every tile
+      // the flow box and the entry don't consume presses, so check what was hit
+      int ox, oy;
+      get_window ().get_origin (out ox, out oy);
+      var x = (int) event.x_root - ox;
+      var y = (int) event.y_root - oy;
+
+      int fx, fy, ex, ey;
+      if (translate_coordinates (flow, x, y, out fx, out fy) && flow.get_child_at_pos (fx, fy) != null)
+        return false;
+      if (translate_coordinates (entry, x, y, out ex, out ey)
+          && ex >= 0 && ey >= 0 && ex < entry.get_allocated_width () && ey < entry.get_allocated_height ())
+        return false;
+
+      // a press that missed every tile closes the launchpad
       hide ();
       return true;
     }
