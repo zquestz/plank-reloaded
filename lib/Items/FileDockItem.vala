@@ -26,6 +26,9 @@ namespace Plank {
    */
   public class FileDockItem : DockItem {
     const string DEFAULT_ICONS = "inode-directory;;folder";
+    const int FAN_MAX_ENTRIES = 9;
+
+    FanWindow? fan = null;
 
     public File OwnedFile { get; protected construct set; }
 
@@ -220,12 +223,74 @@ namespace Plank {
     }
 
     protected override AnimationType on_clicked (PopupButton button, Gdk.ModifierType mod, uint32 event_time) {
+      if (button == PopupButton.LEFT && show_fan ())
+        return AnimationType.NONE;
+
       if (button == PopupButton.LEFT || button == PopupButton.MIDDLE) {
         launch ();
         return AnimationType.BOUNCE;
       }
 
       return AnimationType.NONE;
+    }
+
+    /**
+     * Fans a folder's entries out of the item, if the dock is at the
+     * bottom of the screen.
+     *
+     * @return whether the fan was shown
+     */
+    bool show_fan () {
+      if (OwnedFile.query_file_type (0) != FileType.DIRECTORY)
+        return false;
+
+      unowned DockController? controller = get_dock ();
+      if (controller == null || controller.position_manager.Position != Gtk.PositionType.BOTTOM)
+        return false;
+
+      var files = get_files (OwnedFile);
+      var names = new Gee.ArrayList<string> ();
+      names.add_all (files.keys);
+      names.sort ((a, b) => a.collate (b));
+
+      var entries = new Gee.ArrayList<FanEntry> ();
+      foreach (var name in names) {
+        if (entries.size >= FAN_MAX_ENTRIES)
+          break;
+
+        var file = files.get (name);
+        string icon, text;
+        var uri = file.get_uri ();
+        if (uri.has_suffix (".desktop")) {
+          ApplicationDockItem.parse_launcher (uri, out icon, out text);
+        } else {
+          icon = DrawingService.get_icon_from_file (file) ?? "";
+          text = name;
+        }
+        entries.add (new FanEntry (text ?? name, icon ?? "", file));
+      }
+
+      if (entries.size == 0)
+        return false;
+
+      var remaining = names.size - entries.size;
+      var open_text = remaining > 0
+        ? ngettext ("%d More in File Manager", "%d More in File Manager", remaining).printf (remaining)
+        : _("Open in File Manager");
+      entries.add (new FanEntry (open_text, "folder-open", OwnedFile));
+
+      if (fan == null) {
+        fan = new FanWindow ();
+        fan.activated.connect ((entry) => {
+          System.get_default ().launch (entry.file);
+        });
+      }
+
+      int x, y;
+      controller.position_manager.get_hover_position (this, out x, out y);
+      fan.show_fan (entries, x, y);
+
+      return true;
     }
 
     public override bool can_be_removed () {
