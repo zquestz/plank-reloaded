@@ -282,7 +282,10 @@ namespace Plank {
       if (fan == null) {
         fan = new FanWindow ();
         fan.activated.connect ((entry) => {
-          System.get_default ().launch (entry.file);
+          if (entry.file.get_uri ().has_suffix (".desktop"))
+            System.get_default ().launch (entry.file);
+          else
+            System.get_default ().open (entry.file);
         });
       }
 
