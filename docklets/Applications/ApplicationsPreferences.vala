@@ -21,6 +21,8 @@ namespace Docky {
   public class ApplicationsPreferences : DockItemPreferences {
     public string CustomIcon { get; set; default = ""; }
 
+    public bool LaunchpadMode { get; set; default = true; }
+
     public ApplicationsPreferences.with_file (GLib.File file)
     {
       base.with_file (file);
@@ -30,6 +32,7 @@ namespace Docky {
       base.reset_properties ();
       LargeIcons = false;
       CustomIcon = "";
+      LaunchpadMode = true;
     }
   }
 }

@@ -51,6 +51,7 @@ plank_lib_sources = [
   'Services/Worker.vala',
   'Widgets/CompositedWindow.vala',
   'Widgets/DockWindow.vala',
+  'Widgets/FanWindow.vala',
   'Widgets/HoverWindow.vala',
   'Widgets/PoofWindow.vala',
   'Widgets/PreferencesWindow.vala',

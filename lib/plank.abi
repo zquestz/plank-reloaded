@@ -429,6 +429,7 @@ function plank_dock_preferences_get_GapSize gint plank_dock_preferences_get_GapS
 function plank_dock_preferences_get_HideDelay guint plank_dock_preferences_get_HideDelay (PlankDockPreferences* self)
 function plank_dock_preferences_get_HideMode PlankHideType plank_dock_preferences_get_HideMode (PlankDockPreferences* self)
 function plank_dock_preferences_get_IconSize gint plank_dock_preferences_get_IconSize (PlankDockPreferences* self)
+function plank_dock_preferences_get_ItemPadding gdouble plank_dock_preferences_get_ItemPadding (PlankDockPreferences* self)
 function plank_dock_preferences_get_ItemsAlignment GtkAlign plank_dock_preferences_get_ItemsAlignment (PlankDockPreferences* self)
 function plank_dock_preferences_get_LockItems gboolean plank_dock_preferences_get_LockItems (PlankDockPreferences* self)
 function plank_dock_preferences_get_Monitor const gchar* plank_dock_preferences_get_Monitor (PlankDockPreferences* self)
@@ -463,6 +464,7 @@ function plank_dock_preferences_set_GapSize void plank_dock_preferences_set_GapS
 function plank_dock_preferences_set_HideDelay void plank_dock_preferences_set_HideDelay (PlankDockPreferences* self, guint value)
 function plank_dock_preferences_set_HideMode void plank_dock_preferences_set_HideMode (PlankDockPreferences* self, PlankHideType value)
 function plank_dock_preferences_set_IconSize void plank_dock_preferences_set_IconSize (PlankDockPreferences* self, gint value)
+function plank_dock_preferences_set_ItemPadding void plank_dock_preferences_set_ItemPadding (PlankDockPreferences* self, gdouble value)
 function plank_dock_preferences_set_ItemsAlignment void plank_dock_preferences_set_ItemsAlignment (PlankDockPreferences* self, GtkAlign value)
 function plank_dock_preferences_set_LockItems void plank_dock_preferences_set_LockItems (PlankDockPreferences* self, gboolean value)
 function plank_dock_preferences_set_Monitor void plank_dock_preferences_set_Monitor (PlankDockPreferences* self, const gchar* value)
@@ -620,6 +622,17 @@ function plank_factory_construct PlankFactory* plank_factory_construct (GType ob
 function plank_factory_get_type GType plank_factory_get_type (void)
 function plank_factory_init void plank_factory_init (PlankAbstractMain* main_class, PlankItemFactory* item)
 function plank_factory_new PlankFactory* plank_factory_new (void)
+function plank_fan_entry_construct PlankFanEntry* plank_fan_entry_construct (GType object_type, const gchar* text, const gchar* icon, GFile* file)
+function plank_fan_entry_get_file GFile* plank_fan_entry_get_file (PlankFanEntry* self)
+function plank_fan_entry_get_icon const gchar* plank_fan_entry_get_icon (PlankFanEntry* self)
+function plank_fan_entry_get_text const gchar* plank_fan_entry_get_text (PlankFanEntry* self)
+function plank_fan_entry_get_type GType plank_fan_entry_get_type (void)
+function plank_fan_entry_new PlankFanEntry* plank_fan_entry_new (const gchar* text, const gchar* icon, GFile* file)
+function plank_fan_window_close_fan void plank_fan_window_close_fan (PlankFanWindow* self)
+function plank_fan_window_construct PlankFanWindow* plank_fan_window_construct (GType object_type)
+function plank_fan_window_get_type GType plank_fan_window_get_type (void)
+function plank_fan_window_new PlankFanWindow* plank_fan_window_new (void)
+function plank_fan_window_show_fan void plank_fan_window_show_fan (PlankFanWindow* self, GeeList* list, gint x, gint y)
 function plank_file_dock_item_construct PlankFileDockItem* plank_file_dock_item_construct (GType object_type)
 function plank_file_dock_item_construct_with_dockitem_file PlankFileDockItem* plank_file_dock_item_construct_with_dockitem_file (GType object_type, GFile* file)
 function plank_file_dock_item_construct_with_dockitem_filename PlankFileDockItem* plank_file_dock_item_construct_with_dockitem_filename (GType object_type, const gchar* filename)
@@ -1055,6 +1068,12 @@ struct _PlankDrawingServiceClass 001 GObjectClass parent_class
 struct _PlankFactory 001 GObject parent_instance
 struct _PlankFactory 002 PlankFactoryPrivate * priv
 struct _PlankFactoryClass 001 GObjectClass parent_class
+struct _PlankFanEntry 001 GObject parent_instance
+struct _PlankFanEntry 002 PlankFanEntryPrivate * priv
+struct _PlankFanEntryClass 001 GObjectClass parent_class
+struct _PlankFanWindow 001 GtkWindow parent_instance
+struct _PlankFanWindow 002 PlankFanWindowPrivate * priv
+struct _PlankFanWindowClass 001 GtkWindowClass parent_class
 struct _PlankFileDockItem 001 PlankDockItem parent_instance
 struct _PlankFileDockItem 002 PlankFileDockItemPrivate * priv
 struct _PlankFileDockItemClass 001 PlankDockItemClass parent_class

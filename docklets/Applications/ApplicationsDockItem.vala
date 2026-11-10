@@ -22,6 +22,7 @@ namespace Docky {
     private uint update_timer_id = 0;
     private GMenu.Tree menu_tree;
     private Gtk.Menu? menu_widget = null;
+    private LaunchpadWindow? launchpad = null;
     private Gee.ArrayList<Gtk.MenuItem>? menu_items = null;
     private bool apps_loaded = false;
     private bool load_in_progress = false;
@@ -248,7 +249,14 @@ namespace Docky {
     protected override AnimationType on_clicked(PopupButton button,
                                                 Gdk.ModifierType mod, uint32 event_time) {
       if ((button & PopupButton.LEFT) != 0) {
-        show_applications_menu();
+        unowned ApplicationsPreferences prefs = (ApplicationsPreferences) Prefs;
+        if (prefs.LaunchpadMode) {
+          if (launchpad == null)
+            launchpad = new LaunchpadWindow();
+          launchpad.toggle();
+        } else {
+          show_applications_menu();
+        }
         return AnimationType.NONE;
       }
 

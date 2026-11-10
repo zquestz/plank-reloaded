@@ -53,7 +53,11 @@ namespace Plank {
     [GtkChild]
     unowned Gtk.SpinButton sp_preview_size;
     [GtkChild]
+    unowned Gtk.SpinButton sp_itempadding;
+    [GtkChild]
     unowned Gtk.Scale s_offset;
+    [GtkChild]
+    unowned Gtk.Scale s_itempadding;
     [GtkChild]
     unowned Gtk.Scale s_active_display_polling_interval;
     [GtkChild]
@@ -77,6 +81,8 @@ namespace Plank {
     unowned Gtk.Adjustment adj_active_display_polling_interval;
     [GtkChild]
     unowned Gtk.Adjustment adj_zoom_percent;
+    [GtkChild]
+    unowned Gtk.Adjustment adj_itempadding;
 
     [GtkChild]
     unowned Gtk.Switch sw_hide;
@@ -104,6 +110,8 @@ namespace Plank {
     unowned Gtk.Switch sw_zoom_enabled;
     [GtkChild]
     unowned Gtk.Switch sw_bring_to_workspace;
+    [GtkChild]
+    unowned Gtk.Switch sw_use_theme_spacing;
 
     [GtkChild]
     unowned Gtk.IconView view_docklets;
@@ -160,6 +168,14 @@ namespace Plank {
         break;
       case "ItemsAlignment":
         cb_items_alignment.active_id = ((int) prefs.ItemsAlignment).to_string ();
+        break;
+      case "ItemPadding":
+        var use_theme = (prefs.ItemPadding < 0);
+        sw_use_theme_spacing.set_active (use_theme);
+        sp_itempadding.sensitive = !use_theme;
+        s_itempadding.sensitive = !use_theme;
+        if (!use_theme)
+          adj_itempadding.value = prefs.ItemPadding;
         break;
       case "HideMode":
         var hide_none = (prefs.HideMode != HideType.NONE);
@@ -359,6 +375,23 @@ namespace Plank {
       prefs.GapSize = (int) adj.value;
     }
 
+    void itempadding_changed (Gtk.Adjustment adj) {
+      if (!sw_use_theme_spacing.get_active ())
+        prefs.ItemPadding = adj.value;
+    }
+
+    void use_theme_spacing_toggled (GLib.Object widget, ParamSpec param) {
+      if (((Gtk.Switch) widget).get_active ()) {
+        prefs.ItemPadding = -1.0;
+        sp_itempadding.sensitive = false;
+        s_itempadding.sensitive = false;
+      } else {
+        prefs.ItemPadding = double.max (0, adj_itempadding.value);
+        sp_itempadding.sensitive = true;
+        s_itempadding.sensitive = true;
+      }
+    }
+
     void offset_changed (Gtk.Adjustment adj) {
       prefs.Offset = (int) adj.value;
     }
@@ -458,6 +491,7 @@ namespace Plank {
       cb_display_plug.changed.connect (monitor_changed);
       adj_iconsize.value_changed.connect (iconsize_changed);
       adj_gapsize.value_changed.connect (gapsize_changed);
+      adj_itempadding.value_changed.connect (itempadding_changed);
       adj_offset.value_changed.connect (offset_changed);
       adj_zoom_percent.value_changed.connect (zoom_percent_changed);
       sw_hide.notify["active"].connect (hide_toggled);
@@ -476,6 +510,7 @@ namespace Plank {
       sw_anchor_files.notify["active"].connect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].connect (pressure_reveal_toggled);
       sw_zoom_enabled.notify["active"].connect (zoom_enabled_toggled);
+      sw_use_theme_spacing.notify["active"].connect (use_theme_spacing_toggled);
       cb_alignment.changed.connect (alignment_changed);
       cb_items_alignment.changed.connect (items_alignment_changed);
     }
@@ -495,6 +530,7 @@ namespace Plank {
       cb_display_plug.changed.disconnect (monitor_changed);
       adj_iconsize.value_changed.disconnect (iconsize_changed);
       adj_gapsize.value_changed.disconnect (gapsize_changed);
+      adj_itempadding.value_changed.disconnect (itempadding_changed);
       adj_offset.value_changed.disconnect (offset_changed);
       adj_zoom_percent.value_changed.disconnect (zoom_percent_changed);
       sw_hide.notify["active"].disconnect (hide_toggled);
@@ -513,6 +549,7 @@ namespace Plank {
       sw_anchor_files.notify["active"].disconnect (anchor_files_toggled);
       sw_pressure_reveal.notify["active"].disconnect (pressure_reveal_toggled);
       sw_zoom_enabled.notify["active"].disconnect (zoom_enabled_toggled);
+      sw_use_theme_spacing.notify["active"].disconnect (use_theme_spacing_toggled);
       cb_alignment.changed.disconnect (alignment_changed);
       cb_items_alignment.changed.disconnect (items_alignment_changed);
     }
@@ -541,6 +578,16 @@ namespace Plank {
 
       adj_iconsize.value = prefs.IconSize;
       adj_gapsize.value = prefs.GapSize;
+      
+      var item_use_theme = (prefs.ItemPadding < 0);
+      sw_use_theme_spacing.set_active (item_use_theme);
+      sp_itempadding.sensitive = !item_use_theme;
+      s_itempadding.sensitive = !item_use_theme;
+      if (!item_use_theme)
+        adj_itempadding.value = prefs.ItemPadding;
+      else
+        adj_itempadding.value = 2.5; // Default UI value when set to theme
+
       adj_offset.value = prefs.Offset;
       adj_zoom_percent.value = prefs.ZoomPercent;
       s_offset.sensitive = (prefs.Alignment == Gtk.Align.CENTER);
