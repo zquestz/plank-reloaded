@@ -786,3 +786,69 @@ msgstr "Параметры"
 
 #~ msgid "The Plank Reloaded Developers"
 #~ msgstr "Разработчики Plank Reloaded"
+
+#: docklets/Clippy/ClippyPopup.vala
+msgid "Clipboard"
+msgstr "Буфер обмена"
+
+#: docklets/Clippy/ClippyPopup.vala
+msgid "Clear All"
+msgstr "Очистить всё"
+
+#: docklets/Clippy/ClippyPopup.vala
+#, c-format
+msgid "Image %d×%d"
+msgstr "Изображение %d×%d"
+
+#: docklets/Clippy/ClippyPopup.vala
+#, c-format
+msgid "%d lines"
+msgstr "строк: %d"
+
+#: docklets/Clippy/ClippyPopup.vala
+msgid "Enter or click: copy  ·  1–9: quick pick  ·  Esc: close"
+msgstr "Enter или клик — скопировать  ·  1–9 — быстрый выбор  ·  Esc — закрыть"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Preview Size"
+msgstr "Размер превью"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Small"
+msgstr "Маленькие"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Medium"
+msgstr "Средние"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Large"
+msgstr "Крупные"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Hotkey Opens It"
+msgstr "Где открывать по горячей клавише"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "At the Active Window"
+msgstr "У активного окна"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "At the Pointer"
+msgstr "У курсора мыши"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "At the Screen Centre"
+msgstr "По центру экрана"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Paste Right Away"
+msgstr "Сразу вставлять"
+
+#: docklets/Clippy/ClippyDockItem.vala
+msgid "Keep History After Restart"
+msgstr "Сохранять историю после перезапуска"
+
+#: docklets/Clippy/ClippyPopup.vala
+msgid "Enter or click: paste  ·  1–9: quick pick  ·  Esc: close"
+msgstr "Enter или клик — вставить  ·  1–9 — быстрый выбор  ·  Esc — закрыть"
