@@ -34,6 +34,22 @@ namespace Docky {
                   blurb = "Disable clipboard tracking.")]
     public bool DisableTracking { get; set; default = false; }
 
+    [Description (nick = "preview-size",
+                  blurb = "Size of the previews in the history window: 0 small, 1 medium, 2 large.")]
+    public uint PreviewSize { get; set; default = 1; }
+
+    [Description (nick = "persist-history",
+                  blurb = "Keep the history in a file so it survives a restart.")]
+    public bool PersistHistory { get; set; default = false; }
+
+    [Description (nick = "paste-on-select",
+                  blurb = "Paste the chosen entry into the active window right away.")]
+    public bool PasteOnSelect { get; set; default = false; }
+
+    [Description (nick = "hotkey-position",
+                  blurb = "Where the hotkey opens the history window: 0 at the active window, 1 at the pointer, 2 at the screen centre.")]
+    public uint HotkeyPosition { get; set; default = 0; }
+
     public ClippyPreferences.with_file (GLib.File file)
     {
       base.with_file (file);
@@ -45,6 +61,10 @@ namespace Docky {
       TrackMouseSelections = false;
       TrackImages = true;
       DisableTracking = false;
+      PreviewSize = 1;
+      PersistHistory = false;
+      PasteOnSelect = false;
+      HotkeyPosition = 0;
     }
   }
 }

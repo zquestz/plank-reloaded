@@ -51,10 +51,6 @@ namespace Docky {
      */
     private string _hash;
 
-    /**
-     * Cached thumbnail for menus.
-     */
-    private Gdk.Pixbuf? _thumbnail = null;
 
     /**
      * Create a new clipboard item containing text.
@@ -90,27 +86,111 @@ namespace Docky {
       return _hash;
     }
 
+    private Gdk.Pixbuf? _preview = null;
+    private int _line_count = -1;
+
+    private static GLib.Regex hex_color_regex =
+      /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
+    private int _preview_width = 0;
+    private int _preview_height = 0;
+
     /**
-     * Get the thumbnail for this clipboard item.
+     * Get a preview of this image that fits in the given box; small images
+     * are never scaled up.
      *
-     * @return A GDK.Pixbuf thumbnail of the image
+     * @return the preview, or null for a text item
      */
-    public Gdk.Pixbuf? get_thumbnail() {
+    public Gdk.Pixbuf? get_preview(int max_width, int max_height) {
       if (item_type != Type.IMAGE || image == null)
         return null;
 
-      if (_thumbnail == null) {
-        int thumb_size = 24;
+      if (_preview == null || _preview_width != max_width || _preview_height != max_height) {
         int width = image.get_width();
         int height = image.get_height();
-        double scale = (double) thumb_size / double.max(width, height);
-        int thumb_width = (int) (width * scale);
-        int thumb_height = (int) (height * scale);
+        double scale = double.min(1.0, double.min((double) max_width / width,
+                                                  (double) max_height / height));
+        int preview_width = int.max(1, (int) (width * scale));
+        int preview_height = int.max(1, (int) (height * scale));
 
-        _thumbnail = image.scale_simple(thumb_width, thumb_height, Gdk.InterpType.BILINEAR);
+        _preview = (scale >= 1.0)
+          ? image
+          : image.scale_simple(preview_width, preview_height, Gdk.InterpType.BILINEAR);
+        _preview_width = max_width;
+        _preview_height = max_height;
       }
 
-      return _thumbnail;
+      return _preview;
+    }
+
+    /**
+     * Get the first lines of a text item for the history window, with
+     * surrounding blank lines and indentation of the block trimmed.
+     *
+     * @param max_lines how many lines to keep
+     * @param max_chars how many characters to keep in all
+     */
+    public string get_preview_text(int max_lines, int max_chars) {
+      if (item_type != Type.TEXT || text == null)
+        return "";
+
+      // Bounded prefix, so huge entries stay cheap
+      var prefix = get_text_prefix(max_chars * 4 + max_lines);
+      var lines = prefix.split("\n", max_lines + 1);
+      var builder = new StringBuilder();
+      int count = int.min(lines.length, max_lines);
+
+      for (int i = 0; i < count; i++) {
+        if (i > 0)
+          builder.append_c('\n');
+        builder.append(lines[i].replace("\t", "    ").chomp());
+      }
+
+      var preview = builder.str.chomp();
+      if (preview.char_count() > max_chars) {
+        preview = preview.substring(0, preview.index_of_nth_char(max_chars)) + "…";
+      }
+
+      return preview;
+    }
+
+    /**
+     * Number of lines of a text item (leading and trailing blank space
+     * ignored), counted once and cached.
+     */
+    public int get_line_count() {
+      if (item_type != Type.TEXT || text == null)
+        return 0;
+
+      if (_line_count < 0) {
+        int start = 0;
+        int end = text.length;
+        while (start < end && text[start].isspace())
+          start++;
+        while (end > start && text[end - 1].isspace())
+          end--;
+
+        int count = (end > start) ? 1 : 0;
+        for (int i = start; i < end; i++) {
+          if (text[i] == '\n')
+            count++;
+        }
+        _line_count = count;
+      }
+
+      return _line_count;
+    }
+
+    /**
+     * At most max_bytes of the text after its leading blank space, cut on a
+     * character boundary.
+     */
+    private string get_text_prefix(int max_bytes) {
+      int start = 0;
+      while (start < text.length && text[start].isspace())
+        start++;
+
+      int length = int.min(text.length - start, max_bytes);
+      return text.substring(start, length).make_valid();
     }
 
     /**
@@ -124,13 +204,22 @@ namespace Docky {
       if (item_type == Type.TEXT && text != null) {
         checksum.update(text.data, text.data.length);
       } else if (item_type == Type.IMAGE && image != null) {
-        // get_pixels() carries no array length in the binding, so hash the
-        // sized buffer and include the geometry to keep distinct images apart
+        // Skip the rowstride padding: it is uninitialised, and hashing it would
+        // give the same image a different hash each time
         unowned uint8[] pixels = image.get_pixels_with_length();
-        var header = "%dx%dx%d:%d".printf(image.get_width(), image.get_height(),
-                                          image.get_n_channels(), image.get_rowstride());
+        int width = image.get_width();
+        int height = image.get_height();
+        int rowstride = image.get_rowstride();
+        int row_bytes = (width * image.get_n_channels() * image.get_bits_per_sample() + 7) / 8;
+        var header = "%dx%dx%d".printf(width, height, image.get_n_channels());
         checksum.update(header.data, header.data.length);
-        checksum.update(pixels, pixels.length);
+        for (int row = 0; row < height; row++) {
+          int offset = row * rowstride;
+          int length = int.min(row_bytes, pixels.length - offset);
+          if (length <= 0)
+            break;
+          checksum.update(pixels[offset:offset + length], length);
+        }
       }
 
       return checksum.get_string();
@@ -144,16 +233,14 @@ namespace Docky {
      */
     public string get_display_text(int max_length = 80) {
       if (item_type == Type.TEXT && text != null) {
-        var stripped_text = text.strip();
-        var lines = stripped_text.split("\n");
+        var first = get_text_prefix(max_length * 4).split("\n", 2)[0].strip();
+        int lines = get_line_count();
 
-        if (lines.length > 1) {
-          stripped_text = lines[0] + "... [" + lines.length.to_string() + "]";
+        if (lines > 1) {
+          first = first + "... [" + lines.to_string() + "]";
         }
 
-        stripped_text = Helpers.truncate_middle(stripped_text, max_length);
-
-        return stripped_text;
+        return Helpers.truncate_middle(first, max_length);
       } else {
         return _("Image");
       }
@@ -182,14 +269,18 @@ namespace Docky {
         return false;
       }
 
-      string trimmed = text.strip();
-
-      try {
-        var regex = new Regex("^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$");
-        return regex.match(trimmed);
-      } catch (RegexError e) {
+      // Reject long text before copying it
+      int start = 0;
+      int end = text.length;
+      while (start < end && text[start].isspace())
+        start++;
+      while (end > start && text[end - 1].isspace())
+        end--;
+      if (end - start < 4 || end - start > 9 || text[start] != '#') {
         return false;
       }
+
+      return hex_color_regex.match(text.substring(start, end - start));
     }
 
     /**
@@ -198,76 +289,31 @@ namespace Docky {
      * @return A Gdk.RGBA color representation or null if not a valid color.
      */
     public Gdk.RGBA? parse_hex_color() {
-      if (is_hex_color()) {
-        var color = Gdk.RGBA();
-        if (color.parse(text.strip())) {
-          return color;
-        }
-      }
-
-      return null;
-    }
-
-    /**
-     * Creates a color swatch widget for hex colors.
-     *
-     * @return A DrawingArea widget showing the color.
-     */
-    private Gtk.DrawingArea? create_color_swatch() {
-      var color = parse_hex_color();
-      if (color == null) {
+      if (!is_hex_color()) {
         return null;
       }
 
-      int icon_size;
-      Gtk.icon_size_lookup(Gtk.IconSize.MENU, out icon_size, null);
+      // Parsed by hand: GTK 3 rejects the #RGBA and #RRGGBBAA forms
+      var hex = text.strip().substring(1);
+      bool short_form = hex.length <= 4;
+      int digits = short_form ? 1 : 2;
+      double[] channels = { 0.0, 0.0, 0.0, 1.0 };
 
-      var swatch = new Gtk.DrawingArea();
-      swatch.set_size_request(icon_size, icon_size);
-
-      swatch.draw.connect((cr) => {
-        cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
-        cr.rectangle(0, 0, icon_size, icon_size);
-        cr.fill();
-        return false;
-      });
-
-      return swatch;
-    }
-
-    /**
-     * Create a menu item for this clipboard item.
-     *
-     * @return A menu item for this clipboard item
-     */
-    public Gtk.MenuItem create_menu_item() {
-      var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-
-      if (item_type == Type.IMAGE && image != null) {
-        var thumbnail = get_thumbnail();
-        var img = new Gtk.Image.from_pixbuf(thumbnail);
-        box.pack_start(img, false, false, 0);
-
-        int width = image.get_width();
-        int height = image.get_height();
-        var size_str = "%dx%d".printf(width, height);
-        var label = new Gtk.Label(_("Image (%s)").printf(size_str));
-        label.halign = Gtk.Align.START;
-        box.pack_start(label, true, true, 0);
-      } else {
-        var swatch = create_color_swatch();
-        if (swatch != null) {
-          box.pack_start(swatch, false, false, 0);
+      for (int i = 0; i < hex.length / digits; i++) {
+        int value = 0;
+        for (int d = 0; d < digits; d++) {
+          value = value * 16 + hex[i * digits + d].xdigit_value();
         }
-
-        var label = new Gtk.Label(get_display_text());
-        label.halign = Gtk.Align.START;
-        box.pack_start(label, true, true, 0);
+        channels[i] = short_form ? value / 15.0 : value / 255.0;
       }
 
-      var item = new Gtk.MenuItem();
-      item.add(box);
-      return item;
+      var color = Gdk.RGBA();
+      color.red = channels[0];
+      color.green = channels[1];
+      color.blue = channels[2];
+      color.alpha = channels[3];
+      return color;
     }
+
   }
 }
